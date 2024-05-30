@@ -1,0 +1,107 @@
+---
+title: "Ottieni dati visitatore"
+description: "Ottieni dati visitatore"
+feature: Javascript
+source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+workflow-type: tm+mt
+source-wordcount: '184'
+ht-degree: 4%
+
+---
+
+
+# Ottieni dati visitatore
+
+Questo metodo viene utilizzato per ottenere dati di identificazione dei visitatori in tempo reale.
+
+- Devi diventare un cliente di personalizzazione web e disporre del [Tag RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito prima di utilizzare l’API Contesto utente.
+- RTP non supporta gli elenchi di account denominati Account Based Marketing (Marketing basato su account). Gli elenchi e il codice ABM si riferiscono solo agli elenchi di account caricati (file CSV) gestiti all’interno di RTP.
+
+Se si verifica un errore, viene visualizzato un messaggio di errore come parte della risposta JSON. Se viene restituito un codice 500, contatta l’assistenza per la richiesta effettuata.
+
+| Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
+|---|---|---|---|
+| `get` | Obbligatorio | Stringa | Azione del metodo. |
+| `visitor` | Obbligatorio | Stringa | Nome del metodo. |
+| `callback` | Obbligatorio | Funzione | Funzione di callback da attivare per ogni campagna restituita. |
+
+## Esempi
+
+Ottenere i dati di identificazione del visitatore:
+
+```javascript
+function callbackFunction() {
+    console.log('RTP is awesome!');
+}
+rtp('get', 'visitor', callbackFunction);
+```
+
+Risposta con corrispondenza segmento:
+
+Di seguito è riportato un esempio di risposta che viene restituita nel caso in cui il visitatore corrisponda ai segmenti in tempo reale prima della chiamata API Get Visitor Data.
+
+```json
+{
+    "status": 200,
+    "results": {
+        "matchedSegments": [
+            {
+                "name": "first click",
+                "id": 177
+            }
+        ],
+        "abm": [
+            {
+                "code": 4,
+                "name": "abm_saleforce_customers"
+            },
+            {
+                "code": 5,
+                "name": "abm_top_customers"
+            }
+        ],
+        "org": "Marketo",
+        "location": {
+            "country": "United States",
+            "city": "San Mateo",
+            "state": "CA"
+        },
+        "industries": [
+            "Software & Internet"
+        ],
+        "isp": false
+    }
+}
+```
+
+Risposta senza corrispondenza segmento:
+
+Di seguito è riportato un esempio di risposta che viene restituita nel caso in cui il visitatore non corrisponda ad alcun segmento in tempo reale prima della chiamata API Get Visitor Data.
+
+```json
+{
+    "status": 200,
+    "results": {
+        "abm": [
+            {
+                "code": 4,
+                "name": "abm_saleforce_customers"
+            },
+            {
+                "code": 5,
+                "name": "abm_top_customers"
+            }
+        ],
+        "org": "Marketo",
+        "location": {
+            "country": "United States",
+            "city": "San Mateo",
+            "state": "CA"
+        },
+        "industries": [
+            "Software & Internet"
+        ],
+        "isp": false
+    }
+}
+```
