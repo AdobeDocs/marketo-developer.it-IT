@@ -1,17 +1,17 @@
 ---
-title: "Guida introduttiva"
-description: "Guida introduttiva alle API di Marketo"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Guida introduttiva
+description: Introduzione alle API di Marketo Engage
+exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
+source-git-commit: 82bea1ab3d0d83a8867bb7efefb828ce2d92747c
 workflow-type: tm+mt
-source-wordcount: '1239'
+source-wordcount: '1243'
 ht-degree: 0%
 
 ---
 
-
 # Guida introduttiva
 
-Marketo è una piattaforma di automazione del marketing che consente agli addetti al marketing di gestire programmi e campagne multicanale personalizzati per clienti e potenziali clienti. La piattaforma Marketo può essere estesa utilizzando i punti di integrazione. Di seguito sono riportate le entità principali e le relative relazioni.
+Marketi Engage è una piattaforma di automazione del marketing che consente agli addetti al marketing di gestire programmi e campagne multicanale personalizzati per clienti e potenziali clienti. La piattaforma di Marketo Engage può essere estesa utilizzando i punti di integrazione. Di seguito sono riportate le entità principali e le relative relazioni.
 
 I seguenti oggetti non sono disponibili tramite API REST quando è abilitata la sincronizzazione nativa: Società, Opportunità, Ruolo opportunità, Venditore
 
@@ -19,7 +19,7 @@ I seguenti oggetti non sono disponibili tramite API REST quando è abilitata la 
 
 ## Persona (lead)
 
-Le persone sono la base di qualsiasi piattaforma di automazione del marketing. In Marketo, tutti i record di persone non di vendita sono indicati come lead, indipendentemente dal fatto che siano designati come lead, potenziali clienti, sospetti, contatti... e così via, dal punto di vista delle vendite. L’oggetto lead viene fornito con un set di [campi standard](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) ad esempio e-mail, nome e cognome. È possibile aggiungere campi aggiuntivi al tipo di oggetto lead per estendere i tipi di informazioni associate ai record nel sistema. Gli attributi personalizzati possono essere letti e scritti come i campi standard. Un elenco completo dei campi si trova all&#39;interno di Marketo **[!UICONTROL Admin]** > **[!UICONTROL Field Management]** menu. I lead vengono identificati in modo univoco in Marketo dal campo ID. Altre chiavi univoche devono essere applicate esternamente dal sistema.
+Le persone sono la base di qualsiasi piattaforma di automazione del marketing. In Marketo, tutti i record di persone non di vendita sono indicati come lead, indipendentemente dal fatto che siano designati come lead, potenziali clienti, sospetti, contatti e così via, dal punto di vista delle vendite. L’oggetto lead viene fornito con un set di [campi standard](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) ad esempio e-mail, nome e cognome. È possibile aggiungere campi aggiuntivi al tipo di oggetto lead per estendere i tipi di informazioni associate ai record nel sistema. Gli attributi personalizzati possono essere letti e scritti come i campi standard. Un elenco completo dei campi si trova all&#39;interno di Marketo **[!UICONTROL Admin]** > **[!UICONTROL Field Management]** menu. I lead vengono identificati in modo univoco in Marketo dal campo ID. Altre chiavi univoche devono essere applicate esternamente dal sistema.
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads), [SOAP](soap-api/leads.md), [JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
 
