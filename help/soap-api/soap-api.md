@@ -1,14 +1,14 @@
 ---
-title: "API SOAP"
+title: API SOAP
 feature: SOAP
-description: "Panoramica di Marketo SOAP"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Panoramica di Marketo SOAP
+exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '242'
+source-wordcount: '230'
 ht-degree: 0%
 
 ---
-
 
 # API SOAP
 
@@ -20,7 +20,7 @@ Ultima versione API: 3_1
 
 ## WSDL SOAP
 
-Per recuperare il documento WSDL SOAP, ottenere l&#39;endpoint API SOAP dal file **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** menu.
+Per recuperare il documento WSDL dell’SOAP, ottieni il tuo endpoint API SOAP dal tuo **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** menu.
 
 ![Endpoint SOAP](assets/endpoint-soap.png)
 
@@ -40,10 +40,10 @@ Si consiglia di non superare le 300 dimensioni del batch. Dimensioni maggiori no
 
 ## Impostazioni API SOAP in Marketo
 
-1. Andare alla sezione Amministratore e fare clic su Servizi Web.
+1. Vai a **[!UICONTROL Admin]** e fai clic su **[!UICONTROL Web Services]**.
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. Impostare una chiave di crittografia appropriata, fare clic su &quot;Salva modifiche&quot; e utilizzare i valori dell&#39;endpoint API SOAP, dell&#39;ID utente e della chiave di crittografia per generare la chiave corretta [firma di autenticazione](authentication-signature.md) per ogni chiamata API SOAP.
+1. Impostare un [!UICONTROL Encryption Key], fai clic su **[!UICONTROL Save Changes]** e utilizzare l’API SOAP [!UICONTROL Endpoint], [!UICONTROL User ID], e [!UICONTROL Encryption Key] valori per generare il corretto [firma di autenticazione](authentication-signature.md) per ogni chiamata API SOAP.
 
 ![admin-web-services3](assets/admin-web-services3.png)

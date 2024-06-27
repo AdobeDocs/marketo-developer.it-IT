@@ -1,14 +1,14 @@
 ---
-title: "REST API"
+title: REST API
 feature: REST API
-description: "Panoramica API REST"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Panoramica API REST
+exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '643'
-ht-degree: 0%
+source-wordcount: '626'
+ht-degree: 1%
 
 ---
-
 
 # REST API
 
@@ -30,15 +30,15 @@ Per la prima chiamata a Marketo, recupererai un record di lead. Per iniziare a u
 
 ![Utenti e ruoli amministratore](assets/admin-users-and-roles.png)
 
-Fai clic su [!UICONTROL Roles] , quindi Nuovo ruolo e assegnare almeno l&#39;autorizzazione &quot;Read-Only Lead&quot; (o &quot;Read-Only Person&quot;) al ruolo nel gruppo Access API. Assegna un nome descrittivo e fai clic su [!UICONTROL Create].
+Fai clic su **[!UICONTROL Roles]** , quindi Nuovo ruolo e assegnare almeno l&#39;autorizzazione &quot;Read-Only Lead&quot; (o &quot;Read-Only Person&quot;) al ruolo nel gruppo Access API. Assegna un nome descrittivo e fai clic su **[!UICONTROL Create]**.
 
 ![Crea Ruolo](assets/new-role.png)
 
-Ora torna alla scheda Utenti e fai clic su Invita nuovo utente. Assegna all’utente un nome descrittivo che indica che si tratta di un utente API, un Indirizzo e-mail e fai clic su **[!UICONTROL Next]**.
+Ora torniamo al [!UICONTROL Users] e fai clic su **[!UICONTROL Invite New User]**. Assegna all’utente un nome descrittivo che indica che si tratta di un utente API, un Indirizzo e-mail e fai clic su **[!UICONTROL Next]**.
 
 ![Informazioni nuovo utente](assets/new-user-info.png)
 
-Quindi, seleziona l’opzione Solo API e assegna all’utente il ruolo API creato e fai clic su **[!UICONTROL Next]**.
+Quindi, seleziona la [!UICONTROL API Only] e assegna all’utente il ruolo API creato e fai clic su **[!UICONTROL Next]**.
 
 ![Autorizzazioni per nuovi utenti](assets/new-user-permissions.png)
 
@@ -46,23 +46,23 @@ Per completare il processo di creazione utente, fai clic su **[!UICONTROL Send]*
 
 ![Nuovo messaggio utente](assets/new-user-message.png)
 
-Quindi, vai al menu Amministratore e fai clic su **[!UICONTROL LaunchPoint]**.
+Quindi, vai al [!UICONTROL Admin] e fai clic su **[!UICONTROL LaunchPoint]**.
 
 ![Launchpoint](assets/admin-launchpoint.png)
 
-Fai clic sul menu Nuovo e seleziona [!UICONTROL New Service]. Assegna un nome descrittivo al servizio e seleziona &quot;Personalizzato&quot; dal menu a discesa Servizio. Fornisci una descrizione, quindi seleziona il nuovo utente dal menu a discesa Solo utente API e fai clic su [!UICONTROL Create].
+Fai clic su **[!UICONTROL New]** menu e seleziona **[!UICONTROL New Service]**. Assegna un nome descrittivo al servizio e seleziona **[!UICONTROL Custom]** dal [!UICONTROL Service] menu a discesa. Fornisci una descrizione, quindi seleziona il nuovo utente dalla sezione [!UICONTROL API Only User] menu a discesa e fai clic su **[!UICONTROL Create]**.
 
 ![Nuovo servizio Launchpoint](assets/admin-launchpoint-new-service.png)
 
-Fai clic su Visualizza dettagli per il nuovo servizio per accedere all’ID client e al segreto client. Per il momento puoi fare clic su [!UICONTROL Get Token] per generare un token di accesso valido per un’ora. Per il momento salva il token in una nota.
+Clic **[!UICONTROL View Details]** per consentire al nuovo servizio di accedere all’ID client e al segreto client. Per il momento puoi fare clic su **[!UICONTROL Get Token]** per generare un token di accesso valido per un’ora. Per il momento salva il token in una nota.
 
 ![Ottieni token](assets/get-token.png)
 
-Quindi, vai al menu Amministratore e poi a **[!UICONTROL Web Services]**.
+Quindi, vai al **[!UICONTROL Admin]** menu, quindi a **[!UICONTROL Web Services]**.
 
 ![Servizi Web](assets/admin-web-services.png)
 
-Per il momento, trova l’endpoint nella casella API REST e salvalo in una nota.
+Trova il [!UICONTROL Endpoint] nella casella REST API (API REST) e salva in una nota per il momento.
 
 ![Endpoint REST](assets/admin-web-services-rest-endpoint-1.png)
 

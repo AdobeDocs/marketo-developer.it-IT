@@ -1,14 +1,14 @@
 ---
-title: "PhoneGap"
-feature: "Mobile Marketing"
-description: "Utilizzo di PhoneGap con Marketo su dispositivi mobili"
-source-git-commit: 2e4eb416846de3ad62ff0626f536630278e1c0cd
+title: PhoneGap
+feature: Mobile Marketing
+description: Utilizzo di PhoneGap con Marketo su dispositivi mobili
+exl-id: 99f14c76-9438-4942-9309-643bca434d07
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '812'
+source-wordcount: '797'
 ht-degree: 0%
 
 ---
-
 
 # PhoneGap
 
@@ -48,7 +48,7 @@ Per aggiungere di nuovo il plug-in, esegui il comando seguente:
 
 **Cordova versione 8.0.0 (Cordova@Android7.0.0) e successive**
 
-Una volta creata la piattaforma Cordova Android, apri l&#39;app con Android Studio e aggiorna la `dirs` valore del `Marketo.gradle` file trovato in `com.marketo.plugin` cartella.
+Una volta creata la piattaforma Cordova Android, apri l’app con Android Studio e aggiorna la `dirs` valore del `Marketo.gradle` file trovato in `com.marketo.plugin` cartella.
 
 ```
 repositories{    
@@ -67,13 +67,13 @@ Controlla l’elenco delle piattaforme aggiunte `$cordova platform ls`
 
 1. Configurare l’app Firebase nella console Firebase.
    1. Crea/Aggiungi un progetto su [](https://console.firebase.google.com/)Console Firebase.
-      1. In [Console Firebase](https://console.firebase.google.com/), seleziona [!UICONTROL Add Project].
-      1. Seleziona il progetto GCM dall’elenco dei progetti Google Cloud esistenti, quindi seleziona [!UICONTROL Add Firebase].
-      1. Nella schermata di benvenuto di Firebase, seleziona &quot;Add Firebase to your Android App&quot; (Aggiungi Firebase all’app Android).
-      1. Specifica il nome del pacchetto e SHA-1, quindi seleziona [!UICONTROL Add App]. Una nuova `google-services.json` per la tua app Firebase viene scaricato.
-   1. Vai a &quot;Impostazioni progetto&quot; in Panoramica progetto
-      1. Fare clic sulla scheda Generale. Scarica il file &quot;google-services.json&quot;.
-      1. Fai clic sulla scheda &quot;Messaggistica cloud&quot;. Copia &quot;Chiave server&quot; e &quot;ID mittente&quot;. Fornisci questi &quot;Server Key&quot; e &quot;Sender ID&quot; a Marketo.
+      1. In [Console Firebase](https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
+      1. Seleziona il progetto GCM dall’elenco dei progetti Google Cloud esistenti, quindi seleziona **[!UICONTROL Add Firebase]**.
+      1. Nella schermata di benvenuto di Firebase, seleziona &quot;Add Firebase to your Android App&quot; (Aggiungi Firebase alla tua app).
+      1. Specifica il nome del pacchetto e SHA-1, quindi seleziona **[!UICONTROL Add App]**. Una nuova `google-services.json` per la tua app Firebase viene scaricato.
+   1. Accedi a **[!UICONTROL Project Settings]** in [!UICONTROL Project Overview]
+      1. Fai clic su **[!UICONTROL General]** scheda. Scarica il file &quot;google-services.json&quot;.
+      1. Fai clic su **[!UICONTROL Cloud Messaging]** scheda. Copia [!UICONTROL Server Key] E [!UICONTROL Sender ID]. Fornisci questi [!UICONTROL Server Key] E [!UICONTROL Sender ID] a Marketo.
    1. Configurare le modifiche FCM nell’app Phonegap
       1. Sposta il file scaricato &#39;google-services.json&#39; nella directory principale del modulo app Phonegap
       1. Rimuovi il file &#39;MyFirebaseInstanceIDService&#39; dal percorso `platforms/android/app/src/main/java/com/gae/scaffolder/plugin` (Obsoleto)

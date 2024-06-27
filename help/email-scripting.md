@@ -1,14 +1,14 @@
 ---
-title: "Scripting e-mail"
+title: Script e-mail
 feature: Email Programs
-description: "Panoramica sugli script di e-mail"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Panoramica sugli script e-mail
+exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '961'
+source-wordcount: '947'
 ht-degree: 0%
 
 ---
-
 
 # Script e-mail
 
@@ -98,7 +98,7 @@ Lo script Velocity viene incluso nelle e-mail utilizzando i token di script e-ma
 
 ![Token script](assets/script-token.png)
 
-Da qui, puoi modificare il nome del token e aprire l’editor tramite l’opzione Click to Edit:
+Da qui, puoi modificare il nome del token e aprire l’editor tramite la [!UICONTROL Click to Edit] opzione:
 
 ![Modifica script](assets/script-edit.png)
 
@@ -112,11 +112,11 @@ Una volta definito lo script all’interno di un token del programma, puoi farvi
 
 ![Script e-mail](assets/email-script-marketo-email.png)
 
-Puoi testare lo script utilizzando l’azione e-mail &quot;Invia e-mail di esempio&quot; all’interno di E-mail Designer di Marketo. Affinché lo script possa essere elaborato correttamente, è necessario selezionare un lead esistente da rappresentare nel campo Lead. Se stai sottoponendo a test con `$TriggerObject`, è possibile selezionare l’oggetto che attiva il trigger tramite il parametro &quot;Trigger&quot;. In questo modo vengono utilizzati i dati dell&#39;oggetto aggiornato più di recente di quel tipo come `$TriggerObject` variabile.
+Puoi testare lo script utilizzando [!UICONTROL Send Sample Email] azione e-mail all’interno di e-mail designer Marketo. Affinché lo script possa essere elaborato correttamente, è necessario selezionare un lead esistente da rappresentare nel [!UICONTROL Lead] campo. Se stai sottoponendo a test con `$TriggerObject`, è possibile selezionare l&#39;oggetto di attivazione tramite [!UICONTROL Trigger] param. In questo modo vengono utilizzati i dati dell&#39;oggetto aggiornato più di recente di quel tipo come `$TriggerObject` variabile.
 
 ![Test script e-mail](assets/velocity-test.png)
 
-Puoi anche utilizzare l’Anteprima e-mail per testare lo script. A tale scopo, è necessario selezionare Visualizza come: Dettagli lead e selezionare un lead da un elenco statico disponibile. Ciò offre il vantaggio aggiuntivo di restituire eventuali eccezioni che possono essersi verificate durante l’esecuzione dello script:
+È inoltre possibile utilizzare [!UICONTROL Email Preview] per testare lo script. A questo scopo, seleziona **[!UICONTROL View As: Lead Detail]** e selezionare un lead da un elenco statico disponibile. Ciò offre il vantaggio aggiuntivo di restituire eventuali eccezioni che possono essersi verificate durante l’esecuzione dello script:
 
 ![Visualizza e-mail come](assets/view-as.png)
 
@@ -126,7 +126,7 @@ La lunghezza combinata di tutti i token di script e-mail in una determinata e-ma
 
 - Le variabili a cui si fa riferimento nello script e-mail devono esistere in Marketo su uno degli oggetti disponibili per lo script.
 - Puoi fare riferimento a oggetti personalizzati di primo e secondo livello provenienti dal CRM nativamente integrato che sono direttamente connessi al lead, o contatto, ma non a oggetti personalizzati di terzo livello. Gli oggetti personalizzati non possono essere padri del lead o della società
-- Per gli oggetti personalizzati di Marketo, è possibile fare riferimento a oggetti personalizzati di secondo livello con relazione padre-figlio. Ad esempio `Lead <- Parent <- Child`. Non è possibile fare riferimento a oggetti personalizzati di secondo livello con relazione Edge-Bridge. ad esempio,  `Lead <- Bridge -> Edge`
+- Per gli oggetti personalizzati di Marketo, è possibile fare riferimento a oggetti personalizzati di secondo livello con relazione padre-figlio. Ad esempio `Lead <- Parent <- Child`. Non è possibile fare riferimento a oggetti personalizzati di secondo livello con una relazione Edge-Bridge. ad esempio,  `Lead <- Bridge -> Edge`
 - È possibile fare riferimento a oggetti personalizzati connessi a un lead, un contatto o un account, ma non a più di uno.
 - È possibile fare riferimento agli oggetti personalizzati solo tramite una singola connessione, lead, contatto o account
 - Devi selezionare la casella nell’editor di script per i campi in uso o che non verranno elaborati

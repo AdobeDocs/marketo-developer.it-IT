@@ -1,30 +1,30 @@
 ---
-title: "Ionico"
-feature: "Mobile Marketing"
-description: "Utilizzo di Ionic con Marketo per dispositivi mobili"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: '[!DNL Ionic]'
+feature: Mobile Marketing
+description: Utilizzo di [!DNL Ionic] con Marketo per dispositivi mobili
+exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: '606'
 ht-degree: 1%
 
 ---
 
-
 # Ionico
 
-Questo argomento descrive come integrare il plug-in Marketo Cordova. Il condensatore ionico non è attualmente supportato.
+Questo argomento descrive come integrare il plug-in Marketo Cordova. [!DNL Ionic] il condensatore non è attualmente supportato.
 
 ## Prerequisiti
 
 1. [Aggiungere un’applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell’applicazione e l’ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
-1. Installa [Ionico](https://ionicframework.com/getting-started/) E [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. Installa [[!DNL Ionic]](https://ionicframework.com/getting-started/) E [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Istruzioni di installazione
 
-### Configurare il plug-in Marketo Ionic
+### Configura Marketo [!DNL Ionic] Plug-in
 
-1. Se Cordova CLI è installato, vai alla directory dell&#39;applicazione Ionic ed esegui il seguente comando per aggiungere il plug-in Marketo all&#39;applicazione:
+1. Se Cordova CLI è installato, passare alla [!DNL Ionic] ed eseguire il comando seguente per aggiungere il plug-in Marketo all&#39;applicazione:
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -74,7 +74,7 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 Per garantire che il framework Marketo sia avviato all&#39;avvio dell&#39;app, aggiungi il seguente codice nella `onDeviceReady` nel file JavaScript principale.
 
-Devi superare `ionicCordova` come tipo di framework per le app Cordova ioniche.
+Devi superare `ionicCordova` come tipo di framework per [!DNL Ionic] App Cordova.
 
 #### Sintassi
 

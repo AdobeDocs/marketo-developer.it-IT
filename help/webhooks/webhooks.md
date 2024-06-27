@@ -1,14 +1,14 @@
 ---
-title: "Webhook"
+title: Webhook
 feature: Webhooks
-description: "Panoramica dei webhook"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Panoramica dei webhook
+exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '581'
+source-wordcount: '562'
 ht-degree: 0%
 
 ---
-
 
 # Webhook
 
@@ -20,12 +20,12 @@ Marketo consente l’utilizzo di webhook per comunicare con servizi web di terze
 
 Ogni singolo webhook ha le seguenti proprietà:
 
-- URL: immetti l’URL da utilizzare per inviare la richiesta al servizio web.
-- Tipo di richiesta: il metodo HTTP.
-- Modello payload: se desideri trasmettere informazioni nel corpo del POST, inserisci il modello. Utilizza qualsiasi formato di dati che supporti HTTP POST, inclusi XML, JSON o SOAP. Il formato di serializzazione deve consentire virgolette doppie attorno alle stringhe. Per inserire un token nel modello, fai clic su Inserisci token.  I token di tipo stringa vengono automaticamente racchiusi tra virgolette doppie.
-- Codifica token di richiesta: se i valori del token includono caratteri speciali (ad esempio una e commerciale, &#39;&amp;&#39;), indica il formato della richiesta (JSON o Form/Url). È necessario selezionare la codifica corretta per il corpo per garantire che il webhook comunichi correttamente con il servizio Web.
-- Tipo di risposta: seleziona il formato della risposta ricevuta dal servizio (JSON o XML). È necessario selezionare il tipo di risposta corretto per mappare le proprietà della risposta ai campi lead in Marketo
-- Intestazioni personalizzate: accessibili tramite Azioni webhooks -> Imposta intestazione personalizzata, questo menu consente di aggiungere come intestazioni HTTP qualsiasi numero di coppie chiave-valore personalizzate.
+- [!UICONTROL URL] - Immettere l&#39;URL utilizzato per inviare la richiesta al servizio Web.
+- [!UICONTROL Request Type] - Il metodo HTTP.
+- [!UICONTROL Payload Template] - Se si desidera trasmettere le informazioni nel corpo del POST, inserire il modello. Utilizza qualsiasi formato di dati che supporta HTTP POST, inclusi XML, JSON o SOAP. Il formato di serializzazione deve consentire virgolette doppie attorno alle stringhe. Per inserire un token nel modello, fai clic su **[!UICONTROL Insert Token]**.  I token di tipo stringa vengono automaticamente racchiusi tra virgolette doppie.
+- [!UICONTROL Request Token Encoding] - Se i valori del token includono caratteri speciali (ad esempio una e commerciale, &#39;&amp;&#39;), indica il formato della richiesta (JSON o Form/Url). È necessario selezionare la codifica corretta per il corpo per garantire che il webhook comunichi correttamente con il servizio Web.
+- [!UICONTROL Response Type] : seleziona il formato della risposta ricevuta dal servizio (JSON o XML). È necessario selezionare il tipo di risposta corretto per mappare le proprietà della risposta ai campi lead in Marketo
+- [!UICONTROL Custom Headers] - Accesso tramite [!UICONTROL Webhooks Actions] -> [!UICONTROL Set Custom Header], questo menu consente di aggiungere un numero qualsiasi di coppie chiave-valore personalizzate come intestazioni HTTP.
 
 I dati possono essere scritti ai lead dalle risposte ai servizi web utilizzando [Mappature risposte](response-mappings.md)
 

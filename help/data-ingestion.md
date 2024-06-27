@@ -1,10 +1,10 @@
 ---
 title: "Acquisizione dei dati"
 description: "Panoramica dell’API di acquisizione dati"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '952'
-ht-degree: 8%
+source-wordcount: '945'
+ht-degree: 9%
 
 ---
 
@@ -132,7 +132,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record persona.
 
 | Percorso |
 |---|
-| /subscriptions/{munchkinId}/persone |
+| `/subscriptions/{munchkinId}/persons` |
 
 | HeadersKey | Valore |
 |---|---|
@@ -201,7 +201,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record oggetto personalizzati.
 
 | Percorso |
 |---|
-| /subscriptions/{munchkinId}/customobjects/{customObjectAPIName} |
+| `/subscriptions/{munchkinId}/customobjects/{customObjectAPIName}` |
 
 Intestazioni
 
@@ -210,7 +210,13 @@ Intestazioni
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
-Corpo della richiesta | Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito | |—|—|—|—|—|—| | priorità | Stringa | No | Priorità della richiesta:normalhigh | normale | | dedupeBy | Stringa | No | Attributi da deduplicare su:dedupeFieldMarketoGUID | dedupeFields | | customObjects | Array di oggetti | Sì | Elenco di coppie nome-valore dell&#39;attributo per l&#39;oggetto. | - |
+Corpo della richiesta
+
+| Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
+|---|---|---|---|---|
+| priorità | Stringa | No | Priorità della richiesta:normalhigh | normale |
+| dedupeBy | Stringa | No | Attributi da deduplicare su:dedupeFieldMarketoGUID | dedupeFields |
+| customObjects | Array di oggetti | Sì | Elenco di coppie nome-valore dell&#39;attributo per l&#39;oggetto. | - |
 
 | Autorizzazione |
 |---|
