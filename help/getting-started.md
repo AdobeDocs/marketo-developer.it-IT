@@ -11,7 +11,7 @@ ht-degree: 0%
 
 # Guida introduttiva
 
-Marketi Engage è una piattaforma di automazione del marketing che consente agli addetti al marketing di gestire programmi e campagne multicanale personalizzati per clienti e potenziali clienti. La piattaforma di Marketo Engage può essere estesa utilizzando i punti di integrazione. Di seguito sono riportate le entità principali e le relative relazioni.
+Marketo Engage è una piattaforma di automazione del marketing che consente agli addetti al marketing di gestire programmi e campagne multicanale personalizzati per clienti e potenziali clienti. La piattaforma di Marketo Engage può essere estesa utilizzando i punti di integrazione. Di seguito sono riportate le entità principali e le relative relazioni.
 
 I seguenti oggetti non sono disponibili tramite API REST quando è abilitata la sincronizzazione nativa: Società, Opportunità, Ruolo opportunità, Venditore
 
@@ -69,7 +69,7 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Com
 
 ## Risorse
 
-Le risorse si riferiscono a pagine di destinazione, e-mail, moduli e immagini utilizzati all’interno di un programma. Le risorse possono essere locali per un determinato programma o globali. Le risorse globali sono disponibili per qualsiasi programma.
+Assets rimanda a pagine di destinazione, e-mail, moduli e immagini utilizzati all’interno di un programma. Assets può essere locale per un determinato programma o globale. Le risorse globali sono disponibili per qualsiasi programma.
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset/)
 
