@@ -1,16 +1,16 @@
 ---
-title: "React Native"
-feature: "Mobile Marketing"
-description: "Installazione di React Native per Marketo"
-source-git-commit: 416044a6cce4dac229640058a9cb0013070c9d9c
+title: React Native
+feature: Mobile Marketing
+description: Installazione di React Native per Marketo
+exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '822'
 ht-degree: 0%
 
 ---
 
-
-# React nativo
+# React Native
 
 Questo articolo fornisce informazioni su come installare e configurare l’SDK nativo di Marketo per integrare la tua app mobile con la nostra piattaforma.
 
@@ -20,7 +20,7 @@ Questo articolo fornisce informazioni su come installare e configurare l’SDK n
 
 ## Integrazione SDK
 
-### Integrazione con l&#39;SDK per Android
+### Integrazione di Android SDK
 
 **Configurazione con Gradle**
 
@@ -47,7 +47,7 @@ Quindi, sincronizza il progetto con i file Gradle.
 
 #### Integrazione di iOS SDK
 
-Prima di creare un ponte per il progetto React Native, è importante impostare il nostro SDK nel progetto Xcode.
+Prima di creare un ponte per il progetto React Native, è importante configurare il nostro SDK nel progetto Xcode.
 
 **Integrazione SDK - Utilizzo di CocoaPods**
 
@@ -81,11 +81,11 @@ Per scaricarlo e installarlo, avvia un terminale della riga di comando sul Mac e
 
 ## Istruzioni di installazione del modulo nativo
 
-A volte un’app React Native deve accedere a un’API di piattaforma nativa che non è disponibile per impostazione predefinita in JavaScript, ad esempio le API native per accedere ad Apple o Google Pay. Puoi riutilizzare alcune librerie Objective-C, Swift, Java o C++ esistenti senza doverle riimplementare in JavaScript, o scrivere codice multi-thread ad alte prestazioni per elementi come l’elaborazione delle immagini.
+A volte un’app React Native deve accedere a un’API della piattaforma nativa che non è disponibile per impostazione predefinita in JavaScript, ad esempio le API native per accedere ad Apple o Google Pay. Puoi riutilizzare alcune librerie Objective-C, Swift, Java o C++ esistenti senza doverle riimplementare in JavaScript, o scrivere codice multi-thread ad alte prestazioni per elementi come l’elaborazione delle immagini.
 
 Il sistema NativeModule espone le istanze delle classi Java/Objective-C/C++ (native) a JavaScript (JS) come oggetti JS, consentendo in tal modo di eseguire codice nativo arbitrario dall&#39;interno di JS. Anche se non ci aspettiamo che questa funzione faccia parte del solito processo di sviluppo, è essenziale che esista. Se React Native non esporta un’API nativa necessaria per la tua app JS, dovresti essere in grado di esportarla da solo.
 
-React Native Bridge viene utilizzato per la comunicazione tra JSX e i livelli di app nativi. Nel nostro caso, l’app host sarà in grado di scrivere il codice JSX che può richiamare i metodi dell’SDK di Marketo.
+Il bridge React Native viene utilizzato per la comunicazione tra JSX e i livelli di app nativi. Nel nostro caso, l’app host sarà in grado di scrivere il codice JSX che può richiamare i metodi dell’SDK di Marketo.
 
 ### Android
 
@@ -226,7 +226,7 @@ public class MainApplication extends Application implements ReactApplication {
 
 Nella seguente guida creerai un modulo nativo, _RNMarketoModule_, che ti consentirà di accedere alle API di Marketo da JavaScript.
 
-Per iniziare, apri il progetto iOS nell’applicazione nativa React in Xcode. Puoi trovare il tuo progetto iOS qui all’interno di un’app React Native. È consigliabile utilizzare Xcode per scrivere il codice nativo. Xcode è stato sviluppato per lo sviluppo di iOS e il suo utilizzo ti aiuterà a risolvere rapidamente errori più piccoli come la sintassi del codice.
+Per iniziare, apri il progetto iOS nell’applicazione React Native in Xcode. Puoi trovare il tuo progetto iOS qui, all’interno di un’app React Native. È consigliabile utilizzare Xcode per scrivere il codice nativo. Xcode è stato sviluppato per lo sviluppo di iOS e il suo utilizzo ti aiuterà a risolvere rapidamente errori più piccoli come la sintassi del codice.
 
 Crea l’intestazione del modulo nativo personalizzato principale e i file di implementazione. Crea un nuovo file denominato `MktoBridge.h` e aggiungi quanto segue:
 
