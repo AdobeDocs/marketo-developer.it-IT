@@ -1,6 +1,6 @@
 ---
 user-guide-title: "[!DNL Marketo] Guida per gli sviluppatori"
-user-guide-description: "Questa guida fornisce istruzioni per l’utilizzo di [!DNL Marketo] API."
+user-guide-description: "Questa guida fornisce istruzioni per l'utilizzo delle  [!DNL Marketo] API."
 breadcrumb-title: "[!DNL Marketo] Guida per gli sviluppatori"
 role: Admin
 feature-set: "Marketo Engage"
@@ -13,7 +13,7 @@ ht-degree: 7%
 ---
 
 
-# [!DNL Marketo] Sviluppatore {#marketo}
+# Sviluppatore [!DNL Marketo] {#marketo}
 
 - [Home](home.md)
 - [Guida introduttiva](getting-started.md)
@@ -32,9 +32,9 @@ ht-degree: 7%
    - [Social](javascript-api/social.md)
    - [Triggers](javascript-api/triggers.md)
    - [Web Personalization](javascript-api/web-personalization.md)
-- Dispositivi mobili {#mobile}
-   - [Installa [!DNL Adobe Launch] Estensione](mobile/adobe-launch-extension-installation.md)
-   - [[!DNL Adobe Launch] Estensione](mobile/adobe-launch-extension.md)
+- Cellulare {#mobile}
+   - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
+   - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
    - [Azioni personalizzate](mobile/custom-actions.md)
    - [Collegamenti profondi](mobile/enabling-deep-links-in-your-app.md)
