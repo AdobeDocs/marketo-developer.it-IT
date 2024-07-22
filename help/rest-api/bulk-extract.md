@@ -1,14 +1,14 @@
 ---
-title: "Bulk Extract"
+title: Estrai in blocco
 feature: REST API
-description: "Operazioni batch per l'estrazione dei dati Marketo."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Operazioni batch per l'estrazione dei dati Marketo.
+exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1643'
 ht-degree: 0%
 
 ---
-
 
 # Estrai in blocco
 
@@ -21,11 +21,11 @@ Marketo fornisce interfacce per il recupero di grandi set di dati relativi a per
 
 L’estrazione in blocco viene eseguita creando un processo, definendo il set di dati da recuperare, accodando il processo, aspettando che il processo completi la scrittura di un file e quindi recuperando il file tramite HTTP. Questi processi vengono eseguiti in modo asincrono e possono essere sottoposti a polling per recuperare lo stato dell’esportazione.
 
-`Note:` Gli endpoint API in blocco non hanno il prefisso &quot;/rest&quot;, come gli altri endpoint.
+`Note:` endpoint API in blocco non hanno il prefisso &#39;/rest&#39; come gli altri endpoint.
 
 ## Autenticazione
 
-Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo. È necessario incorporare un token di accesso valido come parametro della stringa query `access_token={_AccessToken_}`, o come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo. È necessario incorporare un token di accesso valido come parametro della stringa di query `access_token={_AccessToken_}` o come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
 
 ## Limiti
 
@@ -45,13 +45,13 @@ Il numero massimo di processi nella coda è 10. Se si tenta di accodare un proce
 
 ### Dimensione file
 
-Le API di estrazione in blocco vengono misurate in base alle dimensioni su disco dei dati recuperati da un processo di estrazione in blocco. La dimensione esplicita in byte di un processo può essere determinata leggendo `fileSize` attributo dalla risposta di stato completato di un processo di esportazione.
+Le API di estrazione in blocco vengono misurate in base alle dimensioni su disco dei dati recuperati da un processo di estrazione in blocco. La dimensione esplicita in byte di un processo può essere determinata leggendo l&#39;attributo `fileSize` dalla risposta di stato completato di un processo di esportazione.
 
-La quota giornaliera non può superare i 500 MB al giorno, condivisa tra lead, attività, membri del programma e oggetti personalizzati. Quando la quota viene superata, non è possibile creare o accodare un altro processo finché la quota giornaliera non viene ripristinata a mezzanotte [Ora centrale](https://en.wikipedia.org/wiki/Central_Time_Zone). Fino a quel momento, viene restituito l’errore &quot;1029, Quota giornaliera di esportazione superata&quot;. A parte la quota giornaliera, non esiste una dimensione massima per il file.
+La quota giornaliera non può superare i 500 MB al giorno, condivisa tra lead, attività, membri del programma e oggetti personalizzati. Quando la quota viene superata, non è possibile creare o accodare un altro processo finché la quota giornaliera non viene ripristinata alla mezzanotte [ora centrale](https://en.wikipedia.org/wiki/Central_Time_Zone). Fino a quel momento, viene restituito l’errore &quot;1029, Quota giornaliera di esportazione superata&quot;. A parte la quota giornaliera, non esiste una dimensione massima per il file.
 
 Una volta messo in coda o in elaborazione, il processo viene eseguito fino al completamento (salvo un errore o l’annullamento del processo). Se un processo non riesce per qualche motivo, è necessario ricrearlo. I file vengono scritti completamente solo quando un processo raggiunge lo stato completato (i file parziali non vengono mai scritti). Puoi verificare che un file sia stato scritto completamente calcolando l’hash SHA-256 e confrontandolo con il checksum restituito dagli endpoint di stato del processo.
 
-È possibile determinare la quantità totale di disco utilizzato per il giorno corrente chiamando Processi Get Export Lead/Activity/Program Member. Questi endpoint restituiscono un elenco di tutti i processi degli ultimi sette giorni. È possibile filtrare l&#39;elenco in base ai processi completati nel giorno corrente (utilizzando `status` e `finishedAt` attributi). Quindi sommare le dimensioni dei file per quei processi per produrre la quantità totale utilizzata. Impossibile eliminare un file per recuperare spazio su disco.
+È possibile determinare la quantità totale di disco utilizzato per il giorno corrente chiamando Processi Get Export Lead/Activity/Program Member. Questi endpoint restituiscono un elenco di tutti i processi degli ultimi sette giorni. È possibile filtrare l&#39;elenco in base ai soli processi completati nel giorno corrente (utilizzando gli attributi `status` e `finishedAt`). Quindi sommare le dimensioni dei file per quei processi per produrre la quantità totale utilizzata. Impossibile eliminare un file per recuperare spazio su disco.
 
 ## Autorizzazioni
 
@@ -107,7 +107,7 @@ Questa semplice richiesta creerà un processo che restituirà i valori contenuti
 }
 ```
 
-Quando creiamo il processo, questo restituisce un ID processo nel `exportId` attributo. Possiamo quindi utilizzare questo ID processo per accodare il processo, annullarlo, verificarne lo stato o recuperare il file completato.
+Quando creiamo il processo, questo restituisce un ID processo nell&#39;attributo `exportId`. Possiamo quindi utilizzare questo ID processo per accodare il processo, annullarlo, verificarne lo stato o recuperare il file completato.
 
 ### Parametri comuni
 
@@ -122,7 +122,7 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 
 ## Recupero processi
 
-A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta `status` campo filtro, un  `batchSize` limitare il numero di processi restituiti e `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
+A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta un campo filtro `status`, un  `batchSize` per limitare il numero di processi restituiti e `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
 
 ```
 GET /bulk/v1/leads/export.json?status=Completed,Failed
@@ -150,7 +150,7 @@ GET /bulk/v1/leads/export.json?status=Completed,Failed
 }
 ```
 
-L’endpoint risponde con `status` risposta di ciascun processo creato negli ultimi sette giorni per quel tipo di oggetto nell’array dei risultati. La risposta includerà solo i risultati per i processi di proprietà dell’utente API che effettua la chiamata.
+L&#39;endpoint risponde con la risposta `status` di ogni processo creato negli ultimi sette giorni per quel tipo di oggetto nell&#39;array dei risultati. La risposta includerà solo i risultati per i processi di proprietà dell’utente API che effettua la chiamata.
 
 ## Avvio di un processo
 
@@ -193,7 +193,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-Interno `status` membro indica l&#39;avanzamento del processo e può corrispondere a uno dei valori seguenti: Creato, In coda, Elaborazione, Annullato, Completato, Non riuscito. In questo caso il processo è stato completato, quindi è possibile interrompere il polling e continuare per recuperare il file. Al termine, il `fileSize` membro indica la lunghezza totale del file in byte e `fileChecksum` Il membro contiene l&#39;hash SHA-256 del file. Lo stato del processo è disponibile per 30 giorni dopo il raggiungimento dello stato Completato o Non riuscito.
+Il membro interno `status` indica l&#39;avanzamento del processo e può corrispondere a uno dei valori seguenti: Created, Queued, Processing, Canceled, Completed, Failed. In questo caso il processo è stato completato, quindi è possibile interrompere il polling e continuare per recuperare il file. Una volta completato, il membro `fileSize` indica la lunghezza totale del file in byte e il membro `fileChecksum` contiene l&#39;hash SHA-256 del file. Lo stato del processo è disponibile per 30 giorni dopo il raggiungimento dello stato Completato o Non riuscito.
 
 ## Recupero dei dati
 
@@ -205,7 +205,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file. Se un processo non è stato completato o viene passato un ID processo non valido, gli endpoint del file rispondono con uno stato 404 Non trovato e un messaggio di errore di testo normale come payload, a differenza della maggior parte degli altri endpoint REST di Marketo.
 
-Per supportare il recupero parziale e semplice dei dati estratti, l’endpoint del file supporta facoltativamente l’intestazione HTTP `Range` del tipo `bytes` (per [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per recuperare i primi 10.000 byte di un file, devi passare la seguente intestazione come parte della richiesta di GET all&#39;endpoint, a partire dal byte 0:
+Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes` (per [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per recuperare i primi 10.000 byte di un file, devi passare la seguente intestazione come parte della richiesta di GET all&#39;endpoint, a partire dal byte 0:
 
 ```
 Range: bytes=0-9999
@@ -221,7 +221,7 @@ Content-Range: bytes 0-9999/123424
 
 ### Recupero parziale e ripresa
 
-I file possono essere recuperati in parte o ripresi in un secondo momento utilizzando `Range` intestazione. L&#39;intervallo di un file inizia dal byte 0 e termina con il valore di `fileSize` meno 1. La lunghezza del file è indicata anche come denominatore nel valore del `Content-Range` intestazione di risposta quando si chiama un endpoint Get Export File. Se un recupero non riesce parzialmente, può essere ripreso in un secondo momento. Ad esempio, se tenti di recuperare un file lungo 1000 byte, ma sono stati ricevuti solo i primi 725 byte, il recupero può essere ritentato dal punto di errore chiamando nuovamente l’endpoint e passando un nuovo intervallo:
+I file possono essere recuperati in parte o ripresi successivamente utilizzando l&#39;intestazione `Range`. L&#39;intervallo di un file inizia dal byte 0 e termina con il valore di `fileSize` meno 1. La lunghezza del file viene indicata anche come denominatore nel valore dell&#39;intestazione di risposta `Content-Range` quando si chiama un endpoint Get Export File. Se un recupero non riesce parzialmente, può essere ripreso in un secondo momento. Ad esempio, se tenti di recuperare un file lungo 1000 byte, ma sono stati ricevuti solo i primi 725 byte, il recupero può essere ritentato dal punto di errore chiamando nuovamente l’endpoint e passando un nuovo intervallo:
 
 ```
 Range: bytes 724-999
@@ -231,7 +231,7 @@ Restituisce i restanti 275 byte del file.
 
 #### Verifica integrità file
 
-Gli endpoint di stato del processo restituiscono un checksum nel `fileChecksum` attributo when `status` è &quot;Completed&quot; (Completato). Il checksum è un hash SHA-256 del file esportato. Puoi confrontare il checksum con l’hash SHA-256 del file recuperato per verificare che sia completo.
+Gli endpoint di stato del processo restituiscono un checksum nell&#39;attributo `fileChecksum` quando `status` è &quot;Completato&quot;. Il checksum è un hash SHA-256 del file esportato. Puoi confrontare il checksum con l’hash SHA-256 del file recuperato per verificare che sia completo.
 
 Di seguito è riportato un esempio di risposta contenente il checksum:
 

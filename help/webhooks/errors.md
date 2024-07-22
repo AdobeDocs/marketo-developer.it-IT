@@ -1,14 +1,14 @@
 ---
-title: "Errori"
+title: Errori
 feature: Webhooks
-description: "Codici di errore per i webhook"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Codici di errore per i webhook
+exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '232'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
-
 
 # Errori
 
@@ -25,9 +25,9 @@ Affinché Marketo possa mappare nuovamente i valori in un campo, il codice di ri
 
 ## Rilevamento di un errore del webhook
 
-Gli errori dei webhook possono essere rilevati e gestiti dal [!UICONTROL Webhook is Called] trigger:
+Gli errori dai webhook possono essere rilevati e gestiti dal trigger [!UICONTROL Webhook is Called]:
 
-![Chiamata del webhook](assets/webhook-called.png)
+![Webhook chiamato](assets/webhook-called.png)
 
 * Response - Response è il payload di risposta letterale ricevuto dalla richiesta.
 * Tipo di errore: corrisponde alla frase-motivo del messaggio di stato HTTP.

@@ -13,15 +13,15 @@ ht-degree: 9%
 
 L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire l’acquisizione di grandi quantità di dati relativi a persone e persone in modo efficiente e con ritardi minimi. 
 
-I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. Lo stato della richiesta può essere recuperato sottoscrivendo eventi da [Flusso dati di osservabilità Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
+I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
 
 Le interfacce sono disponibili per due tipi di oggetto: Persone, Oggetti personalizzati. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
-L’API di acquisizione dati è in versione beta privata. Gli invitati devono avere diritto a [Pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+L’API di acquisizione dati è in versione beta privata. Gli invitati devono disporre di un diritto per il [pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticazione
 
-Per generare un token di accesso, l’API di acquisizione dati utilizza lo stesso metodo di autenticazione OAuth 2.0 dell’API REST di Marketo, ma il token di accesso deve essere trasmesso tramite intestazione HTTP `X-Mkto-User-Token`. Non è possibile passare il token di accesso tramite un parametro di query.
+L&#39;API di acquisizione dati utilizza lo stesso metodo di autenticazione OAuth 2.0 dell&#39;API REST di Marketo per generare un token di accesso, ma il token di accesso deve essere passato tramite l&#39;intestazione HTTP `X-Mkto-User-Token`. Non è possibile passare il token di accesso tramite un parametro di query.
 
 Esempio di token di accesso tramite intestazione:
 
@@ -59,9 +59,9 @@ Utilizzare il metodo HTTP POST per inviare dati al server.
 
 La rappresentazione dei dati è inclusa nel corpo della richiesta come application/json.
 
-Il nome di dominio è: `mkto-ingestion-api.adobe.io`
+Nome di dominio: `mkto-ingestion-api.adobe.io`
 
-Il percorso inizia con `/subscriptions/_MunchkinId_` dove `_MunchkinId_` è specifico per la tua istanza di Marketo. Puoi trovare il tuo ID Munchkin nell’interfaccia utente del Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
+Il percorso inizia con `/subscriptions/_MunchkinId_`, dove `_MunchkinId_` è specifico per l&#39;istanza di Marketo. Puoi trovare il tuo ID Munchkin nell&#39;interfaccia utente del Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
 
 URL di esempio per Persone:
 
@@ -73,7 +73,7 @@ URL di esempio per oggetti personalizzati:
 
 ## Risposte
 
-Tutte le risposte restituiscono un ID richiesta univoco tramite `X-Request-Id` intestazione.
+Tutte le risposte restituiscono un ID di richiesta univoco tramite l&#39;intestazione `X-Request-Id`.
 
 Esempio di ID richiesta tramite intestazione:
 
@@ -89,7 +89,7 @@ Esempio di risposta di successo:
 
 ### Errore
 
-Quando una chiamata genera un errore, viene restituito uno stato non 202 insieme a un corpo della risposta con ulteriori dettagli sull’errore. Il corpo della risposta è application/json e contiene un singolo oggetto con membri `error_code` e `message`.
+Quando una chiamata genera un errore, viene restituito uno stato non 202 insieme a un corpo della risposta con ulteriori dettagli sull’errore. Il corpo della risposta è application/json e contiene un singolo oggetto con i membri `error_code` e `message`.
 
 Di seguito sono riportati i codici di errore riutilizzati da Adobe Developer Gateway.
 
@@ -145,7 +145,7 @@ Corpo della richiesta
 |---|---|---|---|---|
 | priorità | Stringa | No | Priorità della richiesta:normalhigh | normale |
 | partitionName | Stringa | No | Nome della partizione della persona | Predefinito |
-| dedupeFields | Oggetto | No | Attributi per la deduplicazione. Sono consentiti uno o due nomi di attributo. In un&#39;operazione AND vengono utilizzati due attributi. Ad esempio, se entrambi `email` e `firstName` vengono entrambi utilizzati per cercare una persona utilizzando l&#39;operazione AND. Gli attributi supportati sono:`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` attributi (solo tipo &quot;string&quot; e &quot;integer&quot;) | e-mail |
+| dedupeFields | Oggetto | No | Attributi per la deduplicazione. Sono consentiti uno o due nomi di attributo. In un&#39;operazione AND vengono utilizzati due attributi. Se ad esempio si specificano sia `email` che `firstName`, verranno entrambi utilizzati per cercare una persona tramite l&#39;operazione AND. Gli attributi supportati sono: `idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` attributi (solo tipo &quot;stringa&quot; e &quot;intero&quot;) | e-mail |
 | persone | Array di oggetti | Sì | Elenco delle coppie nome-valore dell’attributo della persona | - |
 
 | Autorizzazione |
@@ -224,7 +224,7 @@ Corpo della richiesta
 
 #### Persona non presente
 
-Se nella richiesta è specificato un campo di collegamento a una persona e tale persona non esiste, si verificano diversi tentativi. Se la persona viene aggiunta durante la finestra dei nuovi tentativi (65 minuti), l’aggiornamento ha esito positivo. Ad esempio, se il campo del collegamento è `email` su Persona e Persona non esiste, quindi si verificano nuovi tentativi.
+Se nella richiesta è specificato un campo di collegamento a una persona e tale persona non esiste, si verificano diversi tentativi. Se la persona viene aggiunta durante la finestra dei nuovi tentativi (65 minuti), l’aggiornamento ha esito positivo. Ad esempio, se il campo del collegamento è `email` per Persona e Persona non esiste, si verificano nuovi tentativi.
 
 #### Esempio di oggetti personalizzati
 
@@ -279,10 +279,10 @@ Elenco di utilizzo dei guardrail:
 Elenco delle differenze tra l’API di acquisizione dati e altre API REST di Marketo:
 
 - Questa non è un&#39;interfaccia CRUD completa, ma supporta solo &#39;upsert&#39;
-- Per eseguire l’autenticazione, devi passare il token di accesso utilizzando `X-Mkto-User-Token` intestazione
-- Il nome di dominio dell’URL è `mkto-ingestion-api.adobe.io`
+- Per eseguire l&#39;autenticazione, devi passare il token di accesso utilizzando l&#39;intestazione `X-Mkto-User-Token`
+- Il nome di dominio URL è `mkto-ingestion-api.adobe.io`
 - Il percorso URL inizia con `/subscriptions/_MunchkinId_`
 - Nessun parametro di query
 - Se la chiamata ha esito positivo, viene restituito lo stato 202 e il corpo della risposta è vuoto
 - Se la chiamata non riesce, viene restituito uno stato non 202 e il corpo della risposta contiene `{ "error_code" : "_Error Code_", "message" : "_Message_" }`
-- L’ID della richiesta viene restituito tramite `X-Request-Id` intestazione
+- L&#39;ID della richiesta viene restituito tramite l&#39;intestazione `X-Request-Id`

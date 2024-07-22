@@ -1,20 +1,20 @@
 ---
-title: "Importazione di lead in blocco"
+title: Importazione lead in blocco
 feature: REST API
-description: "Importazione batch dei dati del lead."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Importazione batch dei dati del lead.
+exl-id: 615f158b-35f9-425a-b568-0a7041262504
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '803'
 ht-degree: 0%
 
 ---
 
-
 # Importazione lead in blocco
 
 [Riferimento endpoint importazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
 
-Per grandi quantità di record di lead, è possibile importare i lead in modo asincrono con [API in blocco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo consente di importare un elenco di record in Marketo utilizzando un file flat con i delimitatori (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché le dimensioni totali del file siano inferiori a 10 MB. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
+Per grandi quantità di record di lead, è possibile importare i lead in modo asincrono con l&#39;[API bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo consente di importare un elenco di record in Marketo utilizzando un file flat con i delimitatori (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché le dimensioni totali del file siano inferiori a 10 MB. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
 ## Limiti di elaborazione
 
@@ -29,9 +29,9 @@ email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-Il `externalCompanyId` può essere utilizzato per collegare il record del lead a un record dell’azienda. Il `externalSalesPersonId` può essere utilizzato per collegare il record lead a un record venditore.
+Il campo `externalCompanyId` può essere utilizzato per collegare il record del lead a un record della società. Il campo `externalSalesPersonId` può essere utilizzato per collegare il record del lead a un record del venditore.
 
-La chiamata stessa viene effettuata utilizzando `multipart/form-data` content-type.
+La chiamata stessa viene effettuata utilizzando il tipo di contenuto `multipart/form-data`.
 
 Questo tipo di richiesta può essere difficile da implementare, pertanto si consiglia vivamente di utilizzare un’implementazione di libreria esistente.
 
@@ -75,7 +75,7 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-Questo endpoint utilizza [multipart/form-data come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Per risolvere questo problema può essere difficile utilizzare una libreria di supporto HTTP per la lingua desiderata. Un modo semplice per eseguire questa operazione con cURL dalla riga di comando è simile al seguente:
+Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Per risolvere questo problema può essere difficile utilizzare una libreria di supporto HTTP per la lingua desiderata. Un modo semplice per eseguire questa operazione con cURL dalla riga di comando è simile al seguente:
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
@@ -90,7 +90,7 @@ Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
 ```
 
-Facoltativamente, puoi anche includere `lookupField`, `listId`, e `partitionName` parametri nella richiesta. `lookupField` consente di selezionare un campo specifico su cui eseguire la deduplicazione, proprio come Lead di sincronizzazione, e il valore predefinito è e-mail. È possibile specificare `id` as `lookupField` per indicare un&#39;operazione &quot;solo aggiornamento&quot;. `listId` consente di selezionare un elenco statico in cui importare l&#39;elenco di lead. In questo modo, i lead nell&#39;elenco diventeranno membri di questo elenco statico, oltre a eventuali creazioni o aggiornamenti causati dall&#39;importazione. `partitionName` seleziona una partizione specifica in cui importare. Per ulteriori informazioni, consulta la sezione Workspace e partizioni.
+Facoltativamente, puoi anche includere i parametri `lookupField`, `listId` e `partitionName` nella richiesta. `lookupField` ti consente di selezionare un campo specifico su cui eseguire la deduplicazione, proprio come Lead di sincronizzazione, e il valore predefinito è e-mail. È possibile specificare `id` come `lookupField` per indicare un&#39;operazione &quot;solo aggiornamento&quot;. `listId` consente di selezionare un elenco statico in cui importare l&#39;elenco di lead. In questo modo i lead nell&#39;elenco diventeranno membri di questo elenco statico, oltre a eventuali creazioni o aggiornamenti causati dall&#39;importazione. `partitionName` seleziona una partizione specifica in cui importare. Per ulteriori informazioni, consulta la sezione Workspace e partizioni.
 
 Nella risposta alla chiamata di, osserva che non esiste un elenco di successi o errori come con i lead di sincronizzazione, ma un batchId e un campo di stato per il record nella matrice dei risultati. Questo perché questa API è asincrona e può restituire lo stato In coda, Importazione o Non riuscito. È necessario mantenere il batchId per ottenere lo stato del processo di importazione e per recuperare gli errori e/o gli avvisi al completamento. Il batchId rimane valido per sette giorni.
 

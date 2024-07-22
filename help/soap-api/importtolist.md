@@ -1,20 +1,20 @@
 ---
-title: "importToList"
+title: importToList
 feature: SOAP
-description: "importToList chiamate SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: importToList chiamate SOAP
+exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '317'
 ht-degree: 3%
 
 ---
 
-
 # importToList
 
 Questa funzione consente di importare un elenco di lead in un elenco statico esistente in Marketo, simile alla funzione di importazione elenco nell’interfaccia utente di Marketo.
 
-**Formato di importazione:** Questi valori sono identici alla struttura di un file CSV utilizzato in un’importazione di elenchi.
+**Formato di importazione:** Questi valori sono identici alla struttura di un file CSV utilizzato in un&#39;importazione elenco.
 
 **Esempio:**
 
@@ -24,9 +24,9 @@ Questa funzione consente di importare un elenco di lead in un elenco statico esi
 | mary@company.com | Mary | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Nota:** `displayName` I valori devono essere utilizzati in `importFileHeader` anziché il `name` valori.
+**Nota:** i valori `displayName` devono essere utilizzati nei valori `importFileHeader` anziché `name`.
 
-**Contenuto e-mail dinamico:** Facoltativamente, puoi trasmettere valori per lead che sostituiscono I miei token in un’e-mail.
+**Contenuto e-mail dinamico:** Facoltativamente, puoi trasmettere valori per lead che fungono da sostituzioni per I miei token in un messaggio e-mail.
 
 | E-mail | Primo | Ultimo | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
@@ -34,9 +34,9 @@ Questa funzione consente di importare un elenco di lead in un elenco statico esi
 | mary@company.com | Mary | Rodgers | Pollo | Marrone |
 | wanda@megacorp.com | Wanda | Williams | Verdura | Hazel |
 
-**Importante:** Se aggiungi token per i lead, devi specificare la campagna avanzata che li utilizza. Alla successiva esecuzione della Smart Campaign specificata, verranno utilizzati i valori dell’elenco, anziché i normali valori My Token. Dopo l’esecuzione della singola campagna, i token verranno eliminati.
+**Importante:** se aggiungi token per i lead, devi specificare la campagna avanzata che li utilizza. Alla successiva esecuzione della Smart Campaign specificata, verranno utilizzati i valori dell’elenco, anziché i normali valori My Token. Dopo l’esecuzione della singola campagna, i token verranno eliminati.
 
-**NOTA:** `importToList` Il completamento può richiedere del tempo, in particolare per gli elenchi di grandi dimensioni. Se prevedi di utilizzare l’elenco appena importato in altre chiamate API, devi utilizzare `importToListStatus` per verificare il completamento dell&#39;operazione.
+**NOTA:** `importToList` può richiedere tempo, in particolare per gli elenchi di grandi dimensioni. Se si prevede di utilizzare l&#39;elenco appena importato in altre chiamate API, è necessario utilizzare `importToListStatus` per verificare che l&#39;operazione sia stata completata.
 
 ## Richiesta
 

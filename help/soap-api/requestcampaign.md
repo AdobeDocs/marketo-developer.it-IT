@@ -1,14 +1,14 @@
 ---
-title: "requestCampaign"
+title: requestCampaign
 feature: SOAP, Smart Campaigns
-description: "chiamate SOAP requestCampaign"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: requestCampaign chiamate SOAP
+exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '277'
 ht-degree: 2%
 
 ---
-
 
 # requestCampaign
 
@@ -16,20 +16,20 @@ Questa funzione esegue un lead Marketo esistente in una campagna Marketo Smart. 
 
 ![API servizio Web](assets/webserviceapi.png)
 
-È possibile utilizzare due set di parametri. Il primo caso è l’utilizzo di `campaignName` + `programName` + `programTokenList`. Il `programTokenList` può essere vuoto in questo caso. Il secondo caso utilizza `campaignId` da solo. Qualsiasi altra combinazione genera un&#39;eccezione di parametro non valida.
+È possibile utilizzare due set di parametri. Il primo caso utilizza `campaignName` + `programName` + `programTokenList`. In questo caso `programTokenList` può essere vuoto. Il secondo caso utilizza `campaignId` da solo. Qualsiasi altra combinazione genera un&#39;eccezione di parametro non valida.
 
 Nota: limite di 100 valori leadKey per chiamata. Le chiavi aggiuntive vengono ignorate.
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
-| leadList->leadKey->keyType | Obbligatorio | `keyType` consente di specificare il campo in base al quale si desidera eseguire la query sul lead. I valori possibili includono:`IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadList->leadKey->keyType | Obbligatorio | `keyType` consente di specificare il campo in base al quale si desidera eseguire la query del lead. I valori possibili includono: `IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadList->leadKey->keyValue | Obbligatorio | `keyValue` è il valore in base al quale si desidera eseguire la query del lead. |
 | sorgente | Obbligatorio | Origine della campagna. Valori possibili: `MKTOWS` o `SALES`. Enumerazione definita in WSDL. |
-| campaignId | Facoltativo quando `campaignName`, `programName`, e `programTokenList` si trovano insieme in un sito di parametri; altrimenti `campaignId` è obbligatorio | ID della campagna. NOTA: si verifica un errore di parametro non valido se `campaignID` e `campaignName` sono entrambi superati. |
-| campaignName | Facoltativo se è presente campaignId; altrimenti obbligatorio in un set come `campaignName`, programName e programTokenList | Nome della campagna |
-| programName | Facoltativo se è presente campaignId; altrimenti obbligatorio in un set come `campaignName`, programName e programTokenList | Nome del programma |
-| programTokenList | Facoltativo se è presente campaignId; altrimenti obbligatorio in un set come `campaignName`, `programName`, e `programTokenList` | Array di token da utilizzare nella campagna. Quando si specificano i token, programName e `campaignName` sono obbligatori. |
-| programTokenList->attrib->name | Facoltativo | Nome del token del programma di cui si desidera trasmettere il valore. Esempio:{{my.message}} |
+| campaignId | Facoltativo quando `campaignName`, `programName` e `programTokenList` sono insieme in un sito di parametri; altrimenti `campaignId` è obbligatorio | ID della campagna. NOTA: se `campaignID` e `campaignName` sono entrambi passati, si verifica un errore di parametro non valido. |
+| campaignName | Facoltativo se campaignId è presente; altrimenti obbligatorio in un set come `campaignName`, programName e programTokenList | Nome della campagna |
+| programName | Facoltativo se campaignId è presente; altrimenti obbligatorio in un set come `campaignName`, programName e programTokenList | Nome del programma |
+| programTokenList | Facoltativo se campaignId è presente; altrimenti obbligatorio in un set come `campaignName`, `programName` e `programTokenList` | Array di token da utilizzare nella campagna. Quando si specificano i token, programName e `campaignName` sono obbligatori. |
+| programTokenList->attrib->name | Facoltativo | Nome del token del programma di cui si desidera trasmettere il valore. Es:{{my.message}} |
 | programTokenList->attrib->value | Facoltativo | Valore per il nome del token specificato. |
 
 ## Richiedi XML

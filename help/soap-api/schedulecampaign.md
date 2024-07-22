@@ -1,14 +1,14 @@
 ---
-title: "scheduleCampaign"
+title: scheduleCampaign
 feature: SOAP, Smart Campaigns
-description: "chiamate SOAP scheduleCampaign"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: scheduleCampaign Chiamate SOAP
+exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 2%
 
 ---
-
 
 # scheduleCampaign
 
@@ -18,7 +18,7 @@ Questa funzione imposta la pianificazione di una campagna batch Smart Campaign i
 
 Simile alla funzione requestCampaign, puoi passare un array di I miei token in questa chiamata API che sostituirà i token esistenti. Dopo l’esecuzione della campagna, i token vengono scartati.
 
-Se utilizzi questo parametro opzionale con [importToList](importtolist.md), i token hanno la priorità in questo ordine:
+Se utilizzi questo parametro facoltativo con [importToList](importtolist.md), i token hanno la priorità in questo ordine:
 
 1. importToList per token di lead
 1. scheduleCampaign per token della campagna
@@ -32,7 +32,7 @@ Se utilizzi questo parametro opzionale con [importToList](importtolist.md), i to
 | campaignName | Obbligatorio | Nome della campagna avanzata |
 | campaignRunAt | Facoltativo | Ora di esecuzione della campagna pianificata (formato data WSDL W3C). |
 | cloneToProgramName | Facoltativo | Se questo attributo è presente, il programma principale della campagna viene clonato e la campagna appena creata verrà pianificata. L&#39;attributo specifica il nome desiderato per il programma risultante. Nota: sono consentite solo 10 chiamate al giorno quando questo campo viene utilizzato. |
-| programTokenList->attrib->name | Facoltativo | Nome del token per il quale desideri inviare un nuovo valore. Utilizza il formato token completo come faresti nell’interfaccia utente di Marketo. Questo è &quot;.{{my.message}}&quot; |
+| programTokenList->attrib->name | Facoltativo | Nome del token per il quale desideri inviare un nuovo valore. Utilizza il formato token completo come faresti nell’interfaccia utente di Marketo. ovvero &quot;{{my.message}}&quot; |
 | programTokenList->attrib->value | Facoltativo | Il valore del nome del token associato. |
 
 ## Richiedi XML

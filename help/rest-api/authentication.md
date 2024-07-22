@@ -1,14 +1,14 @@
 ---
-title: "Autenticazione"
+title: Autenticazione
 feature: REST API
-description: "Autenticazione degli utenti Marketo per l’utilizzo dell’API."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Autenticazione degli utenti Marketo per l’utilizzo dell’API.
+exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '531'
 ht-degree: 0%
 
 ---
-
 
 # Autenticazione
 
@@ -16,13 +16,13 @@ Le API REST di Marketo sono autenticate con OAuth 2.0 a 2 gambe. Gli ID client e
 
 ## Creazione di un token di accesso
 
-Il `Client ID` e `Client Secret` si trovano in **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]** selezionando il servizio personalizzato e facendo clic su **[!UICONTROL View Details]**.
+`Client ID` e `Client Secret` si trovano nel menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]** selezionando il servizio personalizzato e facendo clic su **[!UICONTROL View Details]**.
 
 ![Ottieni dettagli servizio REST](assets/authentication-service-view-details.png)
 
 ![Credenziali Launchpoint](assets/admin-launchpoint-credentials.png)
 
-Il `Identity URL` si trova in **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** nella sezione REST API.
+`Identity URL` si trova nel menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** nella sezione REST API.
 
 Crea un token di accesso utilizzando una richiesta HTTP GET (o POST) nel modo seguente:
 
@@ -43,10 +43,10 @@ Se la richiesta era valida, riceverai una risposta JSON simile alla seguente:
 
 Definizione risposta
 
-- `access_token` : token trasmesso con le chiamate successive per l’autenticazione nell’istanza di destinazione.
-- `token_type` : metodo di autenticazione OAuth.
+- `access_token` - Token passato con le chiamate successive per l&#39;autenticazione con l&#39;istanza di destinazione.
+- `token_type` - Metodo di autenticazione OAuth.
 - `expires_in` - Durata rimanente del token corrente in secondi (dopo la quale non è valido). Quando viene creato originariamente un token di accesso, la sua durata è di 3600 secondi o un’ora.
-- `scope` : l’utente proprietario del servizio personalizzato utilizzato per l’autenticazione.
+- `scope` - L&#39;utente proprietario del servizio personalizzato utilizzato per l&#39;autenticazione.
 
 ## Utilizzo di un token di accesso
 
@@ -66,7 +66,7 @@ Esistono due metodi per includere un token nelle chiamate, come intestazione HTT
 
 La gestione della scadenza dei token di accesso è importante per garantire il corretto funzionamento dell’integrazione e impedire il verificarsi di errori di autenticazione imprevisti durante il normale funzionamento. Durante la progettazione dell’autenticazione per l’integrazione, assicurati di memorizzare il token e il periodo di scadenza contenuti nella risposta Identity.
 
-Prima di effettuare qualsiasi chiamata REST, è necessario verificare la validità del token in base alla durata rimanente. Se il token è scaduto, rinnovalo chiamando [Identità](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)endpoint. In questo modo, la chiamata REST non avrà mai esito negativo a causa di un token scaduto. Questo consente di gestire la latenza delle chiamate REST in modo prevedibile, fondamentale per le applicazioni rivolte all’utente finale.
+Prima di effettuare qualsiasi chiamata REST, è necessario verificare la validità del token in base alla durata rimanente. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). In questo modo, la chiamata REST non avrà mai esito negativo a causa di un token scaduto. Questo consente di gestire la latenza delle chiamate REST in modo prevedibile, fondamentale per le applicazioni rivolte all’utente finale.
 
 Se per autenticare una chiamata REST viene utilizzato un token scaduto, la chiamata REST non riuscirà e restituirà un codice di errore 602. Se viene utilizzato un token non valido per autenticare una chiamata REST, viene restituito un codice di errore 601. Se viene ricevuto uno di questi codici, il client deve rinnovare il token chiamando l’endpoint di identità.
 

@@ -1,13 +1,13 @@
 ---
-title: "Flussi di dati"
-description: "Panoramica sui flussi di dati"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Flussi di dati
+description: Panoramica di Data Steams
+exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1589'
 ht-degree: 0%
 
 ---
-
 
 # Flussi di dati
 
@@ -19,7 +19,7 @@ Oltre ai vantaggi derivanti dall&#39;utilizzo di dati quasi in tempo reale, esis
 - Riduce lo scenario dei limiti API, generando meno messaggi di avviso.
 - Non è necessario eseguire esportazioni in blocco per estrarre i dati a causa della funzionalità di streaming dei dati.
 
-I flussi di dati sono disponibili per coloro che hanno acquistato un [Pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+I flussi di dati sono disponibili per coloro che hanno acquistato un [pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Panoramica del flusso di dati dell’attività del lead
 
@@ -192,7 +192,7 @@ Adobe abilita quindi il flusso di dati, nel qual caso i clienti iniziano a ricev
 
 Diagramma UML di una chiamata tipica del flusso di dati dell’attività del lead:
 
-![Diagramma del flusso di dati dell’attività del lead](assets/lead-activity-data-stream.png)
+![Diagramma flusso dati attività lead](assets/lead-activity-data-stream.png)
 
 Esempio di creazione di un endpoint URL:
 
@@ -239,7 +239,7 @@ app.listen(port,()=>{
 })
 ```
 
-È possibile trovare un esempio di codice per un&#39;applicazione che utilizza il flusso di dati dell&#39;attività lead di Marketo [qui](https://github.com/ihgrant/activity-stream-consumer-example).
+Un esempio di codice per un&#39;applicazione che utilizza il flusso di dati dell&#39;attività lead di Marketo è disponibile [qui](https://github.com/ihgrant/activity-stream-consumer-example).
 
 ### Flusso dati di controllo utente e flusso dati di notifica
 
@@ -254,26 +254,26 @@ Gli eventi di User Audit vengono inviati a Adobe IO e possono essere utilizzati 
    1. Questo passaggio richiede un’organizzazione Adobe
    1. Richiede che l’utente dell’organizzazione Adobe abbia il ruolo Sviluppatore o Amministratore di sistema
 
-Per impostare le operazioni di I/O di Adobe, vedere [Configurazione dei flussi di dati di Marketo User Audit con Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) nella sezione Documentazione pubblica.
+Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo degli utenti Marketo con Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) nella sezione Documentazione pubblica.
 
 ### Configurazione del flusso di dati di controllo degli utenti in Marketo
 
-Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento a [Pagina descrizione prodotto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) per limiti e funzionalità del prodotto.
+Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento alla [pagina di descrizione del prodotto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) per i limiti e le funzionalità del prodotto.
 
 ### Adobe I/O di configurazione
 
-[Consulta Guida introduttiva agli eventi Adobe I/O](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[Consulta la Guida introduttiva agli eventi Adobe I/O](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
-Per istruzioni di base su questo caso d’uso, a partire da [console.adobe.io](https://developer.adobe.com/console):
+Per istruzioni di base su questo caso d&#39;uso, a partire da [console.adobe.io](https://developer.adobe.com/console):
 
-Quando richiesto, seleziona una delle seguenti opzioni **[!UICONTROL Create New Project]** o **[!UICONTROL Add Event]**.
+Quando richiesto, selezionare **[!UICONTROL Create New Project]** o **[!UICONTROL Add Event]**.
 
 ### Introduzione al nuovo progetto
 
-Per iniziare a utilizzare i servizi Adobe, aggiungi un’API, eventi o runtime, consulta [documentazione](https://developer.adobe.com/runtime/docs/).
+Per iniziare a utilizzare i servizi Adobe, aggiungi un&#39;API, eventi o runtime, visualizza la [documentazione](https://developer.adobe.com/runtime/docs/).
 
 ## Documentazione pubblica
 
-- [Flussi di dati Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Introduzione all&#39;Adobe di eventi I/O e webhook](https://developer.adobe.com/events/docs/guides/)
-- [Blog sui flussi di dati](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
+- [Flussi dati Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
+- [Introduzione a eventi di I/O di Adobe e webhook](https://developer.adobe.com/events/docs/guides/)
+- [Blog flussi dati](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

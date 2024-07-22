@@ -1,14 +1,14 @@
 ---
-title: "Assets"
+title: Risorse
 feature: REST API
-description: '"API per l’utilizzo delle risorse Marketo".'
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Un’API per l’utilizzo delle risorse Marketo.
+exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '876'
 ht-degree: 1%
 
 ---
-
 
 # Risorse
 
@@ -35,7 +35,7 @@ Per un elenco completo degli endpoint API di Asset, inclusi i parametri e le inf
 
 ## Query
 
-Le risorse in genere hanno tre pattern tramite i quali possono essere recuperate: per ID, per nome e tramite navigazione.  Sia per ID che per nome verrà recuperata una singola risorsa per un dato parametro, mentre la navigazione restituirà e consentirà la paginazione attraverso l’intero elenco di risorse di quel tipo.  I singoli tipi di risorse hanno parametri diversi in base ai quali possono essere filtrati; per informazioni specifiche, consulta i singoli documenti.
+In genere, Assets dispone di tre pattern tramite i quali è possibile recuperarli: per id, per nome e tramite navigazione.  Sia per ID che per nome verrà recuperata una singola risorsa per un dato parametro, mentre la navigazione restituirà e consentirà la paginazione attraverso l’intero elenco di risorse di quel tipo.  I singoli tipi di risorse hanno parametri diversi in base ai quali possono essere filtrati; per informazioni specifiche, consulta i singoli documenti.
 
 In alcuni casi, l’endpoint &quot;browse&quot; per alcuni tipi di risorse non restituirà risorse secondarie, come i valori consentiti per un tag, e deve essere recuperato singolarmente utilizzando l’endpoint &quot;By Name&quot; o &quot;By Id&quot; per restituire il set completo di metadati.  Altri possono avere endpoint separati interamente per il recupero di oggetti dipendenti come Campi modulo.
 
@@ -174,7 +174,7 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Crea e aggiorna
 
-Per i tipi di risorse semplici come Cartelle, Token e File, in genere è disponibile un solo endpoint per la creazione e quindi un endpoint aggiuntivo per l’aggiornamento dei record per ID.  Le risorse vengono create con un nome che è sempre obbligatorio, quindi tutti i metadati e gli ID vengono restituiti dalla risposta di creazione o aggiornamento.
+Per i tipi di risorse semplici come Cartelle, Token e File, in genere è disponibile un solo endpoint per la creazione e quindi un endpoint aggiuntivo per l’aggiornamento dei record per ID.  Assets viene creato con un nome che è sempre obbligatorio, quindi tutti i metadati e gli ID vengono restituiti dalla risposta di creazione o aggiornamento.
 
 Ad esempio, di seguito è riportato come creare un token:
 
@@ -433,7 +433,7 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-Le risorse possono anche non essere approvate se si trovano in uno stato di sola approvazione.  In questo modo verranno eliminate tutte le versioni live della risorsa e la risorsa tornerà allo stato di sola bozza, scartando anche le bozze associate.  Questa azione può essere eseguita solo sulla maggior parte delle risorse se non è in uso in alcun punto di Marketo, ad esempio un’e-mail a cui si fa riferimento in un passaggio del flusso Invia e-mail o uno snippet incorporato in un messaggio e-mail.
+Assets può anche non essere approvato se si trova in uno stato di sola approvazione.  In questo modo verranno eliminate tutte le versioni live della risorsa e la risorsa tornerà allo stato di sola bozza, scartando anche le bozze associate.  Questa azione può essere eseguita solo sulla maggior parte delle risorse se non è in uso in alcun punto di Marketo, ad esempio un’e-mail a cui si fa riferimento in un passaggio del flusso Invia e-mail o uno snippet incorporato in un messaggio e-mail.
 
 ```
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -455,7 +455,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Elimina
 
-Le risorse con stato di approvazione e bozza, ad eccezione dei moduli, non possono essere eliminate durante l&#39;approvazione e devono essere non approvate prima dell&#39;eliminazione.  In genere, le eliminazioni possono essere eseguite solo quando una risorsa non è approvata e non è più utilizzata e, nel caso delle cartelle, quando le risorse sono vuote.  Un&#39;eccezione di rilievo è rappresentata dai programmi, che possono essere eliminati insieme a tutti i contenuti secondari, purché il programma e il suo contenuto non siano in uso al di fuori dei limiti del programma.
+Assets con stati di approvazione e bozza, ad eccezione dei moduli, non può essere eliminato durante l’approvazione e deve essere non approvato prima dell’eliminazione.  In genere, le eliminazioni possono essere eseguite solo quando una risorsa non è approvata e non è più utilizzata e, nel caso delle cartelle, quando le risorse sono vuote.  Un&#39;eccezione di rilievo è rappresentata dai programmi, che possono essere eliminati insieme a tutti i contenuti secondari, purché il programma e il suo contenuto non siano in uso al di fuori dei limiti del programma.
 
 ```
 POST /rest/asset/v1/program/{id}/delete.json

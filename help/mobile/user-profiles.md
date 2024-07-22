@@ -1,21 +1,21 @@
 ---
-title: "Profili utente"
+title: Profili utente
 feature: Mobile Marketing, Users and Roles
-description: "Utilizzo dei profili utente in Marketo Mobile"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Utilizzo dei profili utente in Marketo Mobile
+exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '83'
 ht-degree: 0%
 
 ---
 
-
 # Profili utente
 
 Come creare profili utente
 
 1. [Creazione di profili utente in iOS](#ios_user_profiles)
-1. [Creazione di profili utente su Android](#android_user_profiles)
+1. [Creazione di profili utente in Android](#android_user_profiles)
 
 ## Creazione di profili utente in iOS {#ios_user_profiles}
 
@@ -65,7 +65,7 @@ profile.setLinkedInId("linkedinid")
 profile.setTwitterId("twitterid")
 ```
 
-Aggiungi altro [campi standard](../rest-api/list-of-standard-fields.md).
+Aggiungi altri [campi standard](../rest-api/list-of-standard-fields.md).
 
 >[!BEGINTABS]
 
@@ -113,7 +113,7 @@ marketo.associateLead(profile)
 
 >[!ENDTABS]
 
-## Creazione di profili utente su Android {#android_user_profiles}
+## Creazione di profili utente in Android {#android_user_profiles}
 
 1. Crea profilo utente.
 
@@ -135,7 +135,7 @@ marketo.associateLead(profile)
    }
    ```
 
-1. Aggiungi altro [campi standard](../rest-api/list-of-standard-fields.md).
+1. Aggiungi altri [campi standard](../rest-api/list-of-standard-fields.md).
 
    ```java
    // Add other custom fields

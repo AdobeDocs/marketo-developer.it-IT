@@ -1,30 +1,30 @@
 ---
-title: "getCustomObjects"
+title: getCustomObjects
 feature: SOAP, Custom Objects
-description: "chiamate SOAP getCustomObjects"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Chiamate SOAP getCustomObjects
+exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '156'
 ht-degree: 4%
 
 ---
 
-
 # getCustomObjects
 
 Recupera uno o più oggetti personalizzati utilizzando una combinazione di criteri costituiti da zero o da una chiave oggetto personalizzata.
 
-Restituisce un elenco di oggetti personalizzati corrispondenti, tutti di un singolo tipo, fino a 100 in un batch e un [posizione flusso](stream-position.md) token per il recupero di batch successivi.
+Restituisce un elenco di oggetti personalizzati corrispondenti, tutti di un singolo tipo, fino a 100 in un batch e un token di [posizione flusso](stream-position.md) per il recupero di batch successivi.
 
 ## Richiesta
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
 | objTypeName | Obbligatorio | Nome dell&#39;oggetto personalizzato |
-| customObjKeyLists->elencoChiavi->attributo | Obbligatorio | L’attributo è una coppia chiave/valore utilizzata per identificare gli oggetti personalizzati che desideri recuperare. È possibile specificare più attributi nel `customObjKeyLists` |
+| customObjKeyLists->elencoChiavi->attributo | Obbligatorio | L’attributo è una coppia chiave/valore utilizzata per identificare gli oggetti personalizzati che desideri recuperare. È possibile specificare più attributi in `customObjKeyLists` |
 | includeAttributes | Obbligatorio | Elenco dei campi dell&#39;oggetto personalizzato che si desidera recuperare. Se si passa none, vengono restituiti tutti i valori. |
 | batchSize | Facoltativo | Numero di oggetti da restituire (massimo 100) |
-| streamPosition | Facoltativo | Utilizzato per impaginare attraverso più set di risultati. Il valore passato è il valore restituito dal precedente `getCustomObjects` chiamare. |
+| streamPosition | Facoltativo | Utilizzato per impaginare attraverso più set di risultati. Il valore passato è il valore restituito dalla chiamata `getCustomObjects` precedente. |
 
 ## Richiedi XML
 

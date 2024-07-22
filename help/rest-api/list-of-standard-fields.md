@@ -1,20 +1,20 @@
 ---
-title: "Campi standard"
+title: Campi standard
 feature: REST API, Field Management
-description: "Tabella dei campi Marketo standard."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Tabella di campi standard di Marketo.
+exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 11%
 
 ---
 
-
 # Campi standard
 
 Di seguito è riportato un elenco dei campi standard disponibili in Marketo che sono accessibili tramite l’API.
 
-È possibile recuperare l’elenco di tutti i nomi di campo supportati disponibili nei record dei lead utilizzando il REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi/) endpoint.
+Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei record dei lead utilizzando l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi/).
 
 | Nome API REST | Nome API SOAP | Etichetta intuitiva | Descrizione |
 | --- | --- | --- | --- |
@@ -41,9 +41,9 @@ Di seguito è riportato un elenco dei campi standard disponibili in Marketo che 
 | inferredCountry | InferredCountry | Paese dedotto | Paese dedotto dalla ricerca inversa dell’IP della prima visita web registrata del lead |
 | lastName | Cognome | Cognome | Cognome del lead |
 | leadRole | LeadRole | Ruolo | Ruolo del lead nella loro azienda |
-| leadScore | PunteggioLead | Punteggio lead | Punteggio intero assegnato al lead tramite campagne e programmi di punteggio |
-| leadSource | LeadSource | Fonte lead | Registrazione sul campo della fonte da cui ha avuto origine il lead |
-| leadStatus | StatoLead | Stato lead | Campo che registra lo stato attuale di marketing/vendite del lead |
+| leadScore | PunteggioLead | Punteggio Lead | Punteggio intero assegnato al lead tramite campagne e programmi di punteggio |
+| leadSource | LeadSource | Fonte Lead | Registrazione sul campo della fonte da cui ha avuto origine il lead |
+| leadStatus | StatoLead | Stato Lead | Campo che registra lo stato attuale di marketing/vendite del lead |
 | mainPhone | MainPhone | Numero di telefono | Numero di telefono principale della società del lead |
 | jigsawContactId | ID contatto Jigsaw Marketo | ID MARKETO Data.com | ID Data.com del lead, se disponibile |
 | jigsawContactStatus | Stato contatto Jigsaw Marketo | Stato Marketo Data.com | Stato Data.com del lead, se disponibile |
@@ -79,7 +79,7 @@ Di seguito è riportato un elenco dei campi standard disponibili in Marketo che 
 | numberOfEmployees | NumberOfEmployees | Numero dipendenti | Numero di dipendenti della società del lead |
 | telefono | Telefono | Numero di telefono | Numero di telefono del lead |
 | postalCode | CAP | Codice postale | Codice postale del lead |
-| valutazione | Valutazione | Classificazione lead | Valutazione marketing/vendite del lead |
+| valutazione | Valutazione | Classificazione Lead | Valutazione marketing/vendite del lead |
 | saluto | Formula di saluto | Formula di saluto | Formula di apertura preferita del lead, ad esempio Mister, Misses, ecc. |
 | sicCode | Codice SICC | Codice SIC (Standard Industrial Classification) | Codice di classificazione industriale standard della società del lead |
 | sito | Sito | Sito |  |

@@ -1,26 +1,26 @@
 ---
-title: "Venditori"
+title: Venditori
 feature: REST API
-description: "Leggi i dati relativi ai venditori."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Leggi i dati relativi ai venditori.
+exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
 
-
 # Venditori
 
 [Riferimento endpoint persona di vendita](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Le API persona di vendita sono accesso in sola lettura per gli abbonamenti che hanno [Sincronizzazione SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Sincronizzazione Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) sono attivati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
+Le API addetto alle vendite sono di sola lettura per le sottoscrizioni che dispongono di [Sincronizzazione SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Sincronizzazione Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitata. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
 
-I venditori sono correlati ai record dei lead utilizzando [Sincronizza lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e passando l’attributo externalSalesPersonId.
+I venditori sono correlati ai record dei lead utilizzando l&#39;endpoint [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e passando l&#39;attributo externalSalesPersonId.
 
-I venditori sono correlati ai record Opportunità utilizzando [Opportunità di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e passando l’attributo externalSalesPersonId.
+I venditori sono correlati ai record Opportunità utilizzando l&#39;endpoint [Opportunità di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e passando l&#39;attributo externalSalesPersonId.
 
-Gli addetti alle vendite sono collegati ai documenti aziendali utilizzando [Sincronizza società](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) e passando l’attributo externalSalesPersonId.
+Gli addetti alle vendite sono correlati ai record aziendali utilizzando l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) e passando l&#39;attributo externalSalesPersonId.
 
 I record Persona di vendita sono modificabili solo tramite l’API.
 
@@ -95,7 +95,7 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Per impostazione predefinita, il `idField` dei venditori è &quot;id&quot; e il `dedupeFields` è solo &quot;externalSalesPersonId&quot;.
+Per impostazione predefinita, il `idField` di Sales Person è &quot;id&quot; e il `dedupeFields` è solo &quot;externalSalesPersonId&quot;.
 
 ## Query
 

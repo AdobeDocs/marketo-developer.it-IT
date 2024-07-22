@@ -1,34 +1,34 @@
 ---
-title: "getLeadActivity"
+title: getLeadActivity
 feature: SOAP
-description: "Chiamate SOAP getLeadActivity"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Chiamate SOAP getLeadActivity
+exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '346'
 ht-degree: 1%
 
 ---
 
-
 # getLeadActivity
 
 Questa funzione recupera la cronologia delle attività per un singolo lead identificato dalla chiave fornita. Puoi specificare quali tipi di attività desideri che vengano restituiti nel risultato. Se desideri tutti i tipi di attività, è necessario trasmettere un valore vuoto. Per più di un tipo di attività, passa un elenco di tipi di attività. Quando si richiedono più attività, il conteggio rimanente non è un numero preciso, ma deve essere trattato come un flag che indica che ci sono più attività quando il conteggio rimanente è > 0.
 
-A [posizione flusso](stream-position.md) può essere utilizzato per impaginare attraverso set di risultati di grandi dimensioni.
+È possibile utilizzare una [posizione flusso](stream-position.md) per impaginare i set di risultati di grandi dimensioni.
 
 ## Richiesta
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
-| leadKey->keyType | Obbligatorio | keyType consente di specificare il campo in base al quale si desidera eseguire la query del lead. I valori possibili includono:`IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadKey->keyType | Obbligatorio | keyType consente di specificare il campo in base al quale si desidera eseguire la query del lead. I valori possibili includono: `IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadKey->keyValue | Obbligatorio | `keyValue` è il valore in base al quale si desidera eseguire la query del lead. |
 | activityFilter->includeAttributes->activityType | Facoltativo | Limita la risposta in modo da includere solo i tipi di attività specificati. Vedi WSDL per tutti i tipi di attività. |
-| activityFilter->excludeAttributes->activityType | Facoltativo | Limita la risposta per escludere i tipi di attività specificati. Vedi WSDL per tutti i tipi di attività. NOTA: non è possibile specificare entrambi `includeAttributes` e `excludeAttributes` all’interno della stessa chiamata. |
-| batchSize | Facoltativo | Numero massimo di record da restituire. Il sistema limiterà a 100 o `batchSize`, a seconda di quale valore sia inferiore. |
-| startPosition->offset | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. Il valore di offset viene restituito dal campo risposta chiamate precedente `newStartPosition->offset`. |
-| startPosition->activityCreatedAt | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. ActivityCreatedAt viene restituito dal campo di risposta della chiamata precedente `newStartPosition->activityCreatedAt`. (formato data WSDL W3C). |
+| activityFilter->excludeAttributes->activityType | Facoltativo | Limita la risposta per escludere i tipi di attività specificati. Vedi WSDL per tutti i tipi di attività. NOTA: non è possibile specificare sia `includeAttributes` che `excludeAttributes` all&#39;interno della stessa chiamata. |
+| batchSize | Facoltativo | Numero massimo di record da restituire. Il sistema limiterà a 100 o `batchSize`, a seconda di quale valore sia minore. |
+| startPosition->offset | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. Il valore di offset viene restituito dal campo di risposta delle chiamate precedenti `newStartPosition->offset`. |
+| startPosition->activityCreatedAt | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. ActivityCreatedAt è restituito dal campo di risposta della chiamata precedente `newStartPosition->activityCreatedAt`. (formato data WSDL W3C). |
 | startPosition->latestCreatedAt | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. Il valore latestCreatedAt viene restituito dal campo di risposta della chiamata precedente `newStartPosition->latestCreatedAt`. (formato data WSDL W3C). |
-| startPosition->olderCreatedAt | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. Il campo di risposta della chiamata precedente restituisce il valore olderCreatedAt `newStartPosition->oldestCreatedAt`. (formato data WSDL W3C). |
+| startPosition->olderCreatedAt | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte di attività. Il valore olderCreatedAt viene restituito dal campo di risposta della chiamata precedente `newStartPosition->oldestCreatedAt`. (formato data WSDL W3C). |
 
 ## Richiedi XML
 
@@ -668,7 +668,7 @@ A [posizione flusso](stream-position.md) può essere utilizzato per impaginare a
 </SOAP-ENV:Envelope>
 ```
 
-Tieni presente che entro `activityRecord` elementi, il `id` viene sostituito dall&#39;elemento `marketoGUID` come identificatore univoco.  Questa modifica verrà implementata nella versione di primavera 2017.
+Si noti che all&#39;interno di `activityRecord` elementi, l&#39;elemento `id` verrà sostituito dall&#39;elemento `marketoGUID` come identificatore univoco.  Questa modifica verrà implementata nella versione di primavera 2017.
 
 ## Codice di esempio - PHP
 

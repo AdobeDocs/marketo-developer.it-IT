@@ -1,14 +1,14 @@
 ---
-title: "Snippet"
+title: Snippet
 feature: REST API, Snippets
-description: '"Gestione dei snippet tramite l’API Marketo".'
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestione dei snippet tramite l’API Marketo.
+exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '438'
 ht-degree: 0%
 
 ---
-
 
 # Snippet
 
@@ -18,7 +18,7 @@ I snippet sono componenti HTML riutilizzabili che possono essere incorporati nel
 
 ## Query
 
-La query dei frammenti segue il modello standard per le risorse, tranne per il fatto che non dispone del metodo By Name. Entrambe [Per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) e [Sfoglia](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) i metodi consentono di utilizzare il campo stato per recuperare le versioni approvate o bozza del frammento.
+La query dei frammenti segue il modello standard per le risorse, tranne per il fatto che non dispone del metodo By Name. Entrambi i metodi [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) e [Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) consentono l&#39;utilizzo del campo di stato per recuperare le versioni approvate o bozza del frammento.
 
 ### Per ID
 
@@ -139,11 +139,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-La chiamata restituisce un elenco di sezioni di contenuto, costituite da sezioni di tipo HTML o DynamicContent e, facoltativamente, da una sezione con un tipo di testo.
+La chiamata restituisce un elenco di sezioni di contenuto,  che sono costituite da sezioni di tipo HTML o DynamicContent e, facoltativamente, da una sezione con un tipo di testo.
 
 ## Crea e aggiorna
 
-I frammenti seguono il pattern di creazione delle risorse complesse, in cui la chiamata a [crea snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST), e il relativo contenuto sono effettuati separatamente, pertanto la prima chiamata deve essere all&#39;endpoint di creazione, con una descrizione facoltativa.   I dati vengono passati come x-www-form-urlencoded, non come JSON.
+I frammenti seguono il pattern di creazione delle risorse complesse, in cui la chiamata a [create snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) e il relativo contenuto vengono eseguiti separatamente, pertanto la prima chiamata deve essere all&#39;endpoint create, con una descrizione facoltativa.   I dati vengono passati come x-www-form-urlencoded, non come JSON.
 
 ```
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[Aggiornamento dei metadati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) viene eseguito anche dall’id. È possibile aggiornare solo il nome e la descrizione:
+[L&#39;aggiornamento dei metadati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) viene eseguito anche dall&#39;ID. È possibile aggiornare solo il nome e la descrizione:
 
 ```
 POST /rest/asset/v1/snippet/{id}.json
@@ -344,7 +344,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 ### Annulla approvazione
 
-Il `unapprove` l&#39;endpoint può essere utilizzato solo su snippet approvati.
+L&#39;endpoint `unapprove` può essere utilizzato solo su snippet approvati.
 
 ```
 POST /rest/asset/v1/snippet/{id}/unapprove.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Duplica
 
-[Clonazione di uno snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) con l’API è semplice e segue il modello standard, con un nome obbligatorio, un ID dello snippet e della cartella originali e una descrizione facoltativa.  Se non esiste alcuna versione approvata, la versione bozza viene clonata.
+[La duplicazione di uno snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) con l&#39;API è semplice e segue il modello standard, con un nome obbligatorio, un ID dello snippet e della cartella originali e una descrizione facoltativa.  Se non esiste alcuna versione approvata, la versione bozza viene clonata.
 
 ```
 POST /rest/asset/v1/snippet/{id}/clone.json

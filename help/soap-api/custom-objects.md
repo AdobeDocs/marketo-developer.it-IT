@@ -1,14 +1,14 @@
 ---
-title: "Oggetti personalizzati"
+title: Oggetti personalizzati
 feature: SOAP
-description: "Creazione di oggetti personalizzati."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Creazione di oggetti personalizzati.
+exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '231'
 ht-degree: 0%
 
 ---
-
 
 # Oggetti personalizzati
 

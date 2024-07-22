@@ -1,20 +1,20 @@
 ---
-title: "Canali"
+title: Canali
 feature: REST API
-description: "Configurazione dei dati dei canali con le API di Marketo."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Configurazione dei dati dei canali con le API di Marketo.
+exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '125'
 ht-degree: 1%
 
 ---
 
-
 # Canali
 
 [Riferimento endpoint canali](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
 
-I canali sono un campo standard e obbligatorio per tutti i tipi di programmi. Ogni tipo di canale può essere utilizzato solo con il `applicableProgramType` e fornisce l&#39;elenco degli stati di programma disponibili che sono validi per i membri del programma in ogni programma. Se dopo la creazione di un programma lo stato di un canale viene modificato, l&#39;elenco degli stati di programma che un lead può modificare corrisponderà all&#39;elenco fornito dal canale in quel momento, ma non cambierà retroattivamente lo stato del programma per i record di iscrizione al programma esistenti.
+I canali sono un campo standard e obbligatorio per tutti i tipi di programmi. Ogni tipo di canale può essere utilizzato solo con il `applicableProgramType` specificato e fornisce l&#39;elenco degli stati di programma disponibili validi per i membri del programma in ogni programma. Se dopo la creazione di un programma lo stato di un canale viene modificato, l&#39;elenco degli stati di programma che un lead può modificare corrisponderà all&#39;elenco fornito dal canale in quel momento, ma non cambierà retroattivamente lo stato del programma per i record di iscrizione al programma esistenti.
 
 ## Query
 

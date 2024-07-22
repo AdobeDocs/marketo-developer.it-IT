@@ -11,9 +11,9 @@ ht-degree: 0%
 
 # Scarica definizioni Swagger
 
-[Swagger](https://swagger.io/) o [OpenAPI](https://www.openapis.org/) Le definizioni sono file di dati che descrivono tutti i metodi e i parametri di un’API REST. Puoi scaricare e utilizzare questi file di dati localmente come riferimento API personale.
+Le definizioni [Swagger](https://swagger.io/) o [OpenAPI](https://www.openapis.org/) sono file di dati che descrivono tutti i metodi e i parametri di un&#39;API REST. Puoi scaricare e utilizzare questi file di dati localmente come riferimento API personale.
 
-Per utilizzare le definizioni di Marketo Engage Swagger/OpenAPI, `host` deve essere aggiornato per corrispondere al nome host REST API dalla tua istanza di Marketo Engage.
+Per utilizzare le definizioni Marketo Engage Swagger/OpenAPI, è necessario aggiornare il campo `host` di ciascun documento in modo che corrisponda al nome host REST API dell&#39;istanza di Marketo Engage.
 
 Scarica innanzitutto la definizione OpenAPI che desideri utilizzare:
 
@@ -22,8 +22,8 @@ Scarica innanzitutto la definizione OpenAPI che desideri utilizzare:
 * [Identità   ](assets/swagger-identity.json)
 * [Gestione utente](assets/swagger-user.json)
 
-Quindi, ottieni il nome host REST API dall’amministratore di Marketo. Vai a _Amministratore_-> _Servizi Web_ nel Marketo Engage e copia il nome host dal campo Endpoint. Il `hostname` è la stringa tra il protocollo, `https://`, e `/rest`, che si presenta come `AAA-999-AAA.mktorest.com`
+Quindi, ottieni il nome host REST API dall’amministratore di Marketo. Vai al menu _Amministratore_-> _Servizi Web_ nel Marketo Engage e copia il nome host dal campo Endpoint. `hostname` è la stringa tra il protocollo `https://` e `/rest`, che ha l&#39;aspetto di `AAA-999-AAA.mktorest.com`
 
-Apri il file OpenAPI in un editor di testo e individua `host` nel JSON e modificane il valore nel nome host dell’API REST: `"host":"localhost:8080"` a `"host":"AAA-999-AAA.mktorest.com"`.
+Apri il file OpenAPI in un editor di testo e individua il campo `host` nel JSON e modificane il valore nel nome host REST API: `"host":"localhost:8080"` in `"host":"AAA-999-AAA.mktorest.com"`.
 
 Una volta salvato, puoi eseguire il file di definizione nell’istanza dell’interfaccia utente Swagger o in qualsiasi altro software OpenAPI.

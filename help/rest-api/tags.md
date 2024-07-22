@@ -1,14 +1,14 @@
 ---
-title: "Tag"
+title: Tag
 feature: REST API, Tags
-description: '"Gestisci i tag per i programmi in Marketo".'
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestisci i tag per i programmi in Marketo.
+exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '205'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
-
 
 # Tag
 
@@ -77,7 +77,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## Aggiornamento
 
-Il [Aggiorna tag programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) endpoint consente di aggiornare il valore per un determinato tipo di tag. L’endpoint richiede un `id` e `tagType` parametri del percorso che specificano l’id del programma e il tipo di tag da aggiornare. A `tagValue` il parametro query viene utilizzato per specificare il nuovo valore per il tipo di tag. Tutti i parametri sono obbligatori.
+L&#39;endpoint [Aggiorna tag del programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) consente di aggiornare il valore per un determinato tipo di tag. L&#39;endpoint accetta un percorso `id` e `tagType` che specificano l&#39;ID del programma e il tipo di tag da aggiornare. Viene utilizzato un parametro di query `tagValue` per specificare il nuovo valore per il tipo di tag. Tutti i parametri sono obbligatori.
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -97,11 +97,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-I tag possono essere aggiornati in massa utilizzando [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) endpoint. Ecco un esempio [qui](programs.md#update).
+I tag possono essere aggiornati in massa utilizzando l&#39;endpoint [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Un esempio di ciò si trova [qui](programs.md#update).
 
 ## Elimina
 
-Il [Elimina tag programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) endpoint consente di eliminare un tipo di tag non richiesto. L’endpoint accetta `id` e `tagType` parametri di percorso che specificano l’id del programma e il tipo di tag da eliminare.
+L&#39;endpoint [Elimina tag del programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) consente di eliminare un tipo di tag non richiesto. L&#39;endpoint accetta `id` e `tagType` parametri di percorso che specificano l&#39;ID del programma e il tipo di tag da eliminare.
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

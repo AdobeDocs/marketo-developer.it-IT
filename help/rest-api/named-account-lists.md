@@ -1,20 +1,20 @@
 ---
-title: "Elenchi di account denominati"
+title: Elenchi di account denominati
 feature: REST API
-description: "Configurare gli elenchi di account denominati."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Configurare elenchi di account denominati.
+exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
 
 ---
 
-
 # Elenchi di account denominati
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Elenchi di account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni
@@ -37,7 +37,7 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 
 ## Query
 
-La query degli elenchi di account è semplice. Attualmente, esistono solo due filterTypes validi per eseguire query sugli elenchi di account denominati: &quot;dedupeFields&quot; e &quot;idField&quot;. Il campo su cui filtrare è impostato in `filterType` e i valori sono impostati in `filterValues as` un elenco separato da virgole. Il `nextPageToken` e `batchSize` I filtri sono anche parametri facoltativi.
+La query degli elenchi di account è semplice. Attualmente, esistono solo due filterTypes validi per eseguire query sugli elenchi di account denominati: &quot;dedupeFields&quot; e &quot;idField&quot;. Il campo su cui filtrare è impostato nel parametro `filterType` della query e i valori sono impostati in `filterValues as` un elenco separato da virgole. I filtri `nextPageToken` e `batchSize` sono anche parametri facoltativi.
 
 ```
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -72,11 +72,11 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 ## Crea e aggiorna
 
-La creazione e l&#39;aggiornamento dei record dell&#39;elenco dei conti denominati seguono i modelli stabiliti per altre operazioni di creazione e aggiornamento del database lead. Tieni presente che gli elenchi di account denominati hanno un solo campo aggiornabile, `name`.
+La creazione e l&#39;aggiornamento dei record dell&#39;elenco dei conti denominati seguono i modelli stabiliti per altre operazioni di creazione e aggiornamento del database lead. Tenere presente che gli elenchi di account denominati hanno un solo campo aggiornabile, `name`.
 
-L’endpoint consente due tipi di azione standard: &quot;createOnly&quot; e &quot;updateOnly&quot;.  Il `action defaults` su &quot;createOnly&quot;.
+L’endpoint consente due tipi di azione standard: &quot;createOnly&quot; e &quot;updateOnly&quot;.  `action defaults` a &quot;createOnly&quot;.
 
-L&#39;opzione `dedupeBy parameter` può essere specificato se l&#39;azione è `updateOnly`.  I valori consentiti sono &quot;dedupeFields&quot; (corrispondente a &quot;name&quot;) o &quot;idField&quot; (corrispondente a &quot;marketoGUID&quot;).  In entrata `createOnly` , è consentito solo &quot;name&quot; come `dedupeBy` campo. È possibile inviare fino a 300 record alla volta.
+È possibile specificare `dedupeBy parameter` facoltativo se l&#39;azione è `updateOnly`.  I valori consentiti sono &quot;dedupeFields&quot; (corrispondente a &quot;name&quot;) o &quot;idField&quot; (corrispondente a &quot;marketoGUID&quot;).  In modalità `createOnly`, solo &quot;name&quot; è consentito come campo `dedupeBy`. È possibile inviare fino a 300 record alla volta.
 
 ```
 POST /rest/v1/namedAccountLists.json
@@ -118,7 +118,7 @@ POST /rest/v1/namedAccountLists.json
 
 ## Elimina
 
-L’eliminazione degli elenchi di account denominati è semplice e può essere eseguita in base al `name`o `marketoGUID` dell&#39;elenco. Per selezionare la chiave da utilizzare, passare &quot;dedupeFields&quot; per il nome o &quot;idField&quot; per marketoGUID nel`deleteB` membro della tua richiesta. Se non viene impostato, per impostazione predefinita verranno utilizzati dedupeFields. È possibile eliminare fino a 300 record alla volta.
+L&#39;eliminazione degli elenchi di account denominati è semplice e può essere eseguita in base a `name` o `marketoGUID` dell&#39;elenco. Per selezionare la chiave da utilizzare, passare &quot;dedupeFields&quot; per il nome o &quot;idField&quot; per marketoGUID nel membro `deleteB` della richiesta. Se non viene impostato, per impostazione predefinita verranno utilizzati dedupeFields. È possibile eliminare fino a 300 record alla volta.
 
 ```
 POST /rest/v1/namedAccountLists/delete.json
@@ -170,17 +170,19 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-Nel caso in cui non sia possibile trovare un record per una determinata chiave, l’elemento risultante corrispondente avrà un`status` di &quot;ignorato&quot; e un motivo con un codice e un messaggio che descrivono l’errore, come mostrato nell’esempio precedente.
+Nel caso in cui non sia possibile trovare un record per una determinata chiave, l&#39;elemento risultato corrispondente avrà un `status` di &quot;ignorato&quot; e un motivo con un codice e un messaggio che descrivono l&#39;errore, come mostrato nell&#39;esempio precedente.
 
 ## Gestione dell’iscrizione
 
 ### Iscrizione alla query
 
-La query dell’appartenenza a un elenco di account denominati è semplice e richiede solo`i` dell’elenco dei conti. I parametri facoltativi sono:
+La query dell&#39;appartenenza a un elenco di account con nome è semplice e richiede solo `i` dell&#39;elenco di account. I parametri facoltativi sono:
 
--`field` - un elenco separato da virgole di campi da includere nei record di risposta -`nextPageToke` - per scorrere il set di risultati -`batchSiz` - per specificare il numero di record da restituire
+-`field` - elenco di campi separati da virgole da includere nei record di risposta
+-`nextPageToke` - per il paging attraverso il set di risultati
+-`batchSiz` - per specificare il numero di record da restituire
 
-Se`field` non è impostato, quindi`marketoGUI`,`nam`, `createdA`, e`updatedA` verrà restituito. `batchSiz` ha un valore massimo e predefinito di 300.
+Se `field` non è impostato, verranno restituiti `marketoGUI`, `nam`, `createdA` e `updatedA`. `batchSiz` ha un valore massimo e predefinito di 300.
 
 ```
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -251,7 +253,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Rimuovi membri
 
-La rimozione di record da un elenco account ha un percorso diverso, ma la stessa interfaccia richiede un`marketoGUI` per ogni record da eliminare. È possibile rimuovere fino a 300 record alla volta.
+La rimozione di record da un elenco account ha un percorso diverso, ma la stessa interfaccia richiede `marketoGUI` per ogni record che si desidera eliminare. È possibile rimuovere fino a 300 record alla volta.
 
 ```
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json

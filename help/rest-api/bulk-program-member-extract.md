@@ -1,14 +1,14 @@
 ---
-title: "Estratto membro programma in blocco"
+title: Estrazione membro programma in blocco
 feature: REST API
-description: "Elaborazione in batch dell'estrazione dei dati del membro."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Elaborazione in batch dell'estrazione dei dati del membro.
+exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 2%
 
 ---
-
 
 # Estrazione membro programma in blocco
 
@@ -22,7 +22,7 @@ Le API Bulk Program Member Extract richiedono che l&#39;utente API proprietario 
 
 ## Descrivere
 
-[Descrivi membro programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) è la principale fonte di verità per stabilire se i campi sono disponibili per l’uso e i metadati su di essi. Il `name` L’attributo contiene il nome API REST.
+[Descrivi membro del programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) è l&#39;origine principale di verità per stabilire se i campi sono disponibili per l&#39;uso e i metadati relativi a tali campi. L&#39;attributo `name` contiene il nome API REST.
 
 ```
 GET /rest/v1/programs/members/describe.json
@@ -213,7 +213,7 @@ GET /rest/v1/programs/members/describe.json
 
 ## Filtri
 
-I membri del programma supportano varie opzioni di filtro. È possibile specificare più tipi di filtro per un processo, nel qual caso sono AND insieme. Specificare il `programId` o `programIds` filtro. Tutti gli altri filtri sono facoltativi. Il `updatedAt` Il filtro richiede componenti aggiuntivi dell’infrastruttura che non sono ancora stati implementati in tutti gli abbonamenti.
+I membri del programma supportano varie opzioni di filtro. È possibile specificare più tipi di filtro per un processo, nel qual caso sono AND insieme. Specificare il filtro `programId` o `programIds`. Tutti gli altri filtri sono facoltativi. Il filtro `updatedAt` richiede componenti di infrastruttura aggiuntivi che non sono ancora stati distribuiti in tutte le sottoscrizioni.
 
 <table>
   <tbody>
@@ -225,17 +225,17 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
     <tr>
       <td>programId</td>
       <td>Intero</td>
-      <td>Accetta l’ID di un programma. I job restituiscono tutti i record accessibili che sono membri del programma nel momento in cui il job inizia l'elaborazione.Recuperare gli ID del programma utilizzando <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Ottieni programmi</a> endpoint.Impossibile utilizzare con il filtro programIds.</td>
+      <td>Accetta l’ID di un programma. I processi restituiscono tutti i record accessibili che sono membri del programma al momento dell'inizio dell'elaborazione del processo.Recuperare gli ID del programma utilizzando l'endpoint <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Get Programs</a>.Non può essere utilizzato con il filtro programIds.</td>
     </tr>
     <tr>
       <td>programIds</td>
       <td>Array[Integer]</td>
-      <td>Accetta un array di un massimo di 10 ID di programma. I job restituiscono tutti i record accessibili che sono membri dei programmi al momento in cui il job inizia l'elaborazione.Un campo aggiuntivo "programId" viene aggiunto al file di esportazione come primo campo. Questo campo identifica il programma da cui è stato estratto un record di iscrizione al programma.Recuperare gli ID del programma utilizzando <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Ottieni programmi</a> endpoint.Non può essere utilizzato con il filtro programId.</td>
+      <td>Accetta un array di un massimo di 10 ID di programma. I job restituiscono tutti i record accessibili che sono membri dei programmi al momento in cui il job inizia l'elaborazione.Un campo aggiuntivo "programId" viene aggiunto al file di esportazione come primo campo. Questo campo identifica il programma da cui è stato estratto un record di appartenenza al programma.Recuperare gli ID del programma utilizzando l'endpoint <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Get Programs</a>.Non può essere utilizzato con il filtro programId.</td>
     </tr>
     <tr>
       <td>isExausted</td>
       <td>Booleano</td>
-      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone che hanno esaurito i contenuti</a>.</td>
+      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -320,14 +320,14 @@ L’endpoint del processo Crea membro del programma di esportazione offre divers
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
 |---|---|---|---|
-| campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. I campi elencati sono inclusi nel file esportato. È possibile esportare i seguenti tipi di campi:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Specifica un campo utilizzando il nome API REST che può essere recuperato utilizzando gli endpoint Descrivi lead2 e/o Descrivi membri del programma. |
+| campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. I campi elencati sono inclusi nel file esportato. È possibile esportare i seguenti tipi di campo:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Specifica un campo utilizzando il nome API REST che può essere recuperato utilizzando gli endpoint Descrivi lead2 e/o Descrivi membri del programma. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
 
 
 ## Creazione di un processo
 
-I parametri per il processo vengono definiti prima di avviare l’esportazione utilizzando [Crea processo membro programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) endpoint. È necessario definire `filter` contenente l’id del programma e `fields` necessari per l&#39;esportazione. Facoltativamente, possiamo definire `format` del file, e `columnHeaderNames`.
+I parametri per il processo vengono definiti prima di avviare l&#39;esportazione utilizzando l&#39;endpoint [Crea processo membro del programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST). È necessario definire `filter` contenente l&#39;ID del programma e `fields` necessari per l&#39;esportazione. Facoltativamente, è possibile definire `format` del file e `columnHeaderNames`.
 
 ```
 POST /bulk/v1/program/members/export/create.json
@@ -371,7 +371,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. A tale scopo, il [Accoda processo membro programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) l&#39;endpoint deve essere chiamato utilizzando `exportId` dalla risposta dello stato di creazione:
+Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. Per eseguire questa operazione, l&#39;endpoint [Processo membro programma esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) deve essere chiamato utilizzando `exportId` dalla risposta dello stato di creazione:
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -393,13 +393,13 @@ POST /bulk/v1/program/members/export/{exportId}/enqueue.json
 }
 ```
 
-Questo risponderà con una `status` di &quot;In coda&quot;, dopo di che verrà impostato su &quot;Elaborazione&quot; quando è disponibile uno slot di esportazione.
+Questo risponderà con un `status` iniziale di &quot;In coda&quot; dopo il quale sarà impostato su &quot;Elaborazione&quot; quando è disponibile uno slot di esportazione.
 
 ## Stato processo di polling
 
 Nota: è possibile recuperare lo stato solo per i processi creati dallo stesso utente API.
 
-Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire il polling del relativo stato per determinarne l’avanzamento. Effettua il polling utilizzando [Ottieni stato processo membro programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) endpoint. Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Il campo di stato può rispondere con uno dei seguenti valori: Creato, In coda, Elaborazione, Annullato, Completato, Non riuscito.
+Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire il polling del relativo stato per determinarne l’avanzamento. Effettua il polling utilizzando l&#39;endpoint [Ottieni stato processo membro del programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Il campo di stato può rispondere con uno dei seguenti valori: Creato, In coda, Elaborazione, Annullato, Completato, Non riuscito.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/status.json
@@ -422,7 +422,7 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 }
 ```
 
-L’endpoint di stato risponde indicando che il processo è ancora in elaborazione, pertanto il file non è ancora disponibile per il recupero. Una volta completato il processo `status` modifiche a &quot;Completato&quot;, è disponibile per il download.
+L’endpoint di stato risponde indicando che il processo è ancora in elaborazione, pertanto il file non è ancora disponibile per il recupero. Quando il processo `status` diventa &quot;Completato&quot;, è disponibile per il download.
 
 ```json
 {
@@ -447,9 +447,9 @@ L’endpoint di stato risponde indicando che il processo è ancora in elaborazio
 
 ## Recupero dei dati
 
-Per recuperare il file di un&#39;esportazione di un membro del programma completata, è sufficiente chiamare [Ottieni file membro del programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) endpoint con `exportId`.
+Per recuperare il file di un&#39;esportazione di un membro del programma completata, è sufficiente chiamare l&#39;endpoint [Ottieni file membro del programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) con `exportId`.
 
-La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file. Se un campo membro del programma richiesto è vuoto (non contiene dati), `null` viene inserito nel campo corrispondente nel file di esportazione.
+La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file. Se un campo del membro del programma richiesto è vuoto (non contiene dati), `null` viene inserito nel campo corrispondente nel file di esportazione.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/file.json
@@ -471,11 +471,11 @@ Jory,Cassel,jcas@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1799,f
 Septa,Mordane,smor@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1800,false,Lead01_Value,Lead02_Value,PM01_Value,PM02_Value
 ```
 
-Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint del file supporta facoltativamente l’intervallo di intestazioni HTTP dei byte di tipo. Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per ulteriori informazioni, consulta Utilizzo dell’intestazione Intervallo con Marketo [Estrai in blocco](bulk-extract.md).
+Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint del file supporta facoltativamente l’intervallo di intestazioni HTTP dei byte di tipo. Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione Range con Marketo [Bulk Extract](bulk-extract.md).
 
 ## Annullamento di un processo
 
-Se un processo non è stato configurato correttamente o diventa superfluo, può essere facilmente annullato utilizzando [Annulla processo membro programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) endpoint:
+Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo membro del programma di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST):
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/cancel.json

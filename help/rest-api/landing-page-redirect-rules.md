@@ -1,18 +1,18 @@
 ---
-title: "Regole di reindirizzamento pagina di destinazione"
+title: Regole di reindirizzamento pagina di destinazione
 feature: REST API, Landing Pages
-description: "Configurare le regole di reindirizzamento delle pagine di destinazione tramite l’API."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Configura le regole di reindirizzamento delle pagine di destinazione tramite l’API.
+exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '641'
 ht-degree: 2%
 
 ---
 
-
 # Regole di reindirizzamento pagina di destinazione
 
-[Riferimento endpoint per regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
+[Riferimento endpoint regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
 
 Marketo offre un set di API REST per l’esecuzione di operazioni CRUD sugli URL di reindirizzamento della pagina di destinazione. Queste API seguono il pattern di interfaccia standard per le API delle risorse, fornendo le opzioni Query, Create, Update e Delete.
 
@@ -20,11 +20,11 @@ Le regole di reindirizzamento per pagine di destinazione consentono di reindiriz
 
 ## Query
 
-La query delle regole di reindirizzamento della pagina di destinazione segue i tipi di query standard per le risorse di [per ID](#by_id), e [navigazione](#browse).
+La query sulle regole di reindirizzamento della pagina di destinazione segue i tipi di query standard per le risorse di [per ID](#by_id) e [esplorazione](#browse).
 
 ### Per ID
 
-Il [Ottieni regole di reindirizzamento pagina di destinazione per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRuleByIdUsingGET) l’endpoint richiede un singolo reindirizzamento della regola della pagina di destinazione `id` parametro path e restituisce un singolo record della regola di reindirizzamento della pagina di destinazione.
+L&#39;endpoint [Get Landing Page Redirect Rules by Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRuleByIdUsingGET) accetta un singolo parametro di percorso di reindirizzamento della regola della pagina di destinazione `id` e restituisce un singolo record della regola di reindirizzamento della pagina di destinazione.
 
 ```
 GET /rest/asset/v1/redirectRule/{id}.json
@@ -59,17 +59,17 @@ GET /rest/asset/v1/redirectRule/{id}.json
 
 ### Sfogliare
 
-Il [Ottieni regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRulesUsingGET) l’endpoint restituisce un elenco di record della regola di reindirizzamento pagina di destinazione.
+L&#39;endpoint [Get Landing Page Redirect Rules](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageRedirectRulesUsingGET) restituisce un elenco di record della regola di reindirizzamento della pagina di destinazione.
 
 Esistono diversi parametri di query facoltativi che possono essere trasmessi ai risultati del filtro.
 
-Il `offset` Il parametro è un numero intero che specifica il numero massimo di voci da restituire (il valore predefinito è 20). Il massimo è 200. Il `maxReturn` Il parametro è un numero intero che specifica dove iniziare a recuperare le voci. Può essere utilizzato insieme all&#39;offset (il valore di default è 0).
+Il parametro `offset` è un numero intero che specifica il numero massimo di voci da restituire (il valore predefinito è 20). Il massimo è 200. Il parametro `maxReturn` è un numero intero che specifica dove iniziare a recuperare le voci. Può essere utilizzato insieme all&#39;offset (il valore di default è 0).
 
-Il `hostname` Il parametro può essere utilizzato per filtrare in base al nome host delle pagine di destinazione.
+Il parametro `hostname` può essere utilizzato per filtrare in base al nome host delle pagine di destinazione.
 
-Il `redirectToLandingPageId` è un numero intero che può essere utilizzato per filtrare in base all’ID della pagina di destinazione a cui stai reindirizzando. Il `redirectToPath` può essere utilizzato per filtrare in base al percorso delle pagine di destinazione a cui stai reindirizzando.
+`redirectToLandingPageId` è un numero intero che può essere utilizzato per filtrare in base all&#39;ID della pagina di destinazione a cui si sta reindirizzando. `redirectToPath` può essere utilizzato per filtrare in base al percorso delle pagine di destinazione a cui si sta reindirizzando.
 
-Il `earliestUpdatedAt` e `latestUpdatedAt` I parametri ti consentono di impostare filigrane di data e ora basse e alte per restituire le regole di reindirizzamento della pagina di destinazione aggiornate o create inizialmente all’interno dell’intervallo specificato.
+I parametri `earliestUpdatedAt` e `latestUpdatedAt` consentono di impostare filigrane di data/ora basse e alte per restituire le regole di reindirizzamento della pagina di destinazione aggiornate o create inizialmente all&#39;interno dell&#39;intervallo specificato.
 
 ```
 GET /rest/asset/v1/redirectRules.json&maxReturn=3
@@ -136,11 +136,11 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 
 ## Crea
 
-Il [Crea regola di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) l’endpoint viene eseguito con application/x-www-form-urlencoded POST con i tre parametri richiesti seguenti.
+L&#39;endpoint [Crea regola di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) viene eseguito con un application/x-www-form-urlencoded POST con i tre parametri richiesti seguenti.
 
-Il `hostname` Il parametro specifica il nome host per la pagina di destinazione. Deve appartenere a un dominio o alias di branding. La lunghezza massima è di 255 caratteri.
+Il parametro `hostname` specifica il nome host per la pagina di destinazione. Deve appartenere a un dominio o alias di branding. La lunghezza massima è di 255 caratteri.
 
-Il `redirectFrom` Il parametro specifica la pagina di destinazione di origine. Si tratta di un oggetto JSON che contiene una coppia tipo/valore che determina se l’origine è una pagina di destinazione di Marketo o non di Marketo. Il `type` può essere &quot;landingPageId&quot; o &quot;path&quot;.
+Il parametro `redirectFrom` specifica la pagina di destinazione di origine. Si tratta di un oggetto JSON che contiene una coppia tipo/valore che determina se l’origine è una pagina di destinazione di Marketo o non di Marketo. L&#39;attributo `type` può essere &quot;landingPageId&quot; o &quot;path&quot;.
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
 |---|---|---|---|
@@ -149,14 +149,14 @@ Il `redirectFrom` Il parametro specifica la pagina di destinazione di origine. S
 | callback | Obbligatorio | Funzione | Funzione di callback da attivare per ogni campagna restituita. |
 
 
-Il `redirectTo` Il parametro specifica la pagina di destinazione di destinazione di target. Si tratta di un oggetto JSON che contiene una coppia tipo/valore che determina se l’origine è una pagina di destinazione di Marketo o non di Marketo. Il `type` può essere &quot;landingPageId&quot; o &quot;url&quot;.
+Il parametro `redirectTo` specifica la pagina di destinazione di destinazione di destinazione. Si tratta di un oggetto JSON che contiene una coppia tipo/valore che determina se l’origine è una pagina di destinazione di Marketo o non di Marketo. L&#39;attributo `type` può essere &quot;landingPageId&quot; o &quot;url&quot;.
 
 | Tipo di pagina di destinazione | tipo redirectTo | Esempio |
 |---|---|---|
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Non Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Puoi trovare ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
+Ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione sono disponibili [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json
@@ -199,9 +199,9 @@ hostname=calqeauto.com&redirectFrom={"type":"landingPageId", "value":"5483"}&red
 
 ## Aggiornamento
 
-Il [Aggiorna regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) l’endpoint accetta una singola regola di reindirizzamento della pagina di destinazione `id` parametro di percorso. Questo endpoint viene eseguito con un POST application/x-www-form-urlencoded.
+L&#39;endpoint [Aggiorna regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) accetta un parametro di percorso `id` per la regola di reindirizzamento di una singola pagina di destinazione. Questo endpoint viene eseguito con un POST application/x-www-form-urlencoded.
 
-Come per la chiamata di creazione descritta in precedenza, vengono passati uno o più dei seguenti parametri di query per specificare l’attributo della regola da aggiornare: `hostname`, `redirectFrom`, `redirectTo`.
+Come per la chiamata di creazione descritta in precedenza, uno o più dei seguenti parametri di query vengono passati per specificare quale attributo della regola aggiornare: `hostname`, `redirectFrom`, `redirectTo`.
 
 Nella risposta viene restituito il record aggiornato della regola di reindirizzamento pagina di destinazione.
 
@@ -246,7 +246,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## Elimina
 
-Il [Elimina regola di reindirizzamento pagina di destinazione per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST) l’endpoint richiede un singolo reindirizzamento della regola della pagina di destinazione `id` parametro di percorso.
+L&#39;endpoint [Elimina regola di reindirizzamento pagina di destinazione per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST) accetta un singolo parametro di percorso di reindirizzamento della regola della pagina di destinazione `id`.
 
 ```
 POST /rest/asset/v1/redirectRule/{id}/delete.json
@@ -268,13 +268,13 @@ POST /rest/asset/v1/redirectRule/{id}/delete.json
 
 ## Sfoglia i domini della pagina di destinazione
 
-Il [Ottieni domini pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageDomainsUsingGET) l’endpoint restituisce un elenco di record di dominio della pagina di destinazione.
+L&#39;endpoint [Get Landing Page Domains](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/getLandingPageDomainsUsingGET) restituisce un elenco di record di dominio della pagina di destinazione.
 
 Esistono due parametri di query facoltativi che possono essere trasmessi ai risultati del filtro.
 
-Il `offset` Il parametro è un numero intero che specifica il numero massimo di voci da restituire (il valore predefinito è 20, il valore massimo è 200).
+Il parametro `offset` è un numero intero che specifica il numero massimo di voci da restituire (il valore predefinito è 20, il valore massimo è 200).
 
-Il `maxReturn` Il parametro è un numero intero che specifica dove iniziare a recuperare le voci. Può essere utilizzato insieme a `offset` Il valore predefinito è 0.
+Il parametro `maxReturn` è un numero intero che specifica dove iniziare a recuperare le voci. Può essere utilizzato in combinazione con `offset` (il valore predefinito è 0).
 
 ```
 POST /rest/asset/v1/landingPageDomains.json?maxReturn=3

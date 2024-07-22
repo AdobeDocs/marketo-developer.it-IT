@@ -1,33 +1,33 @@
 ---
-title: "Best practice per l’integrazione di Marketo"
+title: Best practice per l’integrazione di Marketo
 feature: REST API
-description: "Best practice per l’utilizzo delle API di Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Best practice per l’utilizzo delle API di Marketo.
+exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '952'
 ht-degree: 0%
 
 ---
 
-
 # Best practice per l’integrazione di Marketo
 
 ## Limiti API
 
-- **Quota giornaliera:** Alla maggior parte degli abbonamenti vengono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno alle 00.00 CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
-- **Limite tariffa:** L’accesso API per istanza è limitato a 100 chiamate per 20 secondi.
+- **Quota giornaliera:** alla maggior parte degli abbonamenti sono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno alle 00.00 CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
+- **Limite di frequenza:** accesso API per istanza limitato a 100 chiamate per 20 secondi.
 - **Limite concorrenza:**  Massimo dieci chiamate API simultanee.
-- **Dimensione batch:** DB lead - 300 record; Query risorse - 200 record
+- **Dimensione batch:** database lead - 300 record; query risorse - 200 record
 - **Dimensione payload REST API:** 1 MB
-- **Dimensione file importazione in blocco:** 10 MB
+- **Dimensione file importazione in blocco:** 10 MB
 - **Dimensione massima batch SOAP:** 300 record
-- **Processi estrazione in blocco:** 2 in esecuzione; 10 in coda (incluso)
+- **Processi estrazione in blocco:** 2 in esecuzione; 10 in coda (inclusi)
 
 ## Suggerimenti
 
 - Si supponga che l&#39;applicazione concorrerà per le risorse di quota, tasso e concorrenza con altre applicazioni e che vengano impostati limiti di utilizzo prudenti.
 - Utilizza i metodi in blocco e batch di Marketo quando disponibili e appropriati. Se necessario, utilizza solo un record singolo o singole chiamate di risultati.
-- Utilizzare [backoff esponenziale](https://en.wikipedia.org/wiki/Exponential_backoff) per ritentare le chiamate API che non riescono a causa di limiti di frequenza o concorrenza.
+- Utilizza [backoff esponenziale](https://en.wikipedia.org/wiki/Exponential_backoff) per ritentare le chiamate API che non riescono a causa di limiti di frequenza o concorrenza.
 - Evita di effettuare chiamate API simultanee se il tuo caso d’uso non ne trae vantaggio.
 
 ## Batch
@@ -41,14 +41,14 @@ Determinando le tolleranze di latenza, o il tempo massimo che può trascorrere p
 | Latenza accettabile | Metodi preferiti | Note |
 |---|---|---|
 | Basso (&lt;10 secondi) | API sincrone (in batch o non in batch) | Assicurati che il tuo caso d’uso lo richieda. L’invio di chiamate immediate e sincrone per casi di utilizzo di volumi elevati può assorbire rapidamente una quota API giornaliera e potenzialmente superare i limiti di velocità e concorrenza. |
-| Medio (10s - 60m) | API sincrone (in batch) | Per le integrazioni di dati in entrata in Marketo, si consiglia vivamente di utilizzare una coda con un limite di età e un limite di dimensioni. Quando viene raggiunto uno di questi limiti, svuota la coda e invia la richiesta API con i record accumulati. Si tratta di un compromesso importante tra velocità ed efficienza, che garantisce che le richieste si verifichino alla frequenza richiesta, mantenendo in batch il numero di record consentito dall’età della coda. |
+| Medium (10s - 60m) | API sincrone (in batch) | Per le integrazioni di dati in entrata in Marketo, si consiglia vivamente di utilizzare una coda con un limite di età e un limite di dimensioni. Quando viene raggiunto uno di questi limiti, svuota la coda e invia la richiesta API con i record accumulati. Si tratta di un compromesso importante tra velocità ed efficienza, che garantisce che le richieste si verifichino alla frequenza richiesta, mantenendo in batch il numero di record consentito dall’età della coda. |
 | Alta(>60 m) | Importazione/esportazione in blocco (se supportata) | Per le integrazioni di dati in entrata, i record devono essere messi in coda e inviati tramite API Marketo Bulk, se disponibili. |
 
 ## Limiti giornalieri
 
 Ogni istanza di Marketo abilitata per le API dispone di un’allocazione giornaliera di almeno 10.000 chiamate REST API al giorno, ma più comunemente 50.000 o più, e 500 MB o più di capacità Bulk Extract. Anche se la capacità giornaliera aggiuntiva può essere acquistata come parte di un abbonamento a Marketo, la progettazione dell’applicazione deve tenere conto dei limiti comuni degli abbonamenti a Marketo.
 
-Poiché in un’istanza la capacità è condivisa tra tutti i servizi API e gli utenti, la best practice prevede di eliminare le chiamate ridondanti e di raggruppare i record nel minor numero possibile di chiamate. Il modo più efficiente per importare i record consiste nell’utilizzare le API di importazione in blocco di Marketo, disponibili per [Lead/Persone](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [Oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fornisce anche l’estrazione in blocco per [Lead](bulk-lead-extract.md) e [Attività](bulk-activity-extract.md).
+Poiché in un’istanza la capacità è condivisa tra tutti i servizi API e gli utenti, la best practice prevede di eliminare le chiamate ridondanti e di raggruppare i record nel minor numero possibile di chiamate. Il modo più efficiente per importare i record consiste nell&#39;utilizzare le API di importazione in blocco di Marketo, disponibili per [lead/persone](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fornisce anche l&#39;estrazione in blocco per [lead](bulk-lead-extract.md) e [attività](bulk-activity-extract.md).
 
 ### Memorizzazione in cache
 
@@ -72,4 +72,4 @@ La maggior parte dei casi di utilizzo di integrazione non trae vantaggio dall’
 
 ## Errori
 
-Ad eccezione di alcuni rari casi, le richieste API restituiscono il codice di stato HTTP 200. Anche gli errori della logica di business restituiscono un valore 200, ma contengono informazioni dettagliate nel corpo della risposta. Consulta [Codici errore](error-codes.md) per una spiegazione dettagliata. La frase relativa al motivo HTTP non deve essere valutata in quanto è facoltativa e soggetta a modifiche.
+Ad eccezione di alcuni rari casi, le richieste API restituiscono il codice di stato HTTP 200. Anche gli errori della logica di business restituiscono un valore 200, ma contengono informazioni dettagliate nel corpo della risposta. Per una spiegazione dettagliata, vedere [Codici errore](error-codes.md). La frase relativa al motivo HTTP non deve essere valutata in quanto è facoltativa e soggetta a modifiche.

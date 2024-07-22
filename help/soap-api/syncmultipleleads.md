@@ -1,35 +1,35 @@
 ---
-title: "syncMultipleLeads"
+title: syncMultipleLeads
 feature: SOAP
-description: "chiamate SOAP syncMultipleLeads"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chiamate SOAP syncMultipleLeads
+exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '221'
 ht-degree: 3%
 
 ---
 
-
 # syncMultipleLeads
 
-Questa funzione richiede un’operazione di inserimento o aggiornamento (upsert) per _multiplo_ record dei lead. Quando si aggiorna un lead esistente, è possibile identificarlo con una delle chiavi seguenti:
+Questa funzione richiede un&#39;operazione di inserimento o aggiornamento (upsert) per _più_ record lead. Quando si aggiorna un lead esistente, è possibile identificarlo con una delle chiavi seguenti:
 
 - ID Marketo
 - ID sistema esterno
 - E-mail
 
-Se sono presenti più chiavi, Marketo ID ha la precedenza su `ForeignSysPersonId`e quest’ultimo verrà aggiornato. Tuttavia, se anche E-mail è presente come chiave, non verrà aggiornato a meno che non sia specificato nell’elenco degli attributi.
+Se sono presenti più chiavi, l&#39;ID Marketo ha la precedenza su `ForeignSysPersonId` e quest&#39;ultimo verrà aggiornato. Tuttavia, se anche E-mail è presente come chiave, non verrà aggiornato a meno che non sia specificato nell’elenco degli attributi.
 
 Si consiglia di non superare le 300 dimensioni dei lotti. Dimensioni più elevate non sono supportate e possono causare timeout e in casi estremi essere limitati.
 
-Con questa chiamata di funzione puoi disattivare la funzione di deduplicazione. Se dedupEnabled è impostato su true e non viene fornito alcun altro identificatore univoco (`foreignSysPersonId` o Marketo lead ID), il record del lead viene deduplicato utilizzando l’indirizzo e-mail. Nota: se si passa a false, in Marketo verranno creati duplicati.
+Con questa chiamata di funzione puoi disattivare la funzione di deduplicazione. Se dedupEnabled è impostato su true e non viene fornito alcun altro identificatore univoco (`foreignSysPersonId` o ID lead Marketo), il record del lead viene deduplicato utilizzando l&#39;indirizzo e-mail. Nota: se si passa a false, in Marketo verranno creati duplicati.
 
 ## Richiesta
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
 | leadRecordList->leadRecord | Obbligatorio | Array di record lead da sincronizzare. I record lead devono specificare l&#39;ID lead, l&#39;indirizzo e-mail o ForeignSysPersonId |
-| dedupEnabled | facoltativo | Valore facoltativo con cui è possibile disattivare la funzione di deduplicazione. Trasmissione di un valore di `false` creerà duplicati in Marketo |
+| dedupEnabled | facoltativo | Valore facoltativo con cui è possibile disattivare la funzione di deduplicazione. Se si passa un valore di `false` verranno creati duplicati in Marketo |
 
 ## Richiedi XML
 

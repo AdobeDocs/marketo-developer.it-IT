@@ -1,14 +1,14 @@
 ---
 title: Elenchi statici
 feature: REST API, Static Lists
-description: "Eseguire operazioni CRUD su elenchi statici."
-source-git-commit: e8bb45a7b3bee71c3d0ab6117296a75c8959d72e
+description: Eseguire operazioni CRUD su elenchi statici.
+exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '741'
 ht-degree: 0%
 
 ---
-
 
 # Elenchi statici
 
@@ -20,11 +20,11 @@ Marketo offre un set di API REST per l’esecuzione di operazioni CRUD su elench
 
 ## Query
 
-La query degli elenchi statici segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET), e [sfoglia](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
+La query degli elenchi statici segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) e [sfoglia](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
 
 ### Per ID
 
-[Query per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) accetta un singolo elenco statico `id` come parametro di percorso e restituisce un singolo record di elenco statico.
+[La query per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) accetta un singolo elenco statico `id` come parametro di percorso e restituisce un singolo record di elenco statico.
 
 ```
 GET /rest/asset/v1/staticList/{id}.json
@@ -53,7 +53,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### Per nome
 
-[Query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prende un elenco statico `name` come parametro e restituisce un singolo record di elenco statico. Viene eseguita una corrispondenza esatta di stringa su tutti i nomi di elenco statici nell’istanza e restituisce un risultato per l’elenco statico che corrisponde a tale nome.
+[La query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) accetta un elenco statico `name` come parametro e restituisce un singolo record di elenco statico. Viene eseguita una corrispondenza esatta di stringa su tutti i nomi di elenco statici nell’istanza e restituisce un risultato per l’elenco statico che corrisponde a tale nome.
 
 ```
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### Sfogliare
 
-Gli elenchi statici possono anche essere [recuperato in batch](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). Il `folder` Il parametro può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON contenente ID e tipo. Come altri endpoint per il recupero di risorse in blocco, `offset` e `maxReturn` sono parametri facoltativi che possono essere utilizzati per il paging. Il `earliestUpdatedAt` e `latestUpdatedAt` I parametri di consentono di impostare filigrane di data e ora basse e alte per restituire gli elenchi statici creati o aggiornati all’interno dell’intervallo specificato. I valori Datetime devono essere stringhe ISO-8601 valide e non devono includere millisecondi
+Gli elenchi statici possono anche essere [recuperati in batch](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). Il parametro `folder` può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON contenente ID e tipo. Come altri endpoint per il recupero di risorse in blocco, `offset` e `maxReturn` sono parametri facoltativi che possono essere utilizzati per il paging. I parametri `earliestUpdatedAt` e `latestUpdatedAt` consentono di impostare filigrane di data/ora basse e alte per la restituzione di elenchi statici creati o aggiornati all&#39;interno dell&#39;intervallo specificato. I valori Datetime devono essere stringhe ISO-8601 valide e non devono includere millisecondi
 
 ```
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Crea e aggiorna
 
-[Creazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) viene eseguito con application/x-www-form-urlencoded POST con due parametri richiesti. Il `folder` Il parametro viene utilizzato per specificare la cartella principale in cui verrà creato l’elenco statico e viene formattato come oggetto JSON contenente l’ID e il tipo. Il `name` Il parametro viene utilizzato per denominare l’elenco statico e deve essere univoco. Facoltativamente il `description` Il parametro può essere utilizzato per descrivere l’elenco statico.
+[Creazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri richiesti. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco statico e viene formattato come oggetto JSON contenente ID e tipo. Il parametro `name` viene utilizzato per denominare l&#39;elenco statico e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco statico.
 
 ```
 POST /rest/asset/v1/staticLists.json
@@ -168,7 +168,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-[Aggiornamenti a un elenco statico](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) sono effettuate tramite un endpoint separato con due parametri facoltativi. Il `description` Il parametro può essere utilizzato per aggiornare la descrizione dell’elenco statico. Il `name` Il parametro può essere utilizzato per aggiornare il nome dell’elenco statico e deve essere univoco.
+[Gli aggiornamenti a un elenco statico](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) vengono effettuati tramite un endpoint separato con due parametri facoltativi. Il parametro `description` può essere utilizzato per aggiornare la descrizione dell&#39;elenco statico. Il parametro `name` può essere utilizzato per aggiornare il nome dell&#39;elenco statico e deve essere univoco.
 
 ```
 POST /rest/asset/v1/staticList/{id}.json
@@ -206,7 +206,7 @@ description=This is a static list used for testing
 
 ### Elimina
 
-[Eliminazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) accetta un singolo elenco statico `id` come parametro di percorso. Non è possibile eliminare elenchi statici utilizzati da un’operazione di importazione o esportazione o da altre risorse.
+[L&#39;eliminazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) richiede un singolo elenco statico `id` come parametro di percorso. Non è possibile eliminare elenchi statici utilizzati da un’operazione di importazione o esportazione o da altre risorse.
 
 ```
 POST /rest/asset/v1/staticList/{id}/delete.json
@@ -231,9 +231,9 @@ Gli endpoint di appartenenza agli elenchi consentono di aggiungere, rimuovere ed
 
 ### Aggiungi all&#39;elenco
 
-Il [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) endpoint utilizzato per aggiungere uno o più membri a un elenco. L’endpoint richiede un `listId` parametro path e uno o più parametri di query id che contengono id lead (il massimo consentito è 300).
+L&#39;endpoint [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) è utilizzato per aggiungere uno o più membri a un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e uno o più parametri di query ID che contengono ID lead (il massimo consentito è 300).
 
-La risposta contiene un `result` array costituito da oggetti JSON con lo stato per ogni id lead specificato nella richiesta.
+La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
 ```
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
@@ -264,9 +264,9 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ### Rimuovi dall’elenco
 
-Il [Rimuovi dall’elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) endpoint utilizzato per rimuovere uno o più membri da un elenco. L’endpoint richiede un `listId` parametro path e uno o più `id` parametri di query che contengono id lead (il massimo consentito è 300).
+L&#39;endpoint [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) è utilizzato per rimuovere uno o più membri da un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e uno o più parametri di query `id` che contengono ID lead (il massimo consentito è 300).
 
-La risposta contiene un `result` array costituito da oggetti JSON con lo stato per ogni id lead specificato nella richiesta.
+La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
 ```
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
@@ -301,15 +301,15 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ### Elenco query
 
-Il [Ottieni lead per ID elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) endpoint utilizzato per recuperare i membri di un elenco. L’endpoint richiede un `listId` e consente di specificare diversi parametri di query facoltativi per specificare i criteri di filtro.
+L&#39;endpoint [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) viene utilizzato per recuperare i membri di un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e consente a diversi parametri di query facoltativi di specificare criteri di filtro.
 
-Il `batchSize` Il parametro viene utilizzato per specificare il numero di record di lead da restituire in una singola chiamata (il valore predefinito e massimo è 300).
+Il parametro `batchSize` viene utilizzato per specificare il numero di record di lead da restituire in una singola chiamata (il valore predefinito è 300).
 
-Il `nextPageToken` Il parametro viene utilizzato per impaginare attraverso set di risultati di grandi dimensioni. Questo parametro non viene passato nella prima chiamata, ma solo nelle chiamate successive per l’impaginazione.
+Il parametro `nextPageToken` viene utilizzato per impaginare tramite set di risultati di grandi dimensioni. Questo parametro non viene passato nella prima chiamata, ma solo nelle chiamate successive per l’impaginazione.
 
-Il `fields` Il parametro contiene un elenco separato da virgole di nomi di campo da restituire nella risposta. Se il parametro fields non è incluso in questa richiesta, vengono restituiti i seguenti campi predefiniti: email, updatedAt, createdAt, lastName, firstName e id.
+Il parametro `fields` contiene un elenco separato da virgole di nomi di campo da restituire nella risposta. Se il parametro fields non è incluso in questa richiesta, vengono restituiti i seguenti campi predefiniti: email, updatedAt, createdAt, lastName, firstName e id.
 
-La risposta contiene un `result` array costituito da oggetti JSON contenenti i campi lead specificati nella richiesta.
+La risposta contiene un array `result` composto da oggetti JSON contenenti i campi lead specificati nella richiesta.
 
 ```
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
@@ -351,9 +351,9 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 #### Query appartenenza a elenco per ID lead
 
-Il [Membro dell&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) l’endpoint viene utilizzato per verificare se uno o più lead sono membri di un elenco. L’endpoint richiede un `listId` parametro path e uno o più `id` parametri di query che contengono id lead (il massimo consentito è 300).
+L&#39;endpoint [Member of List](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) viene utilizzato per verificare se uno o più lead sono membri di un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e uno o più parametri di query `id` che contengono ID lead (il massimo consentito è 300).
 
-La risposta contiene un `result` array costituito da oggetti JSON con lo stato per ogni id lead specificato nella richiesta.
+La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
 ```
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999

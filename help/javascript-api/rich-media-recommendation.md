@@ -1,14 +1,14 @@
 ---
-title: "Consigli per i contenuti multimediali avanzati"
-description: "Consigli per i contenuti multimediali avanzati"
+title: Consigli per contenuti multimediali avanzati
+description: Consigli per contenuti multimediali avanzati
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 3%
 
 ---
-
 
 # Consigli per contenuti multimediali avanzati
 
@@ -28,7 +28,7 @@ Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com
 | Attributo | Facoltativo/Obbligatorio | Descrizione |
 |---|---|---|
 | classe | Obbligatorio | Specifica che l&#39;elemento HTML div è div consigli RTP. |
-| data-rtp-template-id | Obbligatorio | ID del modello. Questo determina l’allineamento del consiglio. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale che include solo titolo e descrizione. Lo script inserisce il modello corrispondente in questo `div.Permissible` valori: template1, template2, template3. |
+| data-rtp-template-id | Obbligatorio | ID del modello. Questo determina l’allineamento del consiglio. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale che include solo titolo e descrizione. Lo script inserisce il modello corrispondente in `div.Permissible` valori: template1, template2, template3. |
 
 ### Esempi
 
@@ -50,7 +50,7 @@ Per visualizzare i consigli in allineamento verticale solo con titolo e descrizi
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Guarda le schermate degli allineamenti dei modelli [qui](#example_of_rich_media_recommendation_template_1).
+Vedi le schermate degli allineamenti dei modelli [qui](#example_of_rich_media_recommendation_template_1).
 
 ## Popolare consiglio
 
@@ -149,7 +149,7 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.background.color | &quot;rcmd.cta.background.color&quot; : &quot;green&quot; | Cambia il colore di sfondo del pulsante. Questa proprietà supporta tutto il valore del colore CSS (nome colore, rgb, ...) |
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; : &quot;rgb(90, 84, 164)&quot; | Cambia il colore del carattere del pulsante. Questa proprietà supporta tutti i valori dei colori dei caratteri (rgb, hex, ...) |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot;: &quot;Push&quot; | Modifica il testo del pulsante. Il testo è lo stesso per tutti i pulsanti. |
-| categoria | &quot;categoria&quot; : [&quot;una categoria&quot;] | Modifica la categoria di consigli supportata dal modello. Il modello visualizza solo i consigli con una delle categorie impostate da questa configurazione. |
+| categoria | &quot;categoria&quot;: [&quot;una categoria&quot;] | Modifica la categoria di consigli supportata dal modello. Il modello visualizza solo i consigli con una delle categorie impostate da questa configurazione. |
 
 
 Nota: il supporto della configurazione può cambiare in base al modello.
@@ -232,16 +232,16 @@ rtp('get','rcmd', 'richmedia');
 
 #### Esempio di #1 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello1 **Descrizione**: contenuto orizzontale con immagine, titolo e descrizione e pulsante di invito all’azione.
+**Nome**: modello1 **Descrizione**: contenuto orizzontale con immagine, titolo e descrizione e pulsante di invito all&#39;azione.
 
 ![Modello Rich Media](assets/rich-media-template1.png)
 
 #### Esempio di #2 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello2 **Descrizione**: contenuto verticale che include immagine, titolo e descrizione e pulsante di invito all’azione.
+**Nome**: modello2 **Descrizione**: contenuto verticale con immagine, titolo e descrizione e pulsante di invito all&#39;azione.
 
 ![Modello Rich Media](assets/rich-media-template2.png)
 
 #### Esempio di #3 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello3 **Descrizione**: contenuto verticale che include solo titolo e descrizione. Al passaggio del mouse, l’intestazione cambia colore e viene collegata all’URL del contenuto. La descrizione contiene anche collegamenti al contenuto senza cambiamento di colore. ![Modello Rich Media](assets/rich-media-template3.png)
+**Nome**: modello3 **Descrizione**: contenuto verticale contenente solo titolo e descrizione. Al passaggio del mouse, l’intestazione cambia colore e viene collegata all’URL del contenuto. La descrizione contiene anche collegamenti al contenuto senza cambiamento di colore. ![Modello Rich Media](assets/rich-media-template3.png)

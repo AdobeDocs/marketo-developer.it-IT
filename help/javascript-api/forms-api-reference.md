@@ -1,18 +1,18 @@
 ---
-title: "Riferimento API di Forms"
-description: "Riferimento API di Forms"
+title: Riferimento API di Forms
+description: Riferimento API di Forms
 feature: Forms, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 1%
 
 ---
 
-
 # Riferimento API di Forms
 
-Esistono due oggetti principali con cui interagirai utilizzando l’API di Forms 2.0. Il `MktoForms2` oggetto e `Form` oggetto. Il `MktoForms2` L&#39;oggetto è lo spazio dei nomi di primo livello pubblicamente visibile per la funzionalità di Forms2 e contiene funzioni per la creazione, il caricamento e il recupero di oggetti Form.
+Esistono due oggetti principali con cui interagirai utilizzando l’API di Forms 2.0. Oggetto `MktoForms2` e oggetto `Form`. L&#39;oggetto `MktoForms2` è lo spazio dei nomi di primo livello pubblicamente visibile per la funzionalità di Forms2 e contiene funzioni per la creazione, il caricamento e il recupero di oggetti Form.
 
 ## Metodi MktoForms2
 
@@ -178,7 +178,7 @@ Esistono due oggetti principali con cui interagirai utilizzando l’API di Forms
     <tr valign="top">
       <td>.onSuccess(callback)</td>
       <td>Aggiunge un callback che verrà chiamato quando il modulo verrà inviato correttamente ma prima che il lead venga inoltrato alla pagina di follow-up. Può essere utilizzato per impedire che il lead venga inoltrato alla pagina di follow-up dopo l’invio corretto.</td>
-      <td>callback: funzione che verrà chiamata quando il modulo verrà inviato correttamente. A questo callback verranno passati due argomenti. Un oggetto JS contenente i valori inviati e un URL String della pagina di follow-up a cui l’utente verrà inoltrato, oppure una stringa nulla o vuota se non è presente una pagina di follow-up configurata. Comportamento speciale: se questo callback restituisce "false" (misurato con ===), il visitatore NON verrà inoltrato alla pagina di follow-up e la pagina NON verrà ricaricata. Questo consente all’implementatore di eseguire elaborazioni aggiuntive all’URL di follow-up o di intervenire sulla pagina utilizzando JavaScript invece di uscire dalla pagina.</td>
+      <td>callback: funzione che verrà chiamata quando il modulo verrà inviato correttamente. A questo callback verranno passati due argomenti. Un oggetto JS contenente i valori inviati e un URL String della pagina di follow-up a cui l’utente verrà inoltrato, oppure una stringa nulla o vuota se non è presente una pagina di follow-up configurata. Comportamento speciale: se questo callback restituisce "false" (misurato con ===), il visitatore NON verrà inoltrato alla pagina di follow-up e la pagina NON verrà ricaricata. Questo consente all’implementatore di eseguire un’elaborazione aggiuntiva all’URL di follow-up o di intervenire sulla pagina utilizzando JavaScript invece di uscire dalla pagina.</td>
       <td>Oggetto Form: lo stesso oggetto form in cui è stato chiamato il metodo, a scopo di concatenamento.</td>
     </tr>
     <tr valign="top">

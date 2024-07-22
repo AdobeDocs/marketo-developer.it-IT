@@ -1,14 +1,14 @@
 ---
-title: "syncLead"
+title: syncLead
 feature: SOAP
-description: "chiamate SOAP syncLead"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chiamate SOAP syncLead
+exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 1%
 
 ---
-
 
 # syncLean
 
@@ -21,7 +21,7 @@ Questa funzione inserisce o aggiorna un singolo record di lead. Quando si aggior
 
 Se viene trovata una corrispondenza esistente, la chiamata esegue un aggiornamento. In caso contrario, inserisce e crea un lead. I lead anonimi possono essere aggiornati utilizzando l’ID cookie di Marketo e saranno noti in seguito all’aggiornamento.
 
-Ad eccezione dell’e-mail, tutti questi identificatori sono trattati come chiavi univoche. Il Marketo ID ha la precedenza su tutte le altre chiavi. Se entrambi `foreignSysPersonId` e Marketo ID sono presenti nel record principale, quindi Marketo ID ha la precedenza e il `foreignSysPersonId` verrà aggiornato per tale lead. Se l&#39;unico `foreignSysPersonId` viene fornito, quindi viene utilizzato come identificatore univoco. Se entrambi `foreignSysPersonId` e-mail sono presenti, ma l’ID Marketo non è presente, il `foreignSysPersonId` ha la precedenza e l’E-mail verrà aggiornata per tale lead.
+Ad eccezione dell’e-mail, tutti questi identificatori sono trattati come chiavi univoche. Il Marketo ID ha la precedenza su tutte le altre chiavi. Se nel record lead sono presenti sia `foreignSysPersonId` che l&#39;ID Marketo, l&#39;ID Marketo ha la precedenza e l&#39;ID `foreignSysPersonId` verrà aggiornato per tale lead. Se viene specificato solo `foreignSysPersonId`, verrà utilizzato come identificatore univoco. Se sono presenti sia `foreignSysPersonId` che l&#39;indirizzo e-mail ma l&#39;ID Marketo non è presente, `foreignSysPersonId` ha la precedenza e l&#39;indirizzo e-mail verrà aggiornato per quel lead.
 
 Facoltativamente, è possibile specificare un’intestazione di contesto per denominare l’area di lavoro di destinazione.
 
@@ -42,14 +42,14 @@ Se le aree di lavoro di Marketo NON sono abilitate, l’area di lavoro di destin
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
-| leadRecord->Id | Obbligatorio - Solo quando si invia un messaggio e-mail o `foreignSysPersonId` non è presente | ID Marketo del record del lead |
-| leadRecord->E-mail | Obbligatorio - Solo quando l’ID o `foreignSysPersonId` non è presente | Indirizzo e-mail associato al record del lead |
+| leadRecord->Id | Obbligatorio - Solo quando l&#39;e-mail o `foreignSysPersonId` non è presente | ID Marketo del record del lead |
+| leadRecord->E-mail | Obbligatorio - Solo quando l&#39;ID o `foreignSysPersonId` non è presente | Indirizzo e-mail associato al record del lead |
 | leadRecord->`foreignSysPersonId` | Obbligatorio - Solo quando l’ID o l’e-mail non è presente | ID di sistema esterno associato al record del lead |
-| leadRecord->foreignSysType | Facoltativo - Obbligatorio solo quando `foreignSysPersonId` è presente | Il tipo di sistema esterno. Valori possibili: CUSTOM, SFDC, NETSUITE |
+| leadRecord->foreignSysType | Facoltativo - Obbligatorio solo se è presente `foreignSysPersonId` | Il tipo di sistema esterno. Valori possibili: CUSTOM, SFDC, NETSUITE |
 | leadRecord->leadAttributeList->attribute->attrName | Obbligatorio | Il nome dell’attributo del lead di cui desideri aggiornare il valore. |
 | leadRecord->leadAttributeList->attribute->attrValue | Obbligatorio | Il valore che si desidera impostare sull&#39;attributo lead specificato in attrName. |
 | returnLead | Obbligatorio | Se è true, restituisce il record lead aggiornato completo al momento dell&#39;aggiornamento. |
-| marketoCookie | Facoltativo | Il [Munchkin JavaScript](../javascript-api/lead-tracking.md) cookie |
+| marketoCookie | Facoltativo | Cookie [Munchkin javascript](../javascript-api/lead-tracking.md) |
 
 ## Richiedi XML
 

@@ -1,14 +1,14 @@
 ---
-title: "listOperation"
+title: listOperation
 feature: SOAP
-description: "chiamate SOAP listOperation"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: listOperation Chiamate SOAP
+exl-id: 8332cc22-c5a9-43d6-9e92-8d62265cfab2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '187'
 ht-degree: 4%
 
 ---
-
 
 # listOperation
 
@@ -28,7 +28,7 @@ I tipi di operazione includono:
 | listKey->keyType | Obbligatorio | Il tipo di elenco su cui desideri operare. Valori possibili: `MKTOLISTNAME`, `MKTOSALESUSERID`, `SFDCLEADOWNERID` |
 | listKey->keyValue | Obbligatorio | Nome dell’elenco su cui desideri operare. |
 | listMemberList->leadKey->keyType | Obbligatorio | `keyType` consente di specificare l&#39;ID in base al quale si desidera fare riferimento al lead. Valori possibili: `IDNUM` |
-| listMemberList->leadKey->keyValue | Obbligatorio | `keyValue` è il valore su cui si desidera utilizzare l&#39;elenco |
+| listMemberList->leadKey->keyValue | Obbligatorio | `keyValue` è il valore su cui desideri usare l&#39;elenco |
 | rigido | Facoltativo | La modalità Strict ha esito negativo per l’intera operazione se un qualsiasi sottoinsieme della chiamata ha esito negativo. La modalità non rigorosa completa tutte le operazioni possibili e restituisce errori per tutti gli errori. |
 
 ## Richiedi XML

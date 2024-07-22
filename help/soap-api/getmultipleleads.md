@@ -1,26 +1,26 @@
 ---
-title: "getMultipleLeads"
+title: getMultipleLeads
 feature: SOAP
-description: "chiamate SOAP getMultipleLeads"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Chiamate SOAP getMultipleLeads
+exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '384'
 ht-degree: 2%
 
 ---
 
-
 # getMultipleLeads
 
-Mi piace `getLead`, `getMultipleLeads` recupera i record dei lead da Marketo. Invece dei dati per un singolo lead, questa chiamata restituisce i dati per un batch di lead che corrispondono ai criteri passati nel parametro leadSelector. I criteri possono essere un intervallo di date, ad esempio l’ultima data aggiornata, una matrice di chiavi principali o un elenco statico.
+Come `getLead`, `getMultipleLeads` recupera i record lead da Marketo. Invece dei dati per un singolo lead, questa chiamata restituisce i dati per un batch di lead che corrispondono ai criteri passati nel parametro leadSelector. I criteri possono essere un intervallo di date, ad esempio l’ultima data aggiornata, una matrice di chiavi principali o un elenco statico.
 
 Nota: se si utilizza una matrice di chiavi lead, il limite massimo è 100 per batch; le chiavi aggiuntive verranno ignorate.
 
-Se è necessario solo un sottoinsieme dei campi del lead, il `includeAttributes` Il parametro deve essere utilizzato per specificare i campi desiderati.
+Se è necessario solo un sottoinsieme dei campi lead, è necessario utilizzare il parametro `includeAttributes` per specificare i campi desiderati.
 
-Ogni `getMultipleLeads` la chiamata di funzione restituisce fino a 1000 lead. Se devi recuperare più di 1000 lead, il risultato sarà un [posizione flusso](stream-position.md), che può essere utilizzato nelle chiamate successive per recuperare il batch successivo di 1000 lead. Il conteggio rimanente nel risultato indica esattamente quanti lead rimangono. Durante il recupero da un elenco statico, la condizione di terminazione è remainingCount == 0.
+Ogni chiamata di funzione `getMultipleLeads` restituisce fino a 1000 lead. Se devi recuperare più di 1000 lead, il risultato restituirà una [posizione flusso](stream-position.md), che può essere utilizzata nelle chiamate successive per recuperare il batch successivo di 1000 lead. Il conteggio rimanente nel risultato indica esattamente quanti lead rimangono. Durante il recupero da un elenco statico, la condizione di terminazione è remainingCount == 0.
 
-Un caso d’uso comune per questo endpoint è la ricerca di lead aggiornati in date specifiche. Il `LastUpdateAtSelector` consente di eseguire questa operazione.
+Un caso d’uso comune per questo endpoint è la ricerca di lead aggiornati in date specifiche. `LastUpdateAtSelector` consente di eseguire questa operazione.
 
 ## Richiesta
 
@@ -31,12 +31,12 @@ Un caso d’uso comune per questo endpoint è la ricerca di lead aggiornati in d
 | keyValues->stringItem | Obbligatorio | Elenco dei valori chiave. Ovvero &quot;lead@email.com&quot; |
 | LastUpdateAtSelector: leadSelector->olderUpdatedAt | Obbligatorio | La marca temporale per specificare i criteri &quot;da&quot;. In altre parole, restituisce tutti i lead aggiornati dall&#39;ora specificata. (Formato data/ora WSDL W3C) |
 | LastUpdateAtSelector: leadSelector->latestUpdatedAt | Facoltativo | Il timestamp per specificare i criteri &quot;fino a&quot;. In altre parole, restituire tutti i lead aggiornati fino all&#39;ora specificata. (Formato data/ora WSDL W3C) |
-| StaticListSelector: leadSelector->staticListName | Facoltativo quando `leadSelector->staticListId` è presente | Nome dell&#39;elenco statico |
-| StaticListSelector: leadSelector->staticListId | Facoltativo quando `leadSelector->staticListName` è presente | ID dell’elenco statico |
-| lastUpdatedAt | **Obsoleto** | Utilizzare `LastUpdateAtSelector` invece |
+| StaticListSelector: leadSelector->staticListName | Facoltativo se è presente `leadSelector->staticListId` | Nome dell&#39;elenco statico |
+| StaticListSelector: leadSelector->staticListId | Facoltativo se è presente `leadSelector->staticListName` | ID dell’elenco statico |
+| lastUpdatedAt | **Obsoleto** | Utilizza invece `LastUpdateAtSelector` |
 | includeAttributes | Facoltativo | Elenco di attributi che desideri recuperare. Limitare i campi lead restituiti può migliorare il tempo di risposta dell’API. |
-| batchSize | Facoltativo | Numero massimo di record da restituire. Limite di sistema a 100 o `batchSize`, se inferiore |
-| streamPosition | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte lead. Il `streamPosition` il valore viene restituito dal campo risposta chiamate precedente `newStreamPosition` |
+| batchSize | Facoltativo | Numero massimo di record da restituire. Il sistema è limitato a 100 o `batchSize`, a seconda di quale valore è minore |
+| streamPosition | Facoltativo | Utilizzato per impaginare attraverso un numero elevato di risposte lead. Il valore `streamPosition` è restituito dal campo di risposta delle chiamate precedenti `newStreamPosition` |
 
 ## Richiedi XML
 

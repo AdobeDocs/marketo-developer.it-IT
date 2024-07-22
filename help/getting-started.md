@@ -19,9 +19,9 @@ I seguenti oggetti non sono disponibili tramite API REST quando è abilitata la 
 
 ## Persona (lead)
 
-Le persone sono la base di qualsiasi piattaforma di automazione del marketing. In Marketo, tutti i record di persone non di vendita sono indicati come lead, indipendentemente dal fatto che siano designati come lead, potenziali clienti, sospetti, contatti e così via, dal punto di vista delle vendite. L’oggetto lead viene fornito con un set di [campi standard](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) ad esempio e-mail, nome e cognome. È possibile aggiungere campi aggiuntivi al tipo di oggetto lead per estendere i tipi di informazioni associate ai record nel sistema. Gli attributi personalizzati possono essere letti e scritti come i campi standard. Un elenco completo dei campi si trova all&#39;interno di Marketo **[!UICONTROL Admin]** > **[!UICONTROL Field Management]** menu. I lead vengono identificati in modo univoco in Marketo dal campo ID. Altre chiavi univoche devono essere applicate esternamente dal sistema.
+Le persone sono la base di qualsiasi piattaforma di automazione del marketing. In Marketo, tutti i record di persone non di vendita sono indicati come lead, indipendentemente dal fatto che siano designati come lead, potenziali clienti, sospetti, contatti e così via, dal punto di vista delle vendite. L&#39;oggetto lead viene fornito con un set di [campi standard](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) quali e-mail, nome e cognome. È possibile aggiungere campi aggiuntivi al tipo di oggetto lead per estendere i tipi di informazioni associate ai record nel sistema. Gli attributi personalizzati possono essere letti e scritti come i campi standard. Un elenco completo dei campi è disponibile nel menu Marketo **[!UICONTROL Admin]** > **[!UICONTROL Field Management]**. I lead vengono identificati in modo univoco in Marketo dal campo ID. Altre chiavi univoche devono essere applicate esternamente dal sistema.
 
-API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads), [SOAP](soap-api/leads.md), [JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
+API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads), [SOAP](soap-api/leads.md), [JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
 
 ## Attività
 
@@ -93,6 +93,6 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Cus
 
 ## Venditori
 
-I record persona di vendita e le relazioni lead possono essere gestiti in Marketo quando non è abilitata alcuna integrazione CRM nativa. Questi record contengono informazioni di base sulla persona di vendita, come Nome, E-mail e Qualifica, che possono essere utilizzate per filtrare e token in Marketo quando un lead è di proprietà di uno di essi. La relazione con un venditore viene gestita a livello di lead tramite il campo &quot;externalSalesPersonId&quot;, che deve essere aggiornato tramite [Sincronizza lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) API.
+I record persona di vendita e le relazioni lead possono essere gestiti in Marketo quando non è abilitata alcuna integrazione CRM nativa. Questi record contengono informazioni di base sulla persona di vendita, come Nome, E-mail e Qualifica, che possono essere utilizzate per filtrare e token in Marketo quando un lead è di proprietà di uno di essi. La relazione con un venditore viene gestita a livello di lead tramite il campo &quot;externalSalesPersonId&quot;, che deve essere aggiornato tramite l&#39;API [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)

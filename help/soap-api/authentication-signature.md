@@ -1,14 +1,14 @@
 ---
-title: "Firma di autenticazione"
+title: Firma di autenticazione
 feature: SOAP
-description: "Protezione API con firme di autenticazione"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Sicurezza API con firme di autenticazione
+exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 2%
 
 ---
-
 
 # Firma di autenticazione
 
@@ -44,7 +44,7 @@ authHeader = "<ns1:AuthenticationHeader>" +
 |--- |--- |--- |
 | mktowsUserId | Obbligatorio | L’ID di accesso client di Marketo si trova nel pannello API SOAP dell’amministratore Marketo in Integrazione. |
 | requestSignature | Obbligatorio | Firma HMAC-SHA1 basata sulla chiave segreta condivisa, requestTimestamp e ID utente Marketo |
-| requestTimestamp | Obbligatorio | Timestamp della richiesta (formato data WSDL W3C, es. &quot;09/06/20131:04:54-08:00&quot;) |
+| requestTimestamp | Obbligatorio | Timestamp della richiesta (formato data WSDL W3C, es. &quot;2013-06-09T14:04:54-08:00&quot;) |
 | partnerId | Facoltativo | Chiave API partner tecnologia LaunchPoint. |
 
 ## Richiedi getLeadActivity XML

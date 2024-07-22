@@ -1,14 +1,14 @@
 ---
-title: "Estrazione lead in blocco"
+title: Estrazione lead in blocco
 feature: REST API
-description: "Estrazione batch dei dati del lead."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Estrazione batch dei dati del lead.
+exl-id: 42796e89-5468-463e-9b67-cce7e798677b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1173'
 ht-degree: 2%
 
 ---
-
 
 # Estrazione lead in blocco
 
@@ -22,12 +22,12 @@ Le API Bulk Lead Extract richiedono che l’utente API proprietario abbia un ruo
 
 ## Filtri
 
-I lead supportano varie opzioni di filtro. Alcuni filtri, tra cui `updatedAt`, `smartListName`, e `smartListId` richiedono componenti di infrastruttura aggiuntivi che non sono ancora stati implementati in tutti gli abbonamenti. È possibile specificare un solo tipo di filtro per processo di esportazione.
+I lead supportano varie opzioni di filtro. Alcuni filtri, tra cui `updatedAt`, `smartListName` e `smartListId`, richiedono componenti di infrastruttura aggiuntivi non ancora implementati in tutte le sottoscrizioni. È possibile specificare un solo tipo di filtro per processo di esportazione.
 
 | Tipo di filtro | Tipo di dati | Note |
 |---|---|---|
-| createdAt | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana elevata. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. |
-| updateAt* | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana elevata. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. Nota: questo filtro non filtra il campo visibile &quot;updatedAt&quot; che riflette solo gli aggiornamenti ai campi standard. Filtra in base a quando è stato effettuato l’aggiornamento più recente del campo a un record leadJobs con questo tipo di filtro restituisce tutti i record accessibili più di recente aggiornati all’interno dell’intervallo di date. |
+| createdAt | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. |
+| updateAt* | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. Nota: questo filtro non filtra il campo visibile &quot;updatedAt&quot; che riflette solo gli aggiornamenti ai campi standard. Filtra in base a quando è stato effettuato l’aggiornamento più recente del campo a un record leadJobs con questo tipo di filtro restituisce tutti i record accessibili più di recente aggiornati all’interno dell’intervallo di date. |
 | staticListName | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | staticListId | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | smartListName* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recuperare i nomi degli elenchi smart utilizzando l&#39;endpoint Get Smart Lists. |
@@ -42,14 +42,14 @@ L’endpoint del processo Crea lead di esportazione offre diverse opzioni di for
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
 |---|---|---|---|
-| campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. Ogni stringa deve essere il nome REST API di un campo lead di Marketo. I campi elencati sono inclusi nel file esportato. L’intestazione di colonna per ciascun campo corrisponderà al nome API REST di ciascun campo, a meno che non venga sostituita da columnHeader. Nota: quando [!DNL Adobe Experience Cloud Audience Sharing] è abilitata, si verifica un processo di sincronizzazione dei cookie che associa [!DNL Adobe Experience Cloud] ID (ECID) con lead di Marketo. Puoi specificare il campo &quot;ecid&quot; per includere gli ECID nel file di esportazione. |
+| campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. Ogni stringa deve essere il nome REST API di un campo lead di Marketo. I campi elencati sono inclusi nel file esportato. L’intestazione di colonna per ciascun campo corrisponderà al nome API REST di ciascun campo, a meno che non venga sostituita da columnHeader. Nota: quando la funzionalità [!DNL Adobe Experience Cloud Audience Sharing] è abilitata, si verifica un processo di sincronizzazione dei cookie che associa l&#39;ID [!DNL Adobe Experience Cloud] (ECID) ai lead di Marketo. Puoi specificare il campo &quot;ecid&quot; per includere gli ECID nel file di esportazione. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Questo è il nome API del campo che può essere recuperato chiamando Descrivi lead. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
 
 
 ## Creazione di un processo
 
-I parametri per il processo vengono definiti prima di avviare l’esportazione utilizzando [Crea processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST) endpoint. È necessario definire `fields` necessari per l&#39;esportazione, il tipo di parametri del `filter`, il `format` del file e gli eventuali nomi delle intestazioni di colonna.
+I parametri per il processo vengono definiti prima di avviare l&#39;esportazione utilizzando l&#39;endpoint [Crea processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). È necessario definire `fields` necessari per l&#39;esportazione, il tipo di parametri di `filter`, `format` del file e gli eventuali nomi di intestazione di colonna.
 
 ```
 POST /bulk/v1/leads/export/create.json
@@ -79,7 +79,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-Questa richiesta inizierà l’esportazione di un set di lead creati tra il 1° gennaio 2017 e il 31 gennaio 2017, inclusi i valori del `firstName`, `lastName`, `id`, e `email` campi.
+Questa richiesta inizierà l&#39;esportazione di un set di lead creati tra il 1° gennaio 2017 e il 31 gennaio 2017, inclusi i valori dei campi `firstName`, `lastName`, `id` e `email` corrispondenti.
 
 ```json
 {
@@ -97,7 +97,7 @@ Questa richiesta inizierà l’esportazione di un set di lead creati tra il 1° 
 }
 ```
 
-Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. A tale scopo, il [Accoda processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) l&#39;endpoint deve essere chiamato utilizzando exportId dalla risposta dello stato di creazione:
+Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. A tale scopo, l&#39;endpoint [Processo lead esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve essere chiamato utilizzando il valore exportId dalla risposta dello stato di creazione:
 
 ```
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -119,13 +119,13 @@ POST /bulk/v1/leads/export/{exportId}/enqueue.json
 }
 ```
 
-Questo risponde con un `status` di &quot;In coda&quot;, dopo di che verrà impostato su &quot;Elaborazione&quot; quando è disponibile uno slot di esportazione.
+Questo risponde con un `status` di &quot;In coda&quot; dopo il quale verrà impostato su &quot;Elaborazione&quot; quando è disponibile uno slot di esportazione.
 
 ## Stato processo di polling
 
-`Note:` Lo stato può essere recuperato solo per i processi creati dallo stesso utente API.
+È possibile recuperare lo stato `Note:` solo per i processi creati dallo stesso utente API.
 
-Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire un polling del relativo stato per determinarne l’avanzamento. Effettua il polling utilizzando [Ottieni stato processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) endpoint. Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Diamo un&#39;occhiata ai sondaggi.
+Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire un polling del relativo stato per determinarne l’avanzamento. Eseguire il polling utilizzando l&#39;endpoint [Ottieni stato processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Diamo un&#39;occhiata ai sondaggi.
 
 ```
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -160,7 +160,7 @@ Il campo di stato può rispondere con uno qualsiasi dei seguenti elementi:
 
 ## Recupero dei dati
 
-Per recuperare il file di un’esportazione lead completata, è sufficiente chiamare il [Ottieni file lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) endpoint con `exportId`.
+Per recuperare il file di un&#39;esportazione lead completata, è sufficiente chiamare l&#39;endpoint [Ottieni file lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) con `exportId`.
 
 ```
 GET /bulk/v1/leads/export/{exportId}/file.json
@@ -175,11 +175,11 @@ firstName,lastName,email,cookies
 Russell,Wilson,null,_mch-localhost-1536605780000-12105
 ```
 
-Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint del file supporta facoltativamente l’intervallo di intestazioni HTTP dei byte di tipo. Se l’intestazione non è impostata, viene restituito l’intero contenuto. Ulteriori informazioni sull’utilizzo dell’intestazione Range con Marketo [Estrai in blocco](bulk-extract.md).
+Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint del file supporta facoltativamente l’intervallo di intestazioni HTTP dei byte di tipo. Se l’intestazione non è impostata, viene restituito l’intero contenuto. Ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione Range con Marketo [Bulk Extract](bulk-extract.md).
 
 ## Annullamento di un processo
 
-Se un processo non è stato configurato correttamente o diventa superfluo, può essere facilmente annullato utilizzando [Annulla processo di esportazione lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST) endpoint:
+Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
 
 ```
 POST /bulk/v1/leads/export/{exportId}/cancel.json

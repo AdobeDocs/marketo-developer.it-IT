@@ -1,14 +1,14 @@
 ---
-title: "Account denominati"
+title: Account denominati
 feature: REST API
-description: "Manipolare account denominati tramite l’API."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Manipolare account denominati tramite l’API.
+exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '679'
 ht-degree: 0%
 
 ---
-
 
 # Account denominati
 
@@ -20,7 +20,7 @@ Attualmente, le uniche funzioni relative ad ABM disponibili tramite le API di Ma
 
 ## Descrivere
 
-La descrizione degli account denominati restituisce i metadati relativi all’utilizzo degli account denominati tramite le API di Marketo, incluso un elenco di campi ricercabili validi durante la query e un elenco di tutti i campi disponibili per l’utilizzo API. Il `idField` di un account denominato è sempre `marketoGUID`e l’unico disponibile `dedupeField`, e la chiave per la creazione è il `name` dell&#39;oggetto.
+La descrizione degli account denominati restituisce i metadati relativi all’utilizzo degli account denominati tramite le API di Marketo, incluso un elenco di campi ricercabili validi durante la query e un elenco di tutti i campi disponibili per l’utilizzo API. Il `idField` di un account denominato è sempre `marketoGUID` e l&#39;unico `dedupeField` disponibile e chiave per la creazione è il campo `name` dell&#39;oggetto.
 
 ```
 GET /rest/v1/namedaccounts/describe.json
@@ -135,7 +135,7 @@ GET /rest/v1/namedaccounts/describe.json
 
 ### Query
 
-La query per gli account denominati si basa sull&#39;utilizzo di un filterType e di un set di un massimo di 300 filterValues separati da virgola. `filterType` può essere un singolo campo restituito nel `searchableFields` membro del risultato descritto per gli account denominati, mentre filterValues può essere qualsiasi input valido per il tipo di dati del campo. Per restituire un set specifico di campi da, è necessario trasmettere un parametro fields, dove il valore è un elenco separato da virgole di campi da restituire nella risposta. Come altre opzioni di query, il numero massimo di record per una singola pagina di query è 300 e devono essere richiesti record aggiuntivi nel set con l’utilizzo del nextPageToken restituito dalla chiamata.
+La query per gli account denominati si basa sull&#39;utilizzo di un filterType e di un set di un massimo di 300 filterValues separati da virgola. `filterType` può essere un singolo campo restituito nel membro `searchableFields` del risultato descritto per gli account denominati, mentre filterValues può essere un qualsiasi input valido per il tipo di dati del campo. Per restituire un set specifico di campi da, è necessario trasmettere un parametro fields, dove il valore è un elenco separato da virgole di campi da restituire nella risposta. Come altre opzioni di query, il numero massimo di record per una singola pagina di query è 300 e devono essere richiesti record aggiuntivi nel set con l’utilizzo del nextPageToken restituito dalla chiamata.
 
 ```
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
@@ -224,7 +224,7 @@ La query dei campi account denominati è semplice. È possibile eseguire una que
 
 #### Per nome
 
-Il [Ottieni campo account denominato per nome](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) l’endpoint recupera i metadati per un singolo campo nell’oggetto account denominato. Il parametro di percorso fieldApiName obbligatorio specifica il nome API del campo. La risposta è simile all’endpoint Describe Named Account, ma contiene metadati aggiuntivi, come l’attributo isCustom, che indica se il campo è un campo personalizzato.
+L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un singolo campo nell&#39;oggetto account denominato. Il parametro di percorso fieldApiName obbligatorio specifica il nome API del campo. La risposta è simile all’endpoint Describe Named Account, ma contiene metadati aggiuntivi, come l’attributo isCustom, che indica se il campo è un campo personalizzato.
 
 ```
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -252,7 +252,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Sfogliare
 
-Il [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) l’endpoint recupera i metadati per tutti i campi nell’oggetto account denominato. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query batchSize per ridurre questo numero. Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati. Il nextPageToken restituito da questa API deve sempre essere riutilizzato per la successiva iterazione di questa chiamata.
+L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query batchSize per ridurre questo numero. Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati. Il nextPageToken restituito da questa API deve sempre essere riutilizzato per la successiva iterazione di questa chiamata.
 
 ```
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5

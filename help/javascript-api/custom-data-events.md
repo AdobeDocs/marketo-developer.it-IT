@@ -1,20 +1,20 @@
 ---
-title: "Eventi di dati personalizzati"
-description: "API per eventi di dati personalizzati"
+title: Eventi di dati personalizzati
+description: API per eventi di dati personalizzati
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '223'
 ht-degree: 3%
 
 ---
 
-
 # Eventi di dati personalizzati
 
 Questo metodo invia eventi personalizzati per il tracciamento e la personalizzazione in tempo reale. Può essere utilizzato per inviare dati di terze parti o per attivare un evento personalizzato in base al comportamento del visitatore. Gli eventi di dati personalizzati vengono conteggiati una volta nella sessione di un visitatore.
 
-Devi diventare un cliente di personalizzazione web e disporre del [Tag RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito prima di utilizzare l’API Contesto utente.
+Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
 |---|---|---|---|

@@ -1,20 +1,20 @@
 ---
-title: "Ruoli opportunità"
+title: Ruoli opportunità
 feature: REST API
-description: "Gestione dei ruoli opportunità in Marketo"
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gestione dei ruoli opportunità in Marketo.
+exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
 
 ---
 
-
 # Ruoli opportunità
 
 [Riferimento endpoint ruoli opportunità](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-I lead sono collegati alle opportunità tramite il `opportunityRole` oggetto.
+I lead sono collegati alle opportunità tramite l&#39;oggetto `opportunityRole` intermedio.
 
 Le API del ruolo opportunità sono esposte solo per le sottoscrizioni per le quali non è abilitata la sincronizzazione CRM nativa.
 
@@ -106,7 +106,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Query
 
-Tieni presente che entrambi `dedupeFields` e `searchableFields` sono un po&#39; diversi dalle opportunità. `dedupeFields` fornisce effettivamente una chiave composta, in cui tutte e tre `externalOpportunityId`, `leadId`, e `role` sono obbligatori. Affinché la creazione dei record abbia esito positivo, è necessario che nell’istanza di destinazione siano presenti sia il collegamento di opportunità che quello di lead in base ai campi ID. Per `searchableFields`, `marketoGUID`, `leadId`, e `externalOpportunityId` sono tutti validi per le query e utilizzano un pattern identico a Opportunità, ma è disponibile un’opzione aggiuntiva di utilizzo della chiave composta per eseguire query, che richiede l’invio di un oggetto JSON tramite POST, con il parametro di query aggiuntivo `_method=GET`.
+Tieni presente che sia `dedupeFields` che `searchableFields` sono un po&#39; diversi dalle opportunità. `dedupeFields` fornisce in realtà una chiave composta, in cui sono necessari tutti e tre i valori `externalOpportunityId`, `leadId` e `role`. Affinché la creazione dei record abbia esito positivo, è necessario che nell’istanza di destinazione siano presenti sia il collegamento di opportunità che quello di lead in base ai campi ID. Per `searchableFields`, `marketoGUID`, `leadId` e `externalOpportunityId` sono tutti validi per le query e utilizzano un pattern identico a Opportunities, ma esiste un&#39;opzione aggiuntiva di utilizzo della chiave composta per eseguire query, che richiede l&#39;invio di un oggetto JSON tramite POST, con il parametro di query aggiuntivo `_method=GET`.
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET

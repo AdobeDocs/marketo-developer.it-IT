@@ -1,14 +1,14 @@
 ---
-title: "Elenchi avanzati"
+title: Elenchi smart
 feature: REST API
-description: "Creare e modificare elenchi avanzati."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Creare e modificare elenchi avanzati.
+exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '419'
 ht-degree: 0%
 
 ---
-
 
 # Elenchi smart
 
@@ -16,15 +16,15 @@ ht-degree: 0%
 
 Marketo offre un set di API REST per l’esecuzione di operazioni su elenchi avanzati. Queste API seguono il pattern di interfaccia standard per le API delle risorse, fornendo le opzioni Query, Delete e Clone.
 
-Nota: queste API sono supportate solo per gli elenchi avanzati creati dall’utente. Non possono essere utilizzati per [Elenchi smart predefiniti/di sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Nota: queste API sono supportate solo per gli elenchi avanzati creati dall’utente. Non possono essere utilizzati per [Elenchi smart incorporati/di sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Query
 
-La query degli elenchi avanzati segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET), e [sfoglia](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET).
+La query degli elenchi avanzati segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) e [sfoglia](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET).
 
 ### Per ID
 
-[Query per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET) accetta un singolo elenco avanzato `id` come parametro di percorso e restituisce un singolo record dell’elenco smart. Facoltativamente, è possibile trasmettere `includeRules` parametro booleano per includere le regole dell’elenco smart nella risposta.
+[La query per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET) accetta un singolo elenco smart `id` come parametro di percorso e restituisce un singolo record elenco smart. Facoltativamente, è possibile trasmettere il parametro booleano `includeRules` per includere le regole dell&#39;elenco smart nella risposta.
 
 ![Regole per elenchi smart](assets/smartlist-rules.png)
 
@@ -99,7 +99,7 @@ GET /rest/asset/v1/smartList/{id}.json?includeRules=true
 
 ### Per ID campagna avanzato
 
-[Query per ID campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET) richiede una singola campagna intelligente `id` come parametro di percorso e restituisce un singolo record dell’elenco smart. Facoltativamente, è possibile trasmettere `includeRules` parametro booleano per includere le regole dell’elenco smart nella risposta.
+[La query per ID campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET) considera una singola campagna avanzata `id` come parametro di percorso e restituisce un singolo record dell&#39;elenco smart. Facoltativamente, è possibile trasmettere il parametro booleano `includeRules` per includere le regole dell&#39;elenco smart nella risposta.
 
 ```
 GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
@@ -130,7 +130,7 @@ GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
 
 ### Per ID programma
 
-[Query per ID programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getSmartListByProgramIdUsingGET) accetta un singolo programma e-mail `id` come parametro di percorso e restituisce un singolo record dell’elenco smart. Facoltativamente, è possibile trasmettere `includeRules` parametro booleano per includere le regole dell’elenco smart nella risposta.
+[La query per ID programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getSmartListByProgramIdUsingGET) accetta un singolo programma di posta elettronica `id` come parametro di percorso e restituisce un singolo record dell&#39;elenco smart. Facoltativamente, è possibile trasmettere il parametro booleano `includeRules` per includere le regole dell&#39;elenco smart nella risposta.
 
 ```
 GET /rest/asset/v1/program/{programId}/smartList.json
@@ -161,7 +161,7 @@ GET /rest/asset/v1/program/{programId}/smartList.json
 
 ### Per nome
 
-[Query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) prende un elenco avanzato `name` come parametro e restituisce un singolo record dell’elenco smart.  Viene eseguita una corrispondenza esatta di stringa per tutti i nomi di elenchi smart nell’istanza e restituisce un risultato per l’elenco smart che corrisponde a tale nome.
+[La query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) accetta un elenco smart `name` come parametro e restituisce un singolo record elenco smart.  Viene eseguita una corrispondenza esatta di stringa per tutti i nomi di elenchi smart nell’istanza e restituisce un risultato per l’elenco smart che corrisponde a tale nome.
 
 ```
 GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
@@ -191,7 +191,7 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 
 ### Sfogliare
 
-Gli elenchi avanzati possono anche essere [recuperato in batch](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET). Il `folder` Il parametro viene utilizzato per specificare la cartella principale in cui viene eseguita la query. Viene formattato come oggetto JSON contenente `id` e `type`. Come altri endpoint per il recupero di risorse in blocco, `offset` e `maxReturn` sono parametri facoltativi che possono essere utilizzati per il paging. L&#39;opzione `earliestUpdatedAt` e `latestUpdatedAt` I parametri datetime possono essere utilizzati per filtrare i risultati per intervallo di date UpdatedAt.
+È inoltre possibile recuperare [elenchi avanzati in batch](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET). Il parametro `folder` viene utilizzato per specificare la cartella padre in cui viene eseguita la query. È formattato come oggetto JSON contenente `id` e `type`. Come altri endpoint per il recupero di risorse in blocco, `offset` e `maxReturn` sono parametri facoltativi che possono essere utilizzati per il paging. È possibile utilizzare i parametri datetime facoltativi `earliestUpdatedAt` e `latestUpdatedAt` per filtrare i risultati in base all&#39;intervallo di date UpdatedAt.
 
 ```
 GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
@@ -245,7 +245,7 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## Duplica
 
-[Clonazione di un elenco avanzato](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) viene eseguito con application/x-www-form-urlencoded POST. L&#39;elenco smart da clonare è specificato nella `id` parametro di percorso. Il `folder` Il parametro viene utilizzato per specificare la cartella principale in cui verrà creato l’elenco avanzato e viene formattato come oggetto JSON contenente l’ID e il tipo. La cartella principale deve essere una cartella Programmi o Smart List. Il `name` Il parametro viene utilizzato per denominare il nuovo elenco avanzato e deve essere univoco. Facoltativamente il `description` Il parametro può essere utilizzato per descrivere l’elenco avanzato.
+[Clonazione di un elenco smart](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) eseguita con un POST application/x-www-form-urlencoded. L&#39;elenco smart da clonare è specificato nel parametro di percorso `id`. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco smart e viene formattato come oggetto JSON contenente ID e tipo. La cartella principale deve essere una cartella Programmi o Smart List. Il parametro `name` viene utilizzato per denominare il nuovo elenco smart e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco avanzato.
 
 ```
 POST /rest/asset/v1/smartList/{id}/clone.json
@@ -283,7 +283,7 @@ folder={"id":31,"type":"Folder"}&name=2018 Leads Qualified
 
 ## Elimina
 
-[Eliminazione di un elenco avanzato](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST) accetta un singolo elenco avanzato `id` come parametro di percorso.
+[L&#39;eliminazione di un elenco smart](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST) richiede un singolo elenco smart `id` come parametro di percorso.
 
 ```
 POST /rest/asset/v1/smartList/{id}/delete.json

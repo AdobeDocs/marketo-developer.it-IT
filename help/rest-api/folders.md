@@ -1,14 +1,14 @@
 ---
-title: "Cartelle"
+title: Cartelle
 feature: REST API
-description: "Manipolazione delle cartelle con l’API di Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Manipolazione delle cartelle con l’API di Marketo.
+exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1008'
 ht-degree: 0%
 
 ---
-
 
 # Cartelle
 
@@ -18,7 +18,7 @@ Le cartelle sono la risorsa organizzativa principale in Marketo e ogni altro tip
 
 ## Query
 
-La query delle cartelle segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET), e [navigazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET).
+La query delle cartelle segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET).
 
 ### Per ID
 
@@ -70,7 +70,7 @@ Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (C
 
 ### Per nome
 
-[Query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) è consentito anche. L&#39;endpoint di query per nome presenta il nome come unico parametro obbligatorio. Name esegue una corrispondenza esatta di stringa con il campo name delle cartelle nell’istanza e restituisce i risultati per ogni cartella che corrisponde a tale nome. Inoltre, dispone dei parametri di query facoltativi &quot;type&quot;, che possono essere Folder o Program (Cartella o Programma), &quot;root&quot; (Radice) l’ID della cartella da cercare, oppure &quot;workspace&quot; il nome dell’area di lavoro in cui eseguire la ricerca. Se è impostato il parametro root, è necessario impostare anche il parametro type.
+[È consentita anche la query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET). L&#39;endpoint di query per nome presenta il nome come unico parametro obbligatorio. Name esegue una corrispondenza esatta di stringa con il campo name delle cartelle nell’istanza e restituisce i risultati per ogni cartella che corrisponde a tale nome. Inoltre, dispone dei parametri di query facoltativi &quot;type&quot;, che possono essere Folder o Program (Cartella o Programma), &quot;root&quot; (Radice) l’ID della cartella da cercare, oppure &quot;workspace&quot; il nome dell’area di lavoro in cui eseguire la ricerca. Se è impostato il parametro root, è necessario impostare anche il parametro type.
 
 ```
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -113,12 +113,12 @@ Durante la ricerca per nome, è importante notare che sia Marketing Activities c
 
 ### Sfogliare
 
-Le cartelle possono anche essere [recuperato in blocco](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET). Il parametro &quot;root&quot; può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON incorporato come valore per il parametro di query. La radice ha due membri:
+Le cartelle possono anche essere [recuperate in blocco](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET). Il parametro &quot;root&quot; può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON incorporato come valore per il parametro di query. La radice ha due membri:
 
 1. id: l’ID della cartella o del programma.
 1. tipo: cartella o programma, a seconda del tipo di cartella principale da browser.
 
-Se la cartella principale non è nota o l’obiettivo è quello di recuperare tutte le cartelle in una determinata area, è possibile specificarla come area &quot;Marketing Activities&quot;, &quot;Design Studio&quot; o &quot;Lead Database&quot;. Gli ID di ciascuno di questi possono essere recuperati tramite il [Ottieni cartella per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e specificando il nome dell’area desiderata.
+Se la cartella principale non è nota o l’obiettivo è quello di recuperare tutte le cartelle in una determinata area, è possibile specificarla come area &quot;Marketing Activities&quot;, &quot;Design Studio&quot; o &quot;Lead Database&quot;. È possibile recuperare gli ID per ciascuno di questi elementi tramite l&#39;API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e specificando il nome dell&#39;area desiderata.
 
 Come altri endpoint per il recupero di risorse in blocco, offset e maxReturn sono parametri facoltativi per il paging.   Altri parametri facoltativi sono:
 
@@ -205,13 +205,13 @@ GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 
 ## Struttura di risposta
 
-Gran parte della struttura di risposta delle cartelle è auto-esplicativa, ma alcuni campi meritano di essere annotati singolarmente. Il `folderId` I campi padre e sono oggetti JSON che includono l’id esplicito e il tipo della cartella stessa. Questo tipo viene utilizzato dall’API nelle query, nei parametri radice e padre per garantire una corretta distinzione tra i tipi di cartelle Folder e Program. `folderType` riflette l’utilizzo della cartella, che può essere &quot;Cartella di marketing&quot;, &quot;Programma&quot;, &quot;E-mail&quot;, &quot;Modello e-mail&quot;, Pagina di destinazione&quot;, Modello pagina di destinazione&quot;, &quot;Snippet&quot;, &quot;Immagine&quot;, &quot;Zona&quot; o &quot;File&quot;.  I tipi Cartella di marketing e Programma indicano che sono presenti nelle Attività di marketing e possono contenere più tipi di risorse. Gli altri tipi indicano che possono contenere solo quel tipo di risorsa, le sottocartelle e la versione modello di quel tipo, se applicabile. Il tipo Zone rappresenta le cartelle a livello principale presenti in Attività di marketing.
+Gran parte della struttura di risposta delle cartelle è auto-esplicativa, ma alcuni campi meritano di essere annotati singolarmente. `folderId` e i campi padre sono oggetti JSON che includono l&#39;ID esplicito e il tipo della cartella stessa. Questo tipo viene utilizzato dall’API nelle query, nei parametri radice e padre per garantire una corretta distinzione tra i tipi di cartelle Folder e Program. `folderType` riflette l&#39;utilizzo della cartella, che può essere &quot;Cartella marketing&quot;, &quot;Programma&quot;, &quot;E-mail&quot;, &quot;Modello e-mail&quot;, Pagina di destinazione, Modello pagina di destinazione&quot;, &quot;Snippet&quot;, &quot;Immagine&quot;, &quot;Zona&quot; o &quot;File&quot;.  I tipi Cartella di marketing e Programma indicano che sono presenti nelle Attività di marketing e possono contenere più tipi di risorse. Gli altri tipi indicano che possono contenere solo quel tipo di risorsa, le sottocartelle e la versione modello di quel tipo, se applicabile. Il tipo Zone rappresenta le cartelle a livello principale presenti in Attività di marketing.
 
-Il percorso di una cartella mostra la relativa gerarchia nella struttura ad albero delle cartelle, simile a un percorso in stile Unix. La prima voce nel percorso sarà sempre Marketing Activities (Attività di marketing) o Design Studio. Se l’istanza di destinazione dispone di workspace, la seconda voce nel percorso sarà il nome del workspace proprietario. Il `url` mostra l’URL esplicito della risorsa nell’istanza designata. Questo non è un collegamento universale e per funzionare correttamente deve essere autenticato come utente. `isSystem` indica se la cartella è di sistema. Se questa opzione è impostata su true, la cartella stessa è di sola lettura, anche se le cartelle possono essere create come elementi secondari.
+Il percorso di una cartella mostra la relativa gerarchia nella struttura ad albero delle cartelle, simile a un percorso in stile Unix. La prima voce nel percorso sarà sempre Marketing Activities (Attività di marketing) o Design Studio. Se l’istanza di destinazione dispone di workspace, la seconda voce nel percorso sarà il nome del workspace proprietario. Il campo `url` mostra l&#39;URL esplicito della risorsa nell&#39;istanza designata. Questo non è un collegamento universale e per funzionare correttamente deve essere autenticato come utente. `isSystem` indica se la cartella è di sistema. Se questa opzione è impostata su true, la cartella stessa è di sola lettura, anche se le cartelle possono essere create come elementi secondari.
 
 ## Crea e aggiorna
 
-[Creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguito con un application/x-www-form-urlencoded POST che dispone di due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l’elemento principale per la creazione della cartella in, un oggetto JSON incorporato con due membri, id e tipo, Folder o Program, a seconda del tipo di cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
+[La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST che dispone di due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
 
 ```
 POST /rest/asset/v1/folders.json
@@ -258,7 +258,7 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 }
 ```
 
-Gli aggiornamenti alle cartelle vengono effettuati tramite un endpoint separato, oltre a descrizione, nome e `isArchive` sono parametri facoltativi da aggiornare. Se `isArchive` viene modificato da un aggiornamento, ciò determina l’archiviazione della cartella, se viene modificato in true, o l’annullamento dell’archiviazione, se viene modificato in false, nell’interfaccia utente di Marketo. I programmi non possono essere aggiornati con questa API.
+Gli aggiornamenti alle cartelle vengono effettuati tramite un endpoint separato e descrizione, nome e `isArchive` sono parametri facoltativi per l&#39;aggiornamento. Se `isArchive` viene modificato da un aggiornamento, la cartella verrà archiviata, se viene modificato in true, o non archiviata, se viene modificato in false, nell&#39;interfaccia utente di Marketo. I programmi non possono essere aggiornati con questa API.
 
 ```
 POST /rest/asset/v1/folder/{id}.json

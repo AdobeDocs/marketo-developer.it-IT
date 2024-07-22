@@ -1,14 +1,14 @@
 ---
-title: "Codici di errore"
+title: Codici errore
 feature: REST API
-description: "Descrizioni dei codici di errore di Marketo."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Descrizioni dei codici di errore di Marketo.
+exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '2272'
 ht-degree: 3%
 
 ---
-
 
 # Codici errore
 
@@ -22,7 +22,7 @@ Durante lo sviluppo per Marketo, è importante che le richieste e le risposte ve
 
 L’API REST di Marketo può restituire tre diversi tipi di errori in condizioni operative normali:
 
-* HTTP-Level: questi errori sono indicati da un simbolo `4xx` codice.
+* Livello HTTP: questi errori sono indicati da un codice `4xx`.
 * Response-Level: questi errori sono inclusi nell’array &quot;errors&quot; della risposta JSON.
 * Record-Level: questi errori sono inclusi nell’array &quot;result&quot; della risposta JSON e sono indicati su base record individuale con il campo &quot;status&quot; e l’array &quot;reason&quot;.
 
@@ -30,12 +30,12 @@ Per i tipi di errore a livello di risposta e di record, viene restituito il codi
 
 ### Errori a livello HTTP
 
-In circostanze operative normali, Marketo dovrebbe restituire solo due errori relativi al codice di stato HTTP, `413 Request Entity Too Large`, e `414 Request URI Too Long`. Entrambi possono essere recuperati recuperando l’errore, modificando la richiesta e riprovando, ma con le pratiche di codifica intelligente non dovresti mai incontrarli in modo selvaggio.
+In circostanze operative normali, Marketo dovrebbe restituire solo due errori del codice di stato HTTP, `413 Request Entity Too Large` e `414 Request URI Too Long`. Entrambi possono essere recuperati recuperando l’errore, modificando la richiesta e riprovando, ma con le pratiche di codifica intelligente non dovresti mai incontrarli in modo selvaggio.
 
 Marketo restituirà 413 se il payload della richiesta supera 1 MB, o 10 MB in caso di lead di importazione. Nella maggior parte degli scenari è improbabile che questi limiti vengano raggiunti, ma l’aggiunta di un controllo alle dimensioni della richiesta e lo spostamento di eventuali record, che causano il superamento del limite a una nuova richiesta, dovrebbe evitare qualsiasi circostanza che porti alla restituzione di questo errore da parte di qualsiasi endpoint.
 
-414 verrà restituito quando l’URI di una richiesta GET supera gli 8 KB. Per evitarlo, confrontalo con la lunghezza della stringa di query per vedere se supera questo limite. Se la richiesta viene modificata in un metodo POST, inserisci la stringa di query come corpo della richiesta con il parametro aggiuntivo `_method=GET`. In questo modo viene superata la limitazione sugli URI. È raro che questo limite venga raggiunto nella maggior parte dei casi, ma è piuttosto comune quando si recuperano grandi batch di record con valori di filtro singoli lunghi, ad esempio un GUID.
-Il [Identità](https://developer.adobe.com/marketo-apis/api/identity/) L&#39;endpoint può restituire un errore 401 Unauthorized. Ciò è in genere dovuto a un ID client non valido o a un segreto client non valido. Codici di errore a livello HTTP
+414 verrà restituito quando l’URI di una richiesta GET supera gli 8 KB. Per evitarlo, confrontalo con la lunghezza della stringa di query per vedere se supera questo limite. Se la richiesta viene modificata in un metodo POST, immettere la stringa di query come corpo della richiesta con il parametro aggiuntivo `_method=GET`. In questo modo viene superata la limitazione sugli URI. È raro che questo limite venga raggiunto nella maggior parte dei casi, ma è piuttosto comune quando si recuperano grandi batch di record con valori di filtro singoli lunghi, ad esempio un GUID.
+L&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/) può restituire un errore 401 Unauthorized. Ciò è in genere dovuto a un ID client non valido o a un segreto client non valido. Codici di errore a livello HTTP
 
 <table>
   <thead>
@@ -62,7 +62,7 @@ Il [Identità](https://developer.adobe.com/marketo-apis/api/identity/) L&#39;end
 
 #### Errori a livello di risposta
 
-Gli errori a livello di risposta sono presenti quando `success` Il parametro della risposta è impostato su false e sono strutturati come segue:
+Gli errori a livello di risposta sono presenti quando il parametro `success` della risposta è impostato su false e sono strutturati nel modo seguente:
 
 ```json
 {
@@ -77,7 +77,7 @@ Gli errori a livello di risposta sono presenti quando `success` Il parametro del
 }
 ```
 
-Ogni oggetto nell’array &quot;errors&quot; ha due membri, `code`, che è un numero intero tra 601 e 799 e un `message` fornendo il motivo semplice dell’errore. I codici 6xx indicano sempre che una richiesta non è riuscita completamente e non è stata eseguita. Un esempio è un 601, &quot;Token di accesso non valido&quot;, che è recuperabile autenticando nuovamente e passando il nuovo token di accesso con la richiesta. Gli errori 7xx indicano che la richiesta non è riuscita perché non sono stati restituiti dati o perché la richiesta non era parametrizzata correttamente, ad esempio includendo una data non valida o mancando un parametro obbligatorio.
+Ogni oggetto nell&#39;array &quot;errors&quot; ha due membri, `code`, che è un numero intero tra 601 e 799 e un `message` che fornisce il motivo plaintext dell&#39;errore. I codici 6xx indicano sempre che una richiesta non è riuscita completamente e non è stata eseguita. Un esempio è un 601, &quot;Token di accesso non valido&quot;, che è recuperabile autenticando nuovamente e passando il nuovo token di accesso con la richiesta. Gli errori 7xx indicano che la richiesta non è riuscita perché non sono stati restituiti dati o perché la richiesta non era parametrizzata correttamente, ad esempio includendo una data non valida o mancando un parametro obbligatorio.
 
 #### Codici di errore a livello di risposta
 
@@ -110,7 +110,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
     <tr>
       <td><a name="603"></a>603</td>
       <td>Accesso negato</td>
-      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbe dover essere assegnato al ruolo utente, oppure <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Inserisco nell'elenco Consentiti di per l’accesso API basato su IP</a> può essere abilitato.</td>
+      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbero dover essere assegnate al ruolo utente, oppure <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">il Inserisco nell'elenco Consentiti per l'accesso API basato su IP</a> potrebbe essere abilitato.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -155,7 +155,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
     <tr>
       <td><a name="612"></a>612</td>
       <td>Tipo di contenuto non valido</td>
-      <td>Se visualizzi questo errore, aggiungi alla richiesta un’intestazione di tipo di contenuto che specifica il formato JSON. Ad esempio, prova a utilizzare "content type: application/json". <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Vedi questa domanda StackOverflow</a> per ulteriori dettagli.</td>
+      <td>Se visualizzi questo errore, aggiungi alla richiesta un’intestazione di tipo di contenuto che specifica il formato JSON. Ad esempio, prova a utilizzare "content type: application/json". <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Per ulteriori dettagli, vedere la domanda StackOverflow</a>.</td>
     </tr>
     <tr>
       <td><a name="613"></a>613</td>
@@ -207,7 +207,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
       <td>La chiamata non può essere soddisfatta perché viola il requisito di creare o aggiornare una risorsa, ad esempio se si tenta di creare un messaggio e-mail senza un modello. È inoltre possibile ricevere questo errore quando si tenta di:
         <ul>
           <li>Recupera il contenuto per le pagine di destinazione che contengono contenuti social.</li>
-          <li>Clona un programma che contiene alcuni tipi di risorse (consulta <a href="programs.md#clone">Clone programma</a> per ulteriori informazioni).</li>
+          <li>Clona un programma che contiene alcuni tipi di risorse (vedi <a href="programs.md#clone">Clone programma</a> per ulteriori informazioni).</li>
           <li>Approva una risorsa senza bozza (cioè che è già stata approvata).</li>
         </ul></td>
     </tr>
@@ -353,7 +353,7 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
       <td><a name="1012"></a>1012</td>
       <td>Valore cookie '%s' non valido</td>
       <td>Può verificarsi quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associa lead</a> con un valore non valido per il parametro cookie.
-        Ciò si verifica anche quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Ottieni lead per tipo di filtro</a> with filterType=cookies and invalid valid value for filterValues parameter.</td>
+        Ciò si verifica anche quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> con filterType=cookies e un valore valido non valido per il parametro filterValues.</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -469,19 +469,20 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
     </tr>
     <tr>
       <td><a name="1076"></a>1076</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> La chiamata con il flag mergeInCRM è 4.</td>
+      <td>La chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> con il flag mergeInCRM è 4.</td>
       <td>Si sta creando un record duplicato. In alternativa, è consigliabile utilizzare un record esistente.
         Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> chiamata non riuscita a causa della lunghezza del campo SFDC</td>
+      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa della lunghezza del campo SFDC</td>
       <td>Una chiamata di Merge Leads con mergeInCRM impostato su true non è riuscita perché "SFDC Field" supera il limite di caratteri consentiti. Per correggerlo, riduci la lunghezza di "SFDC Field" o imposta mergeInCRM su false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> chiamata non riuscita a causa di un’entità eliminata, non un lead/contatto, oppure i criteri di filtro del campo non corrispondono.</td>
-      <td>Errore di unione, impossibile eseguire l’operazione di unione in CRM sincronizzato in modo nativo Questo è il messaggio di errore, che Marketo riceve durante l’unione in Salesforce.</td>
+      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa di un'entità eliminata, non un lead/contatto o perché i criteri di filtro del campo non corrispondono.</td>
+      <td>Errore di unione. Impossibile eseguire l'operazione di unione in CRM sincronizzato in modo nativo
+        Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
     </tr>
   </tbody>
 </table>

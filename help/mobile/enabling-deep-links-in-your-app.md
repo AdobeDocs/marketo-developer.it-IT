@@ -1,14 +1,14 @@
 ---
-title: "Abilitazione dei collegamenti profondi"
-feature: "Mobile Marketing"
-description: "Istruzioni per abilitare i collegamenti profondi"
-source-git-commit: cb000968c78e062b3c17be7d0faa6236c73e7358
+title: Abilitazione dei collegamenti profondi
+feature: Mobile Marketing
+description: Istruzioni per abilitare i collegamenti profondi
+exl-id: c3647416-d81d-4f15-b660-bcb3e54cb9bc
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '376'
 ht-degree: 0%
 
 ---
-
 
 # Abilitazione dei collegamenti profondi
 
@@ -22,18 +22,18 @@ Il processo funziona in questo modo:
 
 A tal fine è necessario definire una struttura URI personalizzata per l&#39;app, registrare lo schema nel manifesto dell&#39;app e quindi aggiungere il codice per elaborare gli eventi di collegamento profondo e indirizzarli alla posizione corretta nell&#39;app.
 
-Per iOS, consulta la documentazione di Apple su [Definizione di uno schema URL personalizzato per l’app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+Per iOS, consulta la documentazione di Apple su [Definizione di uno schema URL personalizzato per la tua app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-Per Android, consulta la documentazione di Google su [Abilitazione dei collegamenti profondi per il contenuto dell’app](https://developer.android.com/training/app-links/deep-linking).
+Per Android, consulta la documentazione di Google in [Abilitazione dei collegamenti profondi per il contenuto dell&#39;app](https://developer.android.com/training/app-links/deep-linking).
 
-Per le app PhoneGap, i collegamenti profondi non sono diretti come nelle app native per iOS o Android, ma esistono plug-in che consentono all&#39;app ibrida di rispondere agli schemi URL personalizzati dei collegamenti profondi e ai collegamenti universali/alle app sia su iOS che su Android. Considerare [questi plug-in](https://cordova.apache.org/plugins/?q=deeplink).
+Per le app PhoneGap, i collegamenti profondi non sono diretti come nelle app native di iOS o Android, ma esistono plug-in che consentono all&#39;app ibrida di rispondere agli schemi URL personalizzati dei collegamenti profondi e ai collegamenti universali/alle app sia su iOS che su Android. Considera [questi plug-in](https://cordova.apache.org/plugins/?q=deeplink).
 
 Dopo aver abilitato i collegamenti profondi nell&#39;app, condividi gli URI personalizzati con gli utenti di Marketo in modo che possano inserirli nell&#39;azione Tocca per i messaggi push.
 
-Marketo utilizza una struttura URI predefinita per la configurazione dei dispositivi di test. Consultare la sezione &quot;Dispositivi di prova&quot; del [Guida all’installazione](installation.md) per ulteriori informazioni.
+Marketo utilizza una struttura URI predefinita per la configurazione dei dispositivi di test. Per ulteriori informazioni, consultare la sezione &quot;Dispositivi di test&quot; della [Guida all&#39;installazione](installation.md).
 
 ## Tecniche consigliate per la definizione di una struttura URI
 
-Se il brand ha un sito mobile esistente, la best practice prevede di seguire la struttura URL anche per l’URI del collegamento profondo. Ad esempio, se `https://myappname.com/products/purple-shirt` è l’indirizzo del tuo sito web per il prodotto in questione, `myappname://products/purple-shirt` sarebbe una buona struttura URI per i collegamenti profondi da utilizzare nell’app.
+Se il brand ha un sito mobile esistente, la best practice prevede di seguire la struttura URL anche per l’URI del collegamento profondo. Ad esempio, se `https://myappname.com/products/purple-shirt` è l&#39;indirizzo del sito Web per il prodotto in questione, `myappname://products/purple-shirt` sarebbe una buona struttura di URI di collegamento profondo da utilizzare nell&#39;app.
 
-In genere, i tuoi schemi devono essere specifici per il tuo marchio. Sebbene attualmente non esistano normative che rendano unici i sistemi in tutto il mondo, uno dei modi per garantire che i tuoi schemi siano univoci consiste nell’annullare il nome di dominio (ad esempio, `org.companyname`).
+In genere, i tuoi schemi devono essere specifici per il tuo marchio. Sebbene attualmente non siano previste normative per rendere univoci gli schemi in tutto il mondo, uno dei modi per garantire che gli schemi siano univoci consiste nell&#39;invertire il nome di dominio (ad esempio, `org.companyname`).

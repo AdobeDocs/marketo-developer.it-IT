@@ -1,7 +1,7 @@
 ---
 title: '[!DNL Ionic]'
 feature: Mobile Marketing
-description: Utilizzo di [!DNL Ionic] con Marketo per dispositivi mobili
+description: Utilizzo di  [!DNL Ionic]  con Marketo per dispositivi mobili
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
@@ -12,19 +12,19 @@ ht-degree: 1%
 
 # Ionico
 
-Questo argomento descrive come integrare il plug-in Marketo Cordova. [!DNL Ionic] il condensatore non è attualmente supportato.
+Questo argomento descrive come integrare il plug-in Marketo Cordova. Il condensatore [!DNL Ionic] non è attualmente supportato.
 
 ## Prerequisiti
 
-1. [Aggiungere un’applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell’applicazione e l’ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
-1. Installa [[!DNL Ionic]](https://ionicframework.com/getting-started/) E [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. Installa [[!DNL Ionic]](https://ionicframework.com/getting-started/) e [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Istruzioni di installazione
 
-### Configura Marketo [!DNL Ionic] Plug-in
+### Configura plug-in di Marketo [!DNL Ionic]
 
-1. Se Cordova CLI è installato, passare alla [!DNL Ionic] ed eseguire il comando seguente per aggiungere il plug-in Marketo all&#39;applicazione:
+1. Se Cordova CLI è installato, passare alla directory dell&#39;applicazione [!DNL Ionic] ed eseguire il comando seguente per aggiungere il plug-in Marketo all&#39;applicazione:
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -48,7 +48,7 @@ Questo argomento descrive come integrare il plug-in Marketo Cordova. [!DNL Ionic
 
 ### Tracciare le notifiche push
 
-Incolla il seguente codice all&#39;interno del `application:didFinishLaunchingWithOptions:` funzione.
+Incollare il codice seguente nella funzione `application:didFinishLaunchingWithOptions:`.
 
 >[!BEGINTABS]
 
@@ -72,9 +72,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### Inizializza framework Marketo
 
-Per garantire che il framework Marketo sia avviato all&#39;avvio dell&#39;app, aggiungi il seguente codice nella `onDeviceReady` nel file JavaScript principale.
+Per garantire che il framework Marketo sia avviato all&#39;avvio dell&#39;app, aggiungi il seguente codice nella funzione `onDeviceReady` nel file JavaScript principale.
 
-Devi superare `ionicCordova` come tipo di framework per [!DNL Ionic] App Cordova.
+È necessario passare `ionicCordova` come tipo di framework per [!DNL Ionic] app Cordova.
 
 #### Sintassi
 
@@ -121,7 +121,7 @@ marketo.initializeMarketoPush(
 
 - Success Callback : funzione da eseguire se la notifica push di Marketo viene inizializzata correttamente.
 - Failure Callback : funzione da eseguire se la notifica push di Marketo non viene inizializzata.
-- GCM_PROJECT_ID : ID progetto GCM trovato in [Console per sviluppatori Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) dopo aver creato l’app.
+- GCM_PROJECT_ID : ID progetto GCM trovato in [Console sviluppatori Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) dopo la creazione dell&#39;app.
 
 Il token può anche essere annullato alla disconnessione.
 
@@ -177,7 +177,7 @@ marketo.associateLead(
 
 ## Azione report
 
-Puoi segnalare qualsiasi azione eseguita dall&#39;utente chiamando il `reportaction` funzione.
+È possibile segnalare qualsiasi azione eseguita dall&#39;utente chiamando la funzione `reportaction`.
 
 ### Sintassi
 

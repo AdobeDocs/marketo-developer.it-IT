@@ -1,14 +1,14 @@
 ---
-title: "Oggetti Marketo"
+title: Oggetti Marketo
 feature: SOAP
-description: "Panoramica sugli oggetti di Marketo"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Panoramica sugli oggetti di Marketo
+exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '249'
 ht-degree: 0%
 
 ---
-
 
 # Oggetti Marketo
 
@@ -31,7 +31,7 @@ Gli oggetti MO sono costituiti da:
 
 ### Chiavi Esterne
 
-Le chiavi esterne sono campi personalizzati definiti negli oggetti Marketo, ad esempio Lead o Opportunità. Il nome è il nome del campo e il valore è il valore del campo, generato in un sistema esterno. **Marketo non applica un vincolo di univocità a questi valori.** È responsabilità dell’utente API verificare che i valori siano univoci. Se si verifica un duplicato, Marketo utilizza l’oggetto aggiunto più di recente. È simile al comportamento del campo standard Indirizzo e-mail.
+Le chiavi esterne sono campi personalizzati definiti negli oggetti Marketo, ad esempio Lead o Opportunità. Il nome è il nome del campo e il valore è il valore del campo, generato in un sistema esterno. **Marketo non applica un vincolo univoco a questi valori.** È responsabilità dell&#39;utente API verificare che i valori siano univoci. Se si verifica un duplicato, Marketo utilizza l’oggetto aggiunto più di recente. È simile al comportamento del campo standard Indirizzo e-mail.
 
 ### API disponibili
 
