@@ -60,7 +60,8 @@ Per l&#39;oggetto MObject OpportunityPersonRole, è possibile fornire tutti i ca
 1. IsPrimary (facoltativo)
 1. Ruolo (facoltativo)
 
-|
+| Nome campo | Obbligatorio/facoltativo | Descrizione |
+| --- | --- | --- |
 | mObjAssociationList->mObjAssociation->mObjType | Facoltativo | Utilizzato per aggiornare oggetti MObject Opportunity/OpportunityPersonRole utilizzando l’ID o la chiave esterna di un oggetto associato. Gli oggetti associati possono essere uno dei seguenti: Società (per aggiornare l’oggetto MO dell’opportunità), Lead (per aggiornare l’oggetto MObject OpportunityPersonRole), Opportunità (per aggiornare l’oggetto MObject OpportunityPersonRole)|
 | mObjAssociationList->mObjAssociation->id | Facoltativo | ID dell’oggetto associato (lead/società/opportunità) |
 | mObjAssociationList->mObjAssociation->externalKey | Facoltativo | Attributo personalizzato dell&#39;oggetto associato |
