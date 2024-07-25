@@ -8,7 +8,7 @@ index: true
 source-git-commit: 85062243d57a3fc6d15251163e926495858edf2a
 workflow-type: tm+mt
 source-wordcount: '234'
-ht-degree: 7%
+ht-degree: 14%
 
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 7%
 # Sviluppatore [!DNL Marketo] {#marketo}
 
 - [Home](home.md)
-- [Guida introduttiva](getting-started.md)
+- [Guida introduttuva](getting-started.md)
 - API JavaScript {#javascriptapi}
    - [Configurazione](javascript-api/configuration.md)
    - [Eventi di dati personalizzati](javascript-api/custom-data-events.md)
@@ -30,9 +30,9 @@ ht-degree: 7%
    - [Reindirizzamenti](javascript-api/redirect.md)
    - [Recommendations Rich Media](javascript-api/rich-media-recommendation.md)
    - [Social](javascript-api/social.md)
-   - [Triggers](javascript-api/triggers.md)
+   - [Trigger](javascript-api/triggers.md)
    - [Web Personalization](javascript-api/web-personalization.md)
-- Cellulare {#mobile}
+- Mobile {#mobile}
    - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
@@ -41,7 +41,7 @@ ht-degree: 7%
    - [Messaggistica in-app](mobile/in-app-messages.md)
    - [Installazione](mobile/installation.md)
    - [[!DNL Ionic]](mobile/ionic.md)
-   - [Mobile](mobile/mobile.md)
+   - [Dispositivi mobili](mobile/mobile.md)
    - [PhoneGap](mobile/phonegap.md)
    - [Notifiche push](mobile/push-notifications.md)
    - [React Native](mobile/react-native.md)
@@ -49,7 +49,7 @@ ht-degree: 7%
 - REST{#rest}
    - [Panoramica API REST](rest-api/rest-api.md)
    - [Riferimento API REST](https://developer.adobe.com/marketo-apis/)
-   - Assets {#assets}
+   - Risorse {#assets}
       - [Risorse](rest-api/assets.md)
       - [Contenuto dinamico](rest-api/dynamic-content.md)
       - [E-mail](rest-api/emails.md)
@@ -103,7 +103,7 @@ ht-degree: 7%
    - [Token di paging](rest-api/paging-tokens.md)
    - [Prestazioni](rest-api/performance.md)
    - [Architetture di riferimento](rest-api/reference-architectures.md)
-   - [Codice di esempio](https://github.com/Marketo/REST-Sample-Code)
+   - [Codice campione](https://github.com/Marketo/REST-Sample-Code)
    - [Tag](rest-api/tags.md)
    - [Contesto utente](rest-api/user-context.md)
    - [Gestione utente](rest-api/user-management.md)
