@@ -2,7 +2,7 @@
 title: Acquisizione dei dati
 feature: REST API, Dynamic Content
 description: Utilizzare i dati con le API di Marketo.
-source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
+source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 10%
@@ -50,7 +50,7 @@ L’acquisizione dei dati utilizza le seguenti intestazioni HTTP personalizzate.
 ### Risposta
 
 | Chiave | Valore | Obbligatorio |
-| - | - |
+| - | - | - |
 | X-Request-Id | ID richiesta univoco. | Sì |
 
 ## Richieste
