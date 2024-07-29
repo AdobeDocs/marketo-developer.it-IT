@@ -3,10 +3,10 @@ title: syncMObjects
 feature: SOAP
 description: chiamate SOAP syncMObjects
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 04e6b38a7ee602c38a851f9b99101186e72a8518
 workflow-type: tm+mt
-source-wordcount: '421'
-ht-degree: 3%
+source-wordcount: '426'
+ht-degree: 4%
 
 ---
 
@@ -62,7 +62,7 @@ Per l&#39;oggetto MObject OpportunityPersonRole, è possibile fornire tutti i ca
 
 | Nome campo | Obbligatorio/facoltativo | Descrizione |
 | --- | --- | --- |
-| mObjAssociationList->mObjAssociation->mObjType | Facoltativo | Utilizzato per aggiornare oggetti MObject Opportunity/OpportunityPersonRole utilizzando l’ID o la chiave esterna di un oggetto associato. Gli oggetti associati possono essere uno dei seguenti: Società (per aggiornare l’oggetto MO dell’opportunità), Lead (per aggiornare l’oggetto MObject OpportunityPersonRole), Opportunità (per aggiornare l’oggetto MObject OpportunityPersonRole)|
+| mObjAssociationList->mObjAssociation->mObjType | Facoltativo | Utilizzato per aggiornare oggetti MObject Opportunity/OpportunityPersonRole utilizzando l’ID o la chiave esterna di un oggetto associato. Gli oggetti associati possono essere: Società (per aggiornare l’oggetto MO dell’opportunità), Lead (per aggiornare l’oggetto MO di OpportunityPersonRole), Opportunità (per aggiornare l’oggetto MO di OpportunityPersonRole) |
 | mObjAssociationList->mObjAssociation->id | Facoltativo | ID dell’oggetto associato (lead/società/opportunità) |
 | mObjAssociationList->mObjAssociation->externalKey | Facoltativo | Attributo personalizzato dell&#39;oggetto associato |
 
