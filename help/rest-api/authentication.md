@@ -3,9 +3,9 @@ title: Autenticazione
 feature: REST API
 description: Autenticazione degli utenti Marketo per l’utilizzo dell’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e0fc654efe4501f734ab5158ce0bfd3ed08896ce
 workflow-type: tm+mt
-source-wordcount: '531'
+source-wordcount: '579'
 ht-degree: 0%
 
 ---
@@ -61,6 +61,10 @@ Esistono due metodi per includere un token nelle chiamate, come intestazione HTT
 1. Parametro query
 
    `access_token=cdf01657-110d-4155-99a7-f986b2ff13a0:int`
+
+   >[!IMPORTANT]
+   >
+   >Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso in una versione successiva. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
 ## Suggerimenti e best practice
 
