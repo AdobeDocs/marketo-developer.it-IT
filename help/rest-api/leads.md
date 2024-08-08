@@ -3,10 +3,10 @@ title: Lead
 feature: REST API
 description: Dettagli sulle chiamate API dei lead
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 2c125161cf06be8ebb44ae8212f15fbbe5c1f6b7
+source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
 workflow-type: tm+mt
-source-wordcount: '3308'
-ht-degree: 1%
+source-wordcount: '3343'
+ht-degree: 2%
 
 ---
 
@@ -152,11 +152,19 @@ Sia il metodo Get Lead by Id che Get Leads by Filter Type accettano anche un par
 
 ## ADOBE ECID
 
-Quando la funzione Condivisione pubblico di Adobe Experience Cloud è abilitata, si verifica un processo di sincronizzazione dei cookie che associa Adobe Experience Cloud ID (ECID) ai lead di Marketo.  I metodi di recupero dei lead sopra menzionati possono essere utilizzati per recuperare i valori ECID associati.  A tale scopo, specifica &quot;ecid&quot; nel parametro fields. Ad esempio, &quot;&amp;fields=email,firstName,lastName,ecids&quot;.
+Quando la funzione Condivisione pubblico di Adobe Experience Cloud è abilitata, si verifica un processo di sincronizzazione dei cookie che associa Adobe Experience Cloud ID (ECID) ai lead di Marketo.  I metodi di recupero dei lead sopra menzionati possono essere utilizzati per recuperare i valori ECID associati.  Per farlo, specifica `ecids` nel parametro fields. Ad esempio, `&fields=email,firstName,lastName,ecids`.
 
 ## Crea e aggiorna
 
 Oltre a recuperare i dati dei lead, puoi creare, aggiornare ed eliminare i record dei lead tramite l’API. La creazione e l’aggiornamento dei lead condividono lo stesso endpoint con il tipo di operazione definito nella richiesta ed è possibile creare o aggiornare contemporaneamente fino a 300 record.
+
+>[!NOTE]
+>
+> L&#39;aggiornamento dei campi società tramite l&#39;endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) non è supportato. Utilizza invece l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST).
+
+>[!NOTE]
+>
+> Durante la creazione o l’aggiornamento del valore e-mail in un record Persona, nel campo dell’indirizzo e-mail sono supportati solo i caratteri ASCII.
 
 ### Richiesta
 
@@ -710,7 +718,7 @@ I nuovi lead vengono creati nella partizione primaria dell&#39;area di lavoro in
 POST /rest/v1/leads/submitForm.json
 ```
 
-### Intestazione
+### Header
 
 ```
 Content-Type: application/json
