@@ -3,9 +3,9 @@ title: Prestazioni
 feature: REST API
 description: Suggerimenti sulle prestazioni per l’utilizzo dell’API Marketo.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 4e64b8a801e443471f52090b7f008b11e628012d
 workflow-type: tm+mt
-source-wordcount: '117'
+source-wordcount: '122'
 ht-degree: 0%
 
 ---
@@ -16,9 +16,11 @@ Questa pagina contiene un elenco di argomenti relativi alle prestazioni che puoi
 
 ## Compressione HTTP
 
-L’API REST di Marketo supporta la compressione HTTP dei corpi di risposta utilizzando gli standard definiti dalla specifica HTTP 1.1.  L&#39;abilitazione della compressione è consigliata in quanto riduce l&#39;utilizzo della larghezza di banda e il tempo impiegato per recuperare i dati.
+L’API REST di Marketo supporta la compressione HTTP dei corpi di risposta utilizzando gli standard definiti dalla specifica HTTP 1.1. L&#39;abilitazione della compressione è consigliata in quanto riduce l&#39;utilizzo della larghezza di banda e il tempo impiegato per recuperare i dati.
 
-**Nota:**  I payload inferiori a 1024 byte non verranno compressi.
+>[!NOTE]
+>
+>I payload inferiori a 1024 byte non sono compressi e le API in blocco non supportano la compressione.
 
 Per abilitare la compressione, includi la seguente intestazione HTTP nella richiesta:
 
