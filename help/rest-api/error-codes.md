@@ -3,9 +3,9 @@ title: Codici errore
 feature: REST API
 description: Descrizioni dei codici di errore di Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
 workflow-type: tm+mt
-source-wordcount: '2272'
+source-wordcount: '2273'
 ht-degree: 3%
 
 ---
@@ -224,7 +224,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
     <tr>
       <td><a name="712"></a>712</td>
       <td>Operazione di unione a persona Account non valida</td>
-      <td>Chiamata di unione lead non riuscita a causa di un tentativo di unione di lead che sono account persona Salesforce.  Gli account persona Salesforce devono essere uniti in Salesforce.</td>
+      <td>Chiamata Unisci lead non riuscita a causa di un tentativo di unione di lead che sono account persona Salesforce.  Gli account persona Salesforce devono essere uniti in Salesforce.</td>
     </tr>
     <tr>
       <td><a name="713"></a>713</td>
@@ -352,8 +352,8 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>Valore cookie '%s' non valido</td>
-      <td>Può verificarsi quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associa lead</a> con un valore non valido per il parametro cookie.
-        Ciò si verifica anche quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> con filterType=cookies e un valore valido non valido per il parametro filterValues.</td>
+      <td>Può verificarsi quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associa lead</a> con un valore non valido per il parametro 'cookie'.
+        Ciò si verifica anche quando si chiamano <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> con "filterType=cookies" e un valore non valido per il parametro "filterValues".</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -475,8 +475,8 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa della lunghezza del campo SFDC</td>
-      <td>Una chiamata di Merge Leads con mergeInCRM impostato su true non è riuscita perché "SFDC Field" supera il limite di caratteri consentiti. Per correggerlo, riduci la lunghezza di "SFDC Field" o imposta mergeInCRM su false.</td>
+      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa della lunghezza del campo "SFDC"</td>
+      <td>Una chiamata di Merge Leads con mergeInCRM impostato su true non è riuscita perché "SFDC Field" ha superato il limite di caratteri consentiti. Per correggerlo, riduci la lunghezza di "SFDC Field" o imposta mergeInCRM su false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
