@@ -2,13 +2,13 @@
 title: Attività
 feature: REST API
 description: API per la gestione delle attività del Marketo Engage.
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
+source-git-commit: 6baf62bc8881470eca597899e3228c377fb597d0
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
 
 ---
-
 
 # Attività
 
@@ -133,7 +133,7 @@ In alcuni casi, questa API potrebbe rispondere con meno di 300 elementi attivit�
 
 All&#39;interno di ogni elemento dell&#39;array dei risultati, l&#39;attributo intero `id` viene sostituito dall&#39;attributo stringa `marketoGUID` come identificatore univoco. 
 
-## Modifiche al valore dei dati
+### Modifiche al valore dei dati
 
 Per le attività di modifica del valore dei dati, viene fornita una versione specializzata dell’API delle attività. L&#39;endpoint [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) restituisce solo le attività dei record Data Value Change in campi lead. L’interfaccia è la stessa dell’API Get Lead Activities, con due differenze:
 
@@ -188,7 +188,7 @@ Ogni attività nella risposta dispone di un array di campi, incluso un elenco di
 
 All&#39;interno di ogni elemento dell&#39;array dei risultati, l&#39;attributo intero `id` viene sostituito dall&#39;attributo stringa `marketoGUID` come identificatore univoco.
 
-## Lead eliminati
+### Lead eliminati
 
 Esiste anche un endpoint speciale [Ottieni lead eliminati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) per recuperare le attività eliminate da Marketo.
 
@@ -229,7 +229,7 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 
 All&#39;interno di ogni elemento dell&#39;array dei risultati, l&#39;attributo intero `id` viene sostituito dall&#39;attributo stringa `marketoGUID` come identificatore univoco.
 
-## Risultati pagina per pagina
+### Risultati pagina per pagina
 
 Per impostazione predefinita, gli endpoint menzionati in questa sezione restituiscono 300 elementi attività alla volta.  Se l&#39;attributo `moreResult` è true, sono disponibili altri risultati. Chiamare l&#39;endpoint fino a quando l&#39;attributo `moreResult` non restituisce false, il che significa che non sono disponibili altri risultati. I `nextPageToken` restituiti da questo endpoint devono essere sempre riutilizzati per la successiva iterazione di questa chiamata.
 
@@ -322,7 +322,7 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 }
 ```
 
-### Crea tipo
+## Crea tipo
 
 Ogni tipo di attività personalizzata richiede un nome visualizzato, un nome API, un nome trigger, un nome filtro e un attributo primario.
 
@@ -386,7 +386,7 @@ POST /rest/v1/activities/external/type.json
 }
 ```
 
-### Tipo di aggiornamento
+## Tipo di aggiornamento
 
 L’aggiornamento di un tipo è molto simile, tranne per il fatto che apiName è l’unico parametro obbligatorio come parametro del percorso.
 
@@ -448,7 +448,7 @@ I tipi di dati validi per gli attributi sono: string, boolean, integer, float, l
 
 Quando si modifica l&#39;attributo primario di un tipo di attività, tutti gli attributi primari esistenti devono essere abbassati di livello impostando prima `isPrimary` su false.
 
-## Crea attributi
+### Crea attributi
 
 La creazione di un attributo richiede un parametro di percorso `apiName` obbligatorio. Sono richiesti anche i parametri `name` e `dataType`.I parametri ` The description and` `isPrimary` sono facoltativi.
 
@@ -515,7 +515,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 }
 ```
 
-## Aggiorna attributi
+### Aggiorna attributi
 
 Quando si eseguono aggiornamenti agli attributi, `apiName` dell&#39;attributo è la chiave primaria. Il parametro `apiName` deve esistere affinché l&#39;aggiornamento venga completato correttamente, ovvero non è possibile modificare il parametro `apiName` utilizzando l&#39;aggiornamento.
 
@@ -582,7 +582,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 }
 ```
 
-## Elimina attributi
+### Elimina attributi
 
 L&#39;eliminazione di un attributo richiede un parametro di percorso `apiName` obbligatorio corrispondente al nome API dell&#39;attività personalizzata.  È inoltre necessario un parametro di attributo che sia un array di oggetti attributo.  Ogni oggetto deve contenere un parametro `apiName` corrispondente al nome API del tipo di attività personalizzato.
 
@@ -710,4 +710,4 @@ POST /rest/v1/activities/external.json
 Gli endpoint delle attività hanno un timeout di 30 secondi, a meno che non sia indicato di seguito.
 
 * Ottieni token di paging: 300s 
-* Aggiungi attività personalizzata: anni 90 
+* Aggiungi attività personalizzata: anni 90
