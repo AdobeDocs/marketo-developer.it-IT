@@ -3,9 +3,9 @@ title: Token di paging
 feature: REST API
 description: Visualizzare i dati dei token di paging.
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: a00583f367c2da36d9d1d6e0b05bfd4216573fbb
 workflow-type: tm+mt
-source-wordcount: '345'
+source-wordcount: '352'
 ht-degree: 0%
 
 ---
@@ -15,6 +15,8 @@ ht-degree: 0%
 Per esaminare i risultati o recuperare i dati aggiornati rispetto a un dato dato, Marketo fornisce token di paging.
 
 In alcuni casi è possibile che vengano restituite stringhe di token di paging lunghe. Questo potrebbe causare l’errore HTTP 414. Ulteriori informazioni su come gestire questi [errori](error-codes.md).
+
+Consulta la documentazione [Paging Token API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET).
 
 ## Tipi di token
 
