@@ -3,9 +3,9 @@ title: REST API
 feature: REST API
 description: Panoramica API REST
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: ade3216f04c822de14dc0bbcbc08bfa3a4b17cb3
 workflow-type: tm+mt
-source-wordcount: '626'
+source-wordcount: '706'
 ht-degree: 1%
 
 ---
@@ -17,16 +17,16 @@ Marketo espone un’API REST che consente l’esecuzione remota di molte delle f
 Queste API in genere rientrano in due categorie generali: [Lead Database](https://developer.adobe.com/marketo-apis/api/mapi/) e [Asset](https://developer.adobe.com/marketo-apis/api/asset/). Le API del database lead consentono il recupero e l’interazione con i record persona di Marketo e i tipi di oggetto associati, ad esempio Opportunità e Società. Le API Asset consentono l’interazione con materiale promozionale di marketing e record relativi al flusso di lavoro.
 
 - **Quota giornaliera:** agli abbonamenti vengono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno alle 00.00 CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
-- **Limite di frequenza:** accesso API per istanza limitato a 100 chiamate per 20 secondi.
+- **Limite di frequenza:** l&#39;accesso API per istanza è limitato a 100 chiamate per 20 secondi.
 - **Limite concorrenza:**  Massimo dieci chiamate API simultanee.
 
 La dimensione delle chiamate standard è limitata a una lunghezza URI di 8 KB e a una dimensione corpo di 1 MB, anche se il corpo può essere di 10 MB per le nostre API in blocco. Se si verifica un errore in con la chiamata, in genere l&#39;API restituisce il codice di stato 200, ma la risposta JSON conterrà un membro &quot;success&quot; con un valore di `false` e una matrice di errori nel membro &quot;errors&quot;. Ulteriori informazioni sugli errori [qui](error-codes.md).
 
-## Guida introduttiva
+## Guida introduttuva
 
 I passaggi seguenti richiedono i privilegi di amministratore nell’istanza Marketo.
 
-Per la prima chiamata a Marketo, recupererai un record di lead. Per iniziare a utilizzare Marketo, devi ottenere le credenziali API per effettuare chiamate autenticate all’istanza. Accedi all&#39;istanza e passa a **[!UICONTROL Admin]** -> **[!UICONTROL Users and Roles]**.
+Per la prima chiamata a Marketo, recupera un record di lead. Per iniziare a utilizzare Marketo, devi ottenere le credenziali API per effettuare chiamate autenticate all’istanza. Accedi all&#39;istanza e passa a **[!UICONTROL Admin]** -> **[!UICONTROL Users and Roles]**.
 
 ![Utenti e ruoli amministratori](assets/admin-users-and-roles.png)
 
@@ -66,10 +66,20 @@ Trova [!UICONTROL Endpoint] nella casella API REST e salva per il momento in una
 
 ![Endpoint REST](assets/admin-web-services-rest-endpoint-1.png)
 
-Apri una nuova scheda del browser e immetti quanto segue, utilizzando le informazioni appropriate per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET):
+Quando si effettuano chiamate ai metodi API REST, per garantire la riuscita della chiamata è necessario includere un token di accesso in ogni chiamata. Il token di accesso deve essere inviato come intestazione HTTP.
 
 ```
-<Your Endpoint URL>/rest/v1/leads.json?access_token=<Your Access Token>&filterType=email&filterValues=<Your Email Address>
+Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
+```
+
+>[!IMPORTANT]
+>
+>Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
+
+Apri una nuova scheda del browser e immetti quanto segue, utilizzando le informazioni appropriate per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET)
+
+```
+<Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>
 ```
 
 Se nel database non è presente un record di lead con l&#39;indirizzo di posta elettronica, sostituirlo con uno che si sa essere presente. Premi Invio nella barra URL e dovresti ricevere una risposta JSON simile alla seguente:
