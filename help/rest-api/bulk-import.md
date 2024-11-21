@@ -3,9 +3,9 @@ title: Importazione in blocco
 feature: REST API
 description: Importazione in batch dei dati personali.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '554'
+source-wordcount: '592'
 ht-degree: 1%
 
 ---
@@ -24,7 +24,11 @@ Gli endpoint API in blocco non hanno il prefisso &quot;/rest&quot;, come gli alt
 
 ## Autenticazione
 
-Le API per l’importazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo.  È necessario incorporare un token di accesso valido come parametro della stringa di query `access_token={_AccessToken_}` o come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+Le API per l’importazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo.  È necessario un token di accesso valido inviato come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
 ## Limiti
 

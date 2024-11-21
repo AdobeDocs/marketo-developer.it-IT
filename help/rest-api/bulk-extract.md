@@ -3,9 +3,9 @@ title: Estrai in blocco
 feature: REST API
 description: Operazioni batch per l'estrazione dei dati Marketo.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '1643'
+source-wordcount: '1683'
 ht-degree: 0%
 
 ---
@@ -25,7 +25,11 @@ L’estrazione in blocco viene eseguita creando un processo, definendo il set di
 
 ## Autenticazione
 
-Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo. È necessario incorporare un token di accesso valido come parametro della stringa di query `access_token={_AccessToken_}` o come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo. È necessario inviare un token di accesso valido come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
 ## Limiti
 
