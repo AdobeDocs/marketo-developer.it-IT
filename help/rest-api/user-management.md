@@ -3,9 +3,9 @@ title: Gestione utente
 feature: REST API
 description: Eseguire operazioni CRUD sui record utente.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+source-git-commit: 159c3fe29c26ea0fff718bf582a7e4c9a1740831
 workflow-type: tm+mt
-source-wordcount: '1185'
+source-wordcount: '1180'
 ht-degree: 0%
 
 ---
@@ -23,12 +23,12 @@ A differenza di altre API REST di Marketo, quando si utilizzano le API User Mana
    1. Autorizzazione &quot;Accedi agli utenti&quot; dal gruppo [Accesso amministratore](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
    1. &quot;Accedere all&#39;API User Management&quot; dal gruppo [Access API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
 - I corpi di risposta non contengono l’attributo booleano &quot;success&quot; che indica l’esito positivo o negativo di una chiamata. È invece necessario valutare il codice di stato della risposta HTTP. Se una chiamata ha esito positivo, viene restituito un codice di stato 200. Se una chiamata non riesce, viene restituito un codice di stato non di livello 200 e il corpo della risposta contiene l’array standard &quot;errors&quot; con codice di errore e messaggio di errore descrittivo.
-- Il formato delle stringhe datetime è &quot;yyyyMMdd&#39;T&#39;HH:mm:ss.SSS&#39;t&#39;+|-hhmm&quot;. Questo vale per i seguenti attributi: createdAt, updatedAt, expiresAt.
+- Il formato delle stringhe datetime è `yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`. Questo vale per i seguenti attributi: `createdAt`, `updatedAt`, `expiresAt`.
 - Come per gli altri endpoint, gli endpoint API per la gestione degli utenti non hanno il prefisso &quot;/rest&quot;.
 
 ## Query
 
-Il supporto delle query per la gestione degli utenti include la possibilità di recuperare tutti gli utenti, i ruoli e le aree di lavoro. Inoltre, è possibile recuperare un singolo record utente per ID utente o un record ruolo/spazio di parola per ID utente.
+Il supporto delle query per la gestione degli utenti include la possibilità di recuperare tutti gli utenti, i ruoli e le aree di lavoro. Inoltre, puoi recuperare un singolo record utente per ID utente o un record ruolo/area di lavoro per ID utente.
 
 ### Utente per ID
 
@@ -298,7 +298,7 @@ GET /userservice/management/v1/users/workspaces.json
 
 ## Invita utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta solo l&#39;invito di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per invitare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API per la gestione degli utenti Adobe](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta solo l&#39;invito di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per invitare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API di gestione utenti Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Invita utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST) a inviare un invito e-mail di benvenuto a Marketo a un nuovo utente. Il corpo dell’e-mail contiene il collegamento &quot;Accedi a Marketo&quot;, che consente all’utente di accedere a Marketo per la prima volta. Per accettare l’invito, il destinatario dell’e-mail fa clic sul collegamento &quot;Accedi a Marketo&quot;, crea la propria password e ottiene l’accesso a Marketo. Fino al completamento del processo di accettazione, l’invito è &quot;in sospeso&quot; e il record utente non può essere modificato. Un invito in sospeso scade sette giorni dopo l’invio. Ulteriori informazioni sulla gestione degli utenti sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
 
@@ -352,7 +352,7 @@ Il supporto per l’aggiornamento di utenti include la possibilità di aggiornar
 
 ### Aggiorna attributi utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;aggiornamento degli attributi solo di [utenti API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per aggiornare gli attributi per [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API di gestione utenti Adobe](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;aggiornamento degli attributi solo di [utenti API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per aggiornare gli attributi per [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece l&#39;[API di gestione utenti Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Aggiorna attributi utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/updateUserAttributeUsingPOST) accetta un singolo parametro di percorso `userid` e restituisce un singolo record utente. Il corpo della richiesta contiene uno o più attributi utente da aggiornare: `emailAddress`, `firstName`, `lastName`, `expiresAt`.
 
@@ -407,7 +407,7 @@ Content-Type: application/json
 
 #### Elimina utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;eliminazione solo di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per eliminare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece [Adobe User Management API](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;eliminazione solo di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per eliminare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API di gestione utenti Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Elimina utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteUserUsingPOST) accetta un singolo parametro di percorso `userid` ed elimina l&#39;utente corrispondente dall&#39;istanza. Questa è una cancellazione distruttiva e non può essere annullata. In caso di esito positivo, viene restituito il codice di stato 200, altrimenti viene restituito un messaggio di errore.
 
