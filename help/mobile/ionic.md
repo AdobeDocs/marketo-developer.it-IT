@@ -99,7 +99,7 @@ marketo.onStart(
 
 - Callback riuscito : funzione da eseguire se il framework Marketo viene inizializzato correttamente.
 - Callback errore : funzione da eseguire se il framework Marketo non è in grado di inizializzare.
-- ID MUNCHKIN : ID Munchkin ricevuto da Marketo al momento della registrazione.
+- MUNCHKIN ID : Munchkin ID ricevuto da Marketo al momento della registrazione.
 - CHIAVE SEGRETA : Chiave segreta ricevuta da Marketo al momento della registrazione.
 
 ### Inizializza notifica push Marketo

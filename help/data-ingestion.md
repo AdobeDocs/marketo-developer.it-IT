@@ -1,10 +1,10 @@
 ---
-title: "Acquisizione dei dati"
-description: "Panoramica dell’API di acquisizione dati"
+title: Acquisizione dei dati
+description: Panoramica dell’API di acquisizione dati
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '945'
-ht-degree: 9%
+ht-degree: 10%
 
 ---
 
@@ -61,7 +61,7 @@ La rappresentazione dei dati è inclusa nel corpo della richiesta come applicati
 
 Nome di dominio: `mkto-ingestion-api.adobe.io`
 
-Il percorso inizia con `/subscriptions/_MunchkinId_`, dove `_MunchkinId_` è specifico per l&#39;istanza di Marketo. Puoi trovare il tuo ID Munchkin nell&#39;interfaccia utente del Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
+Il percorso inizia con `/subscriptions/_MunchkinId_`, dove `_MunchkinId_` è specifico per l&#39;istanza di Marketo. Puoi trovare il tuo Munchkin ID nell&#39;interfaccia utente del Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
 
 URL di esempio per Persone:
 

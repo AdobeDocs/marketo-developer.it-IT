@@ -1,5 +1,5 @@
 ---
-title: Installazione estensione '[!DNL Adobe Launch]'
+title: Installazione dell'estensione [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Panoramica sull'installazione dell'estensione [!DNL Adobe Launch]
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
