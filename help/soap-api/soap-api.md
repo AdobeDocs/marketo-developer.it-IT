@@ -3,20 +3,16 @@ title: API SOAP
 feature: SOAP
 description: Panoramica di Marketo SOAP
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '230'
+source-wordcount: '207'
 ht-degree: 0%
 
 ---
 
 # API SOAP
 
-L’API SOAP non è più in fase di sviluppo attivo. Le chiamate continuano a funzionare, ma il nostro sviluppo si concentra su [REST](https://developer.adobe.com/marketo-apis/) in futuro.
-
-L’API SOAP di Marketo consente di creare, recuperare e rimuovere entità e dati memorizzati in Marketo. Puoi trovare [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) su GitHub. Sono inoltre disponibili [librerie client](https://github.com/Marketo/Community-Supported-Client-Libraries) per risparmiare tempo.
-
-Ultima versione API: 3_1
+L’API dell’SOAP è diventata obsoleta e non sarà più disponibile dopo il 31 ottobre 2025.  Tutti i nuovi sviluppi devono essere eseguiti con l&#39;API [REST](https://developer.adobe.com/marketo-apis/) di Marketo e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio.
 
 ## WSDL SOAP
 

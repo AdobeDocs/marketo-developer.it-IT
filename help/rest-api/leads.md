@@ -3,9 +3,9 @@ title: Lead
 feature: REST API
 description: Dettagli sulle chiamate API dei lead
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '3343'
+source-wordcount: '3338'
 ht-degree: 2%
 
 ---
@@ -18,10 +18,10 @@ L’API del lead di Marketo offre un’ampia serie di funzionalità per semplici
 
 ## Descrivere
 
-Una delle funzionalità chiave dell’API Leads è il metodo Describe. Utilizza Descrivi lead per recuperare un elenco completo dei campi disponibili per l’interazione tramite sia l’API REST che l’API SOAP, nonché i metadati per ciascuno di essi:
+Una delle funzionalità chiave dell’API Leads è il metodo Describe. Utilizza Descrivi lead per recuperare un elenco completo dei campi disponibili per l’interazione tramite l’API REST, nonché i metadati per ciascuno di essi:
 
 * Tipo di dati
-* Nomi API REST e SOAP
+* Nomi API REST
 * Lunghezza (se applicabile)
 * Sola lettura
 * Etichetta intuitiva
@@ -95,7 +95,7 @@ Per questo metodo, ci sarà sempre un singolo record nella prima posizione della
 
 Ottieni lead per tipo di filtro restituirà lo stesso tipo di record, ma può restituire fino a 300 per pagina. Richiede i parametri di query `filterType` e `filterValues`.
 
-`filterType` accetta qualsiasi campo personalizzato o la maggior parte dei campi comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per ottenere un elenco completo dei campi ricercabili consentiti in `filterType`. Durante la ricerca per campo personalizzato, sono supportati solo i seguenti tipi di dati: `string`, `email`, `integer`. È possibile ottenere i dettagli del campo (descrizione, tipo, ecc.) utilizzando il metodo Describe sopra indicato.
+`filterType` accetta qualsiasi campo personalizzato o la maggior parte dei campi comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per ottenere un elenco completo dei campi ricercabili consentiti in `filterType`. Durante la ricerca per campo personalizzato, sono supportati solo i seguenti tipi di dati: `string`, `email`, `integer`. È possibile ottenere i dettagli del campo (descrizione, tipo e così via) utilizzando il metodo Describe sopra indicato.
 
 `filterValues` accetta fino a 300 valori in formato separato da virgole. La chiamata cerca i record in cui il campo del lead corrisponde a uno dei `filterValues` inclusi. Se il numero di lead che corrispondono al filtro lead è maggiore di 1.000, viene restituito un errore: &quot;1003, Troppi risultati corrispondono al filtro&quot;.
 
@@ -708,7 +708,7 @@ Nel record di input è necessario specificare l&#39;oggetto `leadFormFields`. Qu
 
 L&#39;oggetto membro `visitorData` è facoltativo e contiene coppie nome/valore corrispondenti ai dati di visita della pagina, inclusi `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Può essere utilizzato per compilare campi di attività aggiuntivi a scopo di filtro e di attivazione.
 
-La stringa del membro del cookie è facoltativa e consente di associare un cookie Munchkin a un record persona in Marketo. Quando viene creato un nuovo lead, tutte le precedenti attività anonime vengono associate a quel lead, a meno che il valore del cookie non sia stato precedentemente associato a un altro record noto. Se il valore del cookie è stato associato in precedenza, vengono tracciate le nuove attività rispetto al record, ma le attività precedenti non verranno migrate dal record noto esistente. Per creare un nuovo lead senza cronologia attività, ometti semplicemente il membro cookie.
+La stringa del membro del cookie è facoltativa e consente di associare un cookie di Munchkin a un record persona in Marketo. Quando viene creato un nuovo lead, tutte le precedenti attività anonime vengono associate a quel lead, a meno che il valore del cookie non sia stato precedentemente associato a un altro record noto. Se il valore del cookie è stato associato in precedenza, vengono tracciate le nuove attività rispetto al record, ma le attività precedenti non verranno migrate dal record noto esistente. Per creare un nuovo lead senza cronologia attività, ometti semplicemente il membro cookie.
 
 I nuovi lead vengono creati nella partizione primaria dell&#39;area di lavoro in cui si trova il modulo.
 
@@ -789,11 +789,11 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 
 Il lead specificato nel parametro path è il lead vincente, quindi se ci sono campi in conflitto tra i record da unire, verrà preso il valore del vincitore, a meno che il campo nel record vincente sia vuoto e il campo corrispondente nel record perdente non lo sia. I lead specificati nel parametro `leadId` o `leadIds` sono i lead perdenti.
 
-Se disponi di una sottoscrizione abilitata per la sincronizzazione SFDC, puoi utilizzare anche il parametro `mergeInCRM` nella richiesta. Se è impostato su true, verrà eseguita anche l’unione corrispondente nel CRM. Se entrambi i lead sono in SFDC e uno è un lead CRM e l&#39;altro è un contatto CRM, il vincitore è il contatto CRM (indipendentemente dal lead specificato come vincitore). Se uno dei lead si trova in SFDC e l&#39;altro è solo Marketo, il vincitore è il lead SFDC (indipendentemente dal lead specificato come vincitore).
+Se si dispone di una sottoscrizione abilitata per la sincronizzazione con SFDC, è possibile utilizzare anche il parametro `mergeInCRM` nella richiesta. Se è impostato su true, verrà eseguita anche l’unione corrispondente nel CRM. Se entrambi i lead si trovano in SFDC e uno è un lead CRM e l’altro è un contatto CRM, allora il vincitore è il contatto CRM (indipendentemente dal lead specificato come vincitore). Se uno dei lead si trova in SFDC e l’altro è solo Marketo, il vincitore è il lead SFDC (indipendentemente dal lead specificato come vincitore).
 
 ## Associa attività web
 
-Tramite il tracciamento dei lead (Munchkin), Marketo registra l’attività web dei visitatori del sito web e delle pagine di destinazione di Marketo. Queste attività, Visite e Clic, sono registrate con una chiave che corrisponde a un cookie &quot;_mkto_trk&quot; impostato nel browser del lead e Marketo lo utilizza per tenere traccia delle attività della stessa persona. In genere, l’associazione ai record dei lead si verifica quando un lead passa da un’e-mail di Marketo o compila un modulo di Marketo, ma a volte un’associazione può essere attivata da un tipo di evento diverso ed è possibile utilizzare l’endpoint Associa lead per farlo. L’endpoint considera l’ID del record lead noto come parametro di percorso e il valore del cookie &quot;_mkto_trk&quot; nel parametro di query del cookie.
+Tramite il tracciamento dei lead (Munchkin), Marketo registra l’attività web dei visitatori sul sito web e sulle pagine di destinazione di Marketo. Queste attività, Visite e Clic, sono registrate con una chiave che corrisponde a un cookie &quot;_mkto_trk&quot; impostato nel browser del lead e Marketo lo utilizza per tenere traccia delle attività della stessa persona. In genere, l’associazione ai record dei lead si verifica quando un lead passa da un’e-mail di Marketo o compila un modulo di Marketo, ma a volte un’associazione può essere attivata da un tipo di evento diverso ed è possibile utilizzare l’endpoint Associa lead per farlo. L’endpoint considera l’ID del record lead noto come parametro di percorso e il valore del cookie &quot;_mkto_trk&quot; nel parametro di query del cookie.
 
 ### Richiesta
 
