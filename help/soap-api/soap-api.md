@@ -3,16 +3,16 @@ title: API SOAP
 feature: SOAP
 description: Panoramica di Marketo SOAP
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '207'
+source-wordcount: '229'
 ht-degree: 0%
 
 ---
 
 # API SOAP
 
-L’API dell’SOAP è diventata obsoleta e non sarà più disponibile dopo il 31 ottobre 2025.  Tutti i nuovi sviluppi devono essere eseguiti con l&#39;API [REST](https://developer.adobe.com/marketo-apis/) di Marketo e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio.
+L’API dell’SOAP è diventata obsoleta e non sarà più disponibile dopo il 31 ottobre 2025. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](../rest-api/rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](./migration.md) per informazioni su come eseguire la migrazione.
 
 ## WSDL SOAP
 
