@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: importToList chiamate SOAP
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a019985fc9ce7e1aa690ca26bfa263cd3c48cfc
 workflow-type: tm+mt
-source-wordcount: '317'
+source-wordcount: '393'
 ht-degree: 3%
 
 ---
@@ -24,7 +24,7 @@ Questa funzione consente di importare un elenco di lead in un elenco statico esi
 | mary@company.com | Mary | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Nota:** i valori `displayName` devono essere utilizzati nei valori `importFileHeader` anziché `name`.
+I valori `displayName` devono essere utilizzati in `importFileHeader` anziché nei valori `name`.
 
 **Contenuto e-mail dinamico:** Facoltativamente, puoi trasmettere valori per lead che fungono da sostituzioni per I miei token in un messaggio e-mail.
 
@@ -36,7 +36,9 @@ Questa funzione consente di importare un elenco di lead in un elenco statico esi
 
 **Importante:** se aggiungi token per i lead, devi specificare la campagna avanzata che li utilizza. Alla successiva esecuzione della Smart Campaign specificata, verranno utilizzati i valori dell’elenco, anziché i normali valori My Token. Dopo l’esecuzione della singola campagna, i token verranno eliminati.
 
-**NOTA:** `importToList` può richiedere tempo, in particolare per gli elenchi di grandi dimensioni. Se si prevede di utilizzare l&#39;elenco appena importato in altre chiamate API, è necessario utilizzare `importToListStatus` per verificare che l&#39;operazione sia stata completata.
+Il completamento di `importToList` può richiedere del tempo, in particolare per gli elenchi di grandi dimensioni. Se si prevede di utilizzare l&#39;elenco appena importato in altre chiamate API, è necessario utilizzare `importToListStatus` per verificare che l&#39;operazione sia stata completata.
+
+**Nota:** l&#39;importazione di valori NULL per campi numerici in un file CSV può generare un&#39;attività &quot;Modifica valore dati&quot; per tali campi, anche se il campo è già vuoto. Eventuali campagne intelligenti che utilizzano un filtro &quot;Valore modificato dei dati&quot; o un trigger &quot;Modifiche del valore dei dati&quot; potrebbero essere idonee per tali campagne anche se i dati non stanno effettivamente cambiando. Utilizza i vincoli su questi filtri/trigger per garantire che i lead non siano idonei per campagne errate durante l’esecuzione delle importazioni.
 
 ## Richiesta
 
