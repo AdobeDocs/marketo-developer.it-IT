@@ -3,9 +3,9 @@ title: Riferimento endpoint
 feature: REST API
 description: Riferimenti endpoint API Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 8a019985fc9ce7e1aa690ca26bfa263cd3c48cfc
+source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
 workflow-type: tm+mt
-source-wordcount: '4676'
+source-wordcount: '4677'
 ht-degree: 2%
 
 ---
@@ -19,7 +19,7 @@ Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
 - [Database lead](https://developer.adobe.com/marketo-apis/api/mapi/)
 - [Gestione utente](https://developer.adobe.com/marketo-apis/api/user/)
 
-## Elenco endpoint
+## Elenco endpoint (#endpoint_list)
 
 Elenco completo degli endpoint REST API.
 
@@ -41,7 +41,7 @@ Elenco completo degli endpoint REST API.
 | Ottieni token di paging | Attività | GET | /rest/v1/activities/pagingtoken.json | Attività di sola lettura |
 | Aggiorna tipo di attività personalizzato | Attività | POST | /rest/v1/activities/external/type/{apiName}.json | Metadati attività di lettura/scrittura |
 | Aggiorna attributi del tipo di attività personalizzato | Attività | POST | /rest/v1/activities/external/type/{apiName}/attributes/update.json | Metadati attività di lettura/scrittura |
-| Identità | Autenticazione | GET POST | /identity/oauth/token | Nessuna |
+| Identità | Autenticazione | GET o POST | /identity/oauth/token | Nessuna |
 | Annulla processo attività esportazione | Attività esportazione in blocco | POST | /bulk/v1/activities/export/{exportid}/cancel.json | Attività di sola lettura |
 | Crea processo attività di esportazione | Attività esportazione in blocco | POST | /bulk/v1/activities/export/create.json | Attività di sola lettura |
 | Accoda processo attività di esportazione | Attività esportazione in blocco | POST | /bulk/v1/activities/export/{exportid}/enqueue.json | Attività di sola lettura |

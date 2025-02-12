@@ -3,9 +3,9 @@ title: Programmi
 feature: REST API, Programs
 description: Crea e modifica le informazioni sul programma.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
 workflow-type: tm+mt
-source-wordcount: '843'
+source-wordcount: '848'
 ht-degree: 1%
 
 ---
@@ -320,11 +320,14 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Crea e aggiorna
 
-[Creazione]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) e [aggiornamento](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) dei programmi seguono il modello di risorsa standard e hanno `folder`, `name`, `type` e `channel` come parametri obbligatori, con `description`, `costs` e `tags` facoltativi. Il canale e il tipo possono essere impostati solo al momento della creazione del programma. Dopo la creazione è possibile aggiornare solo descrizione, nome, `tags` e `costs`, con un parametro `costsDestructiveUpdate` aggiuntivo consentito. Se si passa `costsDestructiveUpdate` come true, tutti i costi esistenti verranno cancellati e sostituiti con eventuali costi inclusi nella chiamata. Tieni presente che i tag possono essere necessari per alcuni tipi di programmi in alcune sottoscrizioni, ma questo dipende dalla configurazione e deve prima essere verificato con Ottieni tag per verificare se sono presenti requisiti specifici per l’istanza.
+I programmi [Creazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) e [Aggiornamento](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) seguono il modello di risorsa standard e contengono `folder`, `name`, `type` e `channel` come parametri obbligatori. `description`, `costs` e `tags` sono facoltativi. Il canale e il tipo possono essere impostati solo al momento della creazione del programma. Dopo la creazione è possibile aggiornare solo descrizione, nome, `tags` e `costs`, con un parametro `costsDestructiveUpdate` aggiuntivo consentito. Se si passa `costsDestructiveUpdate` come true, tutti i costi esistenti verranno cancellati e sostituiti con eventuali costi inclusi nella chiamata. Tieni presente che i tag possono essere necessari per alcuni tipi di programmi in alcune sottoscrizioni, ma questo dipende dalla configurazione e deve prima essere verificato con Ottieni tag per verificare se sono presenti requisiti specifici per l’istanza.
 
-Durante la creazione o l&#39;aggiornamento di un programma di posta elettronica, è possibile passare anche `startDate` e `endDate`.
+Durante la creazione o l&#39;aggiornamento di un programma e-mail, è possibile passare `startDate` e `endDate` anche come data/ora UTC:
 
-### Crea
+`"startDate": "2022-10-19T15:00:00.000Z"`
+`"endDate": "2022-10-19T15:00:00.000Z"`
+
+### Creare
 
 ```
 POST /rest/asset/v1/programs.json
@@ -440,7 +443,7 @@ description=This is an updated description&name=Updated Program Name&costs=[{"st
 
 I programmi e-mail possono essere approvati o non approvati in remoto, il che causerà l’esecuzione del programma alla data di inizio specificata e la sua conclusione alla data di fine specificata. Entrambi devono essere impostati per approvare il programma, nonché per disporre di un’e-mail e di un elenco smart validi e approvati configurati tramite l’interfaccia utente.
 
-### Approva
+### Approvazione
 
 ```
 POST /rest/asset/v1/program/{id}/approve.json
