@@ -3,9 +3,9 @@ title: Riferimento endpoint
 feature: REST API
 description: Riferimenti endpoint API Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
+source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
 workflow-type: tm+mt
-source-wordcount: '4677'
+source-wordcount: '4676'
 ht-degree: 2%
 
 ---
@@ -19,7 +19,7 @@ Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
 - [Database lead](https://developer.adobe.com/marketo-apis/api/mapi/)
 - [Gestione utente](https://developer.adobe.com/marketo-apis/api/user/)
 
-## Elenco endpoint (#endpoint_list)
+## Elenco endpoint {#endpoint_list}
 
 Elenco completo degli endpoint REST API.
 
