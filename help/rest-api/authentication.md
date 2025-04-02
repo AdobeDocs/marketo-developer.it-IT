@@ -3,9 +3,9 @@ title: Autenticazione
 feature: REST API
 description: Autenticazione degli utenti Marketo per l’utilizzo dell’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 6f8dc76703aba204b6d0d4f1a3b5275aea819f08
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '558'
+source-wordcount: '564'
 ht-degree: 0%
 
 ---
@@ -24,7 +24,7 @@ Le API REST di Marketo sono autenticate con OAuth 2.0 a 2 gambe. Gli ID client e
 
 `Identity URL` si trova nel menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** nella sezione REST API.
 
-Crea un token di accesso utilizzando una richiesta HTTP GET (o POST) nel modo seguente:
+Crea un token di accesso utilizzando una richiesta HTTP GET (o POST) come segue:
 
 ```
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
@@ -52,13 +52,15 @@ Definizione risposta
 
 Quando si effettuano chiamate ai metodi API REST, per garantire la riuscita della chiamata è necessario includere un token di accesso in ogni chiamata.
 
-Il token di accesso deve essere inviato come intestazione HTTP.
-
-`Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
 >[!IMPORTANT]
 >
 >Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
+
+Il token di accesso deve essere inviato come intestazione HTTP. Ad esempio, in una richiesta CURL:
+
+```bash
+$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+```
 
 ## Suggerimenti e best practice
 

@@ -3,10 +3,10 @@ title: Estrazione attività in blocco
 feature: REST API
 description: Elaborazione in batch dei dati dell’attività da Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 8c22255673fee1aa0f5b47393a241fcf6680778b
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1343'
-ht-degree: 2%
+source-wordcount: '1342'
+ht-degree: 3%
 
 ---
 
@@ -36,7 +36,7 @@ Le API di estrazione attività in blocco richiedono che l’utente API disponga 
 | Modifica valore dati | ID campo lead | [Descrizione lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nome attributo |
 | Modifica punteggio | ID campo lead | [Descrizione lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nome attributo |
 | Modifica stato in progressione | ID programma | [Ottieni programma per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET) | Programma di marketing |
-| Aggiungi all&#39;elenco | ID elenco statico | [Ottieni elenco statico per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Elenco statico |
+| Aggiungi all’elenco | ID elenco statico | [Ottieni elenco statico per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Elenco statico |
 | Rimuovi dall’elenco | ID elenco statico | [Ottieni elenco statico per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Elenco statico |
 | Compila modulo | ID modulo | [Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) | Modulo web |
 
@@ -70,7 +70,7 @@ Impossibile utilizzare `primaryAttributeValueIds` e `primaryAttributeValues` ins
 | Modifica valore dati | Nome visualizzato campo lead | [Descrizione lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nome attributo |
 | Modifica punteggio | Nome visualizzato campo lead | [Descrizione lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | Nome attributo |
 | Modifica stato in progressione | Nome del programma | [Ottieni programma per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) | Programma di marketing |
-| Aggiungi all&#39;elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
+| Aggiungi all’elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
 | Rimuovi dall’elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
 | Compila modulo | Nome modulo | [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | Modulo web |
 
@@ -222,7 +222,7 @@ GET /bulk/v1/activities/export/{exportId}/file.json
 
 La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file.
 
-Se un campo lead richiesto è vuoto (non contiene dati), `then null` viene inserito nel campo corrispondente nel file di esportazione.  Nell’esempio seguente, il campo campaignId per l’attività restituita è vuoto.
+Se un campo lead richiesto è vuoto (non contiene dati), `then null` viene inserito nel campo corrispondente nel file di esportazione.  Nell&#39;esempio seguente, il campo `campaignId` per l&#39;attività restituita è vuoto.
 
 ```json
 marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueId,primaryAttributeValue,attributes

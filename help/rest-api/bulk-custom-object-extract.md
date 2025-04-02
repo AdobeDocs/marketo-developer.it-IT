@@ -3,9 +3,9 @@ title: Estrazione oggetto personalizzato in blocco
 feature: REST API, Custom Objects
 description: Elaborazione in batch di oggetti Marketo personalizzati.
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1300'
+source-wordcount: '1298'
 ht-degree: 1%
 
 ---
@@ -28,7 +28,7 @@ L’estrazione dell’oggetto personalizzato supporta diverse opzioni di filtro 
 
 | Tipo di filtro | Tipo di dati | Note |
 |---|---|---|
-| `updatedAt` | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp.;`startAt` accetta un datetime che rappresenta la filigrana minima e `endAt` accetta un datetime che rappresenta la filigrana massima. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
+| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp.;`startAt` accetta un datetime che rappresenta la filigrana minima e `endAt` accetta un datetime che rappresenta la filigrana massima. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
 | `staticListName` | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | `staticListId` | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | `smartListName`* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recupera i nomi degli elenchi smart utilizzando l’endpoint Get Smart Lists. |
@@ -403,7 +403,7 @@ leadId,color,make,model,vIN
 13,Fusion Red,Tesla,Roadster,SFGRC3C41FF154321
 ```
 
-Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint del file supporta facoltativamente l’intervallo di intestazioni HTTP dei byte di tipo. Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione Range in Marketo [Bulk Extract](bulk-extract.md).
+Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes`. Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione Range in Marketo [Bulk Extract](bulk-extract.md).
 
 ## Annullamento di un processo
 
