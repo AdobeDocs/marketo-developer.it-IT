@@ -3,9 +3,9 @@ title: Autenticazione
 feature: REST API
 description: Autenticazione degli utenti Marketo per l’utilizzo dell’API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 9582f7ac5998b670dd04cc6529db23f558c0e18e
 workflow-type: tm+mt
-source-wordcount: '564'
+source-wordcount: '610'
 ht-degree: 0%
 
 ---
@@ -51,15 +51,27 @@ Definizione risposta
 ## Utilizzo di un token di accesso
 
 Quando si effettuano chiamate ai metodi API REST, per garantire la riuscita della chiamata è necessario includere un token di accesso in ogni chiamata.
+Il token di accesso deve essere inviato come intestazione HTTP.
 
 >[!IMPORTANT]
 >
 >Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
-Il token di accesso deve essere inviato come intestazione HTTP. Ad esempio, in una richiesta CURL:
+### Passaggio all’intestazione Autorizzazione
+
+
+Per passare dall&#39;utilizzo del parametro di query `access_token` a un&#39;intestazione Autorizzazione, è necessario apportare una piccola modifica al codice.
+
+Utilizzando CURL come esempio, questo codice invia il valore `access_token` come parametro di modulo (il flag -F):
 
 ```bash
-$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+curl ...  -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/apiCall.json
+```
+
+Questo codice invia lo stesso valore dell&#39;intestazione http `Authorization: Bearer` (il flag -H):
+
+```bash
+curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/bulk/v1/apiCall.json
 ```
 
 ## Suggerimenti e best practice
