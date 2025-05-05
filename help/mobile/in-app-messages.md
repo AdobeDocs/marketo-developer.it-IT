@@ -15,7 +15,7 @@ ht-degree: 0%
 Per utilizzare le funzionalità di messaggistica in-app di Marketo, è necessario attenersi ai seguenti passaggi:
 
 1. Installa l&#39;SDK di Marketo Mobile come descritto in [Installazione di Mobile](installation.md).
-1. Aggiungi la tua app mobile a Marketo come descritto in [Aggiungi un&#39;app mobile](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
+1. Aggiungi la tua app mobile a Marketo come descritto in [Aggiungi un&#39;app mobile](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
 1. Facoltativamente, aggiungi codice alla tua app mobile per acquisire [azioni personalizzate](custom-actions.md).
 
 Dopo aver installato l’SDK di Marketo Mobile e completato l’aggiunta della tua app in Marketo, puoi inviare messaggi in-app che vengono visualizzati quando un utente apre la tua app.
@@ -34,4 +34,4 @@ Gli eventi personalizzati vengono attivati dall’interazione dell’utente dopo
 
 Assicurati di assegnare un’azione oltre a &quot;ignora&quot; a uno dei pulsanti primari o secondari per tenere traccia delle attività di tocco e utilizzare le frequenze di visualizzazione di base in base al numero di tocchi.
 
-Per ulteriori informazioni, consulta la sezione [Messaggi in-app](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) nella documentazione del prodotto.
+Per ulteriori informazioni, consulta la sezione [Messaggi in-app](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) nella documentazione del prodotto.

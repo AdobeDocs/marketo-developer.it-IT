@@ -14,7 +14,7 @@ ht-degree: 1%
 
 [Riferimento endpoint modello e-mail](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
 
-I modelli di e-mail costituiscono la base per ogni nuova e-mail in Marketo.  Mentre le e-mail possono essere scollegate dai modelli tramite la sostituzione dei HTML, è necessario creare le e-mail inizialmente con un modello come base.  I modelli vengono creati come documenti HTML in Marketo con metadati quali nomi e descrizioni.  Il contenuto è soggetto a poche restrizioni, ma il HTML del modello deve essere valido e deve contenere almeno una sezione modificabile, che segue i requisiti [qui descritti](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+I modelli di e-mail costituiscono la base per ogni nuova e-mail in Marketo.  Mentre le e-mail possono essere scollegate dai modelli tramite la sostituzione dei HTML, è necessario creare le e-mail inizialmente con un modello come base.  I modelli vengono creati come documenti HTML in Marketo con metadati quali nomi e descrizioni.  Il contenuto è soggetto a poche restrizioni, ma il HTML del modello deve essere valido e deve contenere almeno una sezione modificabile, che segue i requisiti [qui descritti](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Query
 

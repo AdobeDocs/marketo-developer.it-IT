@@ -14,7 +14,7 @@ ht-degree: 0%
 
 Puoi tenere traccia dell’interazione dell’utente inviando azioni personalizzate. Quando la tua app mobile chiama nell’SDK di Marketo per inviare un’azione personalizzata, quest’ultima viene inizialmente salvata sul dispositivo. Prima di inviare l’azione personalizzata, l’SDK per Marketo controlla quindi se è disponibile una connettività Internet adeguata. Di conseguenza, può verificarsi un ritardo tra il momento in cui l’azione personalizzata viene inviata e quello in cui viene ricevuta da Marketo.
 
-Le azioni personalizzate possono essere utilizzate come attivatori e filtri nelle campagne avanzate. Per ulteriori informazioni, vedere [Attività app mobile](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
+Le azioni personalizzate possono essere utilizzate come attivatori e filtri nelle campagne avanzate. Per ulteriori informazioni, vedere [Attività app mobile](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Invio di azioni personalizzate su iOS
 
