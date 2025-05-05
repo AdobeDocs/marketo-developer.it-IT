@@ -892,7 +892,7 @@ L&#39;endpoint [Aggiungi campi tipo di oggetto personalizzato](https://developer
 Per una struttura oggetto personalizzata uno-a-molti, utilizzare un campo di collegamento in un oggetto personalizzato per collegarlo a un oggetto standard: Lead o Company. Utilizzando l&#39;esempio del proprietario dell&#39;automobile dalla documentazione del prodotto Marketo [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), viene creato un oggetto personalizzato contenente informazioni relative all&#39;automobile per la connessione con i lead.
 
 1. Crea un oggetto **Car**
-1. Aggiungi campi all&#39;oggetto **Car**: deduplicazione in **VIN**, collegamento a **Lead****/ID lead**
+1. Aggiungi campi all&#39;oggetto **Car**: deduplicazione in **VIN**, collegamento a **Lead**&#x200B;**/ID lead**
 1. Approva oggetto **Car**
 
 Innanzitutto, crea il tipo di oggetto personalizzato per contenere informazioni specifiche per l’auto.
@@ -996,7 +996,7 @@ Le relazioni molti-a-molti sono rappresentate utilizzando un &quot;ponte&quot;, 
 1. Aggiungi campi a **Corso:** deduplicazione in **ID corso**
 1. Approva **Corso**
 1. Crea un oggetto bridge **Registrazione**
-1. Aggiungi campi a **Iscrizione:** deduplicazione in **ID iscrizione**, collegamento al campo **ID corso****/ID corso** e collegamento a **ID lead****/ID lead**
+1. Aggiungi campi a **Iscrizione:** deduplicazione in **ID iscrizione**, collegamento al campo **ID corso**&#x200B;**/ID corso** e collegamento a **ID lead**&#x200B;**/ID lead**
 1. Approva **iscrizione**
 
 Innanzitutto, crea il tipo di oggetto edge per contenere informazioni specifiche del corso:

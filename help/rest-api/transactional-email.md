@@ -18,7 +18,7 @@ Un caso d&#39;uso comune per l&#39;API Marketo è quello di attivare l&#39;invio
 - Nell’istanza di Marketo deve essere stato creato e approvato un messaggio e-mail transazionale.
 - Deve essere presente una campagna trigger attiva con &quot;Campaign is Requested, 1. Source: Web Service API&quot;, configurato per inviare l’e-mail
 
-Crea e approva il tuo indirizzo e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it). [ Se l’e-mail è effettivamente transazionale, probabilmente dovrai impostarla su operativa, ma assicurati che sia giuridicamente qualificata come operativa. Questa è configurata da con la schermata Edit (Modifica) in Email Actions (Azioni e-mail) > Email Settings (Impostazioni e-mail):
+Crea e approva il tuo indirizzo e-mail[&#128279;](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it).  Se l’e-mail è effettivamente transazionale, probabilmente dovrai impostarla su operativa, ma assicurati che sia giuridicamente qualificata come operativa. Questa è configurata da con la schermata Edit (Modifica) in Email Actions (Azioni e-mail) > Email Settings (Impostazioni e-mail):
 
 ![Richieste-Campagne-Impostazioni-E-Mail](assets/request-campaign-email-settings.png)
 

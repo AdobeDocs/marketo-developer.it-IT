@@ -597,7 +597,7 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Crea campi
 
-L&#39;endpoint [Crea campi membri del programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crea uno o più campi personalizzati nell&#39;oggetto membro del programma. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili nell&#39;interfaccia utente ](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields) del Marketo Engage in [. Puoi creare fino a 20 campi personalizzati utilizzando questo endpoint.
+L&#39;endpoint [Crea campi membri del programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crea uno o più campi personalizzati nell&#39;oggetto membro del programma. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili nell&#39;interfaccia utente [&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields) del Marketo Engage in . Puoi creare fino a 20 campi personalizzati utilizzando questo endpoint.
 
 Considera attentamente ogni campo creato nell’istanza di produzione del Marketo Engage utilizzando l’API. Una volta creato un campo, non puoi eliminarlo ([puoi solo nasconderlo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
 
