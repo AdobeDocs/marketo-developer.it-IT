@@ -5,10 +5,10 @@ breadcrumb-title: Guida per sviluppatori di [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: e2e45c0dfa55966aeaa11c0ecf5bfcff01bbaf81
 workflow-type: tm+mt
-source-wordcount: '247'
-ht-degree: 15%
+source-wordcount: '249'
+ht-degree: 16%
 
 ---
 
@@ -30,11 +30,11 @@ ht-degree: 15%
    - [Corrispondenza pattern](javascript-api/pattern-match.md)
    - [Contenuto predittivo](javascript-api/predictive-content.md)
    - [Reindirizzamenti](javascript-api/redirect.md)
-   - [Recommendations Rich Media](javascript-api/rich-media-recommendation.md)
+   - [Consigli per contenuti multimediali avanzati](javascript-api/rich-media-recommendation.md)
    - [Social](javascript-api/social.md)
    - [Trigger](javascript-api/triggers.md)
    - [Web Personalization](javascript-api/web-personalization.md)
-- Mobile {#mobile}
+- Dispositivi mobili {#mobile}
    - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
@@ -163,3 +163,4 @@ ht-degree: 15%
 - [Licenza](api-license.md)
 - [Sandbox partner](partner-sandbox.md)
 - [Passaggi del flusso self-service](self-service-flow-steps.md)
+- [Archivio blog](blog.md)
