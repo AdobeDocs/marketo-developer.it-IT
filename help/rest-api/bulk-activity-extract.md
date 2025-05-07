@@ -3,9 +3,9 @@ title: Estrazione attività in blocco
 feature: REST API
 description: Elaborazione in batch dei dati dell’attività da Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: a5b855691e7fb9e628e2d68fd14a8a6c689d6750
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1332'
 ht-degree: 3%
 
 ---
@@ -104,7 +104,7 @@ Quando si utilizza `primaryAttributeValues`, il filtro `activityTypeIds` deve es
 | filter | Array[Oggetto] | Sì | Accetta un array di filtri. Nell&#39;array deve essere incluso esattamente un filtro `createdAt`. È possibile includere un filtro `activityTypeIds` facoltativo. I filtri vengono applicati al set di attività accessibile e il set di attività risultante viene restituito dal processo di esportazione. |
 | formato | Stringa | No | Accetta uno dei seguenti file: CSV, TSV, SSV Il file esportato viene renderizzato rispettivamente come file di valori separati da virgola, valori separati da tabulazioni o valori separati da spazi, se impostati. Se non impostato, viene impostato il valore predefinito CSV. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
-| campi | Array[Stringa] | No | Matrice facoltativa di stringhe contenenti valori di campo. I campi elencati sono inclusi nel file esportato. Per impostazione predefinita, vengono restituiti i campi seguenti: `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`. Questo parametro può essere utilizzato per ridurre il numero di campi restituiti specificando un sottoinsieme dall&#39;elenco precedente. Esempio:&quot;fields&quot;: [&quot;leadId&quot;, &quot;activityDate&quot;, &quot;activityTypeId&quot;]È possibile specificare un campo aggiuntivo &quot;actionResult&quot; per includere l&#39;azione dell&#39;attività (&quot;success&quot;, &quot;skipped&quot; o &quot;failed&quot;). |
+| campi | Array[Stringa] | No | Matrice facoltativa di stringhe contenenti valori di campo. I campi elencati sono inclusi nel file esportato. Per impostazione predefinita, vengono restituiti i campi seguenti: <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>. Questo parametro può essere utilizzato per ridurre il numero di campi restituiti specificando un sottoinsieme dall&#39;elenco precedente:`"fields": ["leadId", "activityDate", "activityTypeId"]`. È possibile specificare un campo aggiuntivo `actionResult` per includere l&#39;azione dell&#39;attività: `("succeeded", "skipped", or "failed")`. |
 
 
 ## Creazione di un processo
