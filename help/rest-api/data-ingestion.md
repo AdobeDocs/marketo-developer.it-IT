@@ -2,9 +2,10 @@
 title: Acquisizione dei dati
 feature: REST API, Dynamic Content
 description: Utilizzare i dati con le API di Marketo.
-source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
+exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '968'
+source-wordcount: '965'
 ht-degree: 10%
 
 ---
@@ -13,11 +14,11 @@ ht-degree: 10%
 
 L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire in modo efficiente e con ritardi minimi l’acquisizione di grandi quantità di dati relativi a persone e persone.
 
-I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
+I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).&#x200B;
 
 Le interfacce sono disponibili per due tipi di oggetto: Persone, Oggetti personalizzati. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
-L’API di acquisizione dati è attualmente in versione beta privata.  Gli invitati devono avere un diritto per il pacchetto [Livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+L’API di acquisizione dati è attualmente in versione beta privata.  Gli invitati devono avere un diritto per il pacchetto [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticazione
 
@@ -61,7 +62,7 @@ La rappresentazione dei dati è inclusa nel corpo della richiesta come applicati
 
 Nome di dominio: `mkto-ingestion-api.adobe.io`
 
-Il percorso inizia con `/subscriptions/MunchkinId`, dove MunchkinId è specifico per l&#39;istanza Marketo. Puoi trovare il tuo ID Munchkin nell&#39;interfaccia utente del Marketo Engage in **Amministratore** > **Il mio account** > **Informazioni di supporto**.  Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
+Il percorso inizia con `/subscriptions/MunchkinId`, dove MunchkinId è specifico per l&#39;istanza Marketo. Puoi trovare il tuo Munchkin ID nell&#39;interfaccia utente di Marketo Engage in **Amministratore** > **Il mio account** > **Informazioni di supporto**.  Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
 
 URL di esempio per Persone:
 
@@ -79,7 +80,7 @@ Esempio di ID richiesta tramite intestazione:
 
 `X-Request-Id: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
 
-### Operazione riuscita
+### Completato
 
 Quando una chiamata ha esito positivo, viene restituito lo stato 202.  Nessun corpo di risposta restituito.
 
@@ -113,7 +114,7 @@ Di seguito sono riportati i codici di errore univoci dell’API di acquisizione 
 | 400 | 4000802 | Dati non validi |
 | 403 | 4030801 | Non autorizzato |
 | 429 | 4290801 | Quota giornaliera raggiunta |
-| 500 | 5000801 | Errore interno del server |
+| 500 | 5000801 | Errore del server interno |
 
 ## Nuovi tentativi
 
