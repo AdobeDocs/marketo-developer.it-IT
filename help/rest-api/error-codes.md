@@ -3,9 +3,9 @@ title: Codici errore
 feature: REST API
 description: Descrizioni dei codici di errore di Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
+source-git-commit: d44ec0442bc33e3e5cb7e2dd6ce3947036c7cd25
 workflow-type: tm+mt
-source-wordcount: '2273'
+source-wordcount: '2283'
 ht-degree: 3%
 
 ---
@@ -34,7 +34,7 @@ In circostanze operative normali, Marketo dovrebbe restituire solo due errori de
 
 Marketo restituirà 413 se il payload della richiesta supera 1 MB, o 10 MB in caso di lead di importazione. Nella maggior parte degli scenari è improbabile che questi limiti vengano raggiunti, ma l’aggiunta di un controllo alle dimensioni della richiesta e lo spostamento di eventuali record, che causano il superamento del limite a una nuova richiesta, dovrebbe evitare qualsiasi circostanza che porti alla restituzione di questo errore da parte di qualsiasi endpoint.
 
-414 verrà restituito quando l’URI di una richiesta GET supera gli 8 KB. Per evitarlo, confrontalo con la lunghezza della stringa di query per vedere se supera questo limite. Se la richiesta viene modificata in un metodo POST, immettere la stringa di query come corpo della richiesta con il parametro aggiuntivo `_method=GET`. In questo modo viene superata la limitazione sugli URI. È raro che questo limite venga raggiunto nella maggior parte dei casi, ma è piuttosto comune quando si recuperano grandi batch di record con valori di filtro singoli lunghi, ad esempio un GUID.
+Verrà restituito 414 quando l’URI di una richiesta GET supera gli 8 KB. Per evitarlo, confrontalo con la lunghezza della stringa di query per vedere se supera questo limite. Se la richiesta viene modificata in un metodo POST, immettere la stringa di query come corpo della richiesta con il parametro aggiuntivo `_method=GET`. In questo modo viene superata la limitazione sugli URI. È raro che questo limite venga raggiunto nella maggior parte dei casi, ma è piuttosto comune quando si recuperano grandi batch di record con valori di filtro singoli lunghi, ad esempio un GUID.
 L&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/) può restituire un errore 401 Unauthorized. Ciò è in genere dovuto a un ID client non valido o a un segreto client non valido. Codici di errore a livello HTTP
 
 <table>
@@ -110,7 +110,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
     <tr>
       <td><a name="603"></a>603</td>
       <td>Accesso negato</td>
-      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbero dover essere assegnate al ruolo utente, oppure <a href="https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">il Inserisco nell'elenco Consentiti per l'accesso API basato su IP</a> potrebbe essere abilitato.</td>
+      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbero dover essere assegnate al ruolo utente, oppure <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">il Inserisco nell'elenco Consentiti per l'accesso API basato su IP</a> potrebbe essere abilitato.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -287,8 +287,10 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
 
 #### Codici di errore a livello di record
 
-<table>
-  <tbody>
+>[!NOTE]
+>
+><table>
+<tbody>
     <tr>
       <td>Codice di risposta</td>
       <td>Descrizione</td>
@@ -430,10 +432,12 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
       <td><ul>
           <li>Troppi processi in coda</li>
           <li>Esporta quota giornaliera superata</li>
+          <li>Processo già in coda</li>
         </ul></td>
       <td><ul>
           <li>Le sottoscrizioni possono estrarre in blocco un massimo di 10 processi in coda in un determinato momento.</li>
           <li>Per impostazione predefinita, i processi di estrazione sono limitati a 500 MB al giorno (ripristinati ogni giorno alle 00:00 CST).</li>
+          <li>L'ID di esportazione è già stato inserito nella coda.</li>
         </ul></td>
     </tr>
     <tr>
@@ -486,3 +490,4 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
     </tr>
   </tbody>
 </table>
+
