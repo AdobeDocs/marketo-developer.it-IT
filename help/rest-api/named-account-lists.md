@@ -3,7 +3,7 @@ title: Elenchi di account denominati
 feature: REST API
 description: Configurare elenchi di account denominati.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni
@@ -28,11 +28,11 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 
 | Nome | Tipo di dati | Aggiornabile | Note |
 |---|---|---|---|
-| marketoGUID | Stringa | Falso | Identificatore di stringa univoco dell’elenco degli account denominati. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione di un record. Campo utilizzato da &quot;dedupeBy&quot;:&quot;idField&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
-| name | Stringa | Vero | Nome dell’elenco. Campo utilizzato da &quot;dedupeBy&quot;:&quot;dedupeFields&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
-| createdAt | Data e ora | Falso | Data e ora della creazione dell’elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
-| updatedAt | Data e ora | Falso | Datetime dell&#39;aggiornamento più recente dell&#39;elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
-| tipo | Stringa | Falso | Tipo dell’elenco. Può avere un valore &quot;default&quot; o &quot;external&quot;. Gli elenchi esterni sono quelli creati dalla Visualizzazione account CRM. |
+| marketoGUID | Stringa | False | Identificatore di stringa univoco dell’elenco degli account denominati. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione di un record. Campo utilizzato da &quot;dedupeBy&quot;:&quot;idField&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
+| name | Stringa | True | Nome dell’elenco. Campo utilizzato da &quot;dedupeBy&quot;:&quot;dedupeFields&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
+| createdAt | Data e ora | False | Data e ora della creazione dell’elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
+| updatedAt | Data e ora | False | Datetime dell&#39;aggiornamento più recente dell&#39;elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
+| tipo | Stringa | False | Tipo dell’elenco. Può avere un valore &quot;default&quot; o &quot;external&quot;. Gli elenchi esterni sono quelli creati dalla Visualizzazione account CRM. |
 
 
 ## Query
@@ -44,11 +44,11 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "name": "Saas List",
@@ -57,7 +57,7 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
          "type": "default",
          "updateable": true
       },
-      { 
+      {
          "seq": 1,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc",
          "name": "My Account List",
@@ -83,14 +83,14 @@ POST /rest/v1/namedAccountLists.json
 ```
 
 ```json
-{ 
+{
    "action": "createOnly",
    "dedupeBy": "dedupeFields",
-   "input": [ 
-      { 
+   "input": [
+      {
          "name": "SAAS List"
       },
-      { 
+      {
          "name": "Manufacturing (Domestic)"
       }
    ]
@@ -98,16 +98,16 @@ POST /rest/v1/namedAccountLists.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "status": "created",
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      { 
+      {
          "seq": 1,
          "status": "created",
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc"
@@ -125,16 +125,16 @@ POST /rest/v1/namedAccountLists/delete.json
 ```
 
 ```json
-{ 
+{
    "deleteBy": "dedupeFields",
-   "input": [ 
-      { 
+   "input": [
+      {
          "name": "Saas List"
       },
-      { 
+      {
          "name": "B2C List"
       },
-      { 
+      {
          "name": "Launchpoint Partner List"
       }
    ]
@@ -142,25 +142,25 @@ POST /rest/v1/namedAccountLists/delete.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "status": "deleted"
       },
-      { 
+      {
          "seq": 1,
          "id": "dff23271-f996-47d7-984f-f2676861b5fc",
          "status": "deleted"
       },
-      { 
+      {
          "seq": 2,
          "status": "skipped",
-         "reasons": [ 
-            { 
+         "reasons": [
+            {
                "code": "1013",
                "message": "Record not found"
             }
@@ -189,18 +189,18 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "name": "Saas List",
          "createdAt": "2017-02-01T00:00:00Z",
          "updatedAt": "2017-03-05T17:21:15Z"
       },
-      { 
+      {
          "seq": 1,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc",
          "name": "My Account List",
@@ -223,7 +223,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 {
     "input": [
         {
-             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb" 
+             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
         },
         {
              "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
@@ -263,7 +263,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 {
     "input": [
         {
-             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb" 
+             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
         },
         {
              "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"

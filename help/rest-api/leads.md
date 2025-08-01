@@ -3,7 +3,7 @@ title: Lead
 feature: REST API
 description: Dettagli sulle chiamate API dei lead
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '3338'
 ht-degree: 2%
@@ -37,20 +37,20 @@ GET /rest/v1/leads/describe.json
 ### Risposta
 
 ```json
-{  
+{
    "requestId":"37ca#1475b74e276",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":2,
          "displayName":"Company Name",
          "dataType":"string",
          "length":255,
-         "rest":{  
+         "rest":{
             "name":"company",
             "readOnly":false
          },
-         "soap":{  
+         "soap":{
             "name":"Company",
             "readOnly":false
          }
@@ -58,7 +58,7 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-Normalmente, le risposte includono un set molto più ampio di campi nell’array dei risultati, ma vengono omesse a scopo dimostrativo. Ogni elemento nella matrice dei risultati corrisponde a un campo disponibile nel record del lead e avrà almeno un ID, un displayName e un tipo di dati. Gli altri oggetti secondari soap e possono essere presenti o meno per un determinato campo e la loro presenza indicherà se il campo è valido per l’uso nelle API REST o SOAP. La proprietà `readOnly` indica se il campo è di sola lettura tramite l&#39;API corrispondente (REST o SOAP). La proprietà length indica la lunghezza massima del campo, se presente. La proprietà dataType indica il tipo di dati del campo.
+Normalmente, le risposte includono un set molto più ampio di campi nell’array dei risultati, ma vengono omesse a scopo dimostrativo. Ogni elemento nella matrice dei risultati corrisponde a un campo disponibile nel record del lead e avrà almeno un ID, un displayName e un tipo di dati. Gli altri oggetti secondari soap e REST possono essere presenti o meno per un determinato campo e la loro presenza indicherà se il campo è valido per l’utilizzo nelle API REST o SOAP. La proprietà `readOnly` indica se il campo è di sola lettura tramite l&#39;API corrispondente (REST o SOAP). La proprietà length indica la lunghezza massima del campo, se presente. La proprietà dataType indica il tipo di dati del campo.
 
 ## Query
 
@@ -175,21 +175,21 @@ POST /rest/v1/leads.json
 ### Corpo
 
 ```json
-{  
+{
    "action":"createOnly",
    "lookupField":"email",
-   "input":[  
-      {  
+   "input":[
+      {
          "email":"kjashaedd-1@klooblept.com",
          "firstName":"Kataldar-1",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-2@klooblept.com",
          "firstName":"Kataldar-2",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-3@klooblept.com",
          "firstName":"Kataldar-3",
          "postalCode":"04828"
@@ -201,19 +201,19 @@ POST /rest/v1/leads.json
 ### Risposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":50,
          "status":"created"
       },
-      {  
+      {
          "id":51,
          "status":"created"
       },
-      {  
+      {
          "id":52,
          "status":"created"
       }
@@ -233,7 +233,7 @@ Nota: quando si eseguono richieste lead upsert simultaneamente o in rapida succe
 
 ## Campi
 
-L’oggetto lead contiene campi standard e, facoltativamente, campi personalizzati. I campi standard sono presenti in ogni abbonamento al Marketo Engage, mentre i campi personalizzati vengono creati dall’utente in base alle esigenze. Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo. Esempi di attributi sono nome visualizzato, nome API e dataType. Questi attributi sono noti collettivamente come metadati.
+L’oggetto lead contiene campi standard e, facoltativamente, campi personalizzati. I campi standard sono presenti in ogni abbonamento a Marketo Engage, mentre i campi personalizzati vengono creati dall’utente in base alle esigenze. Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo. Esempi di attributi sono nome visualizzato, nome API e dataType. Questi attributi sono noti collettivamente come metadati.
 
 I seguenti endpoint consentono di eseguire query, creare e aggiornare campi sull&#39;oggetto lead. Queste API richiedono che l’utente API proprietario abbia un ruolo con una o entrambe le autorizzazioni Campo standard schema di lettura-scrittura o Campo personalizzato schema di lettura-scrittura.
 
@@ -417,8 +417,8 @@ GET /rest/v1/leads/schema/fields.json
 
 ## Crea campi
 
-L&#39;endpoint Create Lead Fields crea uno o più campi personalizzati sull&#39;oggetto lead. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili nell’interfaccia utente del Marketo Engage. Puoi creare un massimo di 100 campi personalizzati utilizzando questo endpoint.
-Considera attentamente ogni campo creato nell’istanza di produzione del Marketo Engage utilizzando l’API.  Una volta creato un campo, non è possibile eliminarlo (è possibile solo nasconderlo). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
+L&#39;endpoint Create Lead Fields crea uno o più campi personalizzati sull&#39;oggetto lead. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili nell’interfaccia utente di Marketo Engage. Puoi creare un massimo di 100 campi personalizzati utilizzando questo endpoint.
+Considera attentamente ogni campo creato nell’istanza di produzione di Marketo Engage utilizzando l’API.  Una volta creato un campo, non è possibile eliminarlo (è possibile solo nasconderlo). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
 
 Il parametro di input richiesto è un array di oggetti campo lead. Ogni oggetto contiene uno o più attributi. Gli attributi richiesti sono `displayName`, `name` e `dataType`, che corrispondono rispettivamente al nome visualizzato dell&#39;interfaccia utente del campo, al nome API del campo e al tipo di campo.  Facoltativamente, è possibile specificare `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
 
@@ -474,7 +474,7 @@ POST /rest/v1/leads/schema/fields.json
 
 ## Aggiorna campo
 
-L’endpoint Update Lead Field aggiorna un singolo campo personalizzato sull’oggetto lead. Nella maggior parte dei casi, le operazioni di aggiornamento dei campi eseguite utilizzando l’interfaccia utente del Marketo Engage sono ottenibili utilizzando l’API. Nella tabella seguente sono riepilogate alcune differenze.
+L’endpoint Update Lead Field aggiorna un singolo campo personalizzato sull’oggetto lead. Nella maggior parte dei casi, le operazioni di aggiornamento dei campi eseguite utilizzando l’interfaccia utente di Marketo Engage sono ottenibili utilizzando l’API. Nella tabella seguente sono riepilogate alcune differenze.
 
 <table>
 <tbody>
@@ -718,7 +718,7 @@ I nuovi lead vengono creati nella partizione primaria dell&#39;area di lavoro in
 POST /rest/v1/leads/submitForm.json
 ```
 
-### Header
+### Intestazione
 
 ```
 Content-Type: application/json
@@ -764,7 +764,7 @@ Content-Type: application/json
 }
 ```
 
-Qui possiamo vedere i corrispondenti dettagli dell’attività &quot;Compila modulo&quot; dall’interfaccia utente del Marketo Engage:
+Qui possiamo vedere i corrispondenti dettagli dell’attività &quot;Compila modulo&quot; dall’interfaccia utente di Marketo Engage:
 
 ![Compila interfaccia utente modulo](assets/fill_out_form_activity_details.png)
 
@@ -781,7 +781,7 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ### Risposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -804,7 +804,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 ### Risposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -816,7 +816,7 @@ Iscrizione
 È inoltre possibile recuperare i record dei lead in base all&#39;appartenenza a un elenco statico o a un programma. Inoltre, puoi recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti di cui è membro un lead.
 
 La struttura di risposta e i parametri facoltativi sono identici a quelli di Get Leads per Filter Type, anche se filterType e filterValues non possono essere utilizzati con questa API.
-Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
+Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-****.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
 
 ### Richiesta
 
@@ -827,14 +827,14 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ### Risposta
 
 ```json
-{ 
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
    "nextPageToken":
 "PS5VL5WD4UOWGOUCJR6VY7JQO2KUXL7BGBYXL4XH4BYZVPYSFBAONP4V4KQKN4SSBS55U4LEMAKE6===",
     "result":[
        {
-            "id":50,  
+            "id":50,
             "email":"kjashaedd@klooblept.com",
             "firstName":"Kataldar",
              "postalCode":"04828"
@@ -843,11 +843,11 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
            "id":2343,
            "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
-           "postalCode":"04828" 
+           "postalCode":"04828"
        },
       {
            "id":88498,
-           "email":"kjashaedd@klooblept.com", 
+           "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
          "postalCode":"04828"
          }

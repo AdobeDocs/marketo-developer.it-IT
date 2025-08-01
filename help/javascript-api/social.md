@@ -3,7 +3,7 @@ title: Social
 description: Social
 feature: Social, Javascript
 exl-id: 82d2b86f-5efe-4434-b617-d27f76515a79
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '776'
 ht-degree: 2%
@@ -17,12 +17,12 @@ ht-degree: 2%
 ## Esempio di widget di condivisione incorporato
 
 ```html
-<!-- Marketo Widget Loader Script --> 
+<!-- Marketo Widget Loader Script -->
 
 <script type="text/javascript" src="//b2c-mlm.marketo.com/jsloader/271d8232-1500-4305-b7ed-05d451b9ee0c/loader.php.js">
 </script>
 
- <!-- The Location of the Social Widget --> 
+ <!-- The Location of the Social Widget -->
 
 <divclass='cf_widgetloader cf_w_245d8f3c0955454cbd26abc39d0d874c'="" options="{&quot;outerHeight&quot;:400, &quot;outerWidth&quot;:600}">
 </divclass='cf_widgetloader'>
@@ -89,13 +89,13 @@ Questo esempio mostra un elemento precedentemente nascosto con ID &quot;signedUp
 ## Tabella eventi di base
 
 | Nome evento | Descrizione | Widget che utilizzano questo evento | Argomenti supportati (passati alla funzione di callback dell’evento) |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | share_sent | Viene attivato ogni volta che una richiesta di condivisione viene inviata al server per l&#39;elaborazione | Tutti i widget che possono condividere | 1.&quot;share_sent&quot; (Stringa)<br>2. Parametri inviati (oggetto) |
 | share_success | Generato quando la richiesta di condivisione viene elaborata correttamente. | Tutti i widget che possono condividere. | 1.&quot;share_success&quot; (Stringa)<br>2. Condividi oggetto di risposta, contenente il messaggio inviato e l’URL abbreviato (oggetto) |
-| voting_success | Generato quando un utente ha votato correttamente in un sondaggio. | Sondaggio, VS, widget voto | 1. &quot;voting_success&quot; (Stringa)<br>2. Elemento votato, incluso titolo, descrizione, identificatore entità (oggetto) |
+| voting_success | Generato quando un utente ha votato correttamente in un sondaggio. | Sondaggio, VS, widget voto | &#x200B;1. &quot;voting_success&quot; (Stringa)<br>2. Elemento votato, incluso titolo, descrizione, identificatore entità (oggetto) |
 | offer_enrollers | Generato quando un utente si è iscritto correttamente a un’offerta | Tutti i widget di offerta | 1.&quot;offer_enrollers&quot; (Stringa)<br>2. Proprietà utente modificate (oggetto),<br>3. Attributi utente modificati (oggetto) |
 | profile_saved | Generato quando un utente aggiorna il proprio profilo dall’acquisizione del profilo | Tutti i widget non di offerta per i quali è abilitata l’acquisizione del profilo | 1.&quot;profile_saved&quot; (Stringa)<br>2. Proprietà utente modificate (oggetto)<br>3. Attributi utente modificati (oggetto) |
-| video_loaded | Generato quando un video incorporato è completamente caricato e inizializzato. | Widget Condivisione video | 1. &quot;video_loaded&quot; (Stringa) 2. Elemento &quot;.cf_videoshare_wrap&quot; che contiene il video (jQuery Object) |
+| video_loaded | Generato quando un video incorporato è completamente caricato e inizializzato. | Widget Condivisione video | &#x200B;1. &quot;video_loaded&quot; (Stringa) 2. Elemento &quot;.cf_videoshare_wrap&quot; che contiene il video (jQuery Object) |
 
 ## Sostituzione dell’interfaccia utente con un’interfaccia personalizzata
 
@@ -172,8 +172,8 @@ cf_scripts.afterload(function($, CF){
 | numero | Numero intero o a virgola mobile |
 | testo RTF | Una stringa HTML |
 | punteggio | Un numero intero a 32 bit con segno |
-| campagna sfdc | Utilizzato nell’integrazione della gestione delle campagne Salesforce |
-| text | Una stringa di testo |
+| campagna sfdc | Utilizzato nell’integrazione di Salesforce Campaign Management |
+| testo | Una stringa di testo |
 
 ## Riferimento per i dati dell’interfaccia utente di TrackProgress dell’offerta di riferimento
 
@@ -183,8 +183,8 @@ cf_scripts.afterload(function($, CF){
 | numero | Numero intero o a virgola mobile |
 | testo RTF | Una stringa HTML |
 | punteggio | Un numero intero a 32 bit con segno |
-| campagna sfdc | Utilizzato nell’integrazione della gestione delle campagne Salesforce |
-| text | Una stringa di testo |
+| campagna sfdc | Utilizzato nell’integrazione di Salesforce Campaign Management |
+| testo | Una stringa di testo |
 
 ## Riferimenti dei dati nell’interfaccia utente di Sweepstakes (per gli Sweepstakes delle campagne social, non per gli Sweepstakes LM)
 
@@ -194,8 +194,8 @@ cf_scripts.afterload(function($, CF){
 | numero | Numero intero o a virgola mobile |
 | testo RTF | Una stringa HTML |
 | punteggio | Un numero intero a 32 bit con segno |
-| campagna sfdc | Utilizzato nell’integrazione della gestione delle campagne Salesforce |
-| text | Una stringa di testo |
+| campagna sfdc | Utilizzato nell’integrazione di Salesforce Campaign Management |
+| testo | Una stringa di testo |
 
 ## Riferimento dati accesso social network (widget riempimento modulo)
 
@@ -205,8 +205,8 @@ cf_scripts.afterload(function($, CF){
 | numero | Numero intero o a virgola mobile |
 | testo RTF | Una stringa HTML |
 | punteggio | Un numero intero a 32 bit con segno |
-| campagna sfdc | Utilizzato nell’integrazione della gestione delle campagne Salesforce |
-| text | Una stringa di testo |
+| campagna sfdc | Utilizzato nell’integrazione di Salesforce Campaign Management |
+| testo | Una stringa di testo |
 
 ```javascript
 {

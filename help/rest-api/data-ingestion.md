@@ -3,7 +3,7 @@ title: Acquisizione dei dati
 feature: REST API, Dynamic Content
 description: Utilizzare i dati con le API di Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 10%
@@ -114,7 +114,7 @@ Di seguito sono riportati i codici di errore univoci dell’API di acquisizione 
 | 400 | 4000802 | Dati non validi |
 | 403 | 4030801 | Non autorizzato |
 | 429 | 4290801 | Quota giornaliera raggiunta |
-| 500 | 5000801 | Errore del server interno |
+| 500 | 5000801 | Errore interno del server |
 
 ## Nuovi tentativi
 

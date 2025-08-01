@@ -3,9 +3,9 @@ title: Database lead
 feature: REST API, Database
 description: Manipolare il database principale dei lead.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: '1342'
 ht-degree: 0%
 
 ---
@@ -51,72 +51,72 @@ GET /rest/v1/opportunities/roles/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"opportunityRole",
          "displayName":"Opportunity Role",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalOpportunityId",
             "leadId",
             "role"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalOpportunityId",
                "leadId",
                "role"
             ],
-            [  
+            [
                "marketoGUID"
             ],
-            [  
+            [
                "leadId"
             ],
-            [  
+            [
                "externalOpportunityId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"externalOpportunityId",
                "displayName":"External Opportunity Id",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"leadId",
                "displayName":"Lead Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"role",
                "displayName":"Role",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"isPrimary",
                "displayName":"Is Primary",
                "dataType":"boolean",
                "updateable":true
             },
-            {  
+            {
                "name":"externalCreatedDate",
                "displayName":"External Created Date",
                "dataType":"datetime",
@@ -140,12 +140,12 @@ Tutti gli oggetti del database lead condividono lo schema di base per l&#39;esec
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
-Per tutti gli oggetti ad eccezione dei lead, puoi selezionare il campo {field to query} dai searchableFields della chiamata di descrizione corrispondente e comporre un elenco separato da virgole con un massimo di 300 valori. Sono inoltre disponibili i seguenti parametri di query facoltativi:
+Per tutti gli oggetti ad eccezione dei lead, è possibile selezionare {field to query} dai searchableFields della chiamata di descrizione corrispondente e creare un elenco separato da virgole contenente un massimo di 300 valori. Sono inoltre disponibili i seguenti parametri di query facoltativi:
 
 - `batchSize` - Numero intero del numero di risultati da restituire. I valori predefiniti e massimi sono 300.
 - `nextPageToken` - Token restituito da una chiamata precedente per il paging. Per ulteriori dettagli, vedi [Token di paging](paging-tokens.md).
 - `fields` - Elenco di nomi di campo separati da virgole da restituire per ogni record. Per un elenco dei campi validi, vedi la descrizione corrispondente. Se un particolare campo viene richiesto ma non restituito, il valore deve essere nullo.
-- `_method` - Utilizzato per l&#39;invio di query tramite il metodo HTTP POST. Per informazioni sull&#39;utilizzo, vedere la sezione _method=GET riportata di seguito.
+- `_method` - Utilizzato per l&#39;invio di query tramite il metodo HTTP POST. Consulta la sezione _method=GET di seguito per informazioni sull’utilizzo.
 
 Per un rapido esempio, esaminiamo le opportunità di query:
 
@@ -154,11 +154,11 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fa ",
          "externalOpportunityId":"19UYA31581L000000",
@@ -167,7 +167,7 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "seq":1,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fc ",
          "externalOpportunityId":"29UYA31581L000000",
@@ -186,7 +186,7 @@ Se il set di record nella query supera i 300 o il `batchSize` specificato, a sec
 
 ### URI lunghi
 
-Talvolta, ad esempio quando si esegue una query tramite GUID, l’URI potrebbe essere lungo e superare gli 8 KB consentiti dal servizio REST. In questo caso, è necessario utilizzare il metodo HTTP POST anziché GET e aggiungere un parametro di query `_method=GET`. Inoltre, gli altri parametri di query devono essere passati nel corpo del POST come stringa &quot;application/x-www-form-urlencoded&quot; e passare l’intestazione Content-type associata.
+Talvolta, ad esempio quando si esegue una query tramite GUID, l’URI potrebbe essere lungo e superare gli 8 KB consentiti dal servizio REST. In questo caso, è necessario utilizzare il metodo HTTP POST anziché GET e aggiungere un parametro di query `_method=GET`. Inoltre, gli altri parametri di query devono essere passati nel corpo POST come stringa &quot;application/x-www-form-urlencoded&quot; e passare l’intestazione Content-type associata.
 
 ```
 POST /rest/v1/opportunities.json?_method=GET
@@ -211,26 +211,26 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
 ```json
-{  
+{
    "filterType":"dedupeFields",
-   "fields":[  
+   "fields":[
       "marketoGuid",
       "externalOpportunityId",
       "leadId",
       "role"
    ],
-   "input":[  
-      {  
+   "input":[
+      {
         "externalOpportunityId":"Opportunity1",
         "leadId": 1,
         "role": "Captain"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity2",
         "leadId": 1872,
         "role": "Commander"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity3",
         "leadId": 273891,
         "role": "Lieutenant Commander"
@@ -254,18 +254,18 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "action":"createOrUpdate",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalOpportunityId":"19UYA31581L000000",
          "name":"Chairs",
          "description":"Chairs",
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "externalOpportunityId":"29UYA31581L000000",
          "name":"Big Dog Day Care-Phase12",
          "description":"Big Dog Day Care-Phase12",
@@ -277,16 +277,16 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "marketoGUID":"cff23271-f996-47d7-984f-f2676861b5fb"
@@ -306,16 +306,16 @@ POST /rest/v1/customobjects/{name}/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "vin":"19UYA31581L000000"
       },
-      {  
+      {
          "vin":"29UYA31581L000000"
       },
-      {  
+      {
          "vin":"39UYA31581L000000"
       }
    ]

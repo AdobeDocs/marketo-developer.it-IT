@@ -2,7 +2,7 @@
 title: Flussi di dati
 description: Panoramica di Data Steams
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1596'
 ht-degree: 1%
@@ -89,7 +89,7 @@ Elenco degli eventi di controllo degli utenti in streaming:
 | Cartella | creare, eliminare, modificare, rinominare |
 | Modulo | approvare, clonare, creare, eliminare, bozzaCreare, modificare, spostare, rinominare |
 | Modulo -> Modulo pagina di destinazione | creare, clonare, modificare, eliminare, approvare, rinominare |
-| Landing Page | approva, clona, crea, elimina, bozzaElimina, modifica, rinomina, annulla approvazione |
+| Pagina di destinazione | approva, clona, crea, elimina, bozzaElimina, modifica, rinomina, annulla approvazione |
 | Modello per pagina di destinazione | approva, clona, crea, elimina, bozzaCrea, bozzaElimina, modifica, rinomina, annulla approvazione |
 | Elenco avanzato | clona, crea, elimina, modifica, esporta, modifica impostazione elenco avanzato, rinomina |
 | Cartella di marketing | creare, modificare, eliminare |
@@ -124,7 +124,7 @@ Esempio di evento di controllo utente:
             "munchkinId": "123-ABC-456",
             "imsOrgId": "ADOBEORGID@AdobeOrg",
             "user": 253,
-            "userId": "example@marketo.com"          
+            "userId": "example@marketo.com"
         }
     }
 }
@@ -262,7 +262,7 @@ Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo
 
 ### Configurazione del flusso di dati di controllo degli utenti in Marketo
 
-Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento alla [pagina di descrizione del prodotto](https://helpx.adobe.com/it/legal/product-descriptions/adobe-marketo-engage---product-description.html) per i limiti e le funzionalità del prodotto.
+Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento alla [pagina di descrizione del prodotto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) per i limiti e le funzionalità del prodotto.
 
 ### Configurazione di Adobe I/O
 

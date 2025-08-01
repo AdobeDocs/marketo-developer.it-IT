@@ -3,10 +3,10 @@ title: '[!DNL Ionic]'
 feature: Mobile Marketing
 description: Utilizzo di  [!DNL Ionic]  con Marketo per dispositivi mobili
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '606'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
@@ -16,7 +16,7 @@ Questo argomento descrive come integrare il plug-in Marketo Cordova. Il condensa
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
 1. Installa [[!DNL Ionic]](https://ionicframework.com/getting-started/) e [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -88,7 +88,7 @@ marketo.initialize(
   'FRAMEWORK_TYPE'
 );
 
-// For session tracking, add following. 
+// For session tracking, add following.
 marketo.onStart(
   function(){ console.log("onStart."); },
   function(error){ console.log("Failed to report onStart." + error); }
@@ -121,7 +121,7 @@ marketo.initializeMarketoPush(
 
 - Success Callback : funzione da eseguire se la notifica push di Marketo viene inizializzata correttamente.
 - Failure Callback : funzione da eseguire se la notifica push di Marketo non viene inizializzata.
-- GCM_PROJECT_ID : ID progetto GCM trovato in [Console sviluppatori Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) dopo la creazione dell&#39;app.
+- GCM_PROJECT_ID : ID progetto GCM trovato in [Console sviluppatori Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard) dopo la creazione dell&#39;app.
 
 Il token può anche essere annullato alla disconnessione.
 
@@ -245,10 +245,10 @@ onStart: function() {
 
 Esistono tre modi per creare lead da un’app ibrida:
 
-1. SDK MARKETO MME
+1. MARKETO MME SDK
 1. API REST di Marketo
 1. Invio modulo
 
-A seconda del metodo utilizzato, un lead appena creato viene riconosciuto da diversi trigger e filtri. I lead creati utilizzando l’SDK MME o l’API REST vengono visualizzati nei trigger e nei filtri &quot;Lead creato&quot;. I lead creati mediante l’invio di un modulo vengono visualizzati nei trigger e nei filtri &quot;Compila modulo&quot;.
+A seconda del metodo utilizzato, un lead appena creato viene riconosciuto da diversi trigger e filtri. I lead creati utilizzando l’API SDK o REST di MME vengono visualizzati nei trigger e nei filtri &quot;Lead creato&quot;. I lead creati mediante l’invio di un modulo vengono visualizzati nei trigger e nei filtri &quot;Compila modulo&quot;.
 
-La best practice prevede di rimanere coerente con il metodo utilizzato dall’app web durante la creazione di lead. Se disponi già di un’app web che utilizza l’invio di moduli come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Se disponi già di un’app web che utilizza l’API REST come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Nei casi in cui non utilizzi l’invio di moduli né API REST come meccanismo per creare lead nell’app web, puoi utilizzare l’SDK MME per creare lead in Marketo.
+La best practice prevede di rimanere coerente con il metodo utilizzato dall’app web durante la creazione di lead. Se disponi già di un’app web che utilizza l’invio di moduli come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Se disponi già di un’app web che utilizza l’API REST come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Nei casi in cui non utilizzi né l’invio di moduli né API REST come meccanismo per creare lead nell’app web, puoi considerare l’utilizzo di MME SDK per creare lead in Marketo.

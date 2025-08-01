@@ -3,7 +3,7 @@ title: Notifiche push
 feature: Mobile Marketing
 description: Abilitazione delle notifiche push per Marketo Mobile
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1329'
 ht-degree: 0%
@@ -20,7 +20,7 @@ Esistono tre passaggi per abilitare le notifiche push:
 
 1. Configurare le notifiche push sull’account Apple Developer.
 1. Abilita le notifiche push in xCode.
-1. Abilitare le notifiche push in app con Marketo SDK.
+1. Abilita le notifiche push in app con Marketo SDK.
 
 ### Configurare le notifiche push sull’account Apple Developer
 
@@ -33,7 +33,7 @@ Esistono tre passaggi per abilitare le notifiche push:
 1. Crea e carica la CSR per generare il certificato push. ![](assets/push-ssl.png)
 1. Scaricare il certificato nel computer locale e fare doppio clic per installarlo. ![](assets/certificate-download.png)
 1. Aprire &quot;Accesso Portachiavi&quot;, fare clic con il pulsante destro del mouse sul certificato ed esportare 2 elementi nel file `.p12`.![catena_chiavi](assets/key-chain.png)
-1. Carica questo file tramite l’Admin Console di Marketo per configurare le notifiche.
+1. Carica questo file tramite Marketo Admin Console per configurare le notifiche.
 1. Aggiornare i profili di provisioning delle app.
 
 ### Abilitare le notifiche push in xCode
@@ -108,7 +108,7 @@ UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotification
 
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            
+
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound,    .badge]) { granted, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -118,7 +118,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
                 }
             }
         }
-        
+
         return true
 }
 ```
@@ -216,7 +216,7 @@ Utilizzando questo metodo puoi presentare un avviso, un suono o un contrassegno 
 >[!TAB Swift]
 
 ```
-func userNotificationCenter(_ center: UNUserNotificationCenter, 
+func userNotificationCenter(_ center: UNUserNotificationCenter,
             willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (
     UNNotificationPresentationOptions) -> Void) {
     completionHandler([.alert, .sound,.badge])
@@ -323,7 +323,7 @@ Aggiungi l’attività Marketo nel file manifesto all’interno del tag dell’a
    </service>
    ```
 
-1. Aggiungere i metodi SDK di Marketo nel file `MyFirebaseMessagingService` come segue
+1. Aggiungere i metodi di Marketo SDK nel file `MyFirebaseMessagingService` come segue
 
    ```java
    import com.marketo.Marketo;
@@ -371,7 +371,7 @@ Aggiungi l’attività Marketo nel file manifesto all’interno del tag dell’a
    }
    ```
 
-**NOTA**: l&#39;SDK FCM aggiunge automaticamente tutte le autorizzazioni necessarie e la funzionalità di ricezione richiesta. Assicurati di rimuovere i seguenti elementi obsoleti (e potenzialmente dannosi, in quanto potrebbero causare la duplicazione dei messaggi) dal manifesto dell&#39;app se hai utilizzato versioni precedenti dell&#39;SDK
+**NOTA**: FCM SDK aggiunge automaticamente tutte le autorizzazioni necessarie e le funzionalità del ricevitore richieste. Assicurati di rimuovere i seguenti elementi obsoleti (e potenzialmente dannosi, in quanto potrebbero causare la duplicazione dei messaggi) dal manifesto della tua app se hai utilizzato versioni precedenti di SDK
 
 ```xml
 <receiver android:name="com.marketo.MarketoBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
@@ -430,13 +430,13 @@ Aggiungi l’attività Marketo nel file manifesto all’interno del tag dell’a
    config.setNotificationLargeIcon(bitmap);
    
    // Required icon Resource ID
-   config.setNotificationSmallIcon(R.drawable.notification_small_icon); 
+   config.setNotificationSmallIcon(R.drawable.notification_small_icon);
    
-   // Set the configuration 
+   // Set the configuration
    //Use the static methods on ALMarketo class when using Adobe Extension
-   Marketo.getInstance(context).setNotificationConfig(config); 
+   Marketo.getInstance(context).setNotificationConfig(config);
    
-   // Get the configuration set 
+   // Get the configuration set
    Marketo.getInstance(context).getNotificationConfig();
    ```
 

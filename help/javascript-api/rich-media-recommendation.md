@@ -3,10 +3,10 @@ title: Consigli per contenuti multimediali avanzati
 description: Consigli per contenuti multimediali avanzati
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '812'
-ht-degree: 3%
+ht-degree: 4%
 
 ---
 
@@ -21,13 +21,13 @@ Nella pagina in cui desideri visualizzare il modello Consigli per contenuti mult
 1. Nel corpo della pagina
    1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
 | Attributo | Facoltativo/Obbligatorio | Descrizione |
 |---|---|---|
-| classe | Obbligatorio | Specifica che l&#39;elemento HTML div è div consigli RTP. |
+| classe | Obbligatorio | Specifica che l&#39;elemento div HTML è un div di consigli RTP. |
 | data-rtp-template-id | Obbligatorio | ID del modello. Questo determina l’allineamento del consiglio. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale che include solo titolo e descrizione. Lo script inserisce il modello corrispondente in `div.Permissible` valori: template1, template2, template3. |
 
 ### Esempi
@@ -103,7 +103,7 @@ Questo frammento di codice mostra come impostare categorie con più configurazio
 ```javascript
 rtp("set", "rcmd", "richmedia",
     {
-        "template1": 
+        "template1":
         {
             "rcmd.title.text": "RECOMMENDED CONTENT",
             "rcmd.general.font.family": "arial",
@@ -164,7 +164,7 @@ Questo esempio ha un modello con tre consigli. Copiare questo esempio in una pag
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -196,7 +196,7 @@ Questo esempio ha un modello con tre consigli. Il titolo del modello è &quot;CO
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -232,13 +232,13 @@ rtp('get','rcmd', 'richmedia');
 
 #### Esempio di #1 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello1 **Descrizione**: contenuto orizzontale con immagine, titolo e descrizione e pulsante di invito all&#39;azione.
+**Nome**: modello1 **Descrizione**: contenuto orizzontale con immagine, titolo e descrizione e pulsante call to action.
 
 ![Modello Rich Media](assets/rich-media-template1.png)
 
 #### Esempio di #2 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello2 **Descrizione**: contenuto verticale con immagine, titolo e descrizione e pulsante di invito all&#39;azione.
+**Nome**: modello2 **Descrizione**: contenuto verticale con immagine, titolo e descrizione e pulsante call to action.
 
 ![Modello Rich Media](assets/rich-media-template2.png)
 

@@ -3,10 +3,10 @@ title: PhoneGap
 feature: Mobile Marketing
 description: Utilizzo di PhoneGap con Marketo su dispositivi mobili
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '797'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
@@ -16,7 +16,7 @@ Integrazione del plug-in PhoneGap di Marketo
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installa PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -51,7 +51,7 @@ Per aggiungere di nuovo il plug-in, esegui il comando seguente:
 Una volta creata la piattaforma Cordova Android, apri l&#39;app con Android Studio e aggiorna il valore `dirs` del file `Marketo.gradle` trovato nella cartella `com.marketo.plugin`.
 
 ```
-repositories{    
+repositories{
   jcenter()
   flatDir{
       dirs '../app/src/main/aar'
@@ -66,7 +66,7 @@ Controlla l&#39;elenco delle piattaforme aggiunte `$cordova platform ls`
 1. Supporto di Firebase Cloud Messaging
 
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://console.firebase.google.com/)Firebase.
+   1. Crea/Aggiungi un progetto nella console [](https://console.firebase.google.com/)Firebase.
       1. Nella [console Firebase](https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona &quot;Add Firebase to your Android App&quot; (Aggiungi Firebase alla tua app).
@@ -114,11 +114,11 @@ Controlla l&#39;elenco delle piattaforme aggiunte `$cordova platform ls`
             ```
 
 
-### 3. Abilitare le notifiche push in xCode
+### &#x200B;3. Abilitare le notifiche push in xCode
 
 Attiva la funzionalità di notifica push nel progetto xCode.
 
-### 4. Tracciare le notifiche push
+### &#x200B;4. Tracciare le notifiche push
 
 Incollare il codice seguente nella funzione `application:didFinishLaunchingWithOptions:`.
 
@@ -146,7 +146,7 @@ sharedInstance.trackPushNotification(launchOptions)
 
 >[!ENDTABS]
 
-### 5. Inizializzare Marketo Framework
+### &#x200B;5. Inizializzare Marketo Framework
 
 Per garantire che il framework Marketo sia avviato all&#39;avvio dell&#39;app, aggiungi il seguente codice nella funzione `onDeviceReady` nel file JavaScript principale.
 
@@ -160,11 +160,11 @@ marketo.initialize(
   function() { console.log("MarketoSDK Init done."); },
   function(error) { console.log("an error occurred:" + error); },
   'YOUR_MUNCHKIN_ID',
-  'YOUR_SECRET_KEY', 
+  'YOUR_SECRET_KEY',
   'FRAMEWORK_TYPE'
 );
 
-// For session tracking, add following. 
+// For session tracking, add following.
 marketo.onStart(
   function(){ console.log("onStart."); },
   function(error){ console.log("Failed to report onStart." + error); }
@@ -175,10 +175,10 @@ marketo.onStart(
 
 - Callback riuscito : funzione da eseguire se il framework Marketo viene inizializzato correttamente.
 - Callback errore : funzione da eseguire se il framework Marketo non è in grado di inizializzare.
-- ID MUNCHKIN : ID Munchkin ricevuto da Marketo al momento della registrazione.
+- MUNCHKIN ID : Munchkin ID ricevuto da Marketo al momento della registrazione.
 - CHIAVE SEGRETA : Chiave segreta ricevuta da Marketo al momento della registrazione.
 
-### 6. Inizializzare la notifica push di Marketo
+### &#x200B;6. Inizializzare la notifica push di Marketo
 
 Per assicurarsi che la notifica push di Marketo venga avviata, aggiungi il seguente codice dopo la funzione di inizializzazione nel file JavaScript principale.
 
@@ -323,10 +323,10 @@ onStart: function() {
 
 Esistono tre modi per creare lead da un’app ibrida:
 
-1. SDK MARKETO MME
+1. MARKETO MME SDK
 1. API REST di Marketo
 1. Invio modulo
 
-A seconda del metodo utilizzato, un lead appena creato verrà riconosciuto da diversi trigger e filtri. I lead creati utilizzando l’SDK MME o l’API REST vengono visualizzati nei trigger e nei filtri &quot;Lead creato&quot;. I lead creati mediante l’invio di un modulo vengono visualizzati nei trigger e nei filtri &quot;Compila modulo&quot;.
+A seconda del metodo utilizzato, un lead appena creato verrà riconosciuto da diversi trigger e filtri. I lead creati utilizzando l’API SDK o REST di MME vengono visualizzati nei trigger e nei filtri &quot;Lead creato&quot;. I lead creati mediante l’invio di un modulo vengono visualizzati nei trigger e nei filtri &quot;Compila modulo&quot;.
 
-La best practice prevede di rimanere coerente con il metodo utilizzato dall’app web durante la creazione di lead. Se disponi già di un’app web che utilizza l’invio di moduli come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Se disponi già di un’app web che utilizza l’API REST come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Nei casi in cui non utilizzi l’invio di moduli né API REST come meccanismo per creare lead nell’app web, puoi utilizzare l’SDK MME per creare lead in Marketo.
+La best practice prevede di rimanere coerente con il metodo utilizzato dall’app web durante la creazione di lead. Se disponi già di un’app web che utilizza l’invio di moduli come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Se disponi già di un’app web che utilizza l’API REST come meccanismo per creare lead, utilizza lo stesso meccanismo quando crei lead nell’app ibrida. Nei casi in cui non utilizzi né l’invio di moduli né API REST come meccanismo per creare lead nell’app web, puoi considerare l’utilizzo di MME SDK per creare lead in Marketo.

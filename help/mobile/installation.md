@@ -3,22 +3,22 @@ title: Installazione
 feature: Mobile Marketing
 description: Installare gli SDK per Mobile Marketo
 exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '758'
+source-wordcount: '757'
 ht-degree: 0%
 
 ---
 
 # Installazione
 
-Istruzioni di installazione per l’SDK di Marketo Mobile. I passaggi seguenti sono necessari per inviare notifiche push e/o messaggi in-app.
+Istruzioni di installazione per Marketo Mobile SDK. I passaggi seguenti sono necessari per inviare notifiche push e/o messaggi in-app.
 
 ## Installare Marketo SDK su iOS
 
 ### Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 1. [Imposta notifiche push](push-notifications.md) (facoltativo)
 
 ### Installare Framework tramite CocoaPods
@@ -59,7 +59,7 @@ Istruzioni di installazione per l’SDK di Marketo Mobile. I passaggi seguenti s
 
 ## Inizializza SDK
 
-Prima di poter utilizzare l&#39;SDK di Marketo iOS, è necessario inizializzarlo con l&#39;ID account Munchkin e la chiave segreta dell&#39;app. Puoi trovare ciascuno di questi elementi nell’area di amministrazione di Marketo sotto &quot;App e dispositivi mobili&quot;.
+Prima di poter utilizzare Marketo iOS SDK, è necessario inizializzarlo con l&#39;ID account Munchkin e la chiave segreta dell&#39;app. Puoi trovare ciascuno di questi elementi nell’area di amministrazione di Marketo sotto &quot;App e dispositivi mobili&quot;.
 
 1. Apri il file AppDelegate.m (Objective-C) o Bridging (Swift) e importa il file di intestazione Marketo.h.
 
@@ -91,7 +91,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!ENDTABS]
 
-1. Sostituisci `munkinAccountId` e `secretKey` in alto utilizzando i tuoi &quot;ID account Munchkin&quot; e &quot;Chiave segreta&quot; che si trovano nella sezione Marketo **[!UICONTROL Admin]** > **[!UICONTROL Mobile Apps and Devices]**.
+1. Sostituisci `munkinAccountId` e `secretKey` in alto utilizzando i tuoi &quot;ID account Munchkin&quot; e &quot;Chiave segreta&quot; presenti nella sezione Marketo **[!UICONTROL Admin]** > **[!UICONTROL Mobile Apps and Devices]**.
 
 ## Dispositivi di prova iOS
 
@@ -110,10 +110,10 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-   
+
     return [[Marketo sharedInstance] application:app
                                          openURL:url
-                                         options:options];    
+                                         options:options];
 }
 ```
 
@@ -132,11 +132,11 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 1. [Imposta notifiche push](push-notifications.md#android_setup_push) (facoltativo)
 1. [Scarica Marketo SDK per Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
-### Configurazione dell’SDK Android con Gradle
+### Installazione di Android SDK con Gradle
 
 1. Nel file build.gradle a livello di applicazione, nella sezione dipendenze, aggiungi
 
@@ -165,7 +165,7 @@ Apri `AndroidManifest.xml` e aggiungi le seguenti autorizzazioni. L&#39;app deve
 
 ### Inizializza SDK
 
-1. Apri la classe Application o Activity nell&#39;app e importa l&#39;SDK di Marketo nell&#39;attività prima di setContentView o in Application Context.
+1. Apri la classe Application o Activity nell&#39;app e importa Marketo SDK nell&#39;attività prima di setContentView o in Application Context.
 
    ```java
    // Initialize Marketo
@@ -175,7 +175,7 @@ Apri `AndroidManifest.xml` e aggiungi le seguenti autorizzazioni. L&#39;app deve
 
 1. Configurazione ProGuard (opzionale)
 
-   Se utilizzi ProGuard per l&#39;app, aggiungi le seguenti righe nel file `proguard.cfg`. Il file si trova all’interno della cartella del progetto. L’aggiunta di questo codice esclude l’SDK Marketo dal processo di offuscamento.
+   Se utilizzi ProGuard per l&#39;app, aggiungi le seguenti righe nel file `proguard.cfg`. Il file si trova all’interno della cartella del progetto. L’aggiunta di questo codice esclude Marketo SDK dal processo di offuscamento.
 
    ```
    -dontwarn com.marketo.*
@@ -206,10 +206,10 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
 
 ### Aggiunta di FCM all’applicazione
 
-1. Integra l’SDK Marketo Android più recente nell’app Android.  I passaggi sono disponibili in [GitHub](https://github.com/Marketo/android-sdk).
+1. Integra la versione più recente di Marketo Android SDK nell’app Android.  I passaggi sono disponibili in [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)Firebase.
-      1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), seleziona `Add Project`.
+   1. Crea/Aggiungi un progetto nella console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase.
+      1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), seleziona `Add Project`.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare `Add Firebase`.
       1. Nella schermata di benvenuto di Firebase, seleziona `Add Firebase to your Android App`.
       1. Specificare il nome del pacchetto e SHA-1 e selezionare `Add App`. È stato scaricato un nuovo file `google-services.json` per l&#39;app Firebase.
@@ -236,13 +236,13 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
             ```
             dependencies {
               compile 'com.google.firebase:firebase-core:17.4.0'
-            } 
-            // Add to the bottom of the file 
+            }
+            // Add to the bottom of the file
             apply plugin: 'com.google.gms.google-services'
             ```
 
          1. Infine, fai clic su &quot;Sincronizza ora&quot; nella barra visualizzata nell’ID
-   1. Modifica il manifesto dell’app L’SDK FCM aggiunge automaticamente tutte le autorizzazioni richieste e la funzionalità di ricezione richiesta. Assicurati di rimuovere i seguenti elementi obsoleti (e potenzialmente dannosi, in quanto potrebbero causare la duplicazione dei messaggi) dal manifesto dell&#39;app:
+   1. Modifica il manifesto dell&#39;app Il SDK FCM aggiunge automaticamente tutte le autorizzazioni richieste e le funzionalità richieste per il ricevitore. Assicurati di rimuovere i seguenti elementi obsoleti (e potenzialmente dannosi, in quanto potrebbero causare la duplicazione dei messaggi) dal manifesto dell&#39;app:
 
       ```xml
       <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -258,6 +258,6 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
         <intent-filter>
           <action android:name="com.google.android.c2dm.intent.RECEIVE" />
           <category android:name="<your-package-name> />
-        </intent-filter> 
+        </intent-filter>
       </receiver>
       ```

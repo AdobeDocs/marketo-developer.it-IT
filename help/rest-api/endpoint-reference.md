@@ -3,10 +3,10 @@ title: Riferimento endpoint
 feature: REST API
 description: Riferimenti endpoint API Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '4676'
-ht-degree: 2%
+source-wordcount: '4448'
+ht-degree: 5%
 
 ---
 
@@ -188,18 +188,18 @@ Elenco completo degli endpoint REST API.
 | Ottieni contenuto dinamico pagina di destinazione | Contenuto della pagina di destinazione | GET | /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json | Risorsa di sola lettura |
 | Sezione Aggiorna contenuto pagina di destinazione | Contenuto della pagina di destinazione | POST | /rest/asset/v1/landingPage/{id}/content/{contentId}.json | Risorsa di lettura/scrittura |
 | Aggiorna sezione contenuti dinamici della pagina di destinazione | Contenuto della pagina di destinazione | POST | /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json | Risorsa di lettura/scrittura |
-| Approva bozza modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/approveDraft.json | Risorsa di lettura/scrittura |
-| Clona modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/clone.json | Risorsa di lettura/scrittura |
-| Crea modello per pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate.json | Risorsa di lettura/scrittura |
-| Elimina modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/delete.json | Risorsa di lettura/scrittura |
-| Elimina bozza modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/discardDraft.json | Risorsa di lettura/scrittura |
-| Ottieni modello pagina di destinazione per ID | Modelli di pagina di destinazione | GET | /rest/asset/v1/landingPageTemplate/{id}.json | Risorsa di sola lettura |
-| Ottieni modello pagina di destinazione per nome | Modelli di pagina di destinazione | GET | /rest/asset/v1/landingPageTemplates/byName.json | Risorsa di sola lettura |
-| Ottieni contenuto modello pagina di destinazione | Modelli di pagina di destinazione | GET | /rest/asset/v1/landingPageTemplate/{id}/content.json | Risorsa di sola lettura |
-| Ottieni modelli pagina di destinazione | Modelli di pagina di destinazione | GET | /rest/asset/v1/landingPageTemplates.json | Risorsa di sola lettura |
-| Annulla approvazione modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/unapprove.json | Risorsa di lettura/scrittura |
-| Aggiorna contenuto modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/content.json | Risorsa di lettura/scrittura |
-| Aggiorna metadati modello pagina di destinazione | Modelli di pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Risorsa di lettura/scrittura |
+| Approva bozza modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/approveDraft.json | Risorsa di lettura/scrittura |
+| Clona modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/clone.json | Risorsa di lettura/scrittura |
+| Crea modello per pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate.json | Risorsa di lettura/scrittura |
+| Elimina modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/delete.json | Risorsa di lettura/scrittura |
+| Elimina bozza modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/discardDraft.json | Risorsa di lettura/scrittura |
+| Ottieni modello pagina di destinazione per ID | Modelli pagina di destinazione | GET | /rest/asset/v1/landingPageTemplate/{id}.json | Risorsa di sola lettura |
+| Ottieni modello pagina di destinazione per nome | Modelli pagina di destinazione | GET | /rest/asset/v1/landingPageTemplates/byName.json | Risorsa di sola lettura |
+| Ottieni contenuto modello pagina di destinazione | Modelli pagina di destinazione | GET | /rest/asset/v1/landingPageTemplate/{id}/content.json | Risorsa di sola lettura |
+| Ottieni modelli pagina di destinazione | Modelli pagina di destinazione | GET | /rest/asset/v1/landingPageTemplates.json | Risorsa di sola lettura |
+| Annulla approvazione modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/unapprove.json | Risorsa di lettura/scrittura |
+| Aggiorna contenuto modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}/content.json | Risorsa di lettura/scrittura |
+| Aggiorna metadati modello pagina di destinazione | Modelli pagina di destinazione | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Risorsa di lettura/scrittura |
 | Approva bozza pagina di destinazione | Pagine di destinazione | POST | /rest/asset/v1/landingPage/{id}/approveDraft.json | Risorsa di lettura/scrittura |
 | Clona pagina di destinazione | Pagine di destinazione | POST | /rest/asset/v1/landingPage/{id}/clone.json | Risorsa di lettura/scrittura |
 | Creare pagine di destinazione | Pagine di destinazione | POST | /rest/asset/v1/landingPages.json | Risorsa di lettura/scrittura |
@@ -301,11 +301,11 @@ Elenco completo degli endpoint REST API.
 | Ottieni campagna avanzata per nome | Campagne avanzate | GET | /rest/asset/v1/smartCampaign/byName.json | Risorsa di sola lettura |
 | Ottieni elenco avanzato per ID campagna avanzato | Campagne avanzate | GET | /rest/asset/v1/smartCampaign/{id}/smartList.json | Risorsa di sola lettura |
 | Aggiornare Smart Campaign | Campagne avanzate | POST | /rest/asset/v1/smartCampaign/{id}.json | Risorsa di lettura/scrittura |
-| Clona elenco avanzato | Elenchi smart | POST | /rest/asset/v1/smartList/{id}/clone.json | Risorsa di lettura/scrittura |
-| Elimina elenco avanzato | Elenchi smart | POST | /rest/asset/v1/smartList/{id}/delete.json | Risorsa di lettura/scrittura |
-| Ottieni elenco avanzato per ID | Elenchi smart | GET | /rest/asset/v1/smartList/{id}.json | Risorsa di sola lettura |
-| Ottieni elenco avanzato per nome | Elenchi smart | GET | /rest/asset/v1/smartList/byName.json | Risorsa di sola lettura |
-| Ottieni elenchi avanzati | Elenchi smart | GET | /rest/asset/v1/smartLists.json | Risorsa di sola lettura |
+| Clona elenco avanzato | Elenchi avanzati | POST | /rest/asset/v1/smartList/{id}/clone.json | Risorsa di lettura/scrittura |
+| Elimina elenco avanzato | Elenchi avanzati | POST | /rest/asset/v1/smartList/{id}/delete.json | Risorsa di lettura/scrittura |
+| Ottieni elenco avanzato per ID | Elenchi avanzati | GET | /rest/asset/v1/smartList/{id}.json | Risorsa di sola lettura |
+| Ottieni elenco avanzato per nome | Elenchi avanzati | GET | /rest/asset/v1/smartList/byName.json | Risorsa di sola lettura |
+| Ottieni elenchi avanzati | Elenchi avanzati | GET | /rest/asset/v1/smartLists.json | Risorsa di sola lettura |
 | Approva bozza frammento | Snippet | POST | /rest/asset/v1/snippet/{id}/approveDraft.json | Risorsa di lettura/scrittura |
 | Clona snippet | Snippet | POST | /rest/asset/v1/snippet/{id}/clone.json | Risorsa di lettura/scrittura |
 | Crea snippet | Snippet | POST | /rest/asset/v1/snippets.json | Risorsa di lettura/scrittura |
@@ -319,7 +319,7 @@ Elenco completo degli endpoint REST API.
 | Aggiorna contenuto snippet | Snippet | POST | /rest/asset/v1/snippet/{id}/content.json | Risorsa di lettura/scrittura |
 | Aggiorna contenuto dinamico frammento | Snippet | POST | /rest/asset/v1/snippet/{id}/dynamicContent/{segmentId}.json | Risorsa di lettura/scrittura |
 | Aggiorna metadati frammento | Snippet | POST | /rest/asset/v1/snippet/{id}.json | Risorsa di lettura/scrittura |
-| Aggiungi all&#39;elenco | Elenchi statici | POST | /rest/v1/LISTS/{listId}/leads.json | Lead di lettura/scrittura |
+| Aggiungi all’elenco | Elenchi statici | POST | /rest/v1/LISTS/{listId}/leads.json | Lead di lettura/scrittura |
 | Crea elenco statico | Elenchi statici | POST | /asset/v1/staticLists.json | Risorsa di lettura/scrittura |
 | Elimina elenco statico | Elenchi statici | POST | /asset/v1/staticList/{id}/delete.json | Risorsa di lettura/scrittura |
 | Ottieni lead per ID elenco | Elenchi statici | GET | /rest/v1/LISTS/{listId}/leads.json | Lead di sola lettura |
