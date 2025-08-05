@@ -3,7 +3,7 @@ title: Installazione dell'estensione [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Panoramica sull'installazione dell'estensione [!DNL Adobe Launch]
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '664'
 ht-degree: 0%
@@ -16,7 +16,7 @@ Istruzioni di installazione per l&#39;estensione Marketo [!DNL Adobe Launch]. I 
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 1. [Configura la proprietà in [!DNL Adobe Launch] portale](https://experience.adobe.com/#/@amc/data-collection/home)
 1. Configurare la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin per la proprietà nel portale [!DNL Adobe Launch]
 1. [Imposta notifiche push](push-notifications.md) (facoltativo)
@@ -159,7 +159,7 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
 
 1. Integra la versione più recente di Marketo Android SDK nell’app Android.  I passaggi sono disponibili in [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase.
+   1. Crea/Aggiungi un progetto nella console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase.
       1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona **[!UICONTROL Add Firebase to your Android App]**.
@@ -212,7 +212,6 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
         </intent-filter>
       </receiver>
       ```
-
 
 ### Domande frequenti su FCM
 

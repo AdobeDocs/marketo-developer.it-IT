@@ -3,7 +3,7 @@ title: Riferimento API di Munchkin
 description: Utilizza l’API JavaScript di Munchkin per personalizzare i dati Munchkin.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 7%
@@ -41,7 +41,6 @@ Quando viene chiamato, questo controlla che nel browser esista un cookie `_mkto_
 | --- | --- | --- | --- |
 | forceCreate | Obbligatorio | Booleano | Crea cookie anche se `cookieAnon` è impostato su false. |
 
-
 ```javascript
 Munchkin.createTrackingCookie(true);
 ```
@@ -62,7 +61,7 @@ La chiamata a `munchkinFunction()` con `visitWebPage` invia un&#39;attività &#3
 | Nome proprietà dati | Facoltativo/Obbligatorio | Tipo | Descrizione |
 | --- | --- | --- | --- |
 | url | Obbligatorio | Stringa | Percorso del file URL utilizzato per registrare una visita di pagina.  Questo valore viene aggiunto al nome di dominio corrente per creare il nome di pagina completo. Ad esempio, se l&#39;URL è `/index.html` e il nome di dominio è `www.example.com`, la pagina visitata viene registrata come `www.example.com/index.html`. |
-| parametri | Facoltativo | Stringa | Stringa di query dei parametri desiderati da registrare. |
+| params | Facoltativo | Stringa | Stringa di query dei parametri desiderati da registrare. |
 
 Ad esempio, `foo=bar&biz=baz`.
 

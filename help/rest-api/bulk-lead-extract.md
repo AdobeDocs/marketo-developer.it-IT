@@ -3,7 +3,7 @@ title: Estrazione lead in blocco
 feature: REST API
 description: Estrazione batch dei dati del lead.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1173'
 ht-degree: 2%
@@ -26,13 +26,12 @@ I lead supportano varie opzioni di filtro. Alcuni filtri, tra cui `updatedAt`, `
 
 | Tipo di filtro | Tipo di dati | Note |
 |---|---|---|
-| createdAt | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. |
-| updateAt* | Intervallo date | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. Nota: questo filtro non filtra il campo visibile &quot;updatedAt&quot; che riflette solo gli aggiornamenti ai campi standard. Filtra in base a quando è stato effettuato l’aggiornamento più recente del campo a un record leadJobs con questo tipo di filtro restituisce tutti i record accessibili più di recente aggiornati all’interno dell’intervallo di date. |
+| createdAt | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. |
+| updateAt* | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. Nota: questo filtro non filtra il campo visibile &quot;updatedAt&quot; che riflette solo gli aggiornamenti ai campi standard. Filtra in base a quando è stato effettuato l’aggiornamento più recente del campo a un record leadJobs con questo tipo di filtro restituisce tutti i record accessibili più di recente aggiornati all’interno dell’intervallo di date. |
 | staticListName | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | staticListId | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | smartListName* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recuperare i nomi degli elenchi smart utilizzando l&#39;endpoint Get Smart Lists. |
 | smartListId* | Intero | Accetta l’ID di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recupera gli ID degli elenchi avanzati utilizzando l’endpoint &quot;Get Smart Lists&quot;. |
-
 
 Il tipo di filtro non è disponibile per alcune sottoscrizioni. Se non disponibile per la sottoscrizione, viene visualizzato un errore durante la chiamata dell’endpoint del processo Crea lead di esportazione (&quot;1035, tipo di filtro non supportato per la sottoscrizione di destinazione&quot;). I clienti possono contattare il supporto tecnico Marketo per richiedere che questa funzionalità sia abilitata nel loro abbonamento.
 
@@ -45,7 +44,6 @@ L’endpoint del processo Crea lead di esportazione offre diverse opzioni di for
 | campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. Ogni stringa deve essere il nome REST API di un campo lead di Marketo. I campi elencati sono inclusi nel file esportato. L’intestazione di colonna per ciascun campo corrisponderà al nome API REST di ciascun campo, a meno che non venga sostituita da columnHeader. Nota: quando la funzionalità [!DNL Adobe Experience Cloud Audience Sharing] è abilitata, si verifica un processo di sincronizzazione dei cookie che associa l&#39;ID [!DNL Adobe Experience Cloud] (ECID) ai lead di Marketo. Puoi specificare il campo &quot;ecid&quot; per includere gli ECID nel file di esportazione. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Questo è il nome API del campo che può essere recuperato chiamando Descrivi lead. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
-
 
 ## Creazione di un processo
 
@@ -151,7 +149,7 @@ L’endpoint di stato risponde indicando che il processo è ancora in elaborazio
 
 Il campo di stato può rispondere con uno qualsiasi dei seguenti elementi:
 
-- Creato
+- Creata
 - In coda
 - Elaborazione
 - Annullato

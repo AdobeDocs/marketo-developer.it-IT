@@ -3,7 +3,7 @@ title: Acquisizione dei dati
 feature: REST API, Dynamic Content
 description: Utilizzare i dati con le API di Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 10%
@@ -223,7 +223,6 @@ Se nella richiesta è specificato un campo di collegamento a una persona e tale 
 #### Richiesta
 
 `POST /subscriptions/{munchkinId}/customobjects/{customObjectAPIName}`
-
 
 #### Intestazioni
 

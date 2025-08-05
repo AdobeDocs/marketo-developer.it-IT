@@ -3,7 +3,7 @@ title: Elenchi di account denominati
 feature: REST API
 description: Configurare elenchi di account denominati.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni
@@ -33,7 +33,6 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 | createdAt | Data e ora | False | Data e ora della creazione dell’elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
 | updatedAt | Data e ora | False | Datetime dell&#39;aggiornamento più recente dell&#39;elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |
 | tipo | Stringa | False | Tipo dell’elenco. Può avere un valore &quot;default&quot; o &quot;external&quot;. Gli elenchi esterni sono quelli creati dalla Visualizzazione account CRM. |
-
 
 ## Query
 
@@ -294,9 +293,9 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ## Timeout
 
 - Gli endpoint dell’elenco account denominati hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Elenchi account denominati di sincronizzazione: 60s 
-   - Elimina elenchi account denominati: 60s 
-   - Ottieni elenchi account denominati: anni 60 
-   - Aggiungi membri elenco account denominati: 60s 
-   - Rimuovi membri elenco account denominati: 60s 
+   - Elenchi account denominati di sincronizzazione: 60s
+   - Elimina elenchi account denominati: 60s
+   - Ottieni elenchi account denominati: anni 60
+   - Aggiungi membri elenco account denominati: 60s
+   - Rimuovi membri elenco account denominati: 60s
    - Ottieni membri elenco account denominati: 60s

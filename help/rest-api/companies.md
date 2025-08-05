@@ -3,7 +3,7 @@ title: Aziende
 feature: REST API
 description: Configurare i dati aziendali con le API di Marketo.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '564'
 ht-degree: 1%
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Le società rappresentano l&#39;organizzazione a cui appartengono i record dei lead. I lead vengono aggiunti a un&#39;azienda compilando il campo `externalCompanyId` corrispondente utilizzando [Lead sincronizzati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) o [Endpoint importazione lead in blocco](bulk-lead-import.md). Una volta aggiunto un lead a un&#39;azienda, non è possibile eliminarlo da tale azienda (a meno che non si aggiunga il lead a un&#39;altra azienda). I lead collegati a un record società ereditano direttamente i valori da un record società come se i valori fossero presenti nel record del lead.
 
-Le API della società sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitato.
+Le API della società sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) abilitato.
 
 ## Descrivere
 
@@ -360,5 +360,5 @@ POST /rest/v1/companies/delete.json
 ## Timeout
 
 - Gli endpoint aziendali hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Aziende di sincronizzazione: anni 60 
+   - Aziende di sincronizzazione: anni 60
    - Cancella Aziende: 60s

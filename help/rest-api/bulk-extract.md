@@ -3,9 +3,9 @@ title: Estrai in blocco
 feature: REST API
 description: Operazioni batch per l'estrazione dei dati Marketo.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '1683'
+source-wordcount: '1682'
 ht-degree: 0%
 
 ---
@@ -36,7 +36,7 @@ Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAu
 - Numero massimo processi di esportazione simultanei: 2
 - Numero massimo processi di esportazione in coda (inclusi i processi di esportazione correnti): 10
 - Periodo di conservazione dei file: sette giorni
-- Allocazione predefinita esportazione giornaliera: 500 MB (ripristinato ogni giorno alle 00:00 CST). Aumenti disponibili per l’acquisto.
+- Allocazione predefinita esportazione giornaliera: 500 MB (che ripristina ogni giorno a 12:00AM CST). Aumenti disponibili per l’acquisto.
 - Intervallo di tempo massimo per il filtro dell’intervallo di date (createdAt o updatedAt): 31 giorni
 
 I filtri Estrazione lead bulk per UpdatedAt e Smart List non sono disponibili per alcuni tipi di abbonamento. Se non disponibile, una chiamata all’endpoint Create Export Lead Job restituisce l’errore &quot;1035, Tipo di filtro non supportato per la sottoscrizione di destinazione&quot;. I clienti possono contattare il supporto tecnico Marketo per richiedere che questa funzionalità sia abilitata nel loro abbonamento.
@@ -123,7 +123,6 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 | columnHeaderNames | Oggetto | Consente di impostare i nomi delle intestazioni di colonna nel file restituito. Ogni chiave membro è il nome dell&#39;intestazione di colonna da rinominare e il valore è il nuovo nome dell&#39;intestazione di colonna. Ad esempio, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
 | filter | Oggetto | Filtro applicato al processo di estrazione. I tipi e le opzioni variano a seconda del tipo di processo. |
 
-
 ## Recupero processi
 
 A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta un campo filtro `status`, un  `batchSize` per limitare il numero di processi restituiti e `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
@@ -209,7 +208,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file. Se un processo non è stato completato o viene passato un ID processo non valido, gli endpoint del file rispondono con uno stato 404 Non trovato e un messaggio di errore di testo normale come payload, a differenza della maggior parte degli altri endpoint REST di Marketo.
 
-Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes` (per [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per recuperare i primi 10.000 byte di un file, devi passare la seguente intestazione come parte della richiesta di GET all&#39;endpoint, a partire dal byte 0:
+Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes` (per [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per recuperare i primi 10.000 byte di un file, devi passare la seguente intestazione come parte della richiesta GET all&#39;endpoint, a partire dal byte 0:
 
 ```
 Range: bytes=0-9999

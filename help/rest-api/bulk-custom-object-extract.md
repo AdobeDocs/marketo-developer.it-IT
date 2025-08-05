@@ -3,7 +3,7 @@ title: Estrazione oggetto personalizzato in blocco
 feature: REST API, Custom Objects
 description: Elaborazione in batch di oggetti Marketo personalizzati.
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1298'
 ht-degree: 1%
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Il set Bulk Custom Object Extract delle API REST fornisce un’interfaccia programmatica per recuperare set elevati di record di oggetti personalizzati da Marketo. Si tratta dell&#39;interfaccia consigliata per i casi d&#39;uso che richiedono l&#39;interscambio continuo di dati tra Marketo e uno o più sistemi esterni, a scopo di ETL, data warehousing e archiviazione.
 
-Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorizzazioni
 
@@ -50,7 +50,6 @@ L&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://de
 | `columnHeaderNames` | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | `format` | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
 
-
 ## Creazione di un processo
 
 I parametri per il processo vengono definiti prima di avviare l&#39;esportazione utilizzando l&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST).
@@ -62,7 +61,6 @@ Ad esempio, supponiamo di aver creato un oggetto personalizzato denominato &quot
 Definizione oggetto personalizzato
 
 ![Oggetto personalizzato](assets/custom-object-car.png)
-
 
 Campi oggetto personalizzati
 

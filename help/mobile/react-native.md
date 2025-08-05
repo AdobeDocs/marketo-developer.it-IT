@@ -3,7 +3,7 @@ title: React Native
 feature: Mobile Marketing
 description: Installazione di React Native per Marketo
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '810'
 ht-degree: 0%
@@ -16,7 +16,7 @@ Questo articolo fornisce informazioni su come installare e configurare il SDK na
 
 ## Prerequisiti
 
-[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 
 ## Integrazione SDK
 
@@ -393,7 +393,7 @@ const { RNMarketoModule } = NativeModules;
 
 Una volta inseriti correttamente i file di cui sopra, possiamo importare il modulo js in qualsiasi classe js e chiamare direttamente i relativi metodi. Ad esempio:
 
-Tieni presente che dobbiamo passare &quot;reactNative&quot; come tipo di framework per le app native React. 
+Tieni presente che dobbiamo passare &quot;reactNative&quot; come tipo di framework per le app native React.
 
 ```
 // Initialize marketo SDK with Munchkin & Seretkey you have from step 1.
@@ -489,7 +489,6 @@ RNMarketoModule.registerForRemoteNotifications();
 
 export { requestPermission, registerForRemoteNotifications };
 ```
-
 
 Aggiungi `App.tsx` per consentire le notifiche push
 
@@ -595,7 +594,7 @@ Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;inter
 
 1. Includi `application:openURL:sourceApplication:annotation:` nel file `AppDelegate.m` (Objective-C)
 
-**iOS - Gestisci tipi di URL personalizzati/collegamenti diretti in AppDelegate** 
+**iOS - Gestisci tipi di URL personalizzati/collegamenti diretti in AppDelegate**
 
 ```
 - (BOOL)application:(UIApplication *)app

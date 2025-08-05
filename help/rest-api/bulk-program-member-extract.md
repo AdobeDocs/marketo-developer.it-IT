@@ -3,7 +3,7 @@ title: Estrazione membro programma in blocco
 feature: REST API
 description: Elaborazione in batch dell'estrazione dei dati del membro.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 2%
@@ -235,7 +235,7 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
     <tr>
       <td>isExausted</td>
       <td>Booleano</td>
-      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
+      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -323,7 +323,6 @@ L’endpoint del processo Crea membro del programma di esportazione offre divers
 | campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. I campi elencati sono inclusi nel file esportato. È possibile esportare i seguenti tipi di campo:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Specifica un campo utilizzando il nome API REST che può essere recuperato utilizzando gli endpoint Descrivi lead2 e/o Descrivi membri del programma. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
-
 
 ## Creazione di un processo
 

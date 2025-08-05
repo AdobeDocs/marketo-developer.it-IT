@@ -3,9 +3,9 @@ title: getMultipleLeads
 feature: SOAP
 description: chiamate SOAP getMultipleLeads
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '384'
+source-wordcount: '383'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ Un caso d’uso comune per questo endpoint è la ricerca di lead aggiornati in d
 | --- | --- | --- |
 | leadSelector | Obbligatorio | Può essere uno dei seguenti 3 tipi:`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
 | keyType | Obbligatorio | Il tipo di ID su cui desideri eseguire la query. I valori includono IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
-| keyValues->stringItem | Obbligatorio | Elenco dei valori chiave. Ovvero &quot;lead@email.com&quot; |
+| keyValues->stringItem | Obbligatorio | Elenco dei valori chiave. ovvero &quot;<lead@email.com>&quot; |
 | LastUpdateAtSelector: leadSelector->olderUpdatedAt | Obbligatorio | La marca temporale per specificare i criteri &quot;da&quot;. In altre parole, restituisce tutti i lead aggiornati dall&#39;ora specificata. (Formato data/ora WSDL W3C) |
 | LastUpdateAtSelector: leadSelector->latestUpdatedAt | Facoltativo | Il timestamp per specificare i criteri &quot;fino a&quot;. In altre parole, restituire tutti i lead aggiornati fino all&#39;ora specificata. (Formato data/ora WSDL W3C) |
 | StaticListSelector: leadSelector->staticListName | Facoltativo se è presente `leadSelector->staticListId` | Nome dell&#39;elenco statico |

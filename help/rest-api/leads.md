@@ -3,7 +3,7 @@ title: Lead
 feature: REST API
 description: Dettagli sulle chiamate API dei lead
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '3338'
 ht-degree: 2%
@@ -430,7 +430,6 @@ Esistono alcune regole associate al nome e alla denominazione di `displayName`. 
 POST /rest/v1/leads/schema/fields.json
 ```
 
-
 ### Corpo
 
 ```json
@@ -451,7 +450,6 @@ POST /rest/v1/leads/schema/fields.json
   ]
 }
 ```
-
 
 ### Risposta
 
@@ -816,7 +814,7 @@ Iscrizione
 È inoltre possibile recuperare i record dei lead in base all&#39;appartenenza a un elenco statico o a un programma. Inoltre, puoi recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti di cui è membro un lead.
 
 La struttura di risposta e i parametri facoltativi sono identici a quelli di Get Leads per Filter Type, anche se filterType e filterValues non possono essere utilizzati con questa API.
-Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
+Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-****.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
 
 ### Richiesta
 

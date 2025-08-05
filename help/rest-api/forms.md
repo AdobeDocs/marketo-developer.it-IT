@@ -3,10 +3,10 @@ title: Forms
 feature: REST API, Forms
 description: Crea e gestisci i moduli tramite l’API.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1598'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
@@ -305,7 +305,6 @@ Quando si modificano i campi o il loro comportamento all’interno di un modulo,
 | Valuta | valuta |
 | Casella di controllo | casella di controllo_singola |
 | Cursore | intervallo |
-
 
 ### Dipendenze
 
@@ -631,7 +630,7 @@ GET /rest/asset/v1/form/programMemberFields.json
 
 Ogni modulo contiene un elenco modificabile di campi che verrà visualizzato all’utente finale al momento del caricamento. Ogni campo viene aggiunto, aggiornato o eliminato dall’elenco dei campi uno alla volta tramite i rispettivi endpoint.
 
-[L&#39;aggiunta di un campo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldToAFormUsingPOST) richiede solo l&#39;ID del modulo padre e il fieldId del campo. Tutti gli altri campi saranno vuoti o avranno valori predefiniti basati sul loro tipo di dati e metadati di campo. I dati vengono passati come POST x-www-form-urlencoded, non come JSON.
+[L&#39;aggiunta di un campo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldToAFormUsingPOST) richiede solo l&#39;ID del modulo padre e il fieldId del campo. Tutti gli altri campi saranno vuoti o avranno valori predefiniti basati sul loro tipo di dati e metadati di campo. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON.
 
 ```
 POST /rest/asset/v1/form/{id}/fields.json
@@ -788,8 +787,6 @@ values=[{"label":"Select...","value":"","isDefault":true,"selected":true}, {"lab
   ]
 }
 ```
-
- 
 
 Per determinare come formattare un campo modulo complesso, esaminare la risposta di Aggiungi campo a modulo.
 

@@ -3,7 +3,7 @@ title: Pagine di destinazione
 feature: REST API, Landing Pages
 description: Eseguire query sulle pagine di destinazione in Marketo.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1000'
 ht-degree: 1%
@@ -58,7 +58,7 @@ I risultati differiscono tra i modelli in formato guidato e quelli in formato li
 
 [Le pagine di destinazione vengono create](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/createLandingPageUsingPOST) facendo riferimento a un modello. Gli unici campi obbligatori per la creazione sono nome, modello (l’ID del modello) e la cartella in cui inserire la pagina. Per ulteriori metadati che possono essere compilati, vedi il riferimento all’endpoint.
 
-I tipi di contenuto validi per [il contenuto della pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content) sono: richText, HTML, Form, Image, Rectangle, Snippet.
+I tipi di contenuto validi per [contenuti pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content) sono: richText, HTML, Form, Image, Rectangle, Snippet.
 
 ```
 POST rest/asset/v1/landingPages.json
@@ -113,11 +113,11 @@ Le pagine di destinazione seguono il modello standard approvato dalla bozza, in 
 
 ## Elimina
 
-Per eliminare una pagina di destinazione, prima deve essere non utilizzata e non deve essere utilizzata come riferimento da altre risorse Marketo, oltre a non essere approvata. Le pagine vengono eliminate singolarmente con l&#39;endpoint [Elimina pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Questa API non consente di eliminare le pagine di destinazione con pulsanti social incorporati. 
+Per eliminare una pagina di destinazione, prima deve essere non utilizzata e non deve essere utilizzata come riferimento da altre risorse Marketo, oltre a non essere approvata. Le pagine vengono eliminate singolarmente con l&#39;endpoint [Elimina pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Questa API non consente di eliminare le pagine di destinazione con pulsanti social incorporati.
 
 ## Duplica
 
-Marketo fornisce un metodo semplice per clonare una pagina di destinazione. Si tratta di una richiesta POST con codifica application/x-www-url-formencoded.
+Marketo fornisce un metodo semplice per clonare una pagina di destinazione. Si tratta di una richiesta POST con codifica application/x-www-url.
 
 Il parametro percorso `id` specifica l&#39;ID della pagina di destinazione di origine da clonare.
 
@@ -181,10 +181,10 @@ Le sezioni di contenuto sono ordinate in base alla loro proprietà di indice e i
 |--- |--- |
 | DynamicContent | ID della segmentazione. |
 | Modulo | ID del modulo. |
-| HTML | Contenuto di Text HTML. |
+| HTML | Contenuto HTML di testo. |
 | Immagine | ID della risorsa immagine. |
 | Rettangolo | Vuoto. |
-| RichText | Contenuto di Text HTML.  Può contenere solo elementi in formato Rich Text. |
+| RichText | Contenuto HTML di testo.  Può contenere solo elementi in formato Rich Text. |
 | Frammento | ID del frammento. |
 | Pulsante social | ID di  il pulsante social. |
 | Video | ID del video. |
@@ -274,7 +274,7 @@ Le variabili sono definite come meta tag all&#39;interno dell&#39;elemento `<hea
 </head>
 ```
 
-Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Query
 

@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: chiamate SOAP importToList
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '387'
 ht-degree: 3%
 
 ---
@@ -20,9 +20,9 @@ Questa funzione consente di importare un elenco di lead in un elenco statico esi
 
 | E-mail | Primo | Ultimo |
 | --- | --- | --- |
-| joe@company.com | Joe | Smith |
-| mary@company.com | Mary | Rodgers |
-| wanda@megacorp.com | Wanda | Williams |
+| <joe@company.com> | Joe | Smith |
+| <mary@company.com> | Mary | Rodgers |
+| <wanda@megacorp.com> | Wanda | Williams |
 
 I valori `displayName` devono essere utilizzati in `importFileHeader` anziché nei valori `name`.
 
@@ -30,9 +30,9 @@ I valori `displayName` devono essere utilizzati in `importFileHeader` anziché n
 
 | E-mail | Primo | Ultimo | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
-| joe@company.com | Joe | Smith | Pesce | Blu |
-| mary@company.com | Mary | Rodgers | Pollo | Marrone |
-| wanda@megacorp.com | Wanda | Williams | Verdura | Hazel |
+| <joe@company.com> | Joe | Smith | Pesce | Blu |
+| <mary@company.com> | Mary | Rodgers | Pollo | Marrone |
+| <wanda@megacorp.com> | Wanda | Williams | Verdura | Hazel |
 
 **Importante:** se aggiungi token per i lead, devi specificare la campagna avanzata che li utilizza. Alla successiva esecuzione della Smart Campaign specificata, verranno utilizzati i valori dell’elenco, anziché i normali valori My Token. Dopo l’esecuzione della singola campagna, i token verranno eliminati.
 

@@ -3,7 +3,7 @@ title: Web Personalization
 description: Web Personalization
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '401'
 ht-degree: 5%
@@ -14,7 +14,7 @@ ht-degree: 5%
 
 L’API Web Personalization JavaScript estende la funzionalità di personalizzazione automatizzata della piattaforma. Consente il tracciamento degli eventi e la personalizzazione dinamica di una pagina web. Funzionalità aggiuntive: [Eventi dati personalizzati](custom-data-events.md), [Contenuto dinamico](web-personalization.md), [Ottieni dati visitatore](get-visitor-data.md), [Escludi tag per bot specifici](#exclude_tag_for_specific_bots).
 
-- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 - RTP non supporta gli elenchi di account denominati Account Based Marketing (Marketing basato su account). Gli elenchi e il codice ABM si riferiscono solo agli elenchi di account caricati (file CSV) gestiti all’interno di RTP.
 
 ## Impostazione tag
@@ -41,7 +41,6 @@ Questo metodo viene chiamato automaticamente a livello di tag per impostare l’
 | &#39;setAccount&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | accountId | Obbligatorio | Stringa | ID account. |
 
-
 ```javascript
 var accountId = '561-HYG-937';
 rtp('setAccount', accountId);
@@ -58,7 +57,6 @@ Trasmettendo il parametro opzionale &quot;page&quot; in questo metodo, la pagina
 | &#39;invia&#39; | Obbligatorio | Stringa | Azione del metodo. |
 | &#39;visualizza&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | pagina | Facoltativo | Stringa | Percorso relativo o URL della pagina intera. |
-
 
 ```javascript
 // Example for Default Page
@@ -103,7 +101,6 @@ Descrizione di JavaScript che viene aggiunta a un sito web quando si utilizzano 
 | jquery.min.js | v1.8.3 | Può essere disattivato contattando l’Assistenza clienti di Marketo |
 | jquery-custom-ui-min.js | v1.9.2 | Può essere disattivato contattando l’Assistenza clienti di Marketo |
 | query-ui-1.8.17-dialog.js | v1.9.2* | Può essere disattivato contattando l’Assistenza clienti di Marketo |
-
 
 *Utilizzato solo se manca la finestra di dialogo dell’interfaccia utente jQuery
 

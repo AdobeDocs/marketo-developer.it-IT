@@ -1,9 +1,9 @@
 ---
 title: Acquisizione dei dati
 description: Panoramica dell’API di acquisizione dati
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '945'
+source-wordcount: '940'
 ht-degree: 10%
 
 ---
@@ -11,13 +11,13 @@ ht-degree: 10%
 
 # Acquisizione dei dati
 
-L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire l’acquisizione di grandi quantità di dati relativi a persone e persone in modo efficiente e con ritardi minimi. 
+L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire l’acquisizione di grandi quantità di dati relativi a persone e persone in modo efficiente e con ritardi minimi.
 
 I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
 
 Le interfacce sono disponibili per due tipi di oggetto: Persone, Oggetti personalizzati. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
-L’API di acquisizione dati è in versione beta privata. Gli invitati devono disporre di un diritto per il [pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+L’API di acquisizione dati è in versione beta privata. Gli invitati devono avere un diritto per [Marketo Engage Performance Tier Package](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticazione
 
@@ -61,7 +61,7 @@ La rappresentazione dei dati è inclusa nel corpo della richiesta come applicati
 
 Nome di dominio: `mkto-ingestion-api.adobe.io`
 
-Il percorso inizia con `/subscriptions/_MunchkinId_`, dove `_MunchkinId_` è specifico per l&#39;istanza di Marketo. Puoi trovare il tuo Munchkin ID nell&#39;interfaccia utente del Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
+Il percorso inizia con `/subscriptions/_MunchkinId_`, dove `_MunchkinId_` è specifico per l&#39;istanza di Marketo. Puoi trovare il tuo Munchkin ID nell&#39;interfaccia utente di Marketo Engage in **Amministratore** >**Il mio account** > **Informazioni di supporto**. Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
 
 URL di esempio per Persone:
 
@@ -79,7 +79,7 @@ Esempio di ID richiesta tramite intestazione:
 
 `X-Request-Id: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
 
-### Operazione riuscita
+### Completato
 
 Quando una chiamata ha esito positivo, viene restituito lo stato 202. Nessun corpo di risposta restituito.
 
@@ -100,7 +100,7 @@ Di seguito sono riportati i codici di errore riutilizzati da Adobe Developer Gat
 | 404 | 404040 | Risorsa non trovata |
 | 429 | 429001 | Limite di utilizzo servizio raggiunto |
 
-Di seguito sono riportati i codici di errore univoci dell’API di acquisizione dati, composti da tre segmenti. Le prime tre cifre sono lo stato (restituito da Adobe IO Gateway), seguito da uno zero &quot;0&quot;, seguito da tre cifre.
+Di seguito sono riportati i codici di errore univoci dell’API di acquisizione dati, composti da tre segmenti. Le prime tre cifre sono lo stato (restituito da Adobe IO Gateway), seguito da uno zero &quot;0&quot; seguito da tre cifre.
 
 | Codice di stato HTTP | error_code | messaggio |
 |--- |--- |--- |
@@ -215,7 +215,7 @@ Corpo della richiesta
 | Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
 |---|---|---|---|---|
 | priorità | Stringa | No | Priorità della richiesta:normalhigh | normale |
-| dedupeBy | Stringa | No | Attributi da deduplicare su:dedupeFieldMarketoGUID | dedupeFields |
+| dedupeBy | Stringa | No | Attributi da deduplicare su:dedupeFieldsmarketoGUID | dedupeFields |
 | customObjects | Array di oggetti | Sì | Elenco di coppie nome-valore dell&#39;attributo per l&#39;oggetto. | - |
 
 | Autorizzazione |

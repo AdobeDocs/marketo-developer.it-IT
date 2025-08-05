@@ -3,7 +3,7 @@ title: Riferimento API di Forms
 description: Riferimento API di Forms
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 1%
@@ -121,7 +121,6 @@ Esistono due oggetti principali con cui interagirai utilizzando l’API di Forms
       <td></td>
     </tr>
 </table>
-
 
 ## Metodi modulo
 

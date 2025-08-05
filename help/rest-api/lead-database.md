@@ -3,7 +3,7 @@ title: Database lead
 feature: REST API, Database
 description: Manipolare il database principale dei lead.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1342'
 ht-degree: 0%
@@ -245,7 +245,7 @@ La struttura dell&#39;oggetto JSON è prevalentemente piatta e tutti i parametri
 
 Crea e aggiorna i record del database dei lead, tutti eseguiti tramite POST con corpi JSON. L&#39;interfaccia per Opportunità, Ruoli, Oggetti personalizzati, Aziende e VenditePersone è la stessa. L&#39;interfaccia del lead è un po&#39; diversa, e potete saperne di più nello specifico lì.
 
-L&#39;unico parametro obbligatorio è un array denominato `input` contenente fino a 300 oggetti, ciascuno con i campi che si desidera inserire/aggiornare come membri. Facoltativamente, è inoltre possibile includere un parametro `action` che può essere uno dei seguenti: `createOnly`, `updateOnly` o `createOrUpdate`. Se l&#39;azione viene omessa, la modalità predefinita sarà `createOrUpdate`. `dedupeBy` è un altro parametro facoltativo che può essere utilizzato quando action è impostato su createOnly o `createOrUpdate`. ` dedupeBy` può essere `idField` o `dedupeFields`. Se è selezionato `idField`, i `idField` elencati nella descrizione vengono utilizzati per la deduplicazione e devono essere inclusi in ogni record. Modalità `idField` non compatibile con la modalità `createOnly`. Se sono selezionati `dedupeFields`, `dedupeFields` elencato nella descrizione dell&#39;oggetto utilizzato e ciascuno deve essere incluso in ogni record. Se il parametro `dedupeBy` viene omesso, la modalità predefinita sarà `dedupeFields`.
+L&#39;unico parametro obbligatorio è un array denominato `input` contenente fino a 300 oggetti, ciascuno con i campi che si desidera inserire/aggiornare come membri. Facoltativamente, è inoltre possibile includere un parametro `action` che può essere uno dei seguenti: `createOnly`, `updateOnly` o `createOrUpdate`. Se l&#39;azione viene omessa, la modalità predefinita sarà `createOrUpdate`. `dedupeBy` è un altro parametro facoltativo che può essere utilizzato quando action è impostato su createOnly o `createOrUpdate`. `dedupeBy` può essere `idField` o `dedupeFields`. Se è selezionato `idField`, i `idField` elencati nella descrizione vengono utilizzati per la deduplicazione e devono essere inclusi in ogni record. Modalità `idField` non compatibile con la modalità `createOnly`. Se sono selezionati `dedupeFields`, `dedupeFields` elencato nella descrizione dell&#39;oggetto utilizzato e ciascuno deve essere incluso in ogni record. Se il parametro `dedupeBy` viene omesso, la modalità predefinita sarà `dedupeFields`.
 
 Quando si trasmette un elenco di valori di campo, nel database viene scritto un valore di `null` o una stringa vuota come `null`.
 

@@ -3,7 +3,7 @@ title: Consigli per contenuti multimediali avanzati
 description: Consigli per contenuti multimediali avanzati
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 4%
@@ -21,7 +21,7 @@ Nella pagina in cui desideri visualizzare il modello Consigli per contenuti mult
 1. Nel corpo della pagina
    1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
@@ -66,7 +66,6 @@ Questo metodo popola tutti i rich media `<divs>` sulla pagina con i consigli.
 | &#39;rcmd&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | &#39;richmedia&#39; | Obbligatorio | Stringa | Nome del metodo secondario. |
 
-
 ## Cambia configurazione modello
 
 Questo metodo modifica la configurazione predefinita per il modello.
@@ -84,7 +83,6 @@ Nota: quando si utilizza questo metodo, è necessario chiamarlo prima di chiamar
 | &#39;richmedia&#39; | Obbligatorio | Stringa | Nome del metodo secondario. |
 | template_id | Facoltativo | Stringa | ID modello per le modifiche alla configurazione. Consente di specificare la modifica delle impostazioni per un solo modello. |
 | conf_obj | Obbligatorio | Oggetto | La nuova configurazione. L&#39;oggetto contiene tutte le configurazioni come coppia chiave/valore. |
-
 
 ### Esempi
 
@@ -150,7 +148,6 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; : &quot;rgb(90, 84, 164)&quot; | Cambia il colore del carattere del pulsante. Questa proprietà supporta tutti i valori dei colori dei caratteri (rgb, hex, ...) |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot;: &quot;Push&quot; | Modifica il testo del pulsante. Il testo è lo stesso per tutti i pulsanti. |
 | categoria | &quot;categoria&quot;: [&quot;una categoria&quot;] | Modifica la categoria di consigli supportata dal modello. Il modello visualizza solo i consigli con una delle categorie impostate da questa configurazione. |
-
 
 Nota: il supporto della configurazione può cambiare in base al modello.
 

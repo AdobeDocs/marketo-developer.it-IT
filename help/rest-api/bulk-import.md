@@ -3,7 +3,7 @@ title: Importazione in blocco
 feature: REST API
 description: Importazione in batch dei dati personali.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '592'
 ht-degree: 1%
@@ -96,7 +96,6 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 |---|---|---|
 | formato | Stringa | Determina il formato di file dei dati importati con le opzioni per i valori separati da virgola, da tabulazione e da punto e virgola. Accetta uno di: CSV, SSV, TSV. Il formato predefinito è CSV. |
 | file | Stringa | I dati vengono specificati tramite i dati modulo multipart nel file. |
-
 
 ## Stato processo di polling
 

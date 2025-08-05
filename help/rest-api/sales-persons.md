@@ -3,7 +3,7 @@ title: Venditori
 feature: REST API
 description: Leggi i dati relativi ai venditori.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Riferimento endpoint persona di vendita](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-Le API addetto alle vendite sono di sola lettura per gli abbonamenti che hanno [SFDC Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
+Le API addetto alle vendite sono di sola lettura per gli abbonamenti che hanno [SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
 
 I venditori sono correlati ai record dei lead utilizzando l&#39;endpoint [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e passando l&#39;attributo externalSalesPersonId.
 

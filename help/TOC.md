@@ -5,10 +5,10 @@ breadcrumb-title: Guida per sviluppatori di [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 05f8966a2eafca71a00f1e22b6edd4d8dae6b6ac
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '247'
-ht-degree: 16%
+ht-degree: 20%
 
 ---
 
@@ -61,11 +61,11 @@ ht-degree: 16%
       - [Forms](rest-api/forms.md)
       - [Pagine di destinazione](rest-api/landing-pages.md)
       - [Regole di reindirizzamento pagina di destinazione](rest-api/landing-page-redirect-rules.md)
-      - [Modelli di pagina di destinazione](rest-api/landing-page-templates.md)
+      - [Modelli pagina di destinazione](rest-api/landing-page-templates.md)
       - [Elenco campi standard](rest-api/list-of-standard-fields.md)
       - [Programmi](rest-api/programs.md)
       - [Campagne avanzate](rest-api/smart-campaigns.md)
-      - [Elenchi smart](rest-api/smart-lists.md)
+      - [Elenchi avanzati](rest-api/smart-lists.md)
       - [Snippet](rest-api/snippets.md)
       - [Elenchi statici](rest-api/static-lists.md)
       - [Token](rest-api/tokens.md)

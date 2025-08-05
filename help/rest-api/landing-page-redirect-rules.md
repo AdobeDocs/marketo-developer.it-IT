@@ -3,7 +3,7 @@ title: Regole di reindirizzamento pagina di destinazione
 feature: REST API, Landing Pages
 description: Configura le regole di reindirizzamento delle pagine di destinazione tramite l’API.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '641'
 ht-degree: 2%
@@ -134,9 +134,9 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 }
 ```
 
-## Crea
+## Creare
 
-L&#39;endpoint [Crea regola di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) viene eseguito con un application/x-www-form-urlencoded POST con i tre parametri richiesti seguenti.
+L&#39;endpoint [Crea regola di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) viene eseguito con un POST urlencoded application/x-www-form-urlencoded con i seguenti tre parametri obbligatori.
 
 Il parametro `hostname` specifica il nome host per la pagina di destinazione. Deve appartenere a un dominio o alias di branding. La lunghezza massima è di 255 caratteri.
 
@@ -148,7 +148,6 @@ Il parametro `redirectFrom` specifica la pagina di destinazione di origine. Si t
 | &#39;visitatore&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | callback | Obbligatorio | Funzione | Funzione di callback da attivare per ogni campagna restituita. |
 
-
 Il parametro `redirectTo` specifica la pagina di destinazione di destinazione di destinazione. Si tratta di un oggetto JSON che contiene una coppia tipo/valore che determina se l’origine è una pagina di destinazione di Marketo o non di Marketo. L&#39;attributo `type` può essere &quot;landingPageId&quot; o &quot;url&quot;.
 
 | Tipo di pagina di destinazione | tipo redirectTo | Esempio |
@@ -156,7 +155,7 @@ Il parametro `redirectTo` specifica la pagina di destinazione di destinazione di
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Non Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione sono disponibili [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=it).
+Ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione sono disponibili [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json
@@ -199,7 +198,7 @@ hostname=calqeauto.com&redirectFrom={"type":"landingPageId", "value":"5483"}&red
 
 ## Aggiornamento
 
-L&#39;endpoint [Aggiorna regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) accetta un parametro di percorso `id` per la regola di reindirizzamento di una singola pagina di destinazione. Questo endpoint viene eseguito con un POST application/x-www-form-urlencoded.
+L&#39;endpoint [Aggiorna regole di reindirizzamento pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/updateLandingPageRedirectRuleUsingPOST) accetta un parametro di percorso `id` per la regola di reindirizzamento di una singola pagina di destinazione. Questo endpoint viene eseguito con un POST codificato in formato application/x-www-form-urlencoded.
 
 Come per la chiamata di creazione descritta in precedenza, uno o più dei seguenti parametri di query vengono passati per specificare quale attributo della regola aggiornare: `hostname`, `redirectFrom`, `redirectTo`.
 

@@ -3,7 +3,7 @@ title: Servizi personalizzati
 feature: REST API
 description: Credenziali di autenticazione con Marketo.
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 0%
@@ -43,7 +43,6 @@ Dopo aver creato un ruolo, devi creare un utente &quot;Solo API&quot;. Gli utent
 >[!MORELIKETHIS]
 >
 >Per creare un utente solo API, passare al menu **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]** e fare clic su [!UICONTROL Invite New User].
-
 
 ![Informazioni utente](assets/new-user-info.png)
 
