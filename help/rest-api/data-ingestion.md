@@ -1,9 +1,9 @@
 ---
-title: Acquisizione dei dati
+title: Acquisizione dati
 feature: REST API, Dynamic Content
 description: Utilizzare i dati con le API di Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 10%
@@ -18,7 +18,9 @@ I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È po
 
 Le interfacce sono disponibili per due tipi di oggetto: Persone, Oggetti personalizzati. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
-L’API di acquisizione dati è attualmente in versione beta privata.  Gli invitati devono avere un diritto per il pacchetto [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+>[!NOTE]
+>
+>L’API di acquisizione dati è attualmente in versione beta privata.  Gli invitati devono avere un diritto per il pacchetto [Marketo Engage Performance Tier](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticazione
 
