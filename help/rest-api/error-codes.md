@@ -288,208 +288,208 @@ Ogni record in una richiesta corretta può avere esito positivo o negativo su ba
 >[!NOTE]
 >
 ><table>
-<tbody>
-    <tr>
-      <td>Codice di risposta</td>
-      <td>Descrizione</td>
-      <td>Commento</td>
-    </tr>
-    <tr>
-      <td><a name="1001"></a>1001</td>
-      <td>Valore '%s' non valido. Richiesto di tipo "%s"</td>
-      <td>Viene generato un errore ogni volta che un valore di parametro presenta un tipo non corrispondente. Ad esempio, il valore stringa specificato per un parametro intero.</td>
-    </tr>
-    <tr>
-      <td><a name="1002"></a>1002</td>
-      <td>Valore mancante per il parametro obbligatorio '%s'</td>
-      <td>Viene generato un errore quando manca un parametro obbligatorio nella richiesta</td>
-    </tr>
-    <tr>
-      <td><a name="1003"></a>1003</td>
-      <td>Dati non validi</td>
-      <td>Quando i dati inviati non sono un tipo valido per l’endpoint o la modalità specificati, ad esempio quando l’ID viene inviato per un lead con azione designata come createOnly o quando si utilizza Request Campaign su una campagna batch.</td>
-    </tr>
-    <tr>
-      <td><a name="1004"></a>1004</td>
-      <td>Lead non trovato</td>
-      <td>Per syncLead, quando l'azione è "updateOnly" e se il lead non viene trovato</td>
-    </tr>
-    <tr>
-      <td><a name="1005"></a>1005</td>
-      <td>Il lead esiste già</td>
-      <td>Per syncLead, quando action è "createOnly" e se un lead esiste già</td>
-    </tr>
-    <tr>
-      <td><a name="1006"></a>1006</td>
-      <td>Campo '%s' non trovato</td>
-      <td>Un campo incluso nella chiamata non è valido.</td>
-    </tr>
-    <tr>
-      <td><a name="1007"></a>1007</td>
-      <td>Più lead corrispondono ai criteri di ricerca</td>
-      <td>Più lead corrispondono ai criteri di ricerca. È possibile eseguire aggiornamenti solo quando la chiave corrisponde a un singolo record</td>
-    </tr>
-    <tr>
-      <td><a name="1008"></a>1008</td>
-      <td>Accesso negato alla partizione '%s'</td>
-      <td>L'utente del servizio personalizzato non ha accesso a un'area di lavoro con la partizione in cui esiste il record.</td>
-    </tr>
-    <tr>
-      <td><a name="1009"></a>1009</td>
-      <td>È necessario specificare il nome della partizione</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a name="1010"></a>1010</td>
-      <td>Aggiornamento della partizione non consentito</td>
-      <td>Il record specificato esiste già in una partizione lead separata.</td>
-    </tr>
-    <tr>
-      <td><a name="1011"></a>1011</td>
-      <td>Campo '%s' non supportato</td>
-      <td>Quando il campo di ricerca o "filterType" è specificato con campi standard non supportati (ad esempio: firstName, lastName)</td>
-    </tr>
-    <tr>
-      <td><a name="1012"></a>1012</td>
-      <td>Valore cookie '%s' non valido</td>
-      <td>Può verificarsi quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associa lead</a> con un valore non valido per il parametro 'cookie'.
-        Ciò si verifica anche quando si chiamano <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> con "filterType=cookies" e un valore non valido per il parametro "filterValues".</td>
-    </tr>
-    <tr>
-      <td><a name="1013"></a>1013</td>
-      <td>Oggetto non trovato</td>
-      <td>Ottieni oggetto (elenco, campagna) per ID restituisce questo codice di errore</td>
-    </tr>
-    <tr>
-      <td><a name="1014"></a>1014</td>
-      <td>Impossibile creare l'oggetto</td>
-      <td>Impossibile creare l'oggetto (elenco)</td>
-    </tr>
-    <tr>
-      <td><a name="1015"></a>1015</td>
-      <td>Lead non nell’elenco</td>
-      <td>Il lead designato non è un membro dell'elenco di destinazione</td>
-    </tr>
-    <tr>
-      <td><a name="1016"></a>1016</td>
-      <td>Troppe importazioni</td>
-      <td>Troppe importazioni in coda. È consentito un massimo di 10</td>
-    </tr>
-    <tr>
-      <td><a name="1017"></a>1017</td>
-      <td>L’oggetto esiste già</td>
-      <td>Creazione non riuscita perché il record esiste già</td>
-    </tr>
-    <tr>
-      <td><a name="1018"></a>1018</td>
-      <td>CRM abilitato</td>
-      <td>Impossibile eseguire l'azione perché per l'istanza è abilitata un'integrazione CRM nativa.</td>
-    </tr>
-    <tr>
-      <td><a name="1019"></a>1019</td>
-      <td>Importazione in corso</td>
-      <td>L’elenco di destinazione è già in fase di importazione in</td>
-    </tr>
-    <tr>
-      <td><a name="1020"></a>1020</td>
-      <td>Troppi cloni da programmare</td>
-      <td>L’abbonamento ha raggiunto l’uso assegnato di "cloneToProgramName" nel programma di pianificazione della giornata</td>
-    </tr>
-    <tr>
-      <td><a name="1021"></a>1021</td>
-      <td>Aggiornamento della società non consentito</td>
-      <td>Aggiornamento società non consentito durante syncLead</td>
-    </tr>
-    <tr>
-      <td><a name="1022"></a>1022</td>
-      <td>Oggetto in uso</td>
-      <td>Eliminazione non consentita quando un oggetto è utilizzato da un altro oggetto</td>
-    </tr>
-    <tr>
-      <td><a name="1025"></a>1025</td>
-      <td>Stato del programma non trovato</td>
-      <td>È stato specificato uno stato per cambiare lo stato del programma lead che non corrisponde a uno stato disponibile per il canale del programma.</td>
-    </tr>
-    <tr>
-      <td><a name="1026"></a>1026</td>
-      <td>Oggetto personalizzato non abilitato</td>
-      <td>Impossibile eseguire l'azione perché per l'istanza non è abilitata l'integrazione di oggetti personalizzati.</td>
-    </tr>
-    <tr>
-      <td><a name="1027"></a>1027</td>
-      <td>Limite massimo tipi di attività raggiunto</td>
-      <td>L’abbonamento ha raggiunto il numero massimo di tipi di attività personalizzati disponibili.</td>
-    </tr>
-    <tr>
-      <td><a name="1028"></a>1028</td>
-      <td>È stato raggiunto il limite massimo di campi</td>
-      <td>Le attività personalizzate hanno un massimo di 20 attributi secondari.</td>
-    </tr>
-    <tr>
-      <td><a name="1029"></a>1029</td>
-      <td><ul>
-          <li>Troppi processi in coda</li>
-          <li>Esporta quota giornaliera superata</li>
-          <li>Processo già in coda</li>
-        </ul></td>
-      <td><ul>
-          <li>Le sottoscrizioni possono estrarre in blocco un massimo di 10 processi in coda in un determinato momento.</li>
-          <li>Per impostazione predefinita, i processi di estrazione sono limitati a 500 MB al giorno (ripristinati ogni giorno alle 00:00 CST).</li>
-          <li>L'ID di esportazione è già stato inserito nella coda.</li>
-        </ul></td>
-    </tr>
-    <tr>
-      <td><a name="1035"></a>1035</td>
-      <td>Tipo di filtro non supportato</td>
-      <td>In alcune sottoscrizioni, i seguenti tipi di filtro Estrazione lead bulk non sono supportati: updateAt, smartListId, smartListName.</td>
-    </tr>
-    <tr>
-      <td><a name="1036"></a>1036</td>
-      <td>Oggetto duplicato trovato nell'input</td>
-      <td>È stata effettuata una chiamata per aggiornare due o più record utilizzando la stessa chiave esterna. Ad esempio, una chiamata Sync Companies che utilizza lo stesso externalCompanyId per più società.</td>
-    </tr>
-    <tr>
-      <td><a name="1037"></a>1037</td>
-      <td>Il lead è stato saltato</td>
-      <td>Il lead è stato ignorato perché si trova già in o oltre questo stato.</td>
-    </tr>
-    <tr>
-      <td><a name="1042"></a>1042</td>
-      <td>Data runAt non valida</td>
-      <td>La data runAt specificata per Schedule Campaign era troppo lontana nel futuro (il massimo è 2 anni).</td>
-    </tr>
-    <tr>
-      <td><a name="1048"></a>1048</td>
-      <td>Eliminazione bozza oggetto personalizzato non riuscita</td>
-      <td>È stata effettuata una chiamata per scartare la versione bozza di un oggetto personalizzato.</td>
-    </tr>
-    <tr>
-      <td><a name="1049"></a>1049</td>
-      <td>Impossibile creare l'attività</td>
-      <td>Matrice di attributi troppo lunga.
-        La matrice di attributi passati al record supera la lunghezza massima di 65536 byte</td>
-    </tr>
-    <tr>
-      <td><a name="1076"></a>1076</td>
-      <td>La chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> con il flag mergeInCRM è 4.</td>
-      <td>Si sta creando un record duplicato. In alternativa, è consigliabile utilizzare un record esistente.
-        Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
-    </tr>
-    <tr>
-      <td><a name="1077"></a>1077</td>
-      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa della lunghezza del campo "SFDC"</td>
-      <td>Una chiamata di Merge Leads con mergeInCRM impostato su true non è riuscita perché "SFDC Field" ha superato il limite di caratteri consentiti. Per correggerlo, riduci la lunghezza di "SFDC Field" o imposta mergeInCRM su false.</td>
-    </tr>
-    <tr>
-      <td><a name="1078"></a>1078</td>
-      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa di un'entità eliminata, non un lead/contatto o perché i criteri di filtro del campo non corrispondono.</td>
-      <td>Errore di unione. Impossibile eseguire l'operazione di unione in CRM sincronizzato in modo nativo
-        Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
-    </tr>
-    <tr>
-      <td><a name="1079"></a>1079</td>
-      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa di un conflitto di URL personalizzati in record duplicati</td>
-      <td>Una chiamata di unione di lead ha specificato molti lead con lo stesso URL personalizzato. Per risolvere, utilizzare l'interfaccia utente di Marketo Engage per unire questi record.</td>
-    </tr>
-  </tbody>
-</table>
+><tbody>
+>    <tr>
+>      <td>Codice di risposta</td>
+>      <td>Descrizione</td>
+>      <td>Commento</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1001"></a>1001</td>
+>      <td>Valore '%s' non valido. Richiesto di tipo "%s"</td>
+>      <td>Viene generato un errore ogni volta che un valore di parametro presenta un tipo non corrispondente. Ad esempio, il valore stringa specificato per un parametro intero.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1002"></a>1002</td>
+>      <td>Valore mancante per il parametro obbligatorio '%s'</td>
+>      <td>Viene generato un errore quando manca un parametro obbligatorio nella richiesta</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1003"></a>1003</td>
+>      <td>Dati non validi</td>
+>      <td>Quando i dati inviati non sono un tipo valido per l’endpoint o la modalità specificati, ad esempio quando l’ID viene inviato per un lead con azione designata come createOnly o quando si utilizza Request Campaign su una campagna batch.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1004"></a>1004</td>
+>      <td>Lead non trovato</td>
+>      <td>Per syncLead, quando l'azione è "updateOnly" e se il lead non viene trovato</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1005"></a>1005</td>
+>      <td>Il lead esiste già</td>
+>      <td>Per syncLead, quando action è "createOnly" e se un lead esiste già</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1006"></a>1006</td>
+>      <td>Campo '%s' non trovato</td>
+>      <td>Un campo incluso nella chiamata non è valido.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1007"></a>1007</td>
+>      <td>Più lead corrispondono ai criteri di ricerca</td>
+>      <td>Più lead corrispondono ai criteri di ricerca. È possibile eseguire aggiornamenti solo quando la chiave corrisponde a un singolo record</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1008"></a>1008</td>
+>      <td>Accesso negato alla partizione '%s'</td>
+>      <td>L'utente del servizio personalizzato non ha accesso a un'area di lavoro con la partizione in cui esiste il record.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1009"></a>1009</td>
+>      <td>È necessario specificare il nome della partizione</td>
+>      <td></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1010"></a>1010</td>
+>      <td>Aggiornamento della partizione non consentito</td>
+>      <td>Il record specificato esiste già in una partizione lead separata.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1011"></a>1011</td>
+>      <td>Campo '%s' non supportato</td>
+>      <td>Quando il campo di ricerca o "filterType" è specificato con campi standard non supportati (ad esempio: firstName, lastName)</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1012"></a>1012</td>
+>      <td>Valore cookie '%s' non valido</td>
+>      <td>Può verificarsi quando si chiama <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associa lead</a> con un valore non valido per il parametro 'cookie'.
+>        Ciò si verifica anche quando si chiamano <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Get Leads by Filter Type</a> con "filterType=cookies" e un valore non valido per il parametro "filterValues".</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1013"></a>1013</td>
+>      <td>Oggetto non trovato</td>
+>      <td>Ottieni oggetto (elenco, campagna) per ID restituisce questo codice di errore</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1014"></a>1014</td>
+>      <td>Impossibile creare l'oggetto</td>
+>      <td>Impossibile creare l'oggetto (elenco)</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1015"></a>1015</td>
+>      <td>Lead non nell’elenco</td>
+>      <td>Il lead designato non è un membro dell'elenco di destinazione</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1016"></a>1016</td>
+>      <td>Troppe importazioni</td>
+>      <td>Troppe importazioni in coda. È consentito un massimo di 10</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1017"></a>1017</td>
+>      <td>L’oggetto esiste già</td>
+>      <td>Creazione non riuscita perché il record esiste già</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1018"></a>1018</td>
+>      <td>CRM abilitato</td>
+>      <td>Impossibile eseguire l'azione perché per l'istanza è abilitata un'integrazione CRM nativa.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1019"></a>1019</td>
+>      <td>Importazione in corso</td>
+>      <td>L’elenco di destinazione è già in fase di importazione in</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1020"></a>1020</td>
+>      <td>Troppi cloni da programmare</td>
+>      <td>L’abbonamento ha raggiunto l’uso assegnato di "cloneToProgramName" nel programma di pianificazione della giornata</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1021"></a>1021</td>
+>      <td>Aggiornamento della società non consentito</td>
+>      <td>Aggiornamento società non consentito durante syncLead</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1022"></a>1022</td>
+>      <td>Oggetto in uso</td>
+>      <td>Eliminazione non consentita quando un oggetto è utilizzato da un altro oggetto</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1025"></a>1025</td>
+>      <td>Stato del programma non trovato</td>
+>      <td>È stato specificato uno stato per cambiare lo stato del programma lead che non corrisponde a uno stato disponibile per il canale del programma.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1026"></a>1026</td>
+>      <td>Oggetto personalizzato non abilitato</td>
+>      <td>Impossibile eseguire l'azione perché per l'istanza non è abilitata l'integrazione di oggetti personalizzati.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1027"></a>1027</td>
+>      <td>Limite massimo tipi di attività raggiunto</td>
+>      <td>L’abbonamento ha raggiunto il numero massimo di tipi di attività personalizzati disponibili.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1028"></a>1028</td>
+>      <td>È stato raggiunto il limite massimo di campi</td>
+>      <td>Le attività personalizzate hanno un massimo di 20 attributi secondari.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1029"></a>1029</td>
+>      <td><ul>
+>          <li>Troppi processi in coda</li>
+>          <li>Esporta quota giornaliera superata</li>
+>          <li>Processo già in coda</li>
+>        </ul></td>
+>      <td><ul>
+>          <li>Le sottoscrizioni possono estrarre in blocco un massimo di 10 processi in coda in un determinato momento.</li>
+>          <li>Per impostazione predefinita, i processi di estrazione sono limitati a 500 MB al giorno (ripristinati ogni giorno alle 00:00 CST).</li>
+>          <li>L'ID di esportazione è già stato inserito nella coda.</li>
+>        </ul></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1035"></a>1035</td>
+>      <td>Tipo di filtro non supportato</td>
+>      <td>In alcune sottoscrizioni, i seguenti tipi di filtro Estrazione lead bulk non sono supportati: updateAt, smartListId, smartListName.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1036"></a>1036</td>
+>      <td>Oggetto duplicato trovato nell'input</td>
+>      <td>È stata effettuata una chiamata per aggiornare due o più record utilizzando la stessa chiave esterna. Ad esempio, una chiamata Sync Companies che utilizza lo stesso externalCompanyId per più società.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1037"></a>1037</td>
+>      <td>Il lead è stato saltato</td>
+>      <td>Il lead è stato ignorato perché si trova già in o oltre questo stato.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1042"></a>1042</td>
+>      <td>Data runAt non valida</td>
+>      <td>La data runAt specificata per Schedule Campaign era troppo lontana nel futuro (il massimo è 2 anni).</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1048"></a>1048</td>
+>      <td>Eliminazione bozza oggetto personalizzato non riuscita</td>
+>      <td>È stata effettuata una chiamata per scartare la versione bozza di un oggetto personalizzato.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1049"></a>1049</td>
+>      <td>Impossibile creare l'attività</td>
+>      <td>Matrice di attributi troppo lunga.
+>        La matrice di attributi passati al record supera la lunghezza massima di 65536 byte</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1076"></a>1076</td>
+>      <td>La chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> con il flag mergeInCRM è 4.</td>
+>      <td>Si sta creando un record duplicato. In alternativa, è consigliabile utilizzare un record esistente.
+>        Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1077"></a>1077</td>
+>      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa della lunghezza del campo "SFDC"</td>
+>      <td>Una chiamata di Merge Leads con mergeInCRM impostato su true non è riuscita perché "SFDC Field" ha superato il limite di caratteri consentiti. Per correggerlo, riduci la lunghezza di "SFDC Field" o imposta mergeInCRM su false.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1078"></a>1078</td>
+>      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa di un'entità eliminata, non un lead/contatto o perché i criteri di filtro del campo non corrispondono.</td>
+>      <td>Errore di unione. Impossibile eseguire l'operazione di unione in CRM sincronizzato in modo nativo
+>        Questo è il messaggio di errore che Marketo riceve durante l’unione in Salesforce.</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1079"></a>1079</td>
+>      <td>Chiamata <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Unisci lead</a> non riuscita a causa di un conflitto di URL personalizzati in record duplicati</td>
+>      <td>Una chiamata di unione di lead ha specificato molti lead con lo stesso URL personalizzato. Per risolvere, utilizzare l'interfaccia utente di Marketo Engage per unire questi record.</td>
+>    </tr>
+>  </tbody>
+></table>
