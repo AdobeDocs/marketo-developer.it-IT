@@ -109,7 +109,7 @@ Una chiamata API che restituisce questo codice di risposta non viene conteggiata
     <tr>
       <td><a name="603"></a>603</td>
       <td>Accesso negato</td>
-      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbero dover essere assegnate al ruolo utente, oppure <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">il Inserisco nell'elenco Consentiti per l'accesso API basato su IP</a> potrebbe essere abilitato.</td>
+      <td>L’autenticazione è riuscita, ma l’utente non dispone di autorizzazioni sufficienti per chiamare questa API. [Autorizzazioni aggiuntive](custom-services.md) potrebbero dover essere assegnate al ruolo utente, oppure <a href="https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">il Inserisco nell'elenco Consentiti per l'accesso API basato su IP</a> potrebbe essere abilitato.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
