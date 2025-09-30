@@ -1,12 +1,12 @@
 ---
 title: getMObjects
 feature: SOAP
-description: chiamate SOAP getMObjects
+description: Utilizzare getMObjects per recuperare oggetti Marketo MObjects per ID, attributi o associazioni, fino a 100 per batch, impaginati con streamPosition, con esempi XML.
 exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '226'
-ht-degree: 7%
+source-wordcount: '245'
+ht-degree: 6%
 
 ---
 

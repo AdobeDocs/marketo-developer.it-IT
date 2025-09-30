@@ -1,11 +1,11 @@
 ---
 title: File
 feature: REST API
-description: Memorizzazione e manipolazione di file Marketo.
+description: 'Guida ai file API REST di Marketo: query per ID o nome, ricerca con cartella e offset, creazione o aggiornamento tramite caricamento multipart, insertOnly, tipi MIME, nessuno streaming'
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '267'
+source-wordcount: '289'
 ht-degree: 1%
 
 ---

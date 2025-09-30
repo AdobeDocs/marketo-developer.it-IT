@@ -1,11 +1,11 @@
 ---
 title: Campi standard
 feature: REST API, Field Management
-description: Tabella di campi standard di Marketo.
+description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST e SOAP, oltre a come recuperarli tramite l’API Descrivi lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1140'
+source-wordcount: '1161'
 ht-degree: 11%
 
 ---
@@ -19,7 +19,7 @@ Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei
 | Nome API REST | Nome API SOAP | Etichetta intuitiva | Descrizione |
 | --- | --- | --- | --- |
 | indirizzo | Indirizzo | Indirizzo | Indirizzo del lead |
-| AnnualRevenue | Reddito Annuo | Entrata annuale | Ricavi annuali della società del lead |
+| AnnualRevenue | Reddito Annuo | Ricavi annuali | Ricavi annuali della società del lead |
 | anonymousIP | AnonimoIP | IP anonimo | Indirizzo IP della prima visita web registrata del lead |
 | billingCity | BillingCity | Città di fatturazione | Città dell&#39;indirizzo di fatturazione del lead |
 | billingCountry | BillingCountry | Paese di fatturazione | Paese dell’indirizzo di fatturazione del lead |
@@ -47,43 +47,43 @@ Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei
 | mainPhone | MainPhone | Numero di telefono | Numero di telefono principale della società del lead |
 | jigsawContactId | ID contatto Jigsaw Marketo | ID MARKETO Data.com | ID Data.com del lead, se disponibile |
 | jigsawContactStatus | Stato contatto Jigsaw Marketo | Stato Marketo Data.com | Stato Data.com del lead, se disponibile |
-| facebookDisplayName | MarketoSocialFacebookDisplayName | Nome visualizzato Marketo Social Facebook | Nome visualizzato Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| facebookDisplayName | MarketoSocialFacebookDisplayName | Nome visualizzato Marketo Social Facebook | Nome visualizzato del lead su Facebook. Sistema popolato durante l&#39;accesso tramite social network |
 | facebookId | MarketoSocialFacebookId | ID Marketo Social Facebook | ID Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
 | facebookPhotoURL | MarketoSocialFacebookPhotoURL | URL foto Marketo Social Facebook | URL della foto del profilo Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookProfileURL | MarketoSocialFacebookProfileURL | URL profilo Marketo Social Facebook | URL del profilo Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| facebookProfileURL | MarketoSocialFacebookProfileURL | URL profilo Facebook social network Marketo | URL del profilo Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
 | facebookReach | MarketoSocialFacebookReach | Marketo Social Facebook Reach | La portata Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Iscrizioni con riferimenti a Marketo Social Facebook | Numero di iscrizioni a cui viene fatto riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
-| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Visite di riferimento di Marketo Social Facebook | Numero di visite con riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
+| facebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Iscrizioni di riferimento a Marketo Social Facebook | Numero di iscrizioni a cui si fa riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
+| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Visite di riferimento Marketo Social Facebook | Numero di visite con riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
 | genere | MarketoSocialGender | Genere social Marketo | Genere del lead. Sistema popolato durante l&#39;accesso tramite social network |
 | lastReferredEnrollment | MarketoSocialLastReferredEnrollment | Ultima iscrizione riferimento a Marketo Social | Data dell’ultimo riferimento completato. Gestito dal sistema |
 | lastReferredVisit | MarketoSocialLastReferredVisit | Ultima visita di riferimento di Marketo Social | Data dell’ultima visita di riferimento. Gestito dal sistema |
-| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Nome visualizzato Marketo Social LinkedIn | Nome visualizzato LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInId | MarketoSocialLinkedInId | ID Marketo Social LinkedIn | ID LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | URL foto Marketo Social LinkedIn | URL della foto LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInProfileURL | MarketoSocialLinkedInProfileURL | URL profilo Marketo Social LinkedIn | Profilo LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInReach | MarketoSocialLinkedInReach | Marketo Social LinkedIn Reach | Portata LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Iscrizioni con riferimenti a Marketo Social LinkedIn | Numero di iscrizioni a cui viene fatto riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
-| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Visite di riferimento di Marketo Social LinkedIn | Numero di visite con riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
+| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Nome visualizzato LinkedIn per Marketo Social | Nome visualizzato LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| linkedInId | MarketoSocialLinkedInId | ID LinkedIn Di Marketo Social | ID LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | URL foto LinkedIn di Marketo Social | URL della foto LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| linkedInProfileURL | MarketoSocialLinkedInProfileURL | URL profilo LinkedIn di Marketo Social | Profilo LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| linkedInReach | MarketoSocialLinkedInReach | Marketo Social LinkedIn Reach | Il lead è LinkedIn. Sistema popolato durante l&#39;accesso tramite social network |
+| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Marketo Social LinkedIn Iscrizioni con riferimenti | Numero di iscrizioni a cui viene fatto riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
+| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Visite con riferimenti a Marketo Social | Numero di visite a cui è stato fatto riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
 | syndicationId |  - | ID Marketo Social Syndication | ID social Marketo interno del lead. Gestito dal sistema |
 | totalReferredEnrollments | MarketoSocialTotalReferredEnrollments | Totale iscrizioni inoltrate Social Marketo | Numero totale di iscrizioni di riferimento completate attribuite al lead |
 | totalReferredVisits | MarketoSocialTotalReferredVisits | Totale visite inoltrate Social Marketo | Numero totale di visite riferite attribuite al lead |
-| twitterDisplayName | MarketoSocialTwitterDisplayName | Nome visualizzato Twitter social network Marketo | Nome visualizzato del Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterId | MarketoSocialTwitterId | ID Twitter social network Marketo | ID Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterPhotoURL | MarketoSocialTwitterPhotoURL | URL foto Twitter Marketo Social | URL della foto del Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterProfileURL | MarketoSocialTwitterProfileURL | URL profilo Twitter social network Marketo | URL del profilo di Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterReach | MarketoSocialTwitterReach | Marketo - Raggiungimento Twitter social network | La portata del Twitter del piombo. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Iscrizioni di riferimento a Marketo Social Twitter | Numero di iscrizioni a cui viene fatto riferimento attribuite al Twitter lead-through. Gestito dal sistema |
-| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Visite di riferimento per Twitter social network Marketo | Numero di visite con riferimento attribuite al Twitter lead-through. Gestito dal sistema |
+| twitterDisplayName | MarketoSocialTwitterDisplayName | Nome visualizzato Twitter social network Marketo | Nome visualizzato del lead su Twitter. Sistema popolato durante l&#39;accesso tramite social network |
+| twitterId | MarketoSocialTwitterId | ID social Twitter Marketo | ID Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| twitterPhotoURL | MarketoSocialTwitterPhotoURL | URL foto Marketo Social Twitter | URL della foto di Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| twitterProfileURL | MarketoSocialTwitterProfileURL | URL profilo Marketo social Twitter | URL del profilo Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| twitterReach | MarketoSocialTwitterReach | Marketo Social Twitter Reach | La portata di Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
+| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Iscrizioni di riferimento a Marketo Social Twitter | Numero di iscrizioni a cui si fa riferimento attribuite al lead tramite Twitter. Gestito dal sistema |
+| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Visite di riferimento su Marketo Social Twitter | Numero di visite riferite attribuite al lead tramite Twitter. Gestito dal sistema |
 | middleName | Secondo nome | Secondo nome | Secondo nome del lead |
 | mobilePhone | Cellulare | Numero di telefono | Numero di telefono cellulare del lead |
 | numberOfEmployees | NumberOfEmployees | Numero dipendenti | Numero di dipendenti della società del lead |
 | telefono | Telefono | Numero di telefono | Numero di telefono del lead |
-| postalCode | CAP | Codice postale | Codice postale del lead |
+| postalCode | CAP | Codice di avviamento postale | Codice postale del lead |
 | valutazione | Valutazione | Classificazione Lead | Valutazione marketing/vendite del lead |
 | saluto | Formula di saluto | Formula di saluto | Formula di apertura preferita del lead, ad esempio Mister, Misses, ecc. |
 | sicCode | Codice SICC | Codice SIC (Standard Industrial Classification) | Codice di classificazione industriale standard della società del lead |
 | sito | Sito | Sito |  |
-| stato | Stato | Stato | Stato del lead |
+| Stato | Stato | Stato | Stato del lead |
 | titolo | Titolo | Qualifica | Qualifica del lead |
 | annullato abbonamento | Annulla l&#39;iscrizione | Annulla l&#39;iscrizione | Stato del lead per cui è stato annullato l’abbonamento all’e-mail. Gestito parzialmente dal sistema. Impedisce la ricezione di e-mail non operative se impostato su true. |
 | unsubscscribeReason | Motivo annullamento abbonamento | Motivo di annullamento dell&#39;iscrizione | Motivo dello stato di annullamento dell’iscrizione del lead. Gestito parzialmente dal sistema. Viene compilata con informazioni e-mail se il lead ha annullato l’abbonamento direttamente da un’e-mail di Marketo. |
@@ -98,6 +98,6 @@ Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei
 | inferredPostalCode |  - | Codice postale dedotto | Codice postale del lead dedotto dalla ricerca IP inversa della prima visita web registrata del lead. |
 | inferredStateRegion |  - | Area geografica dello stato dedotta | L’area dello stato del lead è dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
 | isAnonymous |  - | È anonimo | Stato anonimo del record del lead. Gestito dal sistema. |
-| priorità |  - | Priorità | Priorità informazioni vendite del lead. Gestito dal sistema. |
-| relativeScore |  - | Punteggio relativo | Punteggio relativo di Sales Insight del lead. Gestito dal sistema. |
-| urgenza |  - | Urgenza | Urgenza di approfondimento vendite del lead. Gestito dal sistema. |
+| priorità |  - | Priorità | Priorità Insight vendite del lead. Gestito dal sistema. |
+| relativeScore |  - | Punteggio relativo | Punteggio relativo Insight vendite del lead. Gestito dal sistema. |
+| urgenza |  - | Urgenza | Urgenza vendite Insight del lead. Gestito dal sistema. |

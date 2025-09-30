@@ -1,16 +1,16 @@
 ---
-title: Modelli di pagina di destinazione
+title: Modelli pagina di destinazione
 feature: REST API, Landing Pages
-description: Creare e modificare modelli di pagina di destinazione.
+description: Gestisci i modelli della pagina di destinazione di Marketo tramite endpoint API REST per moduli gratuiti e tipi guidati, query per ID o nome, creazione, aggiornamento di HTML, clone, Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '533'
-ht-degree: 0%
+source-wordcount: '552'
+ht-degree: 1%
 
 ---
 
-# Modelli di pagina di destinazione
+# Modelli pagina di destinazione
 
 [Riferimento endpoint modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
 
@@ -18,7 +18,7 @@ I modelli di pagina di destinazione sono una risorsa principale e una dipendenza
 
 ## Tipi di modelli
 
-Marketo dispone di due tipi di modelli di pagina di destinazione, in formato libero e guidato. I modelli di pagina di destinazione in formato libero forniscono un’esperienza di modifica scarsamente strutturata per le pagine da essi derivate. I modelli guidati forniscono un’esperienza con una struttura molto ampia, in cui i tipi di elementi e le posizioni possono essere limitati a livello di modello. Per ulteriori informazioni sulle differenze, vedere [questo documento](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo dispone di due tipi di modelli di pagina di destinazione, in formato libero e guidato. I modelli di pagina di destinazione in formato libero forniscono un’esperienza di modifica scarsamente strutturata per le pagine da essi derivate. I modelli guidati forniscono un’esperienza con una struttura molto ampia, in cui i tipi di elementi e le posizioni possono essere limitati a livello di modello. Per ulteriori informazioni sulle differenze, vedere [questo documento](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Query
 
@@ -26,7 +26,7 @@ I modelli di pagina di destinazione supportano i tipi di query standard per le r
 
 ## Crea e aggiorna
 
-I modelli vengono creati come risorse vuote con metadati associati. Durante la creazione di un modello, è necessario includere un nome e una cartella, oltre a una descrizione facoltativa, un parametro templateType e enableMunchkin. templateType può essere a forma libera o guidata e il valore predefinito è freeForm. Per informazioni sulle differenze tra i tipi, vedere la sezione Forma guidata e libera. enableMunchkin ha come impostazione predefinita false e, se attivato, impedisce l&#39;esecuzione del tracciamento Munchkin su qualsiasi pagina di destinazione figlio del modello.
+I modelli vengono creati come risorse vuote con metadati associati. Durante la creazione di un modello, è necessario includere un nome e una cartella, oltre a una descrizione facoltativa, un parametro templateType e enableMunchkin. templateType può essere a forma libera o guidata e il valore predefinito è freeForm. Per informazioni sulle differenze tra i tipi, vedere la sezione Forma guidata e libera. enableMunchkin è impostato su false per impostazione predefinita e, se attivato, impedisce l&#39;esecuzione del tracciamento di Munchkin su qualsiasi pagina di destinazione figlio del modello.
 
 ```
 POST /rest/asset/v1/landingPageTemplates.json
@@ -112,7 +112,7 @@ Content-Type: text/plain
 
 ## Duplica
 
-Marketo fornisce un metodo semplice per clonare i modelli di una pagina di destinazione. Si tratta di una richiesta POST con codifica application/x-www-url-formencoded.
+Marketo fornisce un metodo semplice per clonare i modelli di una pagina di destinazione. Si tratta di una richiesta POST con codifica application/x-www-url.
 
 Il parametro percorso `id` specifica l&#39;ID del modello della pagina di destinazione di origine da clonare.
 
@@ -167,9 +167,9 @@ I modelli di pagina di destinazione seguono il modello standard approvato in boz
 
 Per essere approvato, un modello deve essere conforme alle regole per il suo tipo, guidate o meno. Per ulteriori informazioni sui requisiti per la creazione e l’approvazione dei modelli dei rispettivi tipi, consulta i rispettivi documenti di creazione:
 
-- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modelli di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Esempi di modelli guidati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelli di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Esempi di modelli guidati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Elimina
 

@@ -1,12 +1,12 @@
 ---
 title: getImportToListStatus
 feature: SOAP
-description: Chiamate SOAP getImportToListStatus
+description: Utilizza getImportToListStatus per controllare lo stato di importazione dell’elenco statico di Marketo, i campi obbligatori, le richieste e le risposte XML, il codice PHP e Java e le best practice per il polling.
 exl-id: 17a62f65-dfa0-4f40-89b2-154f7734a2dc
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '76'
-ht-degree: 7%
+source-wordcount: '96'
+ht-degree: 6%
 
 ---
 

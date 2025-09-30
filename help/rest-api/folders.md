@@ -1,12 +1,12 @@
 ---
 title: Cartelle
 feature: REST API
-description: Manipolazione delle cartelle con l’API di Marketo.
+description: Guida all’API REST di Marketo per le cartelle che includono creazione, aggiornamento, eliminazione, query per ID e nome, navigazione in massa con root, workspace, maxDepth e paginazione.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1008'
-ht-degree: 0%
+source-wordcount: '1025'
+ht-degree: 1%
 
 ---
 
@@ -64,8 +64,8 @@ Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (C
 - E-mail
 - Modello e-mail
 - Pagina di destinazione
-- Modello per pagina di destinazione
-- Frammento
+- Modello pagina di destinazione
+- Snippet
 - File
 
 ### Per nome
@@ -211,7 +211,7 @@ Il percorso di una cartella mostra la relativa gerarchia nella struttura ad albe
 
 ## Crea e aggiorna
 
-[La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST che dispone di due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
+[La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
 
 ```
 POST /rest/asset/v1/folders.json

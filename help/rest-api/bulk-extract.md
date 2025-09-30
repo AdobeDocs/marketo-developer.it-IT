@@ -1,11 +1,11 @@
 ---
 title: Estrai in blocco
 feature: REST API
-description: Operazioni batch per l'estrazione dei dati Marketo.
+description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1682'
+source-wordcount: '1702'
 ht-degree: 0%
 
 ---

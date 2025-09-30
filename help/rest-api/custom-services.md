@@ -1,11 +1,11 @@
 ---
 title: Servizi personalizzati
 feature: REST API
-description: Credenziali di autenticazione con Marketo.
+description: Crea servizi personalizzati Marketo, imposta ruoli e autorizzazioni solo API, ottieni ID client e segreto client in LaunchPoint e ottieni i token di accesso.
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '968'
+source-wordcount: '985'
 ht-degree: 0%
 
 ---
@@ -79,7 +79,7 @@ Di seguito è riportato un elenco di tutte le autorizzazioni disponibili per gli
 | Autorizzazione per ruolo | Consente l&#39;accesso a... |
 | --- | --- |
 | Approva Assets | Approvare le risorse |
-| Esegui campagna | Richiedere o pianificare una campagna |
+| Eseguire campagna | Richiedere o pianificare una campagna |
 | Attività di sola lettura | Recupera attività lead |
 | Metadati attività di sola lettura | Recuperare i metadati dell’attività del lead |
 | Assets di sola lettura | Recuperare i dettagli della risorsa |

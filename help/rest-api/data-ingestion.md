@@ -1,11 +1,11 @@
 ---
 title: Acquisizione dati
 feature: REST API, Dynamic Content
-description: Utilizzare i dati con le API di Marketo.
+description: Utilizza l’API di acquisizione dati di Marketo per aggiornamenti di volumi elevati e a bassa latenza di persone e oggetti personalizzati con autenticazione dell’intestazione OAuth, eventi di stato asincroni e nuovi tentativi.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: af2d0f266a271696dbf7d334f23bcd9962b9eba4
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '957'
+source-wordcount: '978'
 ht-degree: 10%
 
 ---

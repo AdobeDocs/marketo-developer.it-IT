@@ -1,22 +1,22 @@
 ---
-title: Elenchi smart
+title: Elenchi avanzati
 feature: REST API
-description: Creare e modificare elenchi avanzati.
+description: Scopri come utilizzare le API REST di Marketo per eseguire query, clonare ed eliminare elenchi avanzati creati dall’utente, inclusi gli endpoint per ID, nome, campagna e programma con regole.
 exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '419'
-ht-degree: 0%
+source-wordcount: '439'
+ht-degree: 1%
 
 ---
 
-# Elenchi smart
+# Elenchi avanzati
 
 [Riferimento endpoint elenchi avanzati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists)
 
 Marketo offre un set di API REST per l’esecuzione di operazioni su elenchi avanzati. Queste API seguono il pattern di interfaccia standard per le API delle risorse, fornendo le opzioni Query, Delete e Clone.
 
-Nota: queste API sono supportate solo per gli elenchi avanzati creati dall’utente. Non possono essere utilizzati per [Elenchi smart incorporati/di sistema](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Nota: queste API sono supportate solo per gli elenchi avanzati creati dall’utente. Non possono essere utilizzati per [Elenchi smart incorporati/di sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Query
 
@@ -245,7 +245,7 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## Duplica
 
-[Clonazione di un elenco smart](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) eseguita con un POST application/x-www-form-urlencoded. L&#39;elenco smart da clonare è specificato nel parametro di percorso `id`. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco smart e viene formattato come oggetto JSON contenente ID e tipo. La cartella principale deve essere una cartella Programmi o Smart List. Il parametro `name` viene utilizzato per denominare il nuovo elenco smart e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco avanzato.
+[Clonazione di un elenco smart](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) eseguita con un POST di tipo application/x-www-form-urlencoded. L&#39;elenco smart da clonare è specificato nel parametro di percorso `id`. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco smart e viene formattato come oggetto JSON contenente ID e tipo. La cartella principale deve essere una cartella Programmi o Smart List. Il parametro `name` viene utilizzato per denominare il nuovo elenco smart e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco avanzato.
 
 ```
 POST /rest/asset/v1/smartList/{id}/clone.json

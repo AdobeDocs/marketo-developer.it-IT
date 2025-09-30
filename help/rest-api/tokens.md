@@ -1,12 +1,12 @@
 ---
 title: Token
 feature: REST API, Tokens
-description: Gestire i token in Marketo.
+description: Gestisci i miei token di Marketo con l’API REST di Asset. Consulta i tipi di dati supportati, ottieni per cartella o programma, crea o aggiorna tramite POST codificato per modulo ed elimina per nome.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '297'
-ht-degree: 2%
+source-wordcount: '320'
+ht-degree: 3%
 
 ---
 

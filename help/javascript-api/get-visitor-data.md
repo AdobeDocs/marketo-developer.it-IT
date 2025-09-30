@@ -1,11 +1,11 @@
 ---
 title: Ottieni dati visitatore
-description: Ottieni dati visitatore
+description: Ottieni l’identificazione dei visitatori in tempo reale utilizzando l’API Contesto utente RTP con parametri, esempi di callback e risposte di esempio per segmenti, ABM e posizione.
 feature: Javascript
 exl-id: 39a2446d-8a31-461e-bbe6-a7edf24b4d52
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '184'
+source-wordcount: '203'
 ht-degree: 4%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 4%
 
 Questo metodo viene utilizzato per ottenere dati di identificazione dei visitatori in tempo reale.
 
-- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 - RTP non supporta gli elenchi di account denominati Account Based Marketing (Marketing basato su account). Gli elenchi e il codice ABM si riferiscono solo agli elenchi di account caricati (file CSV) gestiti all’interno di RTP.
 
 Se si verifica un errore, viene visualizzato un messaggio di errore come parte della risposta JSON. Se viene restituito un codice 500, contatta l’assistenza per la richiesta effettuata.

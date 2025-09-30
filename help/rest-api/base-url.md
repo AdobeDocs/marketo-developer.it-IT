@@ -1,12 +1,12 @@
 ---
 title: URL di base
 feature: REST API
-description: Descrive come utilizzare gli URL per Marketo.
+description: Scopri come generare richieste API REST di Marketo, comprendere la risorsa e i parametri del percorso dell’URL di base e trovare l’URL di base univoco.
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '138'
-ht-degree: 0%
+source-wordcount: '152'
+ht-degree: 2%
 
 ---
 
@@ -25,7 +25,7 @@ composto dalle seguenti parti:
 - Risorsa: `318582.json`
 - Parametro query: `fields=email,firstName,lastName`
 
-L’URL di base contiene l’ID account (alias ID Munchkin) ed è quindi univoco per ogni abbonamento a Marketo. L&#39;URL di base viene trovato accedendo a Marketo e passando al menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**. È etichettato come &quot;Endpoint:&quot; sotto la sezione &quot;REST API&quot; come mostrato nelle schermate seguenti.
+L’URL di base contiene l’ID account (alias Munchkin ID) ed è quindi univoco per ogni abbonamento a Marketo. L&#39;URL di base viene trovato accedendo a Marketo e passando al menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**. È etichettato come &quot;Endpoint:&quot; sotto la sezione &quot;REST API&quot; come mostrato nelle schermate seguenti.
 
 ![Endpoint URL di base servizi Web](assets/rest-api-base-url-web-services.png)
 

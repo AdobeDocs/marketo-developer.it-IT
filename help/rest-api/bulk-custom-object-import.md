@@ -1,11 +1,11 @@
 ---
 title: Importazione di oggetti personalizzati in blocco
 feature: Custom Objects
-description: Importazione in batch di oggetti personalizzati.
+description: Scopri come importare in blocco oggetti personalizzati Marketo tramite REST utilizzando file CSV, TSV o SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '855'
+source-wordcount: '866'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ Quando si dispone di molti record di oggetti personalizzati per  import, è con
 
 ## Esempio di oggetto personalizzato
 
-Prima di utilizzare l&#39;API in blocco, è necessario utilizzare l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Ad esempio, supponiamo di aver creato un oggetto personalizzato &quot;Car&quot; con i campi &quot;Color&quot;, &quot;Make&quot;, &quot;Model&quot; e &quot;VIN&quot;. Di seguito sono riportate le schermate dell’interfaccia utente di amministrazione che mostrano l’oggetto personalizzato. Potete vedere che abbiamo usato il campo VIN per la deduplicazione. I nomi API vengono evidenziati perché devono essere utilizzati quando si chiamano endpoint correlati a API in blocco.
+Prima di utilizzare l&#39;API in blocco, è necessario utilizzare l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Ad esempio, supponiamo di aver creato un oggetto personalizzato &quot;Car&quot; con i campi &quot;Color&quot;, &quot;Make&quot;, &quot;Model&quot; e &quot;VIN&quot;. Di seguito sono riportate le schermate dell’interfaccia utente di amministrazione che mostrano l’oggetto personalizzato. Potete vedere che abbiamo usato il campo VIN per la deduplicazione. I nomi API vengono evidenziati perché devono essere utilizzati quando si chiamano endpoint correlati a API in blocco.
 
 ![Inserisci oggetto personalizzato](assets/bulk-insert-co-car-1.png)
 

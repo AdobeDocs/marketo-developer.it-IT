@@ -1,11 +1,11 @@
 ---
 title: syncMultipleLeads
 feature: SOAP
-description: chiamate SOAP syncMultipleLeads
+description: Scopri come utilizzare syncMultipleLeads per eseguire l’upsert di più lead Marketo tramite SOAP, chiavi e regole di deduplicazione, limiti di dimensione batch e codice XML, PHP e Java di esempio.
 exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '221'
+source-wordcount: '244'
 ht-degree: 3%
 
 ---

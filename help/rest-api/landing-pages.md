@@ -1,11 +1,11 @@
 ---
 title: Pagine di destinazione
 feature: REST API, Landing Pages
-description: Eseguire query sulle pagine di destinazione in Marketo.
+description: Utilizza l’API REST di Marketo per eseguire query su metadati e contenuti, creare, aggiornare, approvare, eliminare e clonare le pagine di destinazione, inclusi i tipi guidati e in formato libero.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1000'
+source-wordcount: '1018'
 ht-degree: 1%
 
 ---
@@ -185,7 +185,7 @@ Le sezioni di contenuto sono ordinate in base alla loro proprietà di indice e i
 | Immagine | ID della risorsa immagine. |
 | Rettangolo | Vuoto. |
 | RichText | Contenuto HTML di testo.  Può contenere solo elementi in formato Rich Text. |
-| Frammento | ID del frammento. |
+| Snippet | ID del frammento. |
 | Pulsante social | ID di  il pulsante social. |
 | Video | ID del video. |
 
@@ -274,7 +274,7 @@ Le variabili sono definite come meta tag all&#39;interno dell&#39;elemento `<hea
 </head>
 ```
 
-Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Query
 

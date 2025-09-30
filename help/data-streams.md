@@ -1,10 +1,10 @@
 ---
 title: Flussi di dati
-description: Panoramica di Data Steams
+description: Panoramica dei flussi di dati Marketo Engage per attività lead quasi in tempo reale ed eventi di controllo degli utenti, con riduzione dei limiti API per i clienti di livello prestazioni
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1596'
+source-wordcount: '1615'
 ht-degree: 1%
 
 ---
@@ -90,14 +90,14 @@ Elenco degli eventi di controllo degli utenti in streaming:
 | Modulo | approvare, clonare, creare, eliminare, bozzaCreare, modificare, spostare, rinominare |
 | Modulo -> Modulo pagina di destinazione | creare, clonare, modificare, eliminare, approvare, rinominare |
 | Pagina di destinazione | approva, clona, crea, elimina, bozzaElimina, modifica, rinomina, annulla approvazione |
-| Modello per pagina di destinazione | approva, clona, crea, elimina, bozzaCrea, bozzaElimina, modifica, rinomina, annulla approvazione |
+| Modello pagina di destinazione | approva, clona, crea, elimina, bozzaCrea, bozzaElimina, modifica, rinomina, annulla approvazione |
 | Elenco avanzato | clona, crea, elimina, modifica, esporta, modifica impostazione elenco avanzato, rinomina |
 | Cartella di marketing | creare, modificare, eliminare |
-| Programma di sviluppo | clona, crea, elimina, modifica canale, modifica configurazione programma, modifica flusso programma, modifica token programma, rinomina |
+| Programma di nurturing | clona, crea, elimina, modifica canale, modifica configurazione programma, modifica flusso programma, modifica token programma, rinomina |
 | Segmento | creare, eliminare, modificare, rinominare |
 | Segmentazione | approvare, creare, eliminare, bozzaCreata, bozzaDiscardata, rinominare, non approvare |
 | Campagna avanzata | interrompi, attiva, clona, crea, disattiva, elimina, modifica, modifica pianificazione campagne, modifica azione passaggio flusso, modifica impostazione elenco avanzato, sposta, rinomina |
-| Frammento | approva, approva senza bozza, clona, crea, elimina, modifica, rinomina, annulla approvazione |
+| Snippet | approva, approva senza bozza, clona, crea, elimina, modifica, rinomina, annulla approvazione |
 | Interfaccia utente amministratore -> Launchpoint -> Integrazione | creare, eliminare, modificare |
 | Interfaccia utente amministratore -> Utente | Creare, modificare, eliminare (come per l’utente solo API) |
 | Accesso amministratore -> Utente | accesso riuscito, accesso non riuscito |
@@ -262,7 +262,7 @@ Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo
 
 ### Configurazione del flusso di dati di controllo degli utenti in Marketo
 
-Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento alla [pagina di descrizione del prodotto](https://helpx.adobe.com/it/legal/product-descriptions/adobe-marketo-engage---product-description.html) per i limiti e le funzionalità del prodotto.
+Il flusso di dati di audit utente è attualmente disponibile come parte dei pacchetti di prestazioni insieme agli altri 3 flussi di dati. Per ulteriori informazioni sui pacchetti, fare riferimento alla [pagina di descrizione del prodotto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) per i limiti e le funzionalità del prodotto.
 
 ### Configurazione di Adobe I/O
 

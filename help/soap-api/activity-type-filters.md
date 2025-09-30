@@ -1,23 +1,23 @@
 ---
 title: Filtri per tipo di attività
 feature: SOAP
-description: Filtri per Tipo di attività per le chiamate SOAP.
+description: Sfoglia tutti i filtri dei tipi di attività supportati per le chiamate SOAP, dai clic e-mail ai riempimenti dei moduli, alle modifiche alla campagna SFDC e agli aggiornamenti delle opportunità.
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '210'
-ht-degree: 0%
+source-wordcount: '226'
+ht-degree: 23%
 
 ---
 
 # Filtri per tipo di attività
 
-| Aggiungi all&#39;elenco |
+| Aggiungi all’elenco |
 |-------------------------------------|
 | Aggiungi allo sviluppo |
 | Aggiungi all’opportunità |
 | Aggiungi al segmento |
-| Aggiungi a campagna SFDC |
+| Aggiungere a campagna SFDC |
 | Aggiungi a Smart Campaign |
 | Assegna contenuto di sviluppo |
 | Acquisire la cronologia dei membri della campagna |
@@ -30,27 +30,27 @@ ht-degree: 0%
 | Cambia cadenza di sviluppo |
 | Cambia sviluppo esaurito |
 | Cambia traccia sviluppo |
-| Cambia proprietario |
+| Modificare proprietario |
 | Cambia dati programma |
-| Modifica fase ricavi |
+| Modificare fase ricavo |
 | Modifica manualmente fase ricavi |
-| Modifica punteggio |
+| Modificare punteggio |
 | Cambia segmento |
 | Modifica stato in progressione |
-| Modifica stato in una campagna SFDC |
-| Fai clic su E-mail |
+| Modificare lo stato nella campagna SFDC |
+| Fai clic sull’e-mail |
 | Fai clic sul collegamento |
-| Fai clic su E-mail vendita |
+| Fai clic sull’e-mail vendite |
 | Fai clic su Collegamento condiviso |
 | Converti lead |
-| Crea attività |
+| Creare attività |
 | Elimina lead da SFDC |
 | E-mail non recapitata |
 | E-mail non recapitata temporaneamente |
 | E-mail consegnata |
 | Arricchisci con Data.com |
 | Compila modulo |
-| Momento di interesse |
+| Momento interessante |
 | Lead assegnato |
 | Unisci lead |
 | Nuovo lead |
@@ -60,11 +60,11 @@ ht-degree: 0%
 | Apri e-mail vendite |
 | Ricevi e-mail vendite |
 | Ricevuto Inoltra a e-mail amico |
-| Rimuovi dal flusso |
+| Rimuovere dal flusso |
 | Rimuovi dall’elenco |
 | Rimuovi dall’opportunità |
-| Rimuovi da Campagna SFDC |
-| Richiedi campagna |
+| Rimuovere dalla campagna SFDC |
+| Richiedere campagna |
 | Variante gruppo di prova premi |
 | E-mail di vendita non recapitata |
 | Approvazione segmentazione |
@@ -74,7 +74,7 @@ ht-degree: 0%
 | Inoltro a e-mail amico |
 | Attività SFDC |
 | Attività SFDC aggiornata |
-| SFDC - Unisci lead |
+| Unione lead SFDC |
 | Condividi contenuto |
 | Sincronizza lead con SFDC |
 | Sincronizza aggiornamenti lead con SFDC |

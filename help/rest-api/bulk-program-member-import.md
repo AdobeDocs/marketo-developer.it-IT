@@ -1,11 +1,11 @@
 ---
 title: Importazione in blocco membri del programma
 feature: REST API
-description: Importazione in batch dei dati dei membri.
+description: Scopri come importare i membri del programma in blocco tramite API REST di Marketo utilizzando file CSV TSV o SSV di dimensioni inferiori a 10 MB, limiti di coda, parametri richiesti e stato del processo di polling.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '837'
+source-wordcount: '860'
 ht-degree: 0%
 
 ---

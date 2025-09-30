@@ -1,11 +1,11 @@
 ---
 title: syncMObjects
 feature: SOAP
-description: chiamate SOAP syncMObjects
+description: Marketo SOAP syncMObjects per inserire, aggiornare o eseguire l'upsert fino a 100 programmi, opportunità e OpportunityPersonRoles, stati restituiti e ID Marketo.
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '426'
+source-wordcount: '443'
 ht-degree: 4%
 
 ---

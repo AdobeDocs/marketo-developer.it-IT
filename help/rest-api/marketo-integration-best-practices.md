@@ -1,11 +1,11 @@
 ---
 title: Best practice per l’integrazione di Marketo
 feature: REST API
-description: Best practice per l’utilizzo delle API di Marketo.
+description: Best practice per le integrazioni API di Marketo che riguardano quote, limiti di tasso e di concorrenza, batch, importazione ed esportazione in blocco, caching e pianificazione della latenza.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '952'
+source-wordcount: '966'
 ht-degree: 0%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 ## Limiti API
 
-- **Quota giornaliera:** alla maggior parte degli abbonamenti sono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno alle 00.00 CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
+- **Quota giornaliera:** alla maggior parte degli abbonamenti sono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno a 12:00AM CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
 - **Limite di frequenza:** accesso API per istanza limitato a 100 chiamate per 20 secondi.
 - **Limite concorrenza:**  Massimo dieci chiamate API simultanee.
 - **Dimensione batch:** database lead - 300 record; query risorse - 200 record

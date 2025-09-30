@@ -1,11 +1,11 @@
 ---
 title: Membri del programma
 feature: REST API
-description: Crea e gestisci i membri del programma.
+description: Utilizza l’API REST di Marketo per leggere, creare, aggiornare ed eliminare i membri del programma, gestire i campi standard e personalizzati ed eseguire query utilizzando campi ricercabili.
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
-source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1708'
+source-wordcount: '1726'
 ht-degree: 2%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Riferimento endpoint membri programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members)
 
-Marketo espone le API per la lettura, la creazione, l’aggiornamento e l’eliminazione dei record dei membri del programma. I record dei membri del programma sono correlati ai record dei lead tramite il campo ID lead. I record sono composti da un set di campi standard e facoltativamente da un massimo di 20 campi personalizzati aggiuntivi. I campi contengono dati specifici del programma per ogni membro e possono essere utilizzati in moduli, filtri, trigger e azioni di flusso. Questi dati sono visualizzabili nella [scheda Membri](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) del programma nell&#39;interfaccia utente di Marketo Engage.
+Marketo espone le API per la lettura, la creazione, l’aggiornamento e l’eliminazione dei record dei membri del programma. I record dei membri del programma sono correlati ai record dei lead tramite il campo ID lead. I record sono composti da un set di campi standard e facoltativamente da un massimo di 20 campi personalizzati aggiuntivi. I campi contengono dati specifici del programma per ogni membro e possono essere utilizzati in moduli, filtri, trigger e azioni di flusso. Questi dati sono visualizzabili nella [scheda Membri](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members) del programma nell&#39;interfaccia utente di Marketo Engage.
 
 ## Descrivere
 
@@ -597,9 +597,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### Crea campi
 
-L&#39;endpoint [Crea campi membri del programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crea uno o più campi personalizzati nell&#39;oggetto membro del programma. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili in [Marketo Engage UI](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Puoi creare fino a 20 campi personalizzati utilizzando questo endpoint.
+L&#39;endpoint [Crea campi membri del programma](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST) crea uno o più campi personalizzati nell&#39;oggetto membro del programma. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili in [Marketo Engage UI](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields). Puoi creare fino a 20 campi personalizzati utilizzando questo endpoint.
 
-Considera attentamente ogni campo creato nell’istanza di produzione di Marketo Engage utilizzando l’API. Una volta creato un campo, non puoi eliminarlo ([puoi solo nasconderlo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
+Considera attentamente ogni campo creato nell’istanza di produzione di Marketo Engage utilizzando l’API. Una volta creato un campo, non puoi eliminarlo ([puoi solo nasconderlo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
 
 Il parametro obbligatorio `input` è un array di oggetti campo membro del programma. Ogni oggetto contiene uno o più attributi. Gli attributi richiesti sono `displayName`, `name` e `dataType`, che corrispondono rispettivamente al nome visualizzato dell&#39;interfaccia utente del campo, al nome API del campo e al tipo di campo. Facoltativamente, è possibile specificare `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
 

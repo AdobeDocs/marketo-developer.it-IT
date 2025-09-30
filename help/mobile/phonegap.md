@@ -1,11 +1,11 @@
 ---
 title: PhoneGap
 feature: Mobile Marketing
-description: Utilizzo di PhoneGap con Marketo su dispositivi mobili
+description: Configura il plug-in Marketo PhoneGap con Cordova, configura Firebase Cloud Messaging, abilita iOS e Android push, tieni traccia delle notifiche e inizializza SDK.
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '797'
+source-wordcount: '813'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ Integrazione del plug-in PhoneGap di Marketo
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installa PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -66,7 +66,7 @@ Controlla l&#39;elenco delle piattaforme aggiunte `$cordova platform ls`
 1. Supporto di Firebase Cloud Messaging
 
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://console.firebase.google.com/)Firebase.
+   1. Crea/Aggiungi un progetto nella console [](https://console.firebase.google.com/)Firebase.
       1. Nella [console Firebase](https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona &quot;Add Firebase to your Android App&quot; (Aggiungi Firebase alla tua app).

@@ -1,11 +1,11 @@
 ---
 title: Estrazione lead in blocco
 feature: REST API
-description: Estrazione batch dei dati del lead.
+description: Scopri come utilizzare le API REST di Estrazione lead in blocco di Marketo per esportare in blocco i lead con filtri per data, elenco e elenchi avanzati, campi personalizzati e formati CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1173'
+source-wordcount: '1195'
 ht-degree: 2%
 
 ---

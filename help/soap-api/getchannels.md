@@ -1,12 +1,12 @@
 ---
 title: getChannels
 feature: SOAP
-description: chiamate getChannels SOAP
+description: Scopri in che modo Marketo SOAP getChannels recupera gli stati di progressione del canale, i numeri dei passaggi e i flag di successo, con esempi XML di richiesta e risposta.
 exl-id: bcaef85b-154b-4571-ad24-07a36707a6ef
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '92'
-ht-degree: 5%
+source-wordcount: '109'
+ht-degree: 4%
 
 ---
 

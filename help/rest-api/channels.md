@@ -1,12 +1,12 @@
 ---
 title: Canali
 feature: REST API
-description: Configurazione dei dati dei canali con le API di Marketo.
+description: Scopri come eseguire query sui canali Marketo tramite l’API REST delle risorse, sfogliare con l’impaginazione o recuperare per nome, visualizzare gli stati di progressione e comprendere le regole del tipo di programma.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '125'
-ht-degree: 1%
+source-wordcount: '144'
+ht-degree: 2%
 
 ---
 

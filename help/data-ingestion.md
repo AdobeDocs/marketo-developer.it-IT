@@ -1,15 +1,15 @@
 ---
-title: Acquisizione dei dati
-description: Panoramica dell’API di acquisizione dati
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+title: Acquisizione dati
+description: API di acquisizione dati di Marketo per aggiornamenti a bassa latenza di volumi elevati di persone e oggetti personalizzati, stato asincrono tramite Observability, autenticazione intestazione OAuth, versione beta privata.
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '940'
+source-wordcount: '960'
 ht-degree: 10%
 
 ---
 
 
-# Acquisizione dei dati
+# Acquisizione dati
 
 L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire l’acquisizione di grandi quantità di dati relativi a persone e persone in modo efficiente e con ritardi minimi.
 

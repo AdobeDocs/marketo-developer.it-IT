@@ -1,12 +1,12 @@
 ---
 title: Elenchi statici
 feature: REST API, Static Lists
-description: Eseguire operazioni CRUD su elenchi statici.
+description: Utilizza le API REST di Marketo per eseguire query, creare, aggiornare ed eliminare elenchi statici, con endpoint per filtri ID, nome e visualizzazione, ambito cartella, paging e data.
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '741'
-ht-degree: 0%
+source-wordcount: '760'
+ht-degree: 1%
 
 ---
 
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Crea e aggiorna
 
-[Creazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri richiesti. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco statico e viene formattato come oggetto JSON contenente ID e tipo. Il parametro `name` viene utilizzato per denominare l&#39;elenco statico e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco statico.
+[La creazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri richiesti. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco statico e viene formattato come oggetto JSON contenente ID e tipo. Il parametro `name` viene utilizzato per denominare l&#39;elenco statico e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco statico.
 
 ```
 POST /rest/asset/v1/staticLists.json
@@ -229,7 +229,7 @@ POST /rest/asset/v1/staticList/{id}/delete.json
 
 Gli endpoint di appartenenza agli elenchi consentono di aggiungere, rimuovere ed eseguire query sui membri di elenchi statici. È inoltre possibile eseguire una query sull&#39;appartenenza a un elenco statico.
 
-### Aggiungi all&#39;elenco
+### Aggiungi all’elenco
 
 L&#39;endpoint [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) è utilizzato per aggiungere uno o più membri a un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e uno o più parametri di query ID che contengono ID lead (il massimo consentito è 300).
 

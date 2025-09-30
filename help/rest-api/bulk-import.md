@@ -1,11 +1,11 @@
 ---
 title: Importazione in blocco
 feature: REST API
-description: Importazione in batch dei dati personali.
+description: Importazione in blocco Marketo per il caricamento di lead, oggetti personalizzati e membri di programmi tramite caricamenti in più parti, la creazione di processi asincroni, lo stato di polling e la gestione di errori.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '592'
+source-wordcount: '610'
 ht-degree: 1%
 
 ---

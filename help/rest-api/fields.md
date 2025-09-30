@@ -1,11 +1,11 @@
 ---
 title: Campi
 feature: REST API, Field Management
-description: Elenco di nomi di campi supportati.
+description: Scopri la denominazione dei campi lead REST e SOAP, i campi elenco tramite REST Descrivi il lead, la mappatura delle funzioni, il motivo per cui sfdcId è nullo e utilizza sfdcLeadId o sfdcContactId.
 exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '194'
+source-wordcount: '212'
 ht-degree: 2%
 
 ---
@@ -35,4 +35,4 @@ A volte è difficile sapere quale tipo di nome di campo utilizzare quando si uti
 
 ### Perché il campo API REST sfdcId restituisce sempre un valore null?
 
-Il campo `sfdcId` è un campo formula che è stato erroneamente incluso nella mappa del campo originale per l&#39;API REST. I record recuperati tramite l’API REST non calcolano il valore dei campi formula, pertanto il valore sarà sempre nullo. Per acquisire l&#39;ID SFDC effettivo, è necessario utilizzare i campi denominati `sfdcLeadId` e `sfdcContactId`.
+Il campo `sfdcId` è un campo formula che è stato erroneamente incluso nella mappa del campo originale per l&#39;API REST. I record recuperati tramite l’API REST non calcolano il valore dei campi formula, pertanto il valore sarà sempre nullo. Per acquisire il SFDC ID effettivo, utilizzare i campi denominati `sfdcLeadId` e `sfdcContactId`.

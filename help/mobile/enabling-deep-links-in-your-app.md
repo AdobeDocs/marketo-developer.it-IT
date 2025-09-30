@@ -1,11 +1,11 @@
 ---
 title: Abilitazione dei collegamenti profondi
 feature: Mobile Marketing
-description: Istruzioni per abilitare i collegamenti profondi
+description: Scopri come abilitare i collegamenti profondi nell’app per i messaggi push di Marketo utilizzando schemi URI personalizzati, con le linee guida e le best practice di iOS, Android e PhoneGap.
 exl-id: c3647416-d81d-4f15-b660-bcb3e54cb9bc
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '376'
+source-wordcount: '397'
 ht-degree: 0%
 
 ---
@@ -17,7 +17,7 @@ I collegamenti profondi consentono di reindirizzare le persone a contenuti speci
 Il processo funziona in questo modo:
 
 1. L’utente di Marketo inserisce un URI personalizzato nel tocco Azione per il proprio messaggio push.
-1. Quando una persona tocca il messaggio push sul proprio dispositivo, l’SDK di Marketo MME attiva un evento con l’URI personalizzato.
+1. Quando una persona tocca il messaggio push sul proprio dispositivo, Marketo MME SDK attiva un evento con l’URI personalizzato.
 1. L’app elabora quindi l’evento e reindirizza la persona al contenuto appropriato all’interno dell’app.
 
 A tal fine è necessario definire una struttura URI personalizzata per l&#39;app, registrare lo schema nel manifesto dell&#39;app e quindi aggiungere il codice per elaborare gli eventi di collegamento profondo e indirizzarli alla posizione corretta nell&#39;app.

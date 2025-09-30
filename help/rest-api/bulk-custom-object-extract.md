@@ -1,11 +1,11 @@
 ---
 title: Estrazione oggetto personalizzato in blocco
 feature: REST API, Custom Objects
-description: Elaborazione in batch di oggetti Marketo personalizzati.
+description: Guida alle API REST per l’estrazione di oggetti personalizzati in blocco da Marketo per l’esportazione di oggetti personalizzati collegati al lead con filtri di tipo updateAt ed list, campi selezionati e...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1298'
+source-wordcount: '1315'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Il set Bulk Custom Object Extract delle API REST fornisce un’interfaccia programmatica per recuperare set elevati di record di oggetti personalizzati da Marketo. Si tratta dell&#39;interfaccia consigliata per i casi d&#39;uso che richiedono l&#39;interscambio continuo di dati tra Marketo e uno o più sistemi esterni, a scopo di ETL, data warehousing e archiviazione.
 
-Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorizzazioni
 

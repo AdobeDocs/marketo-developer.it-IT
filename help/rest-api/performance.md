@@ -1,11 +1,11 @@
 ---
 title: Prestazioni
 feature: REST API
-description: Suggerimenti sulle prestazioni per l’utilizzo dell’API Marketo.
+description: Migliora le prestazioni dell’API REST di Marketo con la compressione HTTP. Consenti a gzip di tagliare la larghezza di banda; API in blocco non supportate e inferiori a 1024 byte non compresse.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '122'
+source-wordcount: '136'
 ht-degree: 0%
 
 ---

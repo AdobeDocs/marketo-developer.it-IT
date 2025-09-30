@@ -1,12 +1,12 @@
 ---
 title: Snippet
 feature: REST API, Snippets
-description: Gestione dei snippet tramite l’API Marketo.
+description: API REST di Marketo Asset per snippet, che copre le query per ID e sfoglia con lo stato, l’ottenimento di contenuti, la creazione e l’aggiornamento di HTML, testo e contenuti dinamici.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '438'
-ht-degree: 0%
+source-wordcount: '456'
+ht-degree: 1%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Riferimento endpoint snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
 
-I snippet sono componenti HTML riutilizzabili che possono essere incorporati nelle e-mail e nelle pagine di destinazione e che possono essere segmentati per il contenuto dinamico. Ai frammenti non sono associati modelli e possono essere creati e distribuiti all&#39;interno di altre risorse in Marketo.
+I snippet sono componenti HTML riutilizzabili che possono essere incorporati nelle e-mail e nelle pagine di destinazione e che possono essere segmentati per contenuti dinamici. Ai frammenti non sono associati modelli e possono essere creati e distribuiti all&#39;interno di altre risorse in Marketo.
 
 ## Query
 
@@ -139,7 +139,7 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-La chiamata restituisce un elenco di sezioni di contenuto,  che sono costituite da sezioni di tipo HTML o DynamicContent e, facoltativamente, da una sezione con un tipo di testo.
+La chiamata restituisce un elenco di sezioni di contenuto,  che sono costituite da sezioni di tipo HTML o tipo DynamicContent e, facoltativamente, da una sezione con un tipo di testo.
 
 ## Crea e aggiorna
 
@@ -183,7 +183,7 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 }
 ```
 
-L’aggiunta o la sostituzione del contenuto in uno snippet viene eseguita per ID. Il contenuto può essere di tipo Testo, HTML o DynamicContent. Se il tipo è Testo, il parametro di contenuto è l’endpoint di testo normale; se invece è HTML, si tratta del testo di markup desiderato. Se il tipo è impostato su DynamicContent, il parametro di contenuto deve essere impostato sull&#39;ID della segmentazione da associare al frammento.
+L’aggiunta o la sostituzione del contenuto in uno snippet viene eseguita per ID. Il contenuto può essere di tipo Testo, HTML o DynamicContent. Se il tipo è Testo, il parametro di contenuto è l’endpoint di testo normale; se è HTML, è il testo di markup desiderato. Se il tipo è impostato su DynamicContent, il parametro di contenuto deve essere impostato sull&#39;ID della segmentazione da associare al frammento.
 
 ```
 POST /rest/asset/v1/snippet/{id}/content.json
@@ -310,7 +310,7 @@ GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 
 Gli snippet dispongono di endpoint per l&#39;approvazione, la revoca dell&#39;approvazione e l&#39;eliminazione delle bozze, che seguono il modello di risorsa standard. Lo stato di bozza di uno snippet deve essere quello di approvazione.
 
-### Approva
+### Approvazione
 
 ```
 POST /rest/asset/v1/snippet/{id}/approveDraft.json

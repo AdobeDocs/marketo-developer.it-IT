@@ -1,11 +1,11 @@
 ---
 title: Regole di reindirizzamento pagina di destinazione
 feature: REST API, Landing Pages
-description: Configura le regole di reindirizzamento delle pagine di destinazione tramite l’API.
+description: Utilizza le API REST di Marketo Asset per creare, eseguire query, aggiornare ed eliminare le regole di reindirizzamento delle pagine di destinazione con filtri, impaginazione, opzioni del nome host e destinazioni non Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '641'
+source-wordcount: '655'
 ht-degree: 2%
 
 ---
@@ -155,7 +155,7 @@ Il parametro `redirectTo` specifica la pagina di destinazione di destinazione di
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Non Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione sono disponibili [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=it).
+Ulteriori informazioni sulla creazione di regole di reindirizzamento per le pagine di destinazione sono disponibili [qui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json

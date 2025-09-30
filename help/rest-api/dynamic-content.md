@@ -1,12 +1,12 @@
 ---
 title: Contenuto dinamico
 feature: REST API, Dynamic Content
-description: Configurare i contenuti dinamici con le API di Marketo.
+description: Configurare contenuti dinamici Marketo a livello di sezione tramite API REST utilizzando segmentazioni per personalizzare e-mail, pagine di destinazione e snippet con endpoint ed esempi
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '426'
-ht-degree: 1%
+source-wordcount: '441'
+ht-degree: 2%
 
 ---
 

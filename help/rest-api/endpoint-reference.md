@@ -1,12 +1,12 @@
 ---
 title: Riferimento endpoint
 feature: REST API
-description: Riferimenti endpoint API Marketo
+description: Elenco completo degli endpoint API REST di Marketo con metodi, URI e autorizzazioni richieste per attività, esportazione in blocco, identità, lead, risorse, utenti.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '4448'
-ht-degree: 5%
+source-wordcount: '4464'
+ht-degree: 7%
 
 ---
 
@@ -80,7 +80,7 @@ Elenco completo degli endpoint REST API.
 | Importa membri del programma | Membri del programma Importazione in blocco | POST | /bulk/v1/program/{programId}/members/import.json | Lead di lettura/scrittura |
 | Ottieni campagna per ID | Campagne | GET | /rest/v1/campaigns/{id}.json | Campagne di sola lettura |
 | Recupera campagne | Campagne | GET | /rest/v1/campaigns.json | Campagne di sola lettura |
-| Richiedi campagna | Campagne | POST | /rest/v1/campaigns/{id}/trigger.json | Campagne di lettura/scrittura |
+| Richiedere campagna | Campagne | POST | /rest/v1/campaigns/{id}/trigger.json | Campagne di lettura/scrittura |
 | Pianifica campagna | Campagne | POST | /rest/v1/campaigns/{id}/schedule.json | Campagne di lettura/scrittura |
 | Ottieni canale per nome | Canali | GET | /rest/asset/v1/channel/byName.json | Risorsa di sola lettura |
 | Ottieni canali | Canali | GET | /rest/asset/v1/channels.json | Risorsa di sola lettura |
@@ -158,17 +158,17 @@ Elenco completo degli endpoint REST API.
 | Ottieni contenuto cartella | Cartelle | GET | /rest/asset/v1/folder/{id}/content.json | Risorsa di sola lettura |
 | Ottieni cartelle | Cartelle | GET | /rest/asset/v1/folders.json | Risorsa di sola lettura |
 | Aggiorna metadati cartella | Cartelle | POST | /rest/asset/v1/folder/{id}.json | Risorsa di lettura/scrittura |
-| Aggiungi campo al modulo | Campi modulo | POST | /rest/asset/v1/form/{id}/fields.json | Risorsa di lettura/scrittura |
-| Aggiungi set di campi al modulo | Campi modulo | POST | /rest/asset/v1/form/{id}/fieldSet.json | Risorsa di lettura/scrittura |
-| Aggiungi regole di visibilità campo modulo | Campi modulo | POST | /rest/asset/v1/form/{formId}/field/{fieldId}/visibility.json | Risorsa di lettura/scrittura |
-| Aggiungi campo Rich Text | Campi modulo | POST | /rest/asset/v1/form/{id}/richText.json | Risorsa di lettura/scrittura |
-| Elimina campo da set di campi | Campi modulo | POST | /rest/asset/v1/form/{id}/fieldSet/{fieldSetId}/field/{fieldId}/delete.json | Risorsa di lettura/scrittura |
-| Elimina campo modulo | Campi modulo | POST | /rest/asset/v1/form/{id}/field/{fieldId}/delete.json | Risorsa di lettura/scrittura |
-| Ottieni campi modulo disponibili | Campi modulo | GET | /rest/asset/v1/form/fields.json | Risorsa di sola lettura |
-| Recupera campi membri del programma modulo disponibili | Campi modulo | GET | /rest/asset/v1/form/programMemberFields.json | Risorsa di sola lettura |
-| Recupera campi per modulo | Campi modulo | GET | /rest/asset/v1/form/{id}/fields.json | Risorsa di sola lettura |
-| Aggiorna posizioni campo | Campi modulo | POST | /rest/asset/v1/form/{id}/reArrange.json | Risorsa di lettura/scrittura |
-| Aggiorna campo modulo | Campi modulo | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | Risorsa di lettura/scrittura |
+| Aggiungi campo al modulo | Campi del modulo | POST | /rest/asset/v1/form/{id}/fields.json | Risorsa di lettura/scrittura |
+| Aggiungi set di campi al modulo | Campi del modulo | POST | /rest/asset/v1/form/{id}/fieldSet.json | Risorsa di lettura/scrittura |
+| Aggiungi regole di visibilità campo modulo | Campi del modulo | POST | /rest/asset/v1/form/{formId}/field/{fieldId}/visibility.json | Risorsa di lettura/scrittura |
+| Aggiungi campo Rich Text | Campi del modulo | POST | /rest/asset/v1/form/{id}/richText.json | Risorsa di lettura/scrittura |
+| Elimina campo da set di campi | Campi del modulo | POST | /rest/asset/v1/form/{id}/fieldSet/{fieldSetId}/field/{fieldId}/delete.json | Risorsa di lettura/scrittura |
+| Elimina campo modulo | Campi del modulo | POST | /rest/asset/v1/form/{id}/field/{fieldId}/delete.json | Risorsa di lettura/scrittura |
+| Ottieni campi modulo disponibili | Campi del modulo | GET | /rest/asset/v1/form/fields.json | Risorsa di sola lettura |
+| Recupera campi membri del programma modulo disponibili | Campi del modulo | GET | /rest/asset/v1/form/programMemberFields.json | Risorsa di sola lettura |
+| Recupera campi per modulo | Campi del modulo | GET | /rest/asset/v1/form/{id}/fields.json | Risorsa di sola lettura |
+| Aggiorna posizioni campo | Campi del modulo | POST | /rest/asset/v1/form/{id}/reArrange.json | Risorsa di lettura/scrittura |
+| Aggiorna campo modulo | Campi del modulo | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | Risorsa di lettura/scrittura |
 | Approva bozza modulo | Forms | POST | /rest/asset/v1/form/{id}/approveDraft.json | Risorsa di lettura/scrittura |
 | Clona modulo | Forms | POST | /rest/asset/v1/form/{id}/clone.json | Risorsa di lettura/scrittura |
 | Crea modulo | Forms | POST | /rest/asset/v1/forms.json | Risorsa di lettura/scrittura |

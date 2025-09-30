@@ -1,11 +1,11 @@
 ---
 title: scheduleCampaign
 feature: SOAP, Smart Campaigns
-description: chiamate scheduleCampaign SOAP
+description: Utilizza scheduleCampaign per eseguire campagne avanzate in batch di Marketo, subito o in un secondo momento, ignorare i token, clonare i programmi e implementare tramite SOAP XML con campioni PHP e Java.
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '252'
+source-wordcount: '274'
 ht-degree: 3%
 
 ---

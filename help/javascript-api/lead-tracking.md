@@ -1,11 +1,11 @@
 ---
 title: Tracciamento lead
-description: API di tracciamento dei lead
+description: Scopri come incorporare Marketo Munchkin JavaScript, tenere traccia di visite e clic, gestire lead noti e anonimi, cookie tra domini diversi e la rinuncia a campagne intelligenti.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '764'
+source-wordcount: '784'
 ht-degree: 0%
 
 ---
@@ -100,7 +100,7 @@ I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ovvero `
 
 ## Beta
 
-Per aderire al canale beta Munchkin per le pagine di destinazione, vai al menu [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;. In questo modo vengono forniti nuovi snippet di codice in **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** per consentire l&#39;utilizzo della versione beta su siti esterni.
+Per aderire al canale beta Munchkin per le pagine di destinazione, vai al menu [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;. In questo modo vengono forniti nuovi snippet di codice in **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** per consentire l&#39;utilizzo della versione beta su siti esterni.
 
 ## Rinuncia
 
