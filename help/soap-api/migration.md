@@ -86,7 +86,7 @@ Documentazione REST:
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
-| [getLeadActivity](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/soap/activities/getleadactivity) | [Attività di esportazione in blocco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities) [Attività lead ](https://developer.adobe.com/marketo-apis/api/mapi/#operation/getLeadActivitiesUsingGET) |
+| [getLeadActivity](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/soap/activities/getleadactivity) | [Attività di esportazione in blocco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities) [Attività lead &#x200B;](https://developer.adobe.com/marketo-apis/api/mapi/#operation/getLeadActivitiesUsingGET) |
 | [getLeadChanges](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/soap/activities/getleadchanges) | [Attività di esportazione in blocco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities) [Modifiche lead](https://developer.adobe.com/marketo-apis/api/mapi/#operation/getLeadChangesUsingGET) |
 
 ## Campagne

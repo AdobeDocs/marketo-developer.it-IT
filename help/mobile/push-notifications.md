@@ -285,7 +285,7 @@ Di seguito è riportato un registro attività di Marketo da Marketo che mostra g
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. Configurazione di FCM con HTTPv1 (Google ha [il protocollo XMPP ](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) dichiarato obsoleto il 12 giugno 2023 e verrà rimosso a giugno 2024)
+1. Configurazione di FCM con HTTPv1 (Google ha [il protocollo XMPP &#x200B;](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) dichiarato obsoleto il 12 giugno 2023 e verrà rimosso a giugno 2024)
 
 - Abilitare MME FCM HTTPv1 nel gestore delle funzionalità di Marketo ![](assets/feature-manager.png)
    - Carica il file JSON dell’account del servizio per l’app in MLM.
