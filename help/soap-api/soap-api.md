@@ -3,7 +3,7 @@ title: API SOAP
 feature: SOAP
 description: L’API SOAP di Marketo è diventata obsoleta dopo il 31 ottobre 2025. Scopri come migrare a REST, recuperare il tuo WSDL, vedere quote, limiti di tariffa e configurazione di autenticazione.
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 5f2dcb4864cdcd110ba9f199ef9c86dcee522335
 workflow-type: tm+mt
 source-wordcount: '249'
 ht-degree: 0%
@@ -12,7 +12,7 @@ ht-degree: 0%
 
 # API SOAP
 
-L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 ottobre 2025. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](../rest-api/rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](./migration.md) per informazioni su come eseguire la migrazione.
+L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 gennaio 2026. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](../rest-api/rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](./migration.md) per informazioni su come eseguire la migrazione.
 
 ## WSDL SOAP
 
