@@ -8,7 +8,7 @@ index: true
 source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
 workflow-type: tm+mt
 source-wordcount: '251'
-ht-degree: 19%
+ht-degree: 28%
 
 ---
 
@@ -32,9 +32,9 @@ ht-degree: 19%
    - [Reindirizzamenti](javascript-api/redirect.md)
    - [Consigli per contenuti multimediali avanzati](javascript-api/rich-media-recommendation.md)
    - [Trigger](javascript-api/triggers.md)
-   - [Web Personalization](javascript-api/web-personalization.md)
+   - [Personalizzazione web](javascript-api/web-personalization.md)
 - Dispositivi mobili {#mobile}
-   - [Installa l&#39;estensione  [!DNL Adobe Launch] &#x200B;](mobile/adobe-launch-extension-installation.md)
+   - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
    - [Azioni personalizzate](mobile/custom-actions.md)
