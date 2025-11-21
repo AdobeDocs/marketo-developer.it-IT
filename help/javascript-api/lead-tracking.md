@@ -1,11 +1,11 @@
 ---
 title: Tracciamento lead
-description: Scopri come incorporare Marketo Munchkin JavaScript, tenere traccia di visite e clic, gestire lead noti e anonimi, cookie tra domini diversi e la rinuncia a campagne intelligenti.
+description: Scopri come incorporare Marketo Munchkin JavaScript, tenere traccia di visite e clic, gestire lead noti e anonimi, cookie tra domini diversi e rinunciare a campagne intelligenti.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '784'
+source-wordcount: '785'
 ht-degree: 0%
 
 ---
@@ -76,7 +76,7 @@ Durante la prima visita di un lead a una pagina del tuo dominio, viene creato un
 - Il lead deve compilare un Marketo Form.
 - È necessario inviare una chiamata REST [Associa lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST).
 
-Una volta soddisfatta una di queste condizioni, il cookie e tutte le attività web associate vengono associate al lead noto.
+Quando una di queste condizioni viene soddisfatta, il cookie e tutte le attività web associate vengono associate al lead noto.
 
 Viene creato un nuovo record anonimo di attività Web per ogni singolo browser, quindi se un lead visita il dominio per la prima volta utilizzando un nuovo computer e/o browser, l’associazione deve essere ripetuta.
 
@@ -90,17 +90,17 @@ Nel caso in cui il dominio di primo livello sia composto da due parti, ad esempi
 
 Il cookie Munchkin utilizza la chiave `_mkto_trk` e ha un valore che segue questo modello:
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-1374552656411\-90718`
+`id:561-HYG-937&token:_mch-marketo.com-1374552656411-90718`
 
-oppure
+Oppure
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-97bf4361ef4433921a6da262e8df45a`
+`id:561-HYG-937&token:_mch-marketo.com-97bf4361ef4433921a6da262e8df45a`
 
 I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ovvero `example.com`. La durata predefinita del cookie è di 2 anni (730 giorni).
 
 ## Beta
 
-Per aderire al canale beta Munchkin per le pagine di destinazione, vai al menu [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;. In questo modo vengono forniti nuovi snippet di codice in **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** per consentire l&#39;utilizzo della versione beta su siti esterni.
+Per aderire al canale beta Munchkin per le pagine di destinazione, vai al menu [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;. In questo modo vengono forniti nuovi snippet di codice in **[!UICONTROL Admin]** ->  Menu **[!UICONTROL Munchkin]** per consentire l&#39;utilizzo della versione beta su siti esterni.
 
 ## Rinuncia
 

@@ -3,9 +3,9 @@ title: Importazione lead in blocco
 feature: REST API
 description: Creazione e monitoraggio delle importazioni asincrone di lead in blocco in Marketo con file CSV TSV o SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '812'
+source-wordcount: '795'
 ht-degree: 0%
 
 ---
@@ -18,13 +18,13 @@ Per grandi quantità di record di lead, è possibile importare i lead in modo as
 
 ## Limiti di elaborazione
 
-È consentito inviare più di una richiesta di importazione in blocco, con limitazioni. Ogni richiesta viene aggiunta come processo a una coda FIFO da elaborare. Vengono elaborati al massimo due processi contemporaneamente. Sono consentiti fino a dieci processi nella coda in qualsiasi momento (compresi i due attualmente in fase di elaborazione). Se si supera il numero massimo di dieci processi, viene restituito un errore &quot;1016, Troppe importazioni&quot;.
+È consentito inviare più di una richiesta di importazione in blocco, con limitazioni. Ogni richiesta viene aggiunta come processo a una coda FIFO da elaborare. Vengono elaborati al massimo due processi contemporaneamente. Sono consentiti al massimo 10 processi nella coda in qualsiasi momento (inclusi i due in fase di elaborazione). Se si supera il numero massimo di dieci processi, viene restituito un errore `1016, Too many imports`.
 
 ## Importa file
 
 La prima riga del file deve essere un’intestazione che elenca i campi API REST corrispondenti in cui mappare i valori di ogni riga. Un file tipico segue questo schema di base:
 
-```
+```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -37,7 +37,7 @@ Questo tipo di richiesta può essere difficile da implementare, pertanto si cons
 
 ## Creazione di un processo
 
-Per effettuare una richiesta di importazione in blocco, è necessario impostare l’intestazione del tipo di contenuto su &quot;multipart/form-data&quot; e includere almeno un parametro di file con il contenuto del file e un parametro di formato con il valore &quot;csv&quot;, &quot;tsv&quot; o &quot;ssv&quot; che indica il formato del file.
+Per effettuare una richiesta di importazione in blocco, è necessario impostare l&#39;intestazione del tipo di contenuto su `multipart/form-data` e includere almeno un parametro `file` con il contenuto del file e un parametro `format` con il valore `csv`, `tsv` o `ssv`, che denota il formato del file.
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -54,7 +54,7 @@ Host: <munchkinId>.mktorest.com
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
 
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -75,16 +75,16 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Per risolvere questo problema può essere difficile utilizzare una libreria di supporto HTTP per la lingua desiderata. Un modo semplice per eseguire questa operazione con cURL dalla riga di comando è simile al seguente:
+Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). È consigliabile utilizzare una libreria di supporto HTTP per la lingua scelta, in modo da garantire l’utilizzo corretto. L’esempio seguente è un modo semplice per eseguire questa operazione con cURL dalla riga di comando:
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-Dove il file di importazione &quot;lead_data.csv&quot; contiene quanto segue:
+Dove il file di importazione `lead_data.csv` contiene quanto segue:
 
 ```
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -130,7 +130,7 @@ Se il processo è stato completato, viene visualizzato un elenco del numero di r
 
 ## Errori
 
-Gli errori sono indicati dall&#39;attributo &quot;numOfRowsFailed&quot; nella risposta Get Import Lead Status. Se &quot;numOfRowsFailed&quot; è maggiore di zero, tale valore indica il numero di errori che si sono verificati.
+Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status. Se `numOfRowsFailed` è maggiore di zero, il valore indica il numero di errori che si sono verificati.
 
 Per recuperare i record e le cause delle righe non riuscite, è necessario recuperare il file di errore:
 
@@ -138,11 +138,11 @@ Per recuperare i record e le cause delle righe non riuscite, è necessario recup
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-L’API risponde con un file che indica quali righe non sono riuscite, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è lo stesso specificato nel parametro &quot;format&quot; durante la creazione del processo. A ogni record viene aggiunto un campo aggiuntivo con una descrizione dell’errore.
+L’API risponde con un file che indica quali righe non sono riuscite, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è uguale a quello specificato nel parametro `format` durante la creazione del processo. A ogni record viene aggiunto un campo aggiuntivo con una descrizione dell’errore.
 
 ## Avvisi
 
-Gli avvisi sono indicati dall&#39;attributo &quot;numOfRowsWithWarning&quot; nella risposta Get Import Lead Status. Se &quot;numOfRowsWithWarning&quot; è maggiore di zero, tale valore indica il numero di avvisi che si sono verificati.
+Gli avvisi sono indicati dall&#39;attributo `numOfRowsWithWarning` in una risposta Get Import Lead Status. Se `numOfRowsWithWarning` è maggiore di zero, tale valore indica il numero di avvisi che si sono verificati.
 
 Per recuperare i record e le cause delle righe di avviso, recuperare il file di avviso:
 
@@ -150,4 +150,4 @@ Per recuperare i record e le cause delle righe di avviso, recuperare il file di 
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-L’API risponde con un file che indica quali righe hanno prodotto avvisi, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è lo stesso specificato nel parametro &quot;format&quot; durante la creazione del processo. A ciascun record viene aggiunto un campo aggiuntivo con una descrizione dell’avviso.
+L’API risponde con un file che indica quali righe hanno prodotto avvisi, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è uguale a quello specificato nel parametro `format` durante la creazione del processo. A ciascun record viene aggiunto un campo aggiuntivo con una descrizione dell’avviso.
