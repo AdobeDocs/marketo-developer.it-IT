@@ -3,10 +3,10 @@ title: REST API
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo, configurare gli utenti API e LaunchPoint, visualizzare quote e limiti, eseguire l’autenticazione con l’intestazione Autorizzazione e recuperare i lead.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 5f2dcb4864cdcd110ba9f199ef9c86dcee522335
+source-git-commit: 5881ab969eca3a37d19f56b6570e42828994eff3
 workflow-type: tm+mt
 source-wordcount: '806'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
@@ -17,7 +17,7 @@ Marketo espone un’API REST che consente l’esecuzione remota di molte delle f
 Queste API in genere rientrano in due categorie generali: [Lead Database](https://developer.adobe.com/marketo-apis/api/mapi/) e [Asset](https://developer.adobe.com/marketo-apis/api/asset/). Le API del database lead consentono il recupero e l’interazione con i record persona di Marketo e i tipi di oggetto associati, ad esempio Opportunità e Società. Le API Asset consentono l’interazione con materiale promozionale di marketing e record relativi al flusso di lavoro.
 
 >[!NOTE]
->L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 gennaio 2026. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](./rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](../soap-api/migration.md) per informazioni su come eseguire la migrazione.
+>L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 marzo 2026. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](./rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](../soap-api/migration.md) per informazioni su come eseguire la migrazione.
 >
 
 >[!IMPORTANT]
