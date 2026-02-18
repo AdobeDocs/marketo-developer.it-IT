@@ -3,9 +3,9 @@ title: Script e-mail
 feature: Email Programs
 description: Scopri come scrivere e-mail Marketo dinamiche utilizzando token, variabili, strumenti Velocity di Apache Velocity e come testare con le Anteprima di invio di campioni e e-mail.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '965'
+source-wordcount: '953'
 ht-degree: 0%
 
 ---
@@ -14,26 +14,7 @@ ht-degree: 0%
 
 NOTA: si consiglia di leggere la [Guida utente Velocity](https://velocity.apache.org/engine/devel/user-guide.html) per approfondire il comportamento di Velocity Template Language.
 
-[Apache Velocity](https://velocity.apache.org/) è un linguaggio basato su Java e progettato per la creazione di modelli e script di contenuti HTML. Marketo consente di utilizzarlo nel contesto delle e-mail utilizzando token di script. Questo consente di accedere ai dati memorizzati in Opportunità e Oggetti personalizzati e di creare contenuto dinamico nelle e-mail. Velocity offre un flusso di controllo standard di alto livello con if/else, for e for each per consentire la manipolazione condizionale e iterativa dei contenuti. Di seguito è riportato un semplice esempio per stampare un saluto con la formula di apertura corretta:
-
-```java
-##check if the lead is male
-#if(${lead.MarketoSocialGender} == "Male")
-    ##if the lead is male, use the salutation 'Mr.'
-    #set($greeting = "Dear Mr. ${lead.LastName},")
-##check is the lead is female
-#elseif(${lead.MarketoSocialGender} == "Female")
-    ##if female, use the salutation 'Ms.'
-    #set($greeting = "Dear Ms. ${lead.LastName},")
-#else
-    ##otherwise, use the first name
-    #set($greeting = "Dear ${lead.FirstName},")
-#end
-##print the greeting and some content
-${greeting}
-
-    Lorem ipsum dolor sit amet...
-```
+[Apache Velocity](https://velocity.apache.org/) è un linguaggio basato su Java e progettato per la creazione di modelli e script di contenuti HTML. Marketo consente di utilizzarlo nel contesto delle e-mail utilizzando token di script. Questo consente di accedere ai dati memorizzati in Opportunità e Oggetti personalizzati e di creare contenuto dinamico nelle e-mail. Velocity offre un flusso di controllo standard di alto livello con if/else, for e for each per consentire la manipolazione condizionale e iterativa dei contenuti.
 
 ## Variabili
 
@@ -130,7 +111,7 @@ La lunghezza combinata di tutti i token di script e-mail in una determinata e-ma
 - È possibile fare riferimento a oggetti personalizzati connessi a un lead, un contatto o un account, ma non a più di uno.
 - È possibile fare riferimento agli oggetti personalizzati solo tramite una singola connessione, lead, contatto o account
 - Devi selezionare la casella nell’editor di script per i campi in uso o che non verranno elaborati
-- Per ogni oggetto personalizzato, i dieci record aggiornati più di recente per persona/contatto sono disponibili in fase di esecuzione e vengono ordinati dall’ultimo aggiornamento (a 0) a quello più recente (a 9). Puoi aumentare il numero di record disponibili di [seguendo le istruzioni](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Per ogni oggetto personalizzato, i dieci record aggiornati più di recente per persona/contatto sono disponibili in fase di esecuzione e vengono ordinati dall’ultimo aggiornamento (a 0) a quello più recente (a 9). Puoi aumentare il numero di record disponibili di [seguendo le istruzioni](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Se includi più di uno script e-mail in un messaggio e-mail, questi vengono eseguiti dall’alto verso il basso. L’ambito delle variabili definite nel primo script da eseguire sarà disponibile negli script successivi.
 - Riferimento strumenti: [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Nota relativa ai token che contengono caratteri di nuova riga &quot;\\n&quot; o &quot;\\r\\n&quot;. Quando un’e-mail viene inviata tramite Invia campione o tramite una campagna batch, i caratteri di nuova riga nei token vengono sostituiti da spazi. Quando l’e-mail viene inviata tramite Trigger Campaign, i caratteri di nuova riga non vengono toccati.

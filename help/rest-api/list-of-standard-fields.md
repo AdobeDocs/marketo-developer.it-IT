@@ -3,10 +3,10 @@ title: Campi standard
 feature: REST API, Field Management
 description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST e SOAP, oltre a come recuperarli tramite l’API Descrivi lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '1161'
-ht-degree: 11%
+source-wordcount: '727'
+ht-degree: 16%
 
 ---
 
@@ -47,33 +47,6 @@ Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei
 | mainPhone | MainPhone | Numero di telefono | Numero di telefono principale della società del lead |
 | jigsawContactId | ID contatto Jigsaw Marketo | ID MARKETO Data.com | ID Data.com del lead, se disponibile |
 | jigsawContactStatus | Stato contatto Jigsaw Marketo | Stato Marketo Data.com | Stato Data.com del lead, se disponibile |
-| facebookDisplayName | MarketoSocialFacebookDisplayName | Nome visualizzato Marketo Social Facebook | Nome visualizzato del lead su Facebook. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookId | MarketoSocialFacebookId | ID Marketo Social Facebook | ID Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookPhotoURL | MarketoSocialFacebookPhotoURL | URL foto Marketo Social Facebook | URL della foto del profilo Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookProfileURL | MarketoSocialFacebookProfileURL | URL profilo Facebook social network Marketo | URL del profilo Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookReach | MarketoSocialFacebookReach | Marketo Social Facebook Reach | La portata Facebook del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| facebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Iscrizioni di riferimento a Marketo Social Facebook | Numero di iscrizioni a cui si fa riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
-| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Visite di riferimento Marketo Social Facebook | Numero di visite con riferimento attribuite al lead tramite Facebook. Gestito dal sistema |
-| genere | MarketoSocialGender | Genere social Marketo | Genere del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| lastReferredEnrollment | MarketoSocialLastReferredEnrollment | Ultima iscrizione riferimento a Marketo Social | Data dell’ultimo riferimento completato. Gestito dal sistema |
-| lastReferredVisit | MarketoSocialLastReferredVisit | Ultima visita di riferimento di Marketo Social | Data dell’ultima visita di riferimento. Gestito dal sistema |
-| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Nome visualizzato LinkedIn per Marketo Social | Nome visualizzato LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInId | MarketoSocialLinkedInId | ID LinkedIn Di Marketo Social | ID LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | URL foto LinkedIn di Marketo Social | URL della foto LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInProfileURL | MarketoSocialLinkedInProfileURL | URL profilo LinkedIn di Marketo Social | Profilo LinkedIn del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInReach | MarketoSocialLinkedInReach | Marketo Social LinkedIn Reach | Il lead è LinkedIn. Sistema popolato durante l&#39;accesso tramite social network |
-| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Marketo Social LinkedIn Iscrizioni con riferimenti | Numero di iscrizioni a cui viene fatto riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
-| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Visite con riferimenti a Marketo Social | Numero di visite a cui è stato fatto riferimento attribuite al lead tramite LinkedIn. Gestito dal sistema |
-| syndicationId |  - | ID Marketo Social Syndication | ID social Marketo interno del lead. Gestito dal sistema |
-| totalReferredEnrollments | MarketoSocialTotalReferredEnrollments | Totale iscrizioni inoltrate Social Marketo | Numero totale di iscrizioni di riferimento completate attribuite al lead |
-| totalReferredVisits | MarketoSocialTotalReferredVisits | Totale visite inoltrate Social Marketo | Numero totale di visite riferite attribuite al lead |
-| twitterDisplayName | MarketoSocialTwitterDisplayName | Nome visualizzato Twitter social network Marketo | Nome visualizzato del lead su Twitter. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterId | MarketoSocialTwitterId | ID social Twitter Marketo | ID Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterPhotoURL | MarketoSocialTwitterPhotoURL | URL foto Marketo Social Twitter | URL della foto di Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterProfileURL | MarketoSocialTwitterProfileURL | URL profilo Marketo social Twitter | URL del profilo Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterReach | MarketoSocialTwitterReach | Marketo Social Twitter Reach | La portata di Twitter del lead. Sistema popolato durante l&#39;accesso tramite social network |
-| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Iscrizioni di riferimento a Marketo Social Twitter | Numero di iscrizioni a cui si fa riferimento attribuite al lead tramite Twitter. Gestito dal sistema |
-| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Visite di riferimento su Marketo Social Twitter | Numero di visite riferite attribuite al lead tramite Twitter. Gestito dal sistema |
 | middleName | Secondo nome | Secondo nome | Secondo nome del lead |
 | mobilePhone | Cellulare | Numero di telefono | Numero di telefono cellulare del lead |
 | numberOfEmployees | NumberOfEmployees | Numero dipendenti | Numero di dipendenti della società del lead |
