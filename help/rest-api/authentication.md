@@ -3,9 +3,9 @@ title: Autenticazione
 feature: REST API
 description: Autentica le API REST di Marketo con 2 gambe OAuth 2.0, crea e utilizza token di accesso, passa all’intestazione Autorizzazione, gestisci la scadenza, gestisci gli errori 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 37973f51f1f0a08da967bdd07aaa47188b208adb
+source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
 workflow-type: tm+mt
-source-wordcount: '628'
+source-wordcount: '657'
 ht-degree: 0%
 
 ---
@@ -55,7 +55,7 @@ Il token di accesso deve essere inviato come intestazione HTTP.
 
 >[!IMPORTANT]
 >
->Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 marzo 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
+>Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 luglio 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
 
 ### Passaggio all’intestazione Autorizzazione
 
