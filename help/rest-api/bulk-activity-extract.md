@@ -3,10 +3,10 @@ title: Estrazione attività in blocco
 feature: REST API
 description: Marketo Bulk Activity Extract REST API per esportare dati di attività a volume elevato utilizzando un intervallo di date di 31 giorni, filtri di attività e attributi primari per ETL e CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1351'
-ht-degree: 4%
+source-wordcount: '1571'
+ht-degree: 3%
 
 ---
 
@@ -74,7 +74,7 @@ Impossibile utilizzare `primaryAttributeValueIds` e `primaryAttributeValues` ins
 | Rimuovi dall’elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
 | Compila modulo | Nome modulo | [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | Modulo web |
 
-Devi usare &quot;&lt;<em>programma</em>>.Notazione &lt;<em>asset</em>>&quot; per specificare il nome per i seguenti gruppi di risorse: Programma di marketing, Elenco statico, Modulo Web. Ad esempio, una maschera con il nome &quot;MPS in uscita&quot; che si trova sotto un programma con il nome &quot;GL_OP_ALL_2021&quot; viene specificata come &quot;GL_OP_ALL_2021.MPS in uscita&quot;.
+È necessario utilizzare la notazione &quot;&lt;<em>programma</em>>.&lt;<em>risorsa</em>>&quot; per specificare il nome per i seguenti gruppi di risorse: Programma di marketing, Elenco statico, Modulo Web. Ad esempio, una maschera con il nome &quot;MPS in uscita&quot; che si trova sotto un programma con il nome &quot;GL_OP_ALL_2021&quot; viene specificata come &quot;GL_OP_ALL_2021.MPS in uscita&quot;.
 
 Esempio di corpo della richiesta:
 
@@ -95,12 +95,12 @@ Esempio di corpo della richiesta:
 }
 ```
 
-Quando si utilizza `primaryAttributeValues`, il filtro `activityTypeIds` deve essere presente e contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Se ad esempio si applica un filtro alle risorse di un modulo Web, in `activityTypeIds` è consentito solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;. Impossibile utilizzare `primaryAttributeValues` e `primaryAttributeValueIds` insieme.
+Quando si utilizza `primaryAttributeValues`, il filtro `activityTypeIds` deve essere presente e contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Se ad esempio si applica un filtro alle risorse di un modulo Web, in `activityTypeIds` è consentito solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;. `primaryAttributeValues` e `primaryAttributeValueIds` non possono essere utilizzati insieme.
 
 ## Opzioni
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | filter | Array[Oggetto] | Sì | Accetta un array di filtri. Nell&#39;array deve essere incluso esattamente un filtro `createdAt`. È possibile includere un filtro `activityTypeIds` facoltativo. I filtri vengono applicati al set di attività accessibile e il set di attività risultante viene restituito dal processo di esportazione. |
 | formato | Stringa | No | Accetta uno dei seguenti file: CSV, TSV, SSV Il file esportato viene renderizzato rispettivamente come file di valori separati da virgola, valori separati da tabulazioni o valori separati da spazi, se impostati. Se non impostato, viene impostato il valore predefinito CSV. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
@@ -204,7 +204,7 @@ GET /bulk/v1/activities/export/{exportId}/status.json
 
 Il campo di stato può rispondere con uno dei seguenti valori:
 
-- Creata
+- Creato
 - In coda
 - Elaborazione
 - Annullato

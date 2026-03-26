@@ -3,9 +3,9 @@ title: Firma di autenticazione
 feature: SOAP
 description: Guida all’autenticazione API di Marketo SOAP tramite HMAC-SHA1 su HTTPS, campi di intestazione obbligatori, formato della marca temporale e risposte di esempio a richieste ed errori
 exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '225'
+source-wordcount: '232'
 ht-degree: 3%
 
 ---

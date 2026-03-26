@@ -5,10 +5,10 @@ breadcrumb-title: Guida per sviluppatori di [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
+source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
 workflow-type: tm+mt
-source-wordcount: '251'
-ht-degree: 28%
+source-wordcount: '277'
+ht-degree: 29%
 
 ---
 
@@ -34,7 +34,7 @@ ht-degree: 28%
    - [Trigger](javascript-api/triggers.md)
    - [Personalizzazione web](javascript-api/web-personalization.md)
 - Dispositivi mobili {#mobile}
-   - [Installa l&#39;estensione  [!DNL Adobe Launch] &#x200B;](mobile/adobe-launch-extension-installation.md)
+   - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
    - [Azioni personalizzate](mobile/custom-actions.md)
@@ -57,7 +57,7 @@ ht-degree: 28%
       - [Modelli e-mail](rest-api/email-templates.md)
       - [File](rest-api/files.md)
       - [Cartelle](rest-api/folders.md)
-      - [Forms](rest-api/forms.md)
+      - [Moduli](rest-api/forms.md)
       - [Pagine di destinazione](rest-api/landing-pages.md)
       - [Regole di reindirizzamento pagina di destinazione](rest-api/landing-page-redirect-rules.md)
       - [Modelli pagina di destinazione](rest-api/landing-page-templates.md)
@@ -102,13 +102,15 @@ ht-degree: 28%
       - [Ruoli opportunità](rest-api/opportunity-roles.md)
       - [Membri del programma](rest-api/program-members.md)
       - [Venditori](rest-api/sales-persons.md)
+      - [Elenco statico](rest-api/list-membership.md)
+      - [Utilizzo](rest-api/usage.md)
    - [Token di paging](rest-api/paging-tokens.md)
    - [Prestazioni](rest-api/performance.md)
    - [Architetture di riferimento](rest-api/reference-architectures.md)
-   - [Codice campione](https://github.com/Marketo/REST-Sample-Code)
+   - [Codice di esempio](https://github.com/Marketo/REST-Sample-Code)
    - [Tag](rest-api/tags.md)
    - [Contesto utente](rest-api/user-context.md)
-   - [Gestione utente](rest-api/user-management.md)
+   - [Gestione degli utenti](rest-api/user-management.md)
 - SOAP {#soap}
    - Attività {#activities}
       - [Attività](soap-api/activities.md)

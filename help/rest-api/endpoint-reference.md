@@ -3,9 +3,9 @@ title: Riferimento endpoint
 feature: REST API
 description: Elenco completo degli endpoint API REST di Marketo con metodi, URI e autorizzazioni richieste per attività, esportazione in blocco, identità, lead, risorse, utenti.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '4464'
+source-wordcount: '4793'
 ht-degree: 7%
 
 ---
@@ -17,14 +17,14 @@ Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
 - [Risorsa](https://developer.adobe.com/marketo-apis/api/asset/)
 - [Identità](https://developer.adobe.com/marketo-apis/api/identity/)
 - [Database lead](https://developer.adobe.com/marketo-apis/api/mapi/)
-- [Gestione utente](https://developer.adobe.com/marketo-apis/api/user/)
+- [Gestione degli utenti](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## Elenco endpoint {#endpoint_list}
 
 Elenco completo degli endpoint REST API.
 
 | Nome | Gruppo | Metodo | URI | Autorizzazione necessaria |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Aggiungi attività personalizzate | Attività | POST | /rest/v1/activities/external.json | Attività di lettura/scrittura |
 | Approva tipo di attività personalizzato | Attività | POST | /rest/v1/activities/external/type/{apiName}/approve.json | Metadati attività di lettura/scrittura |
 | Creare attributi di tipo di attività personalizzati | Attività | POST | /rest/v1/activities/external/type/{apiName}/attributes/create.json | Metadati attività di lettura/scrittura |
@@ -169,19 +169,19 @@ Elenco completo degli endpoint REST API.
 | Recupera campi per modulo | Campi del modulo | GET | /rest/asset/v1/form/{id}/fields.json | Risorsa di sola lettura |
 | Aggiorna posizioni campo | Campi del modulo | POST | /rest/asset/v1/form/{id}/reArrange.json | Risorsa di lettura/scrittura |
 | Aggiorna campo modulo | Campi del modulo | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | Risorsa di lettura/scrittura |
-| Approva bozza modulo | Forms | POST | /rest/asset/v1/form/{id}/approveDraft.json | Risorsa di lettura/scrittura |
-| Clona modulo | Forms | POST | /rest/asset/v1/form/{id}/clone.json | Risorsa di lettura/scrittura |
-| Crea modulo | Forms | POST | /rest/asset/v1/forms.json | Risorsa di lettura/scrittura |
-| Ottieni modulo utilizzato da | Forms | GET | /rest/asset/v1/form/{id}/usedBy.json | Risorsa di lettura/scrittura |
-| Elimina modulo | Forms | POST | /rest/asset/v1/form/{id}/delete.json | Risorsa di lettura/scrittura |
-| Elimina bozza modulo | Forms | POST | /rest/asset/v1/form/{id}/discardDraft.json | Risorsa di lettura/scrittura |
-| Ottieni modulo per ID | Forms | GET | /rest/asset/v1/form/{id}.json | Risorsa di sola lettura |
-| Ottieni modulo per nome | Forms | GET | /rest/asset/v1/form/byName.json | Risorsa di sola lettura |
-| Ottieni Forms | Forms | GET | /rest/asset/v1/forms.json | Risorsa di sola lettura |
-| Ottieni pagina di ringraziamento per ID modulo | Forms | GET | /rest/asset/v1/form/{id}/thankYouPage.json | Risorsa di sola lettura |
-| Aggiorna metadati modulo | Forms | POST | /rest/asset/v1/form/{id}.json | Risorsa di lettura/scrittura |
-| Pulsante Aggiorna invio | Forms | POST | /rest/asset/v1/{id}/submitButton.json | Risorsa di lettura/scrittura |
-| Aggiorna pagina di ringraziamento | Forms | POST | /rest/asset/v1/form/{id}/thankYouPage.json | Risorsa di lettura/scrittura |
+| Approva bozza modulo | Moduli | POST | /rest/asset/v1/form/{id}/approveDraft.json | Risorsa di lettura/scrittura |
+| Clona modulo | Moduli | POST | /rest/asset/v1/form/{id}/clone.json | Risorsa di lettura/scrittura |
+| Crea modulo | Moduli | POST | /rest/asset/v1/forms.json | Risorsa di lettura/scrittura |
+| Ottieni modulo utilizzato da | Moduli | GET | /rest/asset/v1/form/{id}/usedBy.json | Risorsa di lettura/scrittura |
+| Elimina modulo | Moduli | POST | /rest/asset/v1/form/{id}/delete.json | Risorsa di lettura/scrittura |
+| Elimina bozza modulo | Moduli | POST | /rest/asset/v1/form/{id}/discardDraft.json | Risorsa di lettura/scrittura |
+| Ottieni modulo per ID | Moduli | GET | /rest/asset/v1/form/{id}.json | Risorsa di sola lettura |
+| Ottieni modulo per nome | Moduli | GET | /rest/asset/v1/form/byName.json | Risorsa di sola lettura |
+| Ottieni Forms | Moduli | GET | /rest/asset/v1/forms.json | Risorsa di sola lettura |
+| Ottieni pagina di ringraziamento per ID modulo | Moduli | GET | /rest/asset/v1/form/{id}/thankYouPage.json | Risorsa di sola lettura |
+| Aggiorna metadati modulo | Moduli | POST | /rest/asset/v1/form/{id}.json | Risorsa di lettura/scrittura |
+| Pulsante Aggiorna invio | Moduli | POST | /rest/asset/v1/{id}/submitButton.json | Risorsa di lettura/scrittura |
+| Aggiorna pagina di ringraziamento | Moduli | POST | /rest/asset/v1/form/{id}/thankYouPage.json | Risorsa di lettura/scrittura |
 | Aggiungi sezione contenuto pagina di destinazione | Contenuto della pagina di destinazione | POST | /rest/asset/v1/landingPage/{id}/content.json | Risorsa di lettura/scrittura |
 | Elimina sezione contenuto pagina di destinazione | Contenuto della pagina di destinazione | POST | /rest/asset/v1/landingPage/{id}/content/{contentId}/delete.json | Risorsa di lettura/scrittura |
 | Ottieni contenuto pagina di destinazione | Contenuto della pagina di destinazione | GET | /rest/asset/v1/landingPage/{id}/content.json | Risorsa di sola lettura |
@@ -336,15 +336,15 @@ Elenco completo degli endpoint REST API.
 | Crea token | Token | POST | /rest/asset/v1/folder/{id}/tokens.json | Risorsa di lettura/scrittura |
 | Elimina token per nome | Token | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | Risorsa di lettura/scrittura |
 | Ottieni token per ID cartella | Token | GET | /rest/asset/v1/folder/{id}/tokens.json | Risorsa di sola lettura |
-| Aggiungi Ruoli | Gestione utente | POST | /userservice/management/v1/users/{userid}/roles/create.json | Accedere All’Api User Management |
-| Elimina utente invitato | Gestione utente | POST | /userservice/management/v1/users/{userId}/invite/delete.json | Accedere All’Api User Management |
-| Elimina Ruoli | Gestione utente | POST | /userservice/management/v1/users/{userid}/roles/delete.json | Accedere All’Api User Management |
-| Elimina utente | Gestione utente | POST | /userservice/management/v1/users/{userId}/delete.json | Accedere All’Api User Management |
-| Ottieni utente invitato per ID | Gestione utente | GET | /userservice/management/v1/users/{userid}/invite.json | Accedere All’Api User Management |
-| Ottieni ruoli | Gestione utente | GET | /userservice/management/v1/users/roles.json | Accedere All’Api User Management |
-| Ottieni ruoli e aree di lavoro per ID | Gestione utente | GET | /userservice/management/v1/users/{userid}/roles.json | Accedere All’Api User Management |
-| Ottieni utenti | Gestione utente | GET | /userservice/management/v1/users/allusers.json | Accedere All’Api User Management |
-| Ottieni utente per ID | Gestione utente | GET | /userservice/management/v1/users/{userid}/user.json | Accedere All’Api User Management |
-| Ottieni aree di lavoro | Gestione utente | GET | /userservice/management/v1/users/workspaces.json | Accedere All’Api User Management |
-| Invita utente | Gestione utente | POST | /userservice/management/v1/users/invite.json | Accedere All’Api User Management |
-| Aggiorna attributi utente | Gestione utente | POST | /userservice/management/v1/users/{userId}/update.json | Accedere All’Api User Management |
+| Aggiungi Ruoli | Gestione degli utenti | POST | /userservice/management/v1/users/{userid}/roles/create.json | Accedere All’Api User Management |
+| Elimina utente invitato | Gestione degli utenti | POST | /userservice/management/v1/users/{userId}/invite/delete.json | Accedere All’Api User Management |
+| Elimina Ruoli | Gestione degli utenti | POST | /userservice/management/v1/users/{userid}/roles/delete.json | Accedere All’Api User Management |
+| Elimina utente | Gestione degli utenti | POST | /userservice/management/v1/users/{userId}/delete.json | Accedere All’Api User Management |
+| Ottieni utente invitato per ID | Gestione degli utenti | GET | /userservice/management/v1/users/{userid}/invite.json | Accedere All’Api User Management |
+| Ottieni ruoli | Gestione degli utenti | GET | /userservice/management/v1/users/roles.json | Accedere All’Api User Management |
+| Ottieni ruoli e aree di lavoro per ID | Gestione degli utenti | GET | /userservice/management/v1/users/{userid}/roles.json | Accedere All’Api User Management |
+| Ottieni utenti | Gestione degli utenti | GET | /userservice/management/v1/users/allusers.json | Accedere All’Api User Management |
+| Ottieni utente per ID | Gestione degli utenti | GET | /userservice/management/v1/users/{userid}/user.json | Accedere All’Api User Management |
+| Ottieni aree di lavoro | Gestione degli utenti | GET | /userservice/management/v1/users/workspaces.json | Accedere All’Api User Management |
+| Invita utente | Gestione degli utenti | POST | /userservice/management/v1/users/invite.json | Accedere All’Api User Management |
+| Aggiorna attributi utente | Gestione degli utenti | POST | /userservice/management/v1/users/{userId}/update.json | Accedere All’Api User Management |

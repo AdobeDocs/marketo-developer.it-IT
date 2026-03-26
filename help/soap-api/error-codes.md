@@ -3,9 +3,9 @@ title: Codici errore
 feature: SOAP
 description: Guida di riferimento ai codici di errore API di Marketo SOAP con messaggi e note, che descrivono gli errori di autenticazione, i limiti di tasso e concorrenza e i problemi di richiesta.
 exl-id: 71796520-7bd6-4a37-94e7-b073d17df06f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '407'
+source-wordcount: '408'
 ht-degree: 9%
 
 ---
@@ -17,7 +17,7 @@ Durante lo sviluppo per Marketo, è molto importante che le richieste e le rispo
 Di seguito è riportato un elenco di codici di errore API di SOAP.
 
 | Codice | Messaggio | Note |
-|--- |--- |--- |
+| --- | --- | --- |
 | 10001 | Errore interno | Grave guasto del sistema |
 | 20011 | Errore interno | Errore del servizio API |
 | 20012 | Richiesta non compresa | Messaggio SOAP imprevisto |

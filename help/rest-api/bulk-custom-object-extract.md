@@ -3,20 +3,20 @@ title: Estrazione oggetto personalizzato in blocco
 feature: REST API, Custom Objects
 description: Guida alle API REST per l’estrazione di oggetti personalizzati in blocco da Marketo per l’esportazione di oggetti personalizzati collegati al lead con filtri di tipo updateAt ed list, campi selezionati e...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1315'
+source-wordcount: '1473'
 ht-degree: 1%
 
 ---
 
 # Estrazione oggetto personalizzato in blocco
 
-[Riferimento all&#39;endpoint di estrazione oggetto personalizzato in blocco](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects)
+[Riferimento dell&#39;endpoint di estrazione oggetto personalizzato bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects)
 
 Il set Bulk Custom Object Extract delle API REST fornisce un’interfaccia programmatica per recuperare set elevati di record di oggetti personalizzati da Marketo. Si tratta dell&#39;interfaccia consigliata per i casi d&#39;uso che richiedono l&#39;interscambio continuo di dati tra Marketo e uno o più sistemi esterni, a scopo di ETL, data warehousing e archiviazione.
 
-Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Questa API supporta l’esportazione di record di oggetti personalizzati Marketo di primo livello collegati direttamente a un lead. Passa il nome dell’oggetto personalizzato e un elenco di lead a cui l’oggetto è collegato. Per ogni lead dell&#39;elenco, i record oggetto personalizzati collegati che corrispondono al nome oggetto personalizzato specificato vengono scritti come righe nel file di esportazione. I dati oggetto personalizzato sono visualizzabili nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorizzazioni
 
@@ -27,8 +27,8 @@ Le API Bulk Custom Object Extract richiedono che l’utente API abbia un ruolo c
 L’estrazione dell’oggetto personalizzato supporta diverse opzioni di filtro utilizzate per specificare un elenco di lead collegati all’oggetto personalizzato. Se un lead nell&#39;elenco è collegato a record oggetto personalizzati che corrispondono a un determinato nome oggetto personalizzato, i record vengono scritti nel file di esportazione. È possibile specificare un solo tipo di filtro per processo di esportazione.
 
 | Tipo di filtro | Tipo di dati | Note |
-|---|---|---|
-| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp.;`startAt` accetta un datetime che rappresenta la filigrana minima e `endAt` accetta un datetime che rappresenta la filigrana massima. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
+| --- | --- | --- |
+| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp;`startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
 | `staticListName` | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | `staticListId` | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | `smartListName`* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recupera i nomi degli elenchi smart utilizzando l’endpoint Get Smart Lists. |
@@ -45,7 +45,7 @@ L&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://de
 - Specifica il formato del file esportato
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `fields` | Array[Stringa] | Sì | Array di stringhe contenenti il valore del nome dell&#39;attributo dell&#39;oggetto personalizzato restituito dall&#39;endpoint Describe Custom Object. I campi elencati sono inclusi nel file esportato. |
 | `columnHeaderNames` | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | `format` | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |

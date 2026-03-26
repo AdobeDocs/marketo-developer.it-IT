@@ -2,10 +2,10 @@
 title: Flussi di dati
 description: Panoramica dei flussi di dati Marketo Engage per attività lead quasi in tempo reale ed eventi di controllo degli utenti, con riduzione dei limiti API per i clienti di livello prestazioni
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1615'
-ht-degree: 1%
+source-wordcount: '1714'
+ht-degree: 3%
 
 ---
 
@@ -44,7 +44,7 @@ Fornendo visualizzazioni sulle modifiche dei lead, i clienti possono prendere de
 Elenco delle attività in streaming:
 
 | AchieveGoalInReferral | ClickPredictiveContent | ReceivedForwardToFriendEmail |
-|--- |--- |--- |
+| --- | --- | --- |
 | AddToList | ClickRTPCallToAction | ReceiveSalesEmail |
 | AddToNurture | ClickSalesEmail | Fai riferimento a SocialApp |
 | AddToOpportunity | ClickSharedLink | RemoveFromList |
@@ -79,7 +79,7 @@ Un caso d’uso appropriato per l’abbonamento a questo flusso è:
 Elenco degli eventi di controllo degli utenti in streaming:
 
 | COMPONENTE | ELENCO TIPI DI EVENTO |
-|--- |--- |
+| --- | --- |
 | Programma predefinito | clona, crea, elimina, modifica canale, esporta, modifica configurazione programma, modifica token programma, rinomina |
 | E-mail | approva, clona, crea, elimina, modifica, sposta, rinomina, annulla approvazione |
 | Programma batch e-mail | approva, childUpdate, clona, crea, elimina, modifica, modifica canale, modifica pianificazione programma, modifica configurazione programma, modifica token programma, rinomina, annulla approvazione |
@@ -139,7 +139,7 @@ Attualmente, il centro notifiche in Marketo può essere configurato per inviare 
 Elenco degli eventi di notifica:
 
 | COMPONENTE | ELENCO TIPI DI EVENTO |
-|--- |--- |
+| --- | --- |
 | Notifica | interruzione campagna, errore campagna, sviluppo (programma esaurito), errore sincronizzazione salesforce, gruppo di test (risultato test A/B), servizi web (quota giornaliera) |
 
 Esempio di evento di notifica:
@@ -266,7 +266,7 @@ Il flusso di dati di audit utente è attualmente disponibile come parte dei pacc
 
 ### Configurazione di Adobe I/O
 
-[Consulta la Guida introduttiva a Adobe I/O Events](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[Consulta Guida introduttiva a Adobe I/O Events](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
 Per istruzioni di base su questo caso d&#39;uso, a partire da [console.adobe.io](https://developer.adobe.com/console):
 
@@ -278,6 +278,6 @@ Per iniziare a utilizzare i servizi Adobe, aggiungi un&#39;API, eventi o runtime
 
 ## Documentazione pubblica
 
-- [Flussi dati Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Introduzione ad eventi I/O e webhook di Adobe](https://developer.adobe.com/events/docs/guides/)
-- [Blog flussi dati](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
+- [Flussi di dati Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
+- [Introduzione ad eventi IO e webhook di Adobe](https://developer.adobe.com/events/docs/guides/)
+- [Blog sui flussi di dati](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

@@ -3,9 +3,9 @@ title: Estrazione lead in blocco
 feature: REST API
 description: Scopri come utilizzare le API REST di Estrazione lead in blocco di Marketo per esportare in blocco i lead con filtri per data, elenco e elenchi avanzati, campi personalizzati e formati CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1195'
+source-wordcount: '1273'
 ht-degree: 2%
 
 ---
@@ -25,7 +25,7 @@ Le API Bulk Lead Extract richiedono che l’utente API proprietario abbia un ruo
 I lead supportano varie opzioni di filtro. Alcuni filtri, tra cui `updatedAt`, `smartListName` e `smartListId`, richiedono componenti di infrastruttura aggiuntivi non ancora implementati in tutte le sottoscrizioni. È possibile specificare un solo tipo di filtro per processo di esportazione.
 
 | Tipo di filtro | Tipo di dati | Note |
-|---|---|---|
+| --- | --- | --- |
 | createdAt | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. |
 | updateAt* | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I valori di data devono essere in formato ISO-8601, senza millisecondi. Nota: questo filtro non filtra il campo visibile &quot;updatedAt&quot; che riflette solo gli aggiornamenti ai campi standard. Filtra in base a quando è stato effettuato l’aggiornamento più recente del campo a un record leadJobs con questo tipo di filtro restituisce tutti i record accessibili più di recente aggiornati all’interno dell’intervallo di date. |
 | staticListName | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
@@ -40,7 +40,7 @@ Il tipo di filtro non è disponibile per alcune sottoscrizioni. Se non disponibi
 L’endpoint del processo Crea lead di esportazione offre diverse opzioni di formattazione, consentendo all’utente di includere campi particolari all’interno del file esportato, la possibilità di rinominare le intestazioni di colonna di tali campi e il formato del file esportato.
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. Ogni stringa deve essere il nome REST API di un campo lead di Marketo. I campi elencati sono inclusi nel file esportato. L’intestazione di colonna per ciascun campo corrisponderà al nome API REST di ciascun campo, a meno che non venga sostituita da columnHeader. Nota: quando la funzionalità [!DNL Adobe Experience Cloud Audience Sharing] è abilitata, si verifica un processo di sincronizzazione dei cookie che associa l&#39;ID [!DNL Adobe Experience Cloud] (ECID) ai lead di Marketo. Puoi specificare il campo &quot;ecid&quot; per includere gli ECID nel file di esportazione. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Questo è il nome API del campo che può essere recuperato chiamando Descrivi lead. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
@@ -149,7 +149,7 @@ L’endpoint di stato risponde indicando che il processo è ancora in elaborazio
 
 Il campo di stato può rispondere con uno qualsiasi dei seguenti elementi:
 
-- Creata
+- Creato
 - In coda
 - Elaborazione
 - Annullato

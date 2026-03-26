@@ -3,9 +3,9 @@ title: Elenchi di account denominati
 feature: REST API
 description: Scopri come gestire gli elenchi di account denominati Marketo con l’API REST, che includono autorizzazioni, campi, filtri ed endpoint per eseguire query, creare, aggiornare ed eliminare.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '716'
+source-wordcount: '746'
 ht-degree: 2%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni
@@ -27,7 +27,7 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 `Named Account List Field`
 
 | Nome | Tipo di dati | Aggiornabile | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | marketoGUID | Stringa | False | Identificatore di stringa univoco dell’elenco degli account denominati. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione di un record. Campo utilizzato da &quot;dedupeBy&quot;:&quot;idField&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
 | name | Stringa | True | Nome dell’elenco. Campo utilizzato da &quot;dedupeBy&quot;:&quot;dedupeFields&quot; durante l’esecuzione di una creazione o di un aggiornamento. |
 | createdAt | Data e ora | False | Data e ora della creazione dell’elenco. Questo campo è gestito dal sistema e non è consentito come campo durante la creazione o l’aggiornamento di un record. |

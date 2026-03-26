@@ -3,9 +3,9 @@ title: Estrazione membro programma in blocco
 feature: REST API
 description: Utilizza le API REST di Estrai membri del programma in blocco Marketo per esportare record di membri di grandi dimensioni per ETL, data warehousing e archiviazione, con autorizzazioni e metadati di campo.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1160'
+source-wordcount: '1284'
 ht-degree: 2%
 
 ---
@@ -235,7 +235,7 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
     <tr>
       <td>isExausted</td>
       <td>Booleano</td>
-      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
+      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -319,7 +319,7 @@ L’endpoint del processo Crea membro del programma di esportazione offre divers
 - Specifica il formato del file esportato
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | campi | Array[Stringa] | Sì | Il parametro fields accetta un array JSON di stringhe. I campi elencati sono inclusi nel file esportato. È possibile esportare i seguenti tipi di campo:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Specifica un campo utilizzando il nome API REST che può essere recuperato utilizzando gli endpoint Descrivi lead2 e/o Descrivi membri del programma. |
 | columnHeaderNames | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
 | formato | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |

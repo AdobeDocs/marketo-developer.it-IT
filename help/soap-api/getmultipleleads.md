@@ -3,10 +3,10 @@ title: getMultipleLeads
 feature: SOAP
 description: Scopri come utilizzare Marketo SOAP getMultipleLeads per recuperare fino a 1000 lead per chiave, elenco statico o data di aggiornamento, impaginazione con posizione del flusso e campi filtro.
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '407'
-ht-degree: 2%
+source-wordcount: '409'
+ht-degree: 3%
 
 ---
 

@@ -1,16 +1,16 @@
 ---
-title: Forms
+title: Moduli
 feature: REST API, Forms
 description: Guida REST API di Marketo Forms per creare e gestire moduli, recuperarli per ID o nome, sfogliarli con filtri di stato e gestire campi, set di campi e regole.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1616'
-ht-degree: 0%
+source-wordcount: '1823'
+ht-degree: 1%
 
 ---
 
-# Forms
+# Moduli
 
 [Riferimento endpoint Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
 
@@ -290,7 +290,7 @@ Quando si modificano i campi o il loro comportamento all’interno di un modulo,
 ### Tipi di campi
 
 | Tipo di interfaccia utente | Nome API |
-|--------------|-----------------|
+| --- | --- |
 | Caselle di controllo | casella di controllo |
 | Pulsante di opzione | radio |
 | Area di testo | textarea |
@@ -918,7 +918,7 @@ Per l&#39;elenco completo degli operatori disponibili, vedere la pagina di rifer
 
 ## Follow-up
 
-I Marketo form possono avere un comportamento dinamico di pagina di follow-up in cui le regole per il reindirizzamento a una determinata pagina o la permanenza nella pagina corrente possono essere applicate in base al contenuto dei campi designati al momento dell’invio. Le regole possono essere denominate regole di pagina di ringraziamento o regole di pagina di follow-up in modo intercambiabile. Queste regole sono rappresentate come array JSON con i membri `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` è un valore booleano per il quale può essere vero un solo record nell&#39;array. Quando un visitatore non è idoneo per altre regole, viene utilizzata la regola designata come predefinita. `followupType` può essere lp o url, dove lp indica un ID pagina di destinazione Marketo per `followupValue` e url indica un URL per un&#39;altra pagina. L’operatore viene utilizzato per confrontare il valore del campo soggetto con l’elenco di valori fornito.
+I Marketo form possono avere un comportamento dinamico di pagina di follow-up in cui le regole per il reindirizzamento a una determinata pagina o la permanenza nella pagina corrente possono essere applicate in base al contenuto dei campi designati al momento dell’invio. Le regole possono essere denominate regole di pagina di ringraziamento o regole di pagina di follow-up in modo intercambiabile. Queste regole sono rappresentate come array JSON con i membri `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` è un valore booleano per il quale può essere vero un solo record nell’array. Quando un visitatore non è idoneo per altre regole, viene utilizzata la regola designata come predefinita. `followupType` può essere lp o url, dove lp indica un ID pagina di destinazione Marketo per `followupValue` e url indica un URL per un&#39;altra pagina. L’operatore viene utilizzato per confrontare il valore del campo soggetto con l’elenco di valori fornito.
 
 ## Pulsante Invia
 

@@ -3,10 +3,10 @@ title: Consigli per contenuti multimediali avanzati
 description: Configurare la funzione Consigli per contenuti multimediali avanzati utilizzando il tag RTP per contenuti predittivi di Marketo, template1 template2 template3 div, GET da compilare, SET per configurare le categorie.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '831'
-ht-degree: 4%
+source-wordcount: '854'
+ht-degree: 3%
 
 ---
 
@@ -21,12 +21,12 @@ Nella pagina in cui desideri visualizzare il modello Consigli per contenuti mult
 1. Nel corpo della pagina
    1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
 | Attributo | Facoltativo/Obbligatorio | Descrizione |
-|---|---|---|
+| --- | --- | --- |
 | classe | Obbligatorio | Specifica che l&#39;elemento div HTML è un div di consigli RTP. |
 | data-rtp-template-id | Obbligatorio | ID del modello. Questo determina l’allineamento del consiglio. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale che include solo titolo e descrizione. Lo script inserisce il modello corrispondente in `div.Permissible` valori: template1, template2, template3. |
 
@@ -61,7 +61,7 @@ Questo metodo popola tutti i rich media `<divs>` sulla pagina con i consigli.
 `rtp('get', 'rcmd', 'richmedia');`
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;get&#39; | Obbligatorio | Stringa | Azione del metodo. |
 | &#39;rcmd&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | &#39;richmedia&#39; | Obbligatorio | Stringa | Nome del metodo secondario. |
@@ -77,7 +77,7 @@ Nota: quando si utilizza questo metodo, è necessario chiamarlo prima di chiamar
 `rtp('set', 'rcmd', 'richmedia', 'template_id', conf_obj);`
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;set&#39; | Obbligatorio | Stringa | Azione del metodo. |
 | &#39;rcmd&#39; | Obbligatorio | Stringa | Nome del metodo. |
 | &#39;richmedia&#39; | Obbligatorio | Stringa | Nome del metodo secondario. |
@@ -136,7 +136,7 @@ rtp("set", "rcmd", "richmedia",
 #### Proprietà di configurazione
 
 | Configurazione | Esempio | Descrizione |
-|---|---|---|
+| --- | --- | --- |
 | rcmd.general.font.family | &quot;rcmd.general.font.family&quot; : &quot;arial&quot; | Modifica la famiglia di caratteri per tutto il testo del modello. Questa proprietà supporta tutti i valori CSS per tipo di browser. È possibile utilizzare una famiglia di caratteri personalizzata se esiste nella pagina. |
 | rcmd.content.background.color | &quot;rcmd.content.background.color&quot; : &quot;black&quot; | Modifica il colore di sfondo delle caselle interne del modello. Questa proprietà supporta tutti i valori CSS per tipo di browser. |
 | rcmd.title.text | &quot;rcmd.title.text&quot; : &quot;CONTENUTO CONSIGLIATO&quot; | Modifica il titolo del modello. |

@@ -3,9 +3,9 @@ title: Corrispondenza pattern
 description: Utilizzare l'utilità RTP rtp.checkPattern per verificare i pattern di stringhe con caratteri jolly percentuali. Vedere limitazioni di sincronizzazione, esempi di utilizzo e URL e la configurazione dei tag RTP richiesta.
 feature: Javascript
 exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '155'
+source-wordcount: '171'
 ht-degree: 5%
 
 ---
@@ -14,14 +14,14 @@ ht-degree: 5%
 
 RTP espone una funzione di utilità per verificare se il modello corrisponde a una determinata stringa. L&#39;utilità non può essere utilizzata in modalità asincrona perché restituisce un&#39;indicazione in caso di corrispondenza o meno.
 
-Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
 ## Utilizzo
 
 > rtp.checkPattern(check_against, pattern);
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | check_against | Obbligatorio | Stringa | Stringa su cui confrontare il modello. Ad esempio: URL della pagina corrente, nome del prodotto. |
 | pattern | Obbligatorio | Stringa | Aggiungi % per il carattere jolly. Il modello può essere :start con contenitore con corrispondenza completa |
 

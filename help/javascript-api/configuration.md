@@ -3,10 +3,10 @@ title: Configurazione
 description: Configura Marketo Munchkin con l’API di JavaScript. Scopri le impostazioni di Munchkin.init come altIds, anonymizeIP, asyncOnly, la durata del cookie, domainLevel, Beacon API.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '563'
-ht-degree: 3%
+source-wordcount: '613'
+ht-degree: 4%
 
 ---
 
@@ -27,7 +27,7 @@ L&#39;oggetto impostazioni di configurazione può contenere un numero qualsiasi 
 ## Proprietà
 
 | Nome | Tipo di dati | Descrizione |
-|---|---|---|
+| --- | --- | --- |
 | altIds | Array | Accetta un array di stringhe Munchkin ID. Se questa opzione è abilitata, duplica tutte le attività web agli abbonamenti target, in base al loro Munchkin ID. |
 | anonymizeIP | Booleano | Anonimizza l’indirizzo IP registrato in Marketo per i nuovi visitatori. |
 | apiOnly | Booleano | Se impostato su true, la funzione `Munchkin.Init()` non chiamerà `visitsWebPage`. Questa funzione è utile per le applicazioni Web a pagina singola che richiedono il controllo completo su ogni evento `visitsWebPage`. |
@@ -40,7 +40,7 @@ L&#39;oggetto impostazioni di configurazione può contenere un numero qualsiasi 
 | domainSelectorV2 | Booleano | Se impostato su true, utilizza un metodo migliorato per determinare come impostare l’attributo di dominio del cookie. |
 | httpsOnly | Booleano | Impostazione predefinita: false. Se è impostato su true, imposta il cookie in modo che utilizzi l&#39;impostazione Secure quando la pagina tracciata è stata trasmessa tramite https. |
 | useBeaconAPI | Booleano | Impostazione predefinita: false. Se impostato su true, utilizza l&#39;API [Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) per inviare richieste non bloccanti anziché [XMLHttpRequest](https://developer.mozilla.org/it-IT/docs/Web/API/XMLHttpRequest). Se il browser non supporta questa API, Munchkin utilizza come fallback XMLHttpRequest. |
-| wsInfo | Stringa | Richiede una stringa per eseguire il targeting di un&#39;area di lavoro. Questo ID area di lavoro si ottiene selezionando Workspace nel menu Admin > Integration > Munchkin (Amministrazione > Integrazione >). Questa impostazione si applica solo alla creazione iniziale di un record lead anonimo. Una volta stabilito il valore del cookie Munchkin per il record del lead, il parametro wsInfo non può essere utilizzato per modificare la partizione. Poiché questa impostazione influisce solo sui lead anonimi, è pertinente solo per [Visitatori anonimi specifici della partizione nei report Web](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports). |
+| wsInfo | Stringa | Richiede una stringa per eseguire il targeting di un&#39;area di lavoro. Questo ID area di lavoro si ottiene selezionando Workspace nel menu Admin > Integration > Munchkin (Amministrazione > Integrazione >). Questa impostazione si applica solo alla creazione iniziale di un record lead anonimo. Una volta stabilito il valore del cookie Munchkin per il record del lead, il parametro wsInfo non può essere utilizzato per modificare la partizione. Poiché questa impostazione influisce solo sui lead anonimi, è pertinente solo per [Visitatori anonimi specifici della partizione nei report Web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports). |
 
 ## Esempi
 

@@ -3,9 +3,9 @@ title: Estrai in blocco
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1702'
+source-wordcount: '1723'
 ht-degree: 0%
 
 ---
@@ -118,7 +118,7 @@ Quando creiamo il processo, questo restituisce un ID processo nell&#39;attributo
 Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per la configurazione del formato di file, dei nomi dei campi e del filtro di un processo di estrazione in blocco. Ogni sottotipo di processo di estrazione può avere parametri aggiuntivi:
 
 | Parametro | Tipo di dati | Note |
-|---|---|---|
+| --- | --- | --- |
 | formato | Stringa | Determina il formato di file dei dati estratti con le opzioni per i valori separati da virgola, da tabulazione e da punto e virgola. Accetta uno di: CSV, SSV, TSV. Il formato predefinito è CSV. |
 | columnHeaderNames | Oggetto | Consente di impostare i nomi delle intestazioni di colonna nel file restituito. Ogni chiave membro è il nome dell&#39;intestazione di colonna da rinominare e il valore è il nuovo nome dell&#39;intestazione di colonna. Ad esempio, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
 | filter | Oggetto | Filtro applicato al processo di estrazione. I tipi e le opzioni variano a seconda del tipo di processo. |

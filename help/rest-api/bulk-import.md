@@ -3,9 +3,9 @@ title: Importazione in blocco
 feature: REST API
 description: Importazione in blocco Marketo per il caricamento di lead, oggetti personalizzati e membri di programmi tramite caricamenti in più parti, la creazione di processi asincroni, lo stato di polling e la gestione di errori.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '610'
+source-wordcount: '660'
 ht-degree: 1%
 
 ---
@@ -93,7 +93,7 @@ Quando inviamo il processo, questo restituirà un batchId che possiamo usare per
 Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per la configurazione del formato di file, dei nomi dei campi e del filtro di un processo di estrazione in blocco.  Ogni sottotipo di processo di estrazione può avere parametri aggiuntivi:
 
 | Parametro | Tipo di dati | Note |
-|---|---|---|
+| --- | --- | --- |
 | formato | Stringa | Determina il formato di file dei dati importati con le opzioni per i valori separati da virgola, da tabulazione e da punto e virgola. Accetta uno di: CSV, SSV, TSV. Il formato predefinito è CSV. |
 | file | Stringa | I dati vengono specificati tramite i dati modulo multipart nel file. |
 

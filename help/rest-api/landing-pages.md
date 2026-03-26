@@ -3,9 +3,9 @@ title: Pagine di destinazione
 feature: REST API, Landing Pages
 description: Utilizza l’API REST di Marketo per eseguire query su metadati e contenuti, creare, aggiornare, approvare, eliminare e clonare le pagine di destinazione, inclusi i tipi guidati e in formato libero.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1018'
+source-wordcount: '1221'
 ht-degree: 1%
 
 ---
@@ -178,7 +178,7 @@ Le sezioni di contenuto sono ordinate in base alla loro proprietà di indice e i
 **Tipi di sezione**
 
 | Tipo | Valore |
-|--- |--- |
+| --- | --- |
 | DynamicContent | ID della segmentazione. |
 | Modulo | ID del modulo. |
 | HTML | Contenuto HTML di testo. |
@@ -274,7 +274,7 @@ Le variabili sono definite come meta tag all&#39;interno dell&#39;elemento `<hea
 </head>
 ```
 
-Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Query
 

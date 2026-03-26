@@ -3,9 +3,9 @@ title: Best practice per l’integrazione di Marketo
 feature: REST API
 description: Best practice per le integrazioni API di Marketo che riguardano quote, limiti di tasso e di concorrenza, batch, importazione ed esportazione in blocco, caching e pianificazione della latenza.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '966'
+source-wordcount: '1012'
 ht-degree: 0%
 
 ---
@@ -39,7 +39,7 @@ Per garantire le migliori prestazioni per le integrazioni, durante l&#39;esecuzi
 Determinando le tolleranze di latenza, o il tempo massimo che può trascorrere prima di inviare una chiamata API, informerai molte, se non la maggior parte, delle decisioni che prendi durante la progettazione dell’integrazione in Marketo. Marketo offre diversi metodi e opzioni di configurazione adatti a casi d’uso diversi e a diverse classi di latenza. Ad esempio, un’integrazione in tempo reale per notificare a un venditore che un utente si è iscritto a una versione di prova potrebbe inviare batch di uno solo se è necessario un follow-up immediato. Tuttavia, la maggior parte dei casi non lo richiede e può tollerare una latenza aggiuntiva e può essere gestita in modo più efficiente tramite chiamate in coda e in batch.
 
 | Latenza accettabile | Metodi preferiti | Note |
-|---|---|---|
+| --- | --- | --- |
 | Basso (&lt;10 secondi) | API sincrone (in batch o non in batch) | Assicurati che il tuo caso d’uso lo richieda. L’invio di chiamate immediate e sincrone per casi di utilizzo di volumi elevati può assorbire rapidamente una quota API giornaliera e potenzialmente superare i limiti di velocità e concorrenza. |
 | Medium (10s - 60m) | API sincrone (in batch) | Per le integrazioni di dati in entrata in Marketo, si consiglia vivamente di utilizzare una coda con un limite di età e un limite di dimensioni. Quando viene raggiunto uno di questi limiti, svuota la coda e invia la richiesta API con i record accumulati. Si tratta di un compromesso importante tra velocità ed efficienza, che garantisce che le richieste si verifichino alla frequenza richiesta, mantenendo in batch il numero di record consentito dall’età della coda. |
 | Alta(>60 m) | Importazione/esportazione in blocco (se supportata) | Per le integrazioni di dati in entrata, i record devono essere messi in coda e inviati tramite API Marketo Bulk, se disponibili. |
