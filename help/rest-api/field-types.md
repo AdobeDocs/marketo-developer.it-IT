@@ -12,7 +12,7 @@ ht-degree: 8%
 
 # Tipi di campi
 
-Segue una descrizione dei tipi di campo in Marketo. Ulteriori informazioni sui tipi di campo sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Ulteriori informazioni sui limiti dei tipi di campo sono disponibili [qui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+Segue una descrizione dei tipi di campo in Marketo. Ulteriori informazioni sui tipi di campo sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Ulteriori informazioni sui limiti dei tipi di campo sono disponibili [qui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo di campo | Descrizione | Esempio |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Segue una descrizione dei tipi di campo in Marketo. Ulteriori informazioni sui 
 | E-mail | Campo stringa che accetta indirizzi e-mail | <example@example.com> |
 | Mobile | Campo numerico che contiene numeri reali e può utilizzare una cifra decimale. | 10,4 |
 | Intero | Numero intero | 10 |
-| Formula | Campi i i cui valori vengono generati manipolando i dati di altri campi presenti in un record lead. Non vengono esportati e non possono essere utilizzati in una campagna avanzata. | Vedi questo [articolo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Formula | Campi i i cui valori vengono generati manipolando i dati di altri campi presenti in un record lead. Non vengono esportati e non possono essere utilizzati in una campagna avanzata. | Vedi questo [articolo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Percentuale | Una percentuale espressa come numero intero | 30 |
 | URL | Campo di testo che limita l’input agli URL, incluso il protocollo dell’URL. | <http://example.com/> |
 | Telefono | Numero di telefono | 111-111-1111 |

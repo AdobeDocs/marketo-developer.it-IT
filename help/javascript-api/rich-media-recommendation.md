@@ -21,7 +21,7 @@ Nella pagina in cui desideri visualizzare il modello Consigli per contenuti mult
 1. Nel corpo della pagina
    1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
