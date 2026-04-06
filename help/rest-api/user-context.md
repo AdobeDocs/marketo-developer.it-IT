@@ -3,10 +3,10 @@ title: Contesto utente
 feature: REST API
 description: Scopri come abilitare e utilizzare l’API Contesto utente di Marketo RTP per impostare variabili personalizzate, leggere i dati degli utenti in più visite e tenere traccia delle campagne visualizzate e su cui è stato fatto clic.
 exl-id: b8daace2-07a5-4621-aa3a-03fa9f66ea73
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
 workflow-type: tm+mt
-source-wordcount: '303'
-ht-degree: 4%
+source-wordcount: '296'
+ht-degree: 5%
 
 ---
 
@@ -14,16 +14,16 @@ ht-degree: 4%
 
 L’API JavaScript per il contesto utente espone i dati a livello di utente e visitatore in più sessioni per abilitare la funzionalità di personalizzazione avanzata utilizzando dati e comportamenti storici degli utenti. L’API non si limita alla lettura dei dati, ma espone variabili personalizzate che consentono di inviare dati ed eventi significativi al backend RTP per scopi avanzati di segmentazione e personalizzazione. Funzionalità aggiuntive: [Triggers](../javascript-api/triggers.md), [Corrispondenza pattern](../javascript-api/pattern-match.md).
 
-- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 - L’API Contesto utente è una funzione che deve essere abilitata dal supporto Marketo su richiesta. Quando l’API è abilitata, viene esposto un oggetto userContext sotto l’oggetto globale RTP.
 
 ## Attributi contesto utente
 
 | Nome | Tipo | Descrizione |
 | --- | --- | --- |
-| customVar[1-5] | Stringa | Dati personalizzati salvati nel contesto utente. |
-| viewedCampaigns | ID campagna come stringa separata da virgole | Campagne visualizzate nelle visite correnti o precedenti. |
-| clickedCampaigns | ID campagna come stringa separata da virgole | Campagne selezionate nelle visite correnti o precedenti. |
+| `customVar[1-5]` | Stringa | Dati personalizzati salvati nel contesto utente. |
+| `viewedCampaigns` | ID campagna come stringa separata da virgole | Campagne visualizzate nelle visite correnti o precedenti. |
+| `clickedCampaigns` | ID campagna come stringa separata da virgole | Campagne selezionate nelle visite correnti o precedenti. |
 
 ## Imposta variabili personalizzate
 
@@ -35,9 +35,9 @@ Aggiunta di dati personalizzati a Contesto utente.
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
 | --- | --- | --- | --- |
-| &#39;set&#39; | Obbligatorio | Stringa | Azione del metodo. |
-| customVar | Obbligatorio | Stringa | Nome della variabile personalizzata. |
-| my_custom_value | Obbligatorio | Stringa | Valore personalizzato da salvare sulla variabile personalizzata nell’indice 1-5. |
+| `'set'` | Obbligatorio | Stringa | Azione del metodo. |
+| `customVar` | Obbligatorio | Stringa | Nome della variabile personalizzata. |
+| `my_custom_value` | Obbligatorio | Stringa | Valore personalizzato da salvare sulla variabile personalizzata nell’indice 1-5. |
 
 Nota: le variabili personalizzate vengono inviate all’RTP solo nella chiamata di visualizzazione, pertanto si consiglia di impostarle prima di chiamare la visualizzazione. In caso contrario, verrà inviato solo nella successiva chiamata di visualizzazione.
 

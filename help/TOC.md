@@ -5,10 +5,10 @@ breadcrumb-title: Guida per sviluppatori di [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '277'
-ht-degree: 29%
+source-wordcount: '284'
+ht-degree: 30%
 
 ---
 
@@ -34,7 +34,7 @@ ht-degree: 29%
    - [Trigger](javascript-api/triggers.md)
    - [Personalizzazione web](javascript-api/web-personalization.md)
 - Dispositivi mobili {#mobile}
-   - [Installa l&#39;estensione  [!DNL Adobe Launch] &#x200B;](mobile/adobe-launch-extension-installation.md)
+   - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
    - [Azioni personalizzate](mobile/custom-actions.md)
@@ -54,10 +54,13 @@ ht-degree: 29%
       - [Risorse](rest-api/assets.md)
       - [Contenuto dinamico](rest-api/dynamic-content.md)
       - [E-mail](rest-api/emails.md)
+      - [E-Mail (Nuova)](rest-api/emails-new.md)
       - [Modelli e-mail](rest-api/email-templates.md)
+      - [Modelli e-mail (nuovi)](rest-api/email-templates-new.md)
       - [File](rest-api/files.md)
       - [Cartelle](rest-api/folders.md)
       - [Moduli](rest-api/forms.md)
+      - [Frammenti (nuovi)](rest-api/fragments.md)
       - [Pagine di destinazione](rest-api/landing-pages.md)
       - [Regole di reindirizzamento pagina di destinazione](rest-api/landing-page-redirect-rules.md)
       - [Modelli pagina di destinazione](rest-api/landing-page-templates.md)

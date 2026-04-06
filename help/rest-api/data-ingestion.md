@@ -3,9 +3,9 @@ title: Acquisizione dati
 feature: REST API, Dynamic Content
 description: Utilizza l’API di acquisizione dati di Marketo per l’acquisizione di volumi elevati e a bassa latenza da parte di persone, oggetti personalizzati, aziende e membri del programma.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '1786'
+source-wordcount: '1789'
 ht-degree: 13%
 
 ---
@@ -116,7 +116,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### Errore
 
-Quando una chiamata genera un errore, viene restituito uno stato non 202 insieme a un corpo della risposta con ulteriori dettagli sull’errore.  Il corpo della risposta è application/json e contiene un singolo oggetto con i membri error_code e message.
+Quando una chiamata genera un errore, viene restituito uno stato non 202 insieme a un corpo della risposta con ulteriori dettagli sull’errore. Il corpo della risposta è `application/json` e contiene un singolo oggetto con i membri `error_code` e `message`.
 
 Di seguito sono riportati i codici di errore riutilizzati da Adobe Developer Gateway.
 
@@ -139,7 +139,16 @@ Di seguito sono riportati i codici di errore univoci dell’API di acquisizione 
 
 ## Nuovi tentativi
 
-Quando viene rilevato un errore transitorio, il servizio ritenta l’operazione tre volte.  Il primo nuovo tentativo si verifica dopo un periodo di attesa di 5 minuti, il secondo dopo altri 30 minuti e infine il terzo dopo altri 30 minuti.  I tentativi si verificano per vari motivi, principalmente quando un servizio dipendente va in timeout o non è temporaneamente disponibile.
+Quando viene rilevato un errore temporaneo, il servizio tenta di eseguire nuovamente l&#39;operazione. I tentativi si verificano per vari motivi, principalmente quando un servizio dipendente va in timeout o non è temporaneamente disponibile.
+
+Intervalli tentativi:
+
+* Operazione iniziale e primo tentativo: 5 min.
+* 1 e 2: 15 min
+* 2 e 3: 20 min
+* 3 e 4: 20 min
+* 4 e 5: 2 ore
+* dopo il 5° tentativo -> 3 ore
 
 ## Endpoint
 
@@ -166,7 +175,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record persona.
 | --- | --- | --- | --- | --- |
 | `priority` | Stringa | No | Priorità della richiesta: normale o alta | normale |
 | `partitionName` | Stringa | No | Nome della partizione della persona | Predefinito |
-| `dedupeFields` | Oggetto | No | Attributi per la deduplicazione. Sono consentiti uno o due nomi di attributo. <br/> In un&#39;operazione AND vengono utilizzati due attributi. Se ad esempio si specificano sia `email` che `firstName`, verranno entrambi utilizzati per cercare una persona tramite l&#39;operazione AND. <br/>Gli attributi supportati sono: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, attributi personalizzati (solo tipo &quot;stringa&quot; e &quot;intero&quot;), `email` |  |
+| `dedupeFields` | Oggetto | No | Attributi per la deduplicazione. Sono consentiti uno o due nomi di attributo. <br/> In un&#39;operazione AND vengono utilizzati due attributi. Se ad esempio si specificano sia `email` che `firstName`, verranno entrambi utilizzati per cercare una persona tramite l&#39;operazione AND. <br/>Attributi supportati: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Attributi personalizzati (solo tipo &quot;stringa&quot; e &quot;numero intero&quot;), `email` |  |
 | `persons` | Array di oggetti | Sì | Elenco delle coppie nome-valore dell’attributo della persona | - |
 
 Le autorizzazioni richieste sono `Read-Write Lead`.
@@ -239,7 +248,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record oggetto personalizzati.
 
 Le autorizzazioni necessarie sono `Read-Write Custom Object`.
 
-Se nella richiesta è specificato un campo di collegamento a una persona e tale persona non esiste, si verificano diversi tentativi. Se la persona viene aggiunta durante la finestra dei nuovi tentativi (65 minuti), l’aggiornamento ha esito positivo. Ad esempio, se il campo del collegamento è e-mail su Persona e questa non esiste, si verifica un nuovo tentativo.
+Se nella richiesta è specificato un campo di collegamento a una persona e tale persona non esiste, si verificano diversi tentativi. Se la persona viene aggiunta durante la finestra dei nuovi tentativi (65 minuti), l’aggiornamento ha esito positivo. Ad esempio, se il campo del collegamento è `email` per Persona e Persona non esiste, si verificano nuovi tentativi.
 
 ### Esempio di oggetti personalizzati
 

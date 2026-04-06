@@ -3,10 +3,10 @@ title: Tag
 feature: REST API, Tags
 description: Esegui query sui tipi di tag, ottieni i valori consentiti per nome, aggiorna o elimina i tag dei programmi in Marketo tramite l’API REST Asset, con esempi di richieste.
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
 workflow-type: tm+mt
-source-wordcount: '221'
-ht-degree: 2%
+source-wordcount: '258'
+ht-degree: 1%
 
 ---
 
@@ -97,7 +97,7 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-I tag possono essere aggiornati in massa utilizzando l&#39;endpoint [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Un esempio di ciò si trova [qui](programs.md#update).
+I tag possono essere aggiornati in massa utilizzando l&#39;endpoint [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Un esempio è disponibile nella sezione [Programmi di aggiornamento](programs.md#update).
 
 ## Elimina
 

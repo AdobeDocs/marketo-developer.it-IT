@@ -3,9 +3,9 @@ title: Notifiche push
 feature: Mobile Marketing
 description: Guida per abilitare le notifiche push di iOS con Marketo, dalla configurazione dei certificati APN e Xcode all’integrazione di Marketo SDK, alla registrazione dei token e alla gestione.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
 workflow-type: tm+mt
-source-wordcount: '1344'
+source-wordcount: '1338'
 ht-degree: 0%
 
 ---
@@ -32,7 +32,7 @@ Esistono tre passaggi per abilitare le notifiche push:
 1. Selezionare l&#39;identificatore dell&#39;applicazione che si sta utilizzando per generare l&#39;app.![](assets/push-appid.png)
 1. Crea e carica la CSR per generare il certificato push. ![](assets/push-ssl.png)
 1. Scaricare il certificato nel computer locale e fare doppio clic per installarlo. ![](assets/certificate-download.png)
-1. Aprire &quot;Accesso Portachiavi&quot;, fare clic con il pulsante destro del mouse sul certificato ed esportare 2 elementi nel file `.p12`.![catena_chiavi](assets/key-chain.png)
+1. Apri &quot;Accesso portachiavi&quot;, fai clic con il pulsante destro del mouse sul certificato ed esporta 2 elementi nel file `.p12`.![portachiavi](assets/key-chain.png)
 1. Carica questo file tramite Marketo Admin Console per configurare le notifiche.
 1. Aggiornare i profili di provisioning delle app.
 
@@ -285,7 +285,7 @@ Di seguito è riportato un registro attività di Marketo da Marketo che mostra g
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. Configurazione di FCM con HTTPv1 (Google ha [il protocollo XMPP &#x200B;](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) dichiarato obsoleto il 12 giugno 2023 e verrà rimosso a giugno 2024)
+1. Configurazione di FCM con HTTPv1
 
 - Abilitare MME FCM HTTPv1 nel gestore delle funzionalità di Marketo ![](assets/feature-manager.png)
    - Carica il file JSON dell’account del servizio per l’app in MLM.

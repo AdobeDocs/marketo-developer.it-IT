@@ -3,9 +3,9 @@ title: Cartelle
 feature: REST API
 description: Guida all’API REST di Marketo per le cartelle che includono creazione, aggiornamento, eliminazione, query per ID e nome, navigazione in massa con root, workspace, maxDepth e paginazione.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
 workflow-type: tm+mt
-source-wordcount: '1025'
+source-wordcount: '1099'
 ht-degree: 1%
 
 ---
@@ -59,7 +59,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (Cartella) o &quot;Program&quot; (Programma).  Il tipo determina se la ricerca nella cartella viene eseguita in base a un ID cartella o a un ID programma. Per questo endpoint, nell&#39;array dei risultati viene restituito un solo record. Osserva il parametro folderType nella risposta. Questo può indicare molti tipi diversi di cartelle. Le cartelle Attività di Marketo dispongono di un tipo Cartella di marketing o Programma, che può contenere diversi tipi di risorse, mentre le cartelle di Design Studio hanno un tipo corrispondente al tipo di risorsa che possono contenere. Ad esempio, una cartella con folderType impostato su &quot;E-mail&quot; può contenere solo e-mail o altre sottocartelle, che possono avere folderType impostato su E-mail o Modello e-mail. I tipi possono includere:
+Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (Cartella) o &quot;Program&quot; (Programma).  Il tipo determina se la ricerca nella cartella viene eseguita in base a un ID cartella o a un ID programma. Per questo endpoint, nell&#39;array dei risultati viene restituito un solo record. Osserva il parametro `folderType` nella risposta. Questo può indicare molti tipi diversi di cartelle. Le cartelle Attività di Marketo dispongono di un tipo Cartella di marketing o Programma, che può contenere diversi tipi di risorse, mentre le cartelle di Design Studio hanno un tipo corrispondente al tipo di risorsa che possono contenere. Ad esempio, una cartella con `folderType` di &quot;E-mail&quot; può contenere solo e-mail o altre sottocartelle, che potrebbero avere un `folderType` di E-mail o modello e-mail. I tipi possono includere:
 
 - E-mail
 - Modello e-mail

@@ -2,7 +2,7 @@
 title: Flussi di dati
 description: Panoramica dei flussi di dati Marketo Engage per attività lead quasi in tempo reale ed eventi di controllo degli utenti, con riduzione dei limiti API per i clienti di livello prestazioni
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
 source-wordcount: '1714'
 ht-degree: 3%
@@ -12,7 +12,7 @@ ht-degree: 3%
 # Flussi di dati
 
 >[!NOTE]
-> Le informazioni correnti sui flussi di dati sono ora disponibili in [Utilizzo dei flussi di dati](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/).
+> Le informazioni correnti sui flussi di dati sono ora disponibili in [Utilizzo dei flussi di dati](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#).
 >
 
 Le organizzazioni di marketing dei nostri clienti si affidano a campagne di marketing tempestive e mirate per rimanere al passo con la loro attività ed essere competitive. Al fine di supportare decisioni rapide e consentire cambiamenti strategici a velocità elevate, è importante disporre di dati per supportare e guidare quelle decisioni chiave che forniscono campagne mirate e mirate. Alcuni clienti, inoltre, svolgono attività di marketing a livello dei segmenti di clientela, sia all&#39;interno che all&#39;esterno di Marketo Engage. Per supportare queste diverse attività, Marketo ha creato la possibilità di acquisire grandi volumi di dati in tempo quasi reale attraverso i flussi di dati.
@@ -258,7 +258,7 @@ Gli eventi di User Audit vengono inviati ad Adobe IO e possono essere utilizzati
    1. Questo passaggio richiede un’organizzazione Adobe
    1. Richiede che l’utente dell’organizzazione Adobe abbia il ruolo di sviluppatore o amministratore di sistema
 
-Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo degli utenti Marketo con Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) nella sezione Documentazione pubblica.
+Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo degli utenti Marketo con Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#) nella sezione Documentazione pubblica.
 
 ### Configurazione del flusso di dati di controllo degli utenti in Marketo
 
