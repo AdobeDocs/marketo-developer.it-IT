@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: Scopri come utilizzare importToList in Marketo SOAP per importare lead in un elenco statico con intestazioni CSV, sostituzioni di token, esempi XML e controlli dello stato.
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
-source-wordcount: '409'
+source-wordcount: '410'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ I valori `displayName` devono essere utilizzati in `importFileHeader` anziché n
 
 **Contenuto e-mail dinamico:** Facoltativamente, puoi trasmettere valori per lead che fungono da sostituzioni per I miei token in un messaggio e-mail.
 
-| E-mail | Primo | Ultimo | {{my.specialToken}} | {{my.otherToken}} |
+| E-mail | Primo | Ultimo | `{{my.specialToken}}` | `{{my.otherToken}}` |
 | --- | --- | --- | --- | --- |
 | <joe@company.com> | Joe | Smith | Pesce | Blu |
 | <mary@company.com> | Mary | Rodgers | Pollo | Marrone |

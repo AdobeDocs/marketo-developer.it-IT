@@ -5,7 +5,7 @@ breadcrumb-title: Guida per sviluppatori di [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
 source-wordcount: '284'
 ht-degree: 30%
@@ -34,7 +34,7 @@ ht-degree: 30%
    - [Trigger](javascript-api/triggers.md)
    - [Personalizzazione web](javascript-api/web-personalization.md)
 - Dispositivi mobili {#mobile}
-   - [Installa l&#39;estensione  [!DNL Adobe Launch] &#x200B;](mobile/adobe-launch-extension-installation.md)
+   - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
    - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
    - [Azioni personalizzate](mobile/custom-actions.md)
