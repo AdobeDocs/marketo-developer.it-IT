@@ -16,7 +16,7 @@ ht-degree: 1%
 
 Le società rappresentano l&#39;organizzazione a cui appartengono i record dei lead. I lead vengono aggiunti a un&#39;azienda compilando il campo `externalCompanyId` corrispondente utilizzando [Lead sincronizzati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) o [Endpoint importazione lead in blocco](bulk-lead-import.md). Una volta aggiunto un lead a un&#39;azienda, non è possibile eliminarlo da tale azienda (a meno che non si aggiunga il lead a un&#39;altra azienda). I lead collegati a un record società ereditano direttamente i valori da un record società come se i valori fossero presenti nel record del lead.
 
-Le API della società sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) abilitato.
+Le API della società sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitato.
 
 ## Descrivere
 
