@@ -3,7 +3,7 @@ title: Lead
 feature: REST API
 description: Esplora le funzioni API REST dei lead di Marketo, tra cui Descrizione, query per ID o filtro, campi predefiniti, limiti e recupero degli ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '3457'
 ht-degree: 2%
@@ -30,7 +30,7 @@ Descrivi è la principale fonte di verità per stabilire se i campi sono disponi
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/describe.json
 ```
 
@@ -68,7 +68,7 @@ Facoltativamente, puoi trasmettere un parametro di campi contenente un elenco se
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/lead/{id}.json
 ```
 
@@ -103,7 +103,7 @@ Se la lunghezza totale della richiesta GET supera gli 8 KB, viene restituito un 
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 ```
 
@@ -168,7 +168,7 @@ Oltre a recuperare i dati dei lead, puoi creare, aggiornare ed eliminare i recor
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads.json
 ```
 
@@ -247,7 +247,7 @@ L’endpoint &quot;Get Lead Field by Name&quot; recupera i metadati per un singo
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -279,7 +279,7 @@ L’endpoint Get Lead Fields recupera i metadati per tutti i campi sull’oggett
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/schema/fields.json
 ```
 
@@ -426,7 +426,7 @@ Esistono alcune regole associate al nome e alla denominazione di `displayName`. 
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/schema/fields.json
 ```
 
@@ -557,7 +557,7 @@ Il parametro di percorso `fieldApiName` richiesto specifica il nome API del camp
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -600,7 +600,7 @@ Nota relativa alle attività anonime. Se desideri associare precedenti attività
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/push.json
 ```
 
@@ -710,13 +710,13 @@ I nuovi lead vengono creati nella partizione primaria dell&#39;area di lavoro in
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/submitForm.json
 ```
 
 ### Intestazione
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -775,7 +775,7 @@ A volte è necessario unire i record duplicati e Marketo lo facilita tramite l�
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ```
 
@@ -798,7 +798,7 @@ Tramite il tracciamento dei lead (Munchkin), Marketo registra l’attività web 
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marketo.com-1396310362214-46169
 ```
 
@@ -817,13 +817,13 @@ Iscrizione
 È inoltre possibile recuperare i record dei lead in base all&#39;appartenenza a un elenco statico o a un programma. Inoltre, puoi recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti di cui è membro un lead.
 
 La struttura di risposta e i parametri facoltativi sono identici a quelli di Get Leads per Filter Type, anche se `filterType` e `filterValues` non possono essere utilizzati con questa API.
-Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
+Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-****.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
 
 ## Ottieni programmi per ID lead
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ```
 
@@ -864,7 +864,7 @@ L&#39;endpoint Get Lists by Lead Id accetta un parametro di percorso `id` del re
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 ```
 
@@ -906,7 +906,7 @@ La struttura di risposta è molto simile, in quanto ogni elemento nell’array d
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 ```
 
@@ -980,7 +980,7 @@ L&#39;endpoint Get Programs by Lead Id accetta un parametro di percorso dell&#39
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/{id}/programMembership.json
 ```
 
@@ -1011,7 +1011,7 @@ L’endpoint &quot;Get Smart Campaigns by Lead Id&quot; accetta un parametro di 
 
 ### Richiesta
 
-```
+```http
 GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 ```
 
@@ -1049,7 +1049,7 @@ La rimozione dei lead è semplice utilizzando l’endpoint Elimina lead.  Specif
 
 ### Richiesta
 
-```
+```http
 POST /rest/v1/leads/delete.json
 ```
 

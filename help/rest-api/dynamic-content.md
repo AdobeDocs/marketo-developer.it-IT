@@ -3,9 +3,9 @@ title: Contenuto dinamico
 feature: REST API, Dynamic Content
 description: Configurare contenuti dinamici Marketo a livello di sezione tramite API REST utilizzando segmentazioni per personalizzare e-mail, pagine di destinazione e snippet con endpoint ed esempi
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '441'
+source-wordcount: '463'
 ht-degree: 2%
 
 ---
@@ -30,11 +30,11 @@ Nota: le e-mail e le pagine di destinazione seguono questo pattern. I snippet ha
 
 L’esempio che segue imposta la sezione come una sezione Contenuto dinamico, segmentata dalla segmentazione 1001.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/content/Q1-promotion-banner.json
 ```
 
-```
+```text
 type=DynamicContent&value=1001
 ```
 
@@ -56,11 +56,11 @@ Per aggiungere contenuto per singoli segmenti, è necessario chiamare l&#39;endp
 
 L&#39;esempio seguente imposta la sezione in modo da visualizzare l&#39;immagine speciale del banner per i lead nel segmento Sud-ovest invece del valore predefinito. Se volessimo creare più varianti per più segmenti, chiameremmo nuovamente questo endpoint per ciascun segmento e sezione.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/dynamicContent/{dynamicContentId}.json
 ```
 
-```
+```text
 segment=Southwest&type=HTML&value=<img src='//www.example.com/SuperSpecialBannerForAmericanSouthwestLeads.jpg'/>
 ```
 
@@ -86,7 +86,7 @@ La segmentazione è il nucleo del contenuto dinamico Marketo. Una segmentazione 
 
 Le segmentazioni hanno un endpoint di elenco che restituisce una risposta con un elenco di segmentazioni disponibili.
 
-```
+```http
 GET /rest/asset/v1/segmentation.json
 ```
 
@@ -133,7 +133,7 @@ GET /rest/asset/v1/segmentation.json
 
 Le segmentazioni hanno anche un endpoint che restituisce una risposta con un elenco di segmenti da una segmentazione principale.
 
-```
+```http
 GET /rest/asset/v1/segmentation/1001/segments.json
 ```
 

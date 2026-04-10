@@ -3,7 +3,7 @@ title: Token
 feature: REST API, Tokens
 description: Gestisci i miei token di Marketo con l’API REST di Asset. Consulta i tipi di dati supportati, ottieni per cartella o programma, crea o aggiorna tramite POST codificato per modulo ed elimina per nome.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '364'
 ht-degree: 3%
@@ -35,7 +35,7 @@ Questi sono gli unici tipi di dati che possono essere utilizzati durante la crea
 
 [Ottieni token per ID cartella](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/getTokensByFolderIdUsingGET) accetta un `id` come parametro di percorso di un tipo di programma o cartella. Tipo specificato dal parametro `folderType`.
 
-```curl
+```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 ```
 
@@ -68,15 +68,15 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 L&#39;endpoint [Crea token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST) crea i token o, se esistono, li aggiorna con i valori inviati. I token vengono creati nel contesto di una cartella o di un programma. Il parametro di percorso `id` richiesto è l&#39;ID della cartella a cui verrà associato il token. `name`, `type`, `value` e `folderType` sono tutti parametri obbligatori del token. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON. Il campo `name` del token non può superare i 50 caratteri.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=April Fools&type=date&value=2015-04-01&folderType=Folder
 ```
 
@@ -109,15 +109,15 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 [Elimina token per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST) accetta un ID come parametro di percorso di un tipo di programma o cartella. Tipo specificato dal parametro `folderType`. I token vengono eliminati in base alla cartella principale, `name`, e al `type` del token, ciascuno dei quali è obbligatorio. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens/delete.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=AprilFool - deverly&type=date&folderType=Program
 ```
 

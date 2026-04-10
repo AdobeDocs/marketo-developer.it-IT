@@ -3,10 +3,10 @@ title: Importazione in blocco
 feature: REST API
 description: Importazione in blocco Marketo per il caricamento di lead, oggetti personalizzati e membri di programmi tramite caricamenti in più parti, la creazione di processi asincroni, lo stato di polling e la gestione di errori.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '660'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
@@ -48,17 +48,17 @@ L&#39;importazione in blocco è un&#39;operazione di inserimento o aggiornamento
 
 Le API di importazione in blocco di Marketo utilizzano il concetto di processo per l’esecuzione dell’importazione di dati. Vediamo come creare un semplice processo di importazione dei lead utilizzando l&#39;endpoint [Importa lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Si noti che questo endpoint utilizza [dati multipart/form come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Per risolvere questo problema può essere difficile utilizzare una libreria di supporto HTTP per la lingua desiderata.  Se ti stai solo bagnando i piedi, ti consigliamo di utilizzare [curl](https://curl.se/).
 
-```
+```http
 POST /bulk/v1/leads.json?format=csv
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=--------------------------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Length: 311
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
@@ -101,7 +101,7 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 
 Determinare lo stato del processo è semplice utilizzando l&#39;endpoint [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
 
-```
+```http
 GET /bulk/v1/leads/batch/{batchId}.json
 ```
 
@@ -131,7 +131,7 @@ Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta Get
 
 Per recuperare i record e le cause delle righe non riuscite, è necessario recuperare il file di errore utilizzando l&#39;endpoint [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
-```
+```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json
 ```
 

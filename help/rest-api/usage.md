@@ -2,7 +2,8 @@
 title: Utilizzo
 feature: REST API
 description: Monitora l’utilizzo e gli errori dell’API REST di Marketo con gli endpoint di stato giornalieri e degli ultimi 7 giorni, inclusi i conteggi per utente e i totali dei codici di errore.
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+exl-id: 935a00a4-1e1e-4b48-ae9c-72c5e578312a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '393'
 ht-degree: 8%
@@ -32,7 +33,7 @@ Le API di utilizzo utilizzano lo stesso metodo di autenticazione delle altre API
 
 Recupera l’utilizzo dell’API per il giorno corrente.
 
-```
+```http
 GET /rest/v1/stats/usage.json
 ```
 
@@ -69,7 +70,7 @@ Ogni oggetto nell&#39;array `result` contiene un giorno di totali di utilizzo e 
 
 Recupera l’utilizzo API per gli ultimi 7 giorni. Ogni elemento nell&#39;array `result` rappresenta un giorno.
 
-```
+```http
 GET /rest/v1/stats/usage/last7days.json
 ```
 
@@ -77,7 +78,7 @@ GET /rest/v1/stats/usage/last7days.json
 
 Recupera gli errori API per il giorno corrente.
 
-```
+```http
 GET /rest/v1/stats/errors.json
 ```
 
@@ -114,7 +115,7 @@ Ogni oggetto nell&#39;array `result` contiene un giorno di totali di errore e un
 
 Recupera gli errori API per gli ultimi 7 giorni. Ogni elemento nell&#39;array `result` rappresenta un giorno.
 
-```
+```http
 GET /rest/v1/stats/errors/last7days.json
 ```
 

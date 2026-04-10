@@ -3,9 +3,9 @@ title: Ruoli opportunità
 feature: REST API
 description: Gestisci i ruoli opportunità di Marketo tramite API REST, incluse descrizioni, query con campi di deduplicazione composti, eliminazione di aggiornamenti di creazione, timeout e nessuna sincronizzazione CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '270'
+source-wordcount: '279'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ Le API del ruolo opportunità sono esposte solo per le sottoscrizioni per le qua
 
 Analogamente alle opportunità, per i ruoli opportunità vengono esposte una chiamata di descrizione e operazioni CRUD.
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -108,7 +108,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 Tieni presente che sia `dedupeFields` che `searchableFields` sono un po&#39; diversi dalle opportunità. `dedupeFields` fornisce in realtà una chiave composta, in cui sono necessari tutti e tre i valori `externalOpportunityId`, `leadId` e `role`. Affinché la creazione dei record abbia esito positivo, è necessario che nell’istanza di destinazione siano presenti sia il collegamento di opportunità che quello di lead in base ai campi ID. Per `searchableFields`, `marketoGUID`, `leadId` e `externalOpportunityId` sono tutti validi per le query e utilizzano un pattern identico a Opportunities, ma esiste un&#39;opzione aggiuntiva di utilizzo della chiave composta per eseguire query, che richiede l&#39;invio di un oggetto JSON tramite POST, con il parametro di query aggiuntivo `_method=GET`.
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -147,7 +147,7 @@ Questo produce lo stesso tipo di risposta di una query GET standard, ma dispone 
 
 I ruoli opportunità hanno la stessa interfaccia per la creazione e l’aggiornamento dei record delle opportunità.
 
-```
+```http
 POST /rest/v1/opportunities/roles.json
 ```
 
@@ -195,7 +195,7 @@ POST /rest/v1/opportunities/roles.json
 
 Puoi eliminare i ruoli opportunità deduplicando i campi o il campo ID. Specificare utilizzando il parametro deleteBy con il valore dedupeFields o idField. Se non viene specificato, il valore predefinito è dedupeFields. Il corpo della richiesta contiene una matrice di input di ruoli opportunità da eliminare. È consentito un massimo di 300 ruoli opportunità per chiamata.
 
-```
+```http
 POST /rest/v1/opportunities/roles/delete.json
 ```
 

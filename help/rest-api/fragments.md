@@ -3,7 +3,7 @@ title: Frammenti
 feature: REST API
 description: Utilizza l’API REST di Marketo Asset per eseguire query, creare, aggiornare, clonare, eliminare, approvare e verificare le dipendenze dei frammenti.
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '272'
 ht-degree: 9%
@@ -36,7 +36,7 @@ Puoi recuperare i metadati del frammento per ID risorsa o con l’endpoint del f
 
 #### Richiesta
 
-```text
+```http
 GET /rest/asset/v2/fragment/{id}
 ```
 
@@ -68,7 +68,7 @@ I filtri supportati includono `folderId`, `folderIds` ripetuto, `status` ripetut
 
 #### Richiesta
 
-```text
+```http
 GET /rest/asset/v2/fragment/filter?workspaceId=1001&fragmentType=email&pageIndex=0&pageSize=20
 ```
 
@@ -98,7 +98,7 @@ Crea un frammento inviando un payload JSON. `name`, `appData` e `settings` sono 
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment
 Content-Type: application/json
 ```
@@ -155,7 +155,7 @@ Aggiorna un frammento per ID risorsa.
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/update
 Content-Type: application/json
 ```
@@ -202,7 +202,7 @@ I valori `action` validi sono:
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment/state/transition
 Content-Type: application/json
 ```
@@ -222,7 +222,7 @@ Utilizza l’endpoint clone per creare una copia di un frammento esistente.
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment/clone
 Content-Type: application/json
 ```
@@ -245,7 +245,7 @@ Elimina un frammento per ID risorsa.
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/delete
 Content-Type: application/json
 ```
@@ -258,7 +258,7 @@ Utilizza l&#39;endpoint `usedby` per recuperare le risorse che fanno riferimento
 
 ### Richiesta
 
-```text
+```http
 POST /rest/asset/v2/fragment/usedby
 Content-Type: application/json
 ```

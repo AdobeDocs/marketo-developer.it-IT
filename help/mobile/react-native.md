@@ -3,9 +3,9 @@ title: React Native
 feature: Mobile Marketing
 description: Installa e configura Marketo SDK nelle app React Native con i passaggi Android Gradle e iOS CocoaPods, bridging dei moduli nativi, push e associazione dei lead.
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '830'
+source-wordcount: '854'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ Questo articolo fornisce informazioni su come installare e configurare il SDK na
 
 ## Prerequisiti
 
-[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 
 ## Integrazione SDK
 
@@ -26,7 +26,7 @@ Questo articolo fornisce informazioni su come installare e configurare il SDK na
 
 Aggiungere la dipendenza di Marketo SDK con la versione più recente: nel file di livello applicazione `build.gradle`, nella sezione dipendenze, aggiungere (inclusa la versione appropriata di Marketo SDK)
 
-```
+```groovy
 implementation 'com.marketo:MarketoSDK:0.x.x'
 ```
 
@@ -34,7 +34,7 @@ implementation 'com.marketo:MarketoSDK:0.x.x'
 
 Marketo SDK è disponibile nell&#39;archivio centrale [maven](https://mvnrepository.com/). Per sincronizzare tali file, aggiungere l&#39;archivio `mavencentral` alla radice `build.gradle`
 
-```
+```groovy
 build script {
   repositories {
     google()
@@ -91,7 +91,7 @@ Il bridge React Native viene utilizzato per la comunicazione tra JSX e i livelli
 
 Questo file contiene i metodi wrapper che possono chiamare internamente i metodi SDK di Marketo con i parametri forniti.
 
-```
+```java
 public class RNMarketoModule extends ReactContextBaseJavaModule {
 
    final Marketo marketoSdk;
@@ -179,7 +179,7 @@ public class RNMarketoModule extends ReactContextBaseJavaModule {
 
 Informa react-native sul pacchetto Marketo.
 
-```
+```java
 public class MarketoPluginPackage implements ReactPackage {
 
    @NonNull
@@ -202,7 +202,7 @@ public class MarketoPluginPackage implements ReactPackage {
 
 Per completare la registrazione del pacchetto, aggiungere MarketoPluginPackage all&#39;elenco del pacchetto React nella classe dell&#39;applicazione:
 
-```
+```java
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -231,7 +231,7 @@ Per iniziare, apri il progetto iOS nell’applicazione React Native in Xcode. Pu
 
 Crea l’intestazione del modulo nativo personalizzato principale e i file di implementazione. Creare un nuovo file denominato `MktoBridge.h` e aggiungervi quanto segue:
 
-```
+```objectivec
 //
 //  MktoBridge.h
 //
@@ -252,7 +252,7 @@ NS_ASSUME_NONNULL_END
 
 Creare il file di implementazione corrispondente, `MktoBridge.m`, nella stessa cartella e includere il contenuto seguente:
 
-```
+```objectivec
 //
 //  MktoBridge.h
 //  Created by Marketo, An Adobe company.
@@ -364,7 +364,7 @@ RCT_EXPORT_METHOD(registerForRemoteNotifications) {
 
 Individuare nell&#39;applicazione una posizione in cui si desidera aggiungere una chiamata al metodo createCalendarEvent() del modulo nativo. Di seguito è riportato un esempio di componente, NewModuleButton, che puoi aggiungere nell’app. È possibile richiamare il modulo nativo all’interno della funzione onPress() di NewModuleButton.
 
-```
+```javascript
 import React from 'react';
 import { NativeModules, Button } from 'react-native';
 
@@ -395,7 +395,7 @@ Una volta inseriti correttamente i file di cui sopra, possiamo importare il modu
 
 Tieni presente che dobbiamo passare &quot;reactNative&quot; come tipo di framework per le app native React.
 
-```
+```javascript
 // Initialize marketo SDK with Munchkin & Seretkey you have from step 1.
 RNMarketoModule.initializeSDK("MunchkinID","SecreteKEY","FrameworkType")
 
@@ -419,7 +419,7 @@ RNMarketoModule.uninitializeMarketoPush()
 
 Inizializzare il push con l’ID progetto e il nome del canale
 
-```
+```javascript
 RNMarketoModule.initializeMarketoPush("ProjectId", "Channel_name")
 ```
 
@@ -467,7 +467,7 @@ Per inviare notifiche push, [aggiungi notifiche push](push-notifications.md).
 Configurare le notifiche push in iOS
 crea il file PushNotifications.tsx e aggiungi quanto segue:
 
-```
+```javascript
 import { NativeModules } from 'react-native';
 const { RNMarketoModule } = NativeModules;
 
@@ -492,7 +492,7 @@ export { requestPermission, registerForRemoteNotifications };
 
 Aggiungi `App.tsx` per consentire le notifiche push
 
-```
+```javascript
 import React, { useEffect } from 'react';
 
 useEffect(() => {
@@ -506,7 +506,7 @@ registerForRemoteNotifications();
 
 Aggiorna `AppDelegate.mm` con i metodi delegate APNS:
 
-```
+```objectivec
 #import "AppDelegate.h"
 #import "MktoBridge.h"
 #import <MarketoFramework/Marketo.h>
@@ -596,7 +596,7 @@ Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;inter
 
 **iOS - Gestisci tipi di URL personalizzati/collegamenti diretti in AppDelegate**
 
-```
+```objectivec
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary *)options{
@@ -609,7 +609,7 @@ Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;inter
 
 Queste costanti vengono utilizzate quando si chiama l’API da JavaScript. È necessario creare file costanti e aggiungere quanto segue.
 
-```
+```objectivec
 // Lead attributes.
 static NSString *const KEY_FIRST_NAME = @"firstName";
 static NSString *const KEY_LAST_NAME = @"lastName";
@@ -641,7 +641,7 @@ static NSString *const KEY_TIMESTAMP = @"timeStamp";
 
 Esempio di utilizzo
 
-```
+```javascript
 //You can create a Marketo Lead by calling the associateLead function.
 RNMarketoModule.associateLead({ email: "", firstName: "", lastName:"", city:""})
 ```

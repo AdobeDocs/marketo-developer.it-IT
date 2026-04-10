@@ -3,10 +3,10 @@ title: Azioni personalizzate
 feature: Mobile Marketing
 description: Scopri come inviare e segnalare azioni personalizzate con Marketo Mobile SDK per iOS e Android, mettere in coda offline, attivare campagne intelligenti e soddisfare i requisiti dei 20 caratteri...
 exl-id: 8c2698ce-4e39-4b2b-9d36-0864c55be17a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '313'
-ht-degree: 0%
+source-wordcount: '336'
+ht-degree: 1%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 Puoi tenere traccia dell’interazione dell’utente inviando azioni personalizzate. Quando l’app mobile effettua una chiamata al SDK di Marketo per inviare un’azione personalizzata, quest’ultima viene inizialmente salvata sul dispositivo. Marketo SDK verifica quindi se è disponibile una connettività Internet adeguata prima di inviare l’azione personalizzata. Di conseguenza, può verificarsi un ritardo tra il momento in cui l’azione personalizzata viene inviata e quello in cui viene ricevuta da Marketo.
 
-Le azioni personalizzate possono essere utilizzate come attivatori e filtri nelle campagne avanzate. Per ulteriori informazioni, vedere [Attività app mobile](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
+Le azioni personalizzate possono essere utilizzate come attivatori e filtri nelle campagne avanzate. Per ulteriori informazioni, vedere [Attività app mobile](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Invio di azioni personalizzate su iOS
 
@@ -24,14 +24,14 @@ Invia azione personalizzata.
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 [sharedInstance reportAction:@"Login" withMetaData:nil];
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 sharedInstance.reportAction("Login", withMetaData:nil);
 ```
 
@@ -43,7 +43,7 @@ Invia azione personalizzata con metadati.
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 MarketoActionMetaData *meta = [[MarketoActionMetaData alloc] init];
 [meta setType:@"Shopping"];
 [meta setDetails:@"RedShirt"];
@@ -55,7 +55,7 @@ MarketoActionMetaData *meta = [[MarketoActionMetaData alloc] init];
 
 >[!TAB Swift]
 
-```
+```swift
 let meta = MarketoActionMetaData()
 meta.setType("Shopping");
 meta.setDetails("RedShirt");
@@ -73,13 +73,13 @@ Segnala immediatamente tutte le azioni (invia tutte le azioni salvate).
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 [sharedInstance reportAll];
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 sharedInstance.reportAll();
 ```
 
@@ -111,7 +111,7 @@ sharedInstance.reportAll();
    Marketo.reportAll();
    ```
 
-## Risoluzione dei problemi relativi alle azioni personalizzate
+## Risolvere i problemi relativi alle azioni personalizzate
 
 La configurazione delle azioni personalizzate per dispositivi mobili è semplice, ma esistono restrizioni relative al numero di caratteri che è possibile inviare dal SDK mobile a Marketo. Assicurati che tutte le azioni personalizzate che inviano rapporti a Marketo tramite il SDK mobile abbiano una lunghezza inferiore a 20 caratteri.
 

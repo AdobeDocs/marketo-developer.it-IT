@@ -2,11 +2,11 @@
 title: Appartenenza a elenco (elenchi statici)
 feature: REST API, Static Lists
 description: Utilizza le API REST del database dei lead di Marketo per aggiungere lead a elenchi statici, rimuovere lead, recuperare membri dell’elenco e controllare l’appartenenza all’elenco.
-exl-id: 2a91b0f3-5ba1-4b0c-b5e7-a19ab9a7fdc3
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '482'
-ht-degree: 3%
+ht-degree: 4%
 
 ---
 
@@ -23,7 +23,7 @@ Le API di appartenenza a elenco forniscono endpoint di database lead per l&#39;u
 | Aggiungi all’elenco | POST | `/rest/v1/lists/{listId}/leads.json` |
 | Rimuovi dall’elenco | DELETE | `/rest/v1/lists/{listId}/leads.json` |
 | Ottieni lead per ID elenco | GET | `/rest/v1/lists/{listId}/leads.json` |
-| Membro dell&#39;elenco | GET | `/rest/v1/lists/{listId}/leads/ismember.json` |
+| Membro dell’elenco | GET | `/rest/v1/lists/{listId}/leads/ismember.json` |
 
 ## Aggiungi all’elenco
 
@@ -31,7 +31,7 @@ L&#39;endpoint [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-api
 
 La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
-```
+```http
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 ```
 
@@ -64,7 +64,7 @@ L&#39;endpoint [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-api
 
 La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
-```
+```http
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 ```
 
@@ -107,7 +107,7 @@ Il parametro `fields` contiene un elenco separato da virgole di nomi di campo da
 
 La risposta contiene un array `result` composto da oggetti JSON contenenti i campi lead specificati nella richiesta.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 ```
 
@@ -145,13 +145,13 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 }
 ```
 
-## Membro dell&#39;elenco
+## Membro dell’elenco
 
 L&#39;endpoint [Member of List](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) viene utilizzato per verificare se uno o più lead sono membri di un elenco. L&#39;endpoint accetta un parametro di percorso `listId` obbligatorio e uno o più parametri di query `id` che contengono ID lead (il massimo consentito è 300).
 
 La risposta contiene un array `result` composto da oggetti JSON con lo stato per ogni ID lead specificato nella richiesta.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999
 ```
 

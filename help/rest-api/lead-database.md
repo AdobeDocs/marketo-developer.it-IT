@@ -3,10 +3,10 @@ title: Database lead
 feature: REST API, Database
 description: Guida alle API del database lead di Marketo che tratta gli oggetti, i metodi CRUD e Describe, i modelli di query, i limiti batch e le restrizioni di integrazione CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '1357'
-ht-degree: 0%
+source-wordcount: '1373'
+ht-degree: 1%
 
 ---
 
@@ -46,7 +46,7 @@ Per le istanze con un’integrazione CRM nativa abilitata (Microsoft Dynamics o 
 
 Per lead, società, opportunità, ruoli, persone di vendita e oggetti personalizzati, viene fornita un’API descrittiva. Con questa chiamata vengono recuperati i metadati per l’oggetto e un elenco di campi disponibili per l’aggiornamento e l’esecuzione di query. La descrizione è una parte fondamentale della progettazione di una corretta integrazione con Marketo. Fornisce metadati avanzati su come è possibile interagire con gli oggetti e non, nonché su come crearli, aggiornarli ed eseguire query. A parte Descrivi lead, ognuno di questi restituisce un elenco di chiavi disponibili per `deduplication` nel parametro di risposta `dedupeFields`. Un elenco di campi è disponibile come chiavi per l&#39;esecuzione di query nel parametro di risposta `searchableFields`.
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -136,7 +136,7 @@ Esiste anche un parametro di risposta dei campi, che fornirà il nome di ciascun
 
 Tutti gli oggetti del database lead condividono lo schema di base per l&#39;esecuzione di query su chiavi semplici, in cui viene fatto riferimento a un solo campo.
 
-```
+```http
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
@@ -149,7 +149,7 @@ Per tutti gli oggetti ad eccezione dei lead, è possibile selezionare {field to 
 
 Per un rapido esempio, esaminiamo le opportunità di query:
 
-```
+```http
 GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
 ```
 
@@ -188,15 +188,15 @@ Se il set di record nella query supera i 300 o il `batchSize` specificato, a sec
 
 Talvolta, ad esempio quando si esegue una query tramite GUID, l’URI potrebbe essere lungo e superare gli 8 KB consentiti dal servizio REST. In questo caso, è necessario utilizzare il metodo HTTP POST anziché GET e aggiungere un parametro di query `_method=GET`. Inoltre, gli altri parametri di query devono essere passati nel corpo POST come stringa &quot;application/x-www-form-urlencoded&quot; e passare l’intestazione Content-type associata.
 
-```
+```http
 POST /rest/v1/opportunities.json?_method=GET
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb,544fb7f5-2ddf-4fca-ae32-7e6ef1415e9f,f1ba41a2-69d1-4a35-9807-0e159d66f2c9,f7521272-3331-4a89-a768-222baff2f894
 ```
 
@@ -206,7 +206,7 @@ Oltre agli URI lunghi, questo parametro è necessario anche quando si esegue una
 
 Il pattern per l’esecuzione di query sulle chiavi composte è diverso dalle chiavi semplici, in quanto richiede l’invio di un POST con un corpo JSON. Non è necessario in tutti i casi, solo in quelli in cui viene utilizzata un&#39;opzione `dedupeFields` con più campi come `filterType`. Attualmente le chiavi composte vengono utilizzate solo dai Ruoli opportunità e da alcuni oggetti personalizzati. Vediamo un esempio di query per i ruoli opportunità con la chiave composta di `dedupeFields`:
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -249,7 +249,7 @@ L&#39;unico parametro obbligatorio è un array denominato `input` contenente fin
 
 Quando si trasmette un elenco di valori di campo, nel database viene scritto un valore di `null` o una stringa vuota come `null`.
 
-```
+```http
 POST /rest/v1/opportunities.json
 ```
 
@@ -301,7 +301,7 @@ A parte l&#39;API lead, le chiamate per la creazione o l&#39;aggiornamento di og
 
 L&#39;interfaccia per le eliminazioni è standard per gli oggetti del database lead oltre ai lead. Oltre all&#39;input, esiste un solo parametro obbligatorio `deleteBy,` che può avere un valore idField o dedupeFields. Prendiamo in esame l’eliminazione di alcuni oggetti personalizzati.
 
-```
+```http
 POST /rest/v1/customobjects/{name}/delete.json
 ```
 

@@ -3,9 +3,9 @@ title: Programmi
 feature: REST API, Programs
 description: Guida ai programmi Marketo per l’API REST di Asset, che tratta tipi, canali, tag, stati membri ed endpoint da ottenere per ID o nome, sfogliare e filtrare per stato.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '870'
+source-wordcount: '979'
 ht-degree: 1%
 
 ---
@@ -40,7 +40,7 @@ L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/
 
 L&#39;ID programma può essere ottenuto dall&#39;URL del programma nell&#39;interfaccia utente, dove l&#39;URL sarà simile a `https://app-\*\*\*.marketo.com/#PG1001A1`. In questo URL, `id` è 1001. Sarà sempre compreso tra il primo set di lettere nell’URL e il secondo set di lettere.
 
-```
+```http
 GET /rest/asset/v1/program/{id}.json
 ```
 
@@ -84,7 +84,7 @@ GET /rest/asset/v1/program/{id}.json
 
 L&#39;endpoint [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset/) richiede un parametro di query `name`. I parametri di query booleani facoltativi sono `includeTags` e `includeCosts`, utilizzati rispettivamente per restituire i tag del programma e i costi del programma.
 
-```
+```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 ```
 
@@ -134,7 +134,7 @@ Il parametro facoltativo `maxReturn` controlla il numero di programmi da restitu
 
 Tieni presente che i tag associati a un programma non vengono restituiti da questo endpoint. È possibile recuperare i tag del programma utilizzando [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
 
-```
+```http
 GET /rest/asset/v1/programs.json
 ```
 
@@ -189,7 +189,7 @@ GET /rest/asset/v1/programs.json
 
 I parametri `earliestUpdatedAt` e `latestUpdatedAt` dell&#39;endpoint [Get Programs](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) consentono di impostare soglie di data/ora basse e alte per i programmi restituiti che sono stati aggiornati o creati inizialmente nell&#39;intervallo specificato.
 
-```
+```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
 ```
 
@@ -282,7 +282,7 @@ L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/ap
 
 Esistono due parametri obbligatori: `tagType`, che è il tipo di tag su cui filtrare, e `tagValue`, che è il valore di tag su cui filtrare.  Il parametro facoltativo `maxReturn` integer controlla il numero di programmi da restituire (il massimo è 200, il valore predefinito è 20) e il parametro facoltativo integer `offset` utilizzato per il paging dei risultati (il valore predefinito è 0).  I risultati vengono restituiti in ordine casuale.
 
-```
+```http
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 ```
 
@@ -329,15 +329,15 @@ Durante la creazione o l&#39;aggiornamento di un programma e-mail, è possibile 
 
 ### Creare
 
-```
+```http
 POST /rest/asset/v1/programs.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API Program&type=Default&channel=Email Blast&costs=[{"startDate":"2015-01-01","cost":2000}]
 ```
 
@@ -381,15 +381,15 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 Per aggiungere nuovi costi durante l&#39;aggiornamento dei costi del programma, è sufficiente aggiungerli all&#39;array `costs`. Per eseguire un aggiornamento distruttivo, trasferire i nuovi costi insieme al parametro `costsDestructiveUpdate` impostato su `true`. Per cancellare tutti i costi da un programma, non passare un parametro `costs` e passare semplicemente `costsDestructiveUpdate` impostato su `true`.
 
-```
+```http
 POST /rest/asset/v1/program/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 description=This is an updated description&name=Updated Program Name&costs=[{"startDate":"2016-01-01","cost":200,"note":"Google Adwords"}]
 ```
 
@@ -445,7 +445,7 @@ I programmi e-mail possono essere approvati o non approvati in remoto, il che ca
 
 ### Approvazione
 
-```
+```http
 POST /rest/asset/v1/program/{id}/approve.json
 ```
 
@@ -465,7 +465,7 @@ POST /rest/asset/v1/program/{id}/approve.json
 
 ### Annulla approvazione
 
-```
+```http
 POST /rest/asset/v1/program/{id}/unapprove.json
 ```
 
@@ -489,15 +489,15 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 I programmi che contengono determinati tipi di risorse non possono essere clonati tramite questa API, tra cui notifiche push, messaggi in-app, rapporti e Social Assets. I programmi in-app non possono essere clonati tramite questa API.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Description
 ```
 
@@ -536,7 +536,7 @@ name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Descrip
 
 L’eliminazione dei programmi segue il modello standard di eliminazione delle risorse.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

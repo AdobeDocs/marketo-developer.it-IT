@@ -3,7 +3,7 @@ title: Risorse
 feature: REST API
 description: Panoramica delle API REST di Marketo Asset per eseguire query per ID o nome, sfogliare con il paging e creare o aggiornare cartelle, e-mail, moduli, modelli, file, token.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '898'
 ht-degree: 2%
@@ -42,7 +42,7 @@ In alcuni casi, l’endpoint &quot;browse&quot; per alcuni tipi di risorse non r
 
 ### Per ID
 
-```
+```http
 GET /rest/asset/v1/folder/{id}.json?type=Folder
 ```
 
@@ -83,7 +83,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 Per motivi tecnici, le API di Asset non sono in grado di cercare i nomi delle risorse contenenti virgole (,).  È consigliabile che la convenzione di denominazione escluda le virgole per tutti i tipi di risorse.
 
-```
+```http
 GET /rest/asset/v1/file/byName.json?name=My File
 ```
 
@@ -119,7 +119,7 @@ L’esplorazione delle risorse consente sempre due parametri di query:
 - offset - Offer intero da cui restituire i risultati.
 - maxReturn - Limita il numero di record restituiti.  Il valore predefinito è 20 se non impostato e ha un massimo di 200.
 
-```
+```http
 GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 ```
 
@@ -179,15 +179,15 @@ Per i tipi di risorse semplici come Cartelle, Token e File, in genere è disponi
 
 Ad esempio, di seguito è riportato come creare un token:
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=April Fools&value=2015-04-01&type=date&folderType=Folder
 ```
 
@@ -218,15 +218,15 @@ name=April Fools&value=2015-04-01&type=date&folderType=Folder
 
 Per aggiornare una cartella, effettua le seguenti operazioni:
 
-```
+```http
 POST /rest/asset/v1/folder/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 type=Folder&description=This is a test (update 01)
 ```
 
@@ -271,15 +271,15 @@ Ad esempio, per creare una pagina di destinazione, devi chiamare il relativo end
 
 Le pagine di destinazione richiedono innanzitutto la creazione di una risorsa Pagina di destinazione utilizzando un modello principale.  Viene creata una nuova pagina di destinazione contenente il contenuto predefinito del modello per ogni sezione di contenuto.
 
-```
+```http
 POST rest/asset/v1/landingPages.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&description=this is a test&workspace=default&title=test create&keywords=awesome&formPrefill=false
 ```
 
@@ -320,7 +320,7 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 Per compilare il contenuto di una pagina di destinazione, è necessario recuperare l’elenco delle sezioni di contenuto e quindi eseguire singoli aggiornamenti per qualsiasi sezione che si discosta dal modello.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/content.json
 ```
 
@@ -352,7 +352,7 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 
 #### Aggiorna sezione
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 ```
 
@@ -374,7 +374,7 @@ POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 
 A molti tipi di risorse è associato un sistema di bozza e approvazione, tra cui e-mail, pagine di destinazione, snippet, Forms e i modelli corrispondenti.  Se si tenta di approvare una risorsa, questa verrà valutata in base a un set specifico di regole di convalida e quindi impostata su uno stato approvato oppure verrà restituito un motivo di errore.  Per questi tipi di risorse, ogni volta che viene effettuato un aggiornamento al contenuto di una particolare risorsa, vengono apportate modifiche a una bozza della risorsa, che non influiscono sulla versione approvata.  Questo consente di apportare modifiche al contenuto in modo sicuro senza influire sulle versioni live della risorsa.  Le modifiche possono quindi essere applicate alla versione live utilizzando l’endpoint di approvazione.  Questo cancella anche lo stato di bozza della risorsa fino a quando non vengono applicati eventuali aggiornamenti aggiuntivi.
 
-```
+```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 ```
 
@@ -406,7 +406,7 @@ L’approvazione corretta sostituisce la versione live precedente con la version
 
 L’eliminazione delle bozze è disponibile anche tramite un endpoint per ogni tipo di risorsa valido.  Se si utilizza questa opzione su una risorsa in stato Approvato con bozza, la bozza corrente e le eventuali modifiche in sospeso verranno eliminate.  Se si utilizza questa su una risorsa per la quale non è al momento disponibile una versione approvata, non viene eseguita alcuna operazione e viene restituito un errore.  Le risorse di sola bozza possono essere eliminate, ma non possono essere eliminate.
 
-```
+```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 ```
 
@@ -436,7 +436,7 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 
 Assets può anche non essere approvato se si trova in uno stato di sola approvazione.  In questo modo verranno eliminate tutte le versioni live della risorsa e la risorsa tornerà allo stato di sola bozza, scartando anche le bozze associate.  Questa azione può essere eseguita solo sulla maggior parte delle risorse se non è in uso in alcun punto di Marketo, ad esempio un’e-mail a cui si fa riferimento in un passaggio del flusso Invia e-mail o uno snippet incorporato in un messaggio e-mail.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/unapprove.json
 ```
 
@@ -458,7 +458,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 Assets con stati di approvazione e bozza, ad eccezione dei moduli, non può essere eliminato durante l’approvazione e deve essere non approvato prima dell’eliminazione.  In genere, le eliminazioni possono essere eseguite solo quando una risorsa non è approvata e non è più utilizzata e, nel caso delle cartelle, quando le risorse sono vuote.  Un&#39;eccezione di rilievo è rappresentata dai programmi, che possono essere eliminati insieme a tutti i contenuti secondari, purché il programma e il suo contenuto non siano in uso al di fuori dei limiti del programma.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

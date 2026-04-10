@@ -3,10 +3,10 @@ title: Estensione Marketo Mobile per  [!DNL Adobe Launch]
 feature: Mobile Marketing
 description: Installa e configura l’estensione Marketo Mobile SDK in Adobe Launch per iOS e Android, inclusa la configurazione per notifiche push e messaggi in-app.
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '287'
-ht-degree: 1%
+source-wordcount: '305'
+ht-degree: 0%
 
 ---
 
@@ -16,7 +16,7 @@ Istruzioni di installazione per l&#39;estensione Marketo Mobile SDK in [!DNL Ado
 
 ## Prerequisiti
 
-- [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+- [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 - Seguire le istruzioni fornite nel portale [!DNL Adobe Launch] per l&#39;installazione
 - [Imposta notifiche push](push-notifications.md) (facoltativo)
 
@@ -61,7 +61,7 @@ Apri `AndroidManifest.xml` e aggiungi le seguenti autorizzazioni. L&#39;app deve
 
 Se utilizzi ProGuard per l&#39;app, aggiungi le seguenti righe nel file `proguard.cfg`. Il file si trova all’interno della cartella del progetto. L’aggiunta di questo codice esclude Marketo SDK dal processo di offuscamento.
 
-```
+```text
 -dontwarn com.marketo.*
 -dontnote com.marketo.*
 -keep class com.marketo.**{ *; }

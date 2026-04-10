@@ -3,7 +3,7 @@ title: Elenchi di account denominati
 feature: REST API
 description: Scopri come gestire gli elenchi di account denominati Marketo con l’API REST, che includono autorizzazioni, campi, filtri ed endpoint per eseguire query, creare, aggiornare ed eliminare.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '746'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni
@@ -38,7 +38,7 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 
 La query degli elenchi di account è semplice. Attualmente, esistono solo due filterTypes validi per eseguire query sugli elenchi di account denominati: &quot;dedupeFields&quot; e &quot;idField&quot;. Il campo su cui filtrare è impostato nel parametro `filterType` della query e i valori sono impostati in `filterValues as` un elenco separato da virgole. I filtri `nextPageToken` e `batchSize` sono anche parametri facoltativi.
 
-```
+```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
 ```
 
@@ -77,7 +77,7 @@ L’endpoint consente due tipi di azione standard: &quot;createOnly&quot; e &quo
 
 È possibile specificare `dedupeBy parameter` facoltativo se l&#39;azione è `updateOnly`.  I valori consentiti sono &quot;dedupeFields&quot; (corrispondente a &quot;name&quot;) o &quot;idField&quot; (corrispondente a &quot;marketoGUID&quot;).  In modalità `createOnly`, solo &quot;name&quot; è consentito come campo `dedupeBy`. È possibile inviare fino a 300 record alla volta.
 
-```
+```http
 POST /rest/v1/namedAccountLists.json
 ```
 
@@ -119,7 +119,7 @@ POST /rest/v1/namedAccountLists.json
 
 L&#39;eliminazione degli elenchi di account denominati è semplice e può essere eseguita in base a `name` o `marketoGUID` dell&#39;elenco. Per selezionare la chiave da utilizzare, passare &quot;dedupeFields&quot; per il nome o &quot;idField&quot; per marketoGUID nel membro `deleteB` della richiesta. Se non viene impostato, per impostazione predefinita verranno utilizzati dedupeFields. È possibile eliminare fino a 300 record alla volta.
 
-```
+```http
 POST /rest/v1/namedAccountLists/delete.json
 ```
 
@@ -183,7 +183,7 @@ La query dell&#39;appartenenza a un elenco di account con nome è semplice e ric
 
 Se `field` non è impostato, verranno restituiti `marketoGUI`, `nam`, `createdA` e `updatedA`. `batchSiz` ha un valore massimo e predefinito di 300.
 
-```
+```http
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -214,7 +214,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 Gli account denominati possono essere facilmente aggiunti a un elenco di account denominati. Gli account possono essere aggiunti solo utilizzando il relativo marketoGUID. È possibile aggiungere fino a 300 record alla volta.
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -254,7 +254,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 La rimozione di record da un elenco account ha un percorso diverso, ma la stessa interfaccia richiede `marketoGUI` per ogni record che si desidera eliminare. È possibile rimuovere fino a 300 record alla volta.
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ```
 

@@ -3,7 +3,7 @@ title: Cartelle
 feature: REST API
 description: Guida all’API REST di Marketo per le cartelle che includono creazione, aggiornamento, eliminazione, query per ID e nome, navigazione in massa con root, workspace, maxDepth e paginazione.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -22,7 +22,7 @@ La query delle cartelle segue i tipi di query standard per le risorse di [per ID
 
 ### Per ID
 
-```
+```http
 GET /rest/asset/v1/folder/{id}.json?type=Folder
 ```
 
@@ -72,7 +72,7 @@ Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (C
 
 [È consentita anche la query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET). L&#39;endpoint di query per nome presenta il nome come unico parametro obbligatorio. Name esegue una corrispondenza esatta di stringa con il campo name delle cartelle nell’istanza e restituisce i risultati per ogni cartella che corrisponde a tale nome. Inoltre, dispone dei parametri di query facoltativi &quot;type&quot;, che possono essere Folder o Program (Cartella o Programma), &quot;root&quot; (Radice) l’ID della cartella da cercare, oppure &quot;workspace&quot; il nome dell’area di lavoro in cui eseguire la ricerca. Se è impostato il parametro root, è necessario impostare anche il parametro type.
 
-```
+```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 ```
 
@@ -125,7 +125,7 @@ Come altri endpoint per il recupero di risorse in blocco, offset e maxReturn son
 - workSpace: il nome dell’area di lavoro a cui applicare il filtro.
 - maxDepth: il numero massimo di livelli da attraversare nella gerarchia di cartelle. Se è impostato su 0, viene restituita solo la cartella specificata nella directory principale. Se non viene specificato, il valore predefinito è 2.
 
-```
+```http
 GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 ```
 
@@ -213,15 +213,15 @@ Il percorso di una cartella mostra la relativa gerarchia nella struttura ad albe
 
 [La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
 
-```
+```http
 POST /rest/asset/v1/folders.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a test
 ```
 
@@ -260,15 +260,15 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 
 Gli aggiornamenti alle cartelle vengono effettuati tramite un endpoint separato e descrizione, nome e `isArchive` sono parametri facoltativi per l&#39;aggiornamento. Se `isArchive` viene modificato da un aggiornamento, la cartella verrà archiviata, se viene modificato in true, o non archiviata, se viene modificato in false, nell&#39;interfaccia utente di Marketo. I programmi non possono essere aggiornati con questa API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 type=Folder&description=This is a test (update 01)
 ```
 
@@ -309,7 +309,7 @@ type=Folder&description=This is a test (update 01)
 
 Le eliminazioni possono essere eseguite su singole cartelle se vuote, ovvero se non contengono risorse o sottocartelle. Se una cartella è di tipo Program o il campo isSystem è impostato su true, non può essere eliminata con questa API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/delete.json
 ```
 

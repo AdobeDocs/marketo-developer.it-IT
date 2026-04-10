@@ -3,9 +3,9 @@ title: Account denominati
 feature: REST API
 description: Guida REST di Marketo a CRUD sugli account denominati per ABM, con descrizione, query, esempi di aggiornamento, campi ricercabili, regole di deduplicazione e nessun collegamento di lead.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '697'
+source-wordcount: '730'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ Attualmente, le uniche funzioni relative ad ABM disponibili tramite le API di Ma
 
 La descrizione degli account denominati restituisce i metadati relativi all’utilizzo degli account denominati tramite le API di Marketo, incluso un elenco di campi ricercabili validi durante la query e un elenco di tutti i campi disponibili per l’utilizzo API. Il `idField` di un account denominato è sempre `marketoGUID` e l&#39;unico `dedupeField` disponibile e chiave per la creazione è il campo `name` dell&#39;oggetto.
 
-```
+```http
 GET /rest/v1/namedaccounts/describe.json
 ```
 
@@ -137,7 +137,7 @@ GET /rest/v1/namedaccounts/describe.json
 
 La query per gli account denominati si basa sull&#39;utilizzo di un filterType e di un set di un massimo di 300 filterValues separati da virgola. `filterType` può essere un singolo campo restituito nel membro `searchableFields` del risultato descritto per gli account denominati, mentre filterValues può essere un qualsiasi input valido per il tipo di dati del campo. Per restituire un set specifico di campi da, è necessario trasmettere un parametro fields, dove il valore è un elenco separato da virgole di campi da restituire nella risposta. Come altre opzioni di query, il numero massimo di record per una singola pagina di query è 300 e devono essere richiesti record aggiuntivi nel set con l’utilizzo del nextPageToken restituito dalla chiamata.
 
-```
+```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 ```
 
@@ -168,11 +168,11 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 La creazione e l&#39;aggiornamento dei conti denominati seguono il modello standard del database dei lead. I record devono essere passati nel membro di input di un corpo JSON in una richiesta POST. `input` è l&#39;unico membro obbligatorio, con `action` e `dedupeBy` come membri facoltativi. Possono essere inclusi fino a 300 record. L&#39;azione può essere createOnly, updateOnly o createOrUpdate. Se non specificato, l&#39;impostazione predefinita è createOrUpdate. dedupeBy può essere specificato solo quando action è updateOnly e accetta solo uno dei campi dedupeFields o idField, che corrispondono rispettivamente ai campi name e marketoGUID.
 
-```
+```http
 POST /rest/v1/namedaccounts.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -226,7 +226,7 @@ La query dei campi account denominati è semplice. È possibile eseguire una que
 
 L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un singolo campo nell&#39;oggetto account denominato. Il parametro di percorso fieldApiName obbligatorio specifica il nome API del campo. La risposta è simile all’endpoint Describe Named Account, ma contiene metadati aggiuntivi, come l’attributo isCustom, che indica se il campo è un campo personalizzato.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 ```
 
@@ -254,7 +254,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query batchSize per ridurre questo numero. Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati. Il nextPageToken restituito da questa API deve sempre essere riutilizzato per la successiva iterazione di questa chiamata.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 ```
 
@@ -333,11 +333,11 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 Le eliminazioni vengono eseguite tramite una richiesta POST JSON e hanno un membro di input obbligatorio e un membro deleteBy facoltativo. deleteBy può essere uno dei valori &quot;dedupeFields&quot; o &quot;idField&quot;, corrispondenti rispettivamente a name o marketoGUID e, se non impostato, verrà impostato automaticamente su dedupeFields. Il membro di input accetta un array di un massimo di 300 record, contenenti un membro ciascuno, nome o marketoGUID a seconda dell&#39;impostazione di deleteBy.
 
-```
+```http
 POST /rest/v1/namedaccounts/delete.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 

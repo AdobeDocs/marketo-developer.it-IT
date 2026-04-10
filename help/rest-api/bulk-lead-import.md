@@ -3,9 +3,9 @@ title: Importazione lead in blocco
 feature: REST API
 description: Creazione e monitoraggio delle importazioni asincrone di lead in blocco in Marketo con file CSV TSV o SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '795'
+source-wordcount: '825'
 ht-degree: 0%
 
 ---
@@ -39,17 +39,17 @@ Questo tipo di richiesta può essere difficile da implementare, pertanto si cons
 
 Per effettuare una richiesta di importazione in blocco, è necessario impostare l&#39;intestazione del tipo di contenuto su `multipart/form-data` e includere almeno un parametro `file` con il contenuto del file e un parametro `format` con il valore `csv`, `tsv` o `ssv`, che denota il formato del file.
 
-```
+```http
 POST /bulk/v1/leads.json?format=csv
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Length: 311
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
@@ -77,13 +77,13 @@ Easy,Fox,easyfox@marketo.com,Marketo
 
 Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). È consigliabile utilizzare una libreria di supporto HTTP per la lingua scelta, in modo da garantire l’utilizzo corretto. L’esempio seguente è un modo semplice per eseguire questa operazione con cURL dalla riga di comando:
 
-```
+```bash
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
 Dove il file di importazione `lead_data.csv` contiene quanto segue:
 
-```
+```text
 firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
@@ -98,7 +98,7 @@ Nella risposta alla chiamata di, osserva che non esiste un elenco di successi o 
 
 È consigliabile eseguire il polling del processo ogni 5-30 secondi, a seconda della latenza richiesta e delle limitazioni delle chiamate API, per visualizzare lo stato del processo di importazione. Puoi farlo con l’API Get Import Lead Status.
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}.json
 ```
 
@@ -134,7 +134,7 @@ Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta Get
 
 Per recuperare i record e le cause delle righe non riuscite, è necessario recuperare il file di errore:
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
@@ -146,7 +146,7 @@ Gli avvisi sono indicati dall&#39;attributo `numOfRowsWithWarning` in una rispos
 
 Per recuperare i record e le cause delle righe di avviso, recuperare il file di avviso:
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 

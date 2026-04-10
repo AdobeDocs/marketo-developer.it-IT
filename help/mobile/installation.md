@@ -3,9 +3,9 @@ title: Installazione
 feature: Mobile Marketing
 description: Guida all’installazione e all’inizializzazione di Marketo Mobile SDK su iOS e Android tramite CocoaPods, Swift Package Manager o Gradle, per abilitare i messaggi push e in-app.
 exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '774'
+source-wordcount: '850'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ Istruzioni di installazione per Marketo Mobile SDK. I passaggi seguenti sono nec
 
 ### Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 1. [Imposta notifiche push](push-notifications.md) (facoltativo)
 
 ### Installare Framework tramite CocoaPods
@@ -75,7 +75,7 @@ Prima di poter utilizzare Marketo iOS SDK, è necessario inizializzarlo con l&#3
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance initializeWithMunchkinID:@"munchkinAccountId" appSecret:@"secretKey" mobileFrameworkType:@"native" launchOptions:launchOptions];
@@ -83,7 +83,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secretKey", mobileFrameworkType: "native", launchOptions: launchOptions)
@@ -106,7 +106,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
@@ -119,7 +119,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB Swift]
 
-```
+```swift
 private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool
     {
         return Marketo.sharedInstance().application(app, open: url, options: options)
@@ -132,7 +132,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin)
 1. [Imposta notifiche push](push-notifications.md#android_setup_push) (facoltativo)
 1. [Scarica Marketo SDK per Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
@@ -208,7 +208,7 @@ Gli sviluppatori di app Android ora possono utilizzare direttamente [Firebase Cl
 
 1. Integra la versione più recente di Marketo Android SDK nell’app Android.  I passaggi sono disponibili in [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase.
+   1. Crea/Aggiungi un progetto nella console [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase.
       1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), seleziona `Add Project`.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare `Add Firebase`.
       1. Nella schermata di benvenuto di Firebase, seleziona `Add Firebase to your Android App`.

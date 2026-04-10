@@ -3,7 +3,7 @@ title: Estrazione attività in blocco
 feature: REST API
 description: Marketo Bulk Activity Extract REST API per esportare dati di attività a volume elevato utilizzando un intervallo di date di 31 giorni, filtri di attività e attributi primari per ETL e CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1564'
 ht-degree: 3%
@@ -110,7 +110,7 @@ Quando si utilizza `primaryAttributeValues`, il filtro `activityTypeIds` deve es
 
 Per esportare i record, è innanzitutto necessario definire il job e il set di record che si desidera recuperare.  Crea il processo utilizzando l&#39;endpoint [Crea processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST).  Durante l&#39;esportazione delle attività è possibile applicare due filtri primari: `createdAt`, che è sempre obbligatorio, e `activityTypeIds`, che è facoltativo.  Il filtro `createdAt` viene utilizzato per definire un intervallo di date in cui sono state create le attività, utilizzando i parametri `startAt` e `endAt`, che sono entrambi campi datetime e rappresentano rispettivamente la prima data di creazione consentita e l&#39;ultima data di creazione consentita.  Facoltativamente, è inoltre possibile filtrare solo alcuni tipi di attività utilizzando il filtro `activityTypeIds`.  Ciò è utile per rimuovere risultati che non sono rilevanti per il tuo caso d’uso.
 
-```
+```http
 POST /bulk/v1/activities/export/create.json
 ```
 
@@ -149,7 +149,7 @@ POST /bulk/v1/activities/export/create.json
 
 Il processo ora ha lo stato &quot;Creato&quot;, ma non è ancora nella coda di elaborazione.  Per metterlo in coda in modo che possa iniziare l&#39;elaborazione, chiamare l&#39;endpoint [Processo attività di esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST) utilizzando il valore exportId dalla risposta dello stato di creazione.
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/enqueue.json
 ```
 
@@ -177,7 +177,7 @@ Lo stato del processo può essere recuperato solo per i processi creati dallo st
 
 L’estrazione dell’attività in blocco di Marketo è un endpoint asincrono, pertanto è necessario eseguire il polling dello stato del processo per determinare quando è stato completato.  Effettua il polling utilizzando l&#39;endpoint [Ottieni stato processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesStatusUsingGET) come segue:
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/status.json
 ```
 
@@ -215,7 +215,7 @@ Il campo di stato può rispondere con uno dei seguenti valori:
 
 Una volta completato il processo, recuperare i dati utilizzando l&#39;endpoint [Get Export Activity File](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesFileUsingGET).
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/file.json
 ```
 
@@ -237,7 +237,7 @@ Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint
 
 Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST):
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json
 ```
 

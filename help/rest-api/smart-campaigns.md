@@ -3,7 +3,7 @@ title: Campagne avanzate
 feature: REST API, Smart Campaigns
 description: Scopri come utilizzare le API REST di Marketo per campagne avanzate, incluse le query per ID o nome, sfogliare i filtri, creare l’eliminazione dei cloni e pianificare o richiedere i trigger
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1196'
 ht-degree: 1%
@@ -26,7 +26,7 @@ La query delle campagne avanzate segue i tipi di query standard per le risorse d
 
 L&#39;endpoint [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET) accetta una singola campagna avanzata `id` come parametro di percorso e restituisce un singolo record di campagna avanzata.
 
-```
+```http
 GET /rest/asset/v1/smartCampaign/{id}.json
 ```
 
@@ -68,7 +68,7 @@ Con questo endpoint, ci sarà sempre un singolo record nella prima posizione del
 
 L&#39;endpoint [Get Smart Campaign by Name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET) accetta una singola campagna avanzata `name` come parametro e restituisce un singolo record di campagna avanzata.
 
-```
+```http
 GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 ```
 
@@ -124,7 +124,7 @@ Il parametro `offset` è un numero intero che specifica dove iniziare a recupera
 
 Il parametro `isActive` è un valore booleano che specifica di restituire solo campagne Trigger attive.
 
-```
+```http
 GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:00&latestUpdatedAt=2016-09-10T23:17:00-00:00
 ```
 
@@ -189,15 +189,15 @@ L&#39;endpoint [Create Smart Campaign](https://developer.adobe.com/marketo-apis/
 
 Facoltativamente, puoi descrivere la campagna avanzata utilizzando il parametro `description` (massimo 2.000 caratteri).
 
-```
+```http
 POST /rest/asset/v1/smartCampaigns.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a smart campaign creation test.
 ```
 
@@ -241,15 +241,15 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 
 L&#39;endpoint [Update Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/) viene eseguito con un POST urlencoded application/x-www-form. È necessaria una singola campagna avanzata `id` come parametro di percorso. È possibile utilizzare il parametro `name` per aggiornare il nome della smart campaign oppure il parametro `description` per aggiornare la descrizione della smart campaign.
 
-```
+```http
 POST /rest/asset/v1/smartCampaign/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 ```
 
@@ -295,15 +295,15 @@ L&#39;endpoint [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/a
 
 Facoltativamente, puoi descrivere la campagna avanzata utilizzando il parametro `description` (massimo 2.000 caratteri).
 
-```
+```http
 POST /rest/asset/v1/smartCampaign/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description=This is a smart campaign clone test.
 ```
 
@@ -347,7 +347,7 @@ name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description
 
 L&#39;endpoint [Elimina campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST) accetta una singola campagna avanzata `id` come parametro del percorso.
 
-```
+```http
 POST /rest/asset/v1/smartCampaign/{id}/delete.json
 ```
 
@@ -381,7 +381,7 @@ Le campagne pianificate tramite questa API attendono sempre almeno cinque minuti
 
 Il parametro stringa `cloneToProgram` contiene il nome di un programma risultante.  Se questa opzione è impostata, la campagna, il programma principale e tutte le relative risorse vengono creati con il nuovo nome risultante. Il programma principale viene clonato e la campagna appena creata verrà pianificata. Il programma risultante viene creato sotto l&#39;elemento padre. I programmi con snippet, notifiche push, messaggi in-app, elenchi statici, rapporti e risorse social non possono essere clonati in questo modo. Se utilizzato, questo endpoint è limitato a 20 chiamate al giorno. L&#39;endpoint [clone program](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) è l&#39;alternativa consigliata.
 
-```
+```http
 POST /rest/v1/campaigns/{id}/schedule.json
 ```
 
@@ -426,11 +426,11 @@ Utilizza l&#39;endpoint [Richiedi campagna](https://developer.adobe.com/marketo-
 
 Questo endpoint richiede una campagna `id` come parametro di percorso e un parametro di array intero `leads` contenente ID lead. È consentito un massimo di 100 lead per chiamata.
 
-Facoltativamente, il parametro dell&#39;array `tokens` può essere utilizzato per sostituire I miei token locali nel programma padre della campagna. `tokens` accetta un massimo di 100 token. Ogni elemento dell&#39;array `tokens` contiene una coppia nome/valore. Il nome del token deve essere formattato come &quot;`{{my.name}}`&quot;. Se si utilizza [Add a System Token as a Link in un approccio Email](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) per aggiungere il token di sistema &quot;viewAsWebpageLink&quot;, non è possibile eseguirne l&#39;override utilizzando `tokens`. Utilizzare invece [Aggiungere un collegamento Visualizza come pagina Web a un&#39;impostazione E-mail](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) che consente di ignorare &quot;viewAsWebPageLink&quot; utilizzando `tokens`.
+Facoltativamente, il parametro dell&#39;array `tokens` può essere utilizzato per sostituire I miei token locali nel programma padre della campagna. `tokens` accetta un massimo di 100 token. Ogni elemento dell&#39;array `tokens` contiene una coppia nome/valore. Il nome del token deve essere formattato come &quot;`{{my.name}}`&quot;. Se si utilizza [Add a System Token as a Link in un approccio Email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) per aggiungere il token di sistema &quot;viewAsWebpageLink&quot;, non è possibile eseguirne l&#39;override utilizzando `tokens`. Utilizzare invece [Aggiungere un collegamento Visualizza come pagina Web a un&#39;impostazione E-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) che consente di ignorare &quot;viewAsWebPageLink&quot; utilizzando `tokens`.
 
 I parametri `leads` e `tokens` vengono passati nel corpo della richiesta come application/json.
 
-```
+```http
 POST /rest/v1/campaigns/{id}/trigger.json
 ```
 
@@ -480,7 +480,7 @@ L&#39;endpoint [Activate Smart Campaign](https://developer.adobe.com/marketo-api
 - Deve avere almeno un trigger e un passaggio di flusso
 - Devono essere presenti trigger privi di errori, filtri e passaggi di flusso
 
-```
+```http
 POST /rest/asset/v1/smartCampaign/{id}/activate.json
 ```
 
@@ -501,7 +501,7 @@ POST /rest/asset/v1/smartCampaign/{id}/activate.json
 
 [Disattiva Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST) è semplice. È necessario un parametro di percorso `id`. Affinché la disattivazione abbia esito positivo, è necessario attivare la campagna.
 
-```
+```http
 POST /rest/asset/v1/smartCampaign/{id}/deactivate.json
 ```
 

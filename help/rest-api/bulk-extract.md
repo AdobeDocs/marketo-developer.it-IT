@@ -3,7 +3,7 @@ title: Estrai in blocco
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1723'
 ht-degree: 0%
@@ -69,7 +69,7 @@ Gli endpoint di estrazione in blocco non riconoscono le aree di lavoro di Market
 
 Le API di estrazione in blocco di Marketo utilizzano il concetto di processo per avviare ed eseguire l’estrazione dei dati. Prendiamo in considerazione la creazione di un semplice processo di esportazione di lead.
 
-```
+```http
 POST /bulk/v1/leads/export/create.json
 ```
 
@@ -127,7 +127,7 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 
 A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta un campo filtro `status`, un  `batchSize` per limitare il numero di processi restituiti e `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
 
-```
+```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed
 ```
 
@@ -159,7 +159,7 @@ L&#39;endpoint risponde con la risposta `status` di ogni processo creato negli u
 
 Con il nostro ID lavoro a portata di mano, iniziamo il lavoro:
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
 ```
 
@@ -171,7 +171,7 @@ Determinare lo stato del processo è semplice.
 
 È possibile eseguire il polling dello stato solo per i processi creati dallo stesso utente API che li ha creati.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/status.json
 ```
 
@@ -202,7 +202,7 @@ Il membro interno `status` indica l&#39;avanzamento del processo e può corrispo
 
 Una volta completato il processo, puoi recuperare facilmente il file.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
@@ -210,13 +210,13 @@ La risposta contiene un file formattato nel modo in cui è stato configurato il 
 
 Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes` (per [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se l’intestazione non è impostata, verrà restituito l’intero contenuto. Per recuperare i primi 10.000 byte di un file, devi passare la seguente intestazione come parte della richiesta GET all&#39;endpoint, a partire dal byte 0:
 
-```
+```text
 Range: bytes=0-9999
 ```
 
 Quando recuperi il file parziale, l’endpoint risponde con il codice di stato 206 e restituisce le intestazioni Accept-ranges, Content-Length e Content-Range:
 
-```
+```text
 Accept-Ranges: bytes
 Content-Length: 1000
 Content-Range: bytes 0-9999/123424
@@ -226,7 +226,7 @@ Content-Range: bytes 0-9999/123424
 
 I file possono essere recuperati in parte o ripresi successivamente utilizzando l&#39;intestazione `Range`. L&#39;intervallo di un file inizia dal byte 0 e termina con il valore di `fileSize` meno 1. La lunghezza del file viene indicata anche come denominatore nel valore dell&#39;intestazione di risposta `Content-Range` quando si chiama un endpoint Get Export File. Se un recupero non riesce parzialmente, può essere ripreso in un secondo momento. Ad esempio, se tenti di recuperare un file lungo 1000 byte, ma sono stati ricevuti solo i primi 725 byte, il recupero può essere ritentato dal punto di errore chiamando nuovamente l’endpoint e passando un nuovo intervallo:
 
-```
+```text
 Range: bytes 724-999
 ```
 
@@ -255,7 +255,7 @@ Di seguito è riportato un esempio di risposta contenente il checksum:
 
 Di seguito è riportato un esempio di creazione dell&#39;hash SHA-256 di un file recuperato denominato &quot;bulk_lead_export.csv&quot; utilizzando l&#39;utility della riga di comando sha256sum:
 
-```
+```bash
 $ sha256sum bulk_lead_export.csv
 83aca1351c9398d2770330e21a9e278880fd2f1eeaf8c8238bf7676d5c21d1c6 *bulk_lead_export.csv
 ```
@@ -264,7 +264,7 @@ $ sha256sum bulk_lead_export.csv
 
 Se un processo non è stato configurato correttamente o diventa superfluo, può essere facilmente annullato:
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
 ```
 

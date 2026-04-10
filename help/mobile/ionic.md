@@ -3,9 +3,9 @@ title: '[!DNL Ionic]'
 feature: Mobile Marketing
 description: Guida dettagliata per integrare il plug-in Marketo Cordova con Ionic, abilitare le notifiche push, inizializzare SDK, tenere traccia delle sessioni e associare i lead.
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '620'
+source-wordcount: '663'
 ht-degree: 2%
 
 ---
@@ -16,7 +16,7 @@ Questo argomento descrive come integrare il plug-in Marketo Cordova. Il condensa
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
 1. Installa [[!DNL Ionic]](https://ionicframework.com/getting-started/) e [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -54,7 +54,7 @@ Incollare il codice seguente nella funzione `application:didFinishLaunchingWithO
 
 >[!TAB Obiettivo C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance trackPushNotification:launchOptions];
@@ -62,7 +62,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.trackPushNotfication(launchOptions)

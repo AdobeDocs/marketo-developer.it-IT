@@ -3,9 +3,9 @@ title: Canali
 feature: REST API
 description: Scopri come eseguire query sui canali Marketo tramite l’API REST delle risorse, sfogliare con l’impaginazione o recuperare per nome, visualizzare gli stati di progressione e comprendere le regole del tipo di programma.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '144'
+source-wordcount: '151'
 ht-degree: 2%
 
 ---
@@ -22,7 +22,7 @@ I canali possono essere interrogati come risorse standard, ma non dispongono di 
 
 ### Sfogliare
 
-```
+```http
 GET /rest/asset/v1/channels.json?offset=10
 ```
 
@@ -120,7 +120,7 @@ GET /rest/asset/v1/channels.json?offset=10
 
 ### Per nome
 
-```
+```http
 GET /rest/asset/v1/channel/byName.json?name=Online Advertising
 ```
 

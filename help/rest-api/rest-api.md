@@ -3,7 +3,7 @@ title: REST API
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo, configurare gli utenti API e LaunchPoint, visualizzare quote e limiti, eseguire l’autenticazione con l’intestazione Autorizzazione e recuperare i lead.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '859'
 ht-degree: 2%
@@ -76,7 +76,7 @@ Trova [!UICONTROL Endpoint] nella casella API REST e salva per il momento in una
 
 Quando si effettuano chiamate ai metodi API REST, per garantire la riuscita della chiamata è necessario includere un token di accesso in ogni chiamata. Il token di accesso deve essere inviato come intestazione HTTP.
 
-```
+```text
 Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 ```
 
@@ -86,7 +86,7 @@ Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 
 Apri una nuova scheda del browser e immetti quanto segue, utilizzando le informazioni appropriate per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET)
 
-```
+```text
 <Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>
 ```
 

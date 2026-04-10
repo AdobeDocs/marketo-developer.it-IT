@@ -3,7 +3,7 @@ title: Pagine di destinazione
 feature: REST API, Landing Pages
 description: Utilizza l’API REST di Marketo per eseguire query su metadati e contenuti, creare, aggiornare, approvare, eliminare e clonare le pagine di destinazione, inclusi i tipi guidati e in formato libero.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1221'
 ht-degree: 1%
@@ -22,7 +22,7 @@ Come la maggior parte delle altre risorse, è possibile eseguire una query sulle
 
 La query del contenuto della pagina di destinazione restituirà un elenco di sezioni di contenuto disponibili nella pagina di destinazione. Una sezione deve essere presente nell’elenco dei contenuti di una pagina per aggiornare il contenuto:
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/content.json
 ```
 
@@ -60,15 +60,15 @@ I risultati differiscono tra i modelli in formato guidato e quelli in formato li
 
 I tipi di contenuto validi per [contenuti pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content) sono: richText, HTML, Form, Image, Rectangle, Snippet.
 
-```
+```http
 POST rest/asset/v1/landingPages.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&description=this is a test&workspace=default&title=test create&keywords=awesome&formPrefill=false
 ```
 
@@ -129,15 +129,15 @@ Il parametro `template` viene utilizzato per specificare l&#39;ID del modello de
 
 Il parametro facoltativo `description` viene utilizzato per descrivere la nuova pagina di destinazione.
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 ```
 
@@ -195,7 +195,7 @@ Per le pagine in formato libero, è necessario aggiungere tutte le sezioni di co
 
 Per creare una sezione di contenuto dinamico, questa deve essere già presente nell’elenco del contenuto della pagina di destinazione. L&#39;endpoint [Aggiorna sezione contenuto pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) deve quindi essere utilizzato per impostare il tipo su &#39;DynamicContent&#39;. Quando una sezione è impostata sul contenuto dinamico, crea sezioni dinamiche sottostanti all’interno della sezione del contenuto che ereditano tutte il tipo di base dell’elemento convertito. Ogni sezione dinamica eredita anche il contenuto dalla sezione convertita.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 ```
 
@@ -231,15 +231,15 @@ GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 
 [L&#39;aggiornamento del contenuto](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageDynamicContentUsingPOST) per ogni singolo segmento viene eseguito in base all&#39;ID del segmento.
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 segment=New Segment&value=New Content
 ```
 
@@ -274,13 +274,13 @@ Le variabili sono definite come meta tag all&#39;interno dell&#39;elemento `<hea
 </head>
 ```
 
-Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Query
 
 Recupera le variabili per una pagina di destinazione guidata passando l’ID della pagina di destinazione all’endpoint &quot;Get Landing Page Variables&quot;.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/variables.json
 ```
 
@@ -316,7 +316,7 @@ In entrata  in questo esempio, la pagina di destinazione guidata contiene 3 var
 
 Aggiorna una variabile per una pagina di destinazione guidata passando l’ID della pagina di destinazione, l’ID della variabile e il valore della variabile all’endpoint &quot;Update Landing Page Variables&quot;.
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 ```
 
@@ -343,7 +343,7 @@ Marketo fornisce l&#39;endpoint [Ottieni contenuto pagina di destinazione comple
 - segmentazione: accetta un array di oggetti JSON che contengono gli attributi segmentationId e segmentId. Con questa impostazione, visualizza in anteprima la pagina di destinazione come se fossi un lead corrispondente a tali segmenti.
 - leadId:  Accetta l’ID intero di un lead. Con questa impostazione, visualizza in anteprima la pagina di destinazione come se fosse visualizzata dal lead designato.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]
 ```
 

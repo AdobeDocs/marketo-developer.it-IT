@@ -3,10 +3,10 @@ title: PhoneGap
 feature: Mobile Marketing
 description: Configura il plug-in Marketo PhoneGap con Cordova, configura Firebase Cloud Messaging, abilita iOS e Android push, tieni traccia delle notifiche e inizializza SDK.
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '813'
-ht-degree: 1%
+source-wordcount: '841'
+ht-degree: 2%
 
 ---
 
@@ -16,7 +16,7 @@ Integrazione del plug-in PhoneGap di Marketo
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
 1. Imposta notifiche push ([iOS](push-notifications.md) | [Android](push-notifications.md)).
 1. [Installa PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -50,7 +50,7 @@ Per aggiungere di nuovo il plug-in, esegui il comando seguente:
 
 Una volta creata la piattaforma Cordova Android, apri l&#39;app con Android Studio e aggiorna il valore `dirs` del file `Marketo.gradle` trovato nella cartella `com.marketo.plugin`.
 
-```
+```groovy
 repositories{
   jcenter()
   flatDir{
@@ -66,7 +66,7 @@ Controlla l&#39;elenco delle piattaforme aggiunte `$cordova platform ls`
 1. Supporto di Firebase Cloud Messaging
 
 1. Configurare l’app Firebase nella console Firebase.
-   1. Crea/Aggiungi un progetto nella console [&#128279;](https://console.firebase.google.com/)Firebase.
+   1. Crea/Aggiungi un progetto nella console [](https://console.firebase.google.com/)Firebase.
       1. Nella [console Firebase](https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona &quot;Add Firebase to your Android App&quot; (Aggiungi Firebase alla tua app).
@@ -127,7 +127,7 @@ Incollare il codice seguente nella funzione `application:didFinishLaunchingWithO
 
 Aggiorna il metodo `applicationDidBecomeActive` come segue
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance trackPushNotification:launchOptions];
@@ -137,7 +137,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 Aggiorna il metodo `applicationDidBecomeActive` come segue
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.trackPushNotification(launchOptions)
@@ -145,7 +145,7 @@ sharedInstance.trackPushNotification(launchOptions)
 
 >[!ENDTABS]
 
-### &#x200B;5. Inizializzare Marketo Framework
+### &#x200B;5. Inizializza framework Marketo
 
 Per garantire che il framework Marketo sia avviato all&#39;avvio dell&#39;app, aggiungi il seguente codice nella funzione `onDeviceReady` nel file JavaScript principale.
 
@@ -153,7 +153,7 @@ Tieni presente che è necessario passare `phonegap` come tipo di framework per l
 
 ### Sintassi
 
-```
+```javascript
 // This method will Initialize the Marketo Framework using Your MunchkinId and Secret Key
 marketo.initialize(
   function() { console.log("MarketoSDK Init done."); },
@@ -177,13 +177,13 @@ marketo.onStart(
 - MUNCHKIN ID : Munchkin ID ricevuto da Marketo al momento della registrazione.
 - CHIAVE SEGRETA : Chiave segreta ricevuta da Marketo al momento della registrazione.
 
-### &#x200B;6. Inizializzare la notifica push di Marketo
+### &#x200B;6. Inizializza notifica push Marketo
 
 Per assicurarsi che la notifica push di Marketo venga avviata, aggiungi il seguente codice dopo la funzione di inizializzazione nel file JavaScript principale.
 
 ### Sintassi
 
-```
+```javascript
 // This function will Enable user notifications (prompts the user to accept push notifications in iOS)
 marketo.initializeMarketoPush(
     function() { console.log("Marketo push successfully initialized."); },
@@ -200,7 +200,7 @@ marketo.initializeMarketoPush(
 
 Il token può anche essere annullato alla disconnessione.
 
-```
+```javascript
 marketo. uninitializeMarketoPush(
   function() { console.log("Marketo push successfully uninitialized."); } ,
   function(error) { console.log("an error occurred:" + error); }
@@ -213,7 +213,7 @@ marketo. uninitializeMarketoPush(
 
 ### Sintassi
 
-```
+```javascript
 marketo.associateLead(
   function(){ console.log("MarketoSDK : Lead Added"); },
   function(error){ console.log("an error occurred:" + error); },
@@ -229,7 +229,7 @@ marketo.associateLead(
 
 ### Esempio
 
-```
+```javascript
 // First create a lead as shown below
 var lead = {};
 lead[marketo.KEY_FIRST_NAME] = "Phone";
@@ -258,7 +258,7 @@ marketo.associateLead(
 
 ### Sintassi
 
-```
+```javascript
 marketo.reportaction(
   function(){ console.log("MarketoSDK : New event sent "); },
   function(error){ console.log("an error occurred:" + error); },
@@ -276,7 +276,7 @@ marketo.reportaction(
 
 ### Esempio
 
-```
+```javascript
 // First create an event as below
 var event = {
     "Action Type":"Add To Cart",
@@ -297,7 +297,7 @@ marketo.reportaction(
 
 Associare i tipi di evento &quot;pausa&quot; e &quot;ripresa&quot; come mostrato di seguito per segnalare gli eventi di inizio e fine.  Viene utilizzato per tenere traccia del tempo trascorso nell’app mobile. Nota: questo è richiesto in Android.
 
-```
+```javascript
 //Add the following code in your www/js/index.js
 
 bindEvents: function() {

@@ -3,7 +3,7 @@ title: Moduli
 feature: REST API, Forms
 description: Guida REST API di Marketo Forms per creare e gestire moduli, recuperarli per ID o nome, sfogliarli con filtri di stato e gestire campi, set di campi e regole.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1823'
 ht-degree: 1%
@@ -26,7 +26,7 @@ Forms supporta i metodi standard di recupero risorse, [per id](https://developer
 
 [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByIdUsingGET) accetta un modulo `id` come parametro di percorso e restituisce un record modulo.
 
-```
+```http
 GET /rest/asset/v1/form/{id}.json
 ```
 
@@ -80,7 +80,7 @@ GET /rest/asset/v1/form/{id}.json
 
 [Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) assume un formato `name` come parametro di percorso e restituisce un record modulo.
 
-```
+```http
 GET /rest/asset/v1/form/byName.json?name=newForm
 ```
 
@@ -134,7 +134,7 @@ GET /rest/asset/v1/form/byName.json?name=newForm
 
 [Ottieni moduli Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/browseForms2UsingGET) funziona come altri endpoint di esplorazione API di Asset e consente un filtro facoltativo su `status`, `maxReturn` e `offset`. Lo stato può essere: approvato, approvato con bozza o bozza.
 
-```
+```http
 GET /rest/asset/v1/forms.json
 ```
 
@@ -223,7 +223,7 @@ GET /rest/asset/v1/forms.json
 
 Il recupero dell’elenco dei campi per un modulo viene eseguito in base al modulo.
 
-```
+```http
 GET /rest/asset/v1/form/{id}/fields.json
 ```
 
@@ -310,7 +310,7 @@ Quando si modificano i campi o il loro comportamento all’interno di un modulo,
 
 L&#39;endpoint [Get Form Used By](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getFormUsedByUsingGET) accetta un formato `id` come parametro di percorso e restituisce l&#39;elenco delle risorse che dipendono dal modulo. Forms può essere utilizzato dai seguenti tipi di risorse: pagine di destinazione, elenchi avanzati, campagne avanzate, rapporti, programmi e-mail.
 
-```
+```http
 GET /rest/asset/v1/form/{id}/usedBy.json
 ```
 
@@ -336,15 +336,15 @@ GET /rest/asset/v1/form/{id}/usedBy.json
 
 Durante la [creazione di un modulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/createLpFormsUsingPOST) sono presenti solo due campi obbligatori: la cartella padre del modulo e il nome del modulo. Tutti gli altri parametri sono facoltativi con il valore predefinito. Al momento della creazione, il modulo viene fornito con tre campi predefiniti: Nome, Cognome, E-mail.
 
-```
+```http
 POST /rest/asset/v1/forms.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=newForm&description=test&folder={"type": "Folder","id": 293}&language=French
 ```
 
@@ -396,15 +396,15 @@ name=newForm&description=test&folder={"type": "Folder","id": 293}&language=Frenc
 
 Forms sono [aggiornati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/updateFormsUsingPOST) con una chiamata simile tramite il loro id. Durante la creazione o l&#39;aggiornamento, qualsiasi parametro di stile di base è accessibile e modificabile, consentendo di modificare la modalità di visualizzazione del modulo per l&#39;utente finale.
 
-```
+```http
 POST /rest/asset/v1/form/736.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=updated name&description=This is a test for updateapi&language=English&progressiveProfiling=true&locale=en_US
 ```
 
@@ -461,7 +461,7 @@ Per aggiungere o modificare correttamente i campi appartenenti a un modulo, è n
 
 Per i campi Lead, questa operazione viene eseguita utilizzando l&#39;endpoint [Ottieni campi modulo disponibili](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getAllFieldsUsingGET) e include il tipo di dati e i metadati predefiniti per il campo quando viene aggiunto a un modulo.
 
-```
+```http
 GET /rest/asset/v1/form/fields.json
 ```
 
@@ -593,7 +593,7 @@ GET /rest/asset/v1/form/fields.json
 
 Per i campi personalizzati dei membri del programma, chiamare [Get Available Form Program Member Fields](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)  endpoint per recuperare i tipi di dati dei campi personalizzati del membro del programma e i metadati predefiniti. Per utilizzare questi campi in un modulo, il modulo deve trovarsi sotto un programma (non in Design Studio). Le pagine di destinazione contenenti moduli che utilizzano questi campi devono trovarsi anche sotto un programma (non possono risiedere in Design Studio o essere clonate in Design Studio).
 
-```
+```http
 GET /rest/asset/v1/form/programMemberFields.json
 ```
 
@@ -632,15 +632,15 @@ Ogni modulo contiene un elenco modificabile di campi che verrà visualizzato all
 
 [L&#39;aggiunta di un campo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldToAFormUsingPOST) richiede solo l&#39;ID del modulo padre e il fieldId del campo. Tutti gli altri campi saranno vuoti o avranno valori predefiniti basati sul loro tipo di dati e metadati di campo. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/fields.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 fieldId=NumberOfEmployees&maxLength=125&defaultValue=this is default&required=true&fieldWidth=100&validationMessage=hey, you there?&label=employee count&hintText=Hint me&minValue=10
 ```
 
@@ -677,15 +677,15 @@ fieldId=NumberOfEmployees&maxLength=125&defaultValue=this is default&required=tr
 
 Gli aggiornamenti possono modificare tutti gli stessi campi come l’aggiunta di un campo e allo stesso modo richiedere l’ID del modulo e il fieldId, tranne per il fatto che fieldId è un parametro di percorso e non un parametro di query durante l’esecuzione degli aggiornamenti.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/field/LastName.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 label=enter the last name here
 ```
 
@@ -720,15 +720,15 @@ Nell’esempio precedente stiamo aggiornando il campo Cognome che è una stringa
 
 Per aggiornare le voci di elenco, il formato del parametro &quot;values&quot; è il seguente:
 
-```
+```http
 POST /rest/asset/v1/form/{id}/field/Salutation.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 values=[{"label":"Select...","value":"","isDefault":true,"selected":true}, {"label":"MR","value":"MR"}, {"label":"MS","value":"MS"}, {"label":"MRS","value":"MRS"}, {"label":"DR","value":"DR"}, {"label":"PROF","value":"PROF"}]
 ```
 
@@ -802,15 +802,15 @@ I campi di un modulo sono disposti in un&#39;interfaccia di tipo tabella, con un
 
 Se il campo di destinazione è anche un set di campi, il relativo record all&#39;interno della matrice di posizioni deve contenere anche un parametro denominato fieldList, una matrice di oggetti contenente gli stessi membri columnNumber, rowNumber e fieldName. Il set di campi stesso viene considerato come un singolo campo per la sua posizione nell&#39;elenco padre, mentre i relativi sottocampi vengono posizionati in base alle posizioni specificate nel parametro fieldList.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/reArrange.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumber":0,"rowNumber":1,"fieldName":"LastName"}, {"columnNumber":0,"rowNumber":2, "fieldName":"Email"}]
 ```
 
@@ -832,11 +832,11 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 I campi in formato Rich Text vengono aggiunti tramite un [endpoint separato](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addRichTextFieldUsingPOST) dai campi lead. Il contenuto del campo viene passato come dati multipart/form. Deve essere strutturato come contenuto HTML che non contiene script, metatag o tag di collegamento.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/richText.json
 ```
 
-```
+```html
 Content-Type: multipart/form-data; boundary=---------------------------9051914041544843365972754266
 -----------------------------9051914041544843365972754266
 Content-Disposition: form-data; name="text"
@@ -879,15 +879,15 @@ Ogni campo può avere un set di regole di visibilità che determinano se un visi
 
 La modifica delle regole di visibilità è un aggiornamento distruttivo.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/field/Email/visibility.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operator": "isNotEmpty", "values": [], "altLabel": "Email:"}]}
 ```
 
@@ -918,7 +918,7 @@ Per l&#39;elenco completo degli operatori disponibili, vedere la pagina di rifer
 
 ## Follow-up
 
-I Marketo form possono avere un comportamento dinamico di pagina di follow-up in cui le regole per il reindirizzamento a una determinata pagina o la permanenza nella pagina corrente possono essere applicate in base al contenuto dei campi designati al momento dell’invio. Le regole possono essere denominate regole di pagina di ringraziamento o regole di pagina di follow-up in modo intercambiabile. Queste regole sono rappresentate come array JSON con i membri `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` è un valore booleano per il quale può essere vero un solo record nell’array. Quando un visitatore non è idoneo per altre regole, viene utilizzata la regola designata come predefinita. `followupType` può essere lp o url, dove lp indica un ID pagina di destinazione Marketo per `followupValue` e url indica un URL per un&#39;altra pagina. L’operatore viene utilizzato per confrontare il valore del campo soggetto con l’elenco di valori fornito.
+I Marketo form possono avere un comportamento dinamico di pagina di follow-up in cui le regole per il reindirizzamento a una determinata pagina o la permanenza nella pagina corrente possono essere applicate in base al contenuto dei campi designati al momento dell’invio. Le regole possono essere denominate regole di pagina di ringraziamento o regole di pagina di follow-up in modo intercambiabile. Queste regole sono rappresentate come array JSON con i membri `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` è un valore booleano per il quale può essere vero un solo record nell&#39;array. Quando un visitatore non è idoneo per altre regole, viene utilizzata la regola designata come predefinita. `followupType` può essere lp o url, dove lp indica un ID pagina di destinazione Marketo per `followupValue` e url indica un URL per un&#39;altra pagina. L’operatore viene utilizzato per confrontare il valore del campo soggetto con l’elenco di valori fornito.
 
 ## Pulsante Invia
 
@@ -934,15 +934,15 @@ Come la maggior parte delle altre risorse, i moduli seguono un modello approvato
 
 Quando per un modulo è abilitata la profilatura progressiva, nell&#39;elenco dei campi viene incluso un set di campi denominato &quot;Profilatura&quot;. Per aggiungere o rimuovere campi dall&#39;elenco di profilatura progressiva, è necessario utilizzare l&#39;endpoint Aggiorna posizioni campo. Questo endpoint effettua aggiornamenti distruttivi, pertanto tutti i campi nel modulo devono essere inclusi in ogni richiesta. L&#39;esempio seguente aggiunge il campo &quot;Phone&quot; all&#39;elenco di profilatura progressiva.
 
-```
+```http
 POST /rest/asset/v1/form/{id}/reArrange.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"Email"},{"columnNumber":0,"rowNumber":1,"fieldName":"LastName"},{"columnNumber":0,"rowNumber":2,"fieldName":"Company"},{"columnNumber":0,"rowNumber":3,"fieldName":"Website"},{"columnNumber":0,"rowNumber":4,"fieldName":"Profiling","fieldList":[{"columnNumber":0,"rowNumber":0,"fieldName":"Phone"}]}]
 ```
 
