@@ -3,9 +3,9 @@ title: Estrai in blocco
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '1723'
+source-wordcount: '1724'
 ht-degree: 0%
 
 ---
@@ -53,7 +53,7 @@ Le API di estrazione in blocco vengono misurate in base alle dimensioni su disco
 
 La quota giornaliera non può superare i 500 MB al giorno, condivisa tra lead, attività, membri del programma e oggetti personalizzati. Quando la quota viene superata, non è possibile creare o accodare un altro processo finché la quota giornaliera non viene ripristinata alla mezzanotte [ora centrale](https://en.wikipedia.org/wiki/Central_Time_Zone). Fino a quel momento, viene restituito l’errore &quot;1029, Quota giornaliera di esportazione superata&quot;. A parte la quota giornaliera, non esiste una dimensione massima per il file.
 
-Una volta messo in coda o in elaborazione, il processo viene eseguito fino al completamento (salvo un errore o l’annullamento del processo). Se un processo non riesce per qualche motivo, è necessario ricrearlo. I file vengono scritti completamente solo quando un processo raggiunge lo stato completato (i file parziali non vengono mai scritti). Puoi verificare che un file sia stato scritto completamente calcolando l’hash SHA-256 e confrontandolo con il checksum restituito dagli endpoint di stato del processo.
+Una volta messo in coda o in elaborazione, il processo viene eseguito fino al completamento (salvo un errore o l’annullamento del processo). Se un processo non riesce per qualche motivo, è necessario ricrearlo. I file vengono scritti completamente solo quando un processo raggiunge lo stato completato (i file parziali non vengono mai scritti). Puoi verificare che un file sia stato scritto completamente calcolando che si tratti dell’hash SHA-256 e confrontandolo con il checksum restituito dagli endpoint di stato del processo.
 
 È possibile determinare la quantità totale di disco utilizzato per il giorno corrente chiamando Processi Get Export Lead/Activity/Program Member. Questi endpoint restituiscono un elenco di tutti i processi degli ultimi sette giorni. È possibile filtrare l&#39;elenco in base ai soli processi completati nel giorno corrente (utilizzando gli attributi `status` e `finishedAt`). Quindi sommare le dimensioni dei file per quei processi per produrre la quantità totale utilizzata. Impossibile eliminare un file per recuperare spazio su disco.
 

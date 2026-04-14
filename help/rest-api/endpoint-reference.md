@@ -3,10 +3,10 @@ title: Riferimento endpoint
 feature: REST API
 description: Elenco completo degli endpoint API REST di Marketo con metodi, URI e autorizzazioni richieste per attività, esportazione in blocco, identità, lead, risorse, utenti.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
 workflow-type: tm+mt
 source-wordcount: '4793'
-ht-degree: 7%
+ht-degree: 8%
 
 ---
 
@@ -14,9 +14,9 @@ ht-degree: 7%
 
 Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
 
-- [Risorsa](https://developer.adobe.com/marketo-apis/api/asset/)
+- [Risorsa](https://developer.adobe.com/marketo-apis/api/asset)
 - [Identità](https://developer.adobe.com/marketo-apis/api/identity/)
-- [Database lead](https://developer.adobe.com/marketo-apis/api/mapi/)
+- [Database lead](https://developer.adobe.com/marketo-apis/api/mapi)
 - [Gestione degli utenti](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## Elenco endpoint {#endpoint_list}
@@ -328,7 +328,7 @@ Elenco completo degli endpoint REST API.
 | Ottieni elenco statico per ID | Elenchi statici | GET | /asset/v1/staticList/{id}.json | Risorsa di sola lettura |
 | Ottieni elenco statico per nome | Elenchi statici | GET | /asset/v1/staticList/byName.json | Risorsa di sola lettura |
 | Ottieni elenchi statici | Elenchi statici | GET | /asset/v1/staticLists.json | Risorsa di sola lettura |
-| Membro dell&#39;elenco | Elenchi statici | GET | /rest/v1/LISTS/{listId}/leads/ismember.json | Lead di sola lettura |
+| Membro dell’elenco | Elenchi statici | GET | /rest/v1/LISTS/{listId}/leads/ismember.json | Lead di sola lettura |
 | Rimuovi dall’elenco | Elenchi statici | DELETE | /rest/v1/LISTS/{listId}/leads.json | Lead di lettura/scrittura |
 | Aggiorna metadati elenco statico | Elenchi statici | POST | /asset/v1/staticList/{id}.json | Risorsa di lettura/scrittura |
 | Ottieni tag per nome | Tag | GET | /rest/asset/v1/tagType/byName.json | Risorsa di sola lettura |

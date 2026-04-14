@@ -3,7 +3,7 @@ title: Token di paging
 feature: REST API
 description: Utilizza i token di paging API REST di Marketo per recuperare attività e lead, che coprono token basati su data e posizione, ISO 8601 SinceDatetime ed errori 414.
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '424'
 ht-degree: 0%
@@ -16,7 +16,7 @@ Per esaminare i risultati o recuperare i dati aggiornati rispetto a un dato dato
 
 In alcuni casi è possibile che vengano restituite stringhe di token di paging lunghe. Questo potrebbe causare l’errore HTTP 414. Ulteriori informazioni su come gestire questi [errori](error-codes.md).
 
-Consulta la documentazione [Paging Token API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET).
+Consulta la documentazione [Paging Token API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getActivitiesPagingTokenUsingGET).
 
 ## Tipi di token
 
@@ -27,7 +27,7 @@ Esistono due tipi correlati, ma distinti, di token di paging forniti da Marketo:
 
 ## Basato su data
 
-Il primo è un token di paging che rappresenta una data. Vengono utilizzati per recuperare attività, modifiche al valore dei dati e lead eliminati che si sono verificati dopo la data rappresentata dal token di paging. Questo tipo di token di paging viene generato chiamando l&#39;endpoint [Get Paging Token](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET) e includendo un datetime.
+Il primo è un token di paging che rappresenta una data. Vengono utilizzati per recuperare attività, modifiche al valore dei dati e lead eliminati che si sono verificati dopo la data rappresentata dal token di paging. Questo tipo di token di paging viene generato chiamando l&#39;endpoint [Get Paging Token](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getActivitiesPagingTokenUsingGET) e includendo un datetime.
 
 ```http
 GET /rest/v1/activities/pagingtoken.json?sinceDatetime=2014-10-06T13:22:17-08:00
@@ -57,7 +57,7 @@ Esempi
 
 Poiché `sinceDateTime` è un parametro di query, deve essere codificato nell&#39;URL.
 
-La stringa `nextPageToken` viene quindi fornita a una chiamata [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET), [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) o [Get Deleted Leads](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) e le attività vengono recuperate da dopo il datetime fornito all&#39;API Get Paging Token.
+La stringa `nextPageToken` viene quindi fornita a una chiamata [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET), [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) o [Get Deleted Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) e le attività vengono recuperate da dopo il datetime fornito all&#39;API Get Paging Token.
 
 ```http
 GET /rest/v1/activities.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&activityTypeIds=1&activityTypeIds=12

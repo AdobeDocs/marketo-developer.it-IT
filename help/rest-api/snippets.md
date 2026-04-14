@@ -3,22 +3,22 @@ title: Snippet
 feature: REST API, Snippets
 description: API REST di Marketo Asset per snippet, che copre le query per ID e sfoglia con lo stato, l’ottenimento di contenuti, la creazione e l’aggiornamento di HTML, testo e contenuti dinamici.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '511'
+source-wordcount: '512'
 ht-degree: 1%
 
 ---
 
 # Snippet
 
-[Riferimento endpoint snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
+[Riferimento endpoint snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets)
 
 I snippet sono componenti HTML riutilizzabili che possono essere incorporati nelle e-mail e nelle pagine di destinazione e che possono essere segmentati per contenuti dinamici. Ai frammenti non sono associati modelli e possono essere creati e distribuiti all&#39;interno di altre risorse in Marketo.
 
 ## Query
 
-La query dei frammenti segue il modello standard per le risorse, tranne per il fatto che non dispone del metodo By Name. Entrambi i metodi [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) e [Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) consentono l&#39;utilizzo del campo di stato per recuperare le versioni approvate o bozza del frammento.
+La query dei frammenti segue il modello standard per le risorse, tranne per il fatto che non dispone del metodo By Name. Entrambi i metodi [By Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) e [Browse](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET) consentono l&#39;utilizzo del campo di stato per recuperare le versioni approvate o bozza del frammento.
 
 ### Per ID
 
@@ -143,7 +143,7 @@ La chiamata restituisce un elenco di sezioni di contenuto,  che sono costituite
 
 ## Crea e aggiorna
 
-I frammenti seguono il pattern di creazione delle risorse complesse, in cui la chiamata a [create snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) e il relativo contenuto vengono eseguiti separatamente, pertanto la prima chiamata deve essere all&#39;endpoint create, con una descrizione facoltativa.   I dati vengono passati come x-www-form-urlencoded, non come JSON.
+I frammenti seguono il pattern di creazione delle risorse complesse, in cui la chiamata a [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST) e il relativo contenuto vengono eseguiti separatamente, pertanto la prima chiamata deve essere all&#39;endpoint create, con una descrizione facoltativa.   I dati vengono passati come x-www-form-urlencoded, non come JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[L&#39;aggiornamento dei metadati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) viene eseguito anche dall&#39;ID. È possibile aggiornare solo il nome e la descrizione:
+[L&#39;aggiornamento dei metadati](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST) viene eseguito anche dall&#39;ID. È possibile aggiornare solo il nome e la descrizione:
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Duplica
 
-[La duplicazione di uno snippet](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) con l&#39;API è semplice e segue il modello standard, con un nome obbligatorio, un ID dello snippet e della cartella originali e una descrizione facoltativa.  Se non esiste alcuna versione approvata, la versione bozza viene clonata.
+[La duplicazione di uno snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST) con l&#39;API è semplice e segue il modello standard, con un nome obbligatorio, un ID dello snippet e della cartella originali e una descrizione facoltativa.  Se non esiste alcuna versione approvata, la versione bozza viene clonata.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

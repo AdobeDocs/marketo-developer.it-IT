@@ -3,7 +3,7 @@ title: Importazione lead in blocco
 feature: REST API
 description: Creazione e monitoraggio delle importazioni asincrone di lead in blocco in Marketo con file CSV TSV o SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '825'
 ht-degree: 0%
@@ -12,9 +12,9 @@ ht-degree: 0%
 
 # Importazione lead in blocco
 
-[Riferimento endpoint importazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
+[Riferimento endpoint importazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-Per grandi quantità di record di lead, è possibile importare i lead in modo asincrono con l&#39;[API bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo consente di importare un elenco di record in Marketo utilizzando un file flat con i delimitatori (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché le dimensioni totali del file siano inferiori a 10 MB. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
+Per grandi quantità di record di lead, è possibile importare i lead in modo asincrono con l&#39;[API bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo consente di importare un elenco di record in Marketo utilizzando un file flat con i delimitatori (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché le dimensioni totali del file siano inferiori a 10 MB. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
 ## Limiti di elaborazione
 

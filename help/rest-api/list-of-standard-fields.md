@@ -3,9 +3,9 @@ title: Campi standard
 feature: REST API, Field Management
 description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST e SOAP, oltre a come recuperarli tramite l’API Descrivi lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '727'
+source-wordcount: '742'
 ht-degree: 16%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 16%
 
 Di seguito è riportato un elenco dei campi standard disponibili in Marketo che sono accessibili tramite l’API.
 
-Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei record dei lead utilizzando l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi/).
+Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei record dei lead utilizzando l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi).
 
 | Nome API REST | Nome API SOAP | Etichetta intuitiva | Descrizione |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei
 | telefono | Telefono | Numero di telefono | Numero di telefono del lead |
 | postalCode | CAP | Codice di avviamento postale | Codice postale del lead |
 | valutazione | Valutazione | Classificazione Lead | Valutazione marketing/vendite del lead |
-| saluto | Formula di saluto | Formula di saluto | Formula di apertura preferita del lead, ad esempio Mister, Misses, ecc. |
+| saluto | Formula di saluto | Formula di saluto | Il saluto preferito del lead, cioè Mister, Misses... e così via |
 | sicCode | Codice SICC | Codice SIC (Standard Industrial Classification) | Codice di classificazione industriale standard della società del lead |
 | sito | Sito | Sito |  |
 | Stato | Stato | Stato | Stato del lead |

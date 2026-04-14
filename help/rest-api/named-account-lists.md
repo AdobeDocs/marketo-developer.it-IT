@@ -3,7 +3,7 @@ title: Elenchi di account denominati
 feature: REST API
 description: Scopri come gestire gli elenchi di account denominati Marketo con l’API REST, che includono autorizzazioni, campi, filtri ed endpoint per eseguire query, creare, aggiornare ed eliminare.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '746'
 ht-degree: 2%
@@ -12,9 +12,9 @@ ht-degree: 2%
 
 # Elenchi di account denominati
 
-[Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
+[Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Elenchi account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
 `Content`
 
 ## Autorizzazioni

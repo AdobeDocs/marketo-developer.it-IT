@@ -3,10 +3,10 @@ title: Prestazioni
 feature: REST API
 description: Migliora le prestazioni dell’API REST di Marketo con la compressione HTTP. Consenti a gzip di tagliare la larghezza di banda; API in blocco non supportate e inferiori a 1024 byte non compresse.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
 workflow-type: tm+mt
-source-wordcount: '136'
-ht-degree: 0%
+source-wordcount: '146'
+ht-degree: 1%
 
 ---
 
@@ -34,7 +34,7 @@ L’API REST di Marketo comprimerà il corpo della risposta e includerà questa 
 Content-Encoding: gzip
 ```
 
-Esempio di utilizzo di Curl per chiamare l&#39;endpoint [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) per recuperare 5 lead:
+Esempio di utilizzo di Curl per chiamare l&#39;endpoint [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) per recuperare 5 lead:
 
 ```bash
 curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

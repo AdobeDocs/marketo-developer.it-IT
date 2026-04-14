@@ -3,9 +3,9 @@ title: REST API
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo, configurare gli utenti API e LaunchPoint, visualizzare quote e limiti, eseguire l’autenticazione con l’intestazione Autorizzazione e recuperare i lead.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '859'
+source-wordcount: '858'
 ht-degree: 2%
 
 ---
@@ -14,13 +14,15 @@ ht-degree: 2%
 
 Marketo espone un’API REST che consente l’esecuzione remota di molte delle funzionalità del sistema. Dalla creazione di programmi all’importazione in blocco di lead, sono disponibili molte opzioni che consentono il controllo dettagliato di un’istanza di Marketo.
 
-Queste API in genere rientrano in due categorie generali: [Lead Database](https://developer.adobe.com/marketo-apis/api/mapi/) e [Asset](https://developer.adobe.com/marketo-apis/api/asset/). Le API del database lead consentono il recupero e l’interazione con i record persona di Marketo e i tipi di oggetto associati, ad esempio Opportunità e Società. Le API Asset consentono l’interazione con materiale promozionale di marketing e record relativi al flusso di lavoro.
+Queste API in genere rientrano in due categorie generali: [Lead Database](https://developer.adobe.com/marketo-apis/api/mapi) e [Asset](https://developer.adobe.com/marketo-apis/api/asset). Le API del database lead consentono il recupero e l’interazione con i record persona di Marketo e i tipi di oggetto associati, ad esempio Opportunità e Società. Le API Asset consentono l’interazione con materiale promozionale di marketing e record relativi al flusso di lavoro.
 
 >[!NOTE]
+>
 >L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 luglio 2026. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](./rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](../soap-api/migration.md) per informazioni su come eseguire la migrazione.
 >
 
 >[!IMPORTANT]
+>
 >Consulta questo [Post nazione](https://nation.marketo.com/t5/product-blogs/rest-api-double-slash-deprecation/ba-p/358616) sulla rimozione della doppia barra negli URL del gateway API.
 >
 
@@ -38,31 +40,31 @@ Per la prima chiamata a Marketo, recupera un record di lead. Per iniziare a util
 
 ![Utenti e ruoli amministratori](assets/admin-users-and-roles.png)
 
-Fare clic sulla scheda **[!UICONTROL Roles]**, quindi su Nuovo ruolo e assegnare almeno l&#39;autorizzazione &quot;Lead di sola lettura&quot; (o &quot;Persona di sola lettura&quot;) al ruolo nel gruppo API di accesso. Assicurarsi di assegnare un nome descrittivo e fare clic su **[!UICONTROL Create]**.
+Fare clic sulla scheda **[!UICONTROL Roles]**, quindi su Nuovo ruolo e assegnare almeno l&#39;autorizzazione &quot;Lead di sola lettura&quot; (o &quot;Persona di sola lettura&quot;) al ruolo nel gruppo API di accesso. Assegnare un nome descrittivo e selezionare **[!UICONTROL Create]**.
 
 ![Nuovo ruolo](assets/new-role.png)
 
-Tornare alla scheda [!UICONTROL Users] e fare clic su **[!UICONTROL Invite New User]**. Assegnare all&#39;utente un nome descrittivo che indichi che si tratta di un utente API, un indirizzo di posta elettronica e fare clic su **[!UICONTROL Next]**.
+Tornare alla scheda [!UICONTROL Users] e selezionare **[!UICONTROL Invite New User]**. Assegna all&#39;utente un nome descrittivo che indica che si tratta di un utente API, un indirizzo e-mail e seleziona **[!UICONTROL Next]**.
 
 ![Informazioni nuovo utente](assets/new-user-info.png)
 
-Quindi, seleziona l&#39;opzione [!UICONTROL API Only] e assegna all&#39;utente il ruolo API creato, quindi fai clic su **[!UICONTROL Next]**.
+Quindi, seleziona l&#39;opzione [!UICONTROL API Only] e assegna all&#39;utente il ruolo API creato e seleziona **[!UICONTROL Next]**.
 
 ![Autorizzazioni per nuovi utenti](assets/new-user-permissions.png)
 
-Per completare il processo di creazione utente, fare clic su **[!UICONTROL Send]**.
+Per completare il processo di creazione utente, selezionare **[!UICONTROL Send]**.
 
 ![Nuovo messaggio utente](assets/new-user-message.png)
 
-Passare quindi al menu [!UICONTROL Admin] e fare clic su **[!UICONTROL LaunchPoint]**.
+Quindi, passare al menu [!UICONTROL Admin] e selezionare **[!UICONTROL LaunchPoint]**.
 
 ![Punto di avvio](assets/admin-launchpoint.png)
 
-Fare clic sul menu **[!UICONTROL New]** e selezionare **[!UICONTROL New Service]**. Assegna un nome descrittivo al servizio e seleziona **[!UICONTROL Custom]** dal menu a discesa [!UICONTROL Service]. Fornisci una descrizione, quindi seleziona il nuovo utente dal menu a discesa [!UICONTROL API Only User] e fai clic su **[!UICONTROL Create]**.
+Fare clic sul menu **[!UICONTROL New]** e selezionare **[!UICONTROL New Service]**. Assegna un nome descrittivo al servizio e seleziona **[!UICONTROL Custom]** dal menu a discesa [!UICONTROL Service]. Assegnare una descrizione, quindi selezionare il nuovo utente dal menu a discesa [!UICONTROL API Only User] e selezionare **[!UICONTROL Create]**.
 
 ![Nuovo servizio Launchpoint](assets/admin-launchpoint-new-service.png)
 
-Fare clic su **[!UICONTROL View Details]** per il nuovo servizio per accedere all&#39;ID client e al segreto client. Per il momento puoi fare clic sul pulsante **[!UICONTROL Get Token]** per generare un token di accesso valido per un&#39;ora. Per il momento salva il token in una nota.
+Selezionare **[!UICONTROL View Details]** per il nuovo servizio per accedere all&#39;ID client e al segreto client. Per il momento puoi selezionare **[!UICONTROL Get Token]** per generare un token di accesso valido per un&#39;ora. Per il momento salva il token in una nota.
 
 ![Ottieni token](assets/get-token.png)
 
@@ -84,7 +86,7 @@ Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 >
 >Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
-Apri una nuova scheda del browser e immetti quanto segue, utilizzando le informazioni appropriate per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET)
+Apri una nuova scheda del browser e immetti quanto segue, utilizzando le informazioni appropriate per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)
 
 ```text
 <Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>

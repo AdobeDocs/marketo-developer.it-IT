@@ -3,9 +3,9 @@ title: Reindirizza
 description: Implementa l’API di reindirizzamento RTP per inviare i visitatori segmentati a URL mirati utilizzando campi come ABM, organizzazione, posizione e segmenti, con esempi e suggerimenti.
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 18d828b5d98c00f04739d417d043a33fcbb9c37a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '500'
+source-wordcount: '502'
 ht-degree: 7%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 7%
 
 L’API di reindirizzamento RTP consente di reindirizzare i tipi di pubblico segmentati a un URL di destinazione.
 
-- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 - RTP non supporta gli elenchi di account denominati Account Based Marketing (Marketing basato su account). Gli elenchi e il codice ABM si riferiscono solo agli elenchi di account caricati (file CSV) gestiti all’interno di RTP.
 
 ## Utilizzo
@@ -86,7 +86,7 @@ rtp('get','campaign');
 
 ## Reindirizzare i visitatori tracciati
 
-1. Aggiungi un parametro alla fine dell’URL di destinazione: ad esempio &lt;www.marketo.com?rtp=redirect>
+1. Aggiungi un parametro alla fine dell’URL di destinazione: &lt;www.marketo.com?rtp=redirect>
 1. Creare un segmento denominato - &quot;Reindirizzato da RTP&quot;
 1. Utilizza il parametro &quot;Pagine specifiche&quot; per indirizzare i visitatori che visualizzano qualsiasi pagina con il parametro mostrato di seguito.
 

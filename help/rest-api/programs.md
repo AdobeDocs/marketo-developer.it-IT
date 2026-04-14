@@ -3,7 +3,7 @@ title: Programmi
 feature: REST API, Programs
 description: Guida ai programmi Marketo per l’API REST di Asset, che tratta tipi, canali, tag, stati membri ed endpoint da ottenere per ID o nome, sfogliare e filtrare per stato.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '979'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # Programmi
 
-[Riferimento endpoint programmi](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
+[Riferimento endpoint programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs)
 
 I programmi sono un componente organizzativo principale delle attività di marketing di Marketo. Possono essere elementi principali per la maggior parte dei tipi di risorse e consentire il tracciamento dell’appartenenza e del successo dei lead nel contesto di singole iniziative di marketing. I programmi possono essere padri di tutti i tipi di record ad eccezione di LP, Modelli e-mail e File.
 
@@ -32,11 +32,11 @@ I programmi dispongono sempre di un canale, derivano la possibile configurazione
 
 ## Query
 
-I programmi seguono il modello standard per le query su risorse con un’opzione aggiuntiva per eseguire query per tipo di tag e valori. I tag e i valori disponibili possono essere recuperati con [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags/operation/getTagTypesUsingGET).
+I programmi seguono il modello standard per le query su risorse con un’opzione aggiuntiva per eseguire query per tipo di tag e valori. I tag e i valori disponibili possono essere recuperati con [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET).
 
 ### Per ID
 
-L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) richiede un parametro di percorso `id`.
+L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) richiede un parametro di percorso `id`.
 
 L&#39;ID programma può essere ottenuto dall&#39;URL del programma nell&#39;interfaccia utente, dove l&#39;URL sarà simile a `https://app-\*\*\*.marketo.com/#PG1001A1`. In questo URL, `id` è 1001. Sarà sempre compreso tra il primo set di lettere nell’URL e il secondo set di lettere.
 
@@ -82,7 +82,7 @@ GET /rest/asset/v1/program/{id}.json
 
 ### Per nome
 
-L&#39;endpoint [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset/) richiede un parametro di query `name`. I parametri di query booleani facoltativi sono `includeTags` e `includeCosts`, utilizzati rispettivamente per restituire i tag del programma e i costi del programma.
+L&#39;endpoint [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset) richiede un parametro di query `name`. I parametri di query booleani facoltativi sono `includeTags` e `includeCosts`, utilizzati rispettivamente per restituire i tag del programma e i costi del programma.
 
 ```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
@@ -126,13 +126,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### Sfogliare
 
-L&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) consente di cercare programmi.
+L&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) consente di cercare programmi.
 
 Il parametro facoltativo `status` consente di filtrare in base allo stato del programma. Questo parametro si applica solo ai programmi di coinvolgimento e e-mail. I valori possibili sono &quot;on&quot; e &quot;off&quot; per i programmi di coinvolgimento e &quot;unlocked&quot; per i programmi e-mail.
 
 Il parametro facoltativo `maxReturn` controlla il numero di programmi da restituire (il massimo è 200, il valore predefinito è 20). Parametro `offset` facoltativo utilizzato per i risultati di paging (il valore predefinito è 0).
 
-Tieni presente che i tag associati a un programma non vengono restituiti da questo endpoint. È possibile recuperare i tag del programma utilizzando [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
+Tieni presente che i tag associati a un programma non vengono restituiti da questo endpoint. È possibile recuperare i tag del programma utilizzando [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET).
 
 ```http
 GET /rest/asset/v1/programs.json
@@ -187,7 +187,7 @@ GET /rest/asset/v1/programs.json
 
 ### Per intervallo di date
 
-I parametri `earliestUpdatedAt` e `latestUpdatedAt` dell&#39;endpoint [Get Programs](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) consentono di impostare soglie di data/ora basse e alte per i programmi restituiti che sono stati aggiornati o creati inizialmente nell&#39;intervallo specificato.
+I parametri `earliestUpdatedAt` e `latestUpdatedAt` dell&#39;endpoint [Get Programs](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) consentono di impostare soglie di data/ora basse e alte per i programmi restituiti che sono stati aggiornati o creati inizialmente nell&#39;intervallo specificato.
 
 ```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -278,7 +278,7 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### Per tipo di tag
 
-L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramListByTagUsingGET) recupera un elenco di programmi che corrispondono al tipo di tag e ai valori di tag specificati.
+L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET) recupera un elenco di programmi che corrispondono al tipo di tag e ai valori di tag specificati.
 
 Esistono due parametri obbligatori: `tagType`, che è il tipo di tag su cui filtrare, e `tagValue`, che è il valore di tag su cui filtrare.  Il parametro facoltativo `maxReturn` integer controlla il numero di programmi da restituire (il massimo è 200, il valore predefinito è 20) e il parametro facoltativo integer `offset` utilizzato per il paging dei risultati (il valore predefinito è 0).  I risultati vengono restituiti in ordine casuale.
 
@@ -320,7 +320,7 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Crea e aggiorna
 
-I programmi [Creazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) e [Aggiornamento](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) seguono il modello di risorsa standard e contengono `folder`, `name`, `type` e `channel` come parametri obbligatori. `description`, `costs` e `tags` sono facoltativi. Il canale e il tipo possono essere impostati solo al momento della creazione del programma. Dopo la creazione è possibile aggiornare solo descrizione, nome, `tags` e `costs`, con un parametro `costsDestructiveUpdate` aggiuntivo consentito. Se si passa `costsDestructiveUpdate` come true, tutti i costi esistenti verranno cancellati e sostituiti con eventuali costi inclusi nella chiamata. Tieni presente che i tag possono essere necessari per alcuni tipi di programmi in alcune sottoscrizioni, ma questo dipende dalla configurazione e deve prima essere verificato con Ottieni tag per verificare se sono presenti requisiti specifici per l’istanza.
+I programmi [Creazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST) e [Aggiornamento](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST) seguono il modello di risorsa standard e contengono `folder`, `name`, `type` e `channel` come parametri obbligatori. `description`, `costs` e `tags` sono facoltativi. Il canale e il tipo possono essere impostati solo al momento della creazione del programma. Dopo la creazione è possibile aggiornare solo descrizione, nome, `tags` e `costs`, con un parametro `costsDestructiveUpdate` aggiuntivo consentito. Se si passa `costsDestructiveUpdate` come true, tutti i costi esistenti verranno cancellati e sostituiti con eventuali costi inclusi nella chiamata. Tieni presente che i tag possono essere necessari per alcuni tipi di programmi in alcune sottoscrizioni, ma questo dipende dalla configurazione e deve prima essere verificato con Ottieni tag per verificare se sono presenti requisiti specifici per l’istanza.
 
 Durante la creazione o l&#39;aggiornamento di un programma e-mail, è possibile passare `startDate` e `endDate` anche come data/ora UTC:
 
@@ -485,7 +485,7 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## Duplica
 
-[I programmi di clonazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/cloneProgramUsingPOST) seguono il modello di risorsa standard con il nuovo nome e la nuova cartella come parametri obbligatori e una descrizione facoltativa.  Il parametro `name` deve essere univoco e non può superare i 255 caratteri.  Il parametro `folder` è la cartella padre.  L&#39;attributo del tipo di parametro `folder` deve essere impostato su &quot;Folder&quot; e la cartella di destinazione deve trovarsi nella stessa area di lavoro del programma clonato.
+[I programmi di clonazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST) seguono il modello di risorsa standard con il nuovo nome e la nuova cartella come parametri obbligatori e una descrizione facoltativa.  Il parametro `name` deve essere univoco e non può superare i 255 caratteri.  Il parametro `folder` è la cartella padre.  L&#39;attributo del tipo di parametro `folder` deve essere impostato su &quot;Folder&quot; e la cartella di destinazione deve trovarsi nella stessa area di lavoro del programma clonato.
 
 I programmi che contengono determinati tipi di risorse non possono essere clonati tramite questa API, tra cui notifiche push, messaggi in-app, rapporti e Social Assets. I programmi in-app non possono essere clonati tramite questa API.
 

@@ -3,7 +3,7 @@ title: Estrazione lead in blocco
 feature: REST API
 description: Scopri come utilizzare le API REST di Estrazione lead in blocco di Marketo per esportare in blocco i lead con filtri per data, elenco e elenchi avanzati, campi personalizzati e formati CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1273'
 ht-degree: 2%
@@ -12,7 +12,7 @@ ht-degree: 2%
 
 # Estrazione lead in blocco
 
-[Riferimento endpoint estrazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Riferimento endpoint estrazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
 Il set Bulk Lead Extract delle API REST fornisce un’interfaccia programmatica per recuperare set elevati di record di lead/persone da Marketo. Inoltre, può essere utilizzato per recuperare i lead in modo incrementale in base alla data di creazione del record, all’aggiornamento più recente, all’iscrizione all’elenco statico o all’iscrizione all’elenco avanzato. L&#39;interfaccia consigliata per i casi d&#39;uso che richiedono l&#39;interscambio continuo di dati tra Marketo e uno o più sistemi esterni, a scopo di ETL, data warehousing e archiviazione.
 
@@ -47,7 +47,7 @@ L’endpoint del processo Crea lead di esportazione offre diverse opzioni di for
 
 ## Creazione di un processo
 
-I parametri per il processo vengono definiti prima di avviare l&#39;esportazione utilizzando l&#39;endpoint [Crea processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). È necessario definire `fields` necessari per l&#39;esportazione, il tipo di parametri di `filter`, `format` del file e gli eventuali nomi di intestazione di colonna.
+I parametri per il processo vengono definiti prima di avviare l&#39;esportazione utilizzando l&#39;endpoint [Crea processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). È necessario definire `fields` necessari per l&#39;esportazione, il tipo di parametri di `filter`, `format` del file e gli eventuali nomi di intestazione di colonna.
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -95,7 +95,7 @@ Questa richiesta inizierà l&#39;esportazione di un set di lead creati tra il 1�
 }
 ```
 
-Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. A tale scopo, l&#39;endpoint [Processo lead esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve essere chiamato utilizzando il valore exportId dalla risposta dello stato di creazione:
+Restituisce una risposta di stato che indica che il processo è stato creato. Il processo è stato definito e creato, ma non è ancora stato avviato. A tale scopo, l&#39;endpoint [Processo lead esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve essere chiamato utilizzando il valore exportId dalla risposta dello stato di creazione:
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -123,7 +123,7 @@ Questo risponde con un `status` di &quot;In coda&quot; dopo il quale verrà impo
 
 È possibile recuperare lo stato `Note:` solo per i processi creati dallo stesso utente API.
 
-Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire un polling del relativo stato per determinarne l’avanzamento. Eseguire il polling utilizzando l&#39;endpoint [Ottieni stato processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Diamo un&#39;occhiata ai sondaggi.
+Poiché si tratta di un endpoint asincrono, dopo la creazione del processo è necessario eseguire un polling del relativo stato per determinarne l’avanzamento. Eseguire il polling utilizzando l&#39;endpoint [Ottieni stato processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). Lo stato viene aggiornato solo una volta ogni 60 secondi, pertanto non è consigliabile una frequenza di polling inferiore a questa, e in quasi tutti i casi è ancora eccessiva. Diamo un&#39;occhiata ai sondaggi.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -158,7 +158,7 @@ Il campo di stato può rispondere con uno qualsiasi dei seguenti elementi:
 
 ## Recupero dei dati
 
-Per recuperare il file di un&#39;esportazione lead completata, è sufficiente chiamare l&#39;endpoint [Ottieni file lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) con `exportId`.
+Per recuperare il file di un&#39;esportazione lead completata, è sufficiente chiamare l&#39;endpoint [Ottieni file lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) con `exportId`.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
@@ -177,7 +177,7 @@ Per supportare il recupero parziale e intuitivo dei dati estratti, l’endpoint 
 
 ## Annullamento di un processo
 
-Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
+Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo lead esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json

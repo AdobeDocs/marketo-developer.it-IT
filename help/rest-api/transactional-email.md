@@ -3,22 +3,22 @@ title: E-mail transazionale
 feature: REST API
 description: Scopri come configurare Marketo per le e-mail transazionali e attivarle tramite la campagna di richiesta API REST, con passaggi di configurazione ed esempi di codice Java.
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '988'
-ht-degree: 0%
+source-wordcount: '1092'
+ht-degree: 1%
 
 ---
 
 # E-mail transazionale
 
-Un caso d&#39;uso comune per l&#39;API Marketo è quello di attivare l&#39;invio di e-mail transazionali a record specifici tramite la chiamata API [Richiedi campagna](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST). In Marketo sono presenti alcuni requisiti di configurazione per eseguire la chiamata richiesta con l’API REST di Marketo.
+Un caso d&#39;uso comune per l&#39;API Marketo è quello di attivare l&#39;invio di e-mail transazionali a record specifici tramite la chiamata API [Richiedi campagna](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST). In Marketo sono presenti alcuni requisiti di configurazione per eseguire la chiamata richiesta con l’API REST di Marketo.
 
 - Il destinatario deve avere un record in Marketo
 - Nell’istanza di Marketo deve essere stato creato e approvato un messaggio e-mail transazionale.
 - Deve essere presente una campagna trigger attiva con &quot;Campaign is Requested, 1. Source: Web Service API&quot;, configurato per inviare l’e-mail
 
-Crea e approva il tuo indirizzo e-mail[. &#x200B;](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it) Se l’e-mail è effettivamente transazionale, probabilmente dovrai impostarla su operativa, ma assicurati che sia giuridicamente qualificata come operativa. Questa è configurata da con la schermata Edit (Modifica) in Email Actions (Azioni e-mail) > Email Settings (Impostazioni e-mail):
+Crea e approva il tuo indirizzo e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it). [Se l’e-mail è effettivamente transazionale, probabilmente dovrai impostarla su operativa, ma assicurati che sia giuridicamente qualificata come operativa. Questa è configurata da con la schermata Edit (Modifica) in Email Actions (Azioni e-mail) > Email Settings (Impostazioni e-mail):
 
 ![Richieste-Campagne-Impostazioni-E-Mail](assets/request-campaign-email-settings.png)
 
@@ -28,7 +28,7 @@ Approvalo e siamo pronti a creare la nostra campagna:
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-Se non hai ancora creato le campagne, consulta l&#39;articolo [Creare una nuova campagna avanzata](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=it). Dopo aver creato la campagna, dobbiamo seguire questi passaggi. Configura l’elenco avanzato con il trigger Campaign is Requested:
+Se non hai ancora creato le campagne, consulta l&#39;articolo [Creare una nuova campagna avanzata](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html). Dopo aver creato la campagna, dobbiamo seguire questi passaggi. Configura l’elenco avanzato con il trigger Campaign is Requested:
 
 ![Richiesta-Campagna-Elenco Smart](assets/request-campaign-smart-list.png)
 
@@ -46,7 +46,7 @@ Ora è possibile attivare:
 
 **Nota:** negli esempi Java seguenti, utilizziamo il [pacchetto minimal-json](https://github.com/ralfstx/minimal-json) per gestire le rappresentazioni JSON nel nostro codice.
 
-La prima parte dell’invio di un’e-mail transazionale tramite l’API consiste nel garantire che nell’istanza Marketo esista un record con l’indirizzo e-mail corrispondente e che sia possibile accedere al relativo ID lead. Ai fini di questo post, supponiamo che gli indirizzi e-mail siano già in Marketo e che si debba recuperare solo l’ID del record. Per questo, stiamo utilizzando la chiamata [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET). Vediamo il nostro metodo principale per richiedere la campagna:
+La prima parte dell’invio di un’e-mail transazionale tramite l’API consiste nel garantire che nell’istanza Marketo esista un record con l’indirizzo e-mail corrispondente e che sia possibile accedere al relativo ID lead. Ai fini di questo post, supponiamo che gli indirizzi e-mail siano già in Marketo e che si debba recuperare solo l’ID del record. Per questo, stiamo utilizzando la chiamata [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET). Vediamo il nostro metodo principale per richiedere la campagna:
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -182,7 +182,7 @@ Questa classe ha un costruttore che esegue un’autenticazione e l’ID della ca
 
 ### Creazione dell’e-mail
 
-Per personalizzare il contenuto, è innanzitutto necessario configurare un [programma](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=it) e un [messaggio e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it) in Marketo. Per generare il contenuto personalizzato, è necessario creare token all’interno del programma, quindi inserirli nell’e-mail che stiamo per inviare. Per semplicità, in questo esempio viene utilizzato un solo token, ma è possibile sostituire qualsiasi numero di token in un’e-mail, in Da e-mail, Da nome, Risposta o qualsiasi parte di contenuto nell’e-mail. Quindi creiamo un token Rich Text per la sostituzione e chiamiamolo &quot;bodyReplacement&quot;. Il formato Rich Text consente di sostituire qualsiasi contenuto nel token con HTML arbitrari che si desidera inserire.
+Per personalizzare il contenuto, è innanzitutto necessario configurare un [programma](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) e un [messaggio e-mail](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=it) in Marketo. Per generare il contenuto personalizzato, è necessario creare token all’interno del programma, quindi inserirli nell’e-mail che stiamo per inviare. Per semplicità, in questo esempio viene utilizzato un solo token, ma è possibile sostituire qualsiasi numero di token in un’e-mail, in Da e-mail, Da nome, Risposta o qualsiasi parte di contenuto nell’e-mail. Quindi creiamo un token Rich Text per la sostituzione e chiamiamolo &quot;bodyReplacement&quot;. Il formato Rich Text consente di sostituire qualsiasi contenuto nel token con HTML arbitrari che si desidera inserire.
 
 ![Nuovo token](assets/New-Token.png)
 
@@ -264,4 +264,4 @@ Result:
 
 ## Ritorno a capo
 
-Questo metodo è estensibile in diversi modi, modificando il contenuto nelle e-mail all’interno di singole sezioni di layout o all’esterno delle e-mail, consentendo di trasmettere valori personalizzati in attività o momenti interessanti. Con questo metodo è possibile personalizzare qualsiasi punto in cui un token può essere utilizzato all’interno di un programma. Funzionalità simili sono disponibili anche con la chiamata [Pianifica campagna](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) che consente di elaborare i token in un&#39;intera campagna batch. Non possono essere personalizzate in base al singolo lead, ma sono utili per personalizzare il contenuto in un ampio insieme di lead.
+Questo metodo è estensibile in diversi modi, modificando il contenuto nelle e-mail all’interno di singole sezioni di layout o all’esterno delle e-mail, consentendo di trasmettere valori personalizzati in attività o momenti interessanti. Con questo metodo è possibile personalizzare qualsiasi punto in cui un token può essere utilizzato all’interno di un programma. Funzionalità simili sono disponibili anche con la chiamata [Pianifica campagna](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) che consente di elaborare i token in un&#39;intera campagna batch. Non possono essere personalizzate in base al lead, ma sono utili per personalizzare il contenuto in un ampio insieme di lead.

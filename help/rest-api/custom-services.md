@@ -3,9 +3,9 @@ title: Servizi personalizzati
 feature: REST API
 description: Crea servizi personalizzati Marketo, imposta ruoli e autorizzazioni solo API, ottieni ID client e segreto client in LaunchPoint e ottieni i token di accesso.
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 1f01457919b9fe110b98603f5b8c0996ba8aee4b
 workflow-type: tm+mt
-source-wordcount: '985'
+source-wordcount: '1031'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ Un servizio personalizzato fornisce le credenziali per l’autenticazione con Ma
 
 Il primo passaggio nella creazione di un servizio personalizzato consiste nel creare un ruolo che possa essere applicato all’utente pertinente e solo API. Operazione eseguita dal menu **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]**.
 
-I ruoli sono contenitori per singole autorizzazioni che consentono o limitano l’accesso a determinate funzioni. Nelle sottoscrizioni in cui sono abilitate le aree di lavoro e le partizioni, le autorizzazioni vengono assegnate in base all&#39;area di lavoro. Se un utente dispone di un’autorizzazione in un’area di lavoro ma non in un’altra, potrà eseguire solo le azioni consentite in tale area di lavoro. Per creare un ruolo, fare clic sul pulsante Nuovo ruolo.
+I ruoli sono contenitori per singole autorizzazioni che consentono o limitano l’accesso a determinate funzioni. Nelle sottoscrizioni in cui sono abilitate le aree di lavoro e le partizioni, le autorizzazioni vengono assegnate in base all&#39;area di lavoro. Se un utente dispone di un’autorizzazione in un’area di lavoro ma non in un’altra, potrà eseguire solo le azioni consentite in tale area di lavoro. Per creare un ruolo, selezionare **[!UICONTROL New Role]**.
 
 ![Utenti e ruoli](assets/admin-users-and-roles-roles.png)
 
@@ -42,15 +42,15 @@ Dopo aver creato un ruolo, devi creare un utente &quot;Solo API&quot;. Gli utent
 
 >[!MORELIKETHIS]
 >
->Per creare un utente solo API, passare al menu **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]** e fare clic su [!UICONTROL Invite New User].
+>Per creare un utente solo API, passare al menu **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]** e selezionare **[!UICONTROL Invite New User]**.
 
 ![Informazioni utente](assets/new-user-info.png)
 
-Assegna all’utente un nome descrittivo e un indirizzo e-mail (non deve essere valido) in base al servizio e all’applicazione per i quali verrà utilizzato. Compila i campi obbligatori nel menu di dialogo, fai clic sulla casella di controllo &quot;Solo API&quot; e assegna uno dei tuoi ruoli API all’utente. In questo modo le autorizzazioni del ruolo vengono assegnate all&#39;utente.
+Assegna all’utente un nome descrittivo e un indirizzo e-mail (non deve essere valido) in base al servizio e all’applicazione per i quali verrà utilizzato. Compila i campi obbligatori nel menu di dialogo, seleziona la casella di controllo **[!UICONTROL API Only]** e assegna uno dei tuoi ruoli API all&#39;utente. In questo modo le autorizzazioni del ruolo vengono assegnate all&#39;utente.
 
 ![Autorizzazioni per nuovi utenti](assets/new-user-permissions.png)
 
-Infine, fai clic su &quot;Invia&quot; per creare l’utente solo API.
+Infine, selezionare **[!UICONTROL Send]** per creare l&#39;utente solo API.
 
 Quando esegui il provisioning di una nuova applicazione con credenziali, valuta seriamente la possibilità di creare un nuovo utente per il servizio anche se dispone dello stesso set di autorizzazioni di un’altra integrazione esistente. Le statistiche sull’utilizzo delle chiamate API e gli errori vengono tracciati in base all’utente, pertanto il provisioning di un utente per ogni applicazione può aiutarti a isolare l’utilizzo e i problemi in applicazioni specifiche. Questa funzione si rivela utile in caso di problemi con il superamento dei limiti di chiamata API giornalieri o errori derivanti da chiamate API effettuate da integrazioni.
 
@@ -58,7 +58,7 @@ Quando esegui il provisioning di una nuova applicazione con credenziali, valuta 
 
 I servizi personalizzati forniscono le credenziali effettive, l’ID client e il segreto client, necessari per eseguire l’autenticazione con un’istanza di Marketo. Per eseguire il provisioning di uno, vai al menu **[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]** e seleziona **[!UICONTROL New Service]**.
 
-Assegna un nome descrittivo al servizio e, dall’elenco &quot;Servizio&quot;, seleziona &quot;Personalizzato&quot;. Fornire una descrizione dettagliata al servizio e selezionare un utente appropriato dall&#39;elenco degli utenti solo API, quindi fare clic su [!UICONTROL Create].
+Assegna un nome descrittivo al servizio e, dall’elenco &quot;Servizio&quot;, seleziona &quot;Personalizzato&quot;. Fornire una descrizione dettagliata al servizio e selezionare un utente appropriato dall&#39;elenco di utenti solo API, quindi selezionare **[!UICONTROL Create]**.
 
 ![Nuovo servizio personalizzato](assets/admin-launchpoint-new-service.png)
 

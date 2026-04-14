@@ -3,7 +3,7 @@ title: Moduli
 feature: REST API, Forms
 description: Guida REST API di Marketo Forms per creare e gestire moduli, recuperarli per ID o nome, sfogliarli con filtri di stato e gestire campi, set di campi e regole.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1823'
 ht-degree: 1%
@@ -12,19 +12,19 @@ ht-degree: 1%
 
 # Moduli
 
-[Riferimento endpoint Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
+[Riferimento endpoint Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms)
 
-[Riferimento endpoint campi modulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields)
+[Riferimento endpoint campi modulo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields)
 
 I moduli Marketo dispongono di un set complesso di endpoint che consentono il controllo completo della gestione dei moduli dai sistemi remoti. La struttura delle maschere può essere complessa, in quanto esistono molti tipi diversi di oggetti che devono essere gestiti come parte di un modulo: Forms, Fields, Fieldset, Regole di visibilità e Regole di pagina di follow-up.
 
 ## Query
 
-Forms supporta i metodi standard di recupero risorse, [per id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) e [per navigazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/browseForms2UsingGET). Ogni risposta del modulo contiene tutte le proprietà ad eccezione dell’elenco dei campi.
+Forms supporta i metodi standard di recupero risorse, [per id](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) e [per navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET). Ogni risposta del modulo contiene tutte le proprietà ad eccezione dell’elenco dei campi.
 
 ### Per ID
 
-[Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByIdUsingGET) accetta un modulo `id` come parametro di percorso e restituisce un record modulo.
+[Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET) accetta un modulo `id` come parametro di percorso e restituisce un record modulo.
 
 ```http
 GET /rest/asset/v1/form/{id}.json
@@ -78,7 +78,7 @@ GET /rest/asset/v1/form/{id}.json
 
 ### Per nome
 
-[Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) assume un formato `name` come parametro di percorso e restituisce un record modulo.
+[Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) assume un formato `name` come parametro di percorso e restituisce un record modulo.
 
 ```http
 GET /rest/asset/v1/form/byName.json?name=newForm
@@ -132,7 +132,7 @@ GET /rest/asset/v1/form/byName.json?name=newForm
 
 ### Sfogliare
 
-[Ottieni moduli Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/browseForms2UsingGET) funziona come altri endpoint di esplorazione API di Asset e consente un filtro facoltativo su `status`, `maxReturn` e `offset`. Lo stato può essere: approvato, approvato con bozza o bozza.
+[Ottieni moduli Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET) funziona come altri endpoint di esplorazione API di Asset e consente un filtro facoltativo su `status`, `maxReturn` e `offset`. Lo stato può essere: approvato, approvato con bozza o bozza.
 
 ```http
 GET /rest/asset/v1/forms.json
@@ -308,7 +308,7 @@ Quando si modificano i campi o il loro comportamento all’interno di un modulo,
 
 ### Dipendenze
 
-L&#39;endpoint [Get Form Used By](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getFormUsedByUsingGET) accetta un formato `id` come parametro di percorso e restituisce l&#39;elenco delle risorse che dipendono dal modulo. Forms può essere utilizzato dai seguenti tipi di risorse: pagine di destinazione, elenchi avanzati, campagne avanzate, rapporti, programmi e-mail.
+L&#39;endpoint [Get Form Used By](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getFormUsedByUsingGET) accetta un formato `id` come parametro di percorso e restituisce l&#39;elenco delle risorse che dipendono dal modulo. Forms può essere utilizzato dai seguenti tipi di risorse: pagine di destinazione, elenchi avanzati, campagne avanzate, rapporti, programmi e-mail.
 
 ```http
 GET /rest/asset/v1/form/{id}/usedBy.json
@@ -334,7 +334,7 @@ GET /rest/asset/v1/form/{id}/usedBy.json
 
 ## Crea e aggiorna
 
-Durante la [creazione di un modulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/createLpFormsUsingPOST) sono presenti solo due campi obbligatori: la cartella padre del modulo e il nome del modulo. Tutti gli altri parametri sono facoltativi con il valore predefinito. Al momento della creazione, il modulo viene fornito con tre campi predefiniti: Nome, Cognome, E-mail.
+Durante la [creazione di un modulo](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/createLpFormsUsingPOST) sono presenti solo due campi obbligatori: la cartella padre del modulo e il nome del modulo. Tutti gli altri parametri sono facoltativi con il valore predefinito. Al momento della creazione, il modulo viene fornito con tre campi predefiniti: Nome, Cognome, E-mail.
 
 ```http
 POST /rest/asset/v1/forms.json
@@ -394,7 +394,7 @@ name=newForm&description=test&folder={"type": "Folder","id": 293}&language=Frenc
 }
 ```
 
-Forms sono [aggiornati](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/updateFormsUsingPOST) con una chiamata simile tramite il loro id. Durante la creazione o l&#39;aggiornamento, qualsiasi parametro di stile di base è accessibile e modificabile, consentendo di modificare la modalità di visualizzazione del modulo per l&#39;utente finale.
+Forms sono [aggiornati](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormsUsingPOST) con una chiamata simile tramite il loro id. Durante la creazione o l&#39;aggiornamento, qualsiasi parametro di stile di base è accessibile e modificabile, consentendo di modificare la modalità di visualizzazione del modulo per l&#39;utente finale.
 
 ```http
 POST /rest/asset/v1/form/736.json
@@ -459,7 +459,7 @@ I comportamenti di pagina visitatore noto e ringraziamento non possono essere mo
 
 Per aggiungere o modificare correttamente i campi appartenenti a un modulo, è necessario recuperare l’elenco dei campi validi per l’istanza di destinazione. Le interazioni con i campi vengono sempre eseguite in base alla proprietà id del campo, che viene visualizzata per ogni elemento del risultato.
 
-Per i campi Lead, questa operazione viene eseguita utilizzando l&#39;endpoint [Ottieni campi modulo disponibili](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getAllFieldsUsingGET) e include il tipo di dati e i metadati predefiniti per il campo quando viene aggiunto a un modulo.
+Per i campi Lead, questa operazione viene eseguita utilizzando l&#39;endpoint [Ottieni campi modulo disponibili](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllFieldsUsingGET) e include il tipo di dati e i metadati predefiniti per il campo quando viene aggiunto a un modulo.
 
 ```http
 GET /rest/asset/v1/form/fields.json
@@ -591,7 +591,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-Per i campi personalizzati dei membri del programma, chiamare [Get Available Form Program Member Fields](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)  endpoint per recuperare i tipi di dati dei campi personalizzati del membro del programma e i metadati predefiniti. Per utilizzare questi campi in un modulo, il modulo deve trovarsi sotto un programma (non in Design Studio). Le pagine di destinazione contenenti moduli che utilizzano questi campi devono trovarsi anche sotto un programma (non possono risiedere in Design Studio o essere clonate in Design Studio).
+Per i campi personalizzati dei membri del programma, chiamare [Get Available Form Program Member Fields](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)  endpoint per recuperare i tipi di dati dei campi personalizzati del membro del programma e i metadati predefiniti. Per utilizzare questi campi in un modulo, il modulo deve trovarsi sotto un programma (non in Design Studio). Le pagine di destinazione contenenti moduli che utilizzano questi campi devono trovarsi anche sotto un programma (non possono risiedere in Design Studio o essere clonate in Design Studio).
 
 ```http
 GET /rest/asset/v1/form/programMemberFields.json
@@ -630,7 +630,7 @@ GET /rest/asset/v1/form/programMemberFields.json
 
 Ogni modulo contiene un elenco modificabile di campi che verrà visualizzato all’utente finale al momento del caricamento. Ogni campo viene aggiunto, aggiornato o eliminato dall’elenco dei campi uno alla volta tramite i rispettivi endpoint.
 
-[L&#39;aggiunta di un campo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldToAFormUsingPOST) richiede solo l&#39;ID del modulo padre e il fieldId del campo. Tutti gli altri campi saranno vuoti o avranno valori predefiniti basati sul loro tipo di dati e metadati di campo. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON.
+[L&#39;aggiunta di un campo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldToAFormUsingPOST) richiede solo l&#39;ID del modulo padre e il fieldId del campo. Tutti gli altri campi saranno vuoti o avranno valori predefiniti basati sul loro tipo di dati e metadati di campo. I dati vengono passati come CODIFICATI POST x-www-form-urlencoded, non come JSON.
 
 ```http
 POST /rest/asset/v1/form/{id}/fields.json
@@ -792,7 +792,7 @@ Per determinare come formattare un campo modulo complesso, esaminare la risposta
 
 ### Ridisposizione del campo
 
-I campi di un modulo devono essere ridisposti come un&#39;unica unità tramite l&#39;endpoint [Modifica posizioni campo modulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/updateFieldPositionsUsingPOST). L&#39;endpoint richiede un parametro denominato `positions`, che è un array JSON di oggetti con tre membri:
+I campi di un modulo devono essere ridisposti come un&#39;unica unità tramite l&#39;endpoint [Modifica posizioni campo modulo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST). L&#39;endpoint richiede un parametro denominato `positions`, che è un array JSON di oggetti con tre membri:
 
 - columnNumber
 - rowNumber
@@ -830,7 +830,7 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 ### Rich Text
 
-I campi in formato Rich Text vengono aggiunti tramite un [endpoint separato](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addRichTextFieldUsingPOST) dai campi lead. Il contenuto del campo viene passato come dati multipart/form. Deve essere strutturato come contenuto HTML che non contiene script, metatag o tag di collegamento.
+I campi in formato Rich Text vengono aggiunti tramite un [endpoint separato](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addRichTextFieldUsingPOST) dai campi lead. Il contenuto del campo viene passato come dati multipart/form. Deve essere strutturato come contenuto HTML che non contiene script, metatag o tag di collegamento.
 
 ```http
 POST /rest/asset/v1/form/{id}/richText.json
@@ -871,7 +871,7 @@ Content-Type: text/html
 
 In Marketo forms è disponibile un componente facoltativo denominato set di campi. I set di campi sono gruppi di campi che vengono trattati come un singolo campo all’interno dell’elenco dei campi di livello superiore a fini di spostamento e trattamento da parte delle regole di visibilità. Ad esempio, se è presente un campo per Requisiti di conformità e un client seleziona sì, potrebbe rivelare un set di campi contenente i campi per i requisiti di conformità HIPAA e PCI.
 
-I campi all&#39;interno dei set di campi sono univoci per il modulo nel suo insieme, pertanto è possibile che i campi duplicati non siano presenti sia nell&#39;elenco dei campi padre del modulo che in un set di campi figlio. I set di campi vengono aggiunti tramite l&#39;endpoint [Add Fieldset to Form](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldSetUsingPOST) e verranno quindi visualizzati nel risultato di [Get Fields for Form](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET). I campi vengono aggiunti a un set di campi spostandoli nel fieldList del set di campi tramite [Aggiorna posizioni campo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/updateFieldPositionsUsingPOST). Per questi endpoint, i dati vengono passati come POST x-www-form-urlencoded, non come JSON.
+I campi all&#39;interno dei set di campi sono univoci per il modulo nel suo insieme, pertanto è possibile che i campi duplicati non siano presenti sia nell&#39;elenco dei campi padre del modulo che in un set di campi figlio. I set di campi vengono aggiunti tramite l&#39;endpoint [Add Fieldset to Form](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST) e verranno quindi visualizzati nel risultato di [Get Fields for Form](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET). I campi vengono aggiunti a un set di campi spostandoli nel fieldList del set di campi tramite [Aggiorna posizioni campo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST). Per questi endpoint, i dati vengono passati come POST x-www-form-urlencoded, non come JSON.
 
 ## Regola di visibilità
 
@@ -914,7 +914,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 }
 ```
 
-Per l&#39;elenco completo degli operatori disponibili, vedere la pagina di riferimento dell&#39;endpoint per [Aggiungere regole di visibilità campi modulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFormFieldVisibilityRuleUsingPOST).
+Per l&#39;elenco completo degli operatori disponibili, vedere la pagina di riferimento dell&#39;endpoint per [Aggiungere regole di visibilità campi modulo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFormFieldVisibilityRuleUsingPOST).
 
 ## Follow-up
 
@@ -922,7 +922,7 @@ I Marketo form possono avere un comportamento dinamico di pagina di follow-up in
 
 ## Pulsante Invia
 
-Lo stile del pulsante di invio del modulo è gestito con l&#39;endpoint [Aggiorna pulsante di invio](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/updateFormSubmitButtonUsingPOST). È possibile modificare buttonPosition, buttonStyle, label e waitLabel (l&#39;etichetta visualizzata quando l&#39;invio è in sospeso).
+Lo stile del pulsante di invio del modulo è gestito con l&#39;endpoint [Aggiorna pulsante di invio](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormSubmitButtonUsingPOST). È possibile modificare buttonPosition, buttonStyle, label e waitLabel (l&#39;etichetta visualizzata quando l&#39;invio è in sospeso).
 
 Questo è un aggiornamento distruttivo.
 

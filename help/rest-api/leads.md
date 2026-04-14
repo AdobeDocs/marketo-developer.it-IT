@@ -3,16 +3,16 @@ title: Lead
 feature: REST API
 description: Esplora le funzioni API REST dei lead di Marketo, tra cui Descrizione, query per ID o filtro, campi predefiniti, limiti e recupero degli ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '3457'
+source-wordcount: '3460'
 ht-degree: 2%
 
 ---
 
 # Lead
 
-[Riferimento endpoint lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads)
+[Riferimento endpoint lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
 L’API del lead di Marketo offre un’ampia serie di funzionalità per semplici applicazioni CRUD rispetto ai record dei lead, nonché la possibilità di modificare l’appartenenza di un lead a elenchi e programmi statici e di avviare l’elaborazione di campagne intelligenti per i lead.
 
@@ -58,7 +58,7 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-Normalmente, le risposte includono un set molto più ampio di campi nell’array dei risultati, ma vengono omesse a scopo dimostrativo. Ogni elemento nella matrice dei risultati corrisponde a un campo disponibile nel record del lead e avrà almeno un ID, un displayName e un tipo di dati. Gli altri oggetti secondari soap e REST possono essere presenti o meno per un determinato campo e la loro presenza indicherà se il campo è valido per l’utilizzo nelle API REST o SOAP. La proprietà `readOnly` indica se il campo è di sola lettura tramite l&#39;API corrispondente (REST o SOAP). La proprietà length indica la lunghezza massima del campo, se presente. La proprietà dataType indica il tipo di dati del campo.
+In genere, le risposte includono un set di campi molto più ampio nell’array dei risultati, ma vengono omesse a scopo dimostrativo. Ogni elemento nella matrice dei risultati corrisponde a un campo disponibile nel record del lead e avrà almeno un ID, un displayName e un tipo di dati. Gli altri oggetti secondari soap e REST possono essere presenti o meno per un determinato campo e la loro presenza indicherà se il campo è valido per l’utilizzo nelle API REST o SOAP. La proprietà `readOnly` indica se il campo è di sola lettura tramite l&#39;API corrispondente (REST o SOAP). La proprietà length indica la lunghezza massima del campo, se presente. La proprietà dataType indica il tipo di dati del campo.
 
 ## Query
 
@@ -95,7 +95,7 @@ Per questo metodo, ci sarà sempre un singolo record nella prima posizione della
 
 Ottieni lead per tipo di filtro restituirà lo stesso tipo di record, ma può restituire fino a 300 per pagina. Richiede i parametri di query `filterType` e `filterValues`.
 
-`filterType` accetta qualsiasi campo personalizzato o la maggior parte dei campi comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per ottenere un elenco completo dei campi ricercabili consentiti in `filterType`. Durante la ricerca per campo personalizzato, sono supportati solo i seguenti tipi di dati: `string`, `email`, `integer`. È possibile ottenere i dettagli del campo (descrizione, tipo, ecc.) utilizzando il metodo Describe sopra indicato.
+`filterType` accetta qualsiasi campo personalizzato o la maggior parte dei campi comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per ottenere un elenco completo dei campi ricercabili consentiti in `filterType`. Durante la ricerca per campo personalizzato, sono supportati solo i seguenti tipi di dati: `string`, `email`, `integer`. È possibile ottenere i dettagli del campo (descrizione, tipo e così via) utilizzando il metodo Describe sopra indicato.
 
 `filterValues` accetta fino a 300 valori in formato separato da virgole. La chiamata cerca i record in cui il campo del lead corrisponde a uno dei `filterValues` inclusi. Se il numero di lead che corrispondono al filtro lead è maggiore di 1.000, viene restituito un errore: &quot;1003, Troppi risultati corrispondono al filtro&quot;.
 
@@ -160,7 +160,7 @@ Oltre a recuperare i dati dei lead, puoi creare, aggiornare ed eliminare i recor
 
 >[!NOTE]
 >
-> L&#39;aggiornamento dei campi società tramite l&#39;endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) non è supportato. Utilizza invece l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST).
+> L&#39;aggiornamento dei campi società tramite l&#39;endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) non è supportato. Utilizza invece l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >
@@ -767,6 +767,7 @@ Qui possiamo vedere i corrispondenti dettagli dell’attività &quot;Compila mod
 ## Unisci
 
 >[!NOTE]
+>
 >A partire dal 31 marzo 2026, le chiamate che includono più di 25 ID nel parametro `leadIds` di una chiamata API Merge Leads genereranno un codice di errore 1080 e la chiamata verrà ignorata. I posti di lavoro che richiedono la fusione di più di 25 record in uno, dovrebbero essere suddivisi in più lavori per garantire il successo di tali chiamate.
 >
 
@@ -817,7 +818,7 @@ Iscrizione
 È inoltre possibile recuperare i record dei lead in base all&#39;appartenenza a un elenco statico o a un programma. Inoltre, puoi recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti di cui è membro un lead.
 
 La struttura di risposta e i parametri facoltativi sono identici a quelli di Get Leads per Filter Type, anche se `filterType` e `filterValues` non possono essere utilizzati con questa API.
-Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
+Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-****.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
 
 ## Ottieni programmi per ID lead
 

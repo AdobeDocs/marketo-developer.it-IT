@@ -3,7 +3,7 @@ title: Database lead
 feature: REST API, Database
 description: Guida alle API del database lead di Marketo che tratta gli oggetti, i metodi CRUD e Describe, i modelli di query, i limiti batch e le restrizioni di integrazione CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1373'
 ht-degree: 1%
@@ -32,7 +32,7 @@ La maggior parte di questi oggetti include almeno i metodi Create, Read, Update 
 
 ## API
 
-Per un elenco completo degli endpoint API del database lead, inclusi i parametri e le informazioni di modellazione, vedere [Riferimento endpoint API del database lead](https://developer.adobe.com/marketo-apis/api/mapi/).
+Per un elenco completo degli endpoint API del database lead, inclusi i parametri e le informazioni di modellazione, vedere [Riferimento endpoint API del database lead](https://developer.adobe.com/marketo-apis/api/mapi).
 
 Per le istanze con un’integrazione CRM nativa abilitata (Microsoft Dynamics o Salesforce.com), le API Società, Opportunità, Ruolo opportunità e Persona di vendita sono disabilitate. Se abilitati, i record vengono gestiti tramite il sistema di gestione delle relazioni con i clienti e non sono accessibili o aggiornabili tramite le API di Marketo.
 

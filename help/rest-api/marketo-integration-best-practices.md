@@ -3,9 +3,9 @@ title: Best practice per l’integrazione di Marketo
 feature: REST API
 description: Best practice per le integrazioni API di Marketo che riguardano quote, limiti di tasso e di concorrenza, batch, importazione ed esportazione in blocco, caching e pianificazione della latenza.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1013'
 ht-degree: 0%
 
 ---
@@ -48,15 +48,15 @@ Determinando le tolleranze di latenza, o il tempo massimo che può trascorrere p
 
 Ogni istanza di Marketo abilitata per le API dispone di un’allocazione giornaliera di almeno 10.000 chiamate REST API al giorno, ma più comunemente 50.000 o più, e 500 MB o più di capacità Bulk Extract. Anche se la capacità giornaliera aggiuntiva può essere acquistata come parte di un abbonamento a Marketo, la progettazione dell’applicazione deve tenere conto dei limiti comuni degli abbonamenti a Marketo.
 
-Poiché in un’istanza la capacità è condivisa tra tutti i servizi API e gli utenti, la best practice prevede di eliminare le chiamate ridondanti e di raggruppare i record nel minor numero possibile di chiamate. Il modo più efficiente per importare i record consiste nell&#39;utilizzare le API di importazione in blocco di Marketo, disponibili per [lead/persone](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo fornisce anche l&#39;estrazione in blocco per [lead](bulk-lead-extract.md) e [attività](bulk-activity-extract.md).
+Poiché in un’istanza la capacità è condivisa tra tutti i servizi API e gli utenti, la best practice prevede di eliminare le chiamate ridondanti e di raggruppare i record nel minor numero possibile di chiamate. Il modo più efficiente per importare i record consiste nell&#39;utilizzare le API di importazione in blocco di Marketo, disponibili per [lead/persone](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fornisce anche l&#39;estrazione in blocco per [lead](bulk-lead-extract.md) e [attività](bulk-activity-extract.md).
 
 ### Memorizzazione in cache
 
 I risultati delle seguenti operazioni possono in genere essere memorizzati nella cache lato client per un giorno o più, in quanto vengono modificati raramente:
 
 - Risultati delle operazioni Describe
-- [Tipi di attività](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partizioni](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Tipi di attività](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
+- [Partizioni](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 La memorizzazione in cache di alcuni tipi di risorse, come programmi, e-mail e cartelle, è appropriata anche per alcuni casi d’uso, come l’arricchimento dei dati per i record di lead o attività.
 

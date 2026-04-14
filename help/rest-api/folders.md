@@ -3,7 +3,7 @@ title: Cartelle
 feature: REST API
 description: Guida all’API REST di Marketo per le cartelle che includono creazione, aggiornamento, eliminazione, query per ID e nome, navigazione in massa con root, workspace, maxDepth e paginazione.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # Cartelle
 
-[Riferimento endpoint cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders)
+[Riferimento endpoint cartelle](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
 
 Le cartelle sono la risorsa organizzativa principale in Marketo e ogni altro tipo di risorsa ha almeno una cartella come elemento principale. Questa cartella principale può essere una cartella puramente organizzativa o un programma con una relazione funzionale con altri tipi di risorse e può anche essere l’elemento principale di altre risorse. Le cartelle possono essere create, interrogate, aggiornate ed eliminate tramite l’API, e consentono inoltre di recuperare un elenco dei relativi contenuti. Anche se i programmi possono essere restituiti tramite l&#39;esecuzione di query sull&#39;API delle cartelle, la creazione, l&#39;aggiornamento e l&#39;eliminazione dei programmi devono essere eseguiti tramite l&#39;API dei programmi.
 
 ## Query
 
-La query delle cartelle segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET).
+La query delle cartelle segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
 
 ### Per ID
 
@@ -70,7 +70,7 @@ Il parametro di tipo è obbligatorio e deve essere uno tra &quot;Folder&quot; (C
 
 ### Per nome
 
-[È consentita anche la query per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET). L&#39;endpoint di query per nome presenta il nome come unico parametro obbligatorio. Name esegue una corrispondenza esatta di stringa con il campo name delle cartelle nell’istanza e restituisce i risultati per ogni cartella che corrisponde a tale nome. Inoltre, dispone dei parametri di query facoltativi &quot;type&quot;, che possono essere Folder o Program (Cartella o Programma), &quot;root&quot; (Radice) l’ID della cartella da cercare, oppure &quot;workspace&quot; il nome dell’area di lavoro in cui eseguire la ricerca. Se è impostato il parametro root, è necessario impostare anche il parametro type.
+[È consentita anche la query per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET). L&#39;endpoint di query per nome presenta il nome come unico parametro obbligatorio. Name esegue una corrispondenza esatta di stringa con il campo name delle cartelle nell’istanza e restituisce i risultati per ogni cartella che corrisponde a tale nome. Inoltre, dispone dei parametri di query facoltativi &quot;type&quot;, che possono essere Folder o Program (Cartella o Programma), &quot;root&quot; (Radice) l’ID della cartella da cercare, oppure &quot;workspace&quot; il nome dell’area di lavoro in cui eseguire la ricerca. Se è impostato il parametro root, è necessario impostare anche il parametro type.
 
 ```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -113,12 +113,12 @@ Durante la ricerca per nome, è importante notare che sia Marketing Activities c
 
 ### Sfogliare
 
-Le cartelle possono anche essere [recuperate in blocco](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET). Il parametro &quot;root&quot; può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON incorporato come valore per il parametro di query. La radice ha due membri:
+Le cartelle possono anche essere [recuperate in blocco](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Il parametro &quot;root&quot; può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON incorporato come valore per il parametro di query. La radice ha due membri:
 
 1. id: l’ID della cartella o del programma.
 1. tipo: cartella o programma, a seconda del tipo di cartella principale da browser.
 
-Se la cartella principale non è nota o l’obiettivo è quello di recuperare tutte le cartelle in una determinata area, è possibile specificarla come area &quot;Marketing Activities&quot;, &quot;Design Studio&quot; o &quot;Lead Database&quot;. È possibile recuperare gli ID per ciascuno di questi elementi tramite l&#39;API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e specificando il nome dell&#39;area desiderata.
+Se la cartella principale non è nota o l’obiettivo è quello di recuperare tutte le cartelle in una determinata area, è possibile specificarla come area &quot;Marketing Activities&quot;, &quot;Design Studio&quot; o &quot;Lead Database&quot;. È possibile recuperare gli ID per ciascuno di questi elementi tramite l&#39;API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e specificando il nome dell&#39;area desiderata.
 
 Come altri endpoint per il recupero di risorse in blocco, offset e maxReturn sono parametri facoltativi per il paging.   Altri parametri facoltativi sono:
 
@@ -211,7 +211,7 @@ Il percorso di una cartella mostra la relativa gerarchia nella struttura ad albe
 
 ## Crea e aggiorna
 
-[La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
+[La creazione di cartelle](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST) è semplice e viene eseguita con un&#39;applicazione/x-www-form-urlencoded POST con due parametri obbligatori, &quot;name&quot;, una stringa e &quot;parent&quot;, l&#39;elemento padre in cui creare la cartella, ovvero un oggetto JSON incorporato con due membri, ID e tipo, Folder o Program, a seconda del tipo della cartella di destinazione. Facoltativamente, è possibile includere anche &quot;description&quot;, una stringa, che può contenere fino a 2000 caratteri.
 
 ```http
 POST /rest/asset/v1/folders.json

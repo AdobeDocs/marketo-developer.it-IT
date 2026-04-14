@@ -3,7 +3,7 @@ title: Ruoli opportunità
 feature: REST API
 description: Gestisci i ruoli opportunità di Marketo tramite API REST, incluse descrizioni, query con campi di deduplicazione composti, eliminazione di aggiornamenti di creazione, timeout e nessuna sincronizzazione CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '279'
 ht-degree: 0%
@@ -12,7 +12,7 @@ ht-degree: 0%
 
 # Ruoli opportunità
 
-[Riferimento endpoint ruoli opportunità](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
+[Riferimento endpoint ruoli opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
 I lead sono collegati alle opportunità tramite l&#39;oggetto `opportunityRole` intermedio.
 

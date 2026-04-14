@@ -3,9 +3,9 @@ title: Risorse
 feature: REST API
 description: Panoramica delle API REST di Marketo Asset per eseguire query per ID o nome, sfogliare con il paging e creare o aggiornare cartelle, e-mail, moduli, modelli, file, token.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '898'
+source-wordcount: '899'
 ht-degree: 2%
 
 ---
@@ -265,7 +265,7 @@ type=Folder&description=This is a test (update 01)
 
 Altre risorse hanno strutture più complesse e richiedono aggiornamenti a sottosezioni aggiuntive o oggetti secondari; infine, devono essere approvate prima di poter essere utilizzate.  Questi tipi di risorse includono Forms, E-mail, Modelli e-mail, Pagine di destinazione e Modelli di pagina di destinazione.  Ognuno di questi avrà un singolo endpoint per la creazione di un record, quindi ulteriori endpoint per l’aggiornamento di metadati, contenuto e sezioni di contenuto.
 
-Ad esempio, per creare una pagina di destinazione, devi chiamare il relativo endpoint di creazione con un ID modello, quindi recuperarne le sezioni di contenuto e aggiornarle singolarmente per aggiungere contenuto, prima di approvarle in modo che possa essere distribuita in tempo reale.
+Ad esempio, per creare una pagina di destinazione, è necessario chiamare il relativo endpoint di creazione con un ID modello, quindi recuperarne le sezioni di contenuto e aggiornarle singolarmente per aggiungere contenuto, prima di approvarle in modo che possa essere distribuita in tempo reale.
 
 ### Creazione complessa
 

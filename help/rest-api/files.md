@@ -3,7 +3,7 @@ title: File
 feature: REST API
 description: 'Guida ai file API REST di Marketo: query per ID o nome, ricerca con cartella e offset, creazione o aggiornamento tramite caricamento multipart, insertOnly, tipi MIME, nessuno streaming'
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '347'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # File
 
-[Riferimento endpoint file](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files)
+[Riferimento endpoint file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files)
 
 Le sottoscrizioni Marketo consentono l&#39;archiviazione di file arbitrari come immagini, script, documenti e fogli di stile. Tutti questi elementi possono essere utilizzati in remoto tramite l’API REST. Lo spazio di archiviazione disponibile negli abbonamenti Marketo non è ottimizzato per le applicazioni che richiedono un uso intensivo della larghezza di banda, pertanto è necessario utilizzare delle alternative per le applicazioni di streaming audio e video appropriate.
 
 ## Query
 
-La query dei file è semplice e segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
+La query dei file è semplice e segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
 
 ### Per ID
 
@@ -155,7 +155,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Crea e aggiorna
 
-[La creazione di un file](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) viene eseguita con un tipo di richiesta multipart/form-data. Nella richiesta sono necessari almeno il nome, la cartella e il file, con una descrizione facoltativa e un flag insertOnly che impedisce a una chiamata di creazione di aggiornare un file esistente con lo stesso nome. Per il parametro file, oltre al parametro name è necessario specificare &quot;filename&quot; nell’intestazione Content-Disposition. È inoltre necessario passare un’intestazione Content-Type per il file, che sarà il tipo MIME utilizzato da Marketo per distribuire il file.
+[La creazione di un file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST) viene eseguita con un tipo di richiesta multipart/form-data. Nella richiesta sono necessari almeno il nome, la cartella e il file, con una descrizione facoltativa e un flag insertOnly che impedisce a una chiamata di creazione di aggiornare un file esistente con lo stesso nome. Per il parametro file, oltre al parametro name è necessario specificare &quot;filename&quot; nell’intestazione Content-Disposition. È inoltre necessario passare un’intestazione Content-Type per il file, che sarà il tipo MIME utilizzato da Marketo per distribuire il file.
 
 ```http
 POST /rest/asset/v1/files.json
@@ -208,7 +208,7 @@ This is a test file
 }
 ```
 
-[L&#39;aggiornamento di un file](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) può essere eseguito in base al relativo ID. L&#39;unico parametro è un parametro di file che ha gli stessi requisiti della creazione.
+[L&#39;aggiornamento di un file](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST) può essere eseguito in base al relativo ID. L&#39;unico parametro è un parametro di file che ha gli stessi requisiti della creazione.
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json

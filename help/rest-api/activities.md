@@ -3,7 +3,7 @@ title: Attività
 feature: REST API
 description: Utilizza l’API REST delle attività di Marketo Engage per elencare i tipi di attività, recuperare le attività dei lead con i token di paging e gestire le modifiche ai valori personalizzati e dei dati.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '2139'
 ht-degree: 0%
@@ -22,7 +22,7 @@ La maggior parte delle attività verrà eliminata dopo un certo periodo di tempo
 
 ## Descrivere
 
-Per recuperare un elenco dei tipi disponibili e delle relative definizioni per un&#39;istanza, è possibile utilizzare l&#39;endpoint [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET).
+Per recuperare un elenco dei tipi disponibili e delle relative definizioni per un&#39;istanza, è possibile utilizzare l&#39;endpoint [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET).
 
 ```http
 GET /rest/v1/activities/types.json
@@ -75,7 +75,7 @@ Le risposte dal mondo reale includono molte più definizioni. In questo esempio,
 
 ## Query
 
-Per recuperare le attività da Marketo, chiama l&#39;endpoint [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET). Devi innanzitutto recuperare un token di paging per il datetime da cui vuoi iniziare a recuperare le attività. Passare quindi il token di paging nel parametro di query `nextPageToken`. Inoltre, si passano fino a dieci ID del tipo di attività nel parametro di query `activityTypeIds` come elenco separato da virgole.
+Per recuperare le attività da Marketo, chiama l&#39;endpoint [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). Devi innanzitutto recuperare un token di paging per il datetime da cui vuoi iniziare a recuperare le attività. Passare quindi il token di paging nel parametro di query `nextPageToken`. Inoltre, si passano fino a dieci ID del tipo di attività nel parametro di query `activityTypeIds` come elenco separato da virgole.
 
 Facoltativamente è possibile includere un parametro di query listId per limitare la ricerca ai soli record inclusi in un elenco statico specifico oppure un parametro di query leadId e cercare le attività solo da un set specificato di lead. È possibile passare fino a 30 leadID come elenco separato da virgole.
 
@@ -135,7 +135,7 @@ All&#39;interno di ogni elemento dell&#39;array dei risultati, l&#39;attributo i
 
 ### Modifiche al valore dei dati
 
-Per le attività di modifica del valore dei dati, viene fornita una versione specializzata dell’API delle attività. L&#39;endpoint [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) restituisce solo le attività dei record Data Value Change in campi lead. L’interfaccia è la stessa dell’API Get Lead Activities, con due differenze:
+Per le attività di modifica del valore dei dati, viene fornita una versione specializzata dell’API delle attività. L&#39;endpoint [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) restituisce solo le attività dei record Data Value Change in campi lead. L’interfaccia è la stessa dell’API Get Lead Activities, con due differenze:
 
 * Non esiste alcun parametro `activityTypeIds`, poiché l&#39;endpoint restituisce solo le attività Modifica valore dati e Nuovo lead.
 * Il parametro di query `fields` è obbligatorio, dove è possibile trasmettere un elenco di campi separato da virgole per indicare per quali campi si desidera recuperare le modifiche.
@@ -190,7 +190,7 @@ All&#39;interno di ogni elemento dell&#39;array dei risultati, l&#39;attributo i
 
 ### Lead eliminati
 
-Esiste anche un endpoint speciale [Ottieni lead eliminati](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) per recuperare le attività eliminate da Marketo.
+Esiste anche un endpoint speciale [Ottieni lead eliminati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) per recuperare le attività eliminate da Marketo.
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -242,11 +242,11 @@ Le attività personalizzate funzionano come le attività standard, tranne per il
 * Numero massimo di attività personalizzate: 10
 * Numero massimo di attributi per attività personalizzata: 20
 
-Il recupero dei dati delle attività personalizzate viene eseguito come le attività standard tramite l&#39;API [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET).
+Il recupero dei dati delle attività personalizzate viene eseguito come le attività standard tramite l&#39;API [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET).
 
 ## Tipi di query
 
-Oltre all&#39;endpoint standard Get Activity Types, gli endpoint [Get Custom Activity Types](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getCustomActivityTypeUsingGET) e [Describe Custom Activity Type](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/describeCustomActivityTypeUsingGET) restituiscono dettagli sui tipi di attività per i quali è stato eseguito il provisioning nell&#39;istanza di Marketo e metadati relativi agli attributi per un determinato tipo. I normali [Tipi di attività Get](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET) restituiscono comunque i metadati relativi alle attività personalizzate, ma non indicano se un determinato tipo è personalizzato.
+Oltre all&#39;endpoint standard Get Activity Types, gli endpoint [Get Custom Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET) e [Describe Custom Activity Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET) restituiscono dettagli sui tipi di attività per i quali è stato eseguito il provisioning nell&#39;istanza di Marketo e metadati relativi agli attributi per un determinato tipo. I normali [Tipi di attività Get](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) restituiscono comunque i metadati relativi alle attività personalizzate, ma non indicano se un determinato tipo è personalizzato.
 
 ### Ottieni tipi
 
@@ -621,7 +621,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 ## Aggiungi attività personalizzate
 
-Le attività personalizzate sono record in scrittura di attività storiche correlate ai record di singole persone in Marketo. Queste attività hanno uno schema gestito dagli amministratori di Marketo o in remoto tramite un’integrazione API. Le attività personalizzate vengono aggiunte ai record dei lead tramite l&#39;endpoint [Aggiungi attività personalizzate](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/addCustomActivityUsingPOST) e sono correlate a ciascun record dei lead tramite il relativo campo `leadId`. Le attività personalizzate possono essere visualizzate nell’interfaccia utente tramite il registro delle attività del lead oppure recuperate tramite l’endpoint &quot;Get Lead Activities&quot; specificando l’ID del tipo di attività personalizzata.
+Le attività personalizzate sono record in scrittura di attività storiche correlate ai record di singole persone in Marketo. Queste attività hanno uno schema gestito dagli amministratori di Marketo o in remoto tramite un’integrazione API. Le attività personalizzate vengono aggiunte ai record dei lead tramite l&#39;endpoint [Aggiungi attività personalizzate](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST) e sono correlate a ciascun record dei lead tramite il relativo campo `leadId`. Le attività personalizzate possono essere visualizzate nell’interfaccia utente tramite il registro delle attività del lead oppure recuperate tramite l’endpoint &quot;Get Lead Activities&quot; specificando l’ID del tipo di attività personalizzata.
 
 Le attività personalizzate sono appropriate per la registrazione di dati relativi a un singolo record di persona e che non devono essere aggiornati o sovrascritti. Un esempio potrebbe essere la registrazione di una persona che partecipa a un evento come attività &quot;Evento partecipato&quot;. Per i record relativi a una persona che potrebbe cambiare, come l’iscrizione degli studenti, è invece necessario utilizzare oggetti personalizzati, in quanto possono essere aggiornati, dove le attività personalizzate potrebbero non essere disponibili.
 
