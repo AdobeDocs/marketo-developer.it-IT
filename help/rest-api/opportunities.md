@@ -16,7 +16,7 @@ ht-degree: 0%
 
 Marketo espone le API per la lettura, la scrittura, la creazione e l’aggiornamento dei record di opportunità. In Marketo, i record opportunità sono collegati ai record lead e contatto tramite l’oggetto Ruolo opportunità intermedio, pertanto un’opportunità può essere collegata a molti lead singoli.  Entrambi questi tipi di oggetto sono esposti tramite l’API e, come la maggior parte dei tipi di oggetto del database lead, entrambi dispongono di una chiamata Describe corrispondente, che restituisce metadati sui tipi di oggetto.
 
-Le API dell&#39;opportunità sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) abilitate.
+Le API dell&#39;opportunità sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitate.
 
 ## Descrivere
 
