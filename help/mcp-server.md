@@ -3,7 +3,7 @@ title: Server MCP
 description: Scopri come collegare un assistente AI a Marketo utilizzando il server MCP. Configura Claude Desktop, Cursore, Claude Code o VS Code con le tue credenziali Marketo.
 hidefromtoc: true
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 85285b49ce2540542d6169cd1466ced02955b586
+source-git-commit: 3fe1c3e9fe572ef68d20ba10f93535aac9a98602
 workflow-type: tm+mt
 source-wordcount: '1278'
 ht-degree: 1%
@@ -73,8 +73,7 @@ Se il file contiene già altri server MCP, aggiungere la voce `marketo` in `mcpS
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-        "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
       }
     }
   }
@@ -96,8 +95,7 @@ Se la configurazione MCP cursore contiene già altri server, aggiungere la voce 
       "headers": {
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-        "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+        "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
       }
     }
   }
@@ -115,8 +113,7 @@ claude mcp add --transport http marketo \
   https://marketo-mcp.adobe.io/mcp \
   --header "X-Marketo-Client-Id: YOUR-CLIENT-ID" \
   --header "X-Marketo-Client-Secret: YOUR-CLIENT-SECRET" \
-  --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID" \
-  --header "X-Marketo-Endpoint: YOUR-REST-API-ENDPOINT"
+  --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
 ### Codice VS con GitHub Copilot
@@ -133,8 +130,7 @@ Aprire il codice VS `settings.json` premendo **[!UICONTROL Ctrl+Shift+P]** o **[
         "headers": {
           "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
           "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
-          "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID",
-          "X-Marketo-Endpoint": "YOUR-REST-API-ENDPOINT"
+          "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
         }
       }
     }
@@ -234,37 +230,37 @@ Esempio di prompt:
 
 ## Domande frequenti
 
-+++I miei dati sono sicuri?
+### I miei dati sono sicuri?
+
 Le credenziali vengono trasmesse in intestazioni HTTP con ogni singola richiesta. Il server non memorizza o memorizza nella cache le credenziali tra le sessioni e ogni richiesta è completamente isolata.
-+++
 
-+++Più persone possono utilizzarlo contemporaneamente?
+### Più persone possono utilizzarlo contemporaneamente?
+
 Sì. Il server è multi-tenant. Ogni utente si connette con le proprie credenziali e le richieste sono isolate l’una dall’altra.
-+++
 
-+++Cosa succede se il token di accesso scade?
+### Cosa succede se il token di accesso scade?
+
 Quando esegui l’autenticazione utilizzando ID client e Segreto client, il server gestisce automaticamente l’aggiornamento del token. Non è necessario eseguire alcuna azione.
-+++
 
-+++Devo installare o eseguire qualcosa?
+### Devo installare o eseguire qualcosa?
+
 No. Il server MCP è ospitato da Adobe. Devi solo configurare lo strumento di intelligenza artificiale per connetterti a esso.
-+++
 
-+++Di quali autorizzazioni [!DNL Marketo] ha bisogno l&#39;utente API?
+### Di quali autorizzazioni [!DNL Marketo] ha bisogno l&#39;utente API?
+
 L’utente API deve poter accedere ai tipi di risorse che intendi gestire. Assegna almeno un ruolo di sola lettura per le operazioni di navigazione e un ruolo di lettura/scrittura per la creazione o la modifica delle risorse. Rivolgiti al tuo amministratore [!DNL Marketo] per assegnare le autorizzazioni appropriate.
-+++
 
-+++Quali sono i limiti delle tariffe?
+### Quali sono i limiti delle tariffe?
+
 Il server MCP eredita i limiti di velocità API dell’istanza Marketo. Utilizza un utente API dedicato per monitorare e gestire il consumo di quote.
-+++
 
-+++Quali strumenti di intelligenza artificiale sono supportati?
+### Quali strumenti di intelligenza artificiale sono supportati?
+
 Claude Desktop, Cursore, Claude Code (CLI) e VS Code con GitHub Copilot. Qualsiasi strumento di intelligenza artificiale che supporta Model Context Protocol su HTTP dovrebbe funzionare.
-+++
 
-+++È possibile connettersi a più istanze di [!DNL Marketo]?
+### È possibile connettersi a più istanze di [!DNL Marketo]?
+
 Sì. Aggiungi più voci nella configurazione MCP dello strumento di intelligenza artificiale, ciascuna con un nome univoco e le credenziali per l’istanza corrispondente. Ad esempio, è possibile configurare `marketo-prod` e `marketo-staging` come server separati.
-+++
 
 ## Considerazioni sulla sicurezza
 
