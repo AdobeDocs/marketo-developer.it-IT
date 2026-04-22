@@ -2,16 +2,20 @@
 title: Server MCP
 description: Scopri come collegare un assistente AI a Marketo utilizzando il server MCP. Configura Claude Desktop, Cursore, Claude Code o VS Code con le tue credenziali Marketo.
 hidefromtoc: true
-badgeBeta: label="Beta" type="informative" tooltip="Questa funzione è attualmente in una versione beta anticipata"
+badgeBeta: label="Beta" type="informative" tooltip="Questa funzione è attualmente in versione beta chiusa"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
+source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
 workflow-type: tm+mt
-source-wordcount: '1391'
+source-wordcount: '1388'
 ht-degree: 1%
 
 ---
 
 # Server MCP [!DNL Marketo]
+
+>[!NOTE]
+>
+>Il server MCP è attualmente in versione beta chiusa. Al momento non è disponibile per tutti gli utenti.
 
 Il protocollo MCP (Model Context Protocol) è uno standard aperto che consente agli strumenti di intelligenza artificiale di comunicare con i servizi esterni. Il server MCP [!DNL Marketo] funge da ponte tra l&#39;assistente AI e [!DNL Marketo]. Espone più di 100 operazioni tra moduli, programmi, campagne intelligenti, lead, e-mail, snippet, elenchi e cartelle.
 
@@ -222,7 +226,6 @@ Esempio di prompt:
 
 | Errore | Causa | Correggi |
 | ------- | ------- | ----- |
-| &quot;Endpoint Marketo non fornito&quot; | Intestazione `X-Marketo-Endpoint` mancante nella configurazione. | Controlla nuovamente la configurazione MCP e conferma che tutte e quattro le intestazioni siano presenti. |
 | &quot;Credenziali Marketo non fornite&quot; | Uno o più di `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` o `X-Marketo-Munchkin-Id` sono mancanti. | Verifica che tutte e quattro le intestazioni siano presenti nella configurazione. |
 | &quot;Errore di autenticazione&quot; | Credenziali non valide o scadute. | Ricontrolla l&#39;ID client e il segreto client in **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
 | &quot;403 Forbidden&quot; | Il tuo Munchkin ID non si trova nel server di cui è stato eseguito il inserisco nell&#39;elenco Consentiti di. | Contatta l&#39;amministratore MCP di [!DNL Marketo] per aggiungere il tuo Munchkin ID. |
