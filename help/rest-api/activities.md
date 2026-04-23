@@ -3,9 +3,9 @@ title: Attività
 feature: REST API
 description: Utilizza l’API REST delle attività di Marketo Engage per elencare i tipi di attività, recuperare le attività dei lead con i token di paging e gestire le modifiche ai valori personalizzati e dei dati.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
 workflow-type: tm+mt
-source-wordcount: '2139'
+source-wordcount: '2218'
 ht-degree: 0%
 
 ---
@@ -77,7 +77,11 @@ Le risposte dal mondo reale includono molte più definizioni. In questo esempio,
 
 Per recuperare le attività da Marketo, chiama l&#39;endpoint [Get Lead Activities](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). Devi innanzitutto recuperare un token di paging per il datetime da cui vuoi iniziare a recuperare le attività. Passare quindi il token di paging nel parametro di query `nextPageToken`. Inoltre, si passano fino a dieci ID del tipo di attività nel parametro di query `activityTypeIds` come elenco separato da virgole.
 
-Facoltativamente è possibile includere un parametro di query listId per limitare la ricerca ai soli record inclusi in un elenco statico specifico oppure un parametro di query leadId e cercare le attività solo da un set specificato di lead. È possibile passare fino a 30 leadID come elenco separato da virgole.
+Facoltativamente, è possibile includere un parametro di query `listId` per limitare la ricerca ai soli record inclusi in un elenco statico specifico oppure un parametro di query `leadIds` e cercare le attività solo da un set specificato di lead. È possibile passare fino a 30 `leadIds` come elenco separato da virgole.
+
+>[!CAUTION]
+>
+>A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite.
 
 ```http
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
@@ -139,6 +143,10 @@ Per le attività di modifica del valore dei dati, viene fornita una versione spe
 
 * Non esiste alcun parametro `activityTypeIds`, poiché l&#39;endpoint restituisce solo le attività Modifica valore dati e Nuovo lead.
 * Il parametro di query `fields` è obbligatorio, dove è possibile trasmettere un elenco di campi separato da virgole per indicare per quali campi si desidera recuperare le modifiche.
+
+>[!CAUTION]
+>
+>A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite.
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
