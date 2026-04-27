@@ -1,8 +1,8 @@
 ---
 source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '483'
-ht-degree: 100%
+source-wordcount: '507'
+ht-degree: 94%
 
 ---
 # Contribuire agli articoli
@@ -11,7 +11,7 @@ Apprezziamo i contributi dalla community e da dipendenti Adobe esterni ai team d
 
 ## Codice di condotta open source di Adobe
 
-Questo progetto ha adottato il [Codice di condotta di Adobe Open Source](code-of-conduct.md) o il [Codice di condotta di .NET Foundation](https://dotnetfoundation.org/code-of-conduct). Per ulteriori informazioni, consulta l’articolo [Contribuzione](contributing.md).
+Questo progetto ha adottato il [Codice di condotta open source di Adobe](code-of-conduct.md) o il [Codice di condotta di .NET Foundation](https://dotnetfoundation.org/code-of-conduct). Per ulteriori informazioni, consulta l’articolo [Come contribuire](contributing.md).
 
 ## Come contribuire al contenuto Adobe
 
@@ -26,8 +26,8 @@ Questo progetto ha adottato il [Codice di condotta di Adobe Open Source](code-of
 Se stai contribuendo con un aggiornamento minore:
 
 1. Passa all’argomento da modificare.
-1. Nel banner “Questo contenuto è stato utile?” che viene visualizzato nella parte inferiore della finestra del browser, fai clic su **Opzioni di feedback dettagliate**.
-1. Fai clic su **Suggerisci una modifica** e invia una richiesta pull (PR) con le modifiche nell’interfaccia utente di GitHub.
+1. Nel banner “Questo contenuto è stato utile?” banner visualizzato nella parte inferiore della finestra del browser, fai clic su **Opzioni di feedback dettagliate**.
+1. Fai clic su **Suggerisci una modifica** e invia una richiesta di pull (PR) con le modifiche nell&#39;interfaccia utente di GitHub.
 
    Per ulteriori informazioni, consulta la [Guida collaboratore per i documenti di Adobe](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=it) generale.
 
@@ -54,7 +54,7 @@ Se sei un autore tecnico, un responsabile del programma o uno sviluppatore del t
 Tutti gli articoli in questo archivio utilizzano GitHub Flavoured Markdown. Se non conosci Markdown, consulta:
 
 * [Nozioni di base su Markdown](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
-* [Cheat sheet Markdown stampabile](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+* [Scheda di riferimento stampabile su Markdown](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
 ## Etichette
 
