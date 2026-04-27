@@ -2,7 +2,7 @@
 title: Archivio blog
 description: Archivio Marketo Developer Blog 2014-2023 che offre post storici su Forms 2.0, Zapier, aggiornamenti API, SOAP obsoleto e migrazione a REST.
 exl-id: d7ae88dd-9938-4957-9798-db43090dab4e
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 9c6aa420e451d529f3a1618fafe70b59392a4670
 workflow-type: tm+mt
 source-wordcount: '65019'
 ht-degree: 0%
@@ -1606,7 +1606,7 @@ Pubblicato il _2014-10-08_ da _Josh_
 
 ### Precompilazione pagina esterna
 
-I moduli di Marketo non forniscono funzionalità di precompilazione native quando vengono caricati all’esterno di una pagina di destinazione di Marketo. Tuttavia, è ancora possibile implementarlo utilizzando le [API Marketo](/help/rest-api/rest-api.md) e le [API Forms 2.0 JavaScript](/help/javascript-api/forms-api-reference.md/). Il primo passaggio consiste nel recuperare i dati dei lead da Marketo tramite una chiamata REST dal server. Supponendo di non disporre di un modo immediato per fare riferimento incrociato agli ID lead o a un altro identificatore univoco dal server, è necessario utilizzare il cookie Munchkin &#39;_mkto_trk&#39; per recuperare dati dal server Marketo, utilizzando il metodo [Get Leads By Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET).
+I moduli di Marketo non forniscono funzionalità di precompilazione native quando vengono caricati all’esterno di una pagina di destinazione di Marketo. Tuttavia, è ancora possibile implementarlo utilizzando le [API Marketo](/help/rest-api/rest-api.md) e le [API Forms 2.0 JavaScript](/help/javascript-api/forms-api-reference.md). Il primo passaggio consiste nel recuperare i dati dei lead da Marketo tramite una chiamata REST dal server. Supponendo di non disporre di un modo immediato per fare riferimento incrociato agli ID lead o a un altro identificatore univoco dal server, è necessario utilizzare il cookie Munchkin &#39;_mkto_trk&#39; per recuperare dati dal server Marketo, utilizzando il metodo [Get Leads By Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET).
 
 Per effettuare questa chiamata, sono necessari gli endpoint di autenticazione e REST della tua istanza. Dopo aver eseguito l&#39;autenticazione con l&#39;istanza Marketo, è necessario effettuare una chiamata all&#39;API lead all&#39;indirizzo `https://<host>/rest/v1/leads.json`. È quindi necessario creare una querystring per filtrare in base al cookie Marketo come `?filterType=cookie&filterValues=`. È necessario recuperare il valore specifico dalla chiave &quot;_mkto_trk&quot; inviata al server dal client. NOTA: il valore del cookie _mkto_trk include una e commerciale e deve essere un URL codificato in `%26` per essere accettato correttamente dall&#39;endpoint Marketo. Per impostazione predefinita, l&#39;API lead restituisce quattro campi: `id`, `email`, `firstName` e `updatedAt`. Per impostare un set di campi specifico, è necessario includere un parametro di query `fields`, con i nomi dei campi separati da virgole come: `&fields=email,firstName,lastName,company`. Alla fine la nostra chiamata sarà simile alla seguente:
 
