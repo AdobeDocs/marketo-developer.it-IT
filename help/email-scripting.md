@@ -3,7 +3,7 @@ title: Script e-mail
 feature: Email Programs
 description: Scopri come scrivere e-mail Marketo dinamiche utilizzando token, variabili, strumenti Velocity di Apache Velocity e come testare con le Anteprima di invio di campioni e e-mail.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
+source-git-commit: 6b813020fec6727dc2fe3b4dfe1c98146447e704
 workflow-type: tm+mt
 source-wordcount: '1100'
 ht-degree: 0%
@@ -32,7 +32,9 @@ $variablename ##outputs '$variablename'
 ${variable}name ##outputs 'valuename'
 ```
 
-Esiste anche una notazione di riferimento silenziosa, dove è presente un `!` Incluso dopo il `$`. Normalmente, quando Velocity incontra un riferimento non definito, la stringa che rappresenta il riferimento viene lasciata in posizione. Con la notazione di riferimento silenzioso, se viene rilevato un riferimento non definito, non viene emesso alcun valore:
+
+
+Esiste anche una notazione di riferimento silenziosa, dove è presente un `!` Incluso dopo il `$`. Normalmente, quando Velocity incontra un riferimento non definito, la stringa che rappresenta il riferimento viene lasciata in posizione. Con notazione rkkjeference silenziosa, se viene rilevato un riferimento non definito, non viene emesso alcun valore:
 
 ```velocity
 ##Defined Reference
