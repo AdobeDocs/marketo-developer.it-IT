@@ -3,9 +3,9 @@ title: Mappature risposte
 feature: Webhooks
 description: Mappature di risposta dei webhook Marketo per JSON e XML, mappatura degli attributi ai campi lead con nomi API SOAP, notazione in punti e array e compatibilità dei tipi.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '480'
+source-wordcount: '484'
 ht-degree: 0%
 
 ---
@@ -28,11 +28,11 @@ Le proprietà JSON sono accessibili con la notazione del punto e la notazione de
 { "foo":"bar"}
 ```
 
-Per accedere alla proprietà `foo` in un mapping di risposta, utilizzare `name` della proprietà poiché si trova nel primo livello dell&#39;oggetto JSON, `foo`. Ecco come si presenta in Marketo:
+Per accedere alla proprietà `foo` in un mapping di risposta, utilizzare `name` della proprietà poiché si trova nel primo livello dell&#39;oggetto JSON, `foo`. Di seguito viene illustrato l&#39;aspetto di questa funzionalità in Marketo:
 
 ![Mappatura risposta](assets/json-resp.png)
 
-Di seguito un esempio più complicato con un array:
+Di seguito è riportato un esempio più complicato con un array:
 
 ```json
 {
@@ -58,7 +58,7 @@ Desideriamo accedere a orderDate dal primo elemento della matrice ordini. Per ac
 
 ## Mappature XML
 
-È possibile accedere ai valori dai singoli elementi nei documenti XML. Questo utilizza una notazione del punto simile alle mappature JSON. Diamo un’occhiata a questo semplice esempio:
+È possibile accedere ai valori dai singoli elementi nei documenti XML. Questo utilizza una notazione del punto simile alle mappature JSON. Considera questo semplice esempio:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
