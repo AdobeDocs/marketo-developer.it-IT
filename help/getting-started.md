@@ -2,7 +2,7 @@
 title: Guida introduttuva
 description: Guida introduttiva alle API e al modello dati di Marketo Engage, inclusi lead, attività, programmi, tag, elenchi, linee guida REST e avvisi di rimozione da SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
 workflow-type: tm+mt
 source-wordcount: '1507'
 ht-degree: 1%
@@ -101,3 +101,4 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Cust
 I record persona di vendita e le relazioni lead possono essere gestiti in Marketo quando non è abilitata alcuna integrazione CRM nativa. Questi record contengono informazioni di base sulla persona di vendita, come Nome, E-mail e Qualifica, che possono essere utilizzate per filtrare e token in Marketo quando un lead è di proprietà di uno di essi. La relazione con un venditore viene gestita a livello di lead tramite il campo &quot;externalSalesPersonId&quot;, che deve essere aggiornato tramite l&#39;API [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
+
