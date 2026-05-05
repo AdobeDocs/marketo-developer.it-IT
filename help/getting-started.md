@@ -2,7 +2,7 @@
 title: Guida introduttuva
 description: Guida introduttiva alle API e al modello dati di Marketo Engage, inclusi lead, attività, programmi, tag, elenchi, linee guida REST e avvisi di rimozione da SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
 workflow-type: tm+mt
 source-wordcount: '1507'
 ht-degree: 1%
@@ -32,7 +32,7 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Lead
 
 I lead interagiscono con la tua organizzazione in alcuni modi. Un lead può visitare una pagina del sito web della tua azienda, partecipare a una fiera o scaricare un whitepaper. Ognuna di queste azioni può essere acquisita in Marketo per aiutare un addetto al marketing a capire meglio quali attività ha svolto un lead e quando può coordinare comunicazioni tempestive e pertinenti. Le attività sono sempre correlate ai lead per leadId.
 
-Puoi definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungere attività personalizzate tramite l’API Marketo. Ulteriori informazioni sulle attività personalizzate sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
+Puoi definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungere attività personalizzate tramite l’API Marketo. Ulteriori informazioni sulle attività personalizzate sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities), [JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -50,7 +50,7 @@ I tag sono un modo per raggruppare i dati a scopo di reporting. Questi identific
 
 In qualità di amministratore di Marketo, puoi creare i tipi di tag obbligatori e facoltativi disponibili per la selezione quando un utente di Marketo crea un programma. I valori possibili per ciascuno di questi tipi di tag vengono definiti dall’utente e riflettono il modo in cui l’azienda desidera utilizzare i tag personalizzati a scopo di reporting.
 
-Ad esempio, potrebbe essere utile creare un tipo di tag personalizzato &quot;Region&quot; con più valori di tag (ad esempio, Nordest, Southeast) per analizzare quale area genera il maggior numero di lead. Oppure, ad esempio, puoi creare un tipo di tag &quot;Proprietario&quot;, che ti consente di valutare e capire quali proprietari del programma (ad esempio, Maria, David o John) stanno avendo il maggiore impatto sulla creazione di lead e opportunità. Ulteriori informazioni sui tag sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Ad esempio, potrebbe essere utile creare un tipo di tag personalizzato &quot;Region&quot; con più valori di tag (ad esempio, Nordest, Southeast) per analizzare quale area genera il maggior numero di lead. Oppure, ad esempio, puoi creare un tipo di tag &quot;Proprietario&quot;, che ti consente di valutare e capire quali proprietari del programma (ad esempio, Maria, David o John) stanno avendo il maggiore impatto sulla creazione di lead e opportunità. Ulteriori informazioni sui tag sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -86,7 +86,7 @@ I token definiti a livello di programma o cartella sono denominati &quot;I miei 
 
 I miei token creati localmente all’interno di una cartella o di un programma specifico della campagna sono disponibili per tale programma o cartella (locale). I miei token creati a livello di cartella della campagna sono disponibili per l’utilizzo in tutti i programmi contenuti nella cartella della campagna (ereditati). I token che vengono modificati a livello di programma con valori personalizzati non modificano il valore My Token padre del token a livello di cartella del programma (sostituito).
 
-I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; aggiunta all&#39;inizio del nome del token. Ad esempio, se crei un token di tipo Data con il nome EventDate, il nome del token è `{{my.EventDate}}`. Ulteriori informazioni su I miei token sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; aggiunta all&#39;inizio del nome del token. Ad esempio, se crei un token di tipo Data con il nome EventDate, il nome del token è `{{my.EventDate}}`. Ulteriori informazioni su I miei token sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
@@ -101,3 +101,4 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Cust
 I record persona di vendita e le relazioni lead possono essere gestiti in Marketo quando non è abilitata alcuna integrazione CRM nativa. Questi record contengono informazioni di base sulla persona di vendita, come Nome, E-mail e Qualifica, che possono essere utilizzate per filtrare e token in Marketo quando un lead è di proprietà di uno di essi. La relazione con un venditore viene gestita a livello di lead tramite il campo &quot;externalSalesPersonId&quot;, che deve essere aggiornato tramite l&#39;API [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
+
