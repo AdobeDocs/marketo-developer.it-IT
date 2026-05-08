@@ -3,7 +3,7 @@ title: Oggetti Marketo
 feature: Email Programs
 description: Guida all’utilizzo di Marketo Velocity con lead, opportunità e oggetti personalizzati, al caricamento di campi, ai primi 10 accessi all’elenco, alle relazioni con SFDC e a $TriggerObject.
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
 workflow-type: tm+mt
 source-wordcount: '532'
 ht-degree: 0%
@@ -34,7 +34,7 @@ Per poter essere utilizzato, un oggetto personalizzato di SFDC deve avere una so
 
 ## Attiva oggetti
 
-Quando una campagna viene attivata tramite l&#39;opzione Aggiunta all&#39;opportunità, l&#39;opportunità viene aggiornata o aggiunta a `<Custom Object Name>` trigger, diventa disponibile una variabile speciale nei token di script eseguiti nel contesto della campagna del trigger: `$TriggerObject ` (non supportato per `<Custom Object Name>` è il trigger aggiornato).  Se un token che utilizza un riferimento `$TriggerObject` viene utilizzato in una campagna batch, l&#39;invio dell&#39;e-mail non riuscirà, poiché questo oggetto non è disponibile nelle campagne batch di alcun tipo.  Questo è un riferimento all&#39;oggetto che ha attivato la campagna. L’oggetto contiene tutti i dati del record a cui si accede tramite un nome di variabile diverso.
+Quando una campagna viene attivata tramite l&#39;opzione Aggiunta all&#39;opportunità, l&#39;opportunità viene aggiornata o aggiunta a `<Custom Object Name>` trigger, diventa disponibile una variabile speciale nei token di script eseguiti nel contesto della campagna del trigger: `$TriggerObject` (non supportato per `<Custom Object Name>` è il trigger aggiornato).  Se un token che utilizza un riferimento `$TriggerObject` viene utilizzato in una campagna batch, l&#39;invio dell&#39;e-mail non riuscirà, poiché questo oggetto non è disponibile nelle campagne batch di alcun tipo.  Questo è un riferimento all&#39;oggetto che ha attivato la campagna. L’oggetto contiene tutti i dati del record a cui si accede tramite un nome di variabile diverso.
 
 Ad esempio, se una campagna è stata attivata tramite un oggetto personalizzato per un ordine di prodotto, l&#39;ordine a cui è stato aggiunto il lead viene esposto nella variabile `$TriggerObject`.
 
