@@ -4,11 +4,19 @@ feature: REST API, Custom Objects
 description: Scopri come creare e gestire oggetti personalizzati di Marketo tramite API REST, inclusi elenchi e descrizioni di endpoint, metadati, relazioni, campi e query.
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
 TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-subfeature_v2: id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 3346
@@ -896,7 +904,7 @@ L&#39;endpoint [Aggiungi campi tipo di oggetto personalizzato](https://developer
 Per una struttura oggetto personalizzata uno-a-molti, utilizzare un campo di collegamento in un oggetto personalizzato per collegarlo a un oggetto standard: Lead o Company. Utilizzando l&#39;esempio del proprietario dell&#39;automobile dalla documentazione del prodotto Marketo [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), viene creato un oggetto personalizzato contenente informazioni relative all&#39;automobile per la connessione con i lead.
 
 1. Crea un oggetto **Car**
-1. Aggiungi campi all&#39;oggetto **Car**: deduplicazione in **VIN**, collegamento a **Lead****/ID lead**
+1. Aggiungi campi all&#39;oggetto **Car**: deduplicazione in **VIN**, collegamento a **Lead**&#x200B;**/ID lead**
 1. Approva oggetto **Car**
 
 Innanzitutto, crea il tipo di oggetto personalizzato per contenere informazioni specifiche per l’auto.
@@ -1000,7 +1008,7 @@ Le relazioni molti-a-molti sono rappresentate utilizzando un &quot;ponte&quot;, 
 1. Aggiungi campi a **Corso:** deduplicazione in **ID corso**
 1. Approva **Corso**
 1. Crea un oggetto bridge **Registrazione**
-1. Aggiungi campi a **Iscrizione:** deduplicazione in **ID iscrizione**, collegamento al campo **ID corso****/ID corso** e collegamento a **ID lead****/ID lead**
+1. Aggiungi campi a **Iscrizione:** deduplicazione in **ID iscrizione**, collegamento al campo **ID corso**&#x200B;**/ID corso** e collegamento a **ID lead**&#x200B;**/ID lead**
 1. Approva **iscrizione**
 
 Innanzitutto, crea il tipo di oggetto edge per contenere informazioni specifiche del corso:

@@ -4,8 +4,10 @@ feature: SOAP
 description: Scopri come gli oggetti personalizzati di Marketo collegano un lead a molti record, con struttura, limiti e chiamate API di SOAP per ottenere, sincronizzare, eliminare più l’utilizzo di elenchi avanzati e e-mail.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
 TQID: https://experienceleague.adobe.com/Fy3h8qfKs8gizeakXkhoj5mJhib-QA2kYOu41YMIEZs
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 286
