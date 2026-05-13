@@ -3,9 +3,15 @@ title: Moduli
 feature: REST API, Forms
 description: Guida REST API di Marketo Forms per creare e gestire moduli, recuperarli per ID o nome, sfogliarli con filtri di stato e gestire campi, set di campi e regole.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1823'
+source-wordcount: 1823
 ht-degree: 1%
 
 ---
@@ -591,7 +597,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-Per i campi personalizzati dei membri del programma, chiamare [Get Available Form Program Member Fields](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)  endpoint per recuperare i tipi di dati dei campi personalizzati del membro del programma e i metadati predefiniti. Per utilizzare questi campi in un modulo, il modulo deve trovarsi sotto un programma (non in Design Studio). Le pagine di destinazione contenenti moduli che utilizzano questi campi devono trovarsi anche sotto un programma (non possono risiedere in Design Studio o essere clonate in Design Studio).
+Per i campi personalizzati dei membri del programma, chiamare l&#39;endpoint [Get Available Form Program Member Fields](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET) per recuperare i tipi di dati dei campi personalizzati dei membri del programma e i metadati predefiniti. Per utilizzare questi campi in un modulo, il modulo deve trovarsi sotto un programma (non in Design Studio). Le pagine di destinazione contenenti moduli che utilizzano questi campi devono trovarsi anche sotto un programma (non possono risiedere in Design Studio o essere clonate in Design Studio).
 
 ```http
 GET /rest/asset/v1/form/programMemberFields.json

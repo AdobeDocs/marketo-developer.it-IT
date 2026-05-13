@@ -3,9 +3,14 @@ title: Pagine di destinazione
 feature: REST API, Landing Pages
 description: Utilizza l’API REST di Marketo per eseguire query su metadati e contenuti, creare, aggiornare, approvare, eliminare e clonare le pagine di destinazione, inclusi i tipi guidati e in formato libero.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NssOtB6BEMGOQzzauLI7AszLpN3fVcEeJcr9VNTkpJE
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1221'
+source-wordcount: 1221
 ht-degree: 1%
 
 ---
@@ -186,7 +191,7 @@ Le sezioni di contenuto sono ordinate in base alla loro proprietà di indice e i
 | Rettangolo | Vuoto. |
 | RichText | Contenuto HTML di testo.  Può contenere solo elementi in formato Rich Text. |
 | Snippet | ID del frammento. |
-| Pulsante social | ID di  il pulsante social. |
+| Pulsante social | ID del pulsante Social. |
 | Video | ID del video. |
 
 Per le pagine in formato libero, è necessario aggiungere tutte le sezioni di contenuto desiderate che verranno incorporate nell&#39;elemento div con ID `mktoContent`. Per le pagine guidate, un elenco di elementi predefiniti potrebbe essere presente nell&#39;elenco dall&#39;endpoint [Ottieni contenuto pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Puoi aggiungere altri contenuti o aggiornarne [il contenuto](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) tramite i rispettivi endpoint.
@@ -274,7 +279,7 @@ Le variabili sono definite come meta tag all&#39;interno dell&#39;elemento `<hea
 </head>
 ```
 
-Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Per ulteriori informazioni, consulta la sezione &quot;Variabile modificabile&quot; nella documentazione di [Creazione di un modello di pagina di destinazione guidata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Query
 
@@ -310,7 +315,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-In entrata  in questo esempio, la pagina di destinazione guidata contiene 3 variabili: stringVar, colorVar, boolVar.
+In questo esempio, la pagina di destinazione guidata contiene 3 variabili: stringVar, colorVar, boolVar.
 
 ### Aggiornamento
 
@@ -341,7 +346,7 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 Marketo fornisce l&#39;endpoint [Ottieni contenuto pagina di destinazione completo](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) per recuperare un&#39;anteprima in tempo reale di una pagina di destinazione come verrebbe rappresentata in un browser. Esiste un parametro obbligatorio, il parametro percorso `id`, che è l&#39;ID della pagina di destinazione da visualizzare in anteprima. Sono disponibili due parametri di query facoltativi aggiuntivi:
 
 - segmentazione: accetta un array di oggetti JSON che contengono gli attributi segmentationId e segmentId. Con questa impostazione, visualizza in anteprima la pagina di destinazione come se fossi un lead corrispondente a tali segmenti.
-- leadId:  Accetta l’ID intero di un lead. Con questa impostazione, visualizza in anteprima la pagina di destinazione come se fosse visualizzata dal lead designato.
+- leadId: accetta l&#39;ID intero di un lead. Con questa impostazione, visualizza in anteprima la pagina di destinazione come se fosse visualizzata dal lead designato.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

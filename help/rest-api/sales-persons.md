@@ -3,9 +3,13 @@ title: Venditori
 feature: REST API
 description: Guida REST API di Marketo per i record Persona di vendita con SFDC o Dynamics sync, utilizzando externalSalesPersonId per relazionarsi ai lead ed eseguire query, upsert, delete.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '396'
+source-wordcount: 396
 ht-degree: 0%
 
 ---
@@ -14,7 +18,7 @@ ht-degree: 0%
 
 [Riferimento endpoint persona di vendita](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-Le API addetto alle vendite sono di sola lettura per gli abbonamenti che hanno [SFDC Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
+Le API addetto alle vendite sono di sola lettura per gli abbonamenti che hanno [SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
 
 I venditori sono correlati ai record dei lead utilizzando l&#39;endpoint [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) e passando l&#39;attributo externalSalesPersonId.
 

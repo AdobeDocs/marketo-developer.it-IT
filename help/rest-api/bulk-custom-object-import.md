@@ -3,9 +3,14 @@ title: Importazione di oggetti personalizzati in blocco
 feature: Custom Objects
 description: Scopri come importare in blocco oggetti personalizzati Marketo tramite REST utilizzando file CSV, TSV o SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '953'
+source-wordcount: 953
 ht-degree: 0%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 0%
 
 [Riferimento dell&#39;endpoint di importazione oggetti personalizzati in blocco](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-Quando si dispone di molti record di oggetti personalizzati per  import, è consigliabile importarle in modo asincrono utilizzando l’API in blocco. Questa operazione viene eseguita importando un file flat contenente record delimitati (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, a condizione che la dimensione sia inferiore a 10 MB (in caso contrario, è possibile che  413 (viene restituito il codice di stato). Il contenuto del file dipende dalla definizione dell’oggetto personalizzato. La prima riga contiene sempre un’intestazione che elenca i campi in cui mappare i valori di ogni riga. Tutti i nomi dei campi nell’intestazione devono corrispondere a un nome API (come descritto di seguito). Le righe rimanenti contengono i dati da importare, un record per riga. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
+Quando disponi di molti record di oggetti personalizzati da importare, è consigliabile importarli in modo asincrono utilizzando l’API in blocco. Questa operazione viene eseguita importando un file flat contenente record delimitati (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché la dimensione sia inferiore a 10 MB (altrimenti viene restituito un codice di stato HTTP 413). Il contenuto del file dipende dalla definizione dell’oggetto personalizzato. La prima riga contiene sempre un’intestazione che elenca i campi in cui mappare i valori di ogni riga. Tutti i nomi dei campi nell’intestazione devono corrispondere a un nome API (come descritto di seguito). Le righe rimanenti contengono i dati da importare, un record per riga. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
 
 ## Limiti di elaborazione
 
@@ -22,7 +27,7 @@ Quando si dispone di molti record di oggetti personalizzati per  import, è con
 
 ## Esempio di oggetto personalizzato
 
-Prima di utilizzare l&#39;API in blocco, è necessario utilizzare l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Ad esempio, supponiamo di aver creato un oggetto personalizzato &quot;Car&quot; con i campi &quot;Color&quot;, &quot;Make&quot;, &quot;Model&quot; e &quot;VIN&quot;. Di seguito sono riportate le schermate dell’interfaccia utente di amministrazione che mostrano l’oggetto personalizzato. Potete vedere che abbiamo usato il campo VIN per la deduplicazione. I nomi API vengono evidenziati perché devono essere utilizzati quando si chiamano endpoint correlati a API in blocco.
+Prima di utilizzare l&#39;API in blocco, è necessario utilizzare l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Ad esempio, supponiamo di aver creato un oggetto personalizzato &quot;Car&quot; con i campi &quot;Color&quot;, &quot;Make&quot;, &quot;Model&quot; e &quot;VIN&quot;. Di seguito sono riportate le schermate dell’interfaccia utente di amministrazione che mostrano l’oggetto personalizzato. Potete vedere che abbiamo usato il campo VIN per la deduplicazione. I nomi API vengono evidenziati perché devono essere utilizzati quando si chiamano endpoint correlati a API in blocco.
 
 ![Inserisci oggetto personalizzato](assets/bulk-insert-co-car-1.png)
 

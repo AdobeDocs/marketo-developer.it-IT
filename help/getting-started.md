@@ -2,9 +2,14 @@
 title: Guida introduttuva
 description: Guida introduttiva alle API e al modello dati di Marketo Engage, inclusi lead, attività, programmi, tag, elenchi, linee guida REST e avvisi di rimozione da SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
+TQID: https://experienceleague.adobe.com/0lfzor5EQJ0VqIh4fqlK29OiPmRCy6fnEtncJ38r-OM
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c954475c-8548-4e33-a0b8-6b550d956115id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550ccid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1507'
+source-wordcount: 1507
 ht-degree: 1%
 
 ---
@@ -32,7 +37,7 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Lead
 
 I lead interagiscono con la tua organizzazione in alcuni modi. Un lead può visitare una pagina del sito web della tua azienda, partecipare a una fiera o scaricare un whitepaper. Ognuna di queste azioni può essere acquisita in Marketo per aiutare un addetto al marketing a capire meglio quali attività ha svolto un lead e quando può coordinare comunicazioni tempestive e pertinenti. Le attività sono sempre correlate ai lead per leadId.
 
-Puoi definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungere attività personalizzate tramite l’API Marketo. Ulteriori informazioni sulle attività personalizzate sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
+Puoi definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungere attività personalizzate tramite l’API Marketo. Ulteriori informazioni sulle attività personalizzate sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities), [JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -50,7 +55,7 @@ I tag sono un modo per raggruppare i dati a scopo di reporting. Questi identific
 
 In qualità di amministratore di Marketo, puoi creare i tipi di tag obbligatori e facoltativi disponibili per la selezione quando un utente di Marketo crea un programma. I valori possibili per ciascuno di questi tipi di tag vengono definiti dall’utente e riflettono il modo in cui l’azienda desidera utilizzare i tag personalizzati a scopo di reporting.
 
-Ad esempio, potrebbe essere utile creare un tipo di tag personalizzato &quot;Region&quot; con più valori di tag (ad esempio, Nordest, Southeast) per analizzare quale area genera il maggior numero di lead. Oppure, ad esempio, puoi creare un tipo di tag &quot;Proprietario&quot;, che ti consente di valutare e capire quali proprietari del programma (ad esempio, Maria, David o John) stanno avendo il maggiore impatto sulla creazione di lead e opportunità. Ulteriori informazioni sui tag sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Ad esempio, potrebbe essere utile creare un tipo di tag personalizzato &quot;Region&quot; con più valori di tag (ad esempio, Nordest, Southeast) per analizzare quale area genera il maggior numero di lead. Oppure, ad esempio, puoi creare un tipo di tag &quot;Proprietario&quot;, che ti consente di valutare e capire quali proprietari del programma (ad esempio, Maria, David o John) stanno avendo il maggiore impatto sulla creazione di lead e opportunità. Ulteriori informazioni sui tag sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -86,7 +91,7 @@ I token definiti a livello di programma o cartella sono denominati &quot;I miei 
 
 I miei token creati localmente all’interno di una cartella o di un programma specifico della campagna sono disponibili per tale programma o cartella (locale). I miei token creati a livello di cartella della campagna sono disponibili per l’utilizzo in tutti i programmi contenuti nella cartella della campagna (ereditati). I token che vengono modificati a livello di programma con valori personalizzati non modificano il valore My Token padre del token a livello di cartella del programma (sostituito).
 
-I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; aggiunta all&#39;inizio del nome del token. Ad esempio, se crei un token di tipo Data con il nome EventDate, il nome del token è `{{my.EventDate}}`. Ulteriori informazioni su I miei token sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; aggiunta all&#39;inizio del nome del token. Ad esempio, se crei un token di tipo Data con il nome EventDate, il nome del token è `{{my.EventDate}}`. Ulteriori informazioni su I miei token sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 

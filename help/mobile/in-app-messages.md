@@ -3,9 +3,13 @@ title: Messaggi in-app
 feature: Mobile Marketing
 description: Configura i messaggi in-app Marketo con Mobile SDK, configura i trigger di evento personalizzati, tieni traccia dell’attività di tocco e correggi i problemi di inizializzazione della prima app aperta.
 exl-id: 73c9f862-d154-4b37-94ce-92311aa756e8
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/RVkEUBaFb-PHd0gE9ngzYc5zOojINwSI7ic2TmcU7-8
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '312'
+source-wordcount: 357
 ht-degree: 1%
 
 ---
@@ -15,7 +19,7 @@ ht-degree: 1%
 Per utilizzare le funzionalità di messaggistica in-app di Marketo, è necessario attenersi ai seguenti passaggi:
 
 1. Installa Marketo Mobile SDK come descritto in [Installazione di Mobile](installation.md).
-1. Aggiungi la tua app mobile a Marketo come descritto in [Aggiungi un&#39;app mobile](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
+1. Aggiungi la tua app mobile a Marketo come descritto in [Aggiungi un&#39;app mobile](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
 1. Facoltativamente, aggiungi codice alla tua app mobile per acquisire [azioni personalizzate](custom-actions.md).
 
 Dopo aver installato Marketo Mobile SDK e completato l’aggiunta dell’app in Marketo, puoi inviare messaggi in-app da visualizzare quando un utente apre la tua app.
@@ -34,4 +38,4 @@ Gli eventi personalizzati vengono attivati dall’interazione dell’utente dopo
 
 Assicurati di assegnare un’azione oltre a &quot;ignora&quot; a uno dei pulsanti primari o secondari per tenere traccia delle attività di tocco e utilizzare le frequenze di visualizzazione di base in base al numero di tocchi.
 
-Per ulteriori informazioni, consulta la sezione [Messaggi in-app](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) nella documentazione del prodotto.
+Per ulteriori informazioni, consulta la sezione [Messaggi in-app](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) nella documentazione del prodotto.

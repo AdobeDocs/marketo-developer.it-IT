@@ -3,9 +3,14 @@ title: Estrazione membro programma in blocco
 feature: REST API
 description: Utilizza le API REST di Estrai membri del programma in blocco Marketo per esportare record di membri di grandi dimensioni per ETL, data warehousing e archiviazione, con autorizzazioni e metadati di campo.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/w4qaVTKSe0EORaSiURB6WbJXi29JUdEgfkb2dnfuVFw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1294'
+source-wordcount: 1294
 ht-degree: 2%
 
 ---
@@ -235,7 +240,7 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
     <tr>
       <td>isExausted</td>
       <td>Booleano</td>
-      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
+      <td>Accetta un valore booleano utilizzato per filtrare i record di appartenenza al programma per <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">persone con contenuto esaurito</a>.</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -255,10 +260,10 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
             <tr>
               <td>Partecipazione avvenuta</td>
               <td>Partecipazione on-demand</td>
-              <td>Rifiutato</td>
+              <td>Mancato recapito</td>
             </tr>
             <tr>
-              <td>Clic effettuato</td>
+              <td>Clic</td>
               <td>Contattato</td>
               <td>Convertito</td>
             </tr>
@@ -275,7 +280,7 @@ I membri del programma supportano varie opzioni di filtro. È possibile specific
             <tr>
               <td>Non nel programma</td>
               <td>Su elenco</td>
-              <td>Aperto</td>
+              <td>Apertura</td>
             </tr>
             <tr>
               <td>Registrato</td>

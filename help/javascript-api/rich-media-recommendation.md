@@ -3,9 +3,13 @@ title: Consigli per contenuti multimediali avanzati
 description: Configurare la funzione Consigli per contenuti multimediali avanzati utilizzando il tag RTP per contenuti predittivi di Marketo, template1 template2 template3 div, GET da compilare, SET per configurare le categorie.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '854'
+source-wordcount: 854
 ht-degree: 3%
 
 ---
@@ -21,7 +25,7 @@ Nella pagina in cui desideri visualizzare il modello Consigli per contenuti mult
 1. Nel corpo della pagina
    1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
