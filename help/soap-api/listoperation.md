@@ -3,10 +3,17 @@ title: listOperation
 feature: SOAP
 description: listOperation di Marketo SOAP per aggiungere, rimuovere o controllare l'appartenenza a un elenco statico. Supporta fino a 1000 lead per chiamata con modalità rigorosa, esempi XML, codice PHP e Java.
 exl-id: 8332cc22-c5a9-43d6-9e92-8d62265cfab2
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/seGThNLWyN6Rk52a2GUvLRsnSq3WvbBj88WpDxvlpGw
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '211'
-ht-degree: 6%
+source-wordcount: 212
+ht-degree: 8%
 
 ---
 
@@ -16,7 +23,7 @@ Questo metodo viene utilizzato per eseguire operazioni su un elenco statico defi
 
 I tipi di operazione includono:
 
-- Aggiungi all&#39;elenco
+- Aggiungi all’elenco
 - Rimuovi dall’elenco
 - Controlla appartenenza all&#39;elenco
 

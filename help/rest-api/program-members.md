@@ -3,9 +3,22 @@ title: Membri del programma
 feature: REST API
 description: Utilizza l’API REST di Marketo per leggere, creare, aggiornare ed eliminare i membri del programma, gestire i campi standard e personalizzati ed eseguire query utilizzando campi ricercabili.
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/scEHyXYq9C7cCS1kIX810wG7ahT9fsa448NwIfBmzQM
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1924'
+source-wordcount: 1924
 ht-degree: 2%
 
 ---
@@ -684,7 +697,7 @@ POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
 
 ## Elimina
 
-L&#39;endpoint [Elimina membri del programma](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) viene utilizzato per eliminare i record dei membri del programma. Il parametro di percorso `programId` richiesto specifica il programma contenente i membri da eliminare. Il corpo della richiesta contiene una matrice `input` di ID lead. Un massimo di 300 ID lead  per chiamata sono consentiti.
+L&#39;endpoint [Elimina membri del programma](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST) viene utilizzato per eliminare i record dei membri del programma. Il parametro di percorso `programId` richiesto specifica il programma contenente i membri da eliminare. Il corpo della richiesta contiene una matrice `input` di ID lead. È consentito un massimo di 300 ID lead per chiamata.
 
 L&#39;endpoint risponde con un `status` di &quot;eliminato&quot; o &quot;ignorato&quot;. Se viene ignorato, verrà incluso anche un array `reasons`. L&#39;endpoint risponderà anche con un campo `seq` che è un indice che può essere utilizzato per correlare i record inviati all&#39;ordine della risposta.
 

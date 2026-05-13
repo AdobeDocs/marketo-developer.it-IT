@@ -3,9 +3,14 @@ title: Oggetti Marketo
 feature: SOAP
 description: Panoramica degli oggetti MO di Marketo, inclusi tipi, attributi, comportamento chiave esterna e API SOAP supportate per opportunità, programma e record correlati.
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/-G3BW9oFhPZL68yBUy-aNYycmgADhQCo8OclQAierrU
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '274'
+source-wordcount: 274
 ht-degree: 0%
 
 ---
@@ -31,7 +36,7 @@ Gli oggetti MO sono costituiti da:
 
 ### Chiavi Esterne
 
-Le chiavi esterne sono campi personalizzati definiti negli oggetti Marketo, ad esempio Lead o Opportunità. Il nome è il nome del campo e il valore è il valore del campo, generato in un sistema esterno. **Marketo non applica un vincolo di univocità a questi valori.** È responsabilità dell’utente API verificare che i valori siano univoci. Se si verifica un duplicato, Marketo utilizza l’oggetto aggiunto più di recente. È simile al comportamento del campo standard Indirizzo e-mail.
+Le chiavi esterne sono campi personalizzati definiti negli oggetti Marketo, ad esempio Lead o Opportunità. Il nome è il nome del campo e il valore è il valore del campo, generato in un sistema esterno. **Marketo non applica un vincolo univoco a questi valori.** È responsabilità dell’utente API verificare che i valori siano univoci. Se si verifica un duplicato, Marketo utilizza l’oggetto aggiunto più di recente. È simile al comportamento del campo standard Indirizzo e-mail.
 
 ### API disponibili
 

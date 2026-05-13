@@ -3,9 +3,16 @@ title: Riferimento API di Forms
 description: Riferimento completo per l’API Marketo Forms 2.0, con informazioni dettagliate sui metodi MktoForms2 e Form, parametri, callback e risultati per il caricamento e il rendering dei moduli.
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: 1352
 ht-degree: 1%
 
 ---
@@ -182,7 +189,7 @@ Esistono due oggetti principali con cui interagirai utilizzando l’API di Forms
     </tr>
     <tr valign="top">
       <td>.submittable(canSubmit) <em>disponibile anche come:</em> <em>.submitable(canSubmit)</em></td>
-      <td>Ottiene o imposta se è possibile inviare il modulo. Se chiamato senza argomenti, ottiene il valore, se chiamato con un argomento imposta il valore. Questo può essere utilizzato per impedire l'invio di una maschera mentre devono essere soddisfatti altri criteri al di fuori della maschera normale.</td>
+      <td>Ottiene o imposta se è possibile inviare il modulo. Se viene chiamato senza argomenti, ottiene il valore. Se viene chiamato con un argomento, imposta il valore.Questo può essere utilizzato per impedire l’invio di un modulo mentre devono essere soddisfatti altri criteri al di fuori del modulo normale.</td>
       <td>canSubmit (facoltativo)(booleano) - Imposta il modulo in modo che sia inviabile o non inviabile.</td>
       <td>Booleano o oggetto modulo: se chiamato senza argomenti, restituisce un valore booleano che indica se il modulo è inviabile. Se chiamato con un argomento, restituisce questo oggetto Form a scopo di concatenamento. </td>
     </tr>

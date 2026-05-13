@@ -3,9 +3,16 @@ title: Estrai in blocco
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1724'
+source-wordcount: 1724
 ht-degree: 0%
 
 ---
@@ -125,7 +132,7 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 
 ## Recupero processi
 
-A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta un campo filtro `status`, un  `batchSize` per limitare il numero di processi restituiti e `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
+A volte, potrebbe essere necessario recuperare i processi recenti. Questa operazione può essere eseguita facilmente con Ottieni processi di esportazione per il tipo di oggetto corrispondente. Ogni endpoint Get Export Jobs supporta un campo filtro `status`, un `batchSize` per limitare il numero di processi restituiti e un `nextPageToken` per il paging attraverso set di risultati di grandi dimensioni. Il filtro di stato supporta ogni stato valido per un processo di esportazione: Creato, In coda, Elaborazione, Annullato, Completato e Non riuscito. La proprietà batchSize ha un valore massimo e predefinito di 300. Otteniamo l’elenco dei processi di esportazione lead:
 
 ```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed

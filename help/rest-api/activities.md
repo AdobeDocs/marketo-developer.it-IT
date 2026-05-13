@@ -3,9 +3,18 @@ title: Attività
 feature: REST API
 description: Utilizza l’API REST delle attività di Marketo Engage per elencare i tipi di attività, recuperare le attività dei lead con i token di paging e gestire le modifiche ai valori personalizzati e dei dati.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
+TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '2218'
+source-wordcount: 2218
 ht-degree: 0%
 
 ---
@@ -344,7 +353,7 @@ Per garantire la coerenza dei tipi con le convenzioni di Marketo ed evitare conf
 
 **Nome trigger:** Ogni tipo di attività deve avere un nome trigger univoco e leggibile. I nomi dei trigger devono essere nel tempo presente in terza persona, ad esempio &quot;Partecipa a un evento&quot;. I partner LaunchPoint devono includere nell’attività il nome della loro azienda, ad esempio &quot;Partecipa al webinar - Società Acme&quot;.
 
-**Nome filtro:**  Ogni tipo di attività deve avere un nome di filtro univoco e leggibile. I nomi dei filtri devono rientrare nel tempo passato della terza persona, ad esempio &quot;Partecipazione a un evento&quot;. I partner LaunchPoint devono includere nell’attività il nome della loro azienda, ovvero &quot;Webinar Partecipato - Società Acme&quot;.
+**Nome filtro:** Ogni tipo di attività deve avere un nome di filtro univoco e leggibile. I nomi dei filtri devono rientrare nel tempo passato della terza persona, ad esempio &quot;Partecipazione a un evento&quot;. I partner LaunchPoint devono includere nell’attività il nome della loro azienda, ovvero &quot;Webinar Partecipato - Società Acme&quot;.
 
 **Attributo primario:** L&#39;attributo primario di un&#39;attività personalizzata deve essere il campo più significativo per il tipo di attività. Ad esempio, per un’attività &quot;Evento partecipato&quot;, corrisponde al nome dell’evento. Gli attributi primari vengono inclusi come parametri per impostazione predefinita in ogni istanza di un trigger o di un filtro per quel tipo di attività e il valore viene visualizzato nel registro attività di un record persona senza richiedere un drill-down dell’attività.
 

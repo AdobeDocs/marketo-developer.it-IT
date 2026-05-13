@@ -3,9 +3,14 @@ title: Errori
 feature: Webhooks
 description: Scopri i codici di errore del webhook di Marketo, il motivo per cui sono necessarie risposte 2xx per aggiornare i campi del lead e come rilevare e gestire gli errori con Webhook è chiamato.
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
-source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
+TQID: https://experienceleague.adobe.com/N2jNA4EUMMTUFL9uJHZhOor6Tlz4-EXWciwoXrPml48
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '252'
+source-wordcount: 252
 ht-degree: 1%
 
 ---

@@ -3,9 +3,18 @@ title: REST API
 feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo, configurare gli utenti API e LaunchPoint, visualizzare quote e limiti, eseguire l’autenticazione con l’intestazione Autorizzazione e recuperare i lead.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '858'
+source-wordcount: 858
 ht-degree: 2%
 
 ---
@@ -28,7 +37,7 @@ Queste API in genere rientrano in due categorie generali: [Lead Database](https:
 
 - **Quota giornaliera:** agli abbonamenti vengono assegnate 50.000 chiamate API al giorno (che vengono ripristinate ogni giorno a 12:00AM CST). Puoi aumentare la tua quota giornaliera tramite il tuo account manager.
 - **Limite di frequenza:** l&#39;accesso API per istanza è limitato a 100 chiamate per 20 secondi.
-- **Limite concorrenza:**  Massimo dieci chiamate API simultanee.
+- **Limite concorrenza:** massimo di dieci chiamate API simultanee.
 
 La dimensione delle chiamate standard è limitata a una lunghezza URI di 8 KB e a una dimensione corpo di 1 MB, anche se il corpo può essere di 10 MB per le nostre API in blocco. Se si verifica un errore in con la chiamata, in genere l&#39;API restituisce il codice di stato 200, ma la risposta JSON conterrà un membro &quot;success&quot; con un valore di `false` e una matrice di errori nel membro &quot;errors&quot;. Ulteriori informazioni sugli errori [qui](error-codes.md).
 
