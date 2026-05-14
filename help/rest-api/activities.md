@@ -4,17 +4,13 @@ feature: REST API
 description: Utilizza l’API REST delle attività di Marketo Engage per elencare i tipi di attività, recuperare le attività dei lead con i token di paging e gestire le modifiche ai valori personalizzati e dei dati.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
-source-wordcount: 2218
+source-wordcount: 2226
 ht-degree: 0%
 
 ---
@@ -33,7 +29,7 @@ La maggior parte delle attività verrà eliminata dopo un certo periodo di tempo
 
 Per recuperare un elenco dei tipi disponibili e delle relative definizioni per un&#39;istanza, è possibile utilizzare l&#39;endpoint [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET).
 
-```http
+```
 GET /rest/v1/activities/types.json
 ```
 
@@ -90,9 +86,9 @@ Facoltativamente, è possibile includere un parametro di query `listId` per limi
 
 >[!CAUTION]
 >
->A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite.
+>A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite. Consulta la [Guida alla migrazione](migration.md).
 
-```http
+```
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
 ```
 
@@ -155,7 +151,7 @@ Per le attività di modifica del valore dei dati, viene fornita una versione spe
 
 >[!CAUTION]
 >
->A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite.
+>A partire dal 2026-12-30, le chiamate agli endpoint `Get Lead Activities` e `Get Lead Changes` che includono il parametro `listId` non riusciranno (codice di errore 1003) se gli elenchi di destinazione contengono 10.000 o più lead. Per evitare interruzioni del servizio, assicurati che le chiamate abbiano un ambito corretto per evitare questo limite. Consulta la [Guida alla migrazione](migration.md).
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
