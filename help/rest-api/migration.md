@@ -26,7 +26,7 @@ Condividi questo documento con i responsabili delle integrazioni Marketo Engage.
 A seconda del caso d’uso, esistono due opzioni di base per migrare l’applicazione in:
 
 * Limita gli elenchi statici da cui estrarre le attività a un massimo di 10.000 membri. Puoi suddividere uno qualsiasi degli elenchi esistenti in elenchi più piccoli per continuare a polling dello stesso pubblico per le attività.
-* Estrai le attività o le modifiche al valore dei dati utilizzando Bulk Activity Extract o Data Streams e unisci tali risultati all&#39;iscrizione statica all&#39;elenco con [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) o [Bulk Lead Extract](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)
+* Estrai le attività o le modifiche al valore dei dati utilizzando Bulk Activity Extract o Data Streams e unisci tali risultati all&#39;iscrizione statica all&#39;elenco con [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) o [Bulk Lead Extract](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)
 
 ## Cosa Succederà Se Non Faccio Niente?
 
