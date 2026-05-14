@@ -6,10 +6,10 @@ role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: d70e61cab3a0e929a85b8ac57836438470988944
+source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
-source-wordcount: '286'
-ht-degree: 30%
+source-wordcount: '288'
+ht-degree: 29%
 
 ---
 
@@ -100,6 +100,7 @@ ht-degree: 30%
       - [Tipi di campi](rest-api/field-types.md)
       - [Database lead](rest-api/lead-database.md)
       - [Lead](rest-api/leads.md)
+      - [Guida alla migrazione](rest-api/migration.md)
       - [Account denominati](rest-api/named-accounts.md)
       - [Elenchi di account denominati](rest-api/named-account-lists.md)
       - [Opportunità](rest-api/opportunities.md)
