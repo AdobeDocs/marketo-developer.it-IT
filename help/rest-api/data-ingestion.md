@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
+source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
 workflow-type: tm+mt
-source-wordcount: 2178
+source-wordcount: 2191
 ht-degree: 14%
 
 ---
@@ -22,6 +22,8 @@ L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a 
 I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 Le interfacce sono disponibili per cinque tipi di oggetto: Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi (Elenchi statici). L&#39;operazione di registrazione è solo &quot;insert or update&quot;, fatta eccezione per i membri del programma che supportano anche le operazioni di eliminazione, e per gli elenchi che supportano le operazioni di aggiunta e rimozione.
+
+Leggi la [documentazione sull&#39;API di acquisizione dati](https://developer.adobe.com/marketo-apis/api/data-ingestion).
 
 >[!NOTE]
 >
