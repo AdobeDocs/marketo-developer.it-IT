@@ -1,10 +1,10 @@
 ---
 title: Prova anteprima EXL
 description: Esempi di sintassi markdown Adobe EXL per testare l’anteprima dell’estensione.
-source-git-commit: 8f7ff2e1b6d0a4d8f63affb7bd1a2d0abbcc118c
+source-git-commit: 87d2584ed0ef2c1fa219f2a3ad120c91dc5491e0
 workflow-type: tm+mt
-source-wordcount: '334'
-ht-degree: 7%
+source-wordcount: '348'
+ht-degree: 11%
 
 ---
 
@@ -93,6 +93,14 @@ Utilizza sezioni comprimibili per contenuti opzionali o avanzati che altrimenti 
 
 +++
 
+## Aiuto contestuale
+
+L’anteprima dell’Aiuto contestuale è nascosta. Vedi!
+>[!CONTEXTUALHELP]
+>id="models_insights_undefinedchannels"
+>title="Canali non definiti"
+>abstract="I canali non definiti sono inclusi, ma non viene loro attribuita alcuna conversione."
+
 ## Video incorporato
 
 >[!VIDEO](https://video.tv.adobe.com/v/3427028/?quality=12&learn=on)
@@ -173,5 +181,6 @@ function greet(name) {
 
 | Colonna uno | Colonna due | Colonna tre |
 | --- | --- | --- |
-| Riga 1, cella 1 | Riga 1, cella 2 | Riga 1, cella 3 |
+| [!UICONTROL Row 1], cella 1 | Riga 1, cella 2 | [!DNL Row 1, cell 3] |
 | Riga 2, cella 1 | Riga 2, cella 2 | Riga 2, cella 3 |
+
