@@ -13,7 +13,7 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
 source-wordcount: 1100
 ht-degree: 0%
@@ -22,7 +22,7 @@ ht-degree: 0%
 
 # Script e-mail
 
-NOTA: si consiglia di leggere la [Guida utente Velocity](https://velocity.apache.org/engine/devel/user-guide.html) per una spiegazione dettagliata del comportamento di Velocity Template Language.
+NOTA: si consiglia di leggere la [Guida utente Velocity](https://velocity.apadche.org/engine/devel/user-guide.html) per una spiegazione dettagliata del comportamento di Velocity Template Language.
 
 [Apache Velocity](https://velocity.apache.org/) è un linguaggio basato su Java e progettato per la creazione di modelli e script di contenuti HTML. Marketo consente di utilizzarlo nel contesto delle e-mail utilizzando token di script. Questa funzione consente di accedere ai dati memorizzati in Opportunità e Oggetti personalizzati e di creare contenuto dinamico nelle e-mail. Velocity offre un flusso di controllo standard di alto livello con if/else, for e for each per consentire la manipolazione condizionale e iterativa dei contenuti.
 
@@ -44,7 +44,7 @@ ${variable}name ##outputs 'valuename'
 
 
 
-Esiste anche una notazione di riferimento silenziosa, dove è presente un `!` Incluso dopo il `$`. Normalmente, quando Velocity incontra un riferimento non definito, la stringa che rappresenta il riferimento viene lasciata in posizione. Con notazione rkkjeference silenziosa, se viene rilevato un riferimento non definito, non viene emesso alcun valore:
+Esiste anche una notazione di riferimento silenziosa, dove è incluso un `!` dopo il `$`. Normalmente, quando Velocity incontra un riferimento non definito, la stringa che rappresenta il riferimento viene lasciata in posizione. Con la notazione di riferimento silenzioso, se viene rilevato un riferimento non definito, non viene emesso alcun valore:
 
 ```velocity
 ##Defined Reference
@@ -105,7 +105,7 @@ Una volta definito lo script all’interno di un token del programma, puoi farvi
 
 ![Script e-mail](assets/email-script-marketo-email.png)
 
-Puoi testare lo script utilizzando l&#39;azione e-mail [!UICONTROL Send Sample Email] in E-mail Designer di Marketo. Affinché lo script possa essere elaborato correttamente, è necessario selezionare un lead esistente da rappresentare nel campo [!UICONTROL Lead]. Se si esegue il test con `$TriggerObject`, è possibile selezionare l&#39;oggetto di attivazione tramite il parametro [!UICONTROL Trigger]. Questo processo utilizza i dati dell&#39;oggetto aggiornato più di recente di quel tipo come variabile `$TriggerObject`.
+Puoi testare lo script utilizzando l&#39;azione e-mail [!UICONTROL Send Sample Email] in E-mail Designer di Marketo. Affinché lo script funzioni correttamente, è necessario selezionare un lead esistente da rappresentare nel campo [!UICONTROL Lead]. Se si esegue il test con `$TriggerObject`, è possibile selezionare l&#39;oggetto di attivazione tramite il parametro [!UICONTROL Trigger]. Questo processo utilizza i dati dell&#39;oggetto aggiornato più di recente di quel tipo come variabile `$TriggerObject`.
 
 ![Script e-mail di prova](assets/velocity-test.png)
 

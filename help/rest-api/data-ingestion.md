@@ -1,17 +1,17 @@
 ---
 title: Acquisizione dati
-feature: REST API, Dynamic Content
-description: Utilizza l’API di acquisizione dati di Marketo per l’acquisizione di volumi elevati e a bassa latenza da parte di persone, oggetti personalizzati, aziende e membri del programma.
+feature: REST API, Dynamic Content, Static Lists
+description: Utilizza l’API di acquisizione dati di Marketo per l’acquisizione di volumi elevati e a bassa latenza di persone, oggetti personalizzati, società, membri del programma ed elenchi.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
-source-wordcount: 1789
-ht-degree: 13%
+source-wordcount: 2178
+ht-degree: 14%
 
 ---
 
@@ -21,7 +21,7 @@ L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a 
 
 I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-Le interfacce sono disponibili per quattro tipi di oggetto: Persone, Oggetti personalizzati, Aziende e Membri del programma. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna), ad eccezione dei membri del programma che supportano anche l&#39;eliminazione.
+Le interfacce sono disponibili per cinque tipi di oggetto: Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi (Elenchi statici). L&#39;operazione di registrazione è solo &quot;insert or update&quot;, fatta eccezione per i membri del programma che supportano anche le operazioni di eliminazione, e per gli elenchi che supportano le operazioni di aggiunta e rimozione.
 
 >[!NOTE]
 >
@@ -45,6 +45,7 @@ L’acquisizione dei dati utilizza lo stesso modello di autorizzazioni dell’AP
 | Oggetti personalizzati | Oggetto personalizzato di lettura/scrittura |
 | Aziende | Società di lettura/scrittura |
 | Membri del programma | Lead di lettura/scrittura |
+| Elenchi | Lead di lettura/scrittura |
 
 ## Tipi di oggetto supportati
 
@@ -54,6 +55,7 @@ L’acquisizione dei dati utilizza lo stesso modello di autorizzazioni dell’AP
 | Oggetti personalizzati | Upsert (inserire o aggiornare) |
 | Aziende | Sincronizzazione (`createOnly`, `updateOnly`, `createOrUpdate`) |
 | Membri del programma | Sincronizza (stato upsert), Elimina (rimuovi dal programma) |
+| Elenchi | Aggiungi all&#39;elenco, Rimuovi dall&#39;elenco |
 
 ## Intestazioni
 
@@ -97,6 +99,10 @@ URL di esempio per le società:
 URL di esempio per i membri del programma:
 
 `https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/programmembers`
+
+URL di esempio per gli elenchi:
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/lists`
 
 ### Risposte
 
@@ -157,7 +163,7 @@ Intervalli tentativi:
 
 ## Endpoint
 
-Gli endpoint di acquisizione sono disponibili per Persone, Oggetti personalizzati, Aziende e Membri del programma.
+Gli endpoint di acquisizione sono disponibili per Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi.
 
 ### Persone
 
@@ -181,7 +187,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record persona.
 | `priority` | Stringa | No | Priorità della richiesta: normale o alta | normale |
 | `partitionName` | Stringa | No | Nome della partizione della persona | Predefinito |
 | `dedupeFields` | Oggetto | No | Attributi per la deduplicazione. Sono consentiti uno o due nomi di attributo. <br/> In un&#39;operazione AND vengono utilizzati due attributi. Se ad esempio si specificano sia `email` che `firstName`, verranno entrambi utilizzati per cercare una persona tramite l&#39;operazione AND. <br/>Attributi supportati: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Attributi personalizzati (solo tipo &quot;stringa&quot; e &quot;numero intero&quot;), `email` |  |
-| `persons` | Array di oggetti | Sì | Elenco delle coppie nome-valore dell’attributo della persona | - |
+| `persons` | Array di oggetti | Sì | Elenco delle coppie nome-valore dell’attributo della persona | – |
 
 Le autorizzazioni richieste sono `Read-Write Lead`.
 
@@ -249,7 +255,7 @@ Endpoint utilizzato per eseguire l&#39;upsert dei record oggetto personalizzati.
 | --- | --- | --- | --- | --- |
 | `priority` | Stringa | No | Priorità della richiesta: normale, alta | normale |
 | `dedupeBy` | Stringa | No | Attributi da deduplicare su: dedupeFields, marketoGUID | dedupeFields |
-| `customObjects` | Array di oggetti | Sì | Elenco di coppie nome-valore dell&#39;attributo per l&#39;oggetto. | - |
+| `customObjects` | Array di oggetti | Sì | Elenco di coppie nome-valore dell&#39;attributo per l&#39;oggetto. | – |
 
 Le autorizzazioni necessarie sono `Read-Write Custom Object`.
 
@@ -319,7 +325,7 @@ Endpoint utilizzato per sincronizzare i record aziendali. Supporta le operazioni
 | --- | --- | --- | --- | --- |
 | `action` | Stringa | No | Azione di sincronizzazione: `createOnly`, `updateOnly` o `createOrUpdate` | `createOrUpdate` |
 | `dedupeBy` | Stringa | No | Campo da deduplicare il: `dedupeFields` o `idField` (senza distinzione maiuscole/minuscole). Per `createOnly` e `createOrUpdate`, è consentito solo `dedupeFields`. Per `updateOnly`, entrambi sono consentiti. | `dedupeFields` |
-| `input` | Array di oggetti | Sì | Elenco di coppie nome-valore di attributo della società. Accetta la chiave JSON `input` o `companies`. | - |
+| `input` | Array di oggetti | Sì | Elenco di coppie nome-valore di attributo della società. Accetta la chiave JSON `input` o `companies`. | – |
 
 Ogni oggetto aziendale nell&#39;array `input` supporta i campi seguenti:
 
@@ -421,7 +427,7 @@ Endpoint utilizzato per sincronizzare lo stato dei membri del programma, aggiung
 
 | Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
 | --- | --- | --- | --- | --- |
-| programmi | Array di oggetti | Sì | Elenco delle operazioni del programma. Ogni specifica un programma, uno stato di destinazione e i lead per la sincronizzazione. | - |
+| programmi | Array di oggetti | Sì | Elenco delle operazioni del programma. Ogni specifica un programma, uno stato di destinazione e i lead per la sincronizzazione. | – |
 
 Ogni oggetto nell&#39;array `programs` contiene:
 
@@ -522,7 +528,7 @@ Endpoint utilizzato per rimuovere i lead dai programmi. Imposta lo stato di appa
 
 | Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
 | --- | --- | --- | --- | --- |
-| programmi | Array di oggetti | Sì | Elenco delle operazioni di eliminazione del programma. Ogni specifica un programma e i lead da rimuovere. | - |
+| programmi | Array di oggetti | Sì | Elenco delle operazioni di eliminazione del programma. Ogni specifica un programma e i lead da rimuovere. | – |
 
 Ogni oggetto nell&#39;array `programs` contiene:
 
@@ -593,6 +599,159 @@ Le autorizzazioni necessarie sono `Read-Write Lead`.
 | leadId | Obbligatorio per ogni membro nell&#39;array di input. |
 | Numero massimo di lead per richiesta | 1.000 membri totali in tutti i programmi. |
 
+### Elenchi (Aggiungi all&#39;elenco)
+
+L’endpoint utilizzato per aggiungere lead a un elenco statico. I lead sono identificati dal relativo ID lead Marketo.
+
+| Metodo | Percorso |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists` |
+
+#### Intestazioni
+
+| Chiave | Valore | Obbligatorio |
+| --- | --- | --- |
+| `Content-Type` | application/json | Sì |
+| `X-Mkto-User-Token` | {accessToken} | Sì |
+| `X-Correlation-Id` | Stringa arbitraria (lunghezza massima 255 caratteri) | No |
+| `X-Request-Source` | Stringa arbitraria (lunghezza massima 50 caratteri) | No |
+
+#### Corpo della richiesta
+
+| Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
+| --- | --- | --- | --- | --- |
+| `listId` | Lungo | Sì | ID dell’elenco statico di Marketo. Deve essere un numero intero positivo. | – |
+| `leads` | Array di oggetti | Sì | Elenco dei riferimenti di lead da aggiungere all&#39;elenco. Accetta la chiave JSON `input` o `leads`. | – |
+
+Ogni oggetto nell&#39;array di input contiene:
+
+| Chiave | Tipo di dati | Obbligatorio | Descrizione |
+| --- | --- | --- | --- |
+| `leadId` | Lungo | Sì | L’ID del lead di Marketo. Accetta la chiave JSON `leadId` o `id`. |
+
+Le autorizzazioni necessarie sono `Read-Write Lead`.
+
+### Esempi di elenchi da aggiungere all’elenco
+
+#### Richiesta
+
+`POST /subscriptions/{munchkinId}/lists`
+
+#### Intestazioni
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      },
+      {
+         "leadId": 10003
+      }
+   ]
+}
+```
+
+#### Risposta
+
+`HTTP/1.1 202`
+`X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
+
+### Elenchi da aggiungere alle regole di convalida dell’elenco
+
+| Regola | Dettaglio |
+| --- | --- |
+| listId | Obbligatorio. Deve essere un numero intero positivo (> 0). |
+| lead | Obbligatorio. Non può essere null o vuoto. |
+| leadId | Obbligatorio per ogni lead nell’array di input. |
+| Numero massimo di lead per richiesta | 1.000 lead totali nell&#39;array di input. |
+
+### Elenchi (Rimuovi dall’elenco)
+
+Endpoint utilizzato per rimuovere i lead da un elenco statico. I lead sono identificati dal relativo ID lead Marketo.
+
+>[!NOTE]
+>
+>Questo endpoint utilizza POST anziché DELETE perché la richiesta richiede un corpo JSON con dati strutturati.
+
+| Metodo | Percorso |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists/remove` |
+
+#### Intestazioni
+
+| Chiave | Valore | Obbligatorio |
+| --- | --- | --- |
+| `Content-Type` | application/json | Sì |
+| `X-Mkto-User-Token` | {accessToken} | Sì |
+| `X-Correlation-Id` | Stringa arbitraria (lunghezza massima 255 caratteri) | No |
+| `X-Request-Source` | Stringa arbitraria (lunghezza massima 50 caratteri) | No |
+
+#### Corpo della richiesta
+
+| Chiave | Tipo di dati | Obbligatorio | Valore | Valore predefinito |
+| --- | --- | --- | --- | --- |
+| `listId` | Lungo | Sì | ID dell’elenco statico di Marketo. Deve essere un numero intero positivo. | – |
+| `leads` | Array di oggetti | Sì | Elenco dei riferimenti di lead da rimuovere dall&#39;elenco. Accetta la chiave JSON `input` o `leads`. | – |
+
+Ogni oggetto nell&#39;array di input contiene:
+
+| Chiave | Tipo di dati | Obbligatorio | Descrizione |
+| --- | --- | --- | --- |
+| `leadId` | Lungo | Sì | L’ID del lead di Marketo. Accetta la chiave JSON `leadId` o `id`. |
+
+Le autorizzazioni necessarie sono `Read-Write Lead`.
+
+### Elenchi rimossi dall’elenco
+
+#### Richiesta
+
+`POST /subscriptions/{munchkinId}/lists/remove`
+
+#### Intestazioni
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      }
+   ]
+}
+```
+
+#### Risposta
+
+`HTTP/1.1 202`
+`X-Request-ID: e3d92152-0fb1-444a-8f8f-29d5a2338598`
+
+### Elenchi rimossi dalle regole di convalida dell&#39;elenco
+
+| Regola | Dettaglio |
+| --- | --- |
+| listId | Obbligatorio. Deve essere un numero intero positivo (> 0). |
+| lead | Obbligatorio. Non può essere null o vuoto. |
+| leadId | Obbligatorio per ogni lead nell’array di input. |
+| Numero massimo di lead per richiesta | 1.000 lead totali nell&#39;array di input. |
+
 ## Limiti
 
 Ecco un elenco aggiornato dei guardrail:
@@ -602,7 +761,7 @@ Ecco un elenco aggiornato dei guardrail:
 * Numero massimo di richieste al secondo per ID client: 5.000
 * Massimo oggetti al giorno: 10.000.000
 
-Questi limiti si applicano in modo uniforme a Persone, Oggetti personalizzati, Aziende e Membri del programma. Per i membri del programma, &quot;oggetti per richiesta&quot; è il numero totale di riferimenti lead in tutti i programmi in una singola richiesta.
+Questi limiti si applicano in modo uniforme a Persone, Oggetti personalizzati, Società, Membri del programma ed Elenchi. Per i membri del programma, &quot;oggetti per richiesta&quot; è il numero totale di riferimenti lead in tutti i programmi in una singola richiesta. Per Elenchi, &quot;oggetti per richiesta&quot; è il numero di riferimenti di lead nell’array di input.
 
 ## API di acquisizione dati e API REST
 
