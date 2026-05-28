@@ -1,22 +1,20 @@
 ---
-title: Server MCP
-description: Scopri come collegare un assistente AI a Marketo utilizzando il server MCP. Configura Claude Desktop, Cursore, Claude Code o VS Code con le tue credenziali Marketo.
-badgeBeta: label="Beta" type="informative" tooltip="Questa funzione è attualmente in versione beta chiusa"
+title: Server Marketo Engage MCP
+description: Scopri come collegare un assistente AI a Marketo utilizzando il server MCP di Marketo Engage. Configura Claude Desktop, Cursore, Claude Code o VS Code con le tue credenziali Marketo.
+badgeBeta: label="Disponibilità limitata" type="informative" tooltip="Questa funzione è attualmente in versione beta limitata"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-hidefromtoc: true
-hide: true
-source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
+source-git-commit: d481dc061cbb59139edf971915b13bd0c8e861d3
 workflow-type: tm+mt
-source-wordcount: '1447'
-ht-degree: 0%
+source-wordcount: '1388'
+ht-degree: 1%
 
 ---
 
-# Server MCP [!DNL Marketo]
+# Server MCP [!DNL Marketo Engage]
 
->[!NOTE]
+>[!AVAILABILITY]
 >
->Il server MCP è attualmente in versione beta chiusa. Al momento non è disponibile per tutti gli utenti.
+> Questa funzione è a disponibilità limitata. Per richiedere l&#39;accesso, compila [questo modulo](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}. Assicurati di avere il Munchkin ID della tua iscrizione pronto.
 
 Model Context Protocol (MCP) è uno standard aperto che consente agli strumenti di intelligenza artificiale di comunicare con servizi esterni. Il server MCP [!DNL Marketo] funge da ponte tra l&#39;assistente AI e [!DNL Marketo]. Espone più di 100 operazioni tra moduli, programmi, campagne intelligenti, lead, e-mail, snippet, elenchi e cartelle.
 
@@ -25,8 +23,8 @@ Quando lo strumento di intelligenza artificiale chiama il server MCP, il server 
 >[!IMPORTANT]
 >
 >Il Model Context Protocol (MCP) è uno standard open source emergente e può presentare rischi per la sicurezza o l&#39;affidabilità. Le integrazioni server MCP di Adobe e la relativa documentazione vengono fornite &quot;così come sono&quot;, senza garanzie di alcun tipo.
->La connessione di client o server MCP ai prodotti Adobe è una configurazione scelta dal cliente e i clienti sono responsabili della valutazione della sicurezza e dell’idoneità di qualsiasi integrazione MCP. Adobe non è responsabile dei problemi derivanti da configurazione errata, utilizzo errato di MCP, vulnerabilità in implementazioni di terze parti o azioni non intenzionali eseguite tramite flussi di lavoro abilitati per MCP.
->Per ridurre i rischi, Adobe incoraggia a testare le integrazioni in un ambiente sandbox prima di utilizzarle in modo produttivo e a rivedere e convalidare attentamente tutte le azioni e le risposte avviate da MCP prima di confermarle o di fare affidamento su di esse.
+>La connessione di client o server MCP ai prodotti Adobe è una configurazione selezionata dal cliente e i clienti sono responsabili della valutazione della sicurezza e dell&#39;idoneità di qualsiasi integrazione MCP. Adobe non è responsabile dei problemi derivanti da configurazione errata, utilizzo errato di MCP, vulnerabilità in implementazioni di terze parti o azioni non intenzionali eseguite tramite flussi di lavoro abilitati per MCP.
+>Per ridurre i rischi, Adobe incoraggia a testare le integrazioni in un ambiente sandbox prima di utilizzarle in modo produttivo e a rivedere e convalidare attentamente tutte le azioni e le risposte avviate da MCP prima di confermarle o affidarsi a esse.
 
 ## Nozioni di base su MCP
 
@@ -40,7 +38,7 @@ MCP consente a uno strumento di intelligenza artificiale di connettersi a più s
 
 MCP è un protocollo di comunicazione, uno standard aperto che qualsiasi applicazione può implementare per esporre i propri dati e azioni agli strumenti di intelligenza artificiale.
 
-## Funzionamento di [!DNL Marketo] MCP
+## Funzionamento di [!DNL Marketo Engage] MCP
 
 Comprendere l’ambito di MCP consente di impostare le aspettative prima di collegare lo strumento AI.
 
@@ -59,6 +57,8 @@ Comprendere l’ambito di MCP consente di impostare le aspettative prima di coll
 * Generare previsioni, raccomandazioni o decisioni: il processo decisionale è responsabilità dello strumento di intelligenza artificiale a valle o dell’utente
 * Memorizza o mantieni credenziali, dati di richiesta o stato di sessione tra le richieste
 * Richiede l&#39;installazione, la distribuzione o la gestione di qualsiasi software lato server
+
+MCP può trasmettere dati, inclusi campi potenzialmente sensibili, a seconda dell’utilizzo dell’API, ma i dati B2B coinvolgono i dati aziendali del cliente e non i dati PII.
 
 ## Prerequisiti
 
@@ -260,7 +260,7 @@ Esempio di prompt:
 | ------- | ------- | ----- |
 | &quot;Credenziali Marketo non fornite&quot; | Uno o più di `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` o `X-Marketo-Munchkin-Id` sono mancanti. | Verifica che tutte e quattro le intestazioni siano presenti nella configurazione. |
 | &quot;Errore di autenticazione&quot; | Credenziali non valide o scadute. | Ricontrolla l&#39;ID client e il segreto client in **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
-| &quot;403 Forbidden&quot; | Il tuo Munchkin ID non si trova nel server di cui è stato eseguito il inserisco nell&#39;elenco Consentiti di. | Contatta l&#39;amministratore MCP di [!DNL Marketo] per aggiungere il tuo Munchkin ID. |
+| &quot;403 Forbidden&quot; | Il tuo Munchkin ID non si trova nell&#39;elenco Consentiti del server | Contatta l&#39;amministratore MCP di [!DNL Marketo] per aggiungere il tuo Munchkin ID. |
 | Timeout o rifiuto della connessione | Il server MCP non è raggiungibile dalla rete. | Conferma di poter raggiungere l’URL del server dal tuo ambiente. Se applicabile, controlla i requisiti VPN. |
 | Le chiamate allo strumento restituiscono risultati vuoti | L’utente API non dispone delle autorizzazioni necessarie per il tipo di risorsa richiesto. | Chiedi all&#39;amministratore di [!DNL Marketo] di rivedere il ruolo utente API e le autorizzazioni. |
 
@@ -272,6 +272,6 @@ Esempio di prompt:
 
 * **Credenziali per richiesta.** L’ID client, il segreto client, l’ID Munchkin e l’endpoint REST API vengono trasmessi nelle intestazioni HTTP a ogni richiesta. Il server non li memorizza né li memorizza in cache.
 * **Isolamento multi-tenant.** Ogni richiesta utilizza il proprio set di credenziali. I dati non si intersecano con la sessione di un altro utente.
-* **Munchkin ID inserire nell&#39;elenco Consentiti.** Il server accetta solo richieste per [!DNL Marketo] istanze approvate. Le richieste che utilizzano un Munchkin ID non autorizzato vengono rifiutate con un errore 403.
+* **Munchkin DI ID inserire nell&#39;elenco Consentiti.** Il server accetta solo richieste per [!DNL Marketo] istanze approvate. Le richieste che utilizzano un Munchkin ID non autorizzato vengono rifiutate con un errore 403.
 * **Limiti di velocità API.** Il server MCP eredita i limiti di velocità API dell&#39;istanza [!DNL Marketo]. Utilizza un utente API dedicato per monitorare e gestire il consumo di quote.
 * **Mantieni le credenziali al di fuori del controllo della versione.** Utilizzare l&#39;interpolazione delle variabili di ambiente (`${MARKETO_CLIENT_SECRET}`) se lo strumento di intelligenza artificiale lo supporta, in modo che le credenziali non vengano memorizzate in testo normale nei file di cui è stato eseguito il commit in un repository.
