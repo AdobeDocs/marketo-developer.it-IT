@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilità limitata" type="informative" tooltip="Questa fu
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: e6cdee16bc2eaaec6b9741181409209586367601
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: ccb8e413ee758584c082a272901d2e76b6b1d193
 workflow-type: tm+mt
-source-wordcount: 1592
+source-wordcount: 1685
 ht-degree: 1%
 
 ---
@@ -116,6 +104,7 @@ Ogni strumento di intelligenza artificiale ha una configurazione leggermente div
 * [CLI Claude Code](#claude-code)
 * [Codice OpenAI](#codex)
 * [VSCode con GitHub Copilot](#vscode)
+* [Altri strumenti](#other-tools)
 
 >[!TIP]
 >
@@ -157,9 +146,27 @@ Avrà inoltre bisogno di:
 
 ### Cursore {#cursor}
 
-Se la configurazione MCP cursore contiene già altri server, aggiungere la voce `marketo` in `mcpServers`. L&#39;esempio seguente mostra il blocco `mcpServers` completo in **[!UICONTROL Settings]** > **[!UICONTROL MCP]** o `.cursor/mcp.json` nella directory del progetto:
+Se la configurazione MCP cursore contiene già altri server, aggiungere la voce `marketo` in `mcpServers`.
+L&#39;esempio seguente mostra il blocco `mcpServers` completo in **[!UICONTROL Settings]** > **[!UICONTROL MCP]** o `.cursor/mcp.json` nella directory del progetto:
 
 >[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+```json
+{
+  "mcpServers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
 
 >[!TAB Credenziali client Marketo]
 
@@ -173,23 +180,6 @@ Se la configurazione MCP cursore contiene già altri server, aggiungere la voce 
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
         "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Token IMS]
-
-```json
-{
-  "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
       }
     }
   }
@@ -206,6 +196,15 @@ Esegui il comando seguente nel terminale, sostituendo le credenziali:
 
 >[!BEGINTABS]
 
+>[!TAB Token IMS]
+
+```bash
+claude mcp add --transport http marketo \
+  https://marketo-mcp.adobe.io/mcp \
+  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
+  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
+```
+
 >[!TAB Credenziali client Marketo]
 
 ```bash
@@ -214,15 +213,6 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Client-Id: YOUR-CLIENT-ID" \
   --header "X-Marketo-Client-Secret: YOUR-CLIENT-SECRET" \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
-```
-
->[!TAB Token IMS]
-
-```bash
-claude mcp add --transport http marketo \
-  https://marketo-mcp.adobe.io/mcp \
-  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
-  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
 ```
 
 >[!ENDTABS]
@@ -235,16 +225,16 @@ claude mcp add --transport http marketo \
 
 >[!BEGINTABS]
 
+>[!TAB Token IMS]
+
+* Autorizzazione: &quot;Bearer YOUR-IMS-TOKEN&quot;
+* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
+
 >[!TAB Credenziali client Marketo]
 
 * X-Marketo-Client-Id: &quot;YOUR-CLIENT-ID&quot;
 * X-Marketo-Client-Secret: &quot;YOUR-CLIENT-SECRET&quot;
 * X-Marketo-Munchkin-Id: &quot;YOUR-MUNCHKIN-ID&quot;
-
->[!TAB Token IMS]
-
-* Autorizzazione: &quot;Bearer YOUR-IMS-TOKEN&quot;
-* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
 
 >[!ENDTABS]
 
@@ -256,6 +246,23 @@ claude mcp add --transport http marketo \
 Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS), digitare **[!UICONTROL MCP: Open User Configuration]** e premere Invio. Verrà aperto `mcp.json`. Aggiungi la voce `marketo` all&#39;interno dell&#39;oggetto `servers`:
 
 >[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+```json
+{
+  "servers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
 
 >[!TAB Credenziali client Marketo]
 
@@ -275,28 +282,48 @@ Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS),
 }
 ```
 
->[!TAB Token IMS]
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
 >[!ENDTABS]
 
 >[!NOTE]
 >
 >Per motivi di sicurezza, utilizza l’interpolazione delle variabili di ambiente nei file di configurazione anziché incollare direttamente le credenziali. È possibile fare riferimento a variabili utilizzando la sintassi `${MARKETO_CLIENT_SECRET}` e impostarle nell&#39;ambiente. In questo modo le credenziali non vengono memorizzate come testo normale in file controllati dalla versione.
+
+### Altri strumenti {#other-tools}
+
+Il server MCP [!DNL Marketo] è ospitato da Adobe ed esposto a un URL pubblico. Qualsiasi client MCP che supporti server remoti tramite trasporto HTTP semplificabile può connettersi ad esso.
+Non è necessario un bridge specifico per lo strumento o un software installato localmente. Se lo strumento non è elencato sopra, utilizza i dettagli di connessione riportati di seguito per configurarlo manualmente.
+
+**Dettagli connessione:**
+
+| Impostazione | Valore |
+| ------- | ----- |
+| Trasporto | HTTP (HTTP semplificabile) |
+| URL server | `https://marketo-mcp.adobe.io/mcp` |
+
+**Intestazioni di autenticazione:**
+
+Invia le intestazioni per uno dei seguenti metodi di autenticazione a ogni richiesta. La posizione in cui inserisci l’URL del server e le intestazioni dipende dallo strumento, quindi consulta la relativa documentazione MCP.
+
+>[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+| Intestazione | Valore |
+| ------ | ----- |
+| `Authorization` | `Bearer YOUR-IMS-TOKEN` |
+| `x-gw-ims-org-id` | ID organizzazione IMS |
+
+>[!TAB Credenziali client Marketo]
+
+| Intestazione | Valore |
+| ------ | ----- |
+| `X-Marketo-Client-Id` | ID client |
+| `X-Marketo-Client-Secret` | Segreto client |
+| `X-Marketo-Munchkin-Id` | ID del tuo account Munchkin |
+
+>[!ENDTABS]
+
+Se lo strumento accetta una configurazione JSON, inizia con gli esempi di [Cursore](#cursor) o [Codice VS](#vscode) e regola le chiavi (`mcpServers`, `servers`) in modo che corrispondano allo schema dello strumento.
 
 ## Operazioni disponibili
 
