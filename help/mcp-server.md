@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: ccb8e413ee758584c082a272901d2e76b6b1d193
+source-git-commit: 6ec3c35ba988834f3a66b45acaa42af7a92cce20
 workflow-type: tm+mt
-source-wordcount: 1685
+source-wordcount: 1732
 ht-degree: 1%
 
 ---
@@ -116,6 +116,7 @@ Ogni strumento di intelligenza artificiale ha una configurazione leggermente div
 * [CLI Claude Code](#claude-code)
 * [Codice OpenAI](#codex)
 * [VSCode con GitHub Copilot](#vscode)
+* [Glean](#glean)
 * [Altri strumenti](#other-tools)
 
 >[!TIP]
@@ -299,6 +300,16 @@ Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS),
 >[!NOTE]
 >
 >Per motivi di sicurezza, utilizza l’interpolazione delle variabili di ambiente nei file di configurazione anziché incollare direttamente le credenziali. È possibile fare riferimento a variabili utilizzando la sintassi `${MARKETO_CLIENT_SECRET}` e impostarle nell&#39;ambiente. In questo modo le credenziali non vengono memorizzate come testo normale in file controllati dalla versione.
+
+### Glean {#glean}
+
+Per connettere Glean al server Marketo Engage MCP, il [team di supporto Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) deve configurare le seguenti intestazioni personalizzate.
+
+| Intestazione | Valore |
+| ------ | ----- |
+| `X-Marketo-Client-Id` | ID client |
+| `X-Marketo-Client-Secret` | Segreto client |
+| `X-Marketo-Munchkin-Id` | ID del tuo account Munchkin |
 
 ### Altri strumenti {#other-tools}
 
