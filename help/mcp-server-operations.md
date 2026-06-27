@@ -28,7 +28,7 @@ Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Enga
 >
 >Questo elenco continuerà a crescere con l’aggiunta di strumenti aggiuntivi.
 
-Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Esportazione in blocco
 
