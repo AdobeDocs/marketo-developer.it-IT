@@ -12,10 +12,10 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
+source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
 workflow-type: tm+mt
-source-wordcount: 231
-ht-degree: 4%
+source-wordcount: 264
+ht-degree: 3%
 
 ---
 
@@ -27,6 +27,8 @@ Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Enga
 >[!NOTE]
 >
 >Questo elenco continuerà a crescere con l’aggiunta di strumenti aggiuntivi.
+
+Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Esportazione in blocco
 
