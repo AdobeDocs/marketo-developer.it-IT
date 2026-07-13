@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
+source-git-commit: b28708e92f44082eb247d9053d6ebf2306739b38
 workflow-type: tm+mt
-source-wordcount: 1923
+source-wordcount: 2166
 ht-degree: 1%
 
 ---
@@ -46,7 +46,7 @@ Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Ma
 
 ## Nozioni di base su MCP
 
->Pensa a MCP come a una porta USB-C per applicazioni AI. Proprio come USB-C offre un modo standardizzato per collegare i dispositivi a varie periferiche e accessori, MCP offre un modo standardizzato per collegare i modelli AI a sorgenti di dati e strumenti. — [Protocollo contesto modello](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Pensa a MCP come a una porta USB-C per applicazioni AI. USB-C offre un modo standardizzato per collegare i dispositivi a varie periferiche e accessori e MCP offre un modo standardizzato per collegare i modelli AI a origini dati e strumenti. — [Protocollo contesto modello](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 MCP consente a uno strumento di intelligenza artificiale di connettersi a più servizi esterni contemporaneamente. Ad esempio, un assistente AI potrebbe:
 
@@ -297,11 +297,11 @@ Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS),
 
 >[!NOTE]
 >
->Per motivi di sicurezza, utilizza l’interpolazione delle variabili di ambiente nei file di configurazione anziché incollare direttamente le credenziali. È possibile fare riferimento a variabili utilizzando la sintassi `${MARKETO_CLIENT_SECRET}` e impostarle nell&#39;ambiente. In questo modo le credenziali non vengono memorizzate come testo normale in file controllati dalla versione.
+>Per motivi di sicurezza, utilizza l’interpolazione delle variabili di ambiente nei file di configurazione anziché incollare direttamente le credenziali. È possibile fare riferimento a variabili utilizzando la sintassi `${MARKETO_CLIENT_SECRET}` e impostarle nell&#39;ambiente. Ciò impedisce la memorizzazione delle credenziali in testo normale nei file controllati dalla versione.
 
 ### Glean {#glean}
 
-Per connettere Glean al server Marketo Engage MCP, il [team di supporto Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) deve configurare le seguenti intestazioni personalizzate.
+Per connettere Glean al server Marketo Engage MCP, il [team del supporto Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) deve configurare le seguenti intestazioni personalizzate.
 
 | Intestazione | Valore |
 | ------ | ----- |
@@ -311,7 +311,7 @@ Per connettere Glean al server Marketo Engage MCP, il [team di supporto Glean](h
 
 ### Altri strumenti {#other-tools}
 
-Il server MCP [!DNL Marketo] è ospitato da Adobe ed esposto a un URL pubblico. Qualsiasi client MCP che supporti server remoti tramite trasporto HTTP semplificabile può connettersi ad esso.Non è necessario un bridge specifico per lo strumento o un software installato localmente. Se lo strumento non è elencato sopra, utilizza i dettagli di connessione riportati di seguito per configurarlo manualmente.
+Adobe ospita il server MCP [!DNL Marketo] e lo espone a un URL pubblico. Qualsiasi client MCP che supporti server remoti tramite trasporto HTTP semplificabile può connettersi ad esso.Non è necessario un bridge specifico per lo strumento o un software installato localmente. Se lo strumento non è elencato sopra, utilizza i dettagli di connessione riportati di seguito per configurarlo manualmente.
 
 **Dettagli connessione:**
 
@@ -440,3 +440,28 @@ Esempio di prompt:
 * **Munchkin DI ID inserire nell&#39;elenco Consentiti.** Il server accetta solo richieste per [!DNL Marketo] istanze approvate. Le richieste che utilizzano un Munchkin ID non autorizzato vengono rifiutate con un errore 403.
 * **Limiti di velocità API.** Il server MCP eredita i limiti di velocità API dell&#39;istanza [!DNL Marketo]. Utilizza un utente API dedicato per monitorare e gestire il consumo di quote.
 * **Mantieni le credenziali al di fuori del controllo della versione.** Utilizzare l&#39;interpolazione delle variabili di ambiente (`${MARKETO_CLIENT_SECRET}`) se lo strumento di intelligenza artificiale lo supporta, in modo che le credenziali non vengano memorizzate in testo normale nei file del repository.
+
+## Governance e conservazione dei dati
+
+### Gestione delle credenziali
+
+* Le credenziali del cliente non vengono rese persistenti lato server e vengono fornite dal client per richiesta, il che consente di limitare l’esposizione delle credenziali all’interno del servizio.
+
+### Modello di interazione API
+
+* Utilizzo agente: gli agenti possono utilizzare il server MCP per richiamare le API Marketo supportate.
+* Allineamento modello di autenticazione: il servizio utilizza lo stesso modello di autenticazione API esterna documentato per le API Marketo.
+
+### Autenticazione e autorizzazione
+
+* Privilegi minimi: le autorizzazioni effettive vengono ereditate dall&#39;utente Marketo solo API assegnato al servizio LaunchPoint del cliente, consentendo l&#39;amministrazione dei privilegi minimi nella configurazione Marketo del cliente.
+* Nessuna persistenza dei token lato server: il servizio continua a evitare l’archiviazione lato server delle credenziali del cliente o dei token.  
+
+### Registrazione e monitoraggio
+
+* Registrazione di sicurezza: i registri JSON strutturati vengono instradati attraverso Fluent Bit a Splunk, con mascheramento dei dati sensibili e filtro aggiuntivo per supportare i requisiti di conformità.
+* Supporto di audit: questi controlli supportano il monitoraggio continuo della disponibilità dei servizi, degli eventi relativi alla sicurezza e della qualità operativa.
+* Nessuna archiviazione segreta lato server: le credenziali del cliente non vengono memorizzate dalla distribuzione MCP e devono essere fornite dai client per richiesta.
+* Gestione dei token: i token di accesso hanno vita breve, le risposte dei token sono contrassegnate come non archiviate e i token sono accettati tramite meccanismi di autorizzazione standard anziché tramite la trasmissione di stringhe di query.
+* Accesso operativo basato sul ruolo: l’accesso all’implementazione amministrativa è gestito tramite i ruoli dell’infrastruttura Adobe e i controlli basati sul gruppo, mentre le autorizzazioni del piano dati vengono ereditate dalla configurazione utente dell’API Marketo del cliente.
+* Audit e osservabilità: la registrazione, il mascheramento, il monitoraggio e gli avvisi di sicurezza sono abilitati per supportare l’indagine, il tracciamento dello stato del servizio e la supervisione operativa.
