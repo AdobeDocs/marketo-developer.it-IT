@@ -4,8 +4,10 @@ feature: REST API
 description: Scopri come eseguire query sui canali Marketo tramite l’API REST delle risorse, sfogliare con l’impaginazione o recuperare per nome, visualizzare gli stati di progressione e comprendere le regole del tipo di programma.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
 TQID: https://experienceleague.adobe.com/e9TnbxgJCT5X2r5MjTdC49uVz4wvxDy2jhdQP5JOFTI
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 117
