@@ -4,17 +4,13 @@ feature: REST API
 description: Guida REST di Marketo a CRUD sugli account denominati per ABM, con descrizione, query, esempi di aggiornamento, campi ricercabili, regole di deduplicazione e nessun collegamento di lead.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
 TQID: https://experienceleague.adobe.com/iY3UYVelm3aKuuDBCTxaVCbkXfwnJzDjV3Kvn9rcNbA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 730
+source-wordcount: 590
 ht-degree: 1%
 
 ---
@@ -23,13 +19,15 @@ ht-degree: 1%
 
 [Riferimento endpoint account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
-Marketo offre un set di API per l’esecuzione di operazioni CRUD su account denominati da utilizzare con Marketo ABM. Queste API seguono il pattern di interfaccia standard per le API del database principale e forniscono le opzioni Describe, Create/Update, Delete e Query.
+Marketo fornisce API per l’esecuzione di operazioni CRUD su account denominati da utilizzare con Marketo ABM. Queste API seguono il pattern di interfaccia standard del database lead e forniscono le opzioni Describe, Create/Update, Delete e Query.
 
-Attualmente, le uniche funzioni relative ad ABM disponibili tramite le API di Marketo sono le operazioni CRUD per gli account denominati; i lead non possono essere collegati ad account denominati tramite alcuna API.
+Attualmente, le API di Marketo supportano solo operazioni CRUD per gli account denominati. Non è possibile collegare i lead a account denominati tramite le API.
 
 ## Descrivere
 
-La descrizione degli account denominati restituisce i metadati relativi all’utilizzo degli account denominati tramite le API di Marketo, incluso un elenco di campi ricercabili validi durante la query e un elenco di tutti i campi disponibili per l’utilizzo API. Il `idField` di un account denominato è sempre `marketoGUID` e l&#39;unico `dedupeField` disponibile e chiave per la creazione è il campo `name` dell&#39;oggetto.
+Describe Named Accounts restituisce i metadati per l’utilizzo di account denominati tramite le API di Marketo. La risposta include campi validi in cui è possibile eseguire ricerche e tutti i campi disponibili per l’API.
+
+Il `idField` di un account denominato è sempre `marketoGUID`. Il campo `name` dell&#39;oggetto è l&#39;unico `dedupeField` disponibile e la sola chiave di creazione.
 
 ```http
 GET /rest/v1/namedaccounts/describe.json
@@ -144,7 +142,9 @@ GET /rest/v1/namedaccounts/describe.json
 
 ### Query
 
-La query per gli account denominati si basa sull&#39;utilizzo di un filterType e di un set di un massimo di 300 filterValues separati da virgola. `filterType` può essere un singolo campo restituito nel membro `searchableFields` del risultato descritto per gli account denominati, mentre filterValues può essere un qualsiasi input valido per il tipo di dati del campo. Per restituire un set specifico di campi da, è necessario trasmettere un parametro fields, dove il valore è un elenco separato da virgole di campi da restituire nella risposta. Come altre opzioni di query, il numero massimo di record per una singola pagina di query è 300 e devono essere richiesti record aggiuntivi nel set con l’utilizzo del nextPageToken restituito dalla chiamata.
+Eseguire query sugli account denominati utilizzando un filterType e un massimo di 300 filterValues separati da virgola. Il filterType può essere un singolo campo restituito nel membro `searchableFields` della risposta Describe. Ogni voce filterValues deve essere un valore valido per il tipo di dati del campo.
+
+Per restituire campi specifici, passa un parametro di campi con un elenco di campi separato da virgole. Una pagina query contiene un massimo di 300 record. Per recuperare record aggiuntivi, utilizza il valore nextPageToken restituito dalla chiamata.
 
 ```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
@@ -175,7 +175,13 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 ### Crea e aggiorna
 
-La creazione e l&#39;aggiornamento dei conti denominati seguono il modello standard del database dei lead. I record devono essere passati nel membro di input di un corpo JSON in una richiesta POST. `input` è l&#39;unico membro obbligatorio, con `action` e `dedupeBy` come membri facoltativi. Possono essere inclusi fino a 300 record. L&#39;azione può essere createOnly, updateOnly o createOrUpdate. Se non specificato, l&#39;impostazione predefinita è createOrUpdate. dedupeBy può essere specificato solo quando action è updateOnly e accetta solo uno dei campi dedupeFields o idField, che corrispondono rispettivamente ai campi name e marketoGUID.
+Creare e aggiornare conti denominati utilizzando il modello standard di database lead. Passa i record nel membro di input del corpo JSON di una richiesta POST. È possibile includere fino a 300 record.
+
+I membri della richiesta sono:
+
+- `input`: l&#39;unico membro richiesto.
+- `action`: membro facoltativo che accetta createOnly, updateOnly o createOrUpdate. Il valore predefinito è createOrUpdate.
+- `dedupeBy`: membro facoltativo disponibile solo quando action è updateOnly. Accetta dedupeFields o idField, che corrispondono rispettivamente ai campi name e marketoGUID.
 
 ```http
 POST /rest/v1/namedaccounts.json
@@ -223,17 +229,19 @@ Content-Type: application/json
 
 ### Campi
 
-L&#39;oggetto account denominato contiene un set di campi. Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo. Esempi di attributi sono nome visualizzato, nome API e dataType. Questi attributi sono noti collettivamente come metadati.
+L’oggetto account denominato contiene campi definiti da attributi quali nome visualizzato, nome API e dataType. Insieme, questi attributi sono denominati metadati.
 
-I seguenti endpoint consentono di eseguire query sui campi dell’oggetto aziendale. Queste API richiedono che l’utente API proprietario abbia un ruolo con una o entrambe le autorizzazioni Campo standard schema di lettura-scrittura o Campo personalizzato schema di lettura-scrittura.
+I seguenti campi di query degli endpoint sull’oggetto aziendale. L’utente API deve avere un ruolo con l’autorizzazione Campo standard dello schema di lettura-scrittura, l’autorizzazione Campo personalizzato dello schema di lettura-scrittura o entrambi.
 
 ### Campi query
 
-La query dei campi account denominati è semplice. È possibile eseguire una query su un singolo campo account denominato per nome API oppure sul set di tutti i campi aziendali.
+Esegui la query di un campo account denominato per nome API o recupera tutti i campi aziendali.
 
 #### Per nome
 
-L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un singolo campo nell&#39;oggetto account denominato. Il parametro di percorso fieldApiName obbligatorio specifica il nome API del campo. La risposta è simile all’endpoint Describe Named Account, ma contiene metadati aggiuntivi, come l’attributo isCustom, che indica se il campo è un campo personalizzato.
+L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto account denominato. Il parametro obbligatorio percorso fieldApiName specifica il nome API del campo.
+
+La risposta è simile alla risposta Describe Named Account ma include metadati aggiuntivi. L&#39;attributo isCustom, ad esempio, indica se il campo è personalizzato.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -261,7 +269,9 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Sfogliare
 
-L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query batchSize per ridurre questo numero. Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati. Il nextPageToken restituito da questa API deve sempre essere riutilizzato per la successiva iterazione di questa chiamata.
+L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query batchSize per ridurre questo numero.
+
+Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare l’endpoint con il valore nextPageToken restituito fino a quando moreResult non è false.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
@@ -340,7 +350,9 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 ### Elimina
 
-Le eliminazioni vengono eseguite tramite una richiesta POST JSON e hanno un membro di input obbligatorio e un membro deleteBy facoltativo. deleteBy può essere uno dei valori &quot;dedupeFields&quot; o &quot;idField&quot;, corrispondenti rispettivamente a name o marketoGUID e, se non impostato, verrà impostato automaticamente su dedupeFields. Il membro di input accetta un array di un massimo di 300 record, contenenti un membro ciascuno, nome o marketoGUID a seconda dell&#39;impostazione di deleteBy.
+Elimina gli account denominati inviando una richiesta POST con un corpo JSON. La richiesta include un membro di input obbligatorio e un membro deleteBy facoltativo.
+
+Il membro deleteBy accetta &quot;dedupeFields&quot; o &quot;idField&quot;, che corrispondono rispettivamente a name e marketoGUID. Se non viene impostato, il valore predefinito è dedupeFields. Il membro di input accetta un massimo di 300 record. Ogni record contiene il nome o marketoGUID, a seconda dell&#39;impostazione deleteBy.
 
 ```http
 POST /rest/v1/namedaccounts/delete.json
@@ -398,6 +410,6 @@ Content-Type: application/json
 
 ## Timeout
 
-- Gli endpoint denominati dell’account hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Sincronizza account denominati: 120s
-   - Elimina account denominati: 60s
+- Gli endpoint dell’account denominato hanno un timeout di 30 secondi, a meno che non venga indicato diversamente.
+- Il timeout degli account denominati di sincronizzazione è di 120 secondi.
+- L’eliminazione degli account denominati ha un timeout di 60 secondi.

@@ -4,25 +4,21 @@ feature: REST API, Field Management
 description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST e SOAP, oltre a come recuperarli tramite l’API Descrivi lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
 TQID: https://experienceleague.adobe.com/vu2wGk36XJ243vwavhfLE7Vc9vMIJKGx6vmVqMRgEDA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 742
+source-wordcount: 745
 ht-degree: 16%
 
 ---
 
 # Campi standard
 
-Di seguito è riportato un elenco dei campi standard disponibili in Marketo che sono accessibili tramite l’API.
+Nella tabella seguente sono elencati i campi Marketo standard disponibili tramite l’API. Include il nome API REST di ogni campo, il nome API SOAP, l’etichetta e la descrizione.
 
-Puoi recuperare l&#39;elenco di tutti i nomi di campo supportati disponibili nei record dei lead utilizzando l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi).
+Utilizza l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi) per recuperare tutti i nomi di campo supportati dai tuoi record lead.
 
 | Nome API REST | Nome API SOAP | Etichetta intuitiva | Descrizione |
 | --- | --- | --- | --- |

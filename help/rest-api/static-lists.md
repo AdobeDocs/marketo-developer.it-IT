@@ -4,13 +4,11 @@ feature: REST API, Static Lists
 description: Utilizza le API REST di Marketo per eseguire query, creare, aggiornare ed eliminare elenchi statici, con endpoint per filtri ID, nome e visualizzazione, ambito cartella, paging e data.
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
 TQID: https://experienceleague.adobe.com/DSV9h6d4F3ZrIUT-VtqlmFAnpdxOuTf05ajCqiGegqk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 496
+source-wordcount: 360
 ht-degree: 1%
 
 ---
@@ -19,17 +17,17 @@ ht-degree: 1%
 
 [Riferimento endpoint elenchi statici](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists)
 
-Marketo offre un set di API REST per l’esecuzione di operazioni CRUD su elenchi statici. Queste API seguono il pattern di interfaccia standard per le API delle risorse, fornendo le opzioni Query, Create, Update e Delete.
+Utilizza le API REST per gli elenchi statici per eseguire query, creare, aggiornare ed eliminare gli elenchi statici.
 
 Per le operazioni del database lead sui membri elenco, vedere [Appartenenza elenco](list-membership.md).
 
 ## Query
 
-La query degli elenchi statici segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) e [sfoglia](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET).
+Query degli elenchi statici [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET).
 
 ### Per ID
 
-[La query per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET) accetta un singolo elenco statico `id` come parametro di percorso e restituisce un singolo record di elenco statico.
+[La query per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET) accetta un parametro di percorso `id` dell&#39;elenco statico e restituisce il record corrispondente.
 
 ```http
 GET /rest/asset/v1/staticList/{id}.json
@@ -58,7 +56,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### Per nome
 
-[La query per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) accetta un elenco statico `name` come parametro e restituisce un singolo record di elenco statico. Viene eseguita una corrispondenza esatta di stringa su tutti i nomi di elenco statici nell’istanza e restituisce un risultato per l’elenco statico che corrisponde a tale nome.
+[La query per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) accetta un parametro `name` dell&#39;elenco statico. L&#39;endpoint esegue una corrispondenza esatta con i nomi dell&#39;elenco statico e restituisce il record corrispondente.
 
 ```http
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -85,9 +83,11 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 }
 ```
 
-#### Sfogliare
+#### Sfoglia
 
-Gli elenchi statici possono anche essere [recuperati in batch](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET). Il parametro `folder` può essere utilizzato per specificare la cartella principale in cui verrà eseguita la query e viene formattato come oggetto JSON contenente `id` e `type`. Come altri endpoint per il recupero di risorse in blocco, `offset` e `maxReturn` sono parametri facoltativi che possono essere utilizzati per il paging. I parametri `earliestUpdatedAt` e `latestUpdatedAt` consentono di impostare filigrane di data/ora basse e alte per la restituzione di elenchi statici creati o aggiornati all&#39;interno dell&#39;intervallo specificato. I valori Datetime devono essere stringhe ISO-8601 valide e non devono includere millisecondi.
+Utilizza l&#39;endpoint Sfoglia per [recuperare elenchi statici in batch](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET). Il parametro facoltativo `folder` esegue l&#39;ambito della query in una cartella padre. Passa la cartella come oggetto JSON contenente `id` e `type`.
+
+Utilizza `offset` e `maxReturn` per l&#39;impaginazione. Utilizza `earliestUpdatedAt` e `latestUpdatedAt` come limiti di data/ora alti e bassi. Questi parametri restituiscono gli elenchi creati o aggiornati all’interno dell’intervallo. Utilizza i valori ISO-8601 senza millisecondi.
 
 ```http
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -138,7 +138,9 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Crea e aggiorna
 
-[La creazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/createStaticListUsingPOST) viene eseguita con un POST `application/x-www-form-urlencoded` con due parametri richiesti. Il parametro `folder` viene utilizzato per specificare la cartella principale in cui verrà creato l&#39;elenco statico e viene formattato come oggetto JSON contenente `id` e `type`. Il parametro `name` viene utilizzato per denominare l&#39;elenco statico e deve essere univoco. Facoltativamente, è possibile utilizzare il parametro `description` per descrivere l&#39;elenco statico.
+Invia una richiesta POST `application/x-www-form-urlencoded` a [crea un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/createStaticListUsingPOST). I parametri `folder` e `name` sono obbligatori.
+
+Passa `folder` come oggetto JSON contenente `id` e `type`. `name` deve essere univoco. Il parametro facoltativo `description` descrive l&#39;elenco.
 
 ```http
 POST /rest/asset/v1/staticLists.json
@@ -173,7 +175,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-[L&#39;aggiornamento di un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/updateStaticListUsingPOST) viene eseguito tramite un endpoint separato con due parametri facoltativi. Il parametro `description` può essere utilizzato per aggiornare la descrizione dell&#39;elenco statico. Il parametro `name` può essere utilizzato per aggiornare il nome dell&#39;elenco statico e deve essere univoco.
+Utilizzare l&#39;endpoint di aggiornamento per [modificare un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/updateStaticListUsingPOST). Il parametro facoltativo `description` modifica la descrizione. Il parametro facoltativo `name` cambia il nome e deve essere univoco.
 
 ```http
 POST /rest/asset/v1/staticList/{id}.json
@@ -211,7 +213,7 @@ description=This is a static list used for testing
 
 ## Elimina
 
-[L&#39;eliminazione di un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) richiede un singolo elenco statico `id` come parametro di percorso. Non è possibile eliminare elenchi statici utilizzati da un’operazione di importazione o esportazione o da altre risorse.
+Per [eliminare un elenco statico](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST), passare `id` come parametro di percorso. Non puoi eliminare un elenco utilizzato da un’importazione, un’esportazione o un’altra risorsa.
 
 ```http
 POST /rest/asset/v1/staticList/{id}/delete.json

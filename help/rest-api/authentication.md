@@ -4,32 +4,32 @@ feature: REST API
 description: Autentica le API REST di Marketo con 2 gambe OAuth 2.0, crea e utilizza token di accesso, passa all’intestazione Autorizzazione, gestisci la scadenza, gestisci gli errori 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 657
+source-wordcount: 519
 ht-degree: 0%
 
 ---
 
 # Autenticazione
 
-Le API REST di Marketo sono autenticate con OAuth 2.0 a 2 gambe. Gli ID client e i segreti client vengono forniti dai servizi personalizzati definiti dall’utente. Ogni servizio personalizzato è di proprietà di un utente solo API con un set di ruoli e autorizzazioni che autorizzano il servizio a eseguire azioni specifiche. Un token di accesso è associato a un singolo servizio personalizzato. La scadenza del token di accesso è indipendente dai token associati ad altri servizi personalizzati che possono essere presenti in un’istanza.
+Le API REST di Marketo utilizzano OAuth 2.0 a 2 gambe per l’autenticazione. Un servizio personalizzato fornisce l’ID client e il segreto client utilizzati per ottenere un token di accesso.
+
+Ogni servizio personalizzato appartiene a un utente solo API. I ruoli e le autorizzazioni dell’utente autorizzano il servizio a eseguire azioni specifiche. Un token di accesso appartiene a un singolo servizio personalizzato e la sua scadenza è indipendente dai token per altri servizi personalizzati nell’istanza.
 
 ## Creazione di un token di accesso
 
-`Client ID` e `Client Secret` si trovano nel menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]** selezionando il servizio personalizzato e facendo clic su **[!UICONTROL View Details]**.
+Per trovare `Client ID` e `Client Secret`, passa a **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**. Selezionare il servizio personalizzato, quindi selezionare **[!UICONTROL View Details]**.
 
 ![Ottieni dettagli servizio REST](assets/authentication-service-view-details.png)
 
 ![Credenziali Launchpoint](assets/admin-launchpoint-credentials.png)
 
-`Identity URL` si trova nel menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** nella sezione REST API.
+Per trovare `Identity URL`, passa a **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**. L’URL viene visualizzato nella sezione API REST.
 
-Crea un token di accesso utilizzando una richiesta HTTP GET (o POST) come segue:
+Creare un token di accesso con una richiesta HTTP GET o POST:
 
 ```http
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
@@ -46,33 +46,32 @@ Se la richiesta era valida, riceverai una risposta JSON simile alla seguente:
 }
 ```
 
-Definizione risposta
+La risposta contiene i campi seguenti:
 
-- `access_token` - Token passato con le chiamate successive per l&#39;autenticazione con l&#39;istanza di destinazione.
-- `token_type` - Metodo di autenticazione OAuth.
-- `expires_in` - Durata rimanente del token corrente in secondi (dopo la quale non è valido). Quando viene creato originariamente un token di accesso, la sua durata è di 3600 secondi o un’ora.
-- `scope` - L&#39;utente proprietario del servizio personalizzato utilizzato per l&#39;autenticazione.
+- `access_token`: token passato con le chiamate successive per l&#39;autenticazione con l&#39;istanza di destinazione.
+- `token_type`: metodo di autenticazione OAuth.
+- `expires_in`: durata rimanente del token corrente, in secondi. Un nuovo token di accesso ha una durata di 3.600 secondi o un’ora.
+- `scope`: utente proprietario del servizio personalizzato utilizzato per l&#39;autenticazione.
 
 ## Utilizzo di un token di accesso
 
-Quando si effettuano chiamate ai metodi API REST, per garantire la riuscita della chiamata è necessario includere un token di accesso in ogni chiamata.
-Il token di accesso deve essere inviato come intestazione HTTP.
+Ogni chiamata API REST deve includere un token di accesso in un’intestazione HTTP.
 
 >[!IMPORTANT]
 >
->Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 luglio 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
+>Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 agosto 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
 
 ### Passaggio all’intestazione Autorizzazione
 
-Per passare dall&#39;utilizzo del parametro di query `access_token` a un&#39;intestazione Autorizzazione, è necessario apportare una piccola modifica al codice.
+Per sostituire il parametro di query `access_token` con un&#39;intestazione Autorizzazione, aggiorna la modalità di invio del token da parte della richiesta.
 
-Utilizzando CURL come esempio, questo codice invia il valore `access_token` come parametro di modulo (il flag -F):
+Il seguente esempio di cURL invia il valore `access_token` come parametro di modulo con il flag `-F`:
 
 ```bash
 curl ...  -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/apiCall.json
 ```
 
-Questo codice invia lo stesso valore dell&#39;intestazione http `Authorization: Bearer` (il flag -H):
+L&#39;esempio seguente invia lo stesso valore nell&#39;intestazione HTTP `Authorization: Bearer` con il flag `-H`:
 
 ```bash
 curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/bulk/v1/apiCall.json
@@ -80,12 +79,19 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 ## Suggerimenti e best practice
 
-La gestione della scadenza dei token di accesso è importante per garantire il corretto funzionamento dell’integrazione e impedire il verificarsi di errori di autenticazione imprevisti durante il normale funzionamento. Durante la progettazione dell’autenticazione per l’integrazione, assicurati di memorizzare il token e il periodo di scadenza contenuti nella risposta Identity.
+Memorizza il token di accesso e il periodo di scadenza della risposta di identità. La gestione della scadenza dei token consente di evitare errori di autenticazione imprevisti durante il normale funzionamento.
 
-Prima di effettuare qualsiasi chiamata REST, è necessario verificare la validità del token in base alla durata rimanente. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). In questo modo, la chiamata REST non avrà mai esito negativo a causa di un token scaduto. Questo consente di gestire la latenza delle chiamate REST in modo prevedibile, fondamentale per le applicazioni rivolte all’utente finale.
+Prima di effettuare una chiamata REST, controlla la durata residua del token. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Il rinnovo proattivo evita gli errori causati dai token scaduti e rende la latenza delle chiamate REST più prevedibile, importante per le applicazioni rivolte all’utente finale.
 
-Se per autenticare una chiamata REST viene utilizzato un token scaduto, la chiamata REST non riuscirà e restituirà un codice di errore 602. Se viene utilizzato un token non valido per autenticare una chiamata REST, viene restituito un codice di errore 601. Se viene ricevuto uno di questi codici, il client deve rinnovare il token chiamando l’endpoint di identità.
+Gli errori di autenticazione restituiscono i seguenti codici:
 
-Se chiami l’endpoint Identity prima della scadenza del token, nella risposta verranno restituiti lo stesso token e la durata rimanente.
+- `602`: token di accesso scaduto.
+- `601`: token di accesso non valido.
 
-Ricorda che i token di accesso sono di proprietà in base al servizio personalizzato e non in base all’utente. Anche se due risposte di identità possono avere l’ambito dello stesso utente, i token di accesso e i periodi di scadenza sono indipendenti l’uno dall’altro se sono stati creati con credenziali di due servizi diversi. Tieni presente questo aspetto se disponi di più set di credenziali nella stessa applicazione; l’ID client può essere una chiave utile per gestirli in modo indipendente.
+Se il client riceve uno di questi codici, rinnova il token chiamando l’endpoint Identity.
+
+Se chiami l’endpoint Identity prima della scadenza del token, la risposta restituisce lo stesso token e la durata rimanente.
+
+I token di accesso appartengono a servizi personalizzati, non agli utenti. Se le credenziali di due servizi diversi producono risposte di identità con ambito dello stesso utente, i token di accesso e i periodi di scadenza rimangono indipendenti.
+
+Quando un’applicazione utilizza più set di credenziali, utilizza l’ID client come chiave per gestire ogni token in modo indipendente.

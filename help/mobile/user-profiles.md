@@ -4,27 +4,25 @@ feature: Mobile Marketing, Users and Roles
 description: Scopri come creare e aggiornare i profili utente in Marketo Mobile SDK su iOS e Android con Objective C Swift e Java, campi standard e personalizzati, associateLead
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
 TQID: https://experienceleague.adobe.com/famIZ1O17Z7TTe2SBHqWSLLL-pp6Vx9M6xXhy2SbB-0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 103
+source-wordcount: 116
 ht-degree: 1%
 
 ---
 
 # Profili utente
 
-Come creare profili utente
+Crea o aggiorna i profili utente con Marketo Mobile SDK per iOS o Android:
 
 1. [Creazione di profili utente in iOS](#ios_user_profiles)
 1. [Creazione di profili utente in Android](#android_user_profiles)
 
 ## Creazione di profili utente in iOS {#ios_user_profiles}
 
-Puoi creare profili avanzati inviando i campi utente come mostrato di seguito.
+Crea un profilo e popolane i campi utente.
 
 ```objectivec
 MarketoLead *profile = [[MarketoLead alloc] init];
@@ -94,7 +92,7 @@ profile.setFieldName("phone", withValue:"123.456.7890");
 
 >[!ENDTABS]
 
-Profilo utente report.
+Segnala il profilo utente per crearlo o aggiornarlo.
 
 >[!BEGINTABS]
 
@@ -120,9 +118,9 @@ marketo.associateLead(profile)
 
 ## Creazione di profili utente in Android {#android_user_profiles}
 
-1. Crea profilo utente.
+1. Creare un profilo utente.
 
-   Puoi creare profili avanzati inviando i campi utente come mostrato di seguito.
+   Crea un profilo e popolane i campi utente.
 
    ```java
    MarketoLead profile = new MarketoLead();
@@ -157,7 +155,7 @@ marketo.associateLead(profile)
    profile.setCustomField("linkedInDisplayName", "Android");
    ```
 
-1. Profilo utente report.
+1. Segnala il profilo utente per crearlo o aggiornarlo.
 
    ```java
    MarketoLead profile = new MarketoLead();

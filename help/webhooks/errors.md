@@ -4,24 +4,22 @@ feature: Webhooks
 description: Scopri i codici di errore del webhook di Marketo, il motivo per cui sono necessarie risposte 2xx per aggiornare i campi del lead e come rilevare e gestire gli errori con Webhook è chiamato.
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
 TQID: https://experienceleague.adobe.com/N2jNA4EUMMTUFL9uJHZhOor6Tlz4-EXWciwoXrPml48
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 252
-ht-degree: 1%
+source-wordcount: 210
+ht-degree: 2%
 
 ---
 
 # Errori
 
-In questa pagina sono elencati i codici di risposta di errore per i webhook in Marketo.
+Questa pagina descrive i codici di risposta di errore per i webhook di Marketo e spiega come gestire gli errori dei webhook.
 
-1000 e 1001 sono generati da Marketo e da 2xx a 5xx sono errori restituiti dal sistema chiamato dal webhook di Marketo.
+Marketo genera i codici di errore 1000 e 1001. Il sistema chiamato dal webhook Marketo restituisce codici di risposta da 2xx a 5xx.
 
-Affinché Marketo possa mappare nuovamente i valori in un campo, il codice di risposta del webhook deve essere del tipo 2xx. Se l’obiettivo del webhook è quello di modificare i valori nel record del lead di Marketo tramite la risposta, il servizio Web chiamato deve restituire 2xx, tutti gli altri codici di risposta si tradurranno nell’ignorare il webhook allo scopo di aggiornare i valori dei record del lead.
+Marketo mappa i valori di risposta su un campo solo quando il servizio web restituisce un codice di risposta 2xx. Se una risposta del webhook ha lo scopo di modificare i valori in un record lead di Marketo, tutti gli altri codici di risposta fanno in modo che Marketo ignori la risposta per gli aggiornamenti dei campi.
 
 | Codice di risposta | Descrizione |
 | --- | --- |
@@ -30,11 +28,11 @@ Affinché Marketo possa mappare nuovamente i valori in un campo, il codice di ri
 
 ## Rilevamento di un errore del webhook
 
-Gli errori dai webhook possono essere rilevati e gestiti dal trigger **[!UICONTROL Webhook is Called]**:
+Utilizza il trigger **[!UICONTROL Webhook is Called]** per rilevare e gestire gli errori del webhook:
 
 ![Webhook chiamato](assets/webhook-called.png)
 
-* **Risposta** - La risposta è il payload di risposta letterale ricevuto dalla richiesta.
-* **Tipo errore** - Corrisponde alla frase motivo del messaggio di stato HTTP.
+* **Risposta** - Payload di risposta letterale ricevuto dalla richiesta.
+* **Tipo di errore**: la frase-motivo del messaggio di stato HTTP.
 
-Questi possono essere utilizzati per gestire errori ed eccezioni prevedibili e reagire ad essi. A seconda del servizio con cui si sta effettuando l’integrazione, è possibile ripristinare automaticamente alcune classi di errori, mentre è possibile creare avvisi per avvisare gli utenti di errori imprevisti.
+Utilizzare questi valori per rispondere a errori ed eccezioni prevedibili. A seconda del servizio integrato, è possibile ripristinare automaticamente da alcune classi di errore e creare avvisi in caso di errori imprevisti.

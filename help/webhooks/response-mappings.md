@@ -4,42 +4,46 @@ feature: Webhooks
 description: Mappature di risposta dei webhook Marketo per JSON e XML, mappatura degli attributi ai campi lead con nomi API SOAP, notazione in punti e array e compatibilità dei tipi.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
 TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 484
+source-wordcount: 373
 ht-degree: 0%
 
 ---
 
 # Mappature risposte
 
-Marketo può tradurre i dati ricevuti da un webhook da due tipi di contenuto e restituire questi valori a un campo lead: JSON e XML. Il parametro Campo Marketo utilizzerà sempre il [nome API SOAP](../rest-api/fields.md) del campo. Ogni webhook può disporre di un numero illimitato di mapping di risposta, che vengono aggiunti e modificati facendo clic sul pulsante [!UICONTROL Edit] nel riquadro Mapping di risposta del webhook:
+Marketo può tradurre i dati del webhook da JSON o XML e scrivere i valori nei campi lead. Il parametro Campo Marketo utilizza sempre il nome API [SOAP](../rest-api/fields.md) del campo.
+
+Ogni webhook può avere un numero illimitato di mappature di risposta. Per aggiungere o modificare le mappature, selezionare [!UICONTROL Edit] nel riquadro Mapping risposte del webhook:
 
 ![Mappatura risposte](assets/response-mapping.png)
 
-Le mappature di risposta vengono create tramite un accoppiamento di un &quot;Attributo di risposta&quot;, il percorso della proprietà desiderata nel documento XML o JSON e il &quot;Campo Marketo&quot;, che specifica il campo Lead contenente il valore scritto dall&#39;Attributo di risposta.
+Una mappatura di risposta associa questi valori:
 
-Le chiavi per le proprietà devono essere costituite da caratteri alfanumerici, trattino (-), carattere di sottolineatura (_), due punti (:) e spazi vuoti a cui accedere tramite le mappature di risposta di Marketo.
+- &quot;Response Attribute&quot;: percorso della proprietà desiderata nel documento XML o JSON.
+- &quot;Campo Marketo&quot;: campo lead in cui Marketo scrive il valore dell’attributo di risposta.
+
+Per accedere a una proprietà tramite le mappature di risposta di Marketo, la relativa chiave deve contenere solo caratteri alfanumerici, trattino (-), carattere di sottolineatura (_), due punti (:) e spazi vuoti.
 
 ## Mappature JSON
 
-Le proprietà JSON sono accessibili con la notazione del punto e la notazione dell’array. La notazione della matrice in Marketo non accetta stringhe come input e accetta solo numeri interi. Per recuperare dati da un documento JSON, il tipo di risposta deve essere impostato su JSON:
+Accedi alle proprietà JSON con notazione del punto e notazione dell’array. La notazione dell’array Marketo accetta solo numeri interi, non stringhe.
+
+Per recuperare dati da un documento JSON, imposta il tipo di risposta su JSON:
 
 ```json
 { "foo":"bar"}
 ```
 
-Per accedere alla proprietà `foo` in un mapping di risposta, utilizzare `name` della proprietà poiché si trova nel primo livello dell&#39;oggetto JSON, `foo`. Di seguito viene illustrato l&#39;aspetto di questa funzionalità in Marketo:
+La proprietà `foo` si trova al primo livello dell&#39;oggetto JSON. Utilizza la proprietà `name`, `foo`, nel mapping di risposta:
 
 ![Mappatura risposta](assets/json-resp.png)
 
-Di seguito è riportato un esempio più complicato con un array:
+L’esempio seguente contiene un array:
 
 ```json
 {
@@ -61,11 +65,11 @@ Di seguito è riportato un esempio più complicato con un array:
 }
 ```
 
-Desideriamo accedere a orderDate dal primo elemento della matrice ordini. Per accedere a questa proprietà, utilizzare: `orders[0].orderDate`
+Per accedere a orderDate dal primo elemento della matrice ordini, utilizzare `orders[0].orderDate`.
 
 ## Mappature XML
 
-È possibile accedere ai valori dai singoli elementi nei documenti XML. Questo utilizza una notazione del punto simile alle mappature JSON. Considera questo semplice esempio:
+Accedi ai valori dai singoli elementi XML utilizzando la notazione del punto, in modo simile ai mapping JSON. Prendi in considerazione questo esempio:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -74,9 +78,11 @@ Desideriamo accedere a orderDate dal primo elemento della matrice ordini. Per ac
 </example>
 ```
 
-Per accedere alla proprietà foo, utilizzare: `example.foo`
+Per accedere alla proprietà foo, utilizzare `example.foo`.
 
-È necessario fare riferimento all&#39;elemento di esempio prima di accedere a `foo`. Per accedere a una proprietà, nel mapping deve essere fatto riferimento a tutti gli elementi della gerarchia. I documenti XML con array sono un po&#39; più complicati. Utilizza l’esempio seguente:
+Fare riferimento all&#39;elemento di esempio prima di accedere a `foo`. Una mappatura deve fare riferimento a ogni elemento nella gerarchia delle proprietà.
+
+Per un documento XML con un array, considerare questo esempio:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,8 +99,12 @@ Per accedere alla proprietà foo, utilizzare: `example.foo`
 </elementList>
 ```
 
-Il documento è costituito dall&#39;array principale `elementList`, con elementi secondari, che contiene una proprietà: `foo`. Ai fini dei mapping di risposta di Marketo, all&#39;array viene fatto riferimento come `elementList.element`, pertanto l&#39;accesso ai figli di elementList avviene tramite `elementList.element[i]`. Per ottenere il valore di foo dal primo elemento figlio di elementList, utilizziamo questo attributo di risposta: `elementList.element[0].foo`. Questo restituisce il valore &quot;baz&quot; al campo designato. Se si tenta di accedere alle proprietà all’interno di elementi che contengono nomi di elementi sia univoci che non univoci, si verifica un comportamento non definito. Ogni elemento deve essere una singola proprietà o un array, i tipi non possono essere combinati.
+L&#39;array principale è `elementList`. Ogni elemento figlio contiene la proprietà `foo`. I mapping di risposta di Marketo fanno riferimento all&#39;array come `elementList.element` e accedono ai relativi elementi figlio tramite `elementList.element[i]`.
+
+Per ottenere il valore di foo dal primo elemento figlio di elementList, utilizzare l&#39;attributo di risposta `elementList.element[0].foo`. Questa mappatura restituisce il valore &quot;baz&quot; al campo designato.
+
+L&#39;accesso alle proprietà all&#39;interno di elementi che contengono sia nomi di elementi univoci che non univoci genera un comportamento non definito. Ogni elemento deve essere una singola proprietà o un array. Non mescolare i tipi.
 
 ## Tipi
 
-Quando mappi gli attributi ai campi, devi assicurarti che il tipo nella risposta del webhook sia compatibile con il campo di destinazione. Ad esempio, se il valore nella risposta è una stringa e il campo selezionato è di tipo intero, il valore non viene scritto. Leggi di [Tipi di campo](../rest-api/field-types.md).
+Quando mappi gli attributi ai campi, assicurati che il tipo di risposta del webhook sia compatibile con il campo di destinazione. Ad esempio, Marketo non scrive un valore di risposta stringa in un campo di tipo integer. Per ulteriori informazioni, vedere [Tipi di campo](../rest-api/field-types.md).

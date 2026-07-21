@@ -4,51 +4,60 @@ feature: Email Programs
 description: Guida all’utilizzo di Marketo Velocity con lead, opportunità e oggetti personalizzati, al caricamento di campi, ai primi 10 accessi all’elenco, alle relazioni con SFDC e a $TriggerObject.
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
 TQID: https://experienceleague.adobe.com/PvLJb-AOk6DKaNINycpzk5ojZiL8UNcanRg3vXmsGCI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 532
+source-wordcount: 452
 ht-degree: 0%
 
 ---
 
 # Oggetti Marketo
 
-L’implementazione Velocity di Marketo può funzionare su dati provenienti da diverse origini all’interno di Marketo: lead, opportunità, oggetti personalizzati, app mobile, installazione di app mobili.
+L’implementazione Velocity di Marketo può utilizzare i dati provenienti dalle seguenti origini Marketo:
+
+- Lead
+- Opportunità
+- Oggetti personalizzati
+- App mobile
+- Installazione app mobile
 
 ## Caricamento campi
 
-Per caricare un campo da utilizzare in uno script, tale campo deve essere selezionato nell’elenco corrispondente nell’editor dei token di script.
+Per utilizzare un campo in uno script, seleziona il campo sotto l’elenco corrispondente nell’editor dei token di script.
 
-Se non carichi un campo a cui viene fatto riferimento all’interno dello script, l’esecuzione dello script non riesce in fase di esecuzione. Puoi trascinare i campi dal menu dei campi nello script. In questo modo è possibile caricarli e aggiungere un riferimento al campo in corrispondenza del cursore.
+Se uno script fa riferimento a un campo non caricato, lo script non riesce in fase di esecuzione. Trascinare un campo dal menu dei campi nello script per caricarlo e aggiungere un riferimento in corrispondenza del cursore.
 
 ## Elenchi di oggetti personalizzati e di opportunità
 
-Durante il recupero da Opportunità o Oggetti personalizzati, vengono caricati solo i 10 oggetti aggiornati più di recente di un tipo. Il numero di oggetti personalizzati disponibili può essere aumentato seguendo i passaggi qui descritti. Questi vengono forniti come elenco, con il nome di `<objectName>List` e sono ordinati dal record aggiornato più di recente a quello più recente. Pertanto, per accedere al campo Importo dall’opportunità aggiornata più di recente, utilizza quanto segue:
+Per Opportunità e Oggetti personalizzati, Marketo carica solo gli ultimi 10 oggetti aggiornati di ciascun tipo. È possibile aumentare il numero di oggetti personalizzati disponibili seguendo i passaggi descritti in questa sezione.
+
+Marketo fornisce gli oggetti in un elenco denominato `<objectName>List`, ordinati dal record aggiornato più di recente al record aggiornato meno di recente. Per accedere al campo Importo dell’opportunità aggiornata più di recente, utilizza:
 
 `${OpportunityList.get(0).Amount}`
 
-In questo esempio si fa riferimento all&#39;oggetto OpportunityList, si utilizza il metodo get per accedere al record indicizzato in corrispondenza di 0 e quindi si recupera la proprietà Amount dall&#39;oggetto restituito. Se trascini un campo da un’opportunità o da un oggetto personalizzato nell’editor, questo recupererà automaticamente il campo dal record indicizzato su 0.
+Questo esempio fa riferimento all&#39;oggetto OpportunityList, utilizza il metodo get per accedere al record in corrispondenza dell&#39;indice 0 e recupera la proprietà Amount da tale record.
+
+Quando si trascina un campo Opportunità o Oggetto personalizzato nell&#39;editor, Marketo recupera automaticamente il campo dal record all&#39;indice 0.
 
 ## Relazioni oggetto personalizzato SFDC
 
-Per poter essere utilizzato, un oggetto personalizzato di SFDC deve avere una sola relazione con il lead di Marketo. Gli oggetti sono spesso collegati sia tramite il contatto che tramite l’account, pertanto è importante sincronizzare solo gli oggetti con Marketo con la relazione lead/contatto abilitata.
+Per utilizzare un oggetto personalizzato di SFDC, l&#39;oggetto deve avere una sola relazione con il lead di Marketo. Gli oggetti vengono spesso collegati tramite il contatto e l’account. Sincronizza solo gli oggetti per i quali è abilitata la relazione lead/contatto.
 
 ## Attiva oggetti
 
-Quando una campagna viene attivata tramite l&#39;opzione Aggiunta all&#39;opportunità, l&#39;opportunità viene aggiornata o aggiunta a `<Custom Object Name>` trigger, diventa disponibile una variabile speciale nei token di script eseguiti nel contesto della campagna del trigger: `$TriggerObject` (non supportato per `<Custom Object Name>` è il trigger aggiornato).  Se un token che utilizza un riferimento `$TriggerObject` viene utilizzato in una campagna batch, l&#39;invio dell&#39;e-mail non riuscirà, poiché questo oggetto non è disponibile nelle campagne batch di alcun tipo.  Questo è un riferimento all&#39;oggetto che ha attivato la campagna. L’oggetto contiene tutti i dati del record a cui si accede tramite un nome di variabile diverso.
+Quando una campagna utilizza il trigger Aggiunto all&#39;opportunità, L&#39;opportunità viene aggiornata o Aggiunta al trigger `<Custom Object Name>`, la variabile `$TriggerObject` è disponibile per i token di script eseguiti nella campagna del trigger. Questa variabile non è supportata per il trigger `<Custom Object Name>` è aggiornato.
 
-Ad esempio, se una campagna è stata attivata tramite un oggetto personalizzato per un ordine di prodotto, l&#39;ordine a cui è stato aggiunto il lead viene esposto nella variabile `$TriggerObject`.
+Questa variabile fa riferimento all’oggetto che ha attivato la campagna. Contiene gli stessi dati del record disponibili quando si accede all&#39;oggetto tramite un altro nome di variabile.
 
-Ecco uno script di esempio per un’e-mail di follow-up dell’ordine:
+Non utilizzare un token che fa riferimento a `$TriggerObject` in una campagna batch. L’oggetto non è disponibile nelle campagne batch e l’invio dell’e-mail non riesce.
+
+Ad esempio, se un oggetto personalizzato per un ordine di prodotti attiva una campagna, la variabile `$TriggerObject` espone l&#39;ordine a cui è stato aggiunto il lead.
+
+L’esempio seguente mostra uno script per un’e-mail di follow-up dell’ordine:
 
 ```html
 <div>
@@ -65,8 +74,8 @@ Ecco uno script di esempio per un’e-mail di follow-up dell’ordine:
 </div>
 ```
 
-Il vantaggio dell&#39;utilizzo della variabile `$TriggerObject` è che non è necessario dedicare codice per determinare da quali oggetti disponibili si desidera estrarre i dati locali.  L’oggetto è determinato dall’azione di attivazione. Questo è il modo più esplicito per scegliere un oggetto a cui fare riferimento e deve essere utilizzato quando disponibile e appropriato.
+L&#39;azione di attivazione determina l&#39;oggetto. Non è necessario codice aggiuntivo per determinare quale oggetto disponibile contiene i dati locali. Utilizzare `$TriggerObject` quando è disponibile e appropriato perché identifica esplicitamente l&#39;oggetto a cui fare riferimento.
 
-Nota: quando si utilizza `$TriggerObject`, i campi devono essere controllati nel riquadro di modifica affinché l&#39;oggetto sia disponibile per lo script.
+Nota: quando si utilizza `$TriggerObject`, selezionare i campi dell&#39;oggetto nel riquadro di modifica per renderli disponibili per lo script.
 
 Nota 2: `$TriggerObject` funziona solo per i trigger &quot;aggiunti&quot; e non per quelli &quot;aggiornati&quot;.

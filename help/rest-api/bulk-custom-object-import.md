@@ -4,17 +4,13 @@ feature: Custom Objects
 description: Scopri come importare in blocco oggetti personalizzati Marketo tramite REST utilizzando file CSV, TSV o SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
 TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 953
+source-wordcount: 736
 ht-degree: 0%
 
 ---
@@ -23,15 +19,26 @@ ht-degree: 0%
 
 [Riferimento dell&#39;endpoint di importazione oggetti personalizzati in blocco](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-Quando disponi di molti record di oggetti personalizzati da importare, è consigliabile importarli in modo asincrono utilizzando l’API in blocco. Questa operazione viene eseguita importando un file flat contenente record delimitati (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché la dimensione sia inferiore a 10 MB (altrimenti viene restituito un codice di stato HTTP 413). Il contenuto del file dipende dalla definizione dell’oggetto personalizzato. La prima riga contiene sempre un’intestazione che elenca i campi in cui mappare i valori di ogni riga. Tutti i nomi dei campi nell’intestazione devono corrispondere a un nome API (come descritto di seguito). Le righe rimanenti contengono i dati da importare, un record per riga. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
+Utilizza l’API bulk per importare in modo asincrono un numero elevato di record di oggetti personalizzati. Fornisci i record in un file flat delimitato da virgole, tabulazioni o punti e virgola di dimensioni inferiori a 10 MB. Se il file è più grande, l’API restituisce un codice di stato HTTP 413.
+
+Il contenuto del file dipende dalla definizione dell&#39;oggetto personalizzato. La prima riga deve essere un’intestazione e ogni campo dell’intestazione deve corrispondere a un nome API. Ogni riga rimanente contiene un record.
+
+L&#39;importazione di oggetti personalizzati in blocco supporta solo l&#39;operazione di inserimento o aggiornamento dei record.
 
 ## Limiti di elaborazione
 
-È possibile inviare più richieste di importazione in blocco, entro i limiti consentiti. Ogni richiesta viene aggiunta come processo a una coda FIFO da elaborare. Vengono elaborati al massimo due processi contemporaneamente. Sono consentiti fino a dieci processi nella coda in qualsiasi momento (compresi i due attualmente in fase di elaborazione). Se si supera il numero massimo di dieci processi, viene restituito un errore &quot;1016, Troppe importazioni&quot;.
+Ogni richiesta di importazione in blocco viene aggiunta come processo a una coda FIFO (First-In, First-Out). Si applicano i seguenti limiti:
+
+- È possibile elaborare contemporaneamente un massimo di due processi.
+- Nella coda possono essere presenti al massimo 10 processi, inclusi i due in fase di elaborazione.
+
+Se si supera il massimo di 10 processi, l&#39;API restituisce un errore `1016, Too many imports`.
 
 ## Esempio di oggetto personalizzato
 
-Prima di utilizzare l&#39;API in blocco, è necessario utilizzare l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Ad esempio, supponiamo di aver creato un oggetto personalizzato &quot;Car&quot; con i campi &quot;Color&quot;, &quot;Make&quot;, &quot;Model&quot; e &quot;VIN&quot;. Di seguito sono riportate le schermate dell’interfaccia utente di amministrazione che mostrano l’oggetto personalizzato. Potete vedere che abbiamo usato il campo VIN per la deduplicazione. I nomi API vengono evidenziati perché devono essere utilizzati quando si chiamano endpoint correlati a API in blocco.
+Prima di utilizzare l&#39;API in blocco, utilizza l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
+
+In questo esempio viene utilizzato un oggetto personalizzato `Car` con campi `Color`, `Make`, `Model` e `VIN`. Il campo VIN viene utilizzato per la deduplicazione. Le schermate dell’interfaccia utente di amministrazione evidenziano i nomi API richiesti dagli endpoint API in blocco.
 
 ![Inserisci oggetto personalizzato](assets/bulk-insert-co-car-1.png)
 
@@ -41,7 +48,7 @@ Di seguito sono riportati i campi oggetto personalizzati come presentati nell’
 
 ### Nomi API
 
-Puoi recuperare i nomi API a livello di programmazione passando il nome API dell&#39;oggetto personalizzato all&#39;endpoint [Descrivi oggetto personalizzato](#describe).
+Per recuperare i nomi API a livello di programmazione, passare il nome API dell&#39;oggetto personalizzato all&#39;endpoint [Descrizione oggetto personalizzato](#describe).
 
 ```text
 /rest/v1/customobjects/{apiName}/describe.json
@@ -126,7 +133,7 @@ Puoi recuperare i nomi API a livello di programmazione passando il nome API dell
 
 ### Importa file
 
-Ora supponiamo di voler importare tre record di oggetti personalizzati &quot;Car&quot;. Utilizzando il formato delimitato da virgole (CSV), il file potrebbe presentarsi così:
+Il seguente file CSV contiene tre `Car` record oggetto personalizzati:
 
 ```text
 color,make,model,vin
@@ -135,11 +142,14 @@ yellow,bmw,320i,WBA4R7C30HK896061
 blue,bmw,325i,WBS3U9C52HP970604
 ```
 
-La riga 1 è l&#39;intestazione e le righe 2-4 sono i record di dati oggetto personalizzati.
+La prima riga è l’intestazione. Le righe da 2 a 4 contengono i record di dati oggetto personalizzati.
 
 ## Creazione di un processo
 
-Per effettuare la richiesta di importazione in blocco, è necessario includere il nome API dell&#39;oggetto personalizzato nel percorso dell&#39;endpoint [Importa oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST). È inoltre necessario includere un parametro &quot;file&quot; che faccia riferimento al nome del file di importazione e un parametro &quot;format&quot; che specifichi come il file di importazione è delimitato (&quot;csv&quot;, &quot;tsv&quot; o &quot;ssv&quot;).
+Per creare il processo di importazione in blocco, includere il nome API dell&#39;oggetto personalizzato nel percorso dell&#39;endpoint [Importa oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST). Includi questi parametri:
+
+- `file`: nome del file di importazione.
+- `format`: formato delimitatore file (`csv`, `tsv` o `ssv`).
 
 ```http
 POST /bulk/v1/customobjects/{apiName}/import.json?format=csv
@@ -178,17 +188,19 @@ blue,bmw,325i,WBS3U9C52HP970604
 }
 ```
 
-In questo esempio, abbiamo specificato il formato &quot;csv&quot; e denominato il file di importazione &quot;custom_object_import.csv&quot;.
+In questo esempio viene specificato il formato `csv` e viene denominato il file di importazione `custom_object_import.csv`.
 
-Osserva che, nella risposta alla nostra chiamata, non esiste un elenco di successi o errori come si otterrebbe dall’endpoint Sincronizza oggetti personalizzati. Viene invece visualizzato `batchId`. La chiamata è asincrona e può restituire `status` di &quot;In coda&quot;, &quot;Importazione&quot; o &quot;Non riuscita&quot;. È necessario conservare il batchId in modo da poter ottenere lo stato del processo di importazione o recuperare gli errori e/o gli avvisi al completamento. Il batchId rimane valido per sette giorni.
+Poiché la chiamata è asincrona, la risposta contiene `batchId` anziché i singoli errori e operazioni riuscite restituiti dall&#39;endpoint Sync Custom Objects. `status` può essere `Queued`, `Importing` o `Failed`.
 
-Un modo semplice per replicare la richiesta di importazione in blocco consiste nell’utilizzare curl dalla riga di comando:
+Mantieni `batchId` per controllare lo stato di importazione e recuperare gli errori o gli avvisi dopo il completamento. `batchId` rimane valido per sette giorni.
+
+La seguente richiesta cURL della riga di comando invia il processo di esempio:
 
 ```bash
 curl -X POST -i -F format='csv' -F file='@custom_object_import.csv' -F access_token='<Access Token>' <REST API Endpoint URL>/bulk/v1/customobjects/car_c/import.json
 ```
 
-Dove il file di importazione &quot;custom_object_import.csv&quot; contiene quanto segue:
+In questo esempio, il file `custom_object_import.csv` contiene i dati seguenti:
 
 ```text
 color,make,model,vin
@@ -199,7 +211,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## Stato processo di polling
 
-Una volta creato il processo di importazione, è necessario eseguire una query sul relativo stato. È consigliabile eseguire il polling del processo di importazione ogni 5-30 secondi. A tale scopo, passare il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
+Dopo aver creato il processo di importazione, esegui il polling ogni 5-30 secondi. Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -225,19 +237,23 @@ GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 }
 ```
 
-Questa risposta mostra un&#39;importazione completata, ma `status` può essere uno dei seguenti: Complete, Queued, Importing, Failed. Se il processo è stato completato, viene visualizzato un elenco del numero di righe elaborate, con errori e avvisi. L’attributo message è inoltre utile per cercare informazioni aggiuntive sul processo.
+Questa risposta mostra un’importazione completata. `status` può essere `Complete`, `Queued`, `Importing` o `Failed`.
+
+Al termine del processo, la risposta elenca il numero di righe elaborate, non riuscite ed elaborate con avvertenze. L&#39;attributo `message` può fornire informazioni aggiuntive sul processo.
 
 ## Errori
 
-Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET). Se numOfRowsFailed è maggiore di zero, tale valore indica il numero di errori che si sono verificati. Chiamare l&#39;endpoint [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET) per ottenere un file con dettagli sull&#39;errore. Di nuovo, devi passare il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso. Se non esiste alcun file con errori, viene restituito un codice di stato HTTP 404.
+L&#39;attributo `numOfRowsFailed` nella risposta [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET) indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
-Continuando con l’esempio, possiamo forzare un errore modificando l’intestazione e cambiando &quot;vin&quot; in &quot; vin&quot; (aggiungendo uno spazio tra la virgola e &quot;vin&quot;).
+Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET). L’endpoint restituisce un file con dettagli di errore. Se non esiste alcun file con errori, restituisce il codice di stato HTTP 404.
+
+Per dimostrare l&#39;errore, modificare l&#39;intestazione cambiando `vin` in ` vin`, aggiungendo uno spazio tra la virgola e `vin`.
 
 ```text
 color,make,model, vin
 ```
 
-Quando si reimporta e si controlla lo stato, viene visualizzata questa risposta con `numRowsFailed`: 3. Questo indica tre errori.
+Dopo la reimportazione del file, la risposta di stato mostra `numRowsFailed`: 3, che indica tre errori.
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
@@ -263,7 +279,7 @@ GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
 }
 ```
 
-Ora viene effettuata la chiamata dell’endpoint Get Import Custom Object Failures per ottenere ulteriori dettagli sull’errore:
+Chiamare l&#39;endpoint Get Import Custom Object Failures per ulteriori informazioni:
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/failures.json
@@ -276,11 +292,13 @@ yellow,bmw,320i,WBA4R7C30HK896061,missing.dedupe.fields
 blue,bmw,325i,WBS3U9C52HP970604,missing.dedupe.fields
 ```
 
-È possibile notare che manca il campo di deduplicazione `vin`.
+La risposta indica che manca il campo di deduplicazione `vin`.
 
 ## Avvisi
 
-Gli avvisi sono indicati dall&#39;attributo `numOfRowsWithWarning` nella risposta Get Import Custom Object Status. Se numOfRowsWithWarning è maggiore di zero, tale valore indica il numero di avvisi che si sono verificati. Chiamare l&#39;endpoint [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET) per ottenere un file con dettagli di avviso. Di nuovo, devi passare il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso. Se non esiste alcun file di avviso, viene restituito un codice di stato HTTP 404.
+L&#39;attributo `numOfRowsWithWarning` nella risposta Get Import Custom Object Status indica il numero di righe con avvisi. Un valore maggiore di zero indica che si sono verificate delle avvertenze.
+
+Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET). L’endpoint restituisce un file con i dettagli di avviso. Se non esiste alcun file di avviso, restituisce un codice di stato HTTP 404.
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

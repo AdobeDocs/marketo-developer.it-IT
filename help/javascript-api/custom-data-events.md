@@ -4,28 +4,24 @@ description: Invia eventi personalizzati con l’API JavaScript RTP per Web Pers
 feature: Javascript
 exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
 TQID: https://experienceleague.adobe.com/oWDmtMF94xG5HYXeTwkx5zF9PWo98bpwoVB6kAKLYDo
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 263
+source-wordcount: 241
 ht-degree: 3%
 
 ---
 
 # Eventi di dati personalizzati
 
-Questo metodo invia eventi personalizzati per il tracciamento e la personalizzazione in tempo reale. Può essere utilizzato per inviare dati di terze parti o per attivare un evento personalizzato in base al comportamento del visitatore. Gli eventi di dati personalizzati vengono conteggiati una volta nella sessione di un visitatore.
+Utilizza questo metodo per inviare eventi personalizzati per il tracciamento e la personalizzazione in tempo reale. Puoi inviare dati di terze parti o attivare un evento personalizzato in base al comportamento del visitatore.
 
-Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+Ogni evento di dati personalizzato viene conteggiato una volta durante la sessione di un visitatore.
+
+Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
 | --- | --- | --- | --- |
@@ -44,7 +40,7 @@ rtp('send', 'event', customData);
 
 ### Invia evento tramite array di stringhe per dati personalizzati
 
-L’array di dati personalizzato può contenere un massimo di quattro elementi.  Se devi inviare più di quattro elementi, chiama ripetutamente l’API Send Event (con un massimo di quattro elementi) fino a quando tutti gli elementi non vengono inviati.
+L’array di dati personalizzato può contenere fino a quattro elementi. Per inviare più di quattro elementi, chiama ripetutamente l’API Send Event con non più di quattro elementi in ogni chiamata.
 
 ```javascript
 var customData = {value: ['MyEvent', 'download - example whitepaper']};
@@ -53,7 +49,9 @@ rtp('send', 'event', customData);
 
 ### Invia evento in base al clic del pulsante
 
-Marketo personalizza i contenuti del proprio sito web per i visitatori che scaricano un white paper specifico. A tale scopo, acquisiscono il clic del visitatore sul pulsante di download del white paper, che invia un evento di dati personalizzato. RTP segmenta in tempo reale tutti i visitatori che hanno fatto clic sul pulsante Scarica white paper, mostrando a ogni visitatore una campagna personalizzata con un’offerta di 2 clic in un secondo momento. Ciò si ottiene visualizzando un altro contenuto relativo al white paper scaricato.
+Questo esempio invia un evento di dati personalizzato quando un visitatore seleziona il pulsante per scaricare un white paper specifico. RTP può utilizzare l’evento per segmentare tali visitatori in tempo reale.
+
+Il sito web può quindi visualizzare una campagna personalizzata dopo altri due clic. Ad esempio, la campagna può presentare un altro contenuto relativo al white paper scaricato.
 
 ```html
 <button id="download-whitepaper" onclick="rtp('send', 'event', {value :'download - example whitepaper'})">Download</button>

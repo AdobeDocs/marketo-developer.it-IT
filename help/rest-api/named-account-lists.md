@@ -4,15 +4,12 @@ feature: REST API
 description: Scopri come gestire gli elenchi di account denominati Marketo con l’API REST, che includono autorizzazioni, campi, filtri ed endpoint per eseguire query, creare, aggiornare ed eliminare.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
 TQID: https://experienceleague.adobe.com/18lMhheW21Gz1-3TMHwleHhmLTOqJsZSQ5aqkbbchhM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 746
+source-wordcount: 686
 ht-degree: 2%
 
 ---
@@ -21,16 +18,23 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Elenchi account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) in Marketo rappresentano insiemi di account denominati. Possono essere utilizzati per un’ampia varietà di casi, tra cui categorizzazione, arricchimento dei dati e filtro intelligente delle campagne. Le API dell’elenco di account denominati consentono la gestione remota di queste risorse dell’elenco e della loro appartenenza.
+[Gli elenchi di account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) sono insiemi di account denominati in Marketo. Utilizzali per la categorizzazione, l’arricchimento dei dati e il filtraggio intelligente delle campagne.
+
+Le API per l’elenco degli account denominati consentono di gestire in remoto le risorse dell’elenco e la relativa appartenenza.
 `Content`
 
 ## Autorizzazioni
 
-Per eseguire una query sugli elenchi di account denominati, è necessario disporre dell&#39;autorizzazione Elenco account denominati di sola lettura o Elenco account denominati di lettura/scrittura. Per creare, aggiornare o eliminare elenchi, è necessaria l&#39;autorizzazione Lettura/scrittura elenco account denominati. La query dell&#39;appartenenza a un elenco richiede le autorizzazioni Account denominato di sola lettura o Account denominato di lettura-scrittura, mentre la gestione dell&#39;appartenenza richiede le autorizzazioni Account denominato di lettura-scrittura.
+L’autorizzazione richiesta dipende dall’operazione:
+
+- Query Named Account Lists: elenco di account denominati di sola lettura o elenco di account denominati di lettura-scrittura.
+- Creazione, aggiornamento o eliminazione di elenchi: Elenco account denominati in lettura e scrittura.
+- Appartenenza all&#39;elenco di query: account denominato di sola lettura o account denominato di lettura-scrittura.
+- Gestisci appartenenza a elenco: account denominato di lettura-scrittura.
 
 ## Modello
 
-Gli elenchi account denominati dispongono di un numero limitato di campi standard e non sono estensibili con i campi personalizzati.
+Gli elenchi account denominati dispongono di un set limitato di campi standard e non supportano i campi personalizzati.
 `Named Account List Field`
 
 | Nome | Tipo di dati | Aggiornabile | Note |
@@ -43,7 +47,9 @@ Gli elenchi account denominati dispongono di un numero limitato di campi standar
 
 ## Query
 
-La query degli elenchi di account è semplice. Attualmente, esistono solo due filterTypes validi per eseguire query sugli elenchi di account denominati: &quot;dedupeFields&quot; e &quot;idField&quot;. Il campo su cui filtrare è impostato nel parametro `filterType` della query e i valori sono impostati in `filterValues as` un elenco separato da virgole. I filtri `nextPageToken` e `batchSize` sono anche parametri facoltativi.
+Le query dell’elenco degli account denominati supportano due filterTypes: &quot;dedupeFields&quot; e &quot;idField&quot;. Imposta il campo nel parametro di query `filterType` e fornisci i valori in `filterValues as` in un elenco separato da virgole.
+
+I filtri `nextPageToken` e `batchSize` sono facoltativi.
 
 ```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -78,11 +84,13 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 ## Crea e aggiorna
 
-La creazione e l&#39;aggiornamento dei record dell&#39;elenco dei conti denominati seguono i modelli stabiliti per altre operazioni di creazione e aggiornamento del database lead. Tenere presente che gli elenchi di account denominati hanno un solo campo aggiornabile, `name`.
+Crea e aggiorna i record dell’elenco di conti denominati utilizzando il modello standard di database lead. Gli elenchi di account denominati dispongono di un solo campo aggiornabile: `name`.
 
-L’endpoint consente due tipi di azione standard: &quot;createOnly&quot; e &quot;updateOnly&quot;.  `action defaults` a &quot;createOnly&quot;.
+L&#39;endpoint supporta due tipi di azioni standard: &quot;createOnly&quot; e &quot;updateOnly&quot;. `action defaults` a &quot;createOnly&quot;.
 
-È possibile specificare `dedupeBy parameter` facoltativo se l&#39;azione è `updateOnly`.  I valori consentiti sono &quot;dedupeFields&quot; (corrispondente a &quot;name&quot;) o &quot;idField&quot; (corrispondente a &quot;marketoGUID&quot;).  In modalità `createOnly`, solo &quot;name&quot; è consentito come campo `dedupeBy`. È possibile inviare fino a 300 record alla volta.
+È possibile specificare l&#39;opzione `dedupeBy parameter` quando l&#39;azione è `updateOnly`. I valori consentiti sono &quot;dedupeFields&quot;, che corrisponde a &quot;name&quot;, e &quot;idField&quot;, che corrisponde a &quot;marketoGUID&quot;.
+
+In modalità `createOnly`, solo &quot;name&quot; è consentito come campo `dedupeBy`. È possibile inviare fino a 300 record alla volta.
 
 ```http
 POST /rest/v1/namedAccountLists.json
@@ -124,7 +132,9 @@ POST /rest/v1/namedAccountLists.json
 
 ## Elimina
 
-L&#39;eliminazione degli elenchi di account denominati è semplice e può essere eseguita in base a `name` o `marketoGUID` dell&#39;elenco. Per selezionare la chiave da utilizzare, passare &quot;dedupeFields&quot; per il nome o &quot;idField&quot; per marketoGUID nel membro `deleteB` della richiesta. Se non viene impostato, per impostazione predefinita verranno utilizzati dedupeFields. È possibile eliminare fino a 300 record alla volta.
+Eliminare gli elenchi di account denominati utilizzando `name` o `marketoGUID` dell&#39;elenco. Per selezionare la chiave, passare &quot;dedupeFields&quot; per il nome o &quot;idField&quot; per marketoGUID nel membro `deleteB` della richiesta.
+
+Se non viene impostato, il valore predefinito è dedupeFields. È possibile eliminare fino a 300 record alla volta.
 
 ```http
 POST /rest/v1/namedAccountLists/delete.json
@@ -176,13 +186,13 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-Nel caso in cui non sia possibile trovare un record per una determinata chiave, l&#39;elemento risultato corrispondente avrà un `status` di &quot;ignorato&quot; e un motivo con un codice e un messaggio che descrivono l&#39;errore, come mostrato nell&#39;esempio precedente.
+Se non è possibile trovare un record per una chiave, l&#39;elemento risultato corrispondente ha un `status` di &quot;ignorato&quot;. Include anche un motivo con un codice e un messaggio che descrivono l’errore.
 
 ## Gestione dell’iscrizione
 
 ### Iscrizione alla query
 
-La query dell&#39;appartenenza a un elenco di account con nome è semplice e richiede solo `i` dell&#39;elenco di account. I parametri facoltativi sono:
+Eseguire una query sull&#39;appartenenza all&#39;elenco di account denominato fornendo `i` dell&#39;elenco di account. I parametri facoltativi sono:
 
 -`field` - elenco di campi separati da virgole da includere nei record di risposta
 -`nextPageToke` - per il paging attraverso il set di risultati
@@ -219,7 +229,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Aggiungi membri
 
-Gli account denominati possono essere facilmente aggiunti a un elenco di account denominati. Gli account possono essere aggiunti solo utilizzando il relativo marketoGUID. È possibile aggiungere fino a 300 record alla volta.
+Aggiungere account denominati a un elenco di account denominati utilizzando il relativo marketoGUID. È possibile aggiungere fino a 300 record alla volta.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -259,7 +269,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Rimuovi membri
 
-La rimozione di record da un elenco account ha un percorso diverso, ma la stessa interfaccia richiede `marketoGUI` per ogni record che si desidera eliminare. È possibile rimuovere fino a 300 record alla volta.
+La rimozione di record da un elenco di account utilizza un percorso diverso ma la stessa interfaccia. Fornisci un `marketoGUI` per ogni record da rimuovere. È possibile rimuovere fino a 300 record alla volta.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
@@ -299,10 +309,10 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 
 ## Timeout
 
-- Gli endpoint dell’elenco account denominati hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Elenchi account denominati di sincronizzazione: 60s
-   - Elimina elenchi account denominati: 60s
-   - Ottieni elenchi account denominati: anni 60
-   - Aggiungi membri elenco account denominati: 60s
-   - Rimuovi membri elenco account denominati: 60s
-   - Ottieni membri elenco account denominati: 60s
+- Gli endpoint dell’elenco account denominati hanno un timeout di 30 secondi, a meno che non venga indicato diversamente.
+- Timeout degli elenchi degli account denominati di Sync su 60 secondi.
+- Il timeout per l’eliminazione degli elenchi di account denominati è di 60 secondi.
+- Il timeout di Ottieni elenchi account denominati è di 60 secondi.
+- Il timeout per Aggiungi membri dell’elenco account denominati è di 60 secondi.
+- Timeout di rimozione membri dell’elenco account denominati su 60 secondi.
+- Il timeout di Ottieni membri dell’elenco account denominati è di 60 secondi.

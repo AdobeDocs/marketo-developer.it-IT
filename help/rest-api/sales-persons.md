@@ -4,15 +4,12 @@ feature: REST API
 description: Guida REST API di Marketo per i record Persona di vendita con SFDC o Dynamics sync, utilizzando externalSalesPersonId per relazionarsi ai lead ed eseguire query, upsert, delete.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
 TQID: https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 396
+source-wordcount: 369
 ht-degree: 0%
 
 ---
@@ -21,19 +18,21 @@ ht-degree: 0%
 
 [Riferimento endpoint persona di vendita](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-Le API addetto alle vendite sono di sola lettura per gli abbonamenti che hanno [SFDC Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) abilitati. Le persone di vendita sono un tipo di record persona che sono i proprietari delle vendite dei record lead. Sono correlati ai record Lead dal campo externalSalesPersonId di ogni record Lead. Quando un lead viene correlato a una persona di vendita da un campo externalSalesPersonId popolato, i campi di ricerca del proprietario del lead corrispondenti vengono compilati per tale record di lead in Marketo, consentendo l&#39;utilizzo dei filtri e dei token corrispondenti.
+Le API addetto alle vendite forniscono l&#39;accesso in sola lettura per gli abbonamenti in cui è abilitato [SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync).
 
-I venditori sono correlati ai record dei lead utilizzando l&#39;endpoint [Sync Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) e passando l&#39;attributo externalSalesPersonId.
+I Sales Persons sono record di persone che rappresentano i proprietari delle vendite dei record dei lead. Il campo externalSalesPersonId di ogni record Lead fa riferimento a un lead a un venditore. Quando questo campo viene compilato, Marketo compila i campi di ricerca del Proprietario lead corrispondenti nel record del lead. Puoi quindi utilizzare i filtri e i token associati.
 
-I venditori sono correlati ai record Opportunità utilizzando l&#39;endpoint [Opportunità di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e passando l&#39;attributo externalSalesPersonId.
+Associa i venditori ad altri record passando l&#39;attributo externalSalesPersonId all&#39;endpoint corrispondente:
 
-Gli addetti alle vendite sono correlati ai record aziendali utilizzando l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) e passando l&#39;attributo externalSalesPersonId.
+- Record lead: [Sincronizza lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
+- Record di opportunità: [Sincronizza opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST).
+- Record società: [Sincronizza società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
 
 I record Persona di vendita sono modificabili solo tramite l’API.
 
 ## Descrivere
 
-La descrizione dei record Venditore segue il modello standard per gli oggetti di database dei lead.
+Descrivere i record della persona di vendita utilizzando il modello standard per gli oggetti del database lead.
 
 ```http
 GET /rest/v1/salespersons/describe.json
@@ -102,11 +101,13 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Per impostazione predefinita, il `idField` di Sales Person è &quot;id&quot; e il `dedupeFields` è solo &quot;externalSalesPersonId&quot;.
+Per impostazione predefinita, la persona di vendita `idField` è &quot;id&quot; e `dedupeFields` è &quot;externalSalesPersonId&quot;.
 
 ## Query
 
-Venditori che utilizzano il modello di query standard per le chiavi semplici. Questo esempio mostra l’e-mail dell’utente utilizzata come externalSalesPersonId. Per impostazione predefinita, la query restituisce tutti i campi compilati per i record restituiti.
+Eseguire query sui venditori utilizzando il modello di query standard per le chiavi semplici. Nell&#39;esempio seguente l&#39;e-mail dell&#39;utente viene utilizzata come externalSalesPersonId.
+
+Per impostazione predefinita, la query restituisce tutti i campi compilati per i record corrispondenti.
 
 ```http
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
@@ -137,7 +138,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 ## Crea e aggiorna
 
-Il modello per gli aggiornamenti è standard.
+Crea o aggiorna i venditori utilizzando il modello di aggiornamento standard.
 
 ```http
 POST /rest/v1/salespersons.json
@@ -185,12 +186,12 @@ POST /rest/v1/salespersons.json
 
 ## Elimina
 
-Il modello per le eliminazioni è standard.
+Eliminare i venditori utilizzando il modello di eliminazione standard.
 
-L’eliminazione di Sales Persons (Persone vendita) non è consentita quando &quot;in uso&quot;. In questo caso il venditore viene ignorato. Esempi:
+Impossibile eliminare un venditore &quot;in uso&quot;. La richiesta ignora il venditore nei seguenti casi:
 
-- Quando la persona di vendita è associata ai lead attivi
-- Quando il venditore è associato a una società che è stata eliminata
+- Il venditore è associato ai lead attivi.
+- Il venditore è associato a una società che è stata eliminata.
 
 ```http
 POST /rest/v1/salespersons/delete.json
@@ -244,6 +245,6 @@ POST /rest/v1/salespersons/delete.json
 
 ## Timeout
 
-- Gli endpoint persona di vendita hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Sincronizza addetti alle vendite: anni 60
-   - Cancella Venditori: 60s
+- Gli endpoint persona di vendita hanno un timeout di 30 secondi, salvo diversa indicazione.
+- Timeout di Sync Sales Persons su 60.
+- Timeout di Elimina addetti alle vendite: 60 secondi.

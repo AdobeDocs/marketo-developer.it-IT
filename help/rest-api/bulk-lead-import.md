@@ -4,17 +4,13 @@ feature: REST API
 description: Creazione e monitoraggio delle importazioni asincrone di lead in blocco in Marketo con file CSV TSV o SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
 TQID: https://experienceleague.adobe.com/UamXYWis5J1ERqnp5lAnfUf3pFcgfSOLfKRXRB-Yg4I
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 825
+source-wordcount: 623
 ht-degree: 0%
 
 ---
@@ -23,30 +19,38 @@ ht-degree: 0%
 
 [Riferimento endpoint importazione lead bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-Per grandi quantità di record di lead, è possibile importare i lead in modo asincrono con l&#39;[API bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo consente di importare un elenco di record in Marketo utilizzando un file flat con i delimitatori (virgola, tabulazione o punto e virgola). Il file può contenere un numero qualsiasi di record, purché le dimensioni totali del file siano inferiori a 10 MB. L&#39;operazione di registrazione è solo &quot;insert or update&quot; (Inserisci o aggiorna).
+Utilizza l&#39;[API bulk](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) per importare un numero elevato di record di lead in modo asincrono. Fornisci i record in un file flat delimitato da virgole, tabulazioni o punti e virgola di dimensioni inferiori a 10 MB.
+
+L&#39;importazione di lead in blocco supporta solo l&#39;operazione di inserimento o aggiornamento dei record.
 
 ## Limiti di elaborazione
 
-È consentito inviare più di una richiesta di importazione in blocco, con limitazioni. Ogni richiesta viene aggiunta come processo a una coda FIFO da elaborare. Vengono elaborati al massimo due processi contemporaneamente. Sono consentiti al massimo 10 processi nella coda in qualsiasi momento (inclusi i due in fase di elaborazione). Se si supera il numero massimo di dieci processi, viene restituito un errore `1016, Too many imports`.
+Ogni richiesta di importazione in blocco viene aggiunta come processo a una coda FIFO (First-In, First-Out). Si applicano i seguenti limiti:
+
+- È possibile elaborare contemporaneamente un massimo di due processi.
+- Nella coda possono essere presenti al massimo 10 processi, inclusi i due in fase di elaborazione.
+
+Se si supera il massimo di 10 processi, l&#39;API restituisce un errore `1016, Too many imports`.
 
 ## Importa file
 
-La prima riga del file deve essere un’intestazione che elenca i campi API REST corrispondenti in cui mappare i valori di ogni riga. Un file tipico segue questo schema di base:
+La prima riga del file deve essere un’intestazione che elenca i campi REST API a cui corrispondono i valori in ogni riga. Un file tipico segue questo schema:
 
 ```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-Il campo `externalCompanyId` può essere utilizzato per collegare il record del lead a un record della società. Il campo `externalSalesPersonId` può essere utilizzato per collegare il record del lead a un record del venditore.
+Utilizzare `externalCompanyId` per collegare un record lead a un record società. Utilizzare `externalSalesPersonId` per collegare un record lead a un record venditore.
 
-La chiamata stessa viene effettuata utilizzando il tipo di contenuto `multipart/form-data`.
-
-Questo tipo di richiesta può essere difficile da implementare, pertanto si consiglia vivamente di utilizzare un’implementazione di libreria esistente.
+Invia la richiesta utilizzando il tipo di contenuto `multipart/form-data`. Utilizza un’implementazione di libreria esistente per creare la richiesta multipart.
 
 ## Creazione di un processo
 
-Per effettuare una richiesta di importazione in blocco, è necessario impostare l&#39;intestazione del tipo di contenuto su `multipart/form-data` e includere almeno un parametro `file` con il contenuto del file e un parametro `format` con il valore `csv`, `tsv` o `ssv`, che denota il formato del file.
+Per creare un processo di importazione in blocco, impostare il tipo di contenuto su `multipart/form-data` e includere i seguenti parametri:
+
+- `file`: contenuto del file di importazione.
+- `format`: formato del file. I valori validi sono `csv`, `tsv` e `ssv`.
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -84,13 +88,13 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). È consigliabile utilizzare una libreria di supporto HTTP per la lingua scelta, in modo da garantire l’utilizzo corretto. L’esempio seguente è un modo semplice per eseguire questa operazione con cURL dalla riga di comando:
+Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Utilizza una libreria di supporto HTTP per la lingua preferita per creare correttamente la richiesta. Nell&#39;esempio seguente viene utilizzato cURL dalla riga di comando:
 
 ```bash
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-Dove il file di importazione `lead_data.csv` contiene quanto segue:
+In questo esempio, il file di importazione `lead_data.csv` contiene i dati seguenti:
 
 ```text
 firstName,lastName,email,company
@@ -99,13 +103,19 @@ Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
 ```
 
-Facoltativamente, puoi anche includere i parametri `lookupField`, `listId` e `partitionName` nella richiesta. `lookupField` ti consente di selezionare un campo specifico su cui eseguire la deduplicazione, proprio come Lead di sincronizzazione, e il valore predefinito è e-mail. È possibile specificare `id` come `lookupField` per indicare un&#39;operazione &quot;solo aggiornamento&quot;. `listId` consente di selezionare un elenco statico in cui importare l&#39;elenco di lead. In questo modo i lead nell&#39;elenco diventeranno membri di questo elenco statico, oltre a eventuali creazioni o aggiornamenti causati dall&#39;importazione. `partitionName` seleziona una partizione specifica in cui importare. Per ulteriori informazioni, consulta la sezione Workspace e partizioni.
+È inoltre possibile includere i seguenti parametri facoltativi:
 
-Nella risposta alla chiamata di, osserva che non esiste un elenco di successi o errori come con i lead di sincronizzazione, ma un batchId e un campo di stato per il record nella matrice dei risultati. Questo perché questa API è asincrona e può restituire lo stato In coda, Importazione o Non riuscito. È necessario mantenere il batchId per ottenere lo stato del processo di importazione e per recuperare gli errori e/o gli avvisi al completamento. Il batchId rimane valido per sette giorni.
+- `lookupField`: seleziona il campo utilizzato per la deduplicazione e imposta il valore predefinito su `email`. Specificare `id` per eseguire un&#39;operazione di solo aggiornamento.
+- `listId`: seleziona un elenco statico. I lead importati diventano membri di questo elenco, oltre a tutti i record creati o aggiornati dall&#39;importazione.
+- `partitionName`: seleziona la partizione in cui importare. Per ulteriori informazioni, consulta la sezione Workspace e partizioni.
+
+Poiché l&#39;API è asincrona, la risposta contiene `batchId` e `status` campi anziché singoli errori e operazioni riuscite. Lo stato può essere `Queued`, `Importing` o `Failed`.
+
+Mantieni `batchId` per controllare lo stato del processo e recuperare gli errori o gli avvisi dopo il completamento. `batchId` rimane valido per sette giorni.
 
 ## Stato processo di polling
 
-È consigliabile eseguire il polling del processo ogni 5-30 secondi, a seconda della latenza richiesta e delle limitazioni delle chiamate API, per visualizzare lo stato del processo di importazione. Puoi farlo con l’API Get Import Lead Status.
+Utilizza l’API Get Import Lead Status per eseguire il polling del processo ogni 5-30 secondi, a seconda dei requisiti di latenza e delle limitazioni di chiamata API.
 
 ```http
 GET /bulk/v1/leads/batch/{id}.json
@@ -128,35 +138,35 @@ GET /bulk/v1/leads/batch/{id}.json
 }
 ```
 
-Questa risposta mostra un’importazione completata, ma lo stato può essere uno dei seguenti:
+Questa risposta mostra un’importazione completata. Lo stato può corrispondere a uno dei seguenti valori:
 
 - Completa
 - In coda
 - Importazione
 - Operazione non riuscita
 
-Se il processo è stato completato, viene visualizzato un elenco del numero di righe elaborate, non riuscite, in quelle con avvisi. Il parametro message (Messaggio) può anche inviare il messaggio di errore se lo stato è Failed (Non riuscito).
+Al termine del processo, la risposta elenca il numero di righe elaborate, non riuscite ed elaborate con avvertenze. Il parametro `message` può anche fornire un messaggio di errore quando lo stato è `Failed`.
 
 ## Errori
 
-Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status. Se `numOfRowsFailed` è maggiore di zero, il valore indica il numero di errori che si sono verificati.
+L&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
-Per recuperare i record e le cause delle righe non riuscite, è necessario recuperare il file di errore:
+Per recuperare i record non riusciti e le relative cause, richiedere il file di errore:
 
 ```http
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-L’API risponde con un file che indica quali righe non sono riuscite, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è uguale a quello specificato nel parametro `format` durante la creazione del processo. A ogni record viene aggiunto un campo aggiuntivo con una descrizione dell’errore.
+L’API restituisce un file che identifica ogni riga con errori e spiega perché il record non è riuscito. Il file utilizza il formato specificato dal parametro `format` durante la creazione del processo. Un campo aggiuntivo in ciascun record descrive l’errore.
 
 ## Avvisi
 
-Gli avvisi sono indicati dall&#39;attributo `numOfRowsWithWarning` in una risposta Get Import Lead Status. Se `numOfRowsWithWarning` è maggiore di zero, tale valore indica il numero di avvisi che si sono verificati.
+L&#39;attributo `numOfRowsWithWarning` nella risposta Ottieni stato lead importazione indica il numero di righe con avvisi. Un valore maggiore di zero indica che si sono verificate delle avvertenze.
 
-Per recuperare i record e le cause delle righe di avviso, recuperare il file di avviso:
+Per recuperare i record interessati e le relative cause, richiedere il file di avviso:
 
 ```http
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-L’API risponde con un file che indica quali righe hanno prodotto avvisi, insieme a un messaggio che indica il motivo per cui il record non è riuscito. Il formato del file è uguale a quello specificato nel parametro `format` durante la creazione del processo. A ciascun record viene aggiunto un campo aggiuntivo con una descrizione dell’avviso.
+L’API restituisce un file che identifica ogni riga con un avviso e spiega perché si è verificato l’avviso. Il file utilizza il formato specificato dal parametro `format` durante la creazione del processo. Un campo aggiuntivo in ciascun record descrive l’avviso.

@@ -3,9 +3,9 @@ title: Modelli e-mail
 feature: REST API
 description: Utilizza l’API REST di Marketo Asset per eseguire query, creare, aggiornare, clonare, eliminare, approvare e verificare le dipendenze per i modelli e-mail.
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '292'
+source-wordcount: '307'
 ht-degree: 9%
 
 ---
@@ -63,9 +63,18 @@ GET /rest/asset/v2/emailtemplate/{id}
 
 ### Filtro
 
-L’endpoint filtro supporta la ricerca all’interno di un’area di lavoro e la riduzione dei risultati con parametri di query aggiuntivi. `workspaceId` è obbligatorio.
+L’endpoint del filtro esegue ricerche all’interno di un’area di lavoro. Il parametro `workspaceId` è obbligatorio.
 
-I filtri supportati includono `folderId`, `folderIds` ripetuto, `status` ripetuto, `pageIndex`, `pageSize`, `createdBy`, `createdAtStart`, `createdAtEnd`, `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd`, `name`, `sortKey`, `sortOrder`, `isCreatedByMe`, `isModifiedByMe`, `scriptEngine`, `isValueNonNullable` e `includeArchived`.
+Utilizzare questi parametri facoltativi per limitare o organizzare i risultati:
+
+- Cartella: `folderId` o `folderIds` ripetuto
+- Stato: ripetuto `status`
+- Paginazione: `pageIndex` e `pageSize`
+- Creazione: `createdBy`, `createdAtStart`, `createdAtEnd` e `isCreatedByMe`
+- Modifica: `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd` e `isModifiedByMe`
+- Proprietà modello: `name`, `scriptEngine` e `isValueNonNullable`
+- Ordinamento: `sortKey` e `sortOrder`
+- Contenuto archiviato: `includeArchived`
 
 #### Richiesta
 

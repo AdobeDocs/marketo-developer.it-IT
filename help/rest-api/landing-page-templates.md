@@ -4,18 +4,14 @@ feature: REST API, Landing Pages
 description: Gestisci i modelli della pagina di destinazione di Marketo tramite endpoint API REST per moduli gratuiti e tipi guidati, query per ID o nome, creazione, aggiornamento di HTML, clone, Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
 TQID: https://experienceleague.adobe.com/U9K1MG-q2gIgJMgfM3lt1S4olETt8ln9seOIKZUncBY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 703
-ht-degree: 1%
+source-wordcount: 519
+ht-degree: 2%
 
 ---
 
@@ -23,19 +19,23 @@ ht-degree: 1%
 
 [Riferimento endpoint modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates)
 
-I modelli di pagina di destinazione sono una risorsa principale e una dipendenza per le singole pagine di destinazione di Marketo. Le pagine di destinazione derivano l’ossatura del loro contenuto dal modello principale.
+I modelli di pagina di destinazione sono risorse principali per le pagine di destinazione di Marketo. Ogni pagina di destinazione deriva la propria struttura di contenuto iniziale dal modello principale.
 
 ## Tipi di modelli
 
-Marketo dispone di due tipi di modelli di pagina di destinazione, in formato libero e guidato. I modelli di pagina di destinazione in formato libero forniscono un’esperienza di modifica scarsamente strutturata per le pagine da essi derivate. I modelli guidati forniscono un’esperienza con una struttura molto ampia, in cui i tipi di elementi e le posizioni possono essere limitati a livello di modello. Per ulteriori informazioni sulle differenze, vedere [questo documento](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo fornisce modelli di pagina di destinazione guidati e in formato libero. I modelli in formato libero forniscono un’esperienza di modifica scarsamente strutturata. I modelli guidati possono limitare i tipi di elementi e le posizioni a livello di modello.
+
+Per un confronto dettagliato, vedere [Informazioni sulle pagine di destinazione in formato libero e guidate](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Query
 
-I modelli di pagina di destinazione supportano i tipi di query standard per le risorse di [per id](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) e [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Questi endpoint restituiscono i metadati per i modelli. Il recupero del contenuto HTML dei modelli deve essere eseguito in base al modello tramite il relativo ID.
+Eseguire una query sui modelli di pagina di destinazione [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Questi endpoint restituiscono i metadati del modello. Recupera il contenuto di HTML separatamente per ogni modello in base all’ID.
 
 ## Crea e aggiorna
 
-I modelli vengono creati come risorse vuote con metadati associati. Durante la creazione di un modello, è necessario includere un nome e una cartella, oltre a una descrizione facoltativa, un parametro templateType e enableMunchkin. templateType può essere a forma libera o guidata e il valore predefinito è freeForm. Per informazioni sulle differenze tra i tipi, vedere la sezione Forma guidata e libera. enableMunchkin è impostato su false per impostazione predefinita e, se attivato, impedisce l&#39;esecuzione del tracciamento di Munchkin su qualsiasi pagina di destinazione figlio del modello.
+I modelli vengono creati come risorse vuote con metadati. I parametri `name` e `folder` sono obbligatori. I parametri `description`, `templateType` e `enableMunchkin` sono facoltativi.
+
+Il valore `templateType` può essere `freeform` o `guided` e il valore predefinito è `freeForm`. Il valore predefinito di `enableMunchkin` è `false`. Se questa opzione è abilitata, impedisce il tracciamento di Munchkin sulle pagine di destinazione secondarie del modello.
 
 ```http
 POST /rest/asset/v1/landingPageTemplates.json
@@ -75,15 +75,15 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Il contenuto del modello deve essere compilato separatamente tramite l&#39;endpoint [Aggiorna contenuto modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
+Aggiungi il contenuto del modello separatamente con l&#39;endpoint [Aggiorna contenuto modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Aggiorna metadati
 
-I metadati per i modelli di pagina di destinazione possono essere aggiornati tramite l&#39;endpoint [Aggiorna metadati modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). Nome, descrizione e impostazione enableMunchkin possono essere aggiornati in questo modo.
+Utilizza l&#39;endpoint [Aggiorna metadati modello pagina di destinazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) per modificare il nome, la descrizione o l&#39;impostazione `enableMunchkin`.
 
 ### Aggiorna contenuto
 
-Il contenuto dei modelli di pagina di destinazione viene effettuato come aggiornamento distruttivo dell’intero contenuto di HTML. Il contenuto deve essere trasmesso come dati multipart/form, con l’unico parametro denominato content.
+L’aggiornamento del contenuto del modello sostituisce tutto il contenuto HTML esistente. Passa la sostituzione come `multipart/form-data` nel parametro `content`.
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/286/content.json
@@ -121,15 +121,15 @@ Content-Type: text/plain
 
 ## Duplica
 
-Marketo fornisce un metodo semplice per clonare i modelli di una pagina di destinazione. Si tratta di una richiesta POST con codifica application/x-www-url.
+Clona un modello di pagina di destinazione con una richiesta POST `application/x-www-url-formencoded`.
 
-Il parametro percorso `id` specifica l&#39;ID del modello della pagina di destinazione di origine da clonare.
+Il parametro percorso `id` specifica il modello della pagina di destinazione di origine.
 
-Il parametro `name` viene utilizzato per specificare il nome del nuovo modello della pagina di destinazione.
+Il parametro `name` specifica il nome del nuovo modello di pagina di destinazione.
 
-Il parametro `folder` viene utilizzato per specificare la cartella principale in cui risiederà il nuovo modello della pagina di destinazione. È un oggetto JSON incorporato contenente `id` e `type`.
+Il parametro `folder` specifica la cartella padre per il nuovo modello. Passarlo come oggetto JSON incorporato contenente `id` e `type`.
 
-Il parametro facoltativo `description` viene utilizzato per descrivere il nuovo modello di pagina di destinazione.
+Il parametro facoltativo `description` descrive il nuovo modello.
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
@@ -172,14 +172,14 @@ name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 
 ## Approvazione
 
-I modelli di pagina di destinazione seguono il modello standard approvato in bozza, in cui può essere presente una versione in bozza e/o una versione approvata. Ogni volta che si applicano aggiornamenti a un modello, questi vengono sempre applicati prima alla versione bozza e vengono visualizzati in tempo reale solo dopo l’approvazione del modello.
+I modelli di pagina di destinazione utilizzano la bozza standard e il modello approvato. Gli aggiornamenti vengono applicati prima alla bozza e diventano attivi solo dopo l’approvazione del modello.
 
-Per essere approvato, un modello deve essere conforme alle regole per il suo tipo, guidate o meno. Per ulteriori informazioni sui requisiti per la creazione e l’approvazione dei modelli dei rispettivi tipi, consulta i rispettivi documenti di creazione:
+Prima dell’approvazione, un modello deve soddisfare i requisiti per il suo tipo guidato o in formato libero. Consulta queste risorse:
 
-- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modelli di pagina di destinazione in formato guidato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Esempi di modelli guidati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelli di pagina di destinazione in formato guidato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Esempi di modelli guidati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Elimina
 
-Per eliminare un modello, questo deve essere non utilizzato e non approvato, il che significa che nessuna pagina di destinazione secondaria può farvi riferimento.  Con questa API non è possibile eliminare i modelli di pagina di destinazione con pulsanti social incorporati.
+Per eliminare un modello, assicurati che non sia approvato e che nessuna pagina di destinazione secondaria vi faccia riferimento. Non è possibile utilizzare questa API per eliminare i modelli di pagina di destinazione con pulsanti social incorporati.

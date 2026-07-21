@@ -4,14 +4,12 @@ feature: REST API
 description: Scopri come eseguire query sui canali Marketo tramite l’API REST delle risorse, sfogliare con l’impaginazione o recuperare per nome, visualizzare gli stati di progressione e comprendere le regole del tipo di programma.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
 TQID: https://experienceleague.adobe.com/e9TnbxgJCT5X2r5MjTdC49uVz4wvxDy2jhdQP5JOFTI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 151
-ht-degree: 2%
+source-wordcount: 117
+ht-degree: 3%
 
 ---
 
@@ -19,11 +17,13 @@ ht-degree: 2%
 
 [Riferimento endpoint canali](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels)
 
-I canali sono un campo standard e obbligatorio per tutti i tipi di programmi. Ogni tipo di canale può essere utilizzato solo con il `applicableProgramType` specificato e fornisce l&#39;elenco degli stati di programma disponibili validi per i membri del programma in ogni programma. Se dopo la creazione di un programma lo stato di un canale viene modificato, l&#39;elenco degli stati di programma che un lead può modificare corrisponderà all&#39;elenco fornito dal canale in quel momento, ma non cambierà retroattivamente lo stato del programma per i record di iscrizione al programma esistenti.
+I canali sono un campo obbligatorio per ogni tipo di programma. Un canale può essere utilizzato solo con il relativo `applicableProgramType` specificato. Il canale definisce anche gli stati del programma disponibili per i membri del programma.
+
+Se si modificano gli stati di un canale dopo aver creato un programma, il programma utilizza l&#39;elenco aggiornato per le modifiche di stato future. I record di iscrizione al programma esistenti mantengono gli stati correnti.
 
 ## Query
 
-I canali possono essere interrogati come risorse standard, ma non dispongono di un endpoint per recuperare un canale in base all’ID.
+Eseguire query sui canali come risorse standard. L’API non fornisce un endpoint per il recupero di un canale per ID.
 
 ### Sfogliare
 

@@ -4,17 +4,13 @@ feature: REST API
 description: API REST di Marketo per descrivere, eseguire query, creare e aggiornare opportunità, deduplicare e cercare campi, limiti e comportamenti di sola lettura con la sincronizzazione di SFDC o Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
 TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 879
+source-wordcount: 708
 ht-degree: 0%
 
 ---
@@ -23,13 +19,15 @@ ht-degree: 0%
 
 [Riferimento endpoint opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities)
 
-Marketo espone le API per la lettura, la scrittura, la creazione e l’aggiornamento dei record di opportunità. In Marketo, i record opportunità sono collegati ai record lead e contatto tramite l’oggetto Ruolo opportunità intermedio, pertanto un’opportunità può essere collegata a molti lead singoli.  Entrambi questi tipi di oggetto sono esposti tramite l’API e, come la maggior parte dei tipi di oggetto del database lead, entrambi dispongono di una chiamata Describe corrispondente, che restituisce metadati sui tipi di oggetto.
+Marketo fornisce API per la lettura, la scrittura, la creazione e l’aggiornamento dei record di opportunità. In Marketo, l&#39;oggetto Ruolo opportunità intermedio collega i record opportunità ai record lead e contatto. Un’opportunità può quindi essere collegata a più lead singoli.
 
-Le API dell&#39;opportunità sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitate.
+L’API espone entrambi i tipi di oggetto. Come per la maggior parte dei tipi di oggetti del database lead, a ciascuno di essi corrisponde una chiamata Describe che restituisce i metadati dell&#39;oggetto.
+
+Le API dell&#39;opportunità forniscono l&#39;accesso in sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) abilitato.
 
 ## Descrivere
 
-La descrizione dei record Opportunità segue il modello standard per gli oggetti di database lead.
+Descrivere i record Opportunità utilizzando il modello standard per gli oggetti del database lead.
 
 ```http
 GET /rest/v1/opportunities/describe.json
@@ -90,11 +88,17 @@ GET /rest/v1/opportunities/describe.json
 }
 ```
 
-I campi più importanti per questo tipo di risposta sono `idField`, `dedupeFields` e `searchableFields`.  idField indica la chiave primaria per le opportunità, marketoGUID.  Si tratta di una chiave univoca generata dal sistema, che può essere utilizzata per le operazioni di lettura e aggiornamento, ma non per gli inserimenti, poiché è gestita dal sistema.  La matrice dedupeFields indica quali campi sono chiavi valide per le operazioni di inserimento; nel caso delle opportunità, questo è solo externalOpportunityId.  La matrice searchableFields fornisce il set di campi validi per l&#39;esecuzione di query, externalOpportunityId e marketoGUID.
+I campi di risposta chiave sono:
+
+- `idField`: identifica la chiave primaria dell&#39;opportunità, marketoGUID. Questa chiave generata dal sistema supporta le operazioni di lettura e aggiornamento, ma non gli inserimenti.
+- `dedupeFields`: identifica chiavi valide per le operazioni di inserimento. Per le opportunità, l’unica chiave è externalOpportunityId.
+- `searchableFields`: identifica i campi validi per le query. Questi campi sono externalOpportunityId e marketoGUID.
 
 ## Query
 
-Il modello per le [opportunità di query](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunitiesUsingGET) segue da vicino quello dell&#39;API lead con la restrizione aggiunta che il parametro `filterType` accetta i campi elencati nell&#39;array `searchableFields` o della chiamata di descrizione corrispondente, o dedupeFields.  Se si utilizzano campi opportunità personalizzati, nella matrice searchableFields verranno elencati solo i campi opportunità personalizzati di tipo String o Integer.
+Il modello per [eseguire query sulle opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunitiesUsingGET) segue attentamente l&#39;API Leads. Tuttavia, il parametro `filterType` accetta solo i campi elencati nell&#39;array `searchableFields` della risposta Describe o dedupeFields corrispondente.
+
+Per i campi opportunità personalizzati, nella matrice searchableFields vengono visualizzati solo i campi di tipo String o Integer.
 
 ```http
 GET /rest/v1/opportunities.json?filterType=marketoGUID&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
@@ -127,13 +131,25 @@ GET /rest/v1/opportunities.json?filterType=marketoGUID&filterValues=dff23271-f99
 }
 ```
 
-È inoltre possibile includere i parametri di query facoltativi `fields`, per la restituzione di campi opportunità aggiuntivi, `nextPageToken`, per il paging attraverso set di dimensioni maggiori del batch, `batchSize`, che per impostazione predefinita ha un massimo di 300.  Quando si richiede un elenco di `fields`, se un particolare campo è richiesto ma non restituito, il valore è implicitamente nullo.
+Puoi includere i seguenti parametri di query facoltativi:
+
+- `fields`: restituisce campi opportunità aggiuntivi.
+- `nextPageToken`: pagine tramite set di risultati più grandi della dimensione del batch.
+- `batchSize`: specifica la dimensione del batch. Il valore predefinito e massimo è 300.
+
+Quando si richiede un elenco di `fields`, un campo richiesto non restituito ha un valore implicito nullo.
 
 ## Crea e aggiorna
 
-Le opportunità seguono da vicino il pattern API dei lead, con alcune limitazioni.  I valori disponibili per `action` sono: createOnly, createOrUpdate e updateOnly.  Quando si utilizza la modalità createOnly o createOrUpdate, il campo externalOpportunityId deve essere incluso in ogni record.  Per la modalità updateOnly è possibile utilizzare marketoGUID o externalOpportunityId.  La modalità predefinita è createOrUpdate se non specificata.
+Le opportunità seguono il pattern API Lead con alcune restrizioni. I valori `action` sono createOnly, createOrUpdate e updateOnly.
 
-Il parametro `lookupField` dell&#39;API lead non è disponibile e viene sostituito dal parametro dedupeBy, valido solo se action è updateOnly.  I valori disponibili per dedupeBy sono &quot;dedupeFields&quot; o &quot;idField&quot; specificati dalla chiamata di descrizione rispettivamente come externalOpportunityId e marketoGUID.  Se dedupeBy non è specificato, per impostazione predefinita viene utilizzata la modalità dedupeFields.  Il campo &quot;name&quot; non può essere nullo.
+- Per la modalità createOnly o createOrUpdate, includere il campo externalOpportunityId in ogni record.
+- Per la modalità updateOnly, utilizzare marketoGUID o externalOpportunityId.
+- Se non viene specificato, per impostazione predefinita la modalità viene impostata su createOrUpdate.
+
+Il parametro `lookupField` dall&#39;API dei lead non è disponibile. Il parametro dedupeBy lo sostituisce ed è valido solo quando action è updateOnly.
+
+I valori dedupeBy sono &quot;dedupeFields&quot; e &quot;idField&quot;, che la risposta Describe identifica rispettivamente come externalOpportunityId e marketoGUID. Se dedupeBy non è specificato, per impostazione predefinita viene utilizzata la modalità dedupeFields. Il campo &quot;name&quot; non può essere nullo.
 
 È possibile inviare fino a 300 record alla volta.
 
@@ -183,21 +199,27 @@ POST /rest/v1/opportunities.json
 }
 ```
 
-L&#39;API risponderà con `marketoGUID` per ogni record, nonché con un campo `status`, che indica l&#39;esito positivo o negativo di ogni record e un campo `seq` utilizzato per correlare i record inviati, in base all&#39;ordine della risposta.  Il numero nel campo è l’indice del record inviato nella richiesta.
+La risposta include i seguenti valori per ogni record:
+
+- `marketoGUID`: identificatore del record.
+- `status`: successo o errore del singolo record.
+- `seq`: indice del record inviato, che mette in correlazione il record della richiesta con l&#39;ordine di risposta.
 
 ### Campi
 
-L’oggetto company contiene un set di campi.  Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo.  Esempi di attributi sono nome visualizzato, nome API e dataType.  Questi attributi sono noti collettivamente come metadati.
+L’oggetto company contiene campi definiti da attributi quali nome visualizzato, nome API e dataType. Insieme, questi attributi sono denominati metadati.
 
-I seguenti endpoint consentono di eseguire query sui campi dell’oggetto aziendale. Queste API richiedono che l&#39;utente API proprietario abbia un ruolo con una o entrambe le autorizzazioni `Read-Write Schema Standard Field` o `Read-Write Schema Custom Field`.
+I seguenti campi di query degli endpoint sull’oggetto aziendale. L&#39;utente API deve disporre di un ruolo con l&#39;autorizzazione `Read-Write Schema Standard Field`, l&#39;autorizzazione `Read-Write Schema Custom Field` o entrambe.
 
 ### Campi query
 
-La query dei campi dell’opportunità è semplice.  Puoi eseguire query in un singolo campo aziendale per nome API o nel set di tutti i campi aziendali.
+Esegui la query di un campo società per nome API o recupera tutti i campi società.
 
 #### Per nome
 
-L&#39;endpoint [Ottieni campo opportunità per nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET) recupera i metadati per un singolo campo nell&#39;oggetto aziendale.  Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo.  La risposta è simile all&#39;endpoint Describe Opportunity ma contiene metadati aggiuntivi, ad esempio l&#39;attributo `isCustom`, che indica se il campo è un campo personalizzato.
+L&#39;endpoint [Ottieni campo opportunità per nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto aziendale. Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo.
+
+La risposta è simile alla risposta Descrivi opportunità, ma include metadati aggiuntivi. Ad esempio, l&#39;attributo `isCustom` indica se il campo è personalizzato.
 
 ```http
 GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
@@ -224,9 +246,11 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 }
 ```
 
-#### Sfogliare
+#### Sfoglia
 
-L&#39;endpoint [Get Opportunity Fields](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldsUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto società.  Per impostazione predefinita, vengono restituiti al massimo 300 record.  È possibile utilizzare il parametro di query `batchSize` per ridurre questo numero.  Se l&#39;attributo `moreResult` è true, significa che sono disponibili altri risultati.  Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati.  I `nextPageToken` restituiti da questa API devono essere sempre riutilizzati per la successiva iterazione di questa chiamata.
+L&#39;endpoint [Get Opportunity Fields](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldsUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto società. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query `batchSize` per ridurre questo numero.
+
+Se l&#39;attributo `moreResult` è true, sono disponibili altri risultati. Continuare a chiamare l&#39;endpoint con `nextPageToken` restituito finché moreResult non è false.
 
 ```http
 GET /rest/v1/opportunities/schema/fields.json?batchSize=5
@@ -305,7 +329,9 @@ GET /rest/v1/opportunities/schema/fields.json?batchSize=5
 
 #### Elimina
 
-Puoi eliminare le opportunità tramite campi di deduplicazione o campo ID. Specificare utilizzando il parametro `deleteBy` con un valore dedupeFields o idField. Se non viene specificato, il valore predefinito è dedupeFields. Il corpo della richiesta contiene un array `input` di opportunità da eliminare. È consentito un massimo di 300 opportunità per chiamata.
+Elimina le opportunità tramite campi di deduplicazione o campo ID. Impostare il parametro `deleteBy` su dedupeFields o idField. Il valore predefinito è dedupeFields.
+
+Il corpo della richiesta contiene un array `input` di opportunità da eliminare. Ogni chiamata consente un massimo di 300 opportunità.
 
 ```http
 POST /rest/v1/opportunities/delete.json
@@ -346,6 +372,6 @@ POST /rest/v1/opportunities/delete.json
 
 ## Timeout
 
-- Gli endpoint di opportunità hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Opportunità di sincronizzazione: anni 60
-   - Elimina opportunità: anni 60
+- Gli endpoint di opportunità hanno un timeout di 30 secondi, a meno che non venga indicato diversamente.
+- Opportunità di sincronizzazione ha un timeout di 60 secondi.
+- Il timeout di Elimina opportunità è di 60 secondi.

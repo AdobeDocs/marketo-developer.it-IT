@@ -4,15 +4,12 @@ feature: REST API
 description: 'Guida ai file API REST di Marketo: query per ID o nome, ricerca con cartella e offset, creazione o aggiornamento tramite caricamento multipart, insertOnly, tipi MIME, nessuno streaming'
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
 TQID: https://experienceleague.adobe.com/qH8zFwjJkTWHlCj1VHNiTiLK3mNOJFS83cnjEj2qjpA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 347
+source-wordcount: 274
 ht-degree: 1%
 
 ---
@@ -21,11 +18,13 @@ ht-degree: 1%
 
 [Riferimento endpoint file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files)
 
-Le sottoscrizioni Marketo consentono l&#39;archiviazione di file arbitrari come immagini, script, documenti e fogli di stile. Tutti questi elementi possono essere utilizzati in remoto tramite l’API REST. Lo spazio di archiviazione disponibile negli abbonamenti Marketo non è ottimizzato per le applicazioni che richiedono un uso intensivo della larghezza di banda, pertanto è necessario utilizzare delle alternative per le applicazioni di streaming audio e video appropriate.
+Utilizza l’API REST Files per gestire immagini, script, documenti, fogli di stile e altri file memorizzati in una sottoscrizione Marketo.
+
+Lo storage dei file Marketo non è ottimizzato per le applicazioni che richiedono un uso intensivo della larghezza di banda. Utilizza un servizio di streaming dedicato per audio e video.
 
 ## Query
 
-La query dei file è semplice e segue i tipi di query standard per le risorse di [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
+Esegui query sui file [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
 
 ### Per ID
 
@@ -94,11 +93,11 @@ GET /rest/asset/v1/file/byName.json?name=foo.png
 
 ### Sfogliare
 
-Sono disponibili tre parametri facoltativi:
+L’endpoint Sfoglia accetta tre parametri opzionali:
 
-- cartella: cartella principale specificata come blocco JSON contenente gli attributi &quot;id&quot; e &quot;type&quot;
-- offset - numero intero che specifica dove iniziare a recuperare le voci (il valore predefinito è 0); può essere utilizzato con il parametro maxReturn
-- maxReturn: numero intero che specifica il numero massimo di voci da restituire (il valore predefinito è 20, il valore massimo è 200)
+- `folder` - Cartella padre come oggetto JSON contenente gli attributi `id` e `type`.
+- `offset`: la posizione da cui iniziare a recuperare le voci. Il valore predefinito è 0. Usare con `maxReturn`.
+- `maxReturn` - Numero massimo di voci da restituire. Il valore predefinito è 20 e il massimo è 200.
 
 ```http
 GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
@@ -162,7 +161,9 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Crea e aggiorna
 
-[La creazione di un file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST) viene eseguita con un tipo di richiesta multipart/form-data. Nella richiesta sono necessari almeno il nome, la cartella e il file, con una descrizione facoltativa e un flag insertOnly che impedisce a una chiamata di creazione di aggiornare un file esistente con lo stesso nome. Per il parametro file, oltre al parametro name è necessario specificare &quot;filename&quot; nell’intestazione Content-Disposition. È inoltre necessario passare un’intestazione Content-Type per il file, che sarà il tipo MIME utilizzato da Marketo per distribuire il file.
+Utilizza una richiesta `multipart/form-data` per [creare un file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST). I parametri `name`, `folder` e `file` sono obbligatori. I parametri `description` e `insertOnly` sono facoltativi. Se è true, `insertOnly` impedisce alla richiesta di aggiornare un file esistente con lo stesso nome.
+
+Per il parametro `file`, includere `filename` nell&#39;intestazione `Content-Disposition`. Includi anche l&#39;intestazione `Content-Type` del file. Marketo utilizza questo tipo MIME per la gestione del file.
 
 ```http
 POST /rest/asset/v1/files.json
@@ -215,7 +216,7 @@ This is a test file
 }
 ```
 
-[L&#39;aggiornamento di un file](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST) può essere eseguito in base al relativo ID. L&#39;unico parametro è un parametro di file che ha gli stessi requisiti della creazione.
+Per [aggiornare un file](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST), specificarne l&#39;ID. Il parametro `file` ha gli stessi requisiti della creazione file.
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json

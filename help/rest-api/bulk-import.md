@@ -4,34 +4,33 @@ feature: REST API
 description: Importazione in blocco Marketo per il caricamento di lead, oggetti personalizzati e membri di programmi tramite caricamenti in più parti, la creazione di processi asincroni, lo stato di polling e la gestione di errori.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
 TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 661
+source-wordcount: 538
 ht-degree: 2%
 
 ---
 
 # Importazione in blocco
 
-Marketo fornisce interfacce per l’inserimento di grandi set di dati relativi a persone e persone, denominati Importazione in blocco. Attualmente, le interfacce sono disponibili per tre tipi di oggetto:
+Importazione in blocco fornisce interfacce per l&#39;inserimento di grandi set di dati relativi a persone e persone. È possibile importare tre tipi di oggetto:
 
 - Lead (persone)
 - Oggetti personalizzati
 - Membri del programma
 
-L’importazione in blocco viene eseguita creando un processo e attendendone il completamento durante la lettura di un file. Questi processi vengono eseguiti in modo asincrono e possono essere sottoposti a polling per recuperare lo stato dell’importazione. I file vengono caricati utilizzando dati modulo/multipart HTTP secondo RFC 2399.
+Per eseguire un’importazione in blocco, crea un processo che legga un file caricato. Il processo viene eseguito in modo asincrono, quindi esegui il polling per recuperare lo stato di importazione.
 
-Gli endpoint API in blocco non hanno il prefisso &quot;/rest&quot;, come gli altri endpoint.
+Carica i file utilizzando HTTP `multipart/form-data` per RFC 2399.
+
+A differenza di altri endpoint, gli endpoint API in blocco non hanno il prefisso `/rest`.
 
 ## Autenticazione
 
-Le API per l’importazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo.  È necessario un token di accesso valido inviato come intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
+Le API per l’importazione in blocco utilizzano lo stesso metodo di autenticazione OAuth 2.0 delle altre API REST di Marketo. Invia un token di accesso valido nell&#39;intestazione HTTP `Authorization: Bearer {_AccessToken_}`.
 
 >[!IMPORTANT]
 >
@@ -39,21 +38,25 @@ Le API per l’importazione in blocco utilizzano lo stesso metodo di autenticazi
 
 ## Limiti
 
-- Max processi di importazione simultanei: 2
-- Numero massimo di processi di importazione in coda (inclusi i processi di importazione in corso): 10
-- Dimensione massima del file di importazione: 10 MB
+- Numero massimo processi di importazione simultanei: 2
+- Numero massimo di processi di importazione in coda, inclusi i processi in fase di importazione: 10
+- Dimensione massima file di importazione: 10 MB
 
 ## Autorizzazioni
 
-L’importazione in blocco utilizza lo stesso modello di autorizzazioni dell’API REST di Marketo e non richiede alcuna autorizzazione speciale aggiuntiva per utilizzare, anche se sono necessarie autorizzazioni specifiche per ogni set di endpoint.
+L’importazione in blocco utilizza lo stesso modello di autorizzazioni dell’API REST di Marketo. Non richiede autorizzazioni aggiuntive, ma ogni set di endpoint richiede autorizzazioni specifiche.
 
 ## Operazioni record
 
-L&#39;importazione in blocco è un&#39;operazione di inserimento o aggiornamento di record. Se nel database viene trovato un record corrispondente, questo viene aggiornato. In caso contrario, viene creato un nuovo record. La risposta dell’importazione in blocco non indica se un determinato record è stato aggiornato o inserito.
+L&#39;importazione in blocco è un&#39;operazione di inserimento o aggiornamento di record. Se il database contiene un record corrispondente, l&#39;operazione lo aggiorna. In caso contrario, viene creato un record.
+
+La risposta relativa all’importazione in blocco non indica se è stato aggiornato o inserito un singolo record.
 
 ## Creazione di un processo
 
-Le API di importazione in blocco di Marketo utilizzano il concetto di processo per l’esecuzione dell’importazione di dati. Vediamo come creare un semplice processo di importazione dei lead utilizzando l&#39;endpoint [Importa lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Si noti che questo endpoint utilizza [dati multipart/form come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Per risolvere questo problema può essere difficile utilizzare una libreria di supporto HTTP per la lingua desiderata.  Se ti stai solo bagnando i piedi, ti consigliamo di utilizzare [curl](https://curl.se/).
+Crea un processo di importazione lead chiamando l&#39;endpoint [Import Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+
+Utilizza una libreria di supporto HTTP per la lingua preferita per creare la richiesta multipart. Puoi anche utilizzare [curl](https://curl.se/) per iniziare.
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -77,7 +80,7 @@ Easy,Fox,easyfox@marketo.com
 ------WebKitFormBoundaryBQACkJZyaiIAXogC--
 ```
 
-Questa richiesta creerà un processo che importerà i valori contenuti nel file CSV denominato &quot;lead.csv&quot; con le intestazioni di colonna &quot;FirstName&quot;, &quot;LastName&quot;, &quot;Email&quot;, &quot;Company&quot;.
+Questa richiesta crea un processo che importa valori dal file CSV denominato `leads.csv`.
 
 ```json
 {
@@ -93,11 +96,11 @@ Questa richiesta creerà un processo che importerà i valori contenuti nel file 
 }
 ```
 
-Quando inviamo il processo, questo restituirà un batchId che possiamo usare per controllarne lo stato.
+La risposta restituisce un `batchId`. Utilizzare questo valore per controllare lo stato del processo.
 
 ### Parametri comuni
 
-Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per la configurazione del formato di file, dei nomi dei campi e del filtro di un processo di estrazione in blocco.  Ogni sottotipo di processo di estrazione può avere parametri aggiuntivi:
+Ogni endpoint di creazione del processo condivide i parametri per la configurazione del file di importazione. Un sottotipo di importazione può inoltre supportare parametri aggiuntivi.
 
 | Parametro | Tipo di dati | Note |
 | --- | --- | --- |
@@ -106,7 +109,7 @@ Ogni endpoint per la creazione di processi condivide alcuni parametri comuni per
 
 ## Stato processo di polling
 
-Determinare lo stato del processo è semplice utilizzando l&#39;endpoint [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
+Passa `batchId` all&#39;endpoint [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) per recuperare lo stato del processo.
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -130,16 +133,18 @@ GET /bulk/v1/leads/batch/{batchId}.json
 }
 ```
 
-Il membro interno `status` indicherà l&#39;avanzamento del processo e potrebbe essere uno dei valori seguenti: In coda, Importazione, Completato, Non riuscito. In questo caso il nostro lavoro è stato completato, quindi possiamo interrompere il sondaggio.
+Il membro `status` indica l&#39;avanzamento del processo. Il valore può essere `Queued`, `Importing`, `Complete` o `Failed`.
+
+In questo esempio, il processo è completo, quindi il polling può essere interrotto.
 
 ## Errori
 
-Gli errori sono indicati dall&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status. Se `numOfRowsFailed` è maggiore di zero, il valore indica il numero di errori che si sono verificati.
+L&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
-Per recuperare i record e le cause delle righe non riuscite, è necessario recuperare il file di errore utilizzando l&#39;endpoint [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Per recuperare i record non riusciti e le relative cause, utilizzare l&#39;endpoint [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json
 ```
 
-Il file indica quali righe non sono riuscite, insieme a un messaggio che indica il motivo per cui il record non è riuscito.
+Il file di errore identifica ogni riga non riuscita e spiega il motivo per cui il record non è riuscito.

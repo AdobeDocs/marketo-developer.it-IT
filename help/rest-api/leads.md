@@ -4,21 +4,14 @@ feature: REST API
 description: Esplora le funzioni API REST dei lead di Marketo, tra cui Descrizione, query per ID o filtro, campi predefiniti, limiti e recupero degli ECID.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
 TQID: https://experienceleague.adobe.com/jZ-ecWTmHwq9gvp4fMaeuuGba6cgwYx0QCCyfkrEDHQ
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 3460
-ht-degree: 2%
+source-wordcount: 2728
+ht-degree: 3%
 
 ---
 
@@ -26,19 +19,19 @@ ht-degree: 2%
 
 [Riferimento endpoint lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
-L’API del lead di Marketo offre un’ampia serie di funzionalità per semplici applicazioni CRUD rispetto ai record dei lead, nonché la possibilità di modificare l’appartenenza di un lead a elenchi e programmi statici e di avviare l’elaborazione di campagne intelligenti per i lead.
+L’API dei lead di Marketo supporta operazioni CRUD sui record dei lead. Puoi anche modificare l’appartenenza di un lead a elenchi e programmi statici e avviare l’elaborazione di Smart Campaign per i lead.
 
 ## Descrivere
 
-Una delle funzionalità chiave dell’API Leads è il metodo Describe. Utilizza Descrivi lead per recuperare un elenco completo dei campi disponibili per l’interazione tramite l’API REST, nonché i metadati per ciascuno di essi:
+Utilizza Descrivi lead per recuperare i campi disponibili tramite l’API REST e i metadati per ciascun campo:
 
-* Tipo di dati
-* Nomi API REST
-* Lunghezza (se applicabile)
-* Sola lettura
-* Etichetta intuitiva
+- Tipo di dati
+- Nome API REST
+- Lunghezza, se applicabile
+- Stato di sola lettura
+- Etichetta intuitiva
 
-Descrivi è la principale fonte di verità per stabilire se i campi sono disponibili per l’uso e i metadati su di essi.
+Descrivi è la principale fonte di verità per la disponibilità dei campi e i metadati.
 
 ### Richiesta
 
@@ -70,13 +63,18 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-In genere, le risposte includono un set di campi molto più ampio nell’array dei risultati, ma vengono omesse a scopo dimostrativo. Ogni elemento nella matrice dei risultati corrisponde a un campo disponibile nel record del lead e avrà almeno un ID, un displayName e un tipo di dati. Gli altri oggetti secondari soap e REST possono essere presenti o meno per un determinato campo e la loro presenza indicherà se il campo è valido per l’utilizzo nelle API REST o SOAP. La proprietà `readOnly` indica se il campo è di sola lettura tramite l&#39;API corrispondente (REST o SOAP). La proprietà length indica la lunghezza massima del campo, se presente. La proprietà dataType indica il tipo di dati del campo.
+Le risposte effettive includono più campi nella matrice dei risultati. Ogni elemento rappresenta un campo disponibile nel record del lead e contiene almeno un ID, un displayName e un tipo di dati.
+
+Gli altri oggetti secondari soap vengono visualizzati solo quando il campo è valido per l’API corrispondente. La proprietà `readOnly` indica se l&#39;API corrispondente può aggiornare il campo. Se presente, la proprietà length fornisce la lunghezza massima del campo e la proprietà dataType fornisce il tipo di dati del campo.
 
 ## Query
 
-Esistono due metodi principali per il recupero dei lead: il metodo Get Lead per ID e il metodo Get Lead per tipo di filtro. Ottieni lead per ID considera un singolo ID lead come parametro di percorso e restituisce un singolo record lead.
+Utilizza uno dei due metodi principali per recuperare i lead:
 
-Facoltativamente, puoi trasmettere un parametro di campi contenente un elenco separato da virgole di nomi di campi da restituire. Se il parametro fields non è incluso in questa richiesta, vengono restituiti i seguenti campi predefiniti: `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` e `id`. Quando si richiede un elenco di campi, se un particolare campo viene richiesto ma non restituito, il valore deve essere nullo.
+- Ottieni lead per ID considera un ID lead come parametro di percorso e restituisce un record lead.
+- Recupera lead per tipo di filtro trova i record il cui campo selezionato corrisponde a uno dei valori specificati.
+
+Per Ottieni lead per ID, puoi facoltativamente trasmettere un parametro di campi con un elenco separato da virgole di nomi di campi da restituire. Se la richiesta omette i campi, la risposta include `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` e `id`. Se un campo richiesto non viene restituito, il suo valore è implicitamente nullo.
 
 ### Richiesta
 
@@ -103,15 +101,15 @@ GET /rest/v1/lead/{id}.json
 }
 ```
 
-Per questo metodo, ci sarà sempre un singolo record nella prima posizione della matrice dei risultati.
+Ottieni lead per ID restituisce sempre un record nella prima posizione della matrice dei risultati.
 
-Ottieni lead per tipo di filtro restituirà lo stesso tipo di record, ma può restituire fino a 300 per pagina. Richiede i parametri di query `filterType` e `filterValues`.
+Recupera lead per tipo di filtro restituisce lo stesso tipo di record e può restituire fino a 300 record per pagina. I parametri di query `filterType` e `filterValues` sono obbligatori.
 
-`filterType` accetta qualsiasi campo personalizzato o la maggior parte dei campi comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per ottenere un elenco completo dei campi ricercabili consentiti in `filterType`. Durante la ricerca per campo personalizzato, sono supportati solo i seguenti tipi di dati: `string`, `email`, `integer`. È possibile ottenere i dettagli del campo (descrizione, tipo e così via) utilizzando il metodo Describe sopra indicato.
+`filterType` accetta qualsiasi campo personalizzato e i campi più comunemente utilizzati. Chiamare l&#39;endpoint `Describe2` per recuperare i campi ricercabili consentiti per `filterType`. Durante la ricerca per campo personalizzato, i tipi di dati supportati sono `string`, `email` e `integer`. Utilizzare il metodo Describe per recuperare i dettagli del campo, ad esempio la descrizione e il tipo.
 
-`filterValues` accetta fino a 300 valori in formato separato da virgole. La chiamata cerca i record in cui il campo del lead corrisponde a uno dei `filterValues` inclusi. Se il numero di lead che corrispondono al filtro lead è maggiore di 1.000, viene restituito un errore: &quot;1003, Troppi risultati corrispondono al filtro&quot;.
+`filterValues` accetta fino a 300 valori separati da virgola. La chiamata restituisce record in cui il campo del lead selezionato corrisponde a uno di questi valori. Se più di 1.000 lead corrispondono al filtro, l’API restituisce &quot;1003, Troppi risultati corrispondono al filtro&quot;.
 
-Se la lunghezza totale della richiesta GET supera gli 8 KB, viene restituito un errore HTTP: &quot;414, URI troppo lungo&quot; (per RFC 7231). Come soluzione alternativa, è possibile modificare il GET in POST, aggiungere il parametro _method=GET e inserire una stringa di query nel corpo della richiesta.
+Se il totale della richiesta GET supera gli 8 KB, l’API restituisce &quot;414, URI troppo lungo&quot; con RFC 7231. Per aggirare questo limite, modifica GET in POST, aggiungi il parametro _method=GET e inserisci la stringa di query nel corpo della richiesta.
 
 ### Richiesta
 
@@ -146,9 +144,9 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 }
 ```
 
-Questa chiamata cerca i record corrispondenti agli ID inclusi in `filterValues` e restituisce tutti i record corrispondenti.
+Questa chiamata restituisce record i cui ID corrispondono ai valori in `filterValues`.
 
-Se non viene trovato alcun record, la risposta indica che l’operazione è riuscita, ma l’array dei risultati sarà vuoto.
+Se nessun record corrisponde, la risposta indica il successo e contiene una matrice di risultati vuota.
 
 ### Risposta
 
@@ -160,15 +158,15 @@ Se non viene trovato alcun record, la risposta indica che l’operazione è rius
 }
 ```
 
-Sia il metodo Get Lead by Id che Get Leads by Filter Type accettano anche un parametro di query fields, che accetta un elenco separato da virgole di campi API. Se è incluso, ogni record nella risposta includerà i campi elencati.  Se viene omesso, verrà restituito un set predefinito di campi: `id`, `email`, `updatedAt`, `createdAt`, `firstName` e `lastName`.
+Sia Ottieni lead per ID che Ottieni lead per tipo di filtro accettano un parametro di query dei campi contenente un elenco separato da virgole di campi API. Quando i campi sono presenti, ogni record di risposta include i campi elencati. Se viene omesso, la risposta include `id`, `email`, `updatedAt`, `createdAt`, `firstName` e `lastName`.
 
 ## ADOBE ECID
 
-Quando la funzione Condivisione pubblico di Adobe Experience Cloud è abilitata, si verifica un processo di sincronizzazione dei cookie che associa Adobe Experience Cloud ID (ECID) ai lead di Marketo.  I metodi di recupero dei lead sopra menzionati possono essere utilizzati per recuperare i valori ECID associati.  Per farlo, specifica `ecids` nel parametro fields. Ad esempio, `&fields=email,firstName,lastName,ecids`.
+Quando Adobe Experience Cloud Audience Sharing è abilitato, la sincronizzazione dei cookie associa i valori Adobe Experience Cloud ID (ECID) ai lead di Marketo. Per recuperare i valori ECID associati ai metodi di recupero dei lead precedenti, includere `ecids` nel parametro fields. Ad esempio, `&fields=email,firstName,lastName,ecids`.
 
 ## Crea e aggiorna
 
-Oltre a recuperare i dati dei lead, puoi creare, aggiornare ed eliminare i record dei lead tramite l’API. La creazione e l’aggiornamento dei lead condividono lo stesso endpoint con il tipo di operazione definito nella richiesta ed è possibile creare o aggiornare contemporaneamente fino a 300 record.
+L’API Lead può creare, aggiornare ed eliminare record di lead. Le operazioni di creazione e aggiornamento utilizzano lo stesso endpoint, con il tipo di operazione definito nella richiesta. Una richiesta può creare o aggiornare fino a 300 record.
 
 >[!NOTE]
 >
@@ -233,29 +231,40 @@ POST /rest/v1/leads.json
 }
 ```
 
-In questa richiesta sono presenti due campi importanti, `action` e `lookupField`. `action` specifica il tipo di operazione della richiesta e può essere `createOrUpdate`, `createOnly`, `updateOnly` o `createDuplicate`. Se viene omesso, l&#39;impostazione predefinita sarà `createOrUpdate`.  Il parametro `lookupField` specifica la chiave da utilizzare quando l&#39;azione è `createOrUpdate` o `updateOnly`. Se `lookupField` viene omesso, la chiave predefinita è `email`.
+La richiesta utilizza due campi importanti:
 
-Per impostazione predefinita, viene utilizzata la partizione predefinita. Facoltativamente, è possibile specificare il parametro `partitionName`, che funziona solo se l&#39;azione è `createOnly` o `createOrUpdate`. Affinché `partitionName` possa funzionare come criterio di deduplicazione aggiuntivo, deve far parte del tipo di origine nelle regole di deduplicazione personalizzate. Durante un&#39;operazione di aggiornamento, se nella partizione specificata non esiste un lead, viene restituito un errore. Se l’utente solo API non dispone dell’autorizzazione per accedere alla partizione specificata, viene restituito un errore.
+- `action` specifica il tipo di operazione: `createOrUpdate`, `createOnly`, `updateOnly` o `createDuplicate`. Se omesso, verrà utilizzato il valore predefinito `createOrUpdate`.
+- `lookupField` specifica la chiave quando action è `createOrUpdate` o `updateOnly`. Se omesso, verrà utilizzato il valore predefinito `email`.
 
-Il campo `id` può essere incluso solo come parametro quando si utilizza l&#39;azione `updateOnly`, poiché `id` è una chiave univoca gestita dal sistema.
+Per impostazione predefinita, l&#39;operazione utilizza la partizione predefinita. Il parametro facoltativo `partitionName` funziona solo quando l&#39;azione è `createOnly` o `createOrUpdate`. Per utilizzare `partitionName` come criterio di deduplicazione aggiuntivo, includerlo nel tipo di origine per le regole di deduplicazione personalizzate.
 
-La richiesta deve inoltre avere un parametro `input`, che è una matrice di record lead. Ogni record lead è un oggetto JSON con un numero qualsiasi di campi lead. Le chiavi incluse in un record devono essere univoche per tale record e tutte le stringhe JSON devono avere la codifica UTF-8. Il campo `externalCompanyId` può essere utilizzato per collegare il record del lead a un record della società. Il campo `externalSalesPersonId` può essere utilizzato per collegare il record del lead a un record del venditore.
+Durante un aggiornamento, l’API restituisce un errore se il lead non esiste nella partizione specificata o se l’utente solo API non può accedere a tale partizione.
 
-Nota: quando si eseguono richieste lead upsert simultaneamente o in rapida successione, è possibile che si verifichino record duplicati quando si eseguono più richieste con lo stesso valore chiave se viene effettuata una chiamata successiva con lo stesso valore prima della prima. È possibile evitare questo problema utilizzando `createOnly` o `updateOnly` come appropriato oppure accodando le chiamate e aspettando che venga restituita la chiamata prima di effettuare chiamate upsert successive con la stessa chiave.
+Poiché `id` è una chiave univoca gestita dal sistema, includerla solo con l&#39;azione `updateOnly`.
+
+La richiesta deve includere un parametro `input` contenente una matrice di record lead. Ogni record lead è un oggetto JSON con un numero qualsiasi di campi lead. Le chiavi devono essere univoche all’interno di ogni record e tutte le stringhe JSON devono utilizzare la codifica UTF-8.
+
+Utilizzare `externalCompanyId` per collegare un record lead a un record società. Utilizzare `externalSalesPersonId` per collegare un record lead a un record venditore.
+
+Le richieste upsert simultanee o con tempistica ravvicinata possono creare record duplicati quando più richieste utilizzano lo stesso valore chiave prima della restituzione della prima richiesta. Per evitare duplicati, utilizzare `createOnly` o `updateOnly` come appropriato. In alternativa, metti in coda le chiamate e attendi la restituzione di ciascuna chiamata prima di inviare un altro upsert con la stessa chiave.
 
 ## Campi
 
-L’oggetto lead contiene campi standard e, facoltativamente, campi personalizzati. I campi standard sono presenti in ogni abbonamento a Marketo Engage, mentre i campi personalizzati vengono creati dall’utente in base alle esigenze. Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo. Esempi di attributi sono nome visualizzato, nome API e dataType. Questi attributi sono noti collettivamente come metadati.
+L’oggetto lead contiene campi standard e campi personalizzati facoltativi. In ogni abbonamento a Marketo Engage sono presenti campi standard, mentre gli utenti creano campi personalizzati in base alle esigenze.
 
-I seguenti endpoint consentono di eseguire query, creare e aggiornare campi sull&#39;oggetto lead. Queste API richiedono che l’utente API proprietario abbia un ruolo con una o entrambe le autorizzazioni Campo standard schema di lettura-scrittura o Campo personalizzato schema di lettura-scrittura.
+Ogni definizione di campo contiene attributi di metadati come il nome visualizzato, il nome API e il dataType.
+
+Utilizzare gli endpoint seguenti per eseguire query, creare e aggiornare campi sull&#39;oggetto lead. Il ruolo dell&#39;utente API deve disporre dell&#39;autorizzazione Campo standard dello schema di lettura-scrittura, dell&#39;autorizzazione Campo personalizzato dello schema di lettura-scrittura o di entrambi.
 
 ## Campi query
 
-La query dei campi lead è semplice. È possibile eseguire query su un singolo campo lead per nome API o sul set di tutti i campi lead. È possibile recuperare sia i campi standard che i campi personalizzati, a seconda delle autorizzazioni del ruolo utilizzate. Vengono recuperati anche i campi nascosti.
+Esegui la query di un campo lead per nome API o di tutti i campi lead. A seconda delle autorizzazioni del ruolo, la risposta può includere campi standard, campi personalizzati e campi nascosti.
 
 ## Per nome
 
-L’endpoint &quot;Get Lead Field by Name&quot; recupera i metadati per un singolo campo sull’oggetto lead. Il parametro di percorso fieldApiName obbligatorio specifica il nome API del campo. La risposta è simile all’endpoint Descrivi lead, ma contiene metadati aggiuntivi, come l’attributo isCustom, che indica se il campo è un campo personalizzato.
+L’endpoint &quot;Get Lead Field by Name&quot; recupera i metadati per un campo lead. Il parametro obbligatorio percorso fieldApiName specifica il nome API del campo.
+
+La risposta è simile alla risposta Descrivi lead, ma include metadati aggiuntivi. L&#39;attributo isCustom, ad esempio, indica se il campo è personalizzato.
 
 ### Richiesta
 
@@ -287,7 +296,9 @@ GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Sfogliare
 
-L’endpoint Get Lead Fields recupera i metadati per tutti i campi sull’oggetto lead, tra cui. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query `batchSize` per ridurre questo numero. Se l&#39;attributo `moreResult` è true, significa che sono disponibili altri risultati. Continuare a chiamare questo endpoint fino a quando l&#39;attributo `moreResult` non restituisce false, ovvero non sono disponibili risultati. I `nextPageToken` restituiti da questa API devono essere sempre riutilizzati per la successiva iterazione di questa chiamata.
+L&#39;endpoint Get Lead Fields recupera i metadati per tutti i campi sull&#39;oggetto lead. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query `batchSize` per ridurre questo numero.
+
+Se `moreResult` è true, sono disponibili altri risultati. Passa `nextPageToken` restituito in ogni chiamata successiva fino a quando `moreResult` non è false.
 
 ### Richiesta
 
@@ -429,12 +440,21 @@ GET /rest/v1/leads/schema/fields.json
 
 ## Crea campi
 
-L&#39;endpoint Create Lead Fields crea uno o più campi personalizzati sull&#39;oggetto lead. Questo endpoint fornisce funzionalità paragonabili a quelle disponibili nell’interfaccia utente di Marketo Engage. Puoi creare un massimo di 100 campi personalizzati utilizzando questo endpoint.
-Considera attentamente ogni campo creato nell’istanza di produzione di Marketo Engage utilizzando l’API.  Una volta creato un campo, non è possibile eliminarlo (è possibile solo nasconderlo). La proliferazione di campi inutilizzati è una pratica scorretta che aggiunge confusione all’istanza.
+L’endpoint Create Lead Fields crea uno o più campi personalizzati sull’oggetto lead e fornisce funzionalità paragonabili a quelle dell’interfaccia utente di Marketo Engage. Con questo endpoint è possibile creare fino a 100 campi personalizzati.
 
-Il parametro di input richiesto è un array di oggetti campo lead. Ogni oggetto contiene uno o più attributi. Gli attributi richiesti sono `displayName`, `name` e `dataType`, che corrispondono rispettivamente al nome visualizzato dell&#39;interfaccia utente del campo, al nome API del campo e al tipo di campo.  Facoltativamente, è possibile specificare `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
+Considera attentamente ogni campo prima di crearlo in un’istanza di produzione. Dopo aver creato un campo, è possibile nasconderlo ma non eliminarlo. I campi inutilizzati rendono l’istanza più complessa.
 
-Esistono alcune regole associate al nome e alla denominazione di `displayName`. L&#39;attributo name deve essere univoco, iniziare con una lettera e contenere solo lettere, numeri o trattini bassi. `displayName` deve essere univoco e non può contenere caratteri speciali.  Una convenzione di denominazione comune consiste nell&#39;applicare Camel Case a `displayName` per produrre il nome. Ad esempio, un `displayName` di &quot;My Custom Field&quot; produrrebbe il nome &quot;myCustomField&quot;.
+Il parametro di input richiesto è un array di oggetti campo lead. Ogni oggetto richiede i seguenti attributi:
+
+- `displayName` è il nome visualizzato dell&#39;interfaccia utente del campo.
+- `name` è il nome API del campo.
+- `dataType` è il tipo di campo.
+
+Gli attributi facoltativi sono `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
+
+L&#39;attributo name deve essere univoco, iniziare con una lettera e contenere solo lettere, numeri o trattini bassi. `displayName` deve essere univoco e non può contenere caratteri speciali.
+
+Una convenzione comune applica la notazione Camel a `displayName` per produrre il nome. Ad esempio, un `displayName` di &quot;Campo personalizzato&quot; produce il nome &quot;myCustomField&quot;.
 
 ### Richiesta
 
@@ -484,7 +504,7 @@ POST /rest/v1/leads/schema/fields.json
 
 ## Aggiorna campo
 
-L’endpoint Update Lead Field aggiorna un singolo campo personalizzato sull’oggetto lead. Nella maggior parte dei casi, le operazioni di aggiornamento dei campi eseguite utilizzando l’interfaccia utente di Marketo Engage sono ottenibili utilizzando l’API. Nella tabella seguente sono riepilogate alcune differenze.
+L’endpoint Update Lead Field aggiorna un campo personalizzato sull’oggetto lead. La maggior parte degli aggiornamenti dei campi disponibili nell’interfaccia utente di Marketo Engage sono disponibili anche tramite l’API. Nella tabella seguente sono riepilogate le differenze.
 
 <table>
 <tbody>
@@ -565,7 +585,7 @@ L’endpoint Update Lead Field aggiorna un singolo campo personalizzato sull’o
 </tbody>
 </table>
 
-Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo da aggiornare. Il parametro di input richiesto è un array che contiene un singolo oggetto campo lead.  L&#39;oggetto field contiene uno o più attributi.
+Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo da aggiornare. Il parametro di input richiesto è un array contenente un oggetto campo lead con uno o più attributi.
 
 ### Richiesta
 
@@ -604,11 +624,15 @@ POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Invia lead a Marketo
 
-Il lead push è un’alternativa per la sincronizzazione dei lead con Marketo, progettata principalmente per consentire un livello maggiore di attivabilità rispetto ai lead di sincronizzazione standard (simile nell’utilizzo a un modulo Marketo). Oltre alla sincronizzazione dei campi lead, questo endpoint consente l’associazione dei lead in base ai valori dei cookie, che vengono passati all’endpoint. A tale scopo, si trasmette il valore `mkt_tok` generato facendo clic su un messaggio e-mail di Marketo o specificando il nome di un programma nella chiamata. Questo endpoint crea anche una singola attività attivabile, associata a un programma e/o a una campagna in Marketo. Questo consente di attivare su eventi di acquisizione lead attribuiti a una campagna o a un programma specifico per avviare i flussi di lavoro associati dall’interno di Marketo.
+Il lead push è un’alternativa ai lead di sincronizzazione e fornisce più opzioni di attivazione, simili a quelle di un modulo Marketo. Oltre a sincronizzare i campi del lead, l’endpoint può associare un lead in base a un valore di cookie. Passa il valore `mkt_tok` generato da un clic da un&#39;e-mail di Marketo o passa un nome di programma nella chiamata.
 
-L’interfaccia del lead push è molto simile a quella dei lead di sincronizzazione. Tutte le stesse chiavi primarie sono valide e per i campi vengono utilizzati gli stessi nomi API (non esiste alcun parametro di azione, perché si tratta sempre di un’operazione upsert). I parametri `programName` e di input sono obbligatori e i parametri `lookupField`, `source` e `reason` sono facoltativi. Il parametro di input è un array di oggetti lead. L’attività risultante è attribuita al programma denominato corrispondente. I parametri `source` e `reason` sono campi stringa arbitrari che possono essere aggiunti alla richiesta di incorporare tali valori nelle attività risultanti. Questi possono essere utilizzati come vincoli nei trigger corrispondenti (il lead viene inviato a Marketo) e nei filtri (il lead viene inviato a Marketo).
+L’endpoint crea anche un’attività attivabile associata a un programma Marketo, a una campagna o a entrambi. Utilizza questa attività per avviare flussi di lavoro da eventi di acquisizione lead attribuiti a una campagna o a un programma specifico.
 
-Nota relativa alle attività anonime. Se desideri associare precedenti attività anonime al lead appena creato, non specificare l’attributo dei cookie nell’oggetto lead e chiama Associa lead dopo il lead push. Se desideri creare un nuovo lead senza cronologia attività, specifica semplicemente l’attributo cookies nell’oggetto lead.
+Il lead push utilizza le stesse chiavi primarie e gli stessi nomi API di campo dei lead di sincronizzazione. Non ha alcun parametro di azione perché esegue sempre un upsert.
+
+`programName` e i parametri di input sono obbligatori. Il parametro di input è un array di oggetti lead e l&#39;attività risultante viene attribuita al programma denominato. I parametri `lookupField`, `source` e `reason` sono facoltativi. Aggiungere stringhe arbitrarie in `source` e `reason` per includere tali valori nelle attività risultanti. Puoi utilizzare i valori come vincoli nei trigger corrispondenti (il lead viene inviato a Marketo) e nei filtri (il lead viene inviato a Marketo).
+
+Per associare precedenti attività anonime a un lead appena creato, omettere l&#39;attributo dei cookie dall&#39;oggetto lead e chiamare Associa lead dopo il lead push. Per creare un lead senza cronologia attività, specifica l’attributo cookies nell’oggetto lead.
 
 ### Richiesta
 
@@ -674,7 +698,7 @@ POST /rest/v1/leads/push.json
 }
 ```
 
-Per passare il parametro `mkt_tok`, assegnare il valore al membro mktToken all&#39;interno di un record di lead nel parametro di input nel modo seguente.
+Per passare il parametro `mkt_tok`, assegnarne il valore al membro mktToken in un record di lead all&#39;interno del parametro di input.
 
 ### Corpo
 
@@ -699,24 +723,28 @@ Per passare il parametro `mkt_tok`, assegnare il valore al membro mktToken all&#
 
 ## Invia modulo
 
-Invia modulo è un’alternativa per la sincronizzazione dei lead con Marketo ed è progettato per fornire funzionalità equivalenti all’invio di un Marketo Form. Questo consente di attivare su eventi di acquisizione lead attribuiti a una campagna o a un programma specifico per avviare i flussi di lavoro associati dall’interno di Marketo.
+Invia modulo è un&#39;alternativa per la sincronizzazione dei lead e fornisce funzionalità equivalenti all&#39;invio di un Marketo Form. Utilizzala per avviare flussi di lavoro da eventi di acquisizione lead attribuiti a una campagna o a un programma specifico.
 
 L’endpoint &quot;Invia modulo&quot; supporta le seguenti funzionalità:
 
-* Aggiorna un record cliente potenziale utilizzando il campo e-mail come chiave primaria
-* Crea un&#39;attività &quot;Compila modulo&quot; associata a un programma e/o a una campagna
-* Consente l’associazione del lead in base al valore del cookie
-* Esegue la convalida del campo modulo
+- Inserisce un record cliente potenziale utilizzando il campo e-mail come chiave primaria.
+- Crea un&#39;attività &quot;Compila modulo&quot; associata a un programma, una campagna o entrambi.
+- Associa un lead in base a un valore di cookie.
+- Convalida i campi modulo.
 
-L&#39;invio di un modulo segue il modello di database lead standard. Un singolo record di oggetto viene passato nel membro di input richiesto del corpo JSON di una richiesta POST. Il membro `formId` richiesto contiene l&#39;ID del modulo Marketo di destinazione.
+Inviare un modulo con il modello di database lead standard. Passa un record oggetto nel membro di input richiesto del corpo JSON della richiesta POST. Il membro `formId` richiesto contiene l&#39;ID del modulo Marketo di destinazione.
 
-L&#39;opzione `programId` può essere utilizzata per specificare il programma a cui aggiungere il lead e/o specificare il programma a cui aggiungere i campi personalizzati del membro del programma. Se viene fornito `programId`, il lead viene aggiunto al programma e vengono aggiunti anche tutti i campi dei membri del programma presenti nel modulo. Si noti che il programma specificato deve trovarsi nella stessa area di lavoro del modulo. Se il modulo non contiene campi personalizzati per i membri del programma e non viene fornito `programId`, il lead non verrà aggiunto a un programma. Se il modulo risiede in un programma e `programId` non viene fornito, tale programma viene utilizzato quando uno o più campi personalizzati del membro del programma sono presenti nel modulo.
+Utilizzare l&#39;elemento facoltativo `programId` per identificare il programma che riceve il lead, i campi personalizzati del membro del programma o entrambi. Se `programId` è presente, il lead viene aggiunto al programma insieme a qualsiasi campo membro del programma nel modulo. Il programma deve trovarsi nella stessa area di lavoro del modulo.
 
-Nel record di input è necessario specificare l&#39;oggetto `leadFormFields`. Questo oggetto contiene una o più coppie nome/valore corrispondenti ai campi modulo da compilare.  Tutti i campi specificati devono essere definiti all&#39;interno del modulo specificato. Il nome è il nome REST API per il campo. Il campo `email` è obbligatorio.
+Se il modulo non contiene campi personalizzati per i membri del programma e `programId` viene omesso, il lead non verrà aggiunto a un programma. Se il modulo appartiene a un programma, contiene uno o più campi personalizzati del membro del programma e omette `programId`, l&#39;endpoint utilizza il programma del modulo.
 
-L&#39;oggetto membro `visitorData` è facoltativo e contiene coppie nome/valore corrispondenti ai dati di visita della pagina, inclusi `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Può essere utilizzato per compilare campi di attività aggiuntivi a scopo di filtro e di attivazione.
+L&#39;oggetto `leadFormFields` richiesto contiene una o più coppie nome/valore per i campi da compilare. Ogni campo deve essere definito nel modulo specificato e ogni nome deve essere il nome API REST del campo. Il campo `email` è obbligatorio.
 
-La stringa del membro del cookie è facoltativa e consente di associare un cookie di Munchkin a un record persona in Marketo. Quando viene creato un nuovo lead, tutte le precedenti attività anonime vengono associate a quel lead, a meno che il valore del cookie non sia stato precedentemente associato a un altro record noto. Se il valore del cookie è stato associato in precedenza, vengono tracciate le nuove attività rispetto al record, ma le attività precedenti non verranno migrate dal record noto esistente. Per creare un nuovo lead senza cronologia attività, ometti semplicemente il membro cookie.
+L&#39;oggetto `visitorData` facoltativo contiene dati di visita pagina, inclusi `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Utilizzala per compilare ulteriori campi di attività per filtri e attivatori.
+
+Il membro cookie opzionale associa un cookie Munchkin a un record persona Marketo. Quando l’endpoint crea un lead, associa precedenti attività anonime a tale lead, a meno che il cookie non sia stato precedentemente associato a un altro record noto.
+
+Se il cookie è stato associato in precedenza, le nuove attività vengono tracciate rispetto al nuovo record, ma le attività precedenti rimangono con il record noto esistente. Per creare un lead senza cronologia attività, ometti il membro cookie.
 
 I nuovi lead vengono creati nella partizione primaria dell&#39;area di lavoro in cui si trova il modulo.
 
@@ -772,7 +800,7 @@ Content-Type: application/json
 }
 ```
 
-Qui possiamo vedere i corrispondenti dettagli dell’attività &quot;Compila modulo&quot; dall’interfaccia utente di Marketo Engage:
+L’immagine seguente mostra i dettagli corrispondenti dell’attività &quot;Compila modulo&quot; nell’interfaccia utente di Marketo Engage:
 
 ![Compila interfaccia utente modulo](assets/fill_out_form_activity_details.png)
 
@@ -783,7 +811,9 @@ Qui possiamo vedere i corrispondenti dettagli dell’attività &quot;Compila mod
 >A partire dal 31 marzo 2026, le chiamate che includono più di 25 ID nel parametro `leadIds` di una chiamata API Merge Leads genereranno un codice di errore 1080 e la chiamata verrà ignorata. I posti di lavoro che richiedono la fusione di più di 25 record in uno, dovrebbero essere suddivisi in più lavori per garantire il successo di tali chiamate.
 >
 
-A volte è necessario unire i record duplicati e Marketo lo facilita tramite l’API Unisci lead. L’unione dei lead combina i registri di attività, il programma, le iscrizioni alle campagne, le informazioni di gestione delle relazioni con i clienti e unisce tutti i valori dei campi in un unico record. Merge Leads prende un ID lead come parametro di percorso e un singolo `leadId` come parametro di query oppure un elenco di 25 o meno ID separati da virgole nel parametro `leadIds`
+Utilizza l’API Unisci lead per combinare i record duplicati in un unico record. Un’unione combina registri di attività, appartenenze a programmi, campagne ed elenchi, informazioni CRM e valori di campo.
+
+Passa l’ID lead vincente come parametro del percorso. Passa un `leadId` come parametro di query o fino a 25 ID separati da virgole nel parametro `leadIds`.
 
 
 ### Richiesta
@@ -801,13 +831,15 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 }
 ```
 
-Il lead specificato nel parametro path è il lead vincente, quindi se ci sono campi in conflitto tra i record da unire, verrà preso il valore del vincitore, a meno che il campo nel record vincente sia vuoto e il campo corrispondente nel record perdente non lo sia. I lead specificati nel parametro `leadId` o `leadIds` sono i lead perdenti.
+Il lead nel parametro percorso è il lead vincente. Quando i valori dei campi sono in conflitto, l&#39;unione utilizza il valore del vincitore a meno che tale valore non sia vuoto e il valore del record perdente non lo sia. I lead nel parametro `leadId` o `leadIds` sono i lead perdenti.
 
-Se si dispone di una sottoscrizione abilitata per la sincronizzazione con SFDC, è possibile utilizzare anche il parametro `mergeInCRM` nella richiesta. Se è impostato su true, verrà eseguita anche l’unione corrispondente nel CRM. Se entrambi i lead si trovano in SFDC e uno è un lead CRM e l’altro è un contatto CRM, allora il vincitore è il contatto CRM (indipendentemente dal lead specificato come vincitore). Se uno dei lead si trova in SFDC e l’altro è solo Marketo, il vincitore è il lead SFDC (indipendentemente dal lead specificato come vincitore).
+Per una sottoscrizione abilitata per la sincronizzazione di SFDC, utilizzare il parametro `mergeInCRM` per eseguire anche l&#39;unione nel CRM. Se entrambi i record sono in SFDC e uno è un lead del CRM mentre l&#39;altro è un contatto del CRM, il contatto del CRM vince indipendentemente dal vincitore specificato. Se un record si trova in SFDC e l&#39;altro esiste solo in Marketo, il lead di SFDC vince indipendentemente dal vincitore specificato.
 
 ## Associa attività web
 
-Tramite il tracciamento dei lead (Munchkin), Marketo registra l’attività web dei visitatori sul sito web e sulle pagine di destinazione di Marketo. Queste attività, Visite e Clic, sono registrate con una chiave che corrisponde a un cookie &quot;_mkto_trk&quot; impostato nel browser del lead e Marketo lo utilizza per tenere traccia delle attività della stessa persona. In genere, l’associazione ai record dei lead si verifica quando un lead passa da un’e-mail di Marketo o compila un modulo di Marketo, ma a volte un’associazione può essere attivata da un tipo di evento diverso ed è possibile utilizzare l’endpoint Associa lead per farlo. L’endpoint considera l’ID del record lead noto come parametro di percorso e il valore del cookie &quot;_mkto_trk&quot; nel parametro di query del cookie.
+Il tracciamento dei lead (Munchkin) registra le visite e i clic dei visitatori sul sito web e sulle pagine di destinazione di Marketo. Queste attività utilizzano una chiave che corrisponde al cookie &quot;_mkto_trk&quot; nel browser del lead, che consente a Marketo di tenere traccia delle attività della stessa persona.
+
+L’associazione a un record di lead si verifica in genere quando un lead segue un collegamento da un’e-mail di Marketo o invia un modulo di Marketo. Per associare un lead dopo un altro tipo di evento, utilizzare l&#39;endpoint Associa lead. Passa l’ID del record lead noto come parametro di percorso e il valore del cookie &quot;_mkto_trk&quot; nel parametro di query del cookie.
 
 ### Richiesta
 
@@ -824,13 +856,14 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 }
 ```
 
-Se un cookie è già associato a un record lead noto, l’utilizzo di questa API su un record lead diverso fa sì che la nuova attività web venga registrata su tale record, ma non sposterà alcuna attività web esistente nel nuovo record.
+Se il cookie è già associato a un lead noto, l’utilizzo di questa API per un lead diverso registra la nuova attività web rispetto al nuovo record. L&#39;attività Web esistente non viene spostata nel nuovo record.
 Iscrizione
 
-È inoltre possibile recuperare i record dei lead in base all&#39;appartenenza a un elenco statico o a un programma. Inoltre, puoi recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti di cui è membro un lead.
+Recuperare i record dei lead in base all&#39;appartenenza a un elenco o a un programma statico. Puoi anche recuperare tutti gli elenchi statici, i programmi o le campagne intelligenti che includono un lead specifico.
 
-La struttura di risposta e i parametri facoltativi sono identici a quelli di Get Leads per Filter Type, anche se `filterType` e `filterValues` non possono essere utilizzati con questa API.
-Per accedere all’ID elenco tramite l’interfaccia utente di Marketo, passa all’elenco. L&#39;elenco `id` si trova nell&#39;URL dell&#39;elenco statico, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. In questo esempio, 1001 è `id` per l&#39;elenco.
+La struttura di risposta e i parametri facoltativi corrispondono a Get Leads by Filter Type, ma questa API non accetta `filterType` o `filterValues`.
+
+Per trovare l’ID elenco nell’interfaccia utente di Marketo, passa all’elenco e ispezionane l’URL. In `https://app-****.marketo.com/#ST1001A1`, 1001 è l&#39;elenco `id`.
 
 ## Ottieni programmi per ID lead
 
@@ -873,7 +906,7 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 
 ## Ottieni elenchi per ID lead
 
-L&#39;endpoint Get Lists by Lead Id accetta un parametro di percorso `id` del record di lead e restituisce tutti i record di elenco statici di cui il lead è membro.
+L&#39;endpoint Get Lists by Lead Id accetta un parametro di percorso `id` del record di lead e restituisce ogni elenco statico che include il lead.
 
 ### Richiesta
 
@@ -911,11 +944,13 @@ GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 
 ## Programmi
 
-L’iscrizione al programma può essere recuperata in modo simile agli elenchi. Gli stessi parametri di richiesta facoltativi sono disponibili quando si chiama l&#39;endpoint Get Leads by Program Id e si passa il parametro di percorso `programId`.
+Recuperare l&#39;iscrizione al programma nello stesso modo dell&#39;iscrizione all&#39;elenco. L&#39;ID Get Leads by Program accetta gli stessi parametri di richiesta facoltativi e richiede il parametro di percorso `programId`.
 
-Facoltativamente, puoi trasmettere un parametro di campi contenente un elenco separato da virgole di nomi di campi da restituire. Se il parametro fields non è incluso in questa richiesta, verranno restituiti i seguenti campi predefiniti: `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` e `id`. Quando si richiede un elenco di campi, se un particolare campo viene richiesto ma non restituito, il valore deve essere nullo.
+Facoltativamente, passa un parametro fields contenente un elenco separato da virgole di nomi di campo. Se i campi vengono omessi, la risposta include `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` e `id`. Se un campo richiesto non viene restituito, il suo valore è implicitamente nullo.
 
-La struttura di risposta è molto simile, in quanto ogni elemento nell’array dei risultati è un lead, con la differenza che ogni record ha anche un oggetto figlio denominato &quot;appartenenza&quot;. Questo oggetto di appartenenza include dati sulla relazione del lead con il programma indicato nella chiamata, mostrando sempre i relativi `progressionStatus`, `acquiredBy`, `reachedSuccess` e `membershipDate`. Se il programma padre è anche un programma di coinvolgimento, l&#39;appartenenza avrà membri `stream`, `nurtureCadence` e `isExhausted` per indicare la sua posizione e attività nel programma di coinvolgimento.
+Ogni elemento nella matrice dei risultati è un lead con un oggetto figlio denominato &quot;appartenenza&quot;. Questo oggetto descrive la relazione del lead con il programma richiesto e include sempre `progressionStatus`, `acquiredBy`, `reachedSuccess` e `membershipDate`.
+
+Se il programma padre è un programma di coinvolgimento, l&#39;appartenenza include anche `stream`, `nurtureCadence` e `isExhausted` per descrivere la posizione e l&#39;attività del lead in tale programma.
 
 ### Richiesta
 
@@ -989,7 +1024,7 @@ GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 }
 ```
 
-L&#39;endpoint Get Programs by Lead Id accetta un parametro di percorso dell&#39;ID del record del lead e restituisce tutti i record del programma di cui il lead è membro. I parametri facoltativi `filterType` e `filterValues` consentono di filtrare in base all&#39;ID del programma.
+L’endpoint &quot;Get Programs by Lead Id&quot; accetta un parametro di percorso dell’ID del record del lead e restituisce ogni programma che include il lead. Utilizzare i parametri facoltativi `filterType` e `filterValues` per filtrare in base all&#39;ID programma.
 
 ### Richiesta
 
@@ -1020,7 +1055,7 @@ GET /rest/v1/leads/{id}/programMembership.json
 
 ## Campagne avanzate
 
-L’endpoint &quot;Get Smart Campaigns by Lead Id&quot; accetta un parametro di percorso ID record lead e restituisce tutti i record smart campaign di cui il lead è membro.
+L’endpoint &quot;Get Smart Campaigns by Lead Id&quot; accetta un parametro di percorso per l’ID del record del lead e restituisce ogni campagna avanzata che include il lead.
 
 ### Richiesta
 
@@ -1058,7 +1093,7 @@ GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 
 ## Elimina
 
-La rimozione dei lead è semplice utilizzando l’endpoint Elimina lead.  Specifica gli ID lead da eliminare utilizzando gli attributi ID nel corpo.  Il massimo è di 300 lead per richiesta.  Utilizza Content-Type: intestazione application/json.
+Utilizzare l&#39;endpoint Elimina lead per rimuovere i record dei lead. Specifica gli ID lead nel corpo con gli attributi ID. Una richiesta può eliminare fino a 300 lead. Invia l’intestazione Content-Type: application/json.
 
 ### Richiesta
 
@@ -1102,22 +1137,22 @@ POST /rest/v1/leads/delete.json
 
 ## Relazioni
 
-* Aziende tramite il campo externalCompanyId sul record del lead
-* Campo SalesPersons tramite externalSalesPersonId nel record del lead
-* Programmi tramite iscrizione al programma
-* Elenchi tramite appartenenza a elenco
-* Attività tramite il campo leadId nell’attività
-* Segmentazione attraverso singoli campi segmento nel record del lead
-* Partizioni tramite leadPartitionId nel record del lead
+- Aziende tramite il campo externalCompanyId nel record del lead
+- SalesPersons tramite il campo externalSalesPersonId nel record lead
+- Programmi tramite iscrizione al programma
+- Elenchi tramite appartenenza a elenco
+- Attività tramite il campo leadId nell’attività
+- Segmentazione attraverso singoli campi segmento nel record del lead
+- Partizioni nel campo leadPartitionId del record lead
 
 ## Timeout
 
-Gli endpoint lead hanno un timeout di 30 secondi, a meno che non sia indicato di seguito:
+Gli endpoint lead hanno un timeout di 30 secondi, ad eccezione dei seguenti endpoint:
 
-* Lead di sincronizzazione: 90s
-* Associa lead: anni 60
-* Unisci lead: anni 180
-* Aggiorna partizione lead: 60s
-* Invia lead a Marketo: anni 90
-* Ottieni lead per tipo di filtro: 60s
-* Ottieni lead per ID elenco: 60s
+- Lead di sincronizzazione: 90s
+- Associa lead: anni 60
+- Unisci lead: anni 180
+- Aggiorna partizione lead: 60s
+- Invia lead a Marketo: anni 90
+- Ottieni lead per tipo di filtro: 60s
+- Ottieni lead per ID elenco: 60s

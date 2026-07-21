@@ -4,20 +4,14 @@ feature: REST API
 description: Marketo Bulk Activity Extract REST API per esportare dati di attività a volume elevato utilizzando un intervallo di date di 31 giorni, filtri di attività e attributi primari per ETL e CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
 TQID: https://experienceleague.adobe.com/lIlXNjatN-F77Dv3xsVkQ3hAWwLZ4wlSW0zKNkFJFMA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1564
-ht-degree: 3%
+source-wordcount: 1268
+ht-degree: 4%
 
 ---
 
@@ -25,20 +19,20 @@ ht-degree: 3%
 
 [Riferimento endpoint estrazione attività in blocco](https://developer.adobe.com/marketo-apis/api/mapi)
 
-Il set di API REST per l’estrazione di attività in blocco fornisce un’interfaccia programmatica per recuperare grandi quantità di dati di attività da Marketo.  Per i casi che non richiedono bassa latenza e che devono trasferire volumi significativi di dati di attività al di fuori di Marketo, come l’integrazione CRM, ETL, il data warehousing e l’archiviazione dei dati.
+Le API REST di Bulk Activity Extract recuperano grandi volumi di dati di attività da Marketo. Utilizzare queste API per i processi che non richiedono latenza ridotta, come l&#39;integrazione CRM, ETL, data warehousing e archiviazione dati.
 
 ## Autorizzazioni
 
-Le API di estrazione attività in blocco richiedono che l’utente API disponga delle autorizzazioni &quot;Attività di sola lettura&quot; o &quot;Attività di lettura/scrittura&quot;.
+L’utente API deve disporre dell’autorizzazione &quot;Attività di sola lettura&quot; o &quot;Attività di lettura/scrittura&quot;.
 
 ## Filtri
 
 | Tipo di filtro | Tipo di dati | Obbligatorio | Note |
 | --- | --- | --- | --- |
-| `createdAt` | Date Range | Sì | Accetta un oggetto JSON con i membri `startAt` e `endAt`. `startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili creati entro l&#39;intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
-| `activityTypeIds` | Array\[Intero\] | No | Accetta un oggetto JSON con un membro, `activityTypeIds`. Il valore deve essere una matrice di numeri interi corrispondenti ai tipi di attività desiderati. L&#39;attività &quot;Elimina lead&quot; non è supportata (utilizzare l&#39;endpoint [Ottieni lead eliminati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET)). Recupera gli ID dei tipi di attività utilizzando l&#39;endpoint [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET). |
-| [`primaryAttributeValueIds`](#primaryattributevalueids-options) | Array\[Intero\] | No | Accetta un oggetto JSON con un membro, `primaryAttributeValueIds`. Il valore è una matrice di ID che specificano gli attributi primari su cui filtrare. È possibile specificare un massimo di 50 ID. Gli ID sono l’identificatore univoco di un campo lead o di una risorsa e possono essere recuperati chiamando l’endpoint API REST appropriato. Ad esempio, per filtrare in base a un modulo specifico per l&#39;attività &quot;Compila modulo&quot;, passa il nome del modulo all&#39;endpoint [Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) per recuperare l&#39;ID modulo. Di seguito è riportato un elenco di tipi di attività in cui è supportato il filtro degli attributi primari. |
-| [`primaryAttributeValues`](#primaryattributevalues-options) | Array\[Stringa\] | No | Accetta un oggetto JSON con un membro, `primaryAttributeValues`. Il valore è un array di nomi che specificano gli attributi principali su cui filtrare. È possibile specificare un massimo di 50 nomi. I nomi sono l’identificatore univoco di un campo lead o di una risorsa e possono essere recuperati chiamando l’endpoint API REST appropriato. Ad esempio, per filtrare in base a un modulo specifico per l&#39;attività &quot;Compila modulo&quot;, passa l&#39;ID modulo all&#39;endpoint [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) per recuperare il nome del modulo. Di seguito è riportato un elenco di tipi di attività in cui è supportato il filtro degli attributi primari. |
+| `createdAt` | Date Range | Sì | Oggetto JSON contenente `startAt` e `endAt`. `startAt` è il valore di data/ora della filigrana bassa e `endAt` è il valore di data/ora della filigrana alta. L’intervallo non può essere superiore a 31 giorni. Il job restituisce tutti i record accessibili creati all&#39;interno dell&#39;intervallo di date. Utilizza valori datetime ISO-8601 senza millisecondi. |
+| `activityTypeIds` | Array\[Intero\] | No | Matrice di numeri interi per i tipi di attività richiesti. L’attività &quot;Elimina lead&quot; non è supportata. Utilizza invece l&#39;endpoint [Get Deleted Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET). Recupera gli ID dei tipi di attività con l&#39;endpoint [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET). |
+| [`primaryAttributeValueIds`](#primaryattributevalueids-options) | Array\[Intero\] | No | Array che accetta un massimo di 50 ID per gli attributi primari. Ogni ID identifica in modo univoco un campo o una risorsa lead. Recupera gli ID chiamando l’endpoint API REST appropriato. Ad esempio, per filtrare in base a un modulo specifico per l&#39;attività &quot;Compila modulo&quot;, passa il nome del modulo all&#39;endpoint [Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) per recuperare l&#39;ID modulo. Consulta [primaryAttributeValueIds options](#primaryattributevalueids-options) per i tipi di attività supportati. |
+| [`primaryAttributeValues`](#primaryattributevalues-options) | Array\[Stringa\] | No | Matrice che accetta un massimo di 50 nomi per gli attributi primari. Ogni nome identifica in modo univoco un campo o una risorsa lead. Recupera i nomi chiamando l’endpoint API REST appropriato. Ad esempio, per filtrare in base a un modulo specifico per l&#39;attività &quot;Compila modulo&quot;, passa l&#39;ID modulo all&#39;endpoint [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET) per recuperare il nome del modulo. Consulta [primaryAttributeValues options](#primaryattributevalues-options) per i tipi di attività supportati. |
 
 ### opzioni primaryAttributeValueIds {#primaryattributevalueids-options}
 
@@ -51,9 +45,9 @@ Le API di estrazione attività in blocco richiedono che l’utente API disponga 
 | Rimuovi dall’elenco | ID elenco statico | [Ottieni elenco statico per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET) | Elenco statico |
 | Compila modulo | ID modulo | [Ottieni modulo per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) | Modulo web |
 
-Quando si utilizza `primaryAttributeValueIds`, il filtro `activityTypeIds` deve essere presente e contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Se ad esempio si applica un filtro alle risorse di un modulo Web, in `activityTypeIds` è consentito solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;.
+Quando si utilizza `primaryAttributeValueIds`, è necessario includere anche il filtro `activityTypeIds`. Questo filtro può contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Ad esempio, quando si filtrano le risorse dei moduli Web, `activityTypeIds` può contenere solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;.
 
-Esempio di corpo della richiesta:
+La richiesta seguente include il filtro `primaryAttributeValueIds`:
 
 ```json
 {
@@ -83,11 +77,11 @@ Impossibile utilizzare `primaryAttributeValueIds` e `primaryAttributeValues` ins
 | Modifica stato in progressione | Nome del programma | [Ottieni programma per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) | Programma di marketing |
 | Aggiungi all’elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
 | Rimuovi dall’elenco | Nome elenco statico | [Ottieni elenco statico per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Elenco statico |
-| Compila modulo | Nome del modulo | [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) | Modulo web |
+| Compila modulo | Nome del modulo | [Ottieni modulo per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET) | Modulo web |
 
-Si noti che è necessario utilizzare la notazione `&lt;program&gt;.&lt;asset&gt;` per specificare il nome per i seguenti gruppi di risorse: Programma di marketing, Elenco statico, Modulo Web. Ad esempio, una maschera con il nome &quot;MPS in uscita&quot; che si trova sotto un programma con il nome &quot;GL_OP_ALL_2021&quot; viene specificata come &quot;GL_OP_ALL_2021.MPS in uscita&quot;.
+Utilizza la notazione `&lt;program&gt;.&lt;asset&gt;` per specificare i nomi dei gruppi di risorse Programma di marketing, Elenco statico e Modulo web. Ad esempio, specificate la maschera &quot;MPS in uscita&quot; nel programma &quot;GL_OP_ALL_2021&quot; come &quot;GL_OP_ALL_2021.MPS in uscita&quot;.
 
-Esempio di corpo della richiesta:
+La richiesta seguente include il filtro `primaryAttributeValues`:
 
 ```json
 {
@@ -106,20 +100,26 @@ Esempio di corpo della richiesta:
 }
 ```
 
-Quando si utilizza `primaryAttributeValues`, il filtro `activityTypeIds` deve essere presente e contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Se ad esempio si applica un filtro alle risorse di un modulo Web, in `activityTypeIds` è consentito solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;. Impossibile utilizzare `primaryAttributeValues` e `primaryAttributeValueIds` insieme.
+Quando si utilizza `primaryAttributeValues`, è necessario includere anche il filtro `activityTypeIds`. Questo filtro può contenere solo ID attività che corrispondono al gruppo di risorse corrispondente. Ad esempio, quando si filtrano le risorse dei moduli Web, `activityTypeIds` può contenere solo l&#39;ID del tipo di attività &quot;Compila modulo&quot;.
+
+Impossibile utilizzare `primaryAttributeValues` e `primaryAttributeValueIds` insieme.
 
 ## Opzioni
 
 | Parametro | Tipo di dati | Obbligatorio | Note |
 | --- | --- | --- | --- |
-| `filter` | Array\[Oggetto\] | Sì | Accetta un array di filtri. Nell&#39;array deve essere incluso esattamente un filtro `createdAt`. È possibile includere un filtro `activityTypeIds` facoltativo. I filtri vengono applicati al set di attività accessibile e il set di attività risultante viene restituito dal processo di esportazione. |
-| `format` | Stringa | No | Accetta uno di: CSV, TSV, SSV. Il file esportato viene renderizzato rispettivamente come un file di valori separati da virgole, valori separati da tabulazioni o valori separati da spazi, se impostato. Se non impostato, viene impostato il valore predefinito CSV. |
-| `columnHeaderNames` | Oggetto | No | Oggetto JSON contenente coppie chiave-valore di nomi di intestazione di campo e colonna. La chiave deve essere il nome di un campo incluso nel processo di esportazione. Il valore corrisponde al nome dell&#39;intestazione di colonna esportata per il campo. |
-| `fields` | Array\[Stringa\] | No | Matrice facoltativa di stringhe contenenti valori di campo. I campi elencati sono inclusi nel file esportato. Per impostazione predefinita, vengono restituiti i campi seguenti: `marketoGUID`, `leadId`, `activityDate`, `activityTypeId`, `campaignId`, `primaryAttributeValueId`, `primaryAttributeValue` e `attributes`. Questo parametro può essere utilizzato per ridurre il numero di campi restituiti specificando un sottoinsieme dall&#39;elenco precedente: `"fields": ["leadId", "activityDate", "activityTypeId"]`. È possibile specificare un campo aggiuntivo `actionResult` per includere l&#39;azione dell&#39;attività: `("succeeded", "skipped", or "failed")`. |
+| `filter` | Oggetto | Sì | Oggetto contenente i filtri applicabili al set di attività accessibile. Includere esattamente un filtro `createdAt`. È inoltre possibile includere un filtro `activityTypeIds`. Il processo di esportazione restituisce il set di attività risultante. |
+| `format` | Stringa | No | Il formato del file di esportazione: CSV, TSV o SSV. Questi valori generano rispettivamente valori separati da virgole, separati da tabulazioni o separati da spazi. Il valore predefinito è CSV. |
+| `columnHeaderNames` | Oggetto | No | Oggetto JSON costituito da coppie chiave-valore di campo e intestazione di colonna. Ogni chiave deve assegnare un nome a un campo incluso nel processo di esportazione. Il relativo valore imposta l’intestazione della colonna esportata per tale campo. |
+| `fields` | Array\[Stringa\] | No | Matrice di campi da includere nel file di esportazione. Per impostazione predefinita, la risposta include `marketoGUID`, `leadId`, `activityDate`, `activityTypeId`, `campaignId`, `primaryAttributeValueId`, `primaryAttributeValue` e `attributes`. Per restituire un sottoinsieme, specificare i campi di questo elenco, ad esempio `"fields": ["leadId", "activityDate", "activityTypeId"]`. È inoltre possibile specificare `actionResult` per includere l&#39;azione dell&#39;attività: `("succeeded", "skipped", or "failed")`. |
 
 ## Creazione di un processo
 
-Per esportare i record, è innanzitutto necessario definire il job e il set di record che si desidera recuperare.  Crea il processo utilizzando l&#39;endpoint [Crea processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST).  Durante l&#39;esportazione delle attività è possibile applicare due filtri primari: `createdAt`, che è sempre obbligatorio, e `activityTypeIds`, che è facoltativo.  Il filtro `createdAt` viene utilizzato per definire un intervallo di date in cui sono state create le attività, utilizzando i parametri `startAt` e `endAt`, che sono entrambi campi datetime e rappresentano rispettivamente la prima data di creazione consentita e l&#39;ultima data di creazione consentita.  Facoltativamente, è inoltre possibile filtrare solo alcuni tipi di attività utilizzando il filtro `activityTypeIds`.  Ciò è utile per rimuovere risultati che non sono rilevanti per il tuo caso d’uso.
+Creare un processo di esportazione per definire i record da recuperare. Utilizza l&#39;endpoint [Crea processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST).
+
+Ogni processo richiede un filtro `createdAt`. I parametri datetime `startAt` e `endAt` definiscono le date di creazione dell&#39;attività consentite più recenti e meno recenti. Per escludere tipi di attività non rilevanti, includere anche il filtro `activityTypeIds` facoltativo.
+
+La seguente richiesta crea un processo di esportazione CSV per i tipi di attività selezionati all’interno di un intervallo di date:
 
 ```http
 POST /bulk/v1/activities/export/create.json
@@ -158,7 +158,9 @@ POST /bulk/v1/activities/export/create.json
 }
 ```
 
-Il processo ora ha lo stato &quot;Creato&quot;, ma non è ancora nella coda di elaborazione.  Per metterlo in coda in modo che possa iniziare l&#39;elaborazione, chiamare l&#39;endpoint [Processo attività di esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST) utilizzando il valore exportId dalla risposta dello stato di creazione.
+La risposta restituisce un valore `exportId` e lo stato &quot;Creato&quot;. Un processo creato non è ancora nella coda di elaborazione.
+
+Per aggiungere il processo alla coda, chiamare l&#39;endpoint [Attività di esportazione accodamento](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST) con `exportId` dalla risposta di creazione.
 
 ```http
 POST /bulk/v1/activities/export/{exportId}/enqueue.json
@@ -180,13 +182,13 @@ POST /bulk/v1/activities/export/{exportId}/enqueue.json
 }
 ```
 
-Ora lo stato segnala che il processo è stato messo in coda.  Quando un processo di lavoro diventa disponibile per questo processo, lo stato viene impostato su &quot;Elaborazione&quot; e il processo inizia ad aggregare i record da Marketo.
+Lo stato della risposta ora è &quot;In coda&quot;. Quando un lavoratore diventa disponibile, lo stato cambia in &quot;Elaborazione&quot; e il processo inizia ad aggregare i record da Marketo.
 
 ## Stato processo di polling
 
 Lo stato del processo può essere recuperato solo per i processi creati dallo stesso utente API.
 
-L’estrazione dell’attività in blocco di Marketo è un endpoint asincrono, pertanto è necessario eseguire il polling dello stato del processo per determinare quando è stato completato.  Effettua il polling utilizzando l&#39;endpoint [Ottieni stato processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/getExportActivitiesStatusUsingGET) come segue:
+L’estrazione dell’attività in blocco elabora i processi in modo asincrono. Esamina l&#39;endpoint [Ottieni stato processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/getExportActivitiesStatusUsingGET) per determinare quando un processo è completo:
 
 ```http
 GET /bulk/v1/activities/export/{exportId}/status.json
@@ -213,26 +215,26 @@ GET /bulk/v1/activities/export/{exportId}/status.json
 }
 ```
 
-Il campo di stato può rispondere con uno dei seguenti valori:
+Il campo `status` restituisce uno dei seguenti valori:
 
-- Creato
-- In coda
-- Elaborazione
-- Annullato
-- Completato
-- Operazione non riuscita
+- `Created`
+- `Queued`
+- `Processing`
+- `Canceled`
+- `Completed`
+- `Failed`
 
 ## Recupero dei dati
 
-Una volta completato il processo, recuperare i dati utilizzando l&#39;endpoint [Get Export Activity File](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/getExportActivitiesFileUsingGET).
+Quando lo stato del processo è &quot;Completato&quot;, recuperare i dati esportati con l&#39;endpoint [Ottieni file attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/getExportActivitiesFileUsingGET):
 
 ```http
 GET /bulk/v1/activities/export/{exportId}/file.json
 ```
 
-La risposta contiene un file formattato nel modo in cui è stato configurato il processo. L’endpoint risponde con il contenuto del file.
+Il corpo della risposta contiene il file nel formato configurato per il processo.
 
-Se un campo lead richiesto è vuoto (non contiene dati), `then null` viene inserito nel campo corrispondente nel file di esportazione.  Nell&#39;esempio seguente, il campo `campaignId` per l&#39;attività restituita è vuoto.
+Se un campo attività richiesto non contiene dati, `null` viene visualizzato nel campo export-file corrispondente. L’esempio seguente mostra i dati di attività esportati:
 
 ```json
 marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueId,primaryAttributeValue,attributes
@@ -242,11 +244,11 @@ marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueI
 783961924,5316669,2022-02-13T14:27:21Z,104,11614,2333,Nurture Automation,"{""Program Member ID"":3240306,""Acquired By"":false,""Old Status"":""Not in Program"",""New Status ID"":27,""Success"":false,""New Status"":""Member"",""Old Status ID"":26}"
 ```
 
-Per supportare il recupero parziale e semplice dei dati estratti, l&#39;endpoint del file supporta facoltativamente l&#39;intestazione HTTP `Range` di tipo `bytes`.  Se l’intestazione non è impostata, viene restituito l’intero contenuto.  Per ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione Range con Marketo [Bulk Extract](bulk-extract.md).
+Per il recupero parziale o ripristinabile, l&#39;endpoint del file supporta l&#39;intestazione HTTP `Range` facoltativa con un intervallo `bytes`. Se ometti questa intestazione, l’endpoint restituisce l’intero file. Per ulteriori informazioni sull&#39;utilizzo dell&#39;intestazione `Range`, vedere [Estrazione in blocco](bulk-extract.md).
 
 ## Annullamento di un processo
 
-Se un processo non è stato configurato correttamente o non è più necessario, può essere facilmente annullato utilizzando l&#39;endpoint [Annulla processo attività di esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST):
+Per interrompere un processo configurato in modo errato o non necessario, chiamare l&#39;endpoint [Annulla processo attività esportazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST):
 
 ```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json
@@ -267,4 +269,4 @@ POST /bulk/v1/activities/export/{exportId}/cancel.json
 }
 ```
 
-La risposta presenta uno stato che indica che il processo è stato annullato.
+Lo stato della risposta indica che il processo è annullato.
