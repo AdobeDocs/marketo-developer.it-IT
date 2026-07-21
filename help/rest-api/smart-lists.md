@@ -26,7 +26,7 @@ ht-degree: 1%
 
 Utilizza le API REST degli elenchi avanzati per eseguire query, clonare ed eliminare elenchi avanzati.
 
-Queste API supportano solo elenchi avanzati creati dall&#39;utente. Non supportano [elenchi smart predefiniti o di sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Queste API supportano solo elenchi avanzati creati dall&#39;utente. Non supportano [elenchi smart predefiniti o di sistema](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Query
 

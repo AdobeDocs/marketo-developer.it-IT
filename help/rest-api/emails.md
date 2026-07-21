@@ -27,7 +27,7 @@ ht-degree: 1%
 
 Utilizza gli endpoint REST delle e-mail per eseguire query e gestire le risorse e-mail.
 
-Se un&#39;e-mail contiene [Marketo Predictive Content](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), i seguenti endpoint non riescono con codice di errore 709 e un messaggio di errore corrispondente:
+Se un&#39;e-mail contiene [Marketo Predictive Content](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), i seguenti endpoint non riescono con codice di errore 709 e un messaggio di errore corrispondente:
 
 - [Ottieni contenuto e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)
 - [Sezione Aggiorna contenuto e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)
@@ -37,7 +37,7 @@ Se un&#39;e-mail contiene [Marketo Predictive Content](https://experienceleague.
 
 Le e-mail supportano gli stessi pattern di query dei modelli: [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET) e per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET). Gli endpoint &quot;by-name&quot; e &quot;browse&quot; supportano anche il filtro delle cartelle.
 
-Se un&#39;e-mail appartiene a un programma e-mail che utilizza [Test A/B](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), i seguenti endpoint non restituiscono l&#39;e-mail:
+Se un&#39;e-mail appartiene a un programma e-mail che utilizza [Test A/B](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), i seguenti endpoint non restituiscono l&#39;e-mail:
 
 - [Ricevi e-mail per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)
 - [Ricevi e-mail per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)
@@ -535,7 +535,7 @@ Se l&#39;opzione Copia automatica nel testo è disattivata per uno snippet incor
 
 ## Moduli
 
-In Email Editor 1.0, un modulo è una sezione e-mail definita nel modello. I moduli possono contenere elementi, variabili e altro contenuto HTML come descritto in [Sintassi del modello e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
+In Email Editor 1.0, un modulo è una sezione e-mail definita nel modello. I moduli possono contenere elementi, variabili e altro contenuto HTML come descritto in [Sintassi del modello e-mail](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
 
 Utilizza le API dei moduli per gestire i moduli all’interno di un messaggio e-mail. Per gli endpoint del modulo che utilizzano HTTP POST, formattare il corpo della richiesta come `application/x-www-form-urlencoded`, non come JSON.
 
@@ -909,7 +909,7 @@ name=MarketoVideo
 
 ## Variabili
 
-Nell’editor e-mail 1.0, le variabili memorizzano i valori per gli elementi e-mail. Definire ogni variabile aggiungendo la sintassi specifica di Marketo al HTML, come descritto in [Sintassi del modello di e-mail](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Utilizza le API delle variabili per gestire le variabili all’interno di un messaggio e-mail.
+Nell’editor e-mail 1.0, le variabili memorizzano i valori per gli elementi e-mail. Definire ogni variabile aggiungendo la sintassi specifica di Marketo al HTML, come descritto in [Sintassi del modello di e-mail](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Utilizza le API delle variabili per gestire le variabili all’interno di un messaggio e-mail.
 
 ### Query
 

@@ -31,9 +31,9 @@ I webhook di Marketo comunicano con i servizi web di terze parti. Un webhook uti
 
 Per istruzioni sulla creazione di un webhook e sulla sua aggiunta a una campagna avanzata, consulta:
 
-- [Creare un Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [Webhook di chiamata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [Utilizzare un webhook in una campagna avanzata](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [Creare un Webhook](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [Webhook di chiamata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [Utilizzare un webhook in una campagna avanzata](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 Configura ogni webhook con le seguenti proprietà:
 
@@ -52,9 +52,9 @@ Tutti i campi del webhook in uscita, inclusi URL, modello e intestazioni persona
 
 I token di lead e di sistema sono sempre disponibili. I token di attivazione, campagna e programma sono disponibili nei rispettivi ambiti. Per ulteriori informazioni, consulta:
 
-- [Panoramica sui token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [Glossario dei token di sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [Token per i momenti di interesse](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [Panoramica sui token](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [Glossario dei token di sistema](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [Token per i momenti di interesse](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 Ad esempio, quando un programma o una campagna è mappato su una risorsa di terze parti, imposta un ID a livello di programma come `My Token`. Quindi passa l’ID nella richiesta webhook come token.
 

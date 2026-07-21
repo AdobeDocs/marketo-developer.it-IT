@@ -28,7 +28,7 @@ Condividi questo documento con gli utenti o i team responsabili delle integrazio
 A seconda del caso d’uso, utilizza una delle seguenti opzioni di migrazione:
 
 * Limita gli elenchi statici utilizzati per l’estrazione dell’attività a 10.000 membri. Dividi gli elenchi esistenti in elenchi più piccoli per continuare a polling dello stesso pubblico per le attività.
-* Estrarre le attività o le modifiche al valore dei dati utilizzando Bulk Activity Extract o Data Streams. Unisci i risultati all&#39;appartenenza all&#39;elenco statico con [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) o [Bulk Lead Extract](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
+* Estrarre le attività o le modifiche al valore dei dati utilizzando Bulk Activity Extract o Data Streams. Unisci i risultati all&#39;appartenenza all&#39;elenco statico con [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) o [Bulk Lead Extract](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
 
 ## Cosa Succederà Se Non Faccio Niente?
 

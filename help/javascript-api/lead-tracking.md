@@ -123,7 +123,7 @@ I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ad esemp
 
 ## Beta
 
-Per accedere al canale beta Munchkin per le pagine di destinazione, passa a [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;.
+Per accedere al canale beta Munchkin per le pagine di destinazione, passa a [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;.
 
 Questa impostazione aggiunge snippet di codice al menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**. Utilizza questi snippet per eseguire la versione beta su siti esterni.
 

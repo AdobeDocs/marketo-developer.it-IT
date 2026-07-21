@@ -59,7 +59,7 @@ I lead possono interagire con l’organizzazione in diversi modi, ad esempio vis
 
 Le attività sono sempre correlate ai lead per leadId.
 
-Puoi anche definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungerne delle istanze tramite l’API Marketo. Per ulteriori informazioni, vedere [Informazioni sulle attività personalizzate](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
+Puoi anche definire attività personalizzate. Dopo aver creato e pubblicato un’attività personalizzata, puoi aggiungerne delle istanze tramite l’API Marketo. Per ulteriori informazioni, vedere [Informazioni sulle attività personalizzate](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities), [JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -79,7 +79,7 @@ Raggruppa i tag e categorizza i dati del programma per il reporting. Utilizza i 
 
 In qualità di amministratore di Marketo, puoi creare tipi di tag obbligatori e facoltativi selezionati dagli utenti al momento della creazione di un programma. Puoi definire i possibili valori per ogni tipo di tag in base ai requisiti di reporting della tua azienda.
 
-Ad esempio, crea un tipo di tag personalizzato &quot;Region&quot; con valori quali Nordest e Southeast per analizzare quale regione genera il maggior numero di lead. Crea un tipo di tag &quot;Proprietario&quot; per confrontare quali proprietari del programma, come Maria, David o John, hanno il maggiore impatto sulla creazione di lead e opportunità. Per ulteriori informazioni, vedere [Informazioni sui tag](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Ad esempio, crea un tipo di tag personalizzato &quot;Region&quot; con valori quali Nordest e Southeast per analizzare quale regione genera il maggior numero di lead. Crea un tipo di tag &quot;Proprietario&quot; per confrontare quali proprietari del programma, come Maria, David o John, hanno il maggiore impatto sulla creazione di lead e opportunità. Per ulteriori informazioni, vedere [Informazioni sui tag](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -128,7 +128,7 @@ I token definiti a livello di programma o cartella sono denominati &quot;I miei 
 - Ereditato: creato a livello di cartella della campagna e disponibile per tutti i programmi in tale cartella.
 - Sostituito: modificato con un valore personalizzato a livello di programma senza modificare il valore padre Il mio token a livello di cartella del programma.
 
-I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; all&#39;inizio del nome del token. Ad esempio, un tipo di data My Token denominato EventDate ha il nome di token `{{my.EventDate}}`. Per ulteriori informazioni, vedere [Informazioni sui token in un programma](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+I miei token utilizzano la convenzione di denominazione `{{my.My Token}}`, con la parola &quot;my&quot; all&#39;inizio del nome del token. Ad esempio, un tipo di data My Token denominato EventDate ha il nome di token `{{my.EventDate}}`. Per ulteriori informazioni, vedere [Informazioni sui token in un programma](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 

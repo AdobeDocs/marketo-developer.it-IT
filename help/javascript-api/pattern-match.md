@@ -25,7 +25,7 @@ ht-degree: 4%
 
 RTP fornisce una funzione di utilità che controlla se un modello corrisponde a una stringa. L&#39;utility restituisce un risultato di corrispondenza in modo sincrono e non può essere utilizzata in modo asincrono.
 
-Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
 ## Utilizzo
 

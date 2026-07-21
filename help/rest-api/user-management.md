@@ -30,9 +30,9 @@ Gli endpoint di gestione utenti di Marketo eseguono operazioni CRUD sui record u
 A differenza di altre API REST di Marketo, quando si utilizzano le API User Management:
 
 - Invia il token di accesso in un’intestazione HTTP. Impossibile passare il token di accesso come parametro della stringa di query. Consulta la [Guida all&#39;autenticazione](authentication.md).
-- Durante la creazione del ruolo utente per un servizio personalizzato [API REST](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api), selezionare un&#39;autorizzazione da ciascuno di questi gruppi:
-  1. Autorizzazione &quot;Accedi agli utenti&quot; dal gruppo [Accesso amministratore](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
-  1. &quot;Accedere all&#39;API User Management&quot; dal gruppo [Access API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
+- Durante la creazione del ruolo utente per un servizio personalizzato [API REST](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api), selezionare un&#39;autorizzazione da ciascuno di questi gruppi:
+  1. Autorizzazione &quot;Accedi agli utenti&quot; dal gruppo [Accesso amministratore](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
+  1. &quot;Accedere all&#39;API User Management&quot; dal gruppo [Access API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
 - Valuta il codice di stato della risposta HTTP perché i corpi di risposta non contengono l’attributo booleano &quot;success&quot;. Una chiamata di successo restituisce il codice di stato 200. Una chiamata non riuscita restituisce un codice di stato non 200 e l’array standard &quot;errors&quot; con un codice di errore e un messaggio descrittivo.
 - Formattare le stringhe di data e ora come `yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`. Questo formato si applica a `createdAt`, `updatedAt` e `expiresAt`.
 - Non aggiungere il prefisso &quot;/rest&quot; agli endpoint API di User Management.
@@ -312,11 +312,11 @@ GET /userservice/management/v1/users/workspaces.json
 
 ## Invita utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta solo l&#39;invito di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per invitare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece l&#39;[API di gestione utenti di Adobe](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta solo l&#39;invito di [utenti con sola API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per invitare [utenti standard](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece l&#39;[API di gestione utenti di Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Invita utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST) invia un invito e-mail di benvenuto in Marketo a un nuovo utente. L’e-mail contiene il collegamento &quot;Accedi a Marketo&quot;. Il destinatario seleziona il collegamento, crea una password e ottiene l’accesso a Marketo.
 
-Fino a quando il destinatario non accetta l’invito, il suo stato è &quot;In sospeso&quot; e il record utente non può essere modificato. Un invito in sospeso scade sette giorni dopo l’invio. Per ulteriori informazioni, consulta la [documentazione sulla gestione degli utenti di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
+Fino a quando il destinatario non accetta l’invito, il suo stato è &quot;In sospeso&quot; e il record utente non può essere modificato. Un invito in sospeso scade sette giorni dopo l’invio. Per ulteriori informazioni, consulta la [documentazione sulla gestione degli utenti di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users).
 
 Trasmettere i parametri nel corpo della richiesta in formato `application/json`.
 
@@ -324,7 +324,7 @@ I parametri richiesti sono `emailAddress`, `firstName`, `lastName` e `userRoleWo
 
 Il parametro `userid` è l&#39;identificatore utente univoco utilizzato per l&#39;accesso e deve essere formattato come indirizzo e-mail. Se la richiesta omette `userid`, il valore predefinito sarà `emailAddress`.
 
-Il parametro booleano `apiOnly` specifica se l&#39;utente è un [utente solo API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Il parametro `expiresAt` specifica quando scade l&#39;accesso utente e utilizza il formato W3C ISO-8601 senza millisecondi. Se la richiesta omette `expiresAt`, l&#39;utente non scade mai. Il parametro `reason` descrive il motivo dell&#39;invito.
+Il parametro booleano `apiOnly` specifica se l&#39;utente è un [utente solo API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Il parametro `expiresAt` specifica quando scade l&#39;accesso utente e utilizza il formato W3C ISO-8601 senza millisecondi. Se la richiesta omette `expiresAt`, l&#39;utente non scade mai. Il parametro `reason` descrive il motivo dell&#39;invito.
 
 L’endpoint restituisce &quot;true&quot; quando l’invito ha esito positivo. In caso contrario, restituisce un messaggio di errore.
 
@@ -356,7 +356,7 @@ Content-Type: application/json
 true
 ```
 
-L’immagine seguente mostra l’e-mail di benvenuto in Marketo inviata al nuovo utente. L’oggetto è &quot;Informazioni di accesso a Marketo&quot;. Il mittente è l&#39;indirizzo di posta elettronica dell&#39;utente solo API associato al servizio personalizzato [REST API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api). I parametri firstName, lastName e emailAddress specificano il destinatario.
+L’immagine seguente mostra l’e-mail di benvenuto in Marketo inviata al nuovo utente. L’oggetto è &quot;Informazioni di accesso a Marketo&quot;. Il mittente è l&#39;indirizzo di posta elettronica dell&#39;utente solo API associato al servizio personalizzato [REST API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api). I parametri firstName, lastName e emailAddress specificano il destinatario.
 
 ![Invita e-mail utente](assets/invite-user-email.png)
 
@@ -368,7 +368,7 @@ L&#39;utente accetta l&#39;invito immettendo una password due volte e selezionan
 
 ### Aggiorna attributi utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;aggiornamento degli attributi solo di [utenti API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per aggiornare gli attributi per [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece l&#39;[API Gestione utenti di Adobe](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;aggiornamento degli attributi solo di [utenti API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per aggiornare gli attributi per [utenti standard](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza invece l&#39;[API Gestione utenti di Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Aggiorna attributi utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/updateUserAttributeUsingPOST) accetta un singolo parametro di percorso `userid` e restituisce un singolo record utente. Il corpo della richiesta contiene uno o più attributi utente da aggiornare: `emailAddress`, `firstName`, `lastName`, `expiresAt`.
 
@@ -423,7 +423,7 @@ Content-Type: application/json
 
 #### Elimina utente
 
-In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;eliminazione solo di [utenti con sola API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per eliminare [utenti standard](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API di gestione utenti di Adobe](https://developer.adobe.com/umapi/).
+In [sottoscrizioni integrate in Adobe IMS](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview), questo endpoint supporta l&#39;eliminazione solo di [utenti con sola API](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user). Per eliminare [utenti standard](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users), utilizza l&#39;[API di gestione utenti di Adobe](https://developer.adobe.com/umapi/).
 
 L&#39;endpoint [Elimina utente](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteUserUsingPOST) accetta un singolo parametro di percorso `userid` ed elimina l&#39;utente corrispondente dall&#39;istanza. Questa è una cancellazione distruttiva e non può essere annullata. In caso di esito positivo, viene restituito il codice di stato 200, altrimenti viene restituito un messaggio di errore.
 

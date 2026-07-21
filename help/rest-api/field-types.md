@@ -25,7 +25,7 @@ ht-degree: 8%
 
 # Tipi di campi
 
-Nella tabella seguente sono descritti i tipi di campi disponibili in Marketo. Per ulteriori informazioni, vedere il [glossario del tipo di campo personalizzato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary) e [limiti dei campi di Marketo per tipo di campo](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+Nella tabella seguente sono descritti i tipi di campi disponibili in Marketo. Per ulteriori informazioni, vedere il [glossario del tipo di campo personalizzato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary) e [limiti dei campi di Marketo per tipo di campo](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo di campo | Descrizione | Esempio |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Nella tabella seguente sono descritti i tipi di campi disponibili in Marketo. Pe
 | E-mail | Campo stringa che accetta indirizzi e-mail | <example@example.com> |
 | Mobile | Campo numerico che contiene numeri reali e può utilizzare una cifra decimale. | 10,4 |
 | Intero | Numero intero | 10 |
-| Formula | Campi i i cui valori vengono generati manipolando i dati di altri campi presenti in un record lead. Non vengono esportati e non possono essere utilizzati in una campagna avanzata. | Vedi questo [articolo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Formula | Campi i i cui valori vengono generati manipolando i dati di altri campi presenti in un record lead. Non vengono esportati e non possono essere utilizzati in una campagna avanzata. | Vedi questo [articolo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Percentuale | Una percentuale espressa come numero intero | 30 |
 | URL | Campo di testo che limita l’input agli URL, incluso il protocollo dell’URL. | <http://example.com/> |
 | Telefono | Numero di telefono | 111-111-1111 |

@@ -21,7 +21,7 @@ ht-degree: 2%
 
 [Riferimento endpoint elenchi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Gli elenchi di account denominati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) sono insiemi di account denominati in Marketo. Utilizzali per la categorizzazione, l’arricchimento dei dati e il filtraggio intelligente delle campagne.
+[Gli elenchi di account denominati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/target-account-management/target/account-lists) sono insiemi di account denominati in Marketo. Utilizzali per la categorizzazione, l’arricchimento dei dati e il filtraggio intelligente delle campagne.
 
 Le API per l’elenco degli account denominati consentono di gestire in remoto le risorse dell’elenco e la relativa appartenenza.
 `Content`
