@@ -10,22 +10,31 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 322
-ht-degree: 0%
+source-wordcount: 217
+ht-degree: 1%
 
 ---
 
 # Modalità di accesso protezione avanzata
 
-Marketo SDK espone i metodi per impostare e rimuovere la firma di sicurezza. Esiste anche un metodo di utilità per recuperare l’ID dispositivo. Al momento dell’accesso, l’ID dispositivo deve essere trasmesso insieme all’e-mail al server clienti per essere utilizzato nel calcolo della firma di sicurezza. Il SDK deve individuare il nuovo endpoint, che punta all’algoritmo elencato sopra, per recuperare i campi necessari per creare un’istanza dell’oggetto firma. L&#39;impostazione di questa firma in SDK è un passaggio necessario se la modalità di accesso alla sicurezza è stata abilitata in Marketo Mobile Admin.
+La modalità di accesso avanzata per la protezione richiede che Marketo SDK recuperi e imposti una firma di protezione. SDK fornisce metodi per impostare e rimuovere la firma e un metodo di utilità per recuperare l&#39;ID dispositivo.
+
+Al momento dell’accesso, invia l’ID dispositivo e l’indirizzo e-mail al server clienti per calcolare la firma di sicurezza. SDK chiama quindi l’endpoint cliente per recuperare i campi necessari per creare un’istanza dell’oggetto firma. Se la modalità di accesso Sicurezza è abilitata in Marketo Mobile Admin, è necessario impostare questa firma in SDK.
 
 ## Impostazione modalità accesso protetto
 
-Questa configurazione deve essere implementata prima che la modalità Accesso sicuro sia stata abilitata tramite la pagina Marketo Admin > Mobile Apps &amp; Devices (Amministrazione > App e dispositivi mobili). Di seguito sono riportati ulteriori passaggi che descrivono il processo necessario per completare il processo di convalida della sicurezza.
+Implementa questa configurazione prima di abilitare la modalità Accesso sicuro nella pagina Amministrazione di Marketo > App e dispositivi mobili.
 
-La modalità di accesso sicuro richiede l’implementazione dell’algoritmo di firma sul lato server del cliente, che fornirà un endpoint per recuperare la chiave di accesso, la firma calcolata, la marca temporale di scadenza e l’e-mail. Questo algoritmo richiede la chiave di accesso utente, il segreto di accesso, l’e-mail, la marca temporale e l’ID dispositivo per eseguire il calcolo. Il cliente è responsabile della configurazione dell’endpoint, dell’implementazione dell’algoritmo per eseguire i calcoli della firma e per mantenere aggiornata la marca temporale della scadenza.
+La modalità Accesso sicuro richiede un algoritmo di firma lato server e un endpoint cliente. L’endpoint restituisce i seguenti valori:
+
+- Chiave di accesso
+- Firma calcolata
+- Timestamp di scadenza
+- Indirizzo e-mail
+
+L’algoritmo utilizza la chiave di accesso dell’utente, il segreto di accesso, l’indirizzo e-mail, la marca temporale e l’ID dispositivo. Il cliente deve impostare l’endpoint, implementare il calcolo della firma e mantenere corrente il timestamp di scadenza.
 
 ```python
 import argparse
@@ -68,7 +77,7 @@ if __name__ == '__main__':
     print 'HMAC is ', hmac_string
 ```
 
-Marketo SDK espone nuovi metodi per impostare e rimuovere la firma di sicurezza. Esiste anche un metodo di utilità per recuperare l’ID dispositivo. Al momento dell’accesso, l’ID dispositivo deve essere trasmesso insieme all’e-mail al server clienti per essere utilizzato nel calcolo della firma di sicurezza. Il SDK deve individuare il nuovo endpoint, che punta all’algoritmo elencato sopra, per recuperare i campi necessari per creare un’istanza dell’oggetto firma. L&#39;impostazione di questa firma in SDK è un passaggio necessario se la modalità di accesso alla sicurezza è stata abilitata in Marketo Mobile Admin.
+Utilizza i metodi specifici della piattaforma per impostare o rimuovere la firma di sicurezza e recuperare l’ID dispositivo.
 
 ### iOS
 

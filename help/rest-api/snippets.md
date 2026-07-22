@@ -13,10 +13,10 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 512
-ht-degree: 1%
+source-wordcount: 386
+ht-degree: 2%
 
 ---
 
@@ -24,11 +24,11 @@ ht-degree: 1%
 
 [Riferimento endpoint snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets)
 
-I snippet sono componenti HTML riutilizzabili che possono essere incorporati nelle e-mail e nelle pagine di destinazione e che possono essere segmentati per contenuti dinamici. Ai frammenti non sono associati modelli e possono essere creati e distribuiti all&#39;interno di altre risorse in Marketo.
+I snippet sono componenti HTML riutilizzabili che possono essere incorporati nelle e-mail e nelle pagine di destinazione. Puoi segmentare snippet per il contenuto dinamico. I snippet non utilizzano modelli e possono essere creati e distribuiti all’interno di altre risorse Marketo.
 
 ## Query
 
-La query dei frammenti segue il modello standard per le risorse, tranne per il fatto che non dispone del metodo By Name. Entrambi i metodi [By Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) e [Browse](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET) consentono l&#39;utilizzo del campo di stato per recuperare le versioni approvate o bozza del frammento.
+Query snippet [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET). L’API non fornisce un metodo query per nome. Entrambi gli endpoint accettano il campo `status` per recuperare una versione approvata o bozza.
 
 ### Per ID
 
@@ -124,7 +124,7 @@ GET /rest/asset/v1/snippets.json?maxReturn=3
 
 ## Contenuto della query
 
-Il contenuto di un determinato frammento può essere recuperato in base all’ID del frammento.
+Recupera il contenuto dei frammenti per ID frammento.
 
 ```http
 GET /rest/asset/v1/snippet/{id}/content.json
@@ -149,11 +149,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-La chiamata restituisce un elenco di sezioni di contenuto, costituite da sezioni di tipo HTML o DynamicContent e, facoltativamente, da una sezione con un tipo di testo.
+La risposta contiene sezioni di tipo `HTML` o `DynamicContent`. Può inoltre contenere una sezione di tipo `Text`.
 
 ## Crea e aggiorna
 
-I frammenti seguono il pattern di creazione delle risorse complesse, in cui la chiamata a [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST) e il relativo contenuto vengono eseguiti separatamente, pertanto la prima chiamata deve essere all&#39;endpoint create, con una descrizione facoltativa.   I dati vengono passati come x-www-form-urlencoded, non come JSON.
+Crea separatamente la risorsa frammento e il relativo contenuto. Innanzitutto, chiama l&#39;endpoint [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST). La descrizione è facoltativa. Passa i dati come `x-www-form-urlencoded`, non come JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -193,7 +193,11 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 }
 ```
 
-L’aggiunta o la sostituzione del contenuto in uno snippet viene eseguita per ID. Il contenuto può essere di tipo Testo, HTML o DynamicContent. Se il tipo è Testo, il parametro di contenuto è l’endpoint di testo normale; se è HTML, è il testo di markup desiderato. Se il tipo è impostato su DynamicContent, il parametro di contenuto deve essere impostato sull&#39;ID della segmentazione da associare al frammento.
+Aggiungi o sostituisci il contenuto del frammento per ID. Il tipo di contenuto può essere `Text`, `HTML` o `DynamicContent`.
+
+- Per `Text`, passare il testo normale nel parametro `content`.
+- Per `HTML`, passare il markup nel parametro `content`.
+- Per `DynamicContent`, impostare `content` sull&#39;ID della segmentazione associata al frammento.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/content.json
@@ -221,7 +225,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[L&#39;aggiornamento dei metadati](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST) viene eseguito anche dall&#39;ID. È possibile aggiornare solo il nome e la descrizione:
+Per [aggiornare i metadati](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST), specificare l&#39;ID del frammento. È possibile aggiornare solo il nome e la descrizione.
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -263,7 +267,9 @@ name=Test Snippet&description=New Description
 
 ## Contenuto dinamico
 
-I frammenti seguono il pattern standard per il contenuto dinamico, ma rappresentano una sola sezione di contenuto intera, pertanto ogni frammento può contenere solo una sezione dinamica, con un elenco di sezioni interne facoltativamente per ogni segmento nella segmentazione utilizzata. È possibile eseguire query sul contenuto dinamico solo tramite l&#39;ID frammento, poiché in un frammento può essere presente una sola sezione di contenuto dinamico.
+Uno snippet rappresenta una sezione di contenuto completa e può contenere una sola sezione dinamica. Tale sezione può contenere una sezione interna per ciascun segmento nella segmentazione associata.
+
+Poiché uno snippet può avere una sola sezione dinamica, esegui una query sul contenuto dinamico in base all’ID dello snippet.
 
 ```http
 GET /rest/asset/v1/snippet/{id}/dynamicContent.json
@@ -318,7 +324,7 @@ GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 
 ## Approvazione
 
-Gli snippet dispongono di endpoint per l&#39;approvazione, la revoca dell&#39;approvazione e l&#39;eliminazione delle bozze, che seguono il modello di risorsa standard. Lo stato di bozza di uno snippet deve essere quello di approvazione.
+I frammenti forniscono endpoint per l&#39;approvazione, la rimozione dell&#39;approvazione e l&#39;eliminazione delle bozze. Lo stato di bozza di uno snippet deve essere impostato prima dell&#39;approvazione.
 
 ### Approvazione
 
@@ -410,7 +416,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Duplica
 
-[La duplicazione di uno snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST) con l&#39;API è semplice e segue il modello standard, con un nome obbligatorio, un ID dello snippet e della cartella originali e una descrizione facoltativa.  Se non esiste alcuna versione approvata, la versione bozza viene clonata.
+Per [clonare un frammento](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST), specificare un nome, l&#39;ID del frammento di origine e una cartella. La descrizione è facoltativa. Se l’origine non dispone di una versione approvata, l’endpoint clona la relativa bozza.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

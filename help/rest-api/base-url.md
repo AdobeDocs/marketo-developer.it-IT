@@ -8,30 +8,32 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 153
-ht-degree: 2%
+source-wordcount: 142
+ht-degree: 3%
 
 ---
 
 # URL di base
 
-La documentazione [Riferimento endpoint](endpoint-reference.md) per ogni chiamata API mostra il metodo REST, il percorso, la risorsa e i parametri che devono essere aggiunti all&#39;URL di base per formare una richiesta.
+Ogni chiamata API in [Riferimento endpoint](endpoint-reference.md) specifica il metodo, il percorso, la risorsa e i parametri REST. Aggiungi questi componenti all’URL di base per creare una richiesta.
 
 Di seguito è riportato un esempio di URL REST ben formato:
 
 `https://284-RPR-133.mktorest.com/rest/v1/lead/318581.json?fields=email,firstName,lastName`
 
-composto dalle seguenti parti:
+L’esempio contiene i seguenti componenti:
 
-- URL di base: `https://284-RPR-133.mktorest.com/rest`
-- Percorso: `/v1/lead/`
-- Risorsa: `318582.json`
-- Parametro query: `fields=email,firstName,lastName`
+- **URL di base:** `https://284-RPR-133.mktorest.com/rest`
+- **Percorso:** `/v1/lead/`
+- **Risorsa:** `318582.json`
+- **Parametro query:** `fields=email,firstName,lastName`
 
-L’URL di base contiene l’ID account (alias Munchkin ID) ed è quindi univoco per ogni abbonamento a Marketo. L&#39;URL di base viene trovato accedendo a Marketo e passando al menu **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**. È etichettato come &quot;Endpoint:&quot; sotto la sezione &quot;REST API&quot; come mostrato nelle schermate seguenti.
+L’URL di base contiene l’ID account, noto anche come Munchkin ID, ed è univoco per ogni abbonamento a Marketo.
+
+Per trovare l&#39;URL di base, accedere a Marketo e passare a **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**. L’URL di base è etichettato come &quot;Endpoint:&quot; nella sezione &quot;REST API&quot;, come mostrato nell’immagine seguente.
 
 ![Endpoint URL di base servizi Web](assets/rest-api-base-url-web-services.png)
 
-Una volta trovato l’URL di base, copialo e includilo negli URL utilizzati quando chiami una qualsiasi delle API REST.
+Copia l’URL di base e includilo nell’URL per ogni chiamata API REST.

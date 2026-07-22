@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: ebde5b41-29c9-4f5e-9ef6-1197e85409e3
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 979
+source-wordcount: 741
 ht-degree: 1%
 
 ---
@@ -26,7 +26,7 @@ ht-degree: 1%
 
 [Riferimento endpoint programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs)
 
-I programmi sono un componente organizzativo principale delle attività di marketing di Marketo. Possono essere elementi principali per la maggior parte dei tipi di risorse e consentire il tracciamento dell’appartenenza e del successo dei lead nel contesto di singole iniziative di marketing. I programmi possono essere padri di tutti i tipi di record ad eccezione di LP, Modelli e-mail e File.
+I programmi organizzano le attività di marketing Marketo e tengono traccia dell’iscrizione dei lead e del successo delle singole iniziative di marketing. Un programma può contenere la maggior parte dei tipi di risorse, ad eccezione di pagine di destinazione, modelli e-mail e file.
 
 ## Tipi di programmi
 
@@ -38,19 +38,21 @@ In Marketo sono disponibili cinque tipi principali di programmi:
 - Coinvolgimento
 - E-mail
 
-I programmi di coinvolgimento possono essere padri per ogni altro tipo di programma, mentre Predefinito, Evento ed Evento con webinar possono essere padri solo per i programmi e-mail.
+I programmi di coinvolgimento possono contenere qualsiasi altro tipo di programma. Predefinito, Evento ed Evento con programmi Webinar può contenere solo programmi e-mail.
 
-I programmi dispongono sempre di un canale, derivano la possibile configurazione degli Stati membri del programma dal canale con cui sono stati creati, che può essere recuperato con l’API Get Channels. A un programma può essere associato anche un set di tag. I tag sono campi personalizzabili che possono essere configurati come facoltativi o obbligatori per qualsiasi tipo di programma e per i quali verrà selezionato un valore da un elenco configurato in Marketo Admin.
+Ogni programma ha un canale. Il canale definisce gli Stati membri del programma disponibili e può essere recuperato con l’API Get Channels.
+
+Un programma può anche avere dei tag. I tag sono campi personalizzabili che possono essere facoltativi o obbligatori per un tipo di programma. Ogni tag utilizza un valore da un elenco configurato in Marketo Admin.
 
 ## Query
 
-I programmi seguono il modello standard per le query su risorse con un’opzione aggiuntiva per eseguire query per tipo di tag e valori. I tag e i valori disponibili possono essere recuperati con [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET).
+Eseguire query sui programmi per ID, nome, esplorazione o tipo e valore di tag. Utilizza [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET) per recuperare tag e valori disponibili.
 
 ### Per ID
 
 L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) richiede un parametro di percorso `id`.
 
-L&#39;ID programma può essere ottenuto dall&#39;URL del programma nell&#39;interfaccia utente, dove l&#39;URL sarà simile a `https://app-\*\*\*.marketo.com/#PG1001A1`. In questo URL, `id` è 1001. Sarà sempre compreso tra il primo set di lettere nell’URL e il secondo set di lettere.
+È possibile ottenere l&#39;ID del programma dall&#39;URL dell&#39;interfaccia utente, ad esempio `https://app-\*\*\*.marketo.com/#PG1001A1`. In questo esempio, l&#39;ID è `1001`, tra il primo e il secondo set di lettere.
 
 ```http
 GET /rest/asset/v1/program/{id}.json
@@ -94,7 +96,7 @@ GET /rest/asset/v1/program/{id}.json
 
 ### Per nome
 
-L&#39;endpoint [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset) richiede un parametro di query `name`. I parametri di query booleani facoltativi sono `includeTags` e `includeCosts`, utilizzati rispettivamente per restituire i tag del programma e i costi del programma.
+L&#39;endpoint [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset) richiede un parametro di query `name`. Impostare i parametri booleani facoltativi `includeTags` e `includeCosts` per restituire rispettivamente tag e costi.
 
 ```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
@@ -136,15 +138,15 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 }
 ```
 
-### Sfogliare
+### Sfoglia
 
-L&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) consente di cercare programmi.
+Utilizza l&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) per sfogliare i programmi.
 
-Il parametro facoltativo `status` consente di filtrare in base allo stato del programma. Questo parametro si applica solo ai programmi di coinvolgimento e e-mail. I valori possibili sono &quot;on&quot; e &quot;off&quot; per i programmi di coinvolgimento e &quot;unlocked&quot; per i programmi e-mail.
+Il parametro facoltativo `status` filtra i programmi di coinvolgimento e di posta elettronica in base allo stato. I valori validi sono `on` e `off` per i programmi di coinvolgimento e `unlocked` per i programmi e-mail.
 
-Il parametro facoltativo `maxReturn` controlla il numero di programmi da restituire (il massimo è 200, il valore predefinito è 20). Parametro `offset` facoltativo utilizzato per i risultati di paging (il valore predefinito è 0).
+Il parametro facoltativo `maxReturn` controlla il numero di programmi restituiti. Il valore predefinito è 20 e il massimo è 200. Utilizzare il parametro facoltativo `offset` per l&#39;impaginazione; il valore predefinito è 0.
 
-Tieni presente che i tag associati a un programma non vengono restituiti da questo endpoint. È possibile recuperare i tag del programma utilizzando [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET).
+Questo endpoint non restituisce i tag del programma. Recuperare i tag con [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET).
 
 ```http
 GET /rest/asset/v1/programs.json
@@ -199,7 +201,7 @@ GET /rest/asset/v1/programs.json
 
 ### Per intervallo di date
 
-I parametri `earliestUpdatedAt` e `latestUpdatedAt` dell&#39;endpoint [Get Programs](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) consentono di impostare soglie di data/ora basse e alte per i programmi restituiti che sono stati aggiornati o creati inizialmente nell&#39;intervallo specificato.
+Utilizzare i parametri `earliestUpdatedAt` e `latestUpdatedAt` con [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) per impostare limiti di data e ora elevati. L’endpoint restituisce i programmi creati o aggiornati all’interno dell’intervallo.
 
 ```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -290,9 +292,9 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### Per tipo di tag
 
-L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET) recupera un elenco di programmi che corrispondono al tipo di tag e ai valori di tag specificati.
+L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET) restituisce programmi che corrispondono al tipo e al valore di tag specificati.
 
-Esistono due parametri obbligatori: `tagType`, che è il tipo di tag su cui filtrare, e `tagValue`, che è il valore di tag su cui filtrare.  Il parametro facoltativo `maxReturn` integer controlla il numero di programmi da restituire (il massimo è 200, il valore predefinito è 20) e il parametro facoltativo integer `offset` utilizzato per il paging dei risultati (il valore predefinito è 0).  I risultati vengono restituiti in ordine casuale.
+I parametri `tagType` e `tagValue` sono obbligatori. Il numero intero facoltativo `maxReturn` controlla il numero di programmi restituiti. Il valore predefinito è 20 e il valore massimo è 200. Utilizzare il numero intero facoltativo `offset` per l&#39;impaginazione; il valore predefinito è 0. I risultati vengono restituiti in ordine casuale.
 
 ```http
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
@@ -332,7 +334,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Crea e aggiorna
 
-I programmi [Creazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST) e [Aggiornamento](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST) seguono il modello di risorsa standard e contengono `folder`, `name`, `type` e `channel` come parametri obbligatori. `description`, `costs` e `tags` sono facoltativi. Il canale e il tipo possono essere impostati solo al momento della creazione del programma. Dopo la creazione è possibile aggiornare solo descrizione, nome, `tags` e `costs`, con un parametro `costsDestructiveUpdate` aggiuntivo consentito. Se si passa `costsDestructiveUpdate` come true, tutti i costi esistenti verranno cancellati e sostituiti con eventuali costi inclusi nella chiamata. Tieni presente che i tag possono essere necessari per alcuni tipi di programmi in alcune sottoscrizioni, ma questo dipende dalla configurazione e deve prima essere verificato con Ottieni tag per verificare se sono presenti requisiti specifici per l’istanza.
+[Per creare](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST) un programma sono necessari `folder`, `name`, `type` e `channel`. I parametri facoltativi sono `description`, `costs` e `tags`. Alcuni abbonamenti richiedono tag per tipi di programmi specifici. Utilizza Ottieni tag per verificare i requisiti dell’istanza.
+
+Quando [aggiorna](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST), è possibile modificare solo la descrizione, il nome, `tags` e `costs`. Potete impostare il canale e digitare solo durante la creazione. L&#39;impostazione di `costsDestructiveUpdate` su `true` cancella tutti i costi esistenti e li sostituisce con i costi inclusi nella richiesta.
 
 Durante la creazione o l&#39;aggiornamento di un programma e-mail, è possibile passare `startDate` e `endDate` anche come data/ora UTC:
 
@@ -391,7 +395,7 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 ### Aggiornamento
 
-Per aggiungere nuovi costi durante l&#39;aggiornamento dei costi del programma, è sufficiente aggiungerli all&#39;array `costs`. Per eseguire un aggiornamento distruttivo, trasferire i nuovi costi insieme al parametro `costsDestructiveUpdate` impostato su `true`. Per cancellare tutti i costi da un programma, non passare un parametro `costs` e passare semplicemente `costsDestructiveUpdate` impostato su `true`.
+Per aggiungere i costi del programma, aggiungerli all&#39;array `costs`. Per sostituire i costi esistenti, passare i nuovi costi e impostare `costsDestructiveUpdate` su `true`. Per cancellare tutti i costi, omettere `costs` e impostare `costsDestructiveUpdate` su `true`.
 
 ```http
 POST /rest/asset/v1/program/{id}.json
@@ -453,7 +457,9 @@ description=This is an updated description&name=Updated Program Name&costs=[{"st
 
 ## Approvazione
 
-I programmi e-mail possono essere approvati o non approvati in remoto, il che causerà l’esecuzione del programma alla data di inizio specificata e la sua conclusione alla data di fine specificata. Entrambi devono essere impostati per approvare il programma, nonché per disporre di un’e-mail e di un elenco smart validi e approvati configurati tramite l’interfaccia utente.
+Puoi approvare o annullare l’approvazione dei programmi e-mail in remoto. Un programma approvato viene eseguito alle `startDate` e termina alle `endDate`.
+
+Prima dell’approvazione, imposta entrambe le date e configura un’e-mail e un elenco smart validi e approvati nell’interfaccia utente.
 
 ### Approvazione
 
@@ -497,9 +503,11 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## Duplica
 
-[I programmi di clonazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST) seguono il modello di risorsa standard con il nuovo nome e la nuova cartella come parametri obbligatori e una descrizione facoltativa.  Il parametro `name` deve essere univoco e non può superare i 255 caratteri.  Il parametro `folder` è la cartella padre.  L&#39;attributo del tipo di parametro `folder` deve essere impostato su &quot;Folder&quot; e la cartella di destinazione deve trovarsi nella stessa area di lavoro del programma clonato.
+[Per clonare i programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST) è necessario un nuovo nome e una nuova cartella padre. La descrizione è facoltativa. `name` deve essere univoco e non può superare i 255 caratteri.
 
-I programmi che contengono determinati tipi di risorse non possono essere clonati tramite questa API, tra cui notifiche push, messaggi in-app, rapporti e Social Assets. I programmi in-app non possono essere clonati tramite questa API.
+Impostare l&#39;attributo del tipo del parametro `folder` su `Folder`. La cartella di destinazione deve trovarsi nello stesso workspace del programma di origine.
+
+Non puoi utilizzare questa API per clonare programmi in-app o programmi contenenti notifiche push, messaggi in-app, rapporti o risorse social.
 
 ```http
 POST /rest/asset/v1/program/{id}/clone.json

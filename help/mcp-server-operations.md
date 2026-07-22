@@ -12,9 +12,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 264
+source-wordcount: 260
 ht-degree: 3%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 3%
 
 # [!DNL Marketo Engage] operazioni MCP
 
-Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Engage]. In generale, sono disponibili endpoint di sola lettura o non distruttivi. `Delete` o altre operazioni distruttive non sono disponibili per il sistema di IA.
+Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Engage]. Il server in genere fornisce endpoint di sola lettura o non distruttivi. Il sistema di IA non può utilizzare `Delete` o altre operazioni distruttive.
 
 >[!NOTE]
 >

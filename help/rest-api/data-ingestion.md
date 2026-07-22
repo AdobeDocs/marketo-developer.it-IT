@@ -8,20 +8,24 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2191
+source-wordcount: 2151
 ht-degree: 14%
 
 ---
 
 # API di acquisizione dati
 
-L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata progettato per gestire in modo efficiente e con ritardi minimi l’acquisizione di grandi quantità di dati relativi a persone e persone.
+L’API di acquisizione dati è un servizio ad alto volume, a bassa latenza e a disponibilità elevata. Utilizzalo per acquisire grandi quantità di dati relativi a persone e persone con un ritardo minimo.
 
-I dati vengono acquisiti inviando le richieste eseguite in modo asincrono. È possibile recuperare lo stato della richiesta sottoscrivendo eventi da [Marketo Observability Data Stream](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+Le richieste di acquisizione dei dati vengono eseguite in modo asincrono. Per recuperare lo stato della richiesta, abbonati agli eventi del [flusso di dati di osservabilità Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-Le interfacce sono disponibili per cinque tipi di oggetto: Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi (Elenchi statici). L&#39;operazione di registrazione è solo &quot;insert or update&quot;, fatta eccezione per i membri del programma che supportano anche le operazioni di eliminazione, e per gli elenchi che supportano le operazioni di aggiunta e rimozione.
+L’API fornisce interfacce per cinque tipi di oggetto:
+
+- Persone, oggetti personalizzati e società supportano le operazioni di &quot;inserimento o aggiornamento&quot;.
+- I membri del programma supportano le operazioni di inserimento o aggiornamento ed eliminazione.
+- Gli elenchi (statici) supportano le operazioni di aggiunta e rimozione.
 
 Leggi la [documentazione sull&#39;API di acquisizione dati](https://developer.adobe.com/marketo-apis/api/data-ingestion).
 
@@ -31,15 +35,15 @@ Leggi la [documentazione sull&#39;API di acquisizione dati](https://developer.ad
 
 ## Autenticazione
 
-L&#39;API di acquisizione dati utilizza lo stesso metodo di autenticazione OAuth 2.0 dell&#39;API REST di Marketo per generare un token di accesso, ma il token di accesso deve essere passato tramite l&#39;intestazione HTTP `X-Mkto-User-Token`. Non è possibile passare il token di accesso tramite un parametro di query.
+L’API di acquisizione dati utilizza lo stesso metodo di autenticazione OAuth 2.0 dell’API REST di Marketo per generare un token di accesso. Passa il token di accesso nell&#39;intestazione HTTP `X-Mkto-User-Token`. Non è possibile trasmetterlo come parametro di query.
 
-Esempio di token di accesso tramite intestazione:
+L’esempio che segue trasmette un token di accesso nell’intestazione:
 
 `X-Mkto-User-Token: 11606815-aa7a-405a-80a1-f9683efa528b:ab`
 
 ## Autorizzazioni
 
-L’acquisizione dei dati utilizza lo stesso modello di autorizzazioni dell’API REST di Marketo e non richiede alcuna autorizzazione speciale aggiuntiva da utilizzare, anche se sono necessarie autorizzazioni specifiche per ogni endpoint.
+L’acquisizione dei dati utilizza il modello di autorizzazioni REST API di Marketo e non richiede autorizzazioni aggiuntive. Ogni endpoint richiede un’autorizzazione esistente specifica, come illustrato nella tabella seguente.
 
 | Endpoint | Autorizzazione |
 | --- | --- |
@@ -61,7 +65,7 @@ L’acquisizione dei dati utilizza lo stesso modello di autorizzazioni dell’AP
 
 ## Intestazioni
 
-L’acquisizione dei dati utilizza le seguenti intestazioni HTTP personalizzate.
+L’acquisizione dei dati supporta le seguenti intestazioni HTTP personalizzate.
 
 ### Richiesta
 
@@ -78,13 +82,13 @@ L’acquisizione dei dati utilizza le seguenti intestazioni HTTP personalizzate.
 
 ## Richieste
 
-Utilizzare il metodo HTTP POST per inviare dati al server.
+Invia dati al server con il metodo HTTP POST.
 
-La rappresentazione dei dati è inclusa nel corpo della richiesta come application/json.
+Includi i dati nel corpo della richiesta come application/json.
 
-Nome di dominio: `mkto-ingestion-api.adobe.io`
+Utilizza il dominio `mkto-ingestion-api.adobe.io`.
 
-Il percorso inizia con `/subscriptions/MunchkinId`, dove MunchkinId è specifico per l&#39;istanza Marketo. Puoi trovare il tuo Munchkin ID nell&#39;interfaccia utente di Marketo Engage in **Amministratore** > **Il mio account** > **Informazioni di supporto**.  Il resto del percorso viene utilizzato per specificare la risorsa di interesse.
+Il percorso inizia con `/subscriptions/MunchkinId`, dove MunchkinId è specifico per l&#39;istanza Marketo. Trova il tuo Munchkin ID nell&#39;interfaccia utente di Marketo Engage in **Amministratore** > **Il mio account** > **Informazioni di supporto**. Il resto del percorso specifica la risorsa.
 
 URL di esempio per Persone:
 
@@ -108,7 +112,7 @@ URL di esempio per gli elenchi:
 
 ### Risposte
 
-Tutte le risposte restituiscono un ID di richiesta univoco tramite l&#39;intestazione `X-Request-Id`.
+Ogni risposta restituisce un ID di richiesta univoco nell&#39;intestazione `X-Request-Id`.
 
 Esempio di ID richiesta tramite intestazione:
 
@@ -116,7 +120,7 @@ Esempio di ID richiesta tramite intestazione:
 
 ### Completato
 
-Quando una chiamata ha esito positivo, viene restituito lo stato 202.  Nessun corpo di risposta restituito.
+In caso di esito positivo, la chiamata restituisce lo stato 202 e il corpo della risposta non è presente.
 
 Esempio di risposta di successo:
 
@@ -129,9 +133,9 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### Errore
 
-Quando una chiamata genera un errore, viene restituito uno stato non 202 insieme a un corpo della risposta con ulteriori dettagli sull’errore. Il corpo della risposta è `application/json` e contiene un singolo oggetto con i membri `error_code` e `message`.
+Quando una chiamata non riesce, restituisce uno stato non 202 e un corpo della risposta con dettagli di errore. Il corpo della risposta `application/json` contiene un oggetto con `error_code` e `message` membri.
 
-Di seguito sono riportati i codici di errore riutilizzati da Adobe Developer Gateway.
+I seguenti codici di errore vengono riutilizzati da Adobe Developer Gateway.
 
 | Codice di stato HTTP | error_code | messaggio |
 | --- | --- | --- |
@@ -140,7 +144,7 @@ Di seguito sono riportati i codici di errore riutilizzati da Adobe Developer Gat
 | 404 | 404040 | Risorsa non trovata |
 | 429 | 429001 | Limite di utilizzo servizio raggiunto |
 
-Di seguito sono riportati i codici di errore univoci dell’API di acquisizione dati, composti da 3 segmenti.  Le prime tre cifre sono lo stato (restituito da Adobe Developer Gateway), seguito da zero &quot;0&quot;, seguito da tre cifre.
+I codici di errore specifici dell’API di acquisizione dati contengono tre segmenti: lo stato a tre cifre restituito da Adobe Developer Gateway, uno zero &quot;0&quot; e tre cifre aggiuntive.
 
 | Codice di stato HTTP | error_code | messaggio |
 | --- | --- | --- |
@@ -152,24 +156,24 @@ Di seguito sono riportati i codici di errore univoci dell’API di acquisizione 
 
 ## Nuovi tentativi
 
-Quando viene rilevato un errore temporaneo, il servizio tenta di eseguire nuovamente l&#39;operazione. I tentativi si verificano per vari motivi, principalmente quando un servizio dipendente va in timeout o non è temporaneamente disponibile.
+Quando il servizio rileva un errore transitorio, tenta di eseguire nuovamente l’operazione. Un nuovo tentativo si verifica principalmente quando un servizio dipendente scade o è temporaneamente non disponibile.
 
-Intervalli tentativi:
+Il servizio utilizza i seguenti intervalli tra i tentativi:
 
-* Operazione iniziale e primo tentativo: 5 min.
-* 1 e 2: 15 min
-* 2 e 3: 20 min
-* 3 e 4: 20 min
-* 4 e 5: 2 ore
-* dopo il 5° tentativo -> 3 ore
+- Operazione iniziale al primo tentativo: 5 minuti
+- Primo tentativo al secondo tentativo: 15 minuti
+- Secondo nuovo tentativo al terzo tentativo: 20 minuti
+- Terzo tentativo al quarto tentativo: 20 minuti
+- Quarto tentativo al quinto tentativo: 2 ore
+- Dopo il quinto tentativo: 3 ore
 
 ## Endpoint
 
-Gli endpoint di acquisizione sono disponibili per Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi.
+Gli endpoint di acquisizione sono disponibili per Persone, Oggetti personalizzati, Aziende, Membri del programma ed Elenchi. Ogni sezione dell’endpoint definisce la richiesta e fornisce un esempio.
 
 ### Persone
 
-Endpoint utilizzato per eseguire l&#39;upsert dei record persona.
+Utilizza questo endpoint per eseguire l’upsert dei record persona.
 
 | Metodo | Percorso |
 | --- | --- |
@@ -238,7 +242,7 @@ Le autorizzazioni richieste sono `Read-Write Lead`.
 
 ### Oggetti personalizzati
 
-Endpoint utilizzato per eseguire l&#39;upsert dei record oggetto personalizzati.
+Utilizzare questo endpoint per eseguire l&#39;upsert dei record oggetto personalizzati.
 
 | Metodo | Percorso |
 | --- | --- |
@@ -306,7 +310,7 @@ Se nella richiesta è specificato un campo di collegamento a una persona e tale 
 
 ### Aziende
 
-Endpoint utilizzato per sincronizzare i record aziendali. Supporta le operazioni di creazione, aggiornamento e upsert con deduplicazione tramite ID società esterno o ID interno Marketo.
+Utilizzare questo endpoint per sincronizzare i record aziendali. Supporta le operazioni di creazione, aggiornamento e upsert con deduplicazione tramite ID società esterno o ID interno Marketo.
 
 | Metodo | Percorso |
 | --- | --- |
@@ -756,23 +760,23 @@ Le autorizzazioni necessarie sono `Read-Write Lead`.
 
 ## Limiti
 
-Ecco un elenco aggiornato dei guardrail:
+L’API di acquisizione dati dispone delle seguenti protezioni:
 
-* Dimensione massima della richiesta: 1 MB
-* Massimo oggetti per richiesta per tipo di oggetto: 1.000
-* Numero massimo di richieste al secondo per ID client: 5.000
-* Massimo oggetti al giorno: 10.000.000
+- Dimensione massima richiesta: 1 MB
+- Numero massimo di oggetti per richiesta per ogni tipo di oggetto: 1.000
+- Numero massimo di richieste al secondo per ogni ID client: 5.000
+- Massimo oggetti al giorno: 10.000.000
 
 Questi limiti si applicano in modo uniforme a Persone, Oggetti personalizzati, Società, Membri del programma ed Elenchi. Per i membri del programma, &quot;oggetti per richiesta&quot; è il numero totale di riferimenti lead in tutti i programmi in una singola richiesta. Per Elenchi, &quot;oggetti per richiesta&quot; è il numero di riferimenti di lead nell’array di input.
 
 ## API di acquisizione dati e API REST
 
-Elenco delle differenze tra l’API di acquisizione dati e altre API REST di Marketo:
+L’API di acquisizione dati si differenzia da altre API REST di Marketo nei seguenti modi:
 
-* Per eseguire l&#39;autenticazione, devi passare il token di accesso utilizzando l&#39;intestazione `X-Mkto-User-Token`
-* Il nome di dominio URL è `mkto-ingestion-api.adobe.io`
-* Il percorso URL inizia con `/subscriptions/MunchkinId`
-* Nessun parametro di query
-* Se la chiamata ha esito positivo, viene restituito lo stato 202 e il corpo della risposta è vuoto
-* Se una chiamata non riesce, viene restituito uno stato non 202 e il corpo della risposta contiene `{ "error_code" : "Error Code", "message" : "Message" }`
-* L&#39;ID della richiesta viene restituito tramite l&#39;intestazione `X-Request-Id`
+- Passa il token di accesso nell&#39;intestazione `X-Mkto-User-Token`.
+- Utilizza il dominio `mkto-ingestion-api.adobe.io`.
+- Iniziare il percorso URL con `/subscriptions/MunchkinId`.
+- Non utilizzare parametri di query.
+- In caso di esito positivo, la chiamata restituisce lo stato 202 e un corpo di risposta vuoto.
+- Una chiamata non riuscita restituisce uno stato non 202 e un corpo di risposta contenente `{ "error_code" : "Error Code", "message" : "Message" }`.
+- L&#39;intestazione `X-Request-Id` restituisce l&#39;ID della richiesta.

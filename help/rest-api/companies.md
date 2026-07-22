@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 676
+source-wordcount: 582
 ht-degree: 1%
 
 ---
@@ -23,13 +23,15 @@ ht-degree: 1%
 
 [Riferimento endpoint società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-Le società rappresentano l&#39;organizzazione a cui appartengono i record dei lead. I lead vengono aggiunti a un&#39;azienda compilando il campo `externalCompanyId` corrispondente utilizzando [Lead sincronizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) o [Endpoint importazione lead in blocco](bulk-lead-import.md). Una volta aggiunto un lead a un&#39;azienda, non è possibile eliminarlo da tale azienda (a meno che non si aggiunga il lead a un&#39;altra azienda). I lead collegati a un record società ereditano direttamente i valori da un record società come se i valori fossero presenti nel record del lead.
+Le aziende rappresentano le organizzazioni a cui appartengono i record dei lead. Per aggiungere un lead a una società, compila il relativo campo `externalCompanyId` utilizzando gli endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) o [Importazione lead in blocco](bulk-lead-import.md).
 
-Le API della società sono di sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitato.
+Non è possibile rimuovere un lead da una società a meno che non lo si aggiunga a un&#39;altra società. I lead collegati a un record società ereditano i valori da tale record come se i valori fossero presenti nel record lead.
+
+Le API aziendali forniscono accesso in sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitato.
 
 ## Descrivere
 
-La descrizione dell’oggetto aziendale fornisce tutte le informazioni necessarie per interagire con esso.
+Descrivere l&#39;oggetto aziendale per recuperare le informazioni necessarie all&#39;interazione con i record aziendali.
 
 ```http
 GET /rest/v1/companies/describe.json
@@ -107,11 +109,16 @@ GET /rest/v1/companies/describe.json
 
 ## Query
 
-Il modello per [query sulle società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) segue da vicino quello dell&#39;API lead con la restrizione aggiunta che il parametro `filterType` accetta i campi elencati nella matrice searchableFields della chiamata Describe Companies o dedupeFields.
+Il modello per [query sulle aziende](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) segue da vicino l&#39;API Lead. Tuttavia, il parametro `filterType` accetta solo i campi elencati nella matrice searchableFields della risposta Descrivi società o dedupeFields.
 
-`filterType` e `filterValues` sono parametri di query obbligatori.  `fields`, `nextPageToken` e `batchSize` sono parametri facoltativi.  I parametri funzionano come i parametri corrispondenti nelle API Lead e Opportunità. Quando si richiede un elenco di `fields`, se un particolare campo è richiesto ma non restituito, il valore è implicitamente nullo.
+I parametri di query sono:
 
-Se il parametro fields viene omesso, il set di campi predefinito restituito è:
+- `filterType` e `filterValues`: parametri richiesti.
+- `fields`, `nextPageToken` e `batchSize`: parametri opzionali che funzionano come i parametri corrispondenti nelle API Lead e Opportunità.
+
+Quando si richiede un elenco di `fields`, un campo richiesto non restituito ha un valore implicito nullo.
+
+Se ometti il parametro fields, la risposta restituisce questi campi per impostazione predefinita:
 
 - id
 - dedupeFields
@@ -145,7 +152,11 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Crea e aggiorna
 
-L&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) accetta il parametro `input` richiesto che contiene un array di oggetti aziendali. Proprio come le opportunità, esistono tre modalità per creare e aggiornare le aziende: createOnly, updateOnly e createOrUpdate.  Le modalità sono specificate nel parametro `action` della richiesta. Entrambi i parametri `dedupeBy` e `action` sono facoltativi e per impostazione predefinita sono rispettivamente le modalità dedupeFields e createOrUpdate.
+L&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) accetta un parametro `input` obbligatorio contenente un array di oggetti aziendali.
+
+Come per le opportunità, l&#39;endpoint supporta tre modalità di creazione e aggiornamento: createOnly, updateOnly e createOrUpdate. Specifica la modalità nel parametro `action` della richiesta.
+
+I parametri `dedupeBy` e `action` sono facoltativi. I valori predefiniti sono dedupeFields e createOrUpdate, rispettivamente.
 
 ```http
 POST /rest/v1/companies.json
@@ -193,17 +204,19 @@ Content-Type: application/json
 
 ### Campi
 
-L’oggetto company contiene un set di campi. Ogni definizione di campo è composta da un insieme di attributi che descrivono il campo. Esempi di attributi sono nome visualizzato, nome API e dataType. Questi attributi sono noti collettivamente come metadati.
+L’oggetto company contiene campi definiti da attributi quali nome visualizzato, nome API e dataType. Insieme, questi attributi sono denominati metadati.
 
-I seguenti endpoint consentono di eseguire query sui campi dell’oggetto aziendale. Queste API richiedono che l&#39;utente API proprietario abbia un ruolo con una o entrambe le autorizzazioni `Read-Write Schema Standard Field` o `Read-Write Schema Custom Field`.
+I seguenti campi di query degli endpoint sull’oggetto aziendale. L&#39;utente API deve disporre di un ruolo con l&#39;autorizzazione `Read-Write Schema Standard Field`, l&#39;autorizzazione `Read-Write Schema Custom Field` o entrambe.
 
 ### Campi query
 
-La query dei campi dell’azienda è semplice. Puoi eseguire query in un singolo campo aziendale per nome API o nel set di tutti i campi aziendali.
+Esegui la query di un campo società per nome API o recupera tutti i campi società.
 
 #### Per nome
 
-L&#39;endpoint [Ottieni campo società per nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera i metadati per un singolo campo nell&#39;oggetto società. Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo. La risposta è simile all&#39;endpoint Describe Company ma contiene metadati aggiuntivi, ad esempio l&#39;attributo `isCustom`, che indica se il campo è un campo personalizzato.
+L&#39;endpoint [Ottieni campo società per nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto società. Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo.
+
+La risposta è simile alla risposta Descrivi azienda, ma include metadati aggiuntivi. Ad esempio, l&#39;attributo `isCustom` indica se il campo è personalizzato.
 
 ```http
 GET /rest/v1/companies/schema/fields/industry.json
@@ -230,9 +243,11 @@ GET /rest/v1/companies/schema/fields/industry.json
 }
 ```
 
-#### Sfogliare
+#### Sfoglia
 
-L&#39;endpoint [Recupera campi società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) recupera i metadati per tutti i campi dell&#39;oggetto società. Per impostazione predefinita, vengono restituiti al massimo 300 record. È possibile utilizzare il parametro di query `batchSize` per ridurre questo numero. Se l&#39;attributo `moreResult` è true, significa che sono disponibili altri risultati. Continua a chiamare questo endpoint fino a quando l’attributo moreResult restituisce false, il che significa che non sono disponibili risultati. I `nextPageToken` restituiti da questa API devono essere sempre riutilizzati per la successiva iterazione di questa chiamata.
+L&#39;endpoint [Recupera campi società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) recupera i metadati per tutti i campi dell&#39;oggetto società. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query `batchSize` per ridurre questo numero.
+
+Se l&#39;attributo `moreResult` è true, sono disponibili altri risultati. Continuare a chiamare l&#39;endpoint con `nextPageToken` restituito fino a quando `moreResult` non è false.
 
 ```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5
@@ -310,7 +325,9 @@ GET /rest/v1/companies/schema/fields.json?batchSize=5
 
 ### Elimina
 
-I criteri di eliminazione sono specificati nell&#39;array `input`, che contiene un elenco di valori di ricerca.  Metodo di eliminazione specificato nel parametro `deleteBy`.  I valori consentiti sono: dedupeFields, idField.  Il valore predefinito è dedupeFields.
+Specificare i criteri di eliminazione come elenco di valori di ricerca nell&#39;array `input`. Specificare il metodo di eliminazione nel parametro `deleteBy`.
+
+I valori consentiti sono dedupeFields e idField. Il valore predefinito è dedupeFields.
 
 ```text
 Content-Type: application/json
@@ -368,6 +385,6 @@ POST /rest/v1/companies/delete.json
 
 ## Timeout
 
-- Gli endpoint aziendali hanno un timeout di 30 secondi, a meno che non sia indicato di seguito
-   - Aziende di sincronizzazione: anni 60
-   - Cancella Aziende: 60s
+- Se non diversamente specificato, gli endpoint aziendali hanno un timeout di 30 secondi.
+- Per le società di sincronizzazione è previsto un timeout di 60 secondi.
+- Il timeout di Delete Companies è di 60 secondi.

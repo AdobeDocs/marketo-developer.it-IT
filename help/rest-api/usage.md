@@ -3,9 +3,9 @@ title: Utilizzo
 feature: REST API
 description: Monitora l’utilizzo e gli errori dell’API REST di Marketo con gli endpoint di stato giornalieri e degli ultimi 7 giorni, inclusi i conteggi per utente e i totali dei codici di errore.
 exl-id: 935a00a4-1e1e-4b48-ae9c-72c5e578312a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '382'
 ht-degree: 8%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 [Riferimento endpoint di utilizzo](https://developer.adobe.com/marketo-apis/api/mapi#tag/Usage)
 
-Le API di utilizzo forniscono un riepilogo del consumo delle API REST e dell’attività di errore per l’abbonamento. Questi endpoint sono utili per monitorare le integrazioni, monitorare il volume giornaliero delle chiamate e identificare le tendenze di errore nel tempo.
+Nelle API di utilizzo viene riepilogato il consumo e l’attività di errore REST API per la sottoscrizione. Utilizza questi endpoint per monitorare le integrazioni, monitorare il volume giornaliero delle chiamate e identificare le tendenze di errore.
 
 I dati di utilizzo includono un conteggio totale di chiamate API e un raggruppamento per utente. I dati di errore includono un conteggio totale degli errori e una suddivisione per codice di errore.
 
@@ -153,4 +153,4 @@ GET /rest/v1/stats/errors/last7days.json
 
 ## Note
 
-Ogni utente API viene segnalato singolarmente nella risposta di utilizzo. La suddivisione delle integrazioni tra utenti API separati semplifica l’identificazione del servizio che consuma quote e genera errori.
+La risposta di utilizzo segnala ogni utente API separatamente. L’assegnazione di integrazioni a utenti API separati semplifica l’identificazione del servizio che consuma la quota e genera errori.

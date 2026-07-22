@@ -3,9 +3,9 @@ title: Frammenti
 feature: REST API
 description: Utilizza l’API REST di Marketo Asset per eseguire query, creare, aggiornare, clonare, eliminare, approvare e verificare le dipendenze dei frammenti.
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '272'
+source-wordcount: '282'
 ht-degree: 9%
 
 ---
@@ -61,10 +61,18 @@ GET /rest/asset/v2/fragment/{id}
 
 ### Filtro
 
-L’endpoint filtro supporta la ricerca all’interno di un’area di lavoro e la riduzione dei risultati con parametri di query aggiuntivi. `workspaceId` è obbligatorio.
+L’endpoint del filtro esegue ricerche all’interno di un’area di lavoro. Il parametro `workspaceId` è obbligatorio.
 
-todo: trasformare questa tabella in tabella
-I filtri supportati includono `folderId`, `folderIds` ripetuto, `status` ripetuto, `pageIndex`, `pageSize`, `createdBy`, `createdAtStart`, `createdAtEnd`, `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd`, `name`, `fragmentType`, `sortKey`, `sortOrder`, `isCreatedByMe`, `isModifiedByMe`, `scriptEngine`, `isValueNonNullable` e `includeArchived`.
+Utilizzare questi parametri facoltativi per limitare o organizzare i risultati:
+
+* Cartella: `folderId` o `folderIds` ripetuto
+* Stato: ripetuto `status`
+* Paginazione: `pageIndex` e `pageSize`
+* Creazione: `createdBy`, `createdAtStart`, `createdAtEnd` e `isCreatedByMe`
+* Modifica: `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd` e `isModifiedByMe`
+* Proprietà frammento: `name`, `fragmentType`, `scriptEngine` e `isValueNonNullable`
+* Ordinamento: `sortKey` e `sortOrder`
+* Contenuto archiviato: `includeArchived`
 
 #### Richiesta
 

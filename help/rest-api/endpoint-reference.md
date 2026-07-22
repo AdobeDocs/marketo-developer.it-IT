@@ -18,16 +18,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 4793
+source-wordcount: 4807
 ht-degree: 8%
 
 ---
 
 # Riferimento endpoint
 
-Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
+Utilizza i seguenti riferimenti per trovare parametri di richiesta, schemi di risposta ed esempi per ogni gruppo API REST di Marketo:
 
 - [Risorsa](https://developer.adobe.com/marketo-apis/api/asset)
 - [Identità](https://developer.adobe.com/marketo-apis/api/identity/)
@@ -36,7 +36,7 @@ Di seguito sono riportati i collegamenti ai riferimenti API REST di Marketo.
 
 ## Elenco endpoint {#endpoint_list}
 
-Elenco completo degli endpoint REST API.
+Nella tabella seguente sono elencati gli endpoint REST API, i metodi HTTP, gli URI e le autorizzazioni richieste.
 
 | Nome | Gruppo | Metodo | URI | Autorizzazione necessaria |
 | --- | --- | --- | --- | --- |

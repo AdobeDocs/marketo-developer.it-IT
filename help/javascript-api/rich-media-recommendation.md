@@ -1,6 +1,6 @@
 ---
 title: Consigli per contenuti multimediali avanzati
-description: Configurare la funzione Consigli per contenuti multimediali avanzati utilizzando il tag RTP per contenuti predittivi di Marketo, template1 template2 template3 div, GET da compilare, SET per configurare le categorie.
+description: Configurare la funzione Consigli per contenuti multimediali avanzati utilizzando il tag RTP per contenuti predittivi di Marketo, template1 template2 template3 div, GET to popola, SET to configure Categories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
 TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
@@ -10,54 +10,54 @@ feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 854
-ht-degree: 3%
+source-wordcount: 814
+ht-degree: 4%
 
 ---
 
 # Consigli per contenuti multimediali avanzati
 
-Nella pagina in cui desideri visualizzare il modello Consigli per contenuti multimediali avanzati devono essere impostati i seguenti tag e chiamate API.
+Per visualizzare un modello per consigli su contenuti multimediali avanzati, aggiungi alla pagina i tag e le chiamate API richiesti.
 
-1. Nell’intestazione della pagina
-   1. Installazione del tag RTP
-   1. Aggiungi la chiamata GET alla pagina per compilare i consigli
-   1. Aggiungi la chiamata SET per configurare il modello
-1. Nel corpo della pagina
-   1. Posizionare il tag del modello (classe div) nella posizione in cui si desidera visualizzare il modello
+1. Nell’intestazione della pagina:
+   1. Installa il tag RTP.
+   1. Aggiungi la chiamata GET che popola i consigli.
+   1. Aggiungi la chiamata SET che configura il modello.
+1. Nel corpo della pagina:
+   1. Posizionare il tag del modello (classe div) nel punto in cui si desidera visualizzare il modello.
 
-Ulteriori informazioni sono disponibili [qui](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Per ulteriori informazioni, vedere [Abilitare Predictive Content for Web Rich Media](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
 | Attributo | Facoltativo/Obbligatorio | Descrizione |
 | --- | --- | --- |
-| classe | Obbligatorio | Specifica che l&#39;elemento div HTML è un div di consigli RTP. |
-| data-rtp-template-id | Obbligatorio | ID del modello. Questo determina l’allineamento del consiglio. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale che include solo titolo e descrizione. Lo script inserisce il modello corrispondente in `div.Permissible` valori: template1, template2, template3. |
+| classe | Obbligatorio | Identifica l’elemento div HTML come div di consigli RTP. |
+| data-rtp-template-id | Obbligatorio | Determina l’allineamento dei consigli. Utilizzare &quot;template1&quot; per l&#39;allineamento orizzontale, &quot;template2&quot; per l&#39;allineamento verticale o &quot;template3&quot; per l&#39;allineamento verticale con solo un titolo e una descrizione. Lo script inserisce il modello corrispondente in `div`. Valori consentiti: template1, template2, template3. |
 
 ### Esempi
 
-Per visualizzare i consigli in allineamento orizzontale, utilizza &quot;template1&quot;.
+Utilizza &quot;template1&quot; per visualizzare i consigli in orizzontale.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template1"></div>
 ```
 
-Per visualizzare i consigli in allineamento verticale, utilizza &quot;template2&quot;.
+Utilizza &quot;template2&quot; per visualizzare i consigli in verticale.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template2"></div>
 ```
 
-Per visualizzare i consigli in allineamento verticale solo con titolo e descrizione, utilizza &quot;modello3&quot;.
+Utilizza &quot;template3&quot; per visualizzare i consigli in verticale con solo un titolo e una descrizione.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Vedi le schermate degli allineamenti dei modelli [qui](#example_of_rich_media_recommendation_template_1).
+Vedi gli esempi di allineamento del modello [&#128279;](#example_of_rich_media_recommendation_template_1).
 
 ## Popolare consiglio
 
@@ -75,9 +75,9 @@ Questo metodo popola tutti i rich media `<divs>` sulla pagina con i consigli.
 
 ## Cambia configurazione modello
 
-Questo metodo modifica la configurazione predefinita per il modello.
+Questo metodo modifica la configurazione predefinita del modello.
 
-Nota: quando si utilizza questo metodo, è necessario chiamarlo prima di chiamare rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
+Chiama questo metodo prima di chiamare rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
 
 ### Utilizzo
 
@@ -93,7 +93,7 @@ Nota: quando si utilizza questo metodo, è necessario chiamarlo prima di chiamar
 
 ### Esempi
 
-Questo frammento di codice modifica il testo del titolo di un modello.
+In questo esempio viene modificato il testo del titolo di un modello.
 
 ```javascript
 rtp("set", "rcmd", "richmedia","template1",
@@ -103,7 +103,7 @@ rtp("set", "rcmd", "richmedia","template1",
 );
 ```
 
-Questo frammento di codice mostra come impostare categorie con più configurazioni per un modello.
+In questo esempio vengono impostate le categorie e le proprietà di configurazione multiple per un modello.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -124,9 +124,11 @@ rtp("set", "rcmd", "richmedia",
 );
 ```
 
-NOTA: utilizza &quot;categoria&quot; per filtrare il contenuto visualizzato nel risultato dei consigli sui contenuti predittivi. Per applicare il contenuto predittivo a tutte le parti di contenuto abilitate, lascia vuota la &quot;categoria&quot;. Se desideri consigliare solo contenuto specifico per l’output nel modello Rich Media, aggiungi una categoria per il contenuto nella pagina Imposta contenuto e associa tale categoria all’interno del codice del modello di consigli. Classificare i contenuti pertinenti in base alle sezioni del sito web (prodotti o soluzioni).
+Utilizza &quot;categoria&quot; per filtrare il contenuto visualizzato nei consigli sui contenuti predittivi. Per utilizzare il contenuto predittivo per tutto il contenuto abilitato, lascia vuota la voce &quot;categoria&quot;.
 
-Questo frammento di codice mostra come impostare più configurazioni di modelli per un modello.
+Per consigliare solo contenuti specifici nel modello Rich Media, aggiungi una categoria per il contenuto nella pagina Imposta contenuto. Quindi associa tale categoria al codice del modello di consigli. Ad esempio, categorizza i contenuti rilevanti in base alle sezioni di prodotto o soluzione del sito web.
+
+In questo esempio vengono impostate più proprietà di configurazione per un modello.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -156,11 +158,11 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.text | &quot;rcmd.cta.text&quot;: &quot;Push&quot; | Modifica il testo del pulsante. Il testo è lo stesso per tutti i pulsanti. |
 | categoria | &quot;categoria&quot;: [&quot;una categoria&quot;] | Modifica la categoria di consigli supportata dal modello. Il modello visualizza solo i consigli con una delle categorie impostate da questa configurazione. |
 
-Nota: il supporto della configurazione può cambiare in base al modello.
+Il supporto della configurazione può variare a seconda del modello.
 
 #### Esempio di base
 
-Questo esempio ha un modello con tre consigli. Copiare questo esempio in una pagina HTML e quindi sostituire il tag RTP con il tag.
+In questo esempio vengono visualizzati tre consigli in un modello. Copiare l&#39;esempio in una pagina HTML e quindi sostituire il tag RTP con il tag.
 
 ```html
 <!DOCTYPE>
@@ -192,7 +194,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### Esempio avanzato
 
-Questo esempio ha un modello con tre consigli. Il titolo del modello è &quot;CONTENUTO CONSIGLIATO&quot; e il testo del pulsante sarà &quot;Ulteriori informazioni&quot;. Copiare questo esempio in una pagina HTML e quindi sostituire il tag RTP con il tag.
+In questo esempio vengono visualizzati tre consigli in un modello. Il titolo del modello è &quot;CONTENUTO CONSIGLIATO&quot; e il testo del pulsante è &quot;Ulteriori informazioni&quot;. Copiare l&#39;esempio in una pagina HTML e quindi sostituire il tag RTP con il tag.
 
 ```html
 <!DOCTYPE>
@@ -236,16 +238,24 @@ rtp('get','rcmd', 'richmedia');
 
 #### Esempio di #1 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello1 **Descrizione**: contenuto orizzontale con immagine, titolo e descrizione e pulsante call to action.
+**Nome**: modello1
+
+**Descrizione**: contenuto orizzontale che include un&#39;immagine, un titolo, una descrizione e un pulsante call-to-action.
 
 ![Modello Rich Media](assets/rich-media-template1.png)
 
 #### Esempio di #2 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello2 **Descrizione**: contenuto verticale con immagine, titolo e descrizione e pulsante call to action.
+**Nome**: modello2
+
+**Descrizione**: contenuto verticale che include un&#39;immagine, un titolo, una descrizione e un pulsante call-to-action.
 
 ![Modello Rich Media](assets/rich-media-template2.png)
 
 #### Esempio di #3 del modello di consigli per contenuti multimediali avanzati
 
-**Nome**: modello3 **Descrizione**: contenuto verticale contenente solo titolo e descrizione. Al passaggio del mouse, l’intestazione cambia colore e viene collegata all’URL del contenuto. La descrizione contiene anche collegamenti al contenuto senza cambiamento di colore. ![Modello Rich Media](assets/rich-media-template3.png)
+**Nome**: modello3
+
+**Descrizione**: contenuto verticale che include solo un titolo e una descrizione. Al passaggio del mouse, l’intestazione cambia colore e si collega all’URL del contenuto. La descrizione consente inoltre di collegare il contenuto senza modificare il colore.
+
+![Modello Rich Media](assets/rich-media-template3.png)

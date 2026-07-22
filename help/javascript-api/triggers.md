@@ -14,16 +14,16 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 116
+source-wordcount: 117
 ht-degree: 8%
 
 ---
 
 # Trigger
 
-Aggiunge la possibilità di attivare funzioni su determinati stati dell&#39;oggetto rtp globale.
+Attiva l&#39;esecuzione delle funzioni quando l&#39;oggetto `rtp` globale raggiunge uno stato specificato.
 
 Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
@@ -38,7 +38,7 @@ Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente d
 
 ### Trigger pronto contesto utente
 
-Imposta una variabile personalizzata in base alla posizione utente. Questa funzione viene chiamata quando l’oggetto globale &quot;rtpUserContext&quot; è pronto.
+Il trigger `userContextReady` chiama una funzione quando l&#39;oggetto `rtpUserContext` globale è pronto. L’esempio che segue imposta una variabile personalizzata in base alla posizione dell’utente.
 
 ```javascript
 rtp('userContextReady', function() {

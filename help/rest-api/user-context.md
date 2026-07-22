@@ -16,19 +16,21 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 296
+source-wordcount: 273
 ht-degree: 5%
 
 ---
 
 # Contesto utente
 
-L’API JavaScript per il contesto utente espone i dati a livello di utente e visitatore in più sessioni per abilitare la funzionalità di personalizzazione avanzata utilizzando dati e comportamenti storici degli utenti. L’API non si limita alla lettura dei dati, ma espone variabili personalizzate che consentono di inviare dati ed eventi significativi al backend RTP per scopi avanzati di segmentazione e personalizzazione. Funzionalità aggiuntive: [Triggers](../javascript-api/triggers.md), [Corrispondenza pattern](../javascript-api/pattern-match.md).
+L’API JavaScript per il contesto utente espone dati a livello di utente e di visitatore in più sessioni. Utilizza i comportamenti e i dati storici per creare una personalizzazione avanzata.
 
-- Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
-- L’API Contesto utente è una funzione che deve essere abilitata dal supporto Marketo su richiesta. Quando l’API è abilitata, viene esposto un oggetto userContext sotto l’oggetto globale RTP.
+L’API fornisce anche variabili personalizzate per l’invio di dati ed eventi al backend RTP per la segmentazione e la personalizzazione. Consulta le funzionalità [Triggers](../javascript-api/triggers.md) e [Corrispondenza pattern](../javascript-api/pattern-match.md) correlate.
+
+- Devi essere un cliente di Web Personalization e avere il tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul tuo sito.
+- Per abilitare l’API Contesto utente, devi chiedere al supporto Marketo. Dopo l&#39;abilitazione, un oggetto userContext viene esposto sotto l&#39;oggetto globale RTP.
 
 ## Attributi contesto utente
 
@@ -40,7 +42,7 @@ L’API JavaScript per il contesto utente espone i dati a livello di utente e vi
 
 ## Imposta variabili personalizzate
 
-Aggiunta di dati personalizzati a Contesto utente.
+Imposta le variabili personalizzate per aggiungere dati a Contesto utente.
 
 ### Utilizzo
 
@@ -52,11 +54,11 @@ Aggiunta di dati personalizzati a Contesto utente.
 | `customVar` | Obbligatorio | Stringa | Nome della variabile personalizzata. |
 | `my_custom_value` | Obbligatorio | Stringa | Valore personalizzato da salvare sulla variabile personalizzata nell’indice 1-5. |
 
-Nota: le variabili personalizzate vengono inviate all’RTP solo nella chiamata di visualizzazione, pertanto si consiglia di impostarle prima di chiamare la visualizzazione. In caso contrario, verrà inviato solo nella successiva chiamata di visualizzazione.
+Le variabili personalizzate vengono inviate a RTP solo in una chiamata di visualizzazione. Imposta le variabili personalizzate prima della chiamata di visualizzazione. In caso contrario, le variabili vengono inviate nella successiva chiamata di visualizzazione.
 
-Restrizioni variabili personalizzate
+Le variabili personalizzate presentano le seguenti restrizioni:
 
-- La lunghezza della variabile personalizzata non può superare i 100 caratteri.
+- Una variabile personalizzata non può superare i 100 caratteri.
 - I dati della campagna sono limitati alle ultime dieci visite con dieci campagne per visita.
 
 ### Utilizzo

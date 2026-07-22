@@ -14,18 +14,18 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 171
-ht-degree: 5%
+source-wordcount: 188
+ht-degree: 4%
 
 ---
 
 # Corrispondenza pattern
 
-RTP espone una funzione di utilità per verificare se il modello corrisponde a una determinata stringa. L&#39;utilità non può essere utilizzata in modalità asincrona perché restituisce un&#39;indicazione in caso di corrispondenza o meno.
+RTP fornisce una funzione di utilità che controlla se un modello corrisponde a una stringa. L&#39;utility restituisce un risultato di corrispondenza in modo sincrono e non può essere utilizzata in modo asincrono.
 
-Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
+Prima di utilizzare l&#39;API Contesto utente, è necessario essere un cliente di Web Personalization e disporre del tag [RTP distribuito](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) sul sito.
 
 ## Utilizzo
 
@@ -33,12 +33,12 @@ Prima di utilizzare l&#39;API Contesto utente, è necessario diventare un client
 
 | Parametro | Facoltativo/Obbligatorio | Tipo | Descrizione |
 | --- | --- | --- | --- |
-| check_against | Obbligatorio | Stringa | Stringa su cui confrontare il modello. Ad esempio: URL della pagina corrente, nome del prodotto. |
-| pattern | Obbligatorio | Stringa | Aggiungi % per il carattere jolly. Il modello può essere :start con contenitore con corrispondenza completa |
+| check_against | Obbligatorio | Stringa | Stringa in base alla quale confrontare il pattern, ad esempio l’URL della pagina corrente o un nome di prodotto. |
+| pattern | Obbligatorio | Stringa | Pattern da associare. Aggiungere `%` come carattere jolly per far corrispondere l&#39;inizio, la fine o il contenuto di una stringa. Ometti `%` per una corrispondenza completa. |
 
 ## Esempi
 
-Imposta la variabile personalizzata nell’indice 1 se l’URL della pagina corrente termina con &quot;productA&quot;.
+Questo esempio imposta una variabile personalizzata in corrispondenza dell’indice 1 quando l’URL della pagina corrente termina con &quot;productA&quot;.
 
 ```javascript
 if (rtp.checkPattern(window.location.href, '%productA')) {
@@ -46,7 +46,7 @@ if (rtp.checkPattern(window.location.href, '%productA')) {
 }
 ```
 
-Il percorso URL corrente è &quot;/products/productB&quot;. Questo esempio controlla se il percorso contiene &quot;products&quot; e imposta la variabile personalizzata.
+Nell’esempio seguente, il percorso URL corrente è &quot;/products/productB&quot;. L’esempio controlla se il percorso contiene &quot;prodotti&quot; e quindi imposta una variabile personalizzata.
 
 ```javascript
 var currentURLPath = '/products/productB';

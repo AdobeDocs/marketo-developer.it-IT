@@ -16,16 +16,16 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 899
-ht-degree: 2%
+source-wordcount: 631
+ht-degree: 3%
 
 ---
 
 # Risorse
 
-Marketo fornisce API per interagire con la maggior parte delle risorse di marketing e organizzative all’interno di Marketo.
+Utilizza le API REST di Marketo Asset per eseguire query e gestire risorse di marketing e organizzative.
 
 ## Risorse
 
@@ -49,9 +49,11 @@ Per un elenco completo degli endpoint API di Asset, inclusi i parametri e le inf
 
 ## Query
 
-In genere, Assets dispone di tre pattern tramite i quali è possibile recuperarli: per id, per nome e tramite navigazione.  Sia per ID che per nome verrà recuperata una singola risorsa per un dato parametro, mentre la navigazione restituirà e consentirà la paginazione attraverso l’intero elenco di risorse di quel tipo.  I singoli tipi di risorse hanno parametri diversi in base ai quali possono essere filtrati; per informazioni specifiche, consulta i singoli documenti.
+Le API delle risorse supportano in genere tre pattern di recupero: per ID, per nome e per navigazione. Le query per ID o nome recuperano una risorsa per il parametro specificato. Gli endpoint di navigazione restituiscono un elenco impaginato di risorse di quel tipo.
 
-In alcuni casi, l’endpoint &quot;browse&quot; per alcuni tipi di risorse non restituirà risorse secondarie, come i valori consentiti per un tag, e deve essere recuperato singolarmente utilizzando l’endpoint &quot;By Name&quot; o &quot;By Id&quot; per restituire il set completo di metadati.  Altri possono avere endpoint separati interamente per il recupero di oggetti dipendenti come Campi modulo.
+I parametri di filtro variano a seconda del tipo di risorsa. Per i filtri supportati, consulta la documentazione di ciascun tipo di risorsa.
+
+Alcuni endpoint di navigazione non restituiscono risorse secondarie, ad esempio i valori consentiti per un tag. Per ottenere i metadati completi, recupera queste risorse singolarmente per nome o ID. Altri tipi di risorse forniscono endpoint separati per gli oggetti dipendenti, ad esempio i campi modulo.
 
 ### Per ID
 
@@ -94,7 +96,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### Per nome
 
-Per motivi tecnici, le API di Asset non sono in grado di cercare i nomi delle risorse contenenti virgole (,).  È consigliabile che la convenzione di denominazione escluda le virgole per tutti i tipi di risorse.
+Le API delle risorse non possono cercare nomi di risorse contenenti virgole. Escludi virgole dai nomi delle risorse.
 
 ```http
 GET /rest/asset/v1/file/byName.json?name=My File
@@ -125,12 +127,12 @@ GET /rest/asset/v1/file/byName.json?name=My File
 }
 ```
 
-### Sfogliare
+### Sfoglia
 
-L’esplorazione delle risorse consente sempre due parametri di query:
+Gli endpoint di navigazione delle risorse supportano i seguenti parametri di query:
 
-- offset - Offer intero da cui restituire i risultati.
-- maxReturn - Limita il numero di record restituiti.  Il valore predefinito è 20 se non impostato e ha un massimo di 200.
+- `offset` - Offset intero in corrispondenza del quale iniziare a restituire i risultati.
+- `maxReturn` - Numero massimo di record da restituire. Il valore predefinito è 20 e il massimo è 200.
 
 ```http
 GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
@@ -188,9 +190,9 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Crea e aggiorna
 
-Per i tipi di risorse semplici come Cartelle, Token e File, in genere è disponibile un solo endpoint per la creazione e quindi un endpoint aggiuntivo per l’aggiornamento dei record per ID.  Assets viene creato con un nome che è sempre obbligatorio, quindi tutti i metadati e gli ID vengono restituiti dalla risposta di creazione o aggiornamento.
+I tipi di risorse semplici, come cartelle, token e file, in genere forniscono un endpoint per la creazione e un altro per gli aggiornamenti per ID. Per creare una risorsa è necessario specificare un nome. La risposta di creazione o aggiornamento restituisce i metadati e l’ID della risorsa.
 
-Ad esempio, di seguito è riportato come creare un token:
+La richiesta seguente crea un token:
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -229,7 +231,7 @@ name=April Fools&value=2015-04-01&type=date&folderType=Folder
 }
 ```
 
-Per aggiornare una cartella, effettua le seguenti operazioni:
+La richiesta seguente aggiorna una cartella:
 
 ```http
 POST /rest/asset/v1/folder/{id}.json
@@ -276,13 +278,13 @@ type=Folder&description=This is a test (update 01)
 }
 ```
 
-Altre risorse hanno strutture più complesse e richiedono aggiornamenti a sottosezioni aggiuntive o oggetti secondari; infine, devono essere approvate prima di poter essere utilizzate.  Questi tipi di risorse includono Forms, E-mail, Modelli e-mail, Pagine di destinazione e Modelli di pagina di destinazione.  Ognuno di questi avrà un singolo endpoint per la creazione di un record, quindi ulteriori endpoint per l’aggiornamento di metadati, contenuto e sezioni di contenuto.
+Forms, e-mail, modelli e-mail, pagine di destinazione e modelli di pagina di destinazione hanno strutture più complesse. Ogni tipo fornisce un endpoint per la creazione della risorsa e endpoint aggiuntivi per l’aggiornamento delle relative sezioni di metadati, contenuto e contenuto.
 
-Ad esempio, per creare una pagina di destinazione, è necessario chiamare il relativo endpoint di creazione con un ID modello, quindi recuperarne le sezioni di contenuto e aggiornarle singolarmente per aggiungere contenuto, prima di approvarle in modo che possa essere distribuita in tempo reale.
+Queste risorse devono essere approvate prima dell&#39;uso. Ad esempio, crea una pagina di destinazione con un ID modello, recuperane le sezioni di contenuto, aggiorna ogni sezione richiesta e quindi approva la pagina da distribuire.
 
 ### Creazione complessa
 
-Le pagine di destinazione richiedono innanzitutto la creazione di una risorsa Pagina di destinazione utilizzando un modello principale.  Viene creata una nuova pagina di destinazione contenente il contenuto predefinito del modello per ogni sezione di contenuto.
+Crea una pagina di destinazione da un modello principale. La nuova pagina di destinazione contiene il contenuto predefinito del modello per ogni sezione.
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -331,7 +333,7 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 #### Recupera sezioni
 
-Per compilare il contenuto di una pagina di destinazione, è necessario recuperare l’elenco delle sezioni di contenuto e quindi eseguire singoli aggiornamenti per qualsiasi sezione che si discosta dal modello.
+Recupera le sezioni di contenuto della pagina di destinazione. Aggiorna ogni sezione che deve essere diversa dal modello.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -385,7 +387,9 @@ POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 
 ## Approvazione
 
-A molti tipi di risorse è associato un sistema di bozza e approvazione, tra cui e-mail, pagine di destinazione, snippet, Forms e i modelli corrispondenti.  Se si tenta di approvare una risorsa, questa verrà valutata in base a un set specifico di regole di convalida e quindi impostata su uno stato approvato oppure verrà restituito un motivo di errore.  Per questi tipi di risorse, ogni volta che viene effettuato un aggiornamento al contenuto di una particolare risorsa, vengono apportate modifiche a una bozza della risorsa, che non influiscono sulla versione approvata.  Questo consente di apportare modifiche al contenuto in modo sicuro senza influire sulle versioni live della risorsa.  Le modifiche possono quindi essere applicate alla versione live utilizzando l’endpoint di approvazione.  Questo cancella anche lo stato di bozza della risorsa fino a quando non vengono applicati eventuali aggiornamenti aggiuntivi.
+Le e-mail, le pagine di destinazione, i frammenti, i moduli e i relativi modelli utilizzano un sistema di bozza e approvazione. Gli aggiornamenti del contenuto modificano la bozza senza influire sulla versione live approvata.
+
+L’endpoint di approvazione convalida la bozza. Se la convalida ha esito positivo, la bozza sostituisce la versione live e lo stato della bozza viene cancellato. Se la convalida non riesce, l’endpoint restituisce il motivo.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
@@ -417,7 +421,9 @@ POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 
 L’approvazione corretta sostituisce la versione live precedente con la versione aggiornata.
 
-L’eliminazione delle bozze è disponibile anche tramite un endpoint per ogni tipo di risorsa valido.  Se si utilizza questa opzione su una risorsa in stato Approvato con bozza, la bozza corrente e le eventuali modifiche in sospeso verranno eliminate.  Se si utilizza questa su una risorsa per la quale non è al momento disponibile una versione approvata, non viene eseguita alcuna operazione e viene restituito un errore.  Le risorse di sola bozza possono essere eliminate, ma non possono essere eliminate.
+Ogni tipo di risorsa supportato fornisce un endpoint per l’eliminazione delle bozze. Per una risorsa approvata con una bozza, questo endpoint elimina la bozza e le relative modifiche in sospeso.
+
+L’endpoint restituisce un errore se la risorsa non dispone di una versione approvata. È possibile eliminare una risorsa di sola bozza, ma non la relativa bozza.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
@@ -447,7 +453,9 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-Assets può anche non essere approvato se si trova in uno stato di sola approvazione.  In questo modo verranno eliminate tutte le versioni live della risorsa e la risorsa tornerà allo stato di sola bozza, scartando anche le bozze associate.  Questa azione può essere eseguita solo sulla maggior parte delle risorse se non è in uso in alcun punto di Marketo, ad esempio un’e-mail a cui si fa riferimento in un passaggio del flusso Invia e-mail o uno snippet incorporato in un messaggio e-mail.
+È possibile annullare l’approvazione di una risorsa il cui stato è di sola approvazione. Se si annulla l’approvazione, viene rimossa la versione live, viene ripristinato lo stato di sola bozza della risorsa ed eventuali bozze associate vengono eliminate.
+
+Per la maggior parte dei tipi di risorse, la risorsa non deve essere in uso. Ad esempio, non puoi annullare l’approvazione di un’e-mail a cui fa riferimento un passaggio del flusso Invia e-mail o di uno snippet incorporato in un’e-mail.
 
 ```http
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -469,7 +477,9 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Elimina
 
-Assets con stati di approvazione e bozza, ad eccezione dei moduli, non può essere eliminato durante l’approvazione e deve essere non approvato prima dell’eliminazione.  In genere, le eliminazioni possono essere eseguite solo quando una risorsa non è approvata e non è più utilizzata e, nel caso delle cartelle, quando le risorse sono vuote.  Un&#39;eccezione di rilievo è rappresentata dai programmi, che possono essere eliminati insieme a tutti i contenuti secondari, purché il programma e il suo contenuto non siano in uso al di fuori dei limiti del programma.
+Ad eccezione dei moduli, le risorse con stato di approvazione e bozza devono essere non approvate prima dell’eliminazione. Anche una risorsa in genere deve essere non utilizzata. Una cartella deve essere vuota.
+
+I programmi sono un&#39;eccezione. È possibile eliminare un programma e il relativo contenuto secondario se né il programma né il relativo contenuto vengono utilizzati al di fuori del programma.
 
 ```http
 POST /rest/asset/v1/program/{id}/delete.json
@@ -491,4 +501,4 @@ POST /rest/asset/v1/program/{id}/delete.json
 
 ## Timeout
 
-Le API delle risorse hanno un timeout di 300 secondi
+Le API Asset hanno un timeout di 300 secondi.

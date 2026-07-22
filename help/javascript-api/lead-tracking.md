@@ -16,32 +16,34 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 818
+source-wordcount: 718
 ht-degree: 0%
 
 ---
 
 # API di tracciamento dei lead
 
-Munchkin JavaScript di Marketo consente il tracciamento dei clic e delle visite degli utenti finali sulle pagine di destinazione e sulle pagine web esterne di Marketo. Questi vengono registrati in Marketo come attività &quot;Visita pagina web&quot; e &quot;Collegamento cliccato su pagina web&quot;, che possono quindi essere utilizzate nei trigger e nei filtri per le campagne intelligenti e gli elenchi avanzati.
+Munchkin JavaScript di Marketo tiene traccia delle visite alle pagine e dei clic sui collegamenti sulle pagine di destinazione e sulle pagine web esterne di Marketo. Marketo registra queste interazioni come attività &quot;Visita pagina web&quot; e &quot;Collegamento cliccato su pagina web&quot;.
+
+Utilizza le attività in trigger e filtri per Campagne avanzate ed Elenchi smart.
 
 ## Incorporazione del codice
 
-L’istanza di Marketo fornisce automaticamente snippet di codice di tracciamento preconfigurati per incorporare nelle pagine esterne codice che tiene traccia dell’attività nell’istanza di Marketo. L&#39;utilizzo del codice di incorporamento è disciplinato dal [contratto di licenza](../munchkin-license.pdf).
+L’istanza Marketo fornisce snippet di codice preconfigurato per il tracciamento dell’attività da pagine esterne. L&#39;utilizzo del codice di incorporamento è disciplinato dal [contratto di licenza](../munchkin-license.pdf).
 
 Sono disponibili tre tipi di codici di tracciamento:
 
-1. Semplice: viene caricato in modo sincrono
-1. Asincrono - Caricamenti asincroni
-1. jQuery asincrona: viene caricato in modo asincrono e richiede il caricamento anticipato di jQuery.
+1. Semplice (Simple) - Carica in modo sincrono.
+1. Asincrono: viene caricato in modo asincrono.
+1. Asynchronous jQuery - Carica in modo asincrono e richiede che jQuery venga caricato per primo.
 
-Si consiglia vivamente di utilizzare il codice di tracciamento asincrono per incorporare Munchkin in pagine esterne. Per garantire il più alto tasso di successo possibile per l&#39;esecuzione, incorpora il codice di tracciamento asincrono in `<head>` di ogni pagina.
+Utilizza il codice di tracciamento asincrono per incorporare Munchkin in pagine esterne. Per ottenere il tasso di successo di esecuzione più alto possibile, inserire il codice nell&#39;elemento `<head>` di ogni pagina.
 
 Alcuni sistemi di gestione dei contenuti possono disporre di metodi o restrizioni specifici quando incorporano script arbitrari.
 
-Per riferimento, la pagina finale deve includere un codice simile a questo in `<head>` del documento HTML:
+Nell&#39;elemento `<head>` del documento HTML la pagina finale deve includere un codice simile al seguente esempio:
 
 ```html
 <head>
@@ -73,35 +75,43 @@ Per riferimento, la pagina finale deve includere un codice simile a questo in `<
 
 ## Comportamento di Munchkin
 
-Il comportamento predefinito di Marketo Munchkin consiste nell’effettuare le seguenti operazioni al caricamento della pagina:
+Per impostazione predefinita, Marketo Munchkin esegue le azioni seguenti al caricamento di una pagina:
 
-1. Verifica se il browser corrente dispone di un cookie Munchkin e, in caso contrario, creane uno.
-1. Invia un evento &quot;Visita pagina web&quot; all’istanza di Marketo designata utilizzando le informazioni della pagina corrente e del browser. Registra un’attività nel record corrispondente in Marketo.
-1. Invia l&#39;evento &quot;Collegamento selezionato su pagina Web&quot; per tutti i clic dell&#39;utente che si verificano sui collegamenti.
+1. Verifica se il browser corrente dispone di un cookie Munchkin e, se necessario, ne crea uno.
+1. Invia un evento &quot;Visita pagina Web&quot; all&#39;istanza di Marketo designata utilizzando le informazioni della pagina corrente e del browser. Questo evento registra un’attività nel record Marketo corrispondente.
+1. Invia un evento &quot;Collegamento selezionato su pagina Web&quot; quando l&#39;utente seleziona un collegamento.
 
-Il comportamento di Munchkin può essere modificato tramite l&#39;utilizzo delle [impostazioni di configurazione](configuration.md) di Munchkin, ad esempio se viene creato un cookie per tutti i lead quando si visita la pagina con l&#39;impostazione `cookieAnon` o se si modifica il ritardo di clic con l&#39;impostazione `clickTime`. L’invio dell’attività Visita può essere disabilitato impostando apiOnly su true. A partire dalla versione 162 (agosto 2022), i clic `tel` e `mailto` collegamenti sono tracciati oltre a `http/s` collegamenti.
+Utilizza le [impostazioni di configurazione](configuration.md) di Munchkin per modificare questo comportamento. Ad esempio, utilizza `cookieAnon` per controllare se Munchkin crea un cookie per tutti i lead che visitano la pagina o utilizza `clickTime` per modificare il ritardo di clic.
+
+Per disabilitare l&#39;attività Visita, impostare `apiOnly` su true. A partire dalla versione 162 (agosto 2022), Munchkin tiene traccia dei clic su `tel` e `mailto` collegamenti oltre a `http/s` collegamenti.
 
 ## Lead noti e anonimi
 
-Durante la prima visita di un lead a una pagina del tuo dominio, viene creato un nuovo record lead anonimo in Marketo. La chiave primaria per questo record è il cookie di Munchkin (`_mkto_trk`) creato nel browser dell&#39;utente. Tutte le successive attività web su quel browser vengono registrate su questo record anonimo. Per essere associato a un record noto in Marketo, è necessario che si verifichi una delle seguenti situazioni:
+Quando un lead visita per la prima volta una pagina del dominio, Marketo crea un record lead anonimo. La chiave primaria per questo record è il cookie di Munchkin (`_mkto_trk`) creato nel browser dell&#39;utente.
+
+Marketo registra la successiva attività web da quel browser sul record anonimo. Per associare l’attività a un record Marketo noto, deve verificarsi uno dei seguenti eventi:
 
 - Il lead deve visitare una pagina tracciata da Munchkin con un parametro `mkt_tok` nella stringa query da un collegamento e-mail di Marketo tracciato.
 - Il lead deve compilare un Marketo Form.
 - È necessario inviare una chiamata REST [Associa lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST).
 
-Quando una di queste condizioni viene soddisfatta, il cookie e tutte le attività web associate vengono associate al lead noto.
+Quando si verifica uno di questi eventi, Marketo associa il cookie e tutte le attività web correlate al lead noto.
 
-Viene creato un nuovo record anonimo di attività Web per ogni singolo browser, quindi se un lead visita il dominio per la prima volta utilizzando un nuovo computer e/o browser, l’associazione deve essere ripetuta.
+Marketo crea un record di attività web anonimo per ogni browser. Se un lead visita il dominio da un nuovo computer o browser, l’associazione deve ripetersi.
 
 ## Domini
 
-Munchkin crea e tiene traccia dei singoli cookie per ogni dominio. Affinché il tracciamento dei lead noti venga eseguito tra più domini, è necessario che si verifichi un evento di associazione dei lead per ogni dominio. Ad esempio, se controllo due domini, `marketo.com` e `example.com`, e un lead compila un modulo in `marketo.com`, quindi passa a `example.com` in un secondo momento, la loro attività in `marketo.com` viene tracciata su un record lead noto, ma la loro attività in `example.com` è anonima. Tuttavia, i lead noti persistono tra i sottodomini, pertanto un lead noto su `www.example.com` è anche un lead noto su `info.example.com`.
+Munchkin crea e tiene traccia dei cookie in base al singolo dominio. Per tenere traccia di un lead noto tra più domini, è necessario che su ciascun dominio si verifichi un evento di associazione lead.
 
-Nel caso in cui il dominio di primo livello sia composto da due parti, ad esempio `.co.uk`, aggiungere un parametro domainLevel allo snippet di Munchkin affinché il codice possa essere tracciato correttamente. Vedi [qui](configuration.md#domainlevel) per ulteriori dettagli.
+Si supponga ad esempio di controllare `marketo.com` e `example.com`. Un lead invia un modulo il `marketo.com` e successivamente passa a `example.com`. L&#39;attività su `marketo.com` è associata al lead noto, ma l&#39;attività su `example.com` è anonima.
+
+I lead noti persistono tra i sottodomini. Un lead noto su `www.example.com` è anche un lead noto su `info.example.com`.
+
+Se il dominio di primo livello include due parti, ad esempio `.co.uk`, aggiungere un parametro `domainLevel` al frammento di codice Munchkin. Per ulteriori informazioni, vedere [Configurazione](configuration.md#domainlevel).
 
 ## Cookie
 
-Il cookie Munchkin utilizza la chiave `_mkto_trk` e ha un valore che segue questo modello:
+Il cookie Munchkin utilizza la chiave `_mkto_trk` e un valore che segue uno dei seguenti pattern:
 
 `id:561-HYG-937&token:_mch-marketo.com-1374552656411-90718`
 
@@ -109,12 +119,16 @@ Oppure
 
 `id:561-HYG-937&token:_mch-marketo.com-97bf4361ef4433921a6da262e8df45a`
 
-I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ovvero `example.com`. La durata predefinita del cookie è di 2 anni (730 giorni).
+I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ad esempio `example.com`. La durata predefinita del cookie è di 2 anni (730 giorni).
 
 ## Beta
 
-Per aderire al canale beta Munchkin per le pagine di destinazione, vai al menu [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;. Questo fornisce nuovi snippet di codice nel menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]** per consentire l&#39;utilizzo della versione beta su siti esterni.
+Per accedere al canale beta Munchkin per le pagine di destinazione, passa a [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;.
+
+Questa impostazione aggiunge snippet di codice al menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**. Utilizza questi snippet per eseguire la versione beta su siti esterni.
 
 ## Rinuncia
 
-I visitatori possono rinunciare completamente al tracciamento di Munchkin aggiungendo il parametro `querystring` &quot;marketo_opt_out=true&quot; all&#39;URL nel browser. Quando Munchkin JavaScript rileva questa impostazione, tenta di impostare un nuovo cookie &quot;mkto_opt_out&quot; con un valore di `true`. Tutti gli altri cookie di tracciamento di Marketo vengono eliminati, non vengono impostati nuovi cookie e Munchkin non effettua richieste HTTP quando viene rilevata questa impostazione.
+I visitatori possono rinunciare al tracciamento di Munchkin aggiungendo il parametro `querystring` &quot;marketo_opt_out=true&quot; all&#39;URL nel browser. Quando Munchkin JavaScript rileva questa impostazione, tenta di impostare un nuovo cookie &quot;mkto_opt_out&quot; con un valore di `true`.
+
+Munchkin elimina quindi tutti gli altri cookie di tracciamento di Marketo, non imposta nuovi cookie e non effettua richieste HTTP.

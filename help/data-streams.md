@@ -9,9 +9,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: e1e0219c-f879-479f-8427-888ed2a6e9c2
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1716
+source-wordcount: 1342
 ht-degree: 3%
 
 ---
@@ -23,31 +23,33 @@ ht-degree: 3%
 >Le informazioni correnti sui flussi di dati sono ora disponibili in [Utilizzo dei flussi di dati](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#).
 >
 
-Le organizzazioni di marketing dei nostri clienti si affidano a campagne di marketing tempestive e mirate per rimanere al passo con la loro attività ed essere competitive. Per supportare decisioni rapide e consentire cambiamenti strategici a velocità elevate, è importante disporre di dati che supportino e guidino le decisioni chiave che forniscono campagne mirate e mirate. Alcuni clienti, inoltre, svolgono attività di marketing a livello dei segmenti di clientela, sia all&#39;interno che all&#39;esterno di Marketo Engage. Per supportare queste diverse attività, Marketo ha creato la possibilità di acquisire grandi volumi di dati in tempo quasi reale attraverso i flussi di dati.
+I flussi di dati forniscono grandi volumi di dati Marketo Engage a sistemi esterni in tempo reale. Utilizza i dati in streaming per supportare decisioni tempestive, campagne mirate, processi di marketing esterni e auditing.
 
-Oltre ai vantaggi derivanti dall&#39;utilizzo di dati quasi in tempo reale, esistono anche altri vantaggi correlati ai prodotti:
+I flussi di dati offrono i seguenti vantaggi:
 
-- Allevia il collo di bottiglia dei limiti API perché viene utilizzato lo streaming.
-- Riduce lo scenario dei limiti API, generando meno messaggi di avviso.
-- Non è necessario eseguire esportazioni in blocco per estrarre i dati a causa della funzionalità di streaming dei dati.
+- Riduci la dipendenza da richieste API a velocità limitata.
+- Riduci gli avvisi per limite API.
+- Consegna dei dati senza eseguire esportazioni in blocco.
 
 I flussi di dati sono disponibili per coloro che hanno acquistato un [pacchetto livello prestazioni Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Panoramica del flusso di dati dell’attività del lead
 
-Il flusso di dati dell’attività del lead fornisce uno streaming quasi in tempo reale delle attività del lead di tracciamento dei controlli, in cui grandi volumi di attività possono essere inviati al sistema esterno di un cliente. I flussi consentono ai clienti di controllare in modo efficace gli eventi correlati ai lead, i modelli di utilizzo, fornire visualizzazioni sulle modifiche apportate ai lead e attivare processi e flussi di lavoro in base ai diversi tipi di eventi lead. Esistono più di 144 tipi di attività che possono essere sottoscritti e inviati tramite il flusso.
+Il flusso di dati dell’attività del lead invia grandi volumi di dati dell’attività del lead a un sistema esterno in tempo reale. Utilizza il flusso per controllare gli eventi lead e i modelli di utilizzo, visualizzare le modifiche dei lead e attivare i flussi di lavoro dagli eventi lead.
 
-Tipi di dati lead trasmessi:
+Puoi iscriverti a più di 144 tipi di attività.
 
-1. Modifiche lead: tutte le modifiche su tutti i campi e sui nuovi lead
-1. Attività lead: tutti i tipi di attività lead descritti nel documento
-1. Lead eliminati
-1. Tutti gli oggetti personalizzati sul lead (se richiesto). Al momento è tutto o niente.
+Il flusso può includere:
 
-Fornendo visualizzazioni sulle modifiche dei lead, i clienti possono prendere decisioni più rapide sulle strategie di marketing generali e creare campagne più mirate. Alcuni casi d’uso comuni sono:
+1. Modifiche a tutti i campi dei lead e dei nuovi lead creati.
+1. Tutti i tipi di attività lead documentati.
+1. Lead eliminati.
+1. Tutti gli oggetti personalizzati del lead, se richiesto. Non è possibile selezionare singoli oggetti personalizzati.
 
-- Avvisi personalizzati: se vengono trovati lead con condizioni non coerenti, è possibile aggiungerli all’elenco. I flussi di attività possono selezionarli e inviare l’attività &quot;Aggiungi all’elenco&quot; per i clienti a qualsiasi azione successiva.
-- Potenziare i modelli ML: alcuni clienti pianificano di creare modelli di punteggio che utilizzano gli approfondimenti dell’attività e li inviano a Marketo o li utilizzano nei propri modelli di punteggio interni, a seconda delle esigenze. Assegnando un punteggio a un lead, i clienti possono informare Marketo se desiderano aggiungere nuovi clienti alle campagne Nurture per aumentarne il punteggio.
+I casi d’uso comuni includono:
+
+- Avvisi personalizzati: aggiungi a un elenco i lead con condizioni incoerenti. Il flusso invia l’attività Aggiungi all’elenco a un processo di follow-up.
+- Modelli di apprendimento automatico: utilizza gli approfondimenti dell’attività in modelli di punteggio esterni, quindi invia i punteggi a Marketo per influenzare le campagne di apprendimento o altri processi.
 
 Elenco delle attività in streaming:
 
@@ -74,15 +76,17 @@ Elenco delle attività in streaming:
 | ClickEmail | OpenSalesEmail | VoteInPoll |
 | ClickLink | PushLeadToMarketo | WinSweepstakes |
 
-Se si desidera inviare in streaming gli oggetti personalizzati, è necessario che si tratti di tutti gli oggetti personalizzati correlati al lead. Al momento non è possibile selezionare quelli desiderati.
+Durante il flusso di oggetti personalizzati, includi tutti gli oggetti personalizzati relativi al lead. Non è possibile selezionare singoli oggetti personalizzati.
 
 ## Panoramica del flusso di dati di controllo dell’utente
 
-Il flusso di dati di audit dell’utente fornisce il tracciamento in tempo reale delle modifiche apportate dagli utenti alle risorse&#x200B;. Questo consente a un cliente di controllare in modo efficace gli eventi delle risorse, fornire una panoramica delle modifiche apportate dagli utenti e attivare processi o flussi di lavoro in base a diversi tipi di eventi di audit. Le modifiche alle risorse quasi in tempo reale vengono inviate tramite eventi Adobe I/O a un endpoint configurabile. Gli eventi di audit sono suddivisi per tipo di risorsa e possono abbonarsi a eventi di audit che sono importanti per loro.
+Il flusso di dati di controllo dell’utente tiene traccia delle modifiche apportate dagli utenti alle risorse in tempo reale. Utilizzala per controllare gli eventi delle risorse, visualizzare le modifiche apportate dagli utenti e attivare i processi dagli eventi di audit.
 
-Un caso d’uso appropriato per l’abbonamento a questo flusso è:
+Adobe I/O Events invia le modifiche a un endpoint configurabile. Iscriviti ai tipi di evento necessari per ogni tipo di risorsa.
 
-- Tracciamento delle modifiche quando si utilizzano più sistemi di marketing: alcuni clienti eseguono anche un certo livello di attività di marketing in un altro sistema, ad esempio un sistema di gestione delle relazioni con i clienti come Salesforce, e quindi passano il lead a Marketo. Il lead a volte viene aggiornato e sincronizzato avanti e indietro, quindi è importante tenere traccia di quale sistema ha apportato modifiche recenti.
+Un caso d’uso è:
+
+- Tracciamento delle modifiche tra i sistemi di marketing: quando un CRM o un altro sistema scambia lead con Marketo, utilizza gli eventi di audit per identificare quale sistema ha apportato la modifica più recente.
 
 Elenco degli eventi di controllo degli utenti in streaming:
 
@@ -142,7 +146,7 @@ Esempio di evento di controllo utente:
 
 Il flusso di dati per le notifiche è disponibile come parte delle offerte dei livelli di prestazioni di Marketo Engage.
 
-Attualmente, il centro notifiche in Marketo può essere configurato per inviare notifiche a un indirizzo e-mail. Flusso dati di notifica consente di inviare le notifiche direttamente a un endpoint configurabile tramite eventi di Adobe I/O. Le notifiche vengono fornite oggi tramite l’interfaccia utente e possono essere referenziate dalla campana arancione in alto a destra dello schermo e questo flusso prende tali notifiche e le invia tramite un flusso.
+Il Centro notifiche Marketo può inviare notifiche a un indirizzo e-mail. Il flusso di dati di notifica invia inoltre tali notifiche a un endpoint configurabile tramite Adobe I/O Events. Queste sono le stesse notifiche disponibili dall’icona a forma di campanello nell’interfaccia utente di Marketo.
 
 Elenco degli eventi di notifica:
 
@@ -178,18 +182,18 @@ Esempio di evento di notifica:
 
 ## Dettagli tecnici
 
-In questa sezione vengono fornite istruzioni su cosa è necessario, come connettersi e ricevere dati in streaming per ciascuno dei flussi. Per ciascuno di essi è necessario un certo livello di codifica e configurazione.
+Le sezioni seguenti descrivono la configurazione necessaria per ricevere i dati da ciascun flusso. Ogni flusso richiede la configurazione dell’endpoint e il codice di integrazione.
 
 ### Flusso dati attività lead
 
-Il flusso Attività lead fornisce uno streaming quasi in tempo reale degli eventi Attività lead di Marketo e invia le modifiche del tipo di attività sottoscritte con attributi configurabili:
+Il flusso Attività lead invia gli eventi di attività lead sottoscritti con le seguenti caratteristiche del servizio:
 
-- Per impostazione predefinita, la frequenza dei dati viene inviata ogni 2 secondi.
-- Batch da 100 a 500 per abbonamento.
-- Il timeout per il servizio REST del cliente è di 20 secondi con 3 tentativi ogni 3 minuti e viene abilitato automaticamente in caso di esito positivo. In caso contrario, vengono messe in pausa. Una volta sospeso, il servizio tenta di riattivarlo ogni 3 minuti, a meno che non venga eseguito manualmente il deprovisioning.
-- Conservazione dei dati in coda per un massimo di 7 giorni.
+- Per impostazione predefinita, i dati vengono inviati ogni due secondi.
+- Ogni abbonamento utilizza batch di 100-500 record.
+- Il servizio REST del cliente ha un timeout di 20 secondi e tre tentativi a intervalli di tre minuti. Un nuovo tentativo riuscito abilita automaticamente il servizio. Dopo tre errori, il servizio si interrompe e tenta ogni tre minuti, a meno che non venga eseguito manualmente il deprovisioning.
+- I dati in coda vengono conservati per un massimo di sette giorni.
 
-Per implementare il flusso di dati dell’attività del lead, i clienti devono seguire questi passaggi:
+Per implementare il flusso di dati dell’attività del lead:
 
 1. Esporta un endpoint HTTP che può ricevere richieste POST con un corpo JSON dalla rete Internet pubblica. Il flusso di dati push dell’attività invia richieste a:
 1. Fornisci ad Adobe quanto segue:
@@ -200,7 +204,7 @@ Per implementare il flusso di dati dell’attività del lead, i clienti devono s
       1. Un URL del provider di identità, un ID client e un segreto client per OAuth [Autenticazione credenziali client](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
       1. Un token API, che può essere incluso nelle richieste inviate dallo stream di dati dell’attività lead in un’intestazione http di autorizzazione
 
-Adobe abilita quindi il flusso di dati, nel qual caso i clienti iniziano a ricevere i dati.
+Adobe abilita il flusso di dati dopo aver ricevuto le informazioni richieste. L’endpoint inizia quindi a ricevere i dati.
 
 Diagramma UML di una chiamata tipica del flusso di dati dell’attività del lead:
 
@@ -251,22 +255,22 @@ app.listen(port,()=>{
 })
 ```
 
-Un esempio di codice per un&#39;applicazione che utilizza il flusso di dati dell&#39;attività lead di Marketo è disponibile [qui](https://github.com/ihgrant/activity-stream-consumer-example).
+Per il codice dell&#39;applicazione di esempio, vedi l&#39;esempio del consumer [Flusso dati attività lead](https://github.com/ihgrant/activity-stream-consumer-example).
 
 ### Flusso dati di controllo utente e flusso dati di notifica
 
-Gli eventi di User Audit vengono inviati ad Adobe IO e possono essere utilizzati effettuando l’accesso con un Adobe ID. Di seguito sono riportati i passaggi da seguire:
+Gli eventi di User Audit vengono inviati tramite Adobe I/O. Per utilizzarli con un Adobe ID:
 
-1. I clienti forniscono ad Adobe quanto segue:
+1. Fornisci ad Adobe le seguenti informazioni:
    1. Adobe ID
    1. Marketo Munchkin ID per la sottoscrizione
-1. Il cliente espone un endpoint REST per utilizzare gli eventi normalmente sotto forma di webhook.
-1. Una volta fornito, Adobe abilita il flusso per l’abbonamento del cliente.
-1. Il cliente imposta quindi il flusso in Adobe IO (istruzioni da fornire)
+1. Esponi un endpoint REST, in genere un webhook, per utilizzare gli eventi.
+1. Dopo aver ricevuto le informazioni sull’endpoint, Adobe abilita il flusso per la sottoscrizione.
+1. Configura il flusso in Adobe I/O.
    1. Questo passaggio richiede un’organizzazione Adobe
    1. Richiede che l’utente dell’organizzazione Adobe abbia il ruolo di sviluppatore o amministratore di sistema
 
-Per configurare Adobe IO, vedere [Configurazione dei flussi di dati di controllo degli utenti Marketo con Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#) nella sezione Documentazione pubblica.
+Per configurare Adobe I/O, vedere [Configurazione dei flussi di dati di controllo degli utenti di Marketo con Adobe I/O](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#).
 
 ### Configurazione del flusso di dati di controllo degli utenti in Marketo
 

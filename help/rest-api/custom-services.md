@@ -12,38 +12,42 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1031
+source-wordcount: 872
 ht-degree: 0%
 
 ---
 
 # Servizi personalizzati
 
-Un servizio personalizzato fornisce le credenziali per l’autenticazione con Marketo. Sono necessarie credenziali per ottenere un token di accesso dal servizio Marketo [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Ogni servizio personalizzato ha l’ambito di competenza di un singolo utente di sola API da cui deriva le sue autorizzazioni.
+Un servizio personalizzato fornisce le credenziali utilizzate per l&#39;autenticazione con Marketo e per ottenere un token di accesso dal servizio Marketo [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Ogni servizio personalizzato ha l’ambito di un utente per sola API e ne deriva le autorizzazioni.
 
 ## Ruoli
 
-Il primo passaggio nella creazione di un servizio personalizzato consiste nel creare un ruolo che possa essere applicato all’utente pertinente e solo API. Operazione eseguita dal menu **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]**.
+Prima di creare un servizio personalizzato, crea un ruolo da assegnare all’utente di sola API pertinente. Vai a **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]**.
 
-I ruoli sono contenitori per singole autorizzazioni che consentono o limitano l’accesso a determinate funzioni. Nelle sottoscrizioni in cui sono abilitate le aree di lavoro e le partizioni, le autorizzazioni vengono assegnate in base all&#39;area di lavoro. Se un utente dispone di un’autorizzazione in un’area di lavoro ma non in un’altra, potrà eseguire solo le azioni consentite in tale area di lavoro. Per creare un ruolo, selezionare **[!UICONTROL New Role]**.
+I ruoli contengono singole autorizzazioni che consentono o limitano l’accesso a funzioni specifiche. Nelle sottoscrizioni con le aree di lavoro e le partizioni abilitate, le autorizzazioni vengono assegnate per area di lavoro. Un utente può eseguire le azioni consentite solo nelle aree di lavoro in cui dispone di tali autorizzazioni.
+
+Per creare un ruolo, selezionare **[!UICONTROL New Role]**.
 
 ![Utenti e ruoli](assets/admin-users-and-roles-roles.png)
 
-Assegna al ruolo un nome descrittivo. Gli utenti solo API dispongono di un set specifico di autorizzazioni separate e distinte dalle normali autorizzazioni utente. Le autorizzazioni API esistono nella rispettiva gerarchia sotto la struttura &quot;Access API&quot;.
+Assegna al ruolo un nome descrittivo. Gli utenti solo API dispongono di un set specifico di autorizzazioni separate dalle autorizzazioni utente standard. Le autorizzazioni API vengono visualizzate nella rispettiva gerarchia nella struttura &quot;Access API&quot;.
 
 ![Autorizzazioni nuovo ruolo](assets/new-role-access-api-permissions.png)
 
 ### Autorizzazioni ruolo
 
-Solo le autorizzazioni del gruppo &quot;API di accesso&quot; vengono applicate agli utenti API, ovvero il rilascio di tutte le autorizzazioni di amministratore non concederà alcuna autorizzazione API a un utente.
+Solo le autorizzazioni nel gruppo &quot;API di accesso&quot; sono applicabili agli utenti API. L’assegnazione di tutte le autorizzazioni di amministratore non concede le autorizzazioni API a un utente.
 
-Durante la costruzione di un ruolo, è necessario considerare attentamente le azioni da eseguire nell&#39;applicazione. Concedi solo il set minimo di autorizzazioni necessarie per eseguire tali azioni. Consentendo un set di autorizzazioni inutilmente permissivo, le integrazioni possono eseguire azioni indesiderate nell’abbonamento. Puoi utilizzare lo strumento [autorizzazioni](endpoint-reference.md) per determinare il set minimo di autorizzazioni. Vedi l&#39;elenco completo delle [autorizzazioni](#permission_list).
+Quando si crea un ruolo, identificare le azioni che l&#39;applicazione deve eseguire. Assegna solo le autorizzazioni minime necessarie per tali azioni. Autorizzazioni non necessarie possono consentire alle integrazioni di eseguire azioni indesiderate nell’abbonamento.
+
+Utilizza lo strumento [autorizzazioni](endpoint-reference.md) per determinare il set minimo di autorizzazioni. Vedi l&#39;elenco completo delle [autorizzazioni](#permission_list).
 
 ## Utenti
 
-Dopo aver creato un ruolo, devi creare un utente &quot;Solo API&quot;. Gli utenti con solo API sono un tipo speciale di utente in Marketo, in quanto sono amministrati da altri utenti e non possono essere utilizzati per accedere a Marketo. Gli utenti solo API possono:
+Dopo aver creato un ruolo, crea un utente &quot;Solo API&quot;. Altri utenti amministrano utenti solo API e gli utenti solo API non possono accedere a Marketo. Possono:
 
 - Creare servizi personalizzati
 - Autorizzazioni di ambito per tali servizi
@@ -55,35 +59,41 @@ Dopo aver creato un ruolo, devi creare un utente &quot;Solo API&quot;. Gli utent
 
 ![Informazioni utente](assets/new-user-info.png)
 
-Assegna all’utente un nome descrittivo e un indirizzo e-mail (non deve essere valido) in base al servizio e all’applicazione per i quali verrà utilizzato. Compila i campi obbligatori nel menu di dialogo, seleziona la casella di controllo **[!UICONTROL API Only]** e assegna uno dei tuoi ruoli API all&#39;utente. In questo modo le autorizzazioni del ruolo vengono assegnate all&#39;utente.
+Assegna all’utente un nome descrittivo e un indirizzo e-mail in base al servizio e all’applicazione che utilizzerà l’account. L&#39;indirizzo e-mail non deve essere valido. Completa i campi obbligatori, seleziona la casella di controllo **[!UICONTROL API Only]** e assegna all&#39;utente uno dei tuoi ruoli API. Questa azione assegna all&#39;utente il set di autorizzazioni del ruolo.
 
 ![Autorizzazioni per nuovi utenti](assets/new-user-permissions.png)
 
-Infine, selezionare **[!UICONTROL Send]** per creare l&#39;utente solo API.
+Selezionare **[!UICONTROL Send]** per creare l&#39;utente solo API.
 
-Quando esegui il provisioning di una nuova applicazione con credenziali, valuta seriamente la possibilità di creare un nuovo utente per il servizio anche se dispone dello stesso set di autorizzazioni di un’altra integrazione esistente. Le statistiche sull’utilizzo delle chiamate API e gli errori vengono tracciati in base all’utente, pertanto il provisioning di un utente per ogni applicazione può aiutarti a isolare l’utilizzo e i problemi in applicazioni specifiche. Questa funzione si rivela utile in caso di problemi con il superamento dei limiti di chiamata API giornalieri o errori derivanti da chiamate API effettuate da integrazioni.
+Quando esegui il provisioning delle credenziali per una nuova applicazione, puoi creare un utente separato per il servizio, anche se un’altra integrazione utilizza lo stesso set di autorizzazioni. Le statistiche sull’utilizzo delle chiamate API e gli errori vengono tracciati per utente.
+
+Un utente per ogni applicazione consente di isolare l’utilizzo e i problemi relativi ad applicazioni specifiche. Questa separazione è utile quando le integrazioni raggiungono i limiti di chiamata API giornalieri o generano errori API.
 
 ## Servizi personalizzati
 
-I servizi personalizzati forniscono le credenziali effettive, l’ID client e il segreto client, necessari per eseguire l’autenticazione con un’istanza di Marketo. Per eseguire il provisioning di uno, vai al menu **[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]** e seleziona **[!UICONTROL New Service]**.
+I servizi personalizzati forniscono l’ID client e il segreto client necessari per l’autenticazione con un’istanza di Marketo. Per eseguire il provisioning di un servizio, passare a **[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]** e selezionare **[!UICONTROL New Service]**.
 
-Assegna un nome descrittivo al servizio e, dall’elenco &quot;Servizio&quot;, seleziona &quot;Personalizzato&quot;. Fornire una descrizione dettagliata al servizio e selezionare un utente appropriato dall&#39;elenco di utenti solo API, quindi selezionare **[!UICONTROL Create]**.
+Assegna al servizio un nome descrittivo. Dall&#39;elenco &quot;Servizio&quot;, selezionare &quot;Personalizzato&quot;. Immettere una descrizione dettagliata, selezionare un utente appropriato dall&#39;elenco Utente solo API, quindi selezionare **[!UICONTROL Create]**.
 
 ![Nuovo servizio personalizzato](assets/admin-launchpoint-new-service.png)
 
-Questo aggiunge un nuovo servizio all’elenco dei servizi LaunchPoint e l’opzione &quot;Visualizza dettagli&quot;. Fai clic su &quot;Visualizza dettagli&quot; per ricevere l’ID client e il segreto client necessari per l’autenticazione, l’utente proprietario e un’opzione per ottenere un token a scopo di test a breve termine. Il token ottenuto da questa finestra di dialogo ha la stessa durata dei token ottenuti normalmente dal servizio [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) ed è valido per 3.600 secondi dalla creazione.
+Il servizio viene visualizzato nell&#39;elenco dei servizi LaunchPoint con l&#39;opzione &quot;Visualizza dettagli&quot;. Seleziona Visualizza dettagli per accedere all’ID client, al segreto client, all’utente proprietario e all’opzione Ottieni token.
+
+Utilizza Ottieni token per test a breve termine. Il token ha la stessa durata dei token ottenuti dal servizio [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) ed è valido per 3.600 secondi dopo la creazione.
 
 ![Ottieni token](assets/get-token.png)
 
 ## Aree di lavoro e partizioni
 
-Nelle sottoscrizioni con aree di lavoro e partizioni, la possibilità di accedere a un determinato record o risorsa viene concessa in base alle autorizzazioni di cui dispone il ruolo di un utente in una determinata area di lavoro. A ogni area di lavoro viene concesso l&#39;accesso a una o più partizioni nel menu Aree di lavoro e partizioni e un lead appartiene a una singola partizione. Se l’utente con accesso solo API ha accesso ai record lead in lettura o scrittura in un’area di lavoro, può accedere a tutti i record nelle partizioni a cui tale area di lavoro ha accesso.
+Nelle sottoscrizioni con aree di lavoro e partizioni, le autorizzazioni del ruolo di un utente in un’area di lavoro determinano l’accesso a record e risorse. Ogni area di lavoro ha accesso a una o più partizioni e ogni lead appartiene a una partizione.
 
-Assets appartiene alle aree di lavoro; pertanto, la capacità di leggere o scrivere una risorsa dipende dal fatto che l’utente abbia un ruolo nell’area di lavoro pertinente con autorizzazioni di lettura o scrittura di quel tipo di record di risorsa nell’area di lavoro.
+Se un utente con accesso solo API può leggere o scrivere record lead in un’area di lavoro, può accedere a tutti i record nelle partizioni disponibili in tale area di lavoro.
+
+Assets appartiene alle aree di lavoro. Un utente può leggere o scrivere una risorsa quando dispone di un ruolo con l’autorizzazione richiesta nell’area di lavoro della risorsa.
 
 ## Elenco autorizzazioni
 
-Di seguito è riportato un elenco di tutte le autorizzazioni disponibili per gli utenti con sola API e di ciò che consentono a un utente con tale autorizzazione di fare.
+Nella tabella seguente sono elencate le autorizzazioni disponibili per gli utenti con sola API e l’accesso concesso da ciascuna autorizzazione.
 
 | Autorizzazione per ruolo | Consente l&#39;accesso a... |
 | --- | --- |

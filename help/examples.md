@@ -10,20 +10,20 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 67
+source-wordcount: 69
 ht-degree: 7%
 
 ---
 
 # Esempi
 
-Di seguito trovi una serie di esempi dimostrativi di script e-mail.
+Gli esempi seguenti illustrano i pattern di script comuni per le e-mail.
 
 ## Elenco degli eventi
 
-In questo esempio viene utilizzato un ipotetico oggetto personalizzato Event.
+In questo esempio viene utilizzato un ipotetico oggetto personalizzato Event per dimostrare l&#39;ordinamento e il filtraggio.
 
 ```html
 ##declare an $EventsThisYear variable

@@ -3,9 +3,9 @@ title: E-mail
 feature: REST API
 description: Utilizza l’API REST di Marketo Asset per eseguire query, creare, aggiornare, clonare, eliminare, approvare e verificare le dipendenze per le risorse e-mail.
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '497'
+source-wordcount: '492'
 ht-degree: 5%
 
 ---
@@ -32,7 +32,7 @@ x-app-type: <app-type>
 
 ## Query
 
-È possibile recuperare i metadati delle e-mail per risorsa `id` o con l&#39;endpoint del filtro.
+Recuperare i metadati e-mail per risorsa `id` o con l&#39;endpoint del filtro.
 
 ### Per ID
 
@@ -63,7 +63,7 @@ GET /rest/asset/v2/email/{id}
 
 ### Filtro
 
-L’endpoint filtro supporta la ricerca all’interno di un’area di lavoro e la riduzione dei risultati con parametri di query aggiuntivi.
+L’endpoint filtro esegue ricerche all’interno di un’area di lavoro e supporta parametri di query aggiuntivi.
 
 `workspaceId` è obbligatorio.
 

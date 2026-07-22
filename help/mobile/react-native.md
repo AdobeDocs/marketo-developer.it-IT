@@ -14,20 +14,20 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 857
+source-wordcount: 580
 ht-degree: 1%
 
 ---
 
 # React Native
 
-Questo articolo fornisce informazioni su come installare e configurare il SDK nativo di Marketo per integrare la tua app mobile con la nostra piattaforma.
+Installa e configura il SDK nativo di Marketo per integrare un’app mobile React Native con Marketo.
 
 ## Prerequisiti
 
-[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin).
+[Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin.
 
 ## Integrazione SDK
 
@@ -35,7 +35,7 @@ Questo articolo fornisce informazioni su come installare e configurare il SDK na
 
 **Imposta utilizzando Gradle**
 
-Aggiungere la dipendenza di Marketo SDK con la versione più recente: nel file di livello applicazione `build.gradle`, nella sezione dipendenze, aggiungere (inclusa la versione appropriata di Marketo SDK)
+Aggiungere l&#39;ultima dipendenza di Marketo SDK nella sezione delle dipendenze del file `build.gradle` a livello di applicazione. Includi la versione di SDK appropriata.
 
 ```groovy
 implementation 'com.marketo:MarketoSDK:0.x.x'
@@ -43,7 +43,7 @@ implementation 'com.marketo:MarketoSDK:0.x.x'
 
 **Aggiungi archivio mavencentral**
 
-Marketo SDK è disponibile nell&#39;archivio centrale [maven](https://mvnrepository.com/). Per sincronizzare tali file, aggiungere l&#39;archivio `mavencentral` alla radice `build.gradle`
+Marketo SDK è disponibile nell&#39;archivio centrale [Maven](https://mvnrepository.com/). Aggiungere l&#39;archivio `mavencentral` al file radice `build.gradle`.
 
 ```groovy
 build script {
@@ -54,25 +54,21 @@ build script {
 }
 ```
 
-Quindi, sincronizza il progetto con i file Gradle.
+Sincronizza il progetto con i file Gradle.
 
 #### Integrazione di iOS SDK
 
-Prima di creare un bridge per il progetto React Native, è importante configurare SDK nel progetto Xcode.
+Imposta SDK nel progetto Xcode prima di creare un bridge per il progetto React Native.
 
 Integrazione di **SDK - Utilizzo di CocoaPods**
 
-Usare il SDK di iOS nella tua app è facile. Esegui i seguenti passaggi per configurarlo nel progetto Xcode dell’app utilizzando CocoaPods, in modo da integrare la nostra piattaforma con la tua app.
-
-Scarica [CocoaPods](https://cocoapods.org/) - Distribuito come gemma Ruby, è un gestore delle dipendenze per Objective-C e Swift che semplifica il processo di utilizzo di librerie di terze parti nel codice, ad esempio iOS SDK.
-
-Per scaricarlo e installarlo, avvia un terminale della riga di comando sul Mac ed esegui il comando seguente:
+Usa [CocoaPods](https://cocoapods.org/) per aggiungere l&#39;SDK iOS al progetto Xcode dell&#39;app. CocoaPods è un Ruby dependency manager per Objective-C e Swift.
 
 1. Installare CocoaPods.
 
 `$ sudo gem install cocoapods`
 
-1. Apri il Podfile. (nella cartella iOS del progetto ReactNative)
+1. Apri il Podfile nella cartella iOS del progetto ReactNative.
 
 `$ open -a Xcode Podfile`
 
@@ -92,15 +88,13 @@ Per scaricarlo e installarlo, avvia un terminale della riga di comando sul Mac e
 
 ## Istruzioni di installazione del modulo nativo
 
-A volte un’app React Native deve accedere a un’API della piattaforma nativa che non è disponibile per impostazione predefinita in JavaScript, ad esempio le API native per accedere ad Apple o Google Pay. Puoi riutilizzare alcune librerie Objective-C, Swift, Java o C++ esistenti senza doverle riimplementare in JavaScript, o scrivere codice multi-thread ad alte prestazioni per elementi come l’elaborazione delle immagini.
+Utilizza un modulo nativo quando l’app React Native deve accedere a un’API di piattaforma o a una libreria nativa che JavaScript non espone. Il sistema NativeModule espone le classi Java, Objective-C o C++ come oggetti JavaScript.
 
-Il sistema NativeModule espone le istanze delle classi Java/Objective-C/C++ (native) a JavaScript (JS) come oggetti JS, consentendo in tal modo di eseguire codice nativo arbitrario dall&#39;interno di JS. Anche se non ci aspettiamo che questa funzione faccia parte del normale processo di sviluppo, è essenziale che esista. Se React Native non esporta un’API nativa necessaria per la tua app JS, dovresti essere in grado di esportarla da solo.
-
-Il bridge React Native viene utilizzato per la comunicazione tra JSX e i livelli di app nativi. Nel nostro caso, l’app host sarà in grado di scrivere il codice JSX che può richiamare i metodi di Marketo SDK.
+Il bridge React Native collega i livelli JSX e app nativi. L’app host può utilizzare il codice JSX per chiamare i metodi SDK di Marketo tramite questo bridge.
 
 ### Android
 
-Questo file contiene i metodi wrapper che possono chiamare internamente i metodi SDK di Marketo con i parametri forniti.
+Crea un file contenente metodi di wrapper che chiamano Marketo SDK con i parametri forniti.
 
 ```java
 public class RNMarketoModule extends ReactContextBaseJavaModule {
@@ -188,7 +182,7 @@ public class RNMarketoModule extends ReactContextBaseJavaModule {
 
 **Registra pacchetto**
 
-Informa react-native sul pacchetto Marketo.
+Registrare il pacchetto Marketo con React Native.
 
 ```java
 public class MarketoPluginPackage implements ReactPackage {
@@ -211,7 +205,7 @@ public class MarketoPluginPackage implements ReactPackage {
 }
 ```
 
-Per completare la registrazione del pacchetto, aggiungere MarketoPluginPackage all&#39;elenco del pacchetto React nella classe dell&#39;applicazione:
+Aggiungere MarketoPluginPackage all&#39;elenco dei pacchetti React nella classe Application.
 
 ```java
 public class MainApplication extends Application implements ReactApplication {
@@ -236,11 +230,11 @@ public class MainApplication extends Application implements ReactApplication {
 
 ### iOS
 
-Nella guida seguente verrà creato un modulo nativo, _RNMarketoModule_, che consentirà di accedere alle API di Marketo da JavaScript.
+Creare un modulo nativo, _RNMarketoModule_, per accedere alle API Marketo da JavaScript.
 
-Per iniziare, apri il progetto iOS nell’applicazione React Native in Xcode. Puoi trovare il tuo progetto iOS qui, all’interno di un’app React Native. È consigliabile utilizzare Xcode per scrivere il codice nativo. Xcode è stato sviluppato per lo sviluppo di iOS e il suo utilizzo ti aiuterà a risolvere rapidamente errori più piccoli come la sintassi del codice.
+Apri il progetto iOS per l’applicazione React Native in Xcode. Utilizza Xcode per scrivere il codice nativo e identificare gli errori di sintassi.
 
-Crea l’intestazione del modulo nativo personalizzato principale e i file di implementazione. Creare un nuovo file denominato `MktoBridge.h` e aggiungervi quanto segue:
+Crea l’intestazione del modulo nativo personalizzato e i file di implementazione. Crea `MktoBridge.h` e aggiungi il seguente contenuto.
 
 ```objectivec
 //
@@ -261,7 +255,7 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 ```
 
-Creare il file di implementazione corrispondente, `MktoBridge.m`, nella stessa cartella e includere il contenuto seguente:
+Crea `MktoBridge.m` nella stessa cartella e aggiungi il seguente contenuto.
 
 ```objectivec
 //
@@ -373,7 +367,7 @@ RCT_EXPORT_METHOD(registerForRemoteNotifications) {
 
 #### Inizializzare Marketo SDK
 
-Individuare nell&#39;applicazione una posizione in cui si desidera aggiungere una chiamata al metodo createCalendarEvent() del modulo nativo. Di seguito è riportato un esempio di componente, NewModuleButton, che puoi aggiungere nell’app. È possibile richiamare il modulo nativo all’interno della funzione onPress() di NewModuleButton.
+Aggiungi una chiamata al metodo createCalendarEvent() del modulo nativo. Nell&#39;esempio seguente viene aggiunto un componente NewModuleButton e viene richiamato il modulo nativo nella funzione onPress().
 
 ```javascript
 import React from 'react';
@@ -392,7 +386,7 @@ const NewModuleButton = () => {
 export default NewModuleButton;
 ```
 
-Questo file JavaScript carica il modulo nativo sul livello JavaScript.
+Carica il modulo nativo nel livello JavaScript.
 
 ```javascript
 import React from 'react';
@@ -402,9 +396,9 @@ import { NativeModules } from 'react-native';
 const { RNMarketoModule } = NativeModules;
 ```
 
-Una volta inseriti correttamente i file di cui sopra, possiamo importare il modulo js in qualsiasi classe js e chiamare direttamente i relativi metodi. Ad esempio:
+Dopo aver inserito i file, importa il modulo JavaScript in una classe JavaScript e chiama direttamente i relativi metodi.
 
-Tieni presente che dobbiamo passare &quot;reactNative&quot; come tipo di framework per le app native React.
+Passa &quot;reactNative&quot; come tipo di framework per le app React Native.
 
 ```javascript
 // Initialize marketo SDK with Munchkin & Seretkey you have from step 1.
@@ -428,13 +422,13 @@ RNMarketoModule.uninitializeMarketoPush()
 
 #### Configurare le notifiche push
 
-Inizializzare il push con l’ID progetto e il nome del canale
+Inizializza le notifiche push con l’ID progetto e il nome del canale.
 
 ```javascript
 RNMarketoModule.initializeMarketoPush("ProjectId", "Channel_name")
 ```
 
-Aggiungi il seguente servizio a `AndroidManifest.xml`
+Aggiungi il seguente servizio a `AndroidManifest.xml`.
 
 ```xml
 <service android:exported="true" android:name=".MyFirebaseMessagingService" android:stopWithTask="true">
@@ -447,7 +441,7 @@ Aggiungi il seguente servizio a `AndroidManifest.xml`
 </activity/>
 ```
 
-Creare una classe denominata `FirebaseMessagingService.java` e aggiungere il codice seguente
+Creare una classe denominata `FirebaseMessagingService.java` e aggiungere il codice seguente.
 
 ```java
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -471,12 +465,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 }
 ```
 
-Le autorizzazioni devono essere abilitate nel progetto Xcode per inviare notifiche push al dispositivo dell’utente.
+Abilita le autorizzazioni nel progetto Xcode per inviare notifiche push al dispositivo dell’utente.
 
 Per inviare notifiche push, [aggiungi notifiche push](push-notifications.md).
 
-Configurare le notifiche push in iOS
-crea il file PushNotifications.tsx e aggiungi quanto segue:
+Per impostare le notifiche push in iOS, crea PushNotifications.tsx e aggiungi il seguente codice.
 
 ```javascript
 import { NativeModules } from 'react-native';
@@ -501,7 +494,7 @@ RNMarketoModule.registerForRemoteNotifications();
 export { requestPermission, registerForRemoteNotifications };
 ```
 
-Aggiungi `App.tsx` per consentire le notifiche push
+Aggiungi il seguente codice a `App.tsx` per consentire le notifiche push.
 
 ```javascript
 import React, { useEffect } from 'react';
@@ -515,7 +508,7 @@ registerForRemoteNotifications();
 }, []);
 ```
 
-Aggiorna `AppDelegate.mm` con i metodi delegate APNS:
+Aggiornare `AppDelegate.mm` con i metodi delegate APNS.
 
 ```objectivec
 #import "AppDelegate.h"
@@ -582,7 +575,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 **Android**
 
-Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;interno del tag dell&#39;applicazione.
+Aggiungi &quot;MarketoActivity&quot; a `AndroidManifest.xml` all&#39;interno del tag dell&#39;applicazione.
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity" android:configChanges="orientation|screenSize" android:exported="true">
@@ -599,11 +592,11 @@ Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;inter
 
 1. Seleziona Progetto > Target > Informazioni > Tipi di URL.
 
-1. Aggiungi identificatore: ${PRODUCT_NAME}
+1. Aggiungi l&#39;identificatore ${PRODUCT_NAME}.
 
-1. Imposta schemi URL: `mkto-<S_ecret Key_>`
+1. Impostare gli schemi URL su `mkto-<S_ecret Key_>`.
 
-1. Includi `application:openURL:sourceApplication:annotation:` nel file `AppDelegate.m` (Objective-C)
+1. Aggiungi `application:openURL:sourceApplication:annotation:` al file `AppDelegate.m` per Objective-C.
 
 **iOS - Gestisci tipi di URL personalizzati/collegamenti diretti in AppDelegate**
 
@@ -618,7 +611,7 @@ Aggiungi &quot;MarketoActivity&quot; al file `AndroidManifest.xml` all&#39;inter
 }
 ```
 
-Queste costanti vengono utilizzate quando si chiama l’API da JavaScript. È necessario creare file costanti e aggiungere quanto segue.
+Crea file costanti e aggiungi le seguenti costanti per le chiamate API di JavaScript.
 
 ```objectivec
 // Lead attributes.
@@ -650,7 +643,7 @@ static NSString *const KEY_SIGNATURE = @"signature";
 static NSString *const KEY_TIMESTAMP = @"timeStamp";
 ```
 
-Esempio di utilizzo
+Utilizzare le costanti come illustrato nell&#39;esempio seguente.
 
 ```javascript
 //You can create a Marketo Lead by calling the associateLead function.

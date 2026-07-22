@@ -10,20 +10,20 @@ feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 228
+source-wordcount: 234
 ht-degree: 0%
 
 ---
 
 # Esempi
 
-Di seguito sono riportati alcuni esempi di moduli web dimostrativi di Forms 2.0.
+Questi esempi illustrano i flussi di lavoro comuni per i moduli web di Forms 2.0.
 
 ## Nascondi modulo dopo l’invio corretto
 
-Questo esempio non porta il visitatore alla pagina di follow-up né ricarica la pagina corrente.
+Questo esempio mantiene il visitatore sulla pagina corrente dopo un invio corretto. Non apre la pagina di follow-up né ricarica la pagina corrente.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -39,7 +39,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## Porta il visitatore all’URL definito dall’utente
 
-Questo esempio porta il visitatore a un URL determinato da JavaScript dopo l’invio corretto, invece che alla pagina di ringraziamento configurata.
+Questo esempio invia il visitatore a un URL definito in JavaScript dopo un invio corretto. L’URL di JavaScript sostituisce la pagina di ringraziamento configurata.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -66,7 +66,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## Leggi valori campo modulo all’invio del modulo
 
-Questo esempio legge i campi modulo all’invio del modulo.
+In questo esempio vengono letti i valori dei campi modulo quando il modulo viene inviato.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -84,7 +84,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## Invio modulo su evento di clic non modulo
 
-In questo esempio viene inviato un modulo basato su un evento clic su un altro elemento o evento che non fa parte del modulo.
+In questo esempio viene inviato un modulo quando il visitatore seleziona un elemento esterno al modulo.
 
 ```javascript
 // Load the form normally
@@ -102,7 +102,7 @@ btn.onclick = function() {
 
 ## Impedire a un utente di inviare un modulo
 
-Ai fini di questo esempio, è necessario fare clic sul pulsante del contatore di clic almeno tre volte prima che il pulsante di invio sul modulo funzioni.
+In questo esempio, il visitatore deve selezionare il pulsante del contatore di clic almeno tre volte prima che il pulsante di invio del modulo funzioni.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
@@ -144,7 +144,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## Mostra modulo in LightBox
 
-Questo esempio mostra il modulo in una finestra di dialogo di stile lightbox se l&#39;URL contiene un parametro `lightboxForm=true`.
+In questo esempio il modulo viene visualizzato in una finestra di dialogo di tipo lightbox quando l&#39;URL contiene il parametro `lightboxForm=true`.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
@@ -156,7 +156,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## Mostra messaggio di errore personalizzato
 
-Questo esempio mostra un messaggio di errore personalizzato all’invio basato su una logica di business personalizzata.
+In questo esempio viene applicata una regola business personalizzata durante l&#39;invio e viene visualizzato un messaggio di errore personalizzato se i valori non soddisfano la condizione richiesta.
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {

@@ -17,39 +17,40 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2475
+source-wordcount: 2255
 ht-degree: 3%
 
 ---
 
 # Codici errore
 
-Di seguito sono riportati gli elenchi dei codici di errore REST API e una spiegazione di come gli errori vengono restituiti alle applicazioni.
+Le API REST di Marketo restituiscono errori a livello HTTP, di risposta o di record. In questa pagina vengono illustrati i tipi di errore e i codici di errore associati.
 
 ## Gestione e registrazione delle eccezioni
 
-Durante lo sviluppo per Marketo, è importante che le richieste e le risposte vengano registrate quando si verifica un’eccezione imprevista. Mentre alcuni tipi di eccezioni, ad esempio l’autenticazione scaduta, possono essere gestiti in modo sicuro tramite la riautenticazione, altri possono richiedere interazioni di supporto e in questo caso le richieste e le risposte verranno sempre richieste.
+Registra le richieste e le risposte quando l’integrazione rileva un’eccezione imprevista. Alcune eccezioni, ad esempio l’autenticazione scaduta, possono essere gestite effettuando di nuovo l’autenticazione. Altre eccezioni possono richiedere l&#39;assistenza del Supporto tecnico, che richiederà i dettagli di richiesta e risposta associati.
 
 ## Tipi di errore
 
-L’API REST di Marketo può restituire tre diversi tipi di errori in condizioni operative normali:
+L’API REST di Marketo può restituire tre tipi di errori durante il normale funzionamento:
 
-* Livello HTTP: questi errori sono indicati da un codice `4xx`.
-* Response-Level: questi errori sono inclusi nell’array &quot;errors&quot; della risposta JSON.
-* Record-Level: questi errori sono inclusi nell’array &quot;result&quot; della risposta JSON e sono indicati su base record individuale con il campo &quot;status&quot; e l’array &quot;reason&quot;.
+- **HTTP-Level:** Indicato da un codice `4xx`.
+- **Livello di risposta:** incluso nell&#39;array &quot;errors&quot; della risposta JSON.
+- **Livello record:** incluso nell&#39;array &quot;result&quot; della risposta JSON e indicato per ogni record dal campo &quot;status&quot; e dall&#39;array &quot;reason&quot;.
 
-Per i tipi di errore a livello di risposta e di record, viene restituito il codice di stato HTTP 200. Per tutti i tipi di errore, la frase relativa al motivo HTTP non deve essere valutata in quanto è facoltativa e soggetta a modifiche.
+Gli errori a livello di risposta e di record restituiscono il codice di stato HTTP 200. Per tutti i tipi di errore, non valutare la frase del motivo HTTP perché è facoltativa e soggetta a modifiche.
 
 ### Errori a livello HTTP
 
-In circostanze operative normali, Marketo dovrebbe restituire solo due errori del codice di stato HTTP, `413 Request Entity Too Large` e `414 Request URI Too Long`. Entrambi possono essere recuperati recuperando l’errore, modificando la richiesta e riprovando, ma con le pratiche di codifica intelligente non dovresti mai incontrarli in modo selvaggio.
+Durante il normale funzionamento, Marketo restituisce due errori del codice di stato HTTP: `413 Request Entity Too Large` e `414 Request URI Too Long`. Per risolvere uno di questi errori, modifica la richiesta e riprova. Per evitare questi errori, controlla le dimensioni delle richieste prima dell’invio.
 
-Marketo restituirà 413 se il payload della richiesta supera 1 MB, o 10 MB in caso di lead di importazione. Nella maggior parte degli scenari è improbabile che questi limiti vengano raggiunti, ma l’aggiunta di un controllo alle dimensioni della richiesta e lo spostamento di eventuali record, che causano il superamento del limite a una nuova richiesta, dovrebbe evitare qualsiasi circostanza che porti alla restituzione di questo errore da parte di qualsiasi endpoint.
+Marketo restituisce 413 quando il payload della richiesta supera 1 MB o 10 MB per l’importazione di lead. Controlla le dimensioni della richiesta prima dell’invio. Se i record causano il superamento del limite della richiesta, sposta tali record in un’altra richiesta.
 
-Verrà restituito 414 quando l’URI di una richiesta GET supera gli 8 KB. Per evitarlo, confrontalo con la lunghezza della stringa di query per vedere se supera questo limite. Se la richiesta viene modificata in un metodo POST, immettere la stringa di query come corpo della richiesta con il parametro aggiuntivo `_method=GET`. In questo modo viene superata la limitazione sugli URI. È raro che questo limite venga raggiunto nella maggior parte dei casi, ma è piuttosto comune quando si recuperano grandi batch di record con valori di filtro singoli lunghi, ad esempio un GUID.
-L&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/) può restituire un errore 401 Unauthorized. Ciò è in genere dovuto a un ID client non valido o a un segreto client non valido. Codici di errore a livello HTTP
+Marketo restituisce 414 quando l’URI di una richiesta GET supera gli 8 KB. Controlla la lunghezza della stringa di query prima dell’invio. Se supera il limite, modifica il metodo di richiesta in POST, inserisci la stringa di query nel corpo della richiesta e aggiungi il parametro `_method=GET`. Gli URI lunghi sono più comuni quando si recuperano batch di record di grandi dimensioni con valori di filtro lunghi, ad esempio un GUID.
+
+L&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/) può restituire un errore 401 Unauthorized, in genere perché l&#39;ID client o il segreto client non è valido. Nella tabella seguente sono elencati i codici di errore a livello HTTP.
 
 <table>
   <thead>
@@ -75,7 +76,7 @@ L&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/
 
 #### Errori a livello di risposta
 
-Gli errori a livello di risposta sono presenti quando il parametro `success` della risposta è impostato su false e sono strutturati nel modo seguente:
+Gli errori a livello di risposta si verificano quando la risposta imposta il parametro `success` su false. Utilizzano la seguente struttura:
 
 ```json
 {
@@ -90,7 +91,14 @@ Gli errori a livello di risposta sono presenti quando il parametro `success` del
 }
 ```
 
-Ogni oggetto nell&#39;array &quot;errors&quot; ha due membri, `code`, che è un numero intero tra 601 e 799 e un `message` che fornisce il motivo plaintext dell&#39;errore. I codici 6xx indicano sempre che una richiesta non è riuscita completamente e non è stata eseguita. Un esempio è un 601, &quot;Token di accesso non valido&quot;, che è recuperabile autenticando nuovamente e passando il nuovo token di accesso con la richiesta. Gli errori 7xx indicano che la richiesta non è riuscita perché non sono stati restituiti dati o perché la richiesta non era parametrizzata correttamente, ad esempio includendo una data non valida o mancando un parametro obbligatorio.
+Ogni oggetto nella matrice &quot;errors&quot; contiene due membri:
+
+- `code`: numero intero tra virgolette compreso tra 601 e 799.
+- `message`: motivo in formato testo normale dell&#39;errore.
+
+Un codice 6xx indica che l’intera richiesta non è riuscita e non è stata eseguita. Ad esempio, recupera da un errore 601 &quot;Token di accesso non valido&quot; autenticando di nuovo e passando il nuovo token di accesso con la richiesta.
+
+Un codice 7xx indica che la richiesta non è riuscita perché non sono stati restituiti dati o i parametri della richiesta non sono validi. Le cause includono una data non valida o un parametro obbligatorio mancante.
 
 #### Codici di errore a livello di risposta
 
@@ -271,7 +279,7 @@ Ogni oggetto nell&#39;array &quot;errors&quot; ha due membri, `code`, che è un 
 
 ### Record-Level {#record_level_errors}
 
-Gli errori a livello di record indicano che non è stato possibile completare un&#39;operazione per un singolo record, ma la richiesta stessa era valida. Una risposta con errori a livello di record segue questo schema:
+Gli errori a livello di record indicano che la richiesta era valida, ma non è stato possibile completare l&#39;operazione per un singolo record. Una risposta con errori a livello di record segue il seguente schema:
 
 #### Risposta
 
@@ -301,8 +309,11 @@ Gli errori a livello di record indicano che non è stato possibile completare un
 }
 ```
 
-I record inclusi nell’array di risultati delle chiamate vengono ordinati nello stesso modo dell’array di input di una richiesta.
-Ogni record in una richiesta corretta può avere esito positivo o negativo su base individuale, indicato dal campo di stato di ogni record incluso nella matrice dei risultati di una risposta. Il campo &quot;status&quot; di questi record verrà &quot;ignorato&quot; ed è presente un array &quot;reason&quot;. Ogni motivo contiene un membro &quot;code&quot; e un membro &quot;message&quot;. Il codice è sempre 1xxx e il messaggio indica il motivo per cui il record è stato ignorato. Un esempio potrebbe essere un caso in cui una richiesta di sincronizzazione dei lead ha &quot;action&quot; impostato su &quot;createOnly&quot;, ma esiste già un lead per una delle chiavi nei record inviati. Questo caso restituisce il codice 1005 e un messaggio di &quot;Lead esiste già&quot; come mostrato sopra.
+I record nella matrice dei risultati vengono visualizzati nello stesso ordine dei record nella matrice di input della richiesta. Ogni record può avere esito positivo o negativo in modo indipendente, come indicato dal relativo campo di stato.
+
+Per un record non riuscito, il campo &quot;status&quot; è &quot;skipped&quot; e il record include un array &quot;reason&quot;. Ogni motivo contiene un membro &quot;code&quot; e un membro &quot;message&quot;. Il codice è sempre 1xxx e il messaggio spiega perché il record è stato ignorato.
+
+Ad esempio, se una richiesta di sincronizzazione dei lead imposta &quot;action&quot; su &quot;createOnly&quot; ed esiste già un lead per una delle chiavi inviate, la risposta restituisce il codice 1005 e il messaggio &quot;Lead exists,&quot; come mostrato sopra.
 
 #### Codici di errore a livello di record
 
