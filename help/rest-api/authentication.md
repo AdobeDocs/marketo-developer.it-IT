@@ -4,13 +4,11 @@ feature: REST API
 description: Autentica le API REST di Marketo con 2 gambe OAuth 2.0, crea e utilizza token di accesso, passa all’intestazione Autorizzazione, gestisci la scadenza, gestisci gli errori 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
 workflow-type: tm+mt
-source-wordcount: 519
+source-wordcount: 517
 ht-degree: 0%
 
 ---
@@ -61,7 +59,7 @@ Ogni chiamata API REST deve includere un token di accesso in un’intestazione H
 
 >[!IMPORTANT]
 >
->Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 agosto 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
+>Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 agosto 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
 
 ### Passaggio all’intestazione Autorizzazione
 
@@ -83,7 +81,7 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 Memorizza il token di accesso e il periodo di scadenza della risposta di identità. La gestione della scadenza dei token consente di evitare errori di autenticazione imprevisti durante il normale funzionamento.
 
-Prima di effettuare una chiamata REST, controlla la durata residua del token. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Il rinnovo proattivo evita gli errori causati dai token scaduti e rende la latenza delle chiamate REST più prevedibile, importante per le applicazioni rivolte all’utente finale.
+Prima di effettuare una chiamata REST, controlla la durata residua del token. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity#tag/Identity). Il rinnovo proattivo evita gli errori causati dai token scaduti e rende la latenza delle chiamate REST più prevedibile, importante per le applicazioni rivolte all’utente finale.
 
 Gli errori di autenticazione restituiscono i seguenti codici:
 
