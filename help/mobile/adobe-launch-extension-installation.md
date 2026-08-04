@@ -4,15 +4,10 @@ feature: Mobile Marketing
 description: Installa l’estensione Adobe Launch Marketo per dispositivi mobili. Segui i passaggi di configurazione di iOS e Android, dispositivi di test, autorizzazioni e FCM per i messaggi push e in-app.
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
 TQID: https://experienceleague.adobe.com/UZRHaRBISIZsE6E25Ee7CnnYwyZwi6w2YgOQJ-JL00U
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: e0eb8757-182f-49f3-94a4-1587d16f5094
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 696
@@ -26,7 +21,7 @@ Installa l&#39;estensione Marketo [!DNL Adobe Launch] per inviare notifiche push
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin.
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin.
 1. [Configura la proprietà nel [!DNL Adobe Launch] portale](https://experience.adobe.com/#/@amc/data-collection/home).
 1. Configurare la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin per la proprietà nel portale [!DNL Adobe Launch].
 1. Facoltativo: [Configurare le notifiche push](push-notifications.md).
@@ -168,7 +163,7 @@ MME SDK per Android supporta l&#39;uso diretto di [Firebase Cloud Messaging](htt
 
 1. Integra la versione più recente di Marketo Android SDK nell’app Android. Consulta i passaggi in [GitHub](https://github.com/Marketo/android-sdk).
 1. Configura l’app Firebase nella console Firebase.
-   1. Crea o aggiungi un progetto in [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase Console.
+   1. Crea o aggiungi un progetto in [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase Console.
       1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona **[!UICONTROL Add Firebase to your Android App]**.
