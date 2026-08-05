@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
 workflow-type: tm+mt
-source-wordcount: 519
+source-wordcount: 517
 ht-degree: 0%
 
 ---
@@ -83,7 +83,7 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 Memorizza il token di accesso e il periodo di scadenza della risposta di identità. La gestione della scadenza dei token consente di evitare errori di autenticazione imprevisti durante il normale funzionamento.
 
-Prima di effettuare una chiamata REST, controlla la durata residua del token. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Il rinnovo proattivo evita gli errori causati dai token scaduti e rende la latenza delle chiamate REST più prevedibile, importante per le applicazioni rivolte all’utente finale.
+Prima di effettuare una chiamata REST, controlla la durata residua del token. Se il token è scaduto, rinnovarlo chiamando l&#39;endpoint [Identity](https://developer.adobe.com/marketo-apis/api/identity#tag/Identity). Il rinnovo proattivo evita gli errori causati dai token scaduti e rende la latenza delle chiamate REST più prevedibile, importante per le applicazioni rivolte all’utente finale.
 
 Gli errori di autenticazione restituiscono i seguenti codici:
 
