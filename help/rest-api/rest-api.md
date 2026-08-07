@@ -4,17 +4,12 @@ feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo, configurare gli utenti API e LaunchPoint, visualizzare quote e limiti, eseguire l’autenticazione con l’intestazione Autorizzazione e recuperare i lead.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
 TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 765
+source-wordcount: 726
 ht-degree: 2%
 
 ---
@@ -30,7 +25,7 @@ Le API REST rientrano in due categorie generali:
 
 >[!NOTE]
 >
->L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 luglio 2026. Tutti i nuovi sviluppi devono essere eseguiti con Marketo [REST API](./rest-api.md) e i servizi esistenti devono essere migrati entro tale data per evitare interruzioni del servizio. Se si dispone di un servizio che utilizza l&#39;API SOAP, consultare la [Guida alla migrazione dell&#39;API SOAP](../soap-api/migration.md) per informazioni su come eseguire la migrazione.
+>A partire dal 31 luglio 2026, l’API SOAP è obsoleta e non è più disponibile. Tutti i nuovi sviluppi devono essere eseguiti con l&#39;API [REST](./rest-api.md) di Marketo.
 >
 
 >[!IMPORTANT]
@@ -100,7 +95,7 @@ Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 >
 >Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 30 giugno 2025. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
-Apri una nuova scheda del browser e immetti il seguente URL. Sostituisci i segnaposto con l&#39;endpoint e l&#39;indirizzo e-mail dell&#39;istanza per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET).
+Apri una nuova scheda del browser e immetti il seguente URL. Sostituisci i segnaposto con l&#39;endpoint e l&#39;indirizzo e-mail dell&#39;istanza per chiamare [Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET).
 
 ```text
 <Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>

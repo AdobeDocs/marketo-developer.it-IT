@@ -4,17 +4,13 @@ feature: REST API
 description: Scopri come importare i membri del programma in blocco tramite API REST di Marketo utilizzando file CSV TSV o SSV di dimensioni inferiori a 10 MB, limiti di coda, parametri richiesti e stato del processo di polling.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
 TQID: https://experienceleague.adobe.com/T1PAzLN1mnp38kJ0jwh6kPv6r1Uvxc7-o9zeTHetIV0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 771
+source-wordcount: 742
 ht-degree: 0%
 
 ---
@@ -38,7 +34,7 @@ Se si supera il massimo di 10 processi, l&#39;API restituisce un errore `1016, T
 
 ## Importa file
 
-La prima riga del file deve essere un’intestazione che elenca i nomi dei campi API REST a cui corrispondono i valori in ogni riga. Recuperare questi nomi utilizzando gli endpoint [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2) e [Descrivi membro del programma](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET).
+La prima riga del file deve essere un’intestazione che elenca i nomi dei campi API REST a cui corrispondono i valori in ogni riga. Recuperare questi nomi utilizzando gli endpoint [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeUsingGET_2) e [Descrivi membro del programma](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeProgramMemberUsingGET).
 
 I record possono contenere campi lead, campi lead personalizzati e campi membri del programma personalizzati.
 
@@ -53,7 +49,7 @@ Invia la richiesta utilizzando il tipo di contenuto `multipart/form-data`. Utili
 
 ## Creazione di un processo
 
-L&#39;endpoint [Importa membri del programma](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) legge i record dei membri del programma da un file e li aggiunge a un programma con uno stato specificato. I record possono contenere campi lead e campi membri del programma personalizzati.
+L&#39;endpoint [Importa membri del programma](https://developer.adobe.com/marketo-apis/api/mapi#operation/importProgramMemberUsingPOST) legge i record dei membri del programma da un file e li aggiunge a un programma con uno stato specificato. I record possono contenere campi lead e campi membri del programma personalizzati.
 
 Ogni record deve includere il campo e-mail, utilizzato per la deduplicazione.
 
@@ -133,7 +129,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## Stato processo di polling
 
-Dopo aver creato il processo di importazione, esegui il polling ogni 5-30 secondi. Passa il parametro del percorso `batchId` all&#39;endpoint [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
+Dopo aver creato il processo di importazione, esegui il polling ogni 5-30 secondi. Passa il parametro del percorso `batchId` all&#39;endpoint [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET).
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -163,7 +159,7 @@ Al termine del processo, la risposta elenca il numero di righe elaborate, non ri
 
 ## Errori
 
-L&#39;attributo `numOfRowsFailed` nella risposta [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
+L&#39;attributo `numOfRowsFailed` nella risposta [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET) indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
 Passa il parametro del percorso `batchId` all&#39;endpoint Get Import Program Member Failures per recuperare i record non riusciti e le relative cause.
 
@@ -217,9 +213,9 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## Avvisi
 
-L&#39;attributo `numOfRowsWithWarning` nella risposta [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) indica il numero di righe con avvisi. Un valore maggiore di zero indica che si sono verificate delle avvertenze.
+L&#39;attributo `numOfRowsWithWarning` nella risposta [Get Import Program Member Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET) indica il numero di righe con avvisi. Un valore maggiore di zero indica che si sono verificate delle avvertenze.
 
-Passa il parametro del percorso `batchId` all&#39;endpoint [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) per recuperare i record interessati e le relative cause.
+Passa il parametro del percorso `batchId` all&#39;endpoint [Get Import Program Member Warnings](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberWarningsUsingGET) per recuperare i record interessati e le relative cause.
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json

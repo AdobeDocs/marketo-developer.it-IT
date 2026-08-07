@@ -3,9 +3,9 @@ title: Appartenenza a elenco (elenchi statici)
 feature: REST API, Static Lists
 description: Utilizza le API REST del database dei lead di Marketo per aggiungere lead a elenchi statici, rimuovere lead, recuperare membri dell’elenco e controllare l’appartenenza all’elenco.
 exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: '427'
+source-wordcount: '415'
 ht-degree: 5%
 
 ---
@@ -32,7 +32,7 @@ Le API di appartenenza a elenco forniscono endpoint di database lead per la gest
 
 ## Aggiungi all’elenco
 
-Utilizzare l&#39;endpoint [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/addLeadsToListUsingPOST) per aggiungere uno o più membri a un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
+Utilizzare l&#39;endpoint [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST) per aggiungere uno o più membri a un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
 
 La risposta contiene un array `result` con lo stato di ogni ID lead nella richiesta.
 
@@ -65,7 +65,7 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ## Rimuovi dall’elenco
 
-Utilizzare l&#39;endpoint [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) per rimuovere uno o più membri da un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
+Utilizzare l&#39;endpoint [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE) per rimuovere uno o più membri da un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
 
 La risposta contiene un array `result` con lo stato di ogni ID lead nella richiesta.
 
@@ -102,7 +102,7 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ## Ottieni lead per ID elenco
 
-Utilizzare l&#39;endpoint [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET) per recuperare i membri di un elenco. Passa il parametro di percorso `listId` richiesto. Puoi anche trasmettere parametri di query facoltativi per specificare i criteri di filtro.
+Utilizzare l&#39;endpoint [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET) per recuperare i membri di un elenco. Passa il parametro di percorso `listId` richiesto. Puoi anche trasmettere parametri di query facoltativi per specificare i criteri di filtro.
 
 I parametri di query facoltativi sono:
 
@@ -152,7 +152,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 ## Membro dell’elenco
 
-Utilizzare l&#39;endpoint [Member of List](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) per determinare se uno o più lead sono membri di un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
+Utilizzare l&#39;endpoint [Member of List](https://developer.adobe.com/marketo-apis/api/mapi#operation/areLeadsMemberOfListUsingGET) per determinare se uno o più lead sono membri di un elenco. Passa il parametro di percorso `listId` richiesto e uno o più parametri di query `id` che contengono ID lead. Il numero massimo di ID lead è 300.
 
 La risposta contiene un array `result` con lo stato di ogni ID lead nella richiesta.
 

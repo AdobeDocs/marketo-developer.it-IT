@@ -4,18 +4,14 @@ feature: REST API, Custom Objects
 description: Guida alle API REST per l’estrazione di oggetti personalizzati in blocco da Marketo per l’esportazione di oggetti personalizzati collegati al lead con filtri di tipo updateAt ed list, campi selezionati e...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
 TQID: https://experienceleague.adobe.com/KAT-vab2uZq8FrRbZLy30PCJNfq01znDDuSSWuIu7WE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1231
-ht-degree: 1%
+source-wordcount: 1186
+ht-degree: 2%
 
 ---
 
@@ -27,7 +23,7 @@ Le API REST Bulk Custom Object Extract recuperano set elevati di record di ogget
 
 L’API esporta record di oggetti personalizzati Marketo di primo livello collegati direttamente ai lead. Specifica il nome dell’oggetto personalizzato e un elenco di lead collegati. Per ogni lead, l’API scrive i record oggetto personalizzati collegati corrispondenti come righe nel file di esportazione.
 
-Puoi visualizzare i dati oggetto personalizzato nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Puoi visualizzare i dati oggetto personalizzato nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorizzazioni
 
@@ -41,7 +37,7 @@ Specifica un solo tipo di filtro per processo di esportazione.
 
 | Tipo di filtro | Tipo di dati | Note |
 | --- | --- | --- |
-| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &nbsp;`startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
+| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp;`startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
 | `staticListName` | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | `staticListId` | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | `smartListName`* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recupera i nomi degli elenchi smart utilizzando l’endpoint Get Smart Lists. |
@@ -51,7 +47,7 @@ Alcuni abbonamenti non supportano questo tipo di filtro. Se non è disponibile, 
 
 ## Opzioni
 
-L&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST) fornisce le opzioni per:
+L&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/createExportCustomObjectsUsingPOST) fornisce le opzioni per:
 
 - Specifica i campi da includere nel file di esportazione.
 - Rinomina le intestazioni di colonna esportate.
@@ -65,11 +61,11 @@ L&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://de
 
 ## Creazione di un processo
 
-Utilizza l&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST) per definire il processo di esportazione.
+Utilizza l&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/createExportCustomObjectsUsingPOST) per definire il processo di esportazione.
 
 La richiesta utilizza i seguenti parametri:
 
-- `apiName`: parametro di percorso obbligatorio. Specifica l&#39;oggetto personalizzato Marketo da esportare, utilizzando il nome restituito dall&#39;endpoint [Descrivi oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1). Gli oggetti personalizzati CRM non sono consentiti.
+- `apiName`: parametro di percorso obbligatorio. Specifica l&#39;oggetto personalizzato Marketo da esportare, utilizzando il nome restituito dall&#39;endpoint [Descrivi oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeUsingGET_1). Gli oggetti personalizzati CRM non sono consentiti.
 - `filter`: obbligatorio. Specifica i lead collegati facendo riferimento a un elenco statico o a un elenco avanzato.
 - `fields`: obbligatorio. Specifica i nomi API degli attributi oggetto personalizzati da includere nel file di esportazione.
 - `format`: facoltativo. Specifica il formato del file di esportazione.
@@ -85,7 +81,7 @@ Campi oggetto personalizzati
 
 ![Campi Oggetto Personalizzati](assets/custom-object-car-fields.png)
 
-Chiamare [Descrivi oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1) per controllare gli attributi dell&#39;oggetto personalizzato a livello di programmazione. La risposta restituisce gli attributi in `fields`.
+Chiamare [Descrivi oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeUsingGET_1) per controllare gli attributi dell&#39;oggetto personalizzato a livello di programmazione. La risposta restituisce gli attributi in `fields`.
 
 ```http
 GET /rest/v1/customobjects/car_c/describe.json
@@ -195,7 +191,7 @@ GET /rest/v1/customobjects/car_c/describe.json
 }
 ```
 
-Utilizzare l&#39;endpoint [Sincronizza oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST) per creare record di oggetti personalizzati e collegare ciascuno di essi a un lead. Un lead può essere collegato a più record di oggetti personalizzati, creando una relazione uno-a-molti.
+Utilizzare l&#39;endpoint [Sincronizza oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCustomObjectsUsingPOST) per creare record di oggetti personalizzati e collegare ciascuno di essi a un lead. Un lead può essere collegato a più record di oggetti personalizzati, creando una relazione uno-a-molti.
 
 ```http
 POST /rest/v1/customobjects/car_c.json
@@ -254,7 +250,7 @@ POST /rest/v1/customobjects/car_c.json
 }
 ```
 
-I tre lead in questo esempio appartengono all&#39;elenco statico `Car Buyers`, che ha un `id` di 1081. Chiamare l&#39;endpoint [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET_1) per recuperare i membri dell&#39;elenco.
+I tre lead in questo esempio appartengono all&#39;elenco statico `Car Buyers`, che ha un `id` di 1081. Chiamare l&#39;endpoint [Get Leads by List Id](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) per recuperare i membri dell&#39;elenco.
 
 ```http
 GET /rest/v1/lists/1081/leads.json
@@ -293,7 +289,7 @@ GET /rest/v1/lists/1081/leads.json
 }
 ```
 
-Per recuperare questi record, chiamare l&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST). Specificare gli attributi oggetto personalizzati in `fields` e l&#39;ID elenco statico in `filter`.
+Per recuperare questi record, chiamare l&#39;endpoint [Crea processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/createExportCustomObjectsUsingPOST). Specificare gli attributi oggetto personalizzati in `fields` e l&#39;ID elenco statico in `filter`.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/create.json
@@ -329,7 +325,7 @@ POST /bulk/v1/customobjects/car_c/export/create.json
 }
 ```
 
-La risposta conferma che il processo è stato creato, ma l’esportazione non si avvia automaticamente. Passa `apiName` e il `exportId` restituito all&#39;endpoint [Accoda processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/enqueueExportCustomObjectsUsingPOST) per avviare il processo.
+La risposta conferma che il processo è stato creato, ma l’esportazione non si avvia automaticamente. Passa `apiName` e il `exportId` restituito all&#39;endpoint [Accoda processo di esportazione oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/enqueueExportCustomObjectsUsingPOST) per avviare il processo.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/enqueue.json
@@ -357,7 +353,7 @@ La risposta di accodamento restituisce inizialmente lo stato `Queued`. Quando un
 
 Puoi recuperare lo stato solo per i processi creati dallo stesso utente API.
 
-Poiché l&#39;esportazione viene eseguita in modo asincrono, utilizzare l&#39;endpoint [Get Export Custom Object Job Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsStatusUsingGET) per eseguire il polling dell&#39;avanzamento. Lo stato viene aggiornato una sola volta ogni 60 secondi, quindi non eseguire il polling con maggiore frequenza.
+Poiché l&#39;esportazione viene eseguita in modo asincrono, utilizzare l&#39;endpoint [Get Export Custom Object Job Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportCustomObjectsStatusUsingGET) per eseguire il polling dell&#39;avanzamento. Lo stato viene aggiornato una sola volta ogni 60 secondi, quindi non eseguire il polling con maggiore frequenza.
 
 Lo stato può essere `Created`, `Queued`, `Processing`, `Canceled`, `Completed` o `Failed`.
 
@@ -407,7 +403,7 @@ Questa risposta indica che il processo è ancora in elaborazione, quindi il file
 
 ## Recupero dei dati
 
-Per recuperare un&#39;esportazione di oggetti personalizzati completata, passare `apiName` e `exportId` all&#39;endpoint [Get Export Custom Object File](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingGET).
+Per recuperare un&#39;esportazione di oggetti personalizzati completata, passare `apiName` e `exportId` all&#39;endpoint [Get Export Custom Object File](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportCustomObjectsFileUsingGET).
 
 L’endpoint restituisce il file nel formato configurato per il processo. Se un attributo oggetto personalizzato richiesto non contiene dati, il campo di esportazione corrispondente contiene `null`.
 
@@ -426,7 +422,7 @@ Per il recupero parziale o ripristinabile, l&#39;endpoint del file supporta l&#3
 
 ## Annullamento di un processo
 
-Per annullare un processo configurato in modo errato o non più necessario, chiamare l&#39;endpoint [Annulla esportazione processo oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingPOST). Lo stato della risposta indica che il processo è annullato.
+Per annullare un processo configurato in modo errato o non più necessario, chiamare l&#39;endpoint [Annulla esportazione processo oggetto personalizzato](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportCustomObjectsUsingPOST). Lo stato della risposta indica che il processo è annullato.
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/cancel.json

@@ -1,84 +1,80 @@
 ---
 title: Campi standard
 feature: REST API, Field Management
-description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST e SOAP, oltre a come recuperarli tramite l’API Descrivi lead.
+description: Sfoglia l’elenco completo dei campi lead standard di Marketo con nomi, etichette e descrizioni REST, oltre a come recuperarli tramite l’API Descrivi lead.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
 TQID: https://experienceleague.adobe.com/vu2wGk36XJ243vwavhfLE7Vc9vMIJKGx6vmVqMRgEDA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 745
+source-wordcount: 688
 ht-degree: 16%
 
 ---
 
 # Campi standard
 
-Nella tabella seguente sono elencati i campi Marketo standard disponibili tramite l’API. Include il nome API REST di ogni campo, il nome API SOAP, l’etichetta e la descrizione.
+Nella tabella seguente sono elencati i campi Marketo standard disponibili tramite l’API. Include il nome API REST, l’etichetta e la descrizione di ogni campo.
 
 Utilizza l&#39;endpoint REST [Descrivi lead](https://developer.adobe.com/marketo-apis/api/mapi) per recuperare tutti i nomi di campo supportati dai tuoi record lead.
 
-| Nome API REST | Nome API SOAP | Etichetta intuitiva | Descrizione |
-| --- | --- | --- | --- |
-| indirizzo | Indirizzo | Indirizzo | Indirizzo del lead |
-| AnnualRevenue | Reddito Annuo | Ricavi annuali | Ricavi annuali della società del lead |
-| anonymousIP | AnonimoIP | IP anonimo | Indirizzo IP della prima visita web registrata del lead |
-| billingCity | BillingCity | Città di fatturazione | Città dell&#39;indirizzo di fatturazione del lead |
-| billingCountry | BillingCountry | Paese di fatturazione | Paese dell’indirizzo di fatturazione del lead |
-| billingPostalCode | BillingPostalCode | Codice postale di fatturazione | Codice postale dell&#39;indirizzo di fatturazione del lead |
-| billingState | BillingState | Stato di fatturazione | Stato o provincia dell&#39;indirizzo di fatturazione del lead |
-| billingStreet | BillingStreet | Indirizzo di fatturazione | Indirizzo di fatturazione della società del lead |
-| città | Città | Città | Città del lead |
-| azienda | Azienda | Nome della società | Nome società del lead |
-| paese | Paese | Paese | Paese del lead |
-| dateOfBirth | Data di nascita | Data di nascita | Data di nascita del lead |
-| reparto | Reparto | Reparto | Reparto del lead nella loro azienda |
-| doNotCall | DoNotCall | Non effettuare la chiamata | Preferenza di non chiamata del lead |
-| doNotCallReason | DoNotCallReason | Motivo per cui non effettuare la chiamata | Spiegazione della preferenza di non chiamata del lead |
-| e-mail | E-mail | Indirizzo e-mail | Indirizzo e-mail del lead. Campo chiave Marketo standard per i record dei lead |
-| fax | Fax | Numero di fax | Numero di fax del lead |
-| firstName | FirstName | Nome | Nome del lead |
-| settore | Settore | Settore | Settore del lead |
-| inferredCompany | InferredCompany | Azienda dedotta | Nome dell’azienda dedotto dalla ricerca inversa dell’IP della prima visita web registrata del lead |
-| inferredCountry | InferredCountry | Paese dedotto | Paese dedotto dalla ricerca inversa dell’IP della prima visita web registrata del lead |
-| lastName | Cognome | Cognome | Cognome del lead |
-| leadRole | LeadRole | Ruolo | Ruolo del lead nella loro azienda |
-| leadScore | PunteggioLead | Punteggio Lead | Punteggio intero assegnato al lead tramite campagne e programmi di punteggio |
-| leadSource | LeadSource | Fonte Lead | Registrazione sul campo della fonte da cui ha avuto origine il lead |
-| leadStatus | StatoLead | Stato Lead | Campo che registra lo stato attuale di marketing/vendite del lead |
-| mainPhone | MainPhone | Numero di telefono | Numero di telefono principale della società del lead |
-| jigsawContactId | ID contatto Jigsaw Marketo | ID MARKETO Data.com | ID Data.com del lead, se disponibile |
-| jigsawContactStatus | Stato contatto Jigsaw Marketo | Stato Marketo Data.com | Stato Data.com del lead, se disponibile |
-| middleName | Secondo nome | Secondo nome | Secondo nome del lead |
-| mobilePhone | Cellulare | Numero di telefono | Numero di telefono cellulare del lead |
-| numberOfEmployees | NumberOfEmployees | Numero dipendenti | Numero di dipendenti della società del lead |
-| telefono | Telefono | Numero di telefono | Numero di telefono del lead |
-| postalCode | CAP | Codice di avviamento postale | Codice postale del lead |
-| valutazione | Valutazione | Classificazione Lead | Valutazione marketing/vendite del lead |
-| saluto | Formula di saluto | Formula di saluto | Il saluto preferito del lead, cioè Mister, Misses... e così via |
-| sicCode | Codice SICC | Codice SIC (Standard Industrial Classification) | Codice di classificazione industriale standard della società del lead |
-| sito | Sito | Sito |  |
-| Stato | Stato | Stato | Stato del lead |
-| titolo | Titolo | Qualifica | Qualifica del lead |
-| annullato abbonamento | Annulla l&#39;iscrizione | Annulla l&#39;iscrizione | Stato del lead per cui è stato annullato l’abbonamento all’e-mail. Gestito parzialmente dal sistema. Impedisce la ricezione di e-mail non operative se impostato su true. |
-| unsubscscribeReason | Motivo annullamento abbonamento | Motivo di annullamento dell&#39;iscrizione | Motivo dello stato di annullamento dell’iscrizione del lead. Gestito parzialmente dal sistema. Viene compilata con informazioni e-mail se il lead ha annullato l’abbonamento direttamente da un’e-mail di Marketo. |
-| sito web | Sito web | Sito web | URL del sito web della società del lead |
-| createdAt |  - | Data creazione | Ora di creazione iniziale del record del lead. Gestito dal sistema |
-| updatedAt |  - | Data di aggiornamento | L’ultima volta che il record del lead è stato aggiornato. Gestito dal sistema |
-| emailInvalid |  - | E-mail non valida | Stato e-mail non valido. Tutte le e-mail inviate all’indirizzo saranno bloccate se impostato su true. I messaggi non recapitati che indicano che l’e-mail non è valida imposteranno automaticamente questo campo su true. |
-| emailInvalidCause |  - | E-mail causa non valida | Causa dello stato non valido dell’e-mail. Il messaggio di mancato recapito di istanza verrà registrato in questo campo quando e-mail non valida è impostata su true. |
-| inferredCity |  - | Città dedotta | Città del lead dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
-| inferredMetropolitanArea |  - | Area metropolitana dedotta | L’area metropolitana del lead è dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
-| inferredPhoneAreaCode |  - | Prefisso telefonico dedotto | Prefisso telefonico del lead dedotto dalla ricerca IP inversa della prima visita web registrata del lead. |
-| inferredPostalCode |  - | Codice postale dedotto | Codice postale del lead dedotto dalla ricerca IP inversa della prima visita web registrata del lead. |
-| inferredStateRegion |  - | Area geografica dello stato dedotta | L’area dello stato del lead è dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
-| isAnonymous |  - | È anonimo | Stato anonimo del record del lead. Gestito dal sistema. |
-| priorità |  - | Priorità | Priorità Insight vendite del lead. Gestito dal sistema. |
-| relativeScore |  - | Punteggio relativo | Punteggio relativo Insight vendite del lead. Gestito dal sistema. |
-| urgenza |  - | Urgenza | Urgenza vendite Insight del lead. Gestito dal sistema. |
+| Nome API REST | Etichetta intuitiva | Descrizione |
+| --- | --- | --- |
+| indirizzo | Indirizzo | Indirizzo del lead |
+| AnnualRevenue | Ricavi annuali | Ricavi annuali della società del lead |
+| anonymousIP | IP anonimo | Indirizzo IP della prima visita web registrata del lead |
+| billingCity | Città di fatturazione | Città dell&#39;indirizzo di fatturazione del lead |
+| billingCountry | Paese di fatturazione | Paese dell’indirizzo di fatturazione del lead |
+| billingPostalCode | Codice postale di fatturazione | Codice postale dell&#39;indirizzo di fatturazione del lead |
+| billingState | Stato di fatturazione | Stato o provincia dell&#39;indirizzo di fatturazione del lead |
+| billingStreet | Indirizzo di fatturazione | Indirizzo di fatturazione della società del lead |
+| città | Città | Città del lead |
+| azienda | Nome della società | Nome società del lead |
+| paese | Paese | Paese del lead |
+| dateOfBirth | Data di nascita | Data di nascita del lead |
+| reparto | Reparto | Reparto del lead nella loro azienda |
+| doNotCall | Non effettuare la chiamata | Preferenza di non chiamata del lead |
+| doNotCallReason | Motivo per cui non effettuare la chiamata | Spiegazione della preferenza di non chiamata del lead |
+| e-mail | Indirizzo e-mail | Indirizzo e-mail del lead. Campo chiave Marketo standard per i record dei lead |
+| fax | Numero di fax | Numero di fax del lead |
+| firstName | Nome | Nome del lead |
+| settore | Settore | Settore del lead |
+| inferredCompany | Azienda dedotta | Nome dell’azienda dedotto dalla ricerca inversa dell’IP della prima visita web registrata del lead |
+| inferredCountry | Paese dedotto | Paese dedotto dalla ricerca inversa dell’IP della prima visita web registrata del lead |
+| lastName | Cognome | Cognome del lead |
+| leadRole | Ruolo | Ruolo del lead nella loro azienda |
+| leadScore | Punteggio Lead | Punteggio intero assegnato al lead tramite campagne e programmi di punteggio |
+| leadSource | Fonte Lead | Registrazione sul campo della fonte da cui ha avuto origine il lead |
+| leadStatus | Stato Lead | Campo che registra lo stato attuale di marketing/vendite del lead |
+| mainPhone | Numero di telefono | Numero di telefono principale della società del lead |
+| jigsawContactId | ID MARKETO Data.com | ID Data.com del lead, se disponibile |
+| jigsawContactStatus | Stato Marketo Data.com | Stato Data.com del lead, se disponibile |
+| middleName | Secondo nome | Secondo nome del lead |
+| mobilePhone | Numero di telefono | Numero di telefono cellulare del lead |
+| numberOfEmployees | Numero dipendenti | Numero di dipendenti della società del lead |
+| telefono | Numero di telefono | Numero di telefono del lead |
+| postalCode | Codice di avviamento postale | Codice postale del lead |
+| valutazione | Classificazione Lead | Valutazione marketing/vendite del lead |
+| saluto | Formula di saluto | Il saluto preferito del lead, cioè Mister, Misses... e così via |
+| sicCode | Codice SIC (Standard Industrial Classification) | Codice di classificazione industriale standard della società del lead |
+| sito | Sito |  |
+| Stato | Stato | Stato del lead |
+| titolo | Qualifica | Qualifica del lead |
+| annullato abbonamento | Annulla l&#39;iscrizione | Stato del lead per cui è stato annullato l’abbonamento all’e-mail. Gestito parzialmente dal sistema. Impedisce la ricezione di e-mail non operative se impostato su true. |
+| unsubscscribeReason | Motivo di annullamento dell&#39;iscrizione | Motivo dello stato di annullamento dell’iscrizione del lead. Gestito parzialmente dal sistema. Viene compilata con informazioni e-mail se il lead ha annullato l’abbonamento direttamente da un’e-mail di Marketo. |
+| sito web | Sito web | URL del sito web della società del lead |
+| createdAt | Data creazione | Ora di creazione iniziale del record del lead. Gestito dal sistema |
+| updatedAt | Data di aggiornamento | L’ultima volta che il record del lead è stato aggiornato. Gestito dal sistema |
+| emailInvalid | E-mail non valida | Stato e-mail non valido. Tutte le e-mail inviate all’indirizzo saranno bloccate se impostato su true. I messaggi non recapitati che indicano che l’e-mail non è valida imposteranno automaticamente questo campo su true. |
+| emailInvalidCause | E-mail causa non valida | Causa dello stato non valido dell’e-mail. Il messaggio di mancato recapito di istanza verrà registrato in questo campo quando e-mail non valida è impostata su true. |
+| inferredCity | Città dedotta | Città del lead dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
+| inferredMetropolitanArea | Area metropolitana dedotta | L’area metropolitana del lead è dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
+| inferredPhoneAreaCode | Prefisso telefonico dedotto | Prefisso telefonico del lead dedotto dalla ricerca IP inversa della prima visita web registrata del lead. |
+| inferredPostalCode | Codice postale dedotto | Codice postale del lead dedotto dalla ricerca IP inversa della prima visita web registrata del lead. |
+| inferredStateRegion | Area geografica dello stato dedotta | L’area dello stato del lead è dedotta dalla ricerca IP inversa della prima visita web registrata del lead. |
+| isAnonymous | È anonimo | Stato anonimo del record del lead. Gestito dal sistema. |
+| priorità | Priorità | Priorità Insight vendite del lead. Gestito dal sistema. |
+| relativeScore | Punteggio relativo | Punteggio relativo Insight vendite del lead. Gestito dal sistema. |
+| urgenza | Urgenza | Urgenza vendite Insight del lead. Gestito dal sistema. |

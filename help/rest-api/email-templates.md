@@ -4,19 +4,14 @@ feature: REST API
 description: Scopri come creare e gestire i modelli e-mail API REST di Marketo, inclusi i requisiti di HTML, eseguire query per ID o nome e sfogliare le cartelle
 exl-id: 0ecf4da6-eb7e-43c1-8d5c-0517c43b47c8
 TQID: https://experienceleague.adobe.com/jKQpibaRP7nAyIsDdjMf8VkNPi5AMFbe7I4Iiy3MGc0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 570
-ht-degree: 1%
+source-wordcount: 543
+ht-degree: 2%
 
 ---
 
@@ -26,11 +21,11 @@ ht-degree: 1%
 
 Ogni nuova e-mail in Marketo si basa inizialmente su un modello e-mail. Anche se in seguito puoi scollegare un’e-mail dal relativo modello sostituendo HTML, devi selezionare un modello durante la creazione dell’e-mail.
 
-I modelli sono documenti HTML con metadati quali un nome e una descrizione. Il HTML del modello deve essere valido e contenere almeno una sezione modificabile che soddisfi i [requisiti di sezione modificabile](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+I modelli sono documenti HTML con metadati quali un nome e una descrizione. Il HTML del modello deve essere valido e contenere almeno una sezione modificabile che soddisfi i [requisiti di sezione modificabile](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Query
 
-I modelli e-mail supportano i pattern di query standard per le risorse: [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getTemplateByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplatesUsingGET) di una cartella.
+I modelli e-mail supportano i pattern di query standard per le risorse: [per ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getTemplateByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getTemplateByNameUsingGET) e [esplorazione](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailTemplatesUsingGET) di una cartella.
 
 ### Per ID
 
@@ -204,7 +199,7 @@ Le query di modello restituiscono solo metadati di record. Utilizza l’endpoint
 
 ## Crea e aggiorna
 
-Per [creare](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/createEmailTemplateUsingPOST) o [aggiornare](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) un modello, inviare il documento HTML in una richiesta POST `multipart/form-data`. L&#39;intestazione `Content-Type` deve includere un limite come descritto nelle RFC per [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) e [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
+Per [creare](https://developer.adobe.com/marketo-apis/api/asset#operation/createEmailTemplateUsingPOST) o [aggiornare](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateContentUsingPOST) un modello, inviare il documento HTML in una richiesta POST `multipart/form-data`. L&#39;intestazione `Content-Type` deve includere un limite come descritto nelle RFC per [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) e [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
 
 La creazione di un modello richiede i seguenti parametri:
 
@@ -275,7 +270,7 @@ Create email template using API
 }
 ```
 
-Per aggiornare il contenuto del modello, chiama l&#39;[endpoint di contenuto](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) con l&#39;ID del modello e-mail. Il corpo della richiesta accetta solo il parametro `content`.
+Per aggiornare il contenuto del modello, chiama l&#39;[endpoint di contenuto](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateContentUsingPOST) con l&#39;ID del modello e-mail. Il corpo della richiesta accetta solo il parametro `content`.
 
 Il contenuto inviato sostituisce completamente il contenuto del modello esistente. Quando si aggiorna una versione approvata, viene creata una nuova bozza. L’aggiornamento di una risorsa di sola bozza sostituisce la bozza corrente.
 
@@ -319,7 +314,7 @@ Content-Type: text/html
 
 ## Aggiorna metadati
 
-Per [aggiornare i metadati di un modello](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/updateEmailTemplateUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i parametri `name` e `description`.
+Per [aggiornare i metadati di un modello](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailTemplateUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i parametri `name` e `description`.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}.json
@@ -479,7 +474,7 @@ POST /rest/asset/v1/emailTemplate/{id}/delete.json
 
 ## Duplica
 
-Per [clonare un modello di posta elettronica](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/cloneTemplateUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i seguenti parametri:
+Per [clonare un modello di posta elettronica](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneTemplateUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i seguenti parametri:
 
 - `name`: obbligatorio. Il nome del modello clonato.
 - `folder`: obbligatorio. Oggetto JSON incorporato con `id` e `type`.
@@ -525,7 +520,7 @@ name=Sample Template 01 - deverly&folder={"id":12,"type":"Folder"}&description=T
 
 ## Interroga dipendenze e-mail
 
-Utilizza l&#39;endpoint [Get Email Template Used By](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) per recuperare le e-mail che dipendono da un modello. Il parametro di percorso `id` identifica il modello e-mail padre.
+Utilizza l&#39;endpoint [Get Email Template Used By](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailTemplateUsedByUsingGET) per recuperare le e-mail che dipendono da un modello. Il parametro di percorso `id` identifica il modello e-mail padre.
 
 L’endpoint supporta due parametri di paginazione facoltativi:
 

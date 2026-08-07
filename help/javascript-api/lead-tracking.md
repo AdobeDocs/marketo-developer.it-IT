@@ -4,21 +4,14 @@ description: Scopri come incorporare Marketo Munchkin JavaScript, tenere traccia
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
 TQID: https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-subfeature_v2:
-  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 718
+source-wordcount: 716
 ht-degree: 0%
 
 ---
@@ -93,7 +86,7 @@ Marketo registra la successiva attività web da quel browser sul record anonimo.
 
 - Il lead deve visitare una pagina tracciata da Munchkin con un parametro `mkt_tok` nella stringa query da un collegamento e-mail di Marketo tracciato.
 - Il lead deve compilare un Marketo Form.
-- È necessario inviare una chiamata REST [Associa lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST).
+- È necessario inviare una chiamata REST [Associa lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST).
 
 Quando si verifica uno di questi eventi, Marketo associa il cookie e tutte le attività web correlate al lead noto.
 
@@ -123,7 +116,7 @@ I cookie di Munchkin sono specifici di ogni dominio di secondo livello, ad esemp
 
 ## Beta
 
-Per accedere al canale beta Munchkin per le pagine di destinazione, passa a [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;.
+Per accedere al canale beta Munchkin per le pagine di destinazione, passa a [Amministratore -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e abilita l&#39;impostazione &quot;Munchkin Beta sulle pagine di destinazione&quot;.
 
 Questa impostazione aggiunge snippet di codice al menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**. Utilizza questi snippet per eseguire la versione beta su siti esterni.
 
