@@ -21,7 +21,7 @@ ht-degree: 0%
 
 [Riferimento endpoint persona di vendita](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-Le API addetto alle vendite forniscono l&#39;accesso in sola lettura per gli abbonamenti in cui è abilitato [SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync).
+Le API addetto alle vendite forniscono l&#39;accesso in sola lettura per gli abbonamenti in cui è abilitato [SFDC Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync).
 
 I Sales Persons sono record di persone che rappresentano i proprietari delle vendite dei record dei lead. Il campo externalSalesPersonId di ogni record Lead fa riferimento a un lead a un venditore. Quando questo campo viene compilato, Marketo compila i campi di ricerca del Proprietario lead corrispondenti nel record del lead. Puoi quindi utilizzare i filtri e i token associati.
 

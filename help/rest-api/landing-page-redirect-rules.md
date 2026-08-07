@@ -162,7 +162,7 @@ Il parametro `redirectTo` specifica la destinazione come oggetto JSON con una co
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Non Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Per ulteriori informazioni, vedere [Reindirizzare una pagina di destinazione di Marketo a un&#39;altra pagina](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
+Per ulteriori informazioni, vedere [Reindirizzare una pagina di destinazione di Marketo a un&#39;altra pagina](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=it).
 
 ```http
 POST /rest/asset/v1/redirectRules.json

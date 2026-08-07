@@ -29,7 +29,7 @@ I modelli di pagina di destinazione sono risorse principali per le pagine di des
 
 Marketo fornisce modelli di pagina di destinazione guidati e in formato libero. I modelli in formato libero forniscono un’esperienza di modifica scarsamente strutturata. I modelli guidati possono limitare i tipi di elementi e le posizioni a livello di modello.
 
-Per un confronto dettagliato, vedere [Informazioni sulle pagine di destinazione in formato libero e guidate](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Per un confronto dettagliato, vedere [Informazioni sulle pagine di destinazione in formato libero e guidate](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Query
 
@@ -180,9 +180,9 @@ I modelli di pagina di destinazione utilizzano la bozza standard e il modello ap
 
 Prima dell’approvazione, un modello deve soddisfare i requisiti per il suo tipo guidato o in formato libero. Consulta queste risorse:
 
-- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modelli di pagina di destinazione in formato guidato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Esempi di modelli guidati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modelli di pagina di destinazione in formato libero](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelli di pagina di destinazione in formato guidato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Esempi di modelli guidati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Elimina
 

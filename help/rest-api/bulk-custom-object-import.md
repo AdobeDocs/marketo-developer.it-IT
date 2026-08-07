@@ -40,7 +40,7 @@ Se si supera il massimo di 10 processi, l&#39;API restituisce un errore `1016, T
 
 ## Esempio di oggetto personalizzato
 
-Prima di utilizzare l&#39;API in blocco, utilizza l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
+Prima di utilizzare l&#39;API in blocco, utilizza l&#39;interfaccia utente di amministrazione di Marketo per [creare l&#39;oggetto personalizzato](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
 
 In questo esempio viene utilizzato un oggetto personalizzato `Car` con campi `Color`, `Make`, `Model` e `VIN`. Il campo VIN viene utilizzato per la deduplicazione. Le schermate dell’interfaccia utente di amministrazione evidenziano i nomi API richiesti dagli endpoint API in blocco.
 

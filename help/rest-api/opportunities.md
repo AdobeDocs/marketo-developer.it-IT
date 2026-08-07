@@ -27,7 +27,7 @@ Marketo fornisce API per la lettura, la scrittura, la creazione e l’aggiorname
 
 L’API espone entrambi i tipi di oggetto. Come per la maggior parte dei tipi di oggetti del database lead, a ciascuno di essi corrisponde una chiamata Describe che restituisce i metadati dell&#39;oggetto.
 
-Le API dell&#39;opportunità forniscono l&#39;accesso in sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) abilitato.
+Le API dell&#39;opportunità forniscono l&#39;accesso in sola lettura per le sottoscrizioni che hanno [SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=it) o [Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=it) abilitato.
 
 ## Descrivere
 
