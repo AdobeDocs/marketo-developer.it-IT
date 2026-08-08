@@ -18,9 +18,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 589
 ht-degree: 3%
 
 ---
@@ -39,7 +39,7 @@ Configura ogni webhook con le seguenti proprietà:
 
 - **[!UICONTROL URL]** - URL a cui inviare la richiesta del servizio Web.
 - **[!UICONTROL Request Type]** - Metodo HTTP.
-- **[!UICONTROL Payload Template]** - Modello per le informazioni inviate nel corpo del POST. Utilizza qualsiasi formato di dati che supporta HTTP POST, inclusi XML, JSON o SOAP. Il formato di serializzazione deve consentire virgolette doppie attorno alle stringhe. Per inserire un token, selezionare **[!UICONTROL Insert Token]**. Marketo racchiude automaticamente i token di tipo stringa tra virgolette doppie.
+- **[!UICONTROL Payload Template]** - Modello per le informazioni inviate nel corpo del POST. Utilizza qualsiasi formato di dati che supporti HTTP POST, inclusi XML e JSON. Il formato di serializzazione deve consentire virgolette doppie attorno alle stringhe. Per inserire un token, selezionare **[!UICONTROL Insert Token]**. Marketo racchiude automaticamente i token di tipo stringa tra virgolette doppie.
 - **[!UICONTROL Request Token Encoding]** - Formato della richiesta, JSON o Form/Url, utilizzato per codificare i valori dei token che includono caratteri speciali come la e commerciale &quot;&amp;&quot;. Seleziona la codifica del corpo corretta in modo che il webhook comunichi correttamente con il servizio web.
 - **[!UICONTROL Response Type]** - Formato della risposta, JSON o XML. Seleziona il tipo corretto per mappare le proprietà di risposta ai campi lead in Marketo.
 - **[!UICONTROL Custom Headers]** - Coppie chiave-valore aggiunte come intestazioni HTTP tramite **[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**. Puoi aggiungere un numero qualsiasi di intestazioni personalizzate.

@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 736
+source-wordcount: 714
 ht-degree: 0%
 
 ---
@@ -150,7 +150,7 @@ La prima riga è l’intestazione. Le righe da 2 a 4 contengono i record di dati
 
 ## Creazione di un processo
 
-Per creare il processo di importazione in blocco, includere il nome API dell&#39;oggetto personalizzato nel percorso dell&#39;endpoint [Importa oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST). Includi questi parametri:
+Per creare il processo di importazione in blocco, includere il nome API dell&#39;oggetto personalizzato nel percorso dell&#39;endpoint [Importa oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST). Includi questi parametri:
 
 - `file`: nome del file di importazione.
 - `format`: formato delimitatore file (`csv`, `tsv` o `ssv`).
@@ -215,7 +215,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## Stato processo di polling
 
-Dopo aver creato il processo di importazione, esegui il polling ogni 5-30 secondi. Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
+Dopo aver creato il processo di importazione, esegui il polling ogni 5-30 secondi. Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectStatusUsingGET).
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -247,9 +247,9 @@ Al termine del processo, la risposta elenca il numero di righe elaborate, non ri
 
 ## Errori
 
-L&#39;attributo `numOfRowsFailed` nella risposta [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET) indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
+L&#39;attributo `numOfRowsFailed` nella risposta [Get Import Custom Object Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectStatusUsingGET) indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
-Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET). L’endpoint restituisce un file con dettagli di errore. Se non esiste alcun file con errori, restituisce il codice di stato HTTP 404.
+Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Failures](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectFailuresUsingGET). L’endpoint restituisce un file con dettagli di errore. Se non esiste alcun file con errori, restituisce il codice di stato HTTP 404.
 
 Per dimostrare l&#39;errore, modificare l&#39;intestazione cambiando `vin` in ` vin`, aggiungendo uno spazio tra la virgola e `vin`.
 
@@ -302,7 +302,7 @@ La risposta indica che manca il campo di deduplicazione `vin`.
 
 L&#39;attributo `numOfRowsWithWarning` nella risposta Get Import Custom Object Status indica il numero di righe con avvisi. Un valore maggiore di zero indica che si sono verificate delle avvertenze.
 
-Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET). L’endpoint restituisce un file con i dettagli di avviso. Se non esiste alcun file di avviso, restituisce un codice di stato HTTP 404.
+Passa il nome API dell&#39;oggetto personalizzato e `batchId` nel percorso dell&#39;endpoint [Get Import Custom Object Warnings](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectWarningsUsingGET). L’endpoint restituisce un file con i dettagli di avviso. Se non esiste alcun file di avviso, restituisce un codice di stato HTTP 404.
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

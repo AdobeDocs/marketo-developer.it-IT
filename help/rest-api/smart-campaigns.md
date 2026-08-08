@@ -14,9 +14,9 @@ subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1009
+source-wordcount: 978
 ht-degree: 1%
 
 ---
@@ -35,7 +35,7 @@ Esegui query sulle campagne avanzate [per ID](#by_id), [per nome](#by_name) o pe
 
 ### Per ID
 
-L&#39;endpoint [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET) accetta una singola campagna avanzata `id` come parametro di percorso e restituisce un singolo record di campagna avanzata.
+L&#39;endpoint [Get Smart Campaign by ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByIdUsingGET) accetta una singola campagna avanzata `id` come parametro di percorso e restituisce un singolo record di campagna avanzata.
 
 ```http
 GET /rest/asset/v1/smartCampaign/{id}.json
@@ -77,7 +77,7 @@ L&#39;endpoint restituisce un record nella prima posizione dell&#39;array `resul
 
 ### Per nome
 
-L&#39;endpoint [Get Smart Campaign by Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET) accetta una singola campagna avanzata `name` come parametro e restituisce un singolo record di campagna avanzata.
+L&#39;endpoint [Get Smart Campaign by Name](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByNameUsingGET) accetta una singola campagna avanzata `name` come parametro e restituisce un singolo record di campagna avanzata.
 
 ```http
 GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
@@ -123,7 +123,7 @@ L&#39;endpoint restituisce un record nella prima posizione dell&#39;array `resul
 
 ### Sfoglia
 
-L&#39;endpoint [Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET) supporta parametri di query facoltativi per il filtro e l&#39;impaginazione.
+L&#39;endpoint [Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllSmartCampaignsGET) supporta parametri di query facoltativi per il filtro e l&#39;impaginazione.
 
 I parametri `earliestUpdatedAt` e `latestUpdatedAt` accettano `datetimes` nel formato ISO-8601 (senza millisecondi). Se entrambi sono impostati, il parametro earlyUpdatedAt deve precedere il parametro latestUpdatedAt.
 
@@ -196,7 +196,7 @@ L&#39;endpoint restituisce uno o più record nell&#39;array `result`.
 
 ## Crea
 
-Invia una richiesta POST `application/x-www-form-urlencoded` all&#39;endpoint [Crea campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST). I parametri `name` e `folder` sono obbligatori. Passa `folder` come oggetto JSON contenente `id` e `type`.
+Invia una richiesta POST `application/x-www-form-urlencoded` all&#39;endpoint [Crea campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset#operation/createSmartCampaignUsingPOST). I parametri `name` e `folder` sono obbligatori. Passa `folder` come oggetto JSON contenente `id` e `type`.
 
 Facoltativamente, puoi descrivere la campagna avanzata utilizzando il parametro `description` (massimo 2.000 caratteri).
 
@@ -302,7 +302,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## Duplica
 
-Invia una richiesta POST `application/x-www-form-urlencoded` all&#39;endpoint [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5). I parametri `id`, `name` e `folder` sono obbligatori. Specificano la campagna di origine, il nome della nuova campagna e la cartella principale. Passa `folder` come oggetto JSON contenente `id` e `type`.
+Invia una richiesta POST `application/x-www-form-urlencoded` all&#39;endpoint [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSmartCampaignUsingPOST). I parametri `id`, `name` e `folder` sono obbligatori. Specificano la campagna di origine, il nome della nuova campagna e la cartella principale. Passa `folder` come oggetto JSON contenente `id` e `type`.
 
 Facoltativamente, puoi descrivere la campagna avanzata utilizzando il parametro `description` (massimo 2.000 caratteri).
 
@@ -356,7 +356,7 @@ name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description
 
 ## Elimina
 
-L&#39;endpoint [Elimina campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST) accetta una singola campagna avanzata `id` come parametro del percorso.
+L&#39;endpoint [Elimina campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteSmartCampaignUsingPOST) accetta una singola campagna avanzata `id` come parametro del percorso.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/delete.json
@@ -382,7 +382,7 @@ Le campagne intelligenti batch vengono eseguite in un determinato momento ed ela
 
 ## Pianificazione
 
-Utilizza [Pianifica campagna](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST) per pianificare una campagna batch. Il parametro di percorso `id` della campagna è obbligatorio. Passa i parametri facoltativi `tokens`, `runAt` e `cloneToProgram` nel corpo della richiesta JSON.
+Utilizza [Pianifica campagna](https://developer.adobe.com/marketo-apis/api/mapi#operation/scheduleCampaignUsingPOST) per pianificare una campagna batch. Il parametro di percorso `id` della campagna è obbligatorio. Passa i parametri facoltativi `tokens`, `runAt` e `cloneToProgram` nel corpo della richiesta JSON.
 
 L&#39;array `tokens` sostituisce il programma esistente I miei token per questa esecuzione. Marketo elimina le sostituzioni dopo l’esecuzione della campagna. Ogni elemento contiene una coppia nome/valore e il nome del token deve utilizzare il formato `{{my.name}}`.
 
@@ -390,7 +390,7 @@ Il parametro data-ora `runAt` specifica quando eseguire la campagna. Se omessa, 
 
 Le campagne pianificate tramite questa API attendono sempre almeno cinque minuti prima di essere eseguite.
 
-Il parametro stringa `cloneToProgram` contiene il nome di un programma risultante.  Se questa opzione è impostata, la campagna, il programma principale e tutte le relative risorse vengono creati con il nuovo nome risultante. Il programma principale viene clonato e la campagna appena creata verrà pianificata. Il programma risultante viene creato sotto l&#39;elemento padre. I programmi con snippet, notifiche push, messaggi in-app, elenchi statici, rapporti e risorse social non possono essere clonati in questo modo. Se utilizzato, questo endpoint è limitato a 20 chiamate al giorno. L&#39;endpoint [clone program](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) è l&#39;alternativa consigliata.
+Il parametro stringa `cloneToProgram` contiene il nome di un programma risultante.  Se questa opzione è impostata, la campagna, il programma principale e tutte le relative risorse vengono creati con il nuovo nome risultante. Il programma principale viene clonato e la campagna appena creata verrà pianificata. Il programma risultante viene creato sotto l&#39;elemento padre. I programmi con snippet, notifiche push, messaggi in-app, elenchi statici, rapporti e risorse social non possono essere clonati in questo modo. Se utilizzato, questo endpoint è limitato a 20 chiamate al giorno. L&#39;endpoint [clone program](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST) è l&#39;alternativa consigliata.
 
 ```http
 POST /rest/v1/campaigns/{id}/schedule.json
@@ -433,7 +433,7 @@ Attiva le campagne intelligenti per elaborare una persona alla volta in risposta
 
 ### Richiesta
 
-Utilizza [Richiedi campagna](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) per passare i lead attraverso il flusso di una campagna trigger. La campagna deve utilizzare un trigger Campaign is Requested con API di servizio web come origine.
+Utilizza [Richiedi campagna](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST) per passare i lead attraverso il flusso di una campagna trigger. La campagna deve utilizzare un trigger Campaign is Requested con API di servizio web come origine.
 
 Sono necessari il parametro di percorso `id` della campagna e un array intero `leads` di ID lead. Ogni chiamata accetta un massimo di 100 lead.
 
@@ -485,7 +485,7 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 ### Attiva
 
-L&#39;endpoint [Activate Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST) è semplice. È necessario un parametro di percorso `id`. Affinché l&#39;attivazione venga eseguita correttamente, la campagna deve soddisfare le condizioni seguenti:
+L&#39;endpoint [Activate Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/activateSmartCampaignUsingPOST) è semplice. È necessario un parametro di percorso `id`. Affinché l&#39;attivazione venga eseguita correttamente, la campagna deve soddisfare le condizioni seguenti:
 
 - La campagna è disattivata.
 - La campagna ha almeno un trigger e un passaggio di flusso.
@@ -510,7 +510,7 @@ POST /rest/asset/v1/smartCampaign/{id}/activate.json
 
 ### Disattiva
 
-[Disattiva Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST) è semplice. È necessario un parametro di percorso `id`. Affinché la disattivazione abbia esito positivo, è necessario attivare la campagna.
+[Disattiva Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/deactivateSmartCampaignUsingPOST) è semplice. È necessario un parametro di percorso `id`. Affinché la disattivazione abbia esito positivo, è necessario attivare la campagna.
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/deactivate.json

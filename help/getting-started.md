@@ -16,9 +16,9 @@ role_v2:
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1225
+source-wordcount: 1198
 ht-degree: 2%
 
 ---
@@ -31,8 +31,7 @@ Questa pagina presenta le entità Marketo Engage di base e le relative relazioni
 
 >[!NOTE]
 >
->L’API SOAP diventerà obsoleta e non sarà più disponibile dopo il 31 luglio 2026. Utilizza l&#39;API REST [REST](./rest-api/rest-api.md) di Marketo per tutti i nuovi sviluppi. Eseguire la migrazione dei servizi esistenti entro tale data per evitare interruzioni del servizio. Se un servizio utilizza l&#39;API SOAP, vedere la [Guida alla migrazione dell&#39;API SOAP](./soap-api/migration.md).
->
+>A partire dal 31 luglio 2026, l’API SOAP è obsoleta e non è più disponibile. Utilizza l&#39;API REST [REST](./rest-api/rest-api.md) di Marketo per tutti i nuovi sviluppi.
 
 Quando la connessione SFDC nativa o MS Dynamics CRM è abilitata in un&#39;istanza di Marketo Engage, questi oggetti sono di sola lettura:
 
@@ -144,6 +143,6 @@ API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Cust
 
 È possibile gestire i record Persona di vendita e le relazioni lead in Marketo quando non è abilitata alcuna integrazione CRM nativa. Questi record contengono informazioni quali Nome, E-mail e Qualifica. Quando un venditore è il proprietario di un lead, è possibile utilizzare queste informazioni per filtrare e token.
 
-Gestire la relazione con un venditore a livello di lead tramite il campo &quot;externalSalesPersonId&quot;. Aggiorna questo campo tramite l&#39;API [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
+Gestire la relazione con un venditore a livello di lead tramite il campo &quot;externalSalesPersonId&quot;. Aggiorna questo campo tramite l&#39;API [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
 
 API correlate: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)

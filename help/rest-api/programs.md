@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: ebde5b41-29c9-4f5e-9ef6-1197e85409e3
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 741
+source-wordcount: 718
 ht-degree: 1%
 
 ---
@@ -46,11 +46,11 @@ Un programma può anche avere dei tag. I tag sono campi personalizzabili che pos
 
 ## Query
 
-Eseguire query sui programmi per ID, nome, esplorazione o tipo e valore di tag. Utilizza [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET) per recuperare tag e valori disponibili.
+Eseguire query sui programmi per ID, nome, esplorazione o tipo e valore di tag. Utilizza [Ottieni tipi di tag](https://developer.adobe.com/marketo-apis/api/asset#operation/getTagTypesUsingGET) per recuperare tag e valori disponibili.
 
 ### Per ID
 
-L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) richiede un parametro di percorso `id`.
+L&#39;endpoint [Get Program by Id](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET) richiede un parametro di percorso `id`.
 
 È possibile ottenere l&#39;ID del programma dall&#39;URL dell&#39;interfaccia utente, ad esempio `https://app-\*\*\*.marketo.com/#PG1001A1`. In questo esempio, l&#39;ID è `1001`, tra il primo e il secondo set di lettere.
 
@@ -140,13 +140,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### Sfoglia
 
-Utilizza l&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) per sfogliare i programmi.
+Utilizza l&#39;endpoint [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET) per sfogliare i programmi.
 
 Il parametro facoltativo `status` filtra i programmi di coinvolgimento e di posta elettronica in base allo stato. I valori validi sono `on` e `off` per i programmi di coinvolgimento e `unlocked` per i programmi e-mail.
 
 Il parametro facoltativo `maxReturn` controlla il numero di programmi restituiti. Il valore predefinito è 20 e il massimo è 200. Utilizzare il parametro facoltativo `offset` per l&#39;impaginazione; il valore predefinito è 0.
 
-Questo endpoint non restituisce i tag del programma. Recuperare i tag con [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET).
+Questo endpoint non restituisce i tag del programma. Recuperare i tag con [Ottieni programmi per ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET) o [Ottieni programmi per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByNameUsingGET).
 
 ```http
 GET /rest/asset/v1/programs.json
@@ -201,7 +201,7 @@ GET /rest/asset/v1/programs.json
 
 ### Per intervallo di date
 
-Utilizzare i parametri `earliestUpdatedAt` e `latestUpdatedAt` con [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) per impostare limiti di data e ora elevati. L’endpoint restituisce i programmi creati o aggiornati all’interno dell’intervallo.
+Utilizzare i parametri `earliestUpdatedAt` e `latestUpdatedAt` con [Ottieni programmi](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET) per impostare limiti di data e ora elevati. L’endpoint restituisce i programmi creati o aggiornati all’interno dell’intervallo.
 
 ```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -292,7 +292,7 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### Per tipo di tag
 
-L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET) restituisce programmi che corrispondono al tipo e al valore di tag specificati.
+L&#39;endpoint [Get Programs by Tag](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramListByTagUsingGET) restituisce programmi che corrispondono al tipo e al valore di tag specificati.
 
 I parametri `tagType` e `tagValue` sono obbligatori. Il numero intero facoltativo `maxReturn` controlla il numero di programmi restituiti. Il valore predefinito è 20 e il valore massimo è 200. Utilizzare il numero intero facoltativo `offset` per l&#39;impaginazione; il valore predefinito è 0. I risultati vengono restituiti in ordine casuale.
 
@@ -334,9 +334,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Crea e aggiorna
 
-[Per creare](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST) un programma sono necessari `folder`, `name`, `type` e `channel`. I parametri facoltativi sono `description`, `costs` e `tags`. Alcuni abbonamenti richiedono tag per tipi di programmi specifici. Utilizza Ottieni tag per verificare i requisiti dell’istanza.
+[Per creare](https://developer.adobe.com/marketo-apis/api/asset#operation/createProgramUsingPOST) un programma sono necessari `folder`, `name`, `type` e `channel`. I parametri facoltativi sono `description`, `costs` e `tags`. Alcuni abbonamenti richiedono tag per tipi di programmi specifici. Utilizza Ottieni tag per verificare i requisiti dell’istanza.
 
-Quando [aggiorna](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST), è possibile modificare solo la descrizione, il nome, `tags` e `costs`. Potete impostare il canale e digitare solo durante la creazione. L&#39;impostazione di `costsDestructiveUpdate` su `true` cancella tutti i costi esistenti e li sostituisce con i costi inclusi nella richiesta.
+Quando [aggiorna](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST), è possibile modificare solo la descrizione, il nome, `tags` e `costs`. Potete impostare il canale e digitare solo durante la creazione. L&#39;impostazione di `costsDestructiveUpdate` su `true` cancella tutti i costi esistenti e li sostituisce con i costi inclusi nella richiesta.
 
 Durante la creazione o l&#39;aggiornamento di un programma e-mail, è possibile passare `startDate` e `endDate` anche come data/ora UTC:
 
@@ -503,7 +503,7 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## Duplica
 
-[Per clonare i programmi](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST) è necessario un nuovo nome e una nuova cartella padre. La descrizione è facoltativa. `name` deve essere univoco e non può superare i 255 caratteri.
+[Per clonare i programmi](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST) è necessario un nuovo nome e una nuova cartella padre. La descrizione è facoltativa. `name` deve essere univoco e non può superare i 255 caratteri.
 
 Impostare l&#39;attributo del tipo del parametro `folder` su `Folder`. La cartella di destinazione deve trovarsi nello stesso workspace del programma di origine.
 

@@ -13,9 +13,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 386
+source-wordcount: 376
 ht-degree: 2%
 
 ---
@@ -28,7 +28,7 @@ I snippet sono componenti HTML riutilizzabili che possono essere incorporati nel
 
 ## Query
 
-Query snippet [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET). L’API non fornisce un metodo query per nome. Entrambi gli endpoint accettano il campo `status` per recuperare una versione approvata o bozza.
+Query snippet [per ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET). L’API non fornisce un metodo query per nome. Entrambi gli endpoint accettano il campo `status` per recuperare una versione approvata o bozza.
 
 ### Per ID
 
@@ -153,7 +153,7 @@ La risposta contiene sezioni di tipo `HTML` o `DynamicContent`. Può inoltre con
 
 ## Crea e aggiorna
 
-Crea separatamente la risorsa frammento e il relativo contenuto. Innanzitutto, chiama l&#39;endpoint [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST). La descrizione è facoltativa. Passa i dati come `x-www-form-urlencoded`, non come JSON.
+Crea separatamente la risorsa frammento e il relativo contenuto. Innanzitutto, chiama l&#39;endpoint [create snippet](https://developer.adobe.com/marketo-apis/api/asset#operation/createSnippetUsingPOST). La descrizione è facoltativa. Passa i dati come `x-www-form-urlencoded`, non come JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -225,7 +225,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-Per [aggiornare i metadati](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST), specificare l&#39;ID del frammento. È possibile aggiornare solo il nome e la descrizione.
+Per [aggiornare i metadati](https://developer.adobe.com/marketo-apis/api/asset#operation/updateSnippetUsingPOST), specificare l&#39;ID del frammento. È possibile aggiornare solo il nome e la descrizione.
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -416,7 +416,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Duplica
 
-Per [clonare un frammento](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST), specificare un nome, l&#39;ID del frammento di origine e una cartella. La descrizione è facoltativa. Se l’origine non dispone di una versione approvata, l’endpoint clona la relativa bozza.
+Per [clonare un frammento](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSnippetUsingPOST), specificare un nome, l&#39;ID del frammento di origine e una cartella. La descrizione è facoltativa. Se l’origine non dispone di una versione approvata, l’endpoint clona la relativa bozza.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

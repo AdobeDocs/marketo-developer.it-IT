@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 369
+source-wordcount: 363
 ht-degree: 0%
 
 ---
@@ -27,9 +27,9 @@ I Sales Persons sono record di persone che rappresentano i proprietari delle ven
 
 Associa i venditori ad altri record passando l&#39;attributo externalSalesPersonId all&#39;endpoint corrispondente:
 
-- Record lead: [Sincronizza lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
-- Record di opportunità: [Sincronizza opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST).
-- Record società: [Sincronizza società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+- Record lead: [Sincronizza lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
+- Record di opportunità: [Sincronizza opportunità](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncOpportunitiesUsingPOST).
+- Record società: [Sincronizza società](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 I record Persona di vendita sono modificabili solo tramite l’API.
 

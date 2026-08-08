@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 882
+source-wordcount: 866
 ht-degree: 0%
 
 ---
@@ -34,7 +34,6 @@ Progetta integrazioni in base ai limiti dell’API condivisa per l’istanza Mar
 - **Dimensione batch:** il database lead supporta 300 record; Asset Query supporta 200 record.
 - **Dimensione payload REST API:** 1 MB.
 - **Dimensione file di importazione in blocco:** 10 MB.
-- **Dimensione batch massima SOAP:** 300 record.
 - **Processi di estrazione in blocco:** due in esecuzione e dieci in coda, inclusi.
 
 ## Suggerimenti
@@ -66,15 +65,15 @@ Ogni istanza di Marketo abilitata per le API dispone di un’allocazione giornal
 
 La capacità è condivisa da tutti i servizi API e dagli utenti in un’istanza. Eliminare le chiamate ridondanti e i record batch nel minor numero possibile di chiamate.
 
-Il metodo di importazione più efficiente per le chiamate è l&#39;API di importazione in blocco Marketo, disponibile per [lead/persone](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). Marketo fornisce anche l&#39;estrazione in blocco per [lead](bulk-lead-extract.md) e [attività](bulk-activity-extract.md).
+Il metodo di importazione più efficiente per le chiamate è l&#39;API di importazione in blocco Marketo, disponibile per [lead/persone](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST) e [oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST). Marketo fornisce anche l&#39;estrazione in blocco per [lead](bulk-lead-extract.md) e [attività](bulk-activity-extract.md).
 
 ### Memorizzazione in cache
 
 I risultati delle seguenti operazioni possono in genere essere memorizzati nella cache lato client per un giorno o più, in quanto vengono modificati raramente:
 
 - Risultati delle operazioni Describe
-- [Tipi di attività](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [Partizioni](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [Tipi di attività](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)
+- [Partizioni](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadPartitionsUsingGET)
 
 Per casi d’uso come l’arricchimento dei dati di lead o attività, puoi anche memorizzare in cache tipi di risorse come programmi, e-mail e cartelle.
 

@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 584
 ht-degree: 1%
 
 ---
@@ -243,7 +243,7 @@ Esegui la query di un campo account denominato per nome API o recupera tutti i c
 
 #### Per nome
 
-L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto account denominato. Il parametro obbligatorio percorso fieldApiName specifica il nome API del campo.
+L&#39;endpoint [Get Named Account Field by Name](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto account denominato. Il parametro obbligatorio percorso fieldApiName specifica il nome API del campo.
 
 La risposta è simile alla risposta Describe Named Account ma include metadati aggiuntivi. L&#39;attributo isCustom, ad esempio, indica se il campo è personalizzato.
 
@@ -273,7 +273,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Sfogliare
 
-L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query batchSize per ridurre questo numero.
+L&#39;endpoint [Recupera campi account denominati](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera i metadati per tutti i campi nell&#39;oggetto account denominato. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query batchSize per ridurre questo numero.
 
 Se l&#39;attributo moreResult è true, saranno disponibili più risultati. Continua a chiamare l’endpoint con il valore nextPageToken restituito fino a quando moreResult non è false.
 

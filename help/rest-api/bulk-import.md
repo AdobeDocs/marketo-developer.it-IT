@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 538
+source-wordcount: 526
 ht-degree: 2%
 
 ---
@@ -57,7 +57,7 @@ La risposta relativa all’importazione in blocco non indica se è stato aggiorn
 
 ## Creazione di un processo
 
-Crea un processo di importazione lead chiamando l&#39;endpoint [Import Leads](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+Crea un processo di importazione lead chiamando l&#39;endpoint [Import Leads](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST). Questo endpoint utilizza [dati multipart/modulo come tipo di contenuto](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
 
 Utilizza una libreria di supporto HTTP per la lingua preferita per creare la richiesta multipart. Puoi anche utilizzare [curl](https://curl.se/) per iniziare.
 
@@ -112,7 +112,7 @@ Ogni endpoint di creazione del processo condivide i parametri per la configurazi
 
 ## Stato processo di polling
 
-Passa `batchId` all&#39;endpoint [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) per recuperare lo stato del processo.
+Passa `batchId` all&#39;endpoint [Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadStatusUsingGET) per recuperare lo stato del processo.
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -144,7 +144,7 @@ In questo esempio, il processo è completo, quindi il polling può essere interr
 
 L&#39;attributo `numOfRowsFailed` nella risposta Get Import Lead Status indica il numero di righe non riuscite. Un valore maggiore di zero indica che si sono verificati errori.
 
-Per recuperare i record non riusciti e le relative cause, utilizzare l&#39;endpoint [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Per recuperare i record non riusciti e le relative cause, utilizzare l&#39;endpoint [Get Import Lead Failures](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json

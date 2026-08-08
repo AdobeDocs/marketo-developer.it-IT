@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 329
+source-wordcount: 325
 ht-degree: 3%
 
 ---
@@ -35,7 +35,7 @@ Quando un lead visualizza la risorsa, Marketo mostra la variante per il segmento
 
 In questo esempio viene utilizzata una segmentazione Region (US) per visualizzare una promozione evento per i lead nel segmento Southwest. Il segmento include lead provenienti da California, Nevada, Utah, Colorado, Arizona e Nuovo Messico.
 
-Utilizzare l&#39;endpoint [Aggiorna sezione contenuto e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) per modificare la sezione modificabile con ID `Q1-promotion-banner` in una sezione `DynamicContent`. Il parametro `value` specifica l&#39;ID di segmentazione.
+Utilizzare l&#39;endpoint [Aggiorna sezione contenuto e-mail](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST) per modificare la sezione modificabile con ID `Q1-promotion-banner` in una sezione `DynamicContent`. Il parametro `value` specifica l&#39;ID di segmentazione.
 
 Le e-mail e le pagine di destinazione seguono questo modello. I snippet utilizzano il diverso pattern descritto nella documentazione sull’API dei snippet.
 
@@ -63,7 +63,7 @@ type=DynamicContent&value=1001
 }
 ```
 
-Chiamare l&#39;endpoint [sezione del contenuto dinamico dell&#39;e-mail di aggiornamento](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) per aggiungere contenuto per un segmento in una sezione specifica.
+Chiamare l&#39;endpoint [sezione del contenuto dinamico dell&#39;e-mail di aggiornamento](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailDynamicContentUsingPOST) per aggiungere contenuto per un segmento in una sezione specifica.
 
 La richiesta seguente mostra un banner speciale invece del contenuto predefinito per i lead nel segmento Southwest. Per creare più varianti, chiama l’endpoint per ciascun segmento e sezione.
 

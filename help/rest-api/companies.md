@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 582
+source-wordcount: 572
 ht-degree: 1%
 
 ---
@@ -23,7 +23,7 @@ ht-degree: 1%
 
 [Riferimento endpoint società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-Le aziende rappresentano le organizzazioni a cui appartengono i record dei lead. Per aggiungere un lead a una società, compila il relativo campo `externalCompanyId` utilizzando gli endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) o [Importazione lead in blocco](bulk-lead-import.md).
+Le aziende rappresentano le organizzazioni a cui appartengono i record dei lead. Per aggiungere un lead a una società, compila il relativo campo `externalCompanyId` utilizzando gli endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) o [Importazione lead in blocco](bulk-lead-import.md).
 
 Non è possibile rimuovere un lead da una società a meno che non lo si aggiunga a un&#39;altra società. I lead collegati a un record società ereditano i valori da tale record come se i valori fossero presenti nel record lead.
 
@@ -109,7 +109,7 @@ GET /rest/v1/companies/describe.json
 
 ## Query
 
-Il modello per [query sulle aziende](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) segue da vicino l&#39;API Lead. Tuttavia, il parametro `filterType` accetta solo i campi elencati nella matrice searchableFields della risposta Descrivi società o dedupeFields.
+Il modello per [query sulle aziende](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompaniesUsingGET) segue da vicino l&#39;API Lead. Tuttavia, il parametro `filterType` accetta solo i campi elencati nella matrice searchableFields della risposta Descrivi società o dedupeFields.
 
 I parametri di query sono:
 
@@ -152,7 +152,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Crea e aggiorna
 
-L&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) accetta un parametro `input` obbligatorio contenente un array di oggetti aziendali.
+L&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST) accetta un parametro `input` obbligatorio contenente un array di oggetti aziendali.
 
 Come per le opportunità, l&#39;endpoint supporta tre modalità di creazione e aggiornamento: createOnly, updateOnly e createOrUpdate. Specifica la modalità nel parametro `action` della richiesta.
 
@@ -214,7 +214,7 @@ Esegui la query di un campo società per nome API o recupera tutti i campi socie
 
 #### Per nome
 
-L&#39;endpoint [Ottieni campo società per nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto società. Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo.
+L&#39;endpoint [Ottieni campo società per nome](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldByNameUsingGET) recupera i metadati per un campo nell&#39;oggetto società. Il parametro di percorso `fieldApiName` richiesto specifica il nome API del campo.
 
 La risposta è simile alla risposta Descrivi azienda, ma include metadati aggiuntivi. Ad esempio, l&#39;attributo `isCustom` indica se il campo è personalizzato.
 
@@ -245,7 +245,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Sfoglia
 
-L&#39;endpoint [Recupera campi società](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) recupera i metadati per tutti i campi dell&#39;oggetto società. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query `batchSize` per ridurre questo numero.
+L&#39;endpoint [Recupera campi società](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldsUsingGET) recupera i metadati per tutti i campi dell&#39;oggetto società. Per impostazione predefinita, restituisce un massimo di 300 record. Utilizzare il parametro di query `batchSize` per ridurre questo numero.
 
 Se l&#39;attributo `moreResult` è true, sono disponibili altri risultati. Continuare a chiamare l&#39;endpoint con `nextPageToken` restituito fino a quando `moreResult` non è false.
 

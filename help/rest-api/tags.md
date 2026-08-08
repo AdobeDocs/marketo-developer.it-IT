@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 227
+source-wordcount: 221
 ht-degree: 2%
 
 ---
@@ -86,7 +86,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## Aggiornamento
 
-Utilizzare l&#39;endpoint [Aggiorna tag del programma](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST) per aggiornare il valore per un tipo di tag. Tutti i parametri sono obbligatori:
+Utilizzare l&#39;endpoint [Aggiorna tag del programma](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST) per aggiornare il valore per un tipo di tag. Tutti i parametri sono obbligatori:
 
 - Il parametro percorso `id` specifica l&#39;ID del programma.
 - Il parametro percorso `tagType` specifica il tipo di tag da aggiornare.
@@ -110,11 +110,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-Per aggiornare più tag, utilizzare l&#39;endpoint [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST). Vedere l&#39;esempio nella sezione [Programmi aggiornati](programs.md#update).
+Per aggiornare più tag, utilizzare l&#39;endpoint [Aggiorna metadati programma](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST). Vedere l&#39;esempio nella sezione [Programmi aggiornati](programs.md#update).
 
 ## Elimina
 
-Utilizzare l&#39;endpoint [Elimina tag del programma](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST) per eliminare un tipo di tag non richiesto. Il parametro percorso `id` specifica l&#39;ID del programma e il parametro percorso `tagType` specifica il tipo di tag da eliminare.
+Utilizzare l&#39;endpoint [Elimina tag del programma](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteProgramUsingPOST) per eliminare un tipo di tag non richiesto. Il parametro percorso `id` specifica l&#39;ID del programma e il parametro percorso `tagType` specifica il tipo di tag da eliminare.
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

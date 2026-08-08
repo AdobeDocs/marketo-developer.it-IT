@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 806
+source-wordcount: 792
 ht-degree: 1%
 
 ---
@@ -30,7 +30,7 @@ Utilizza l’API Cartelle per creare, eseguire query, aggiornare ed eliminare ca
 
 ## Query
 
-Le cartelle supportano i pattern di query delle risorse standard: [per id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
+Le cartelle supportano i pattern di query delle risorse standard: [per id](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) e per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET).
 
 ### Per ID
 
@@ -86,7 +86,7 @@ I tipi di cartella includono:
 
 ### Per nome
 
-L&#39;endpoint [query per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) richiede `name`, che esegue una corrispondenza esatta con i nomi delle cartelle e restituisce ogni cartella corrispondente.
+L&#39;endpoint [query per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) richiede `name`, che esegue una corrispondenza esatta con i nomi delle cartelle e restituisce ogni cartella corrispondente.
 
 L’endpoint accetta anche i seguenti parametri opzionali:
 
@@ -135,12 +135,12 @@ Le attività di marketing e Design Studio sono cartelle principali. Recupera una
 
 ### Sfoglia
 
-È inoltre possibile [recuperare le cartelle in blocco](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Utilizzare il parametro `root` per specificare la cartella padre in cui eseguire la query. Passa `root` come oggetto JSON incorporato con due membri:
+È inoltre possibile [recuperare le cartelle in blocco](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET). Utilizzare il parametro `root` per specificare la cartella padre in cui eseguire la query. Passa `root` come oggetto JSON incorporato con due membri:
 
 1. `id`: ID della cartella o del programma.
 1. `type`: `Folder` o `Program`, a seconda del tipo di cartella principale.
 
-Se non conosci la cartella principale o desideri recuperare tutte le cartelle in un’area, utilizza la directory principale Marketing Activities, Design Studio o Lead Database. Recuperare l&#39;ID radice passando il nome dell&#39;area all&#39;API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET).
+Se non conosci la cartella principale o desideri recuperare tutte le cartelle in un’area, utilizza la directory principale Marketing Activities, Design Studio o Lead Database. Recuperare l&#39;ID radice passando il nome dell&#39;area all&#39;API [Get Folder By Name](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET).
 
 Come con altri endpoint per il recupero di risorse in blocco, utilizza i parametri opzionali `offset` e `maxReturn` per l&#39;impaginazione. Altri parametri facoltativi sono:
 
@@ -237,7 +237,7 @@ Il campo `url` contiene l&#39;URL della risorsa per l&#39;istanza designata. Non
 
 ## Crea e aggiorna
 
-Per [creare una cartella](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i seguenti parametri:
+Per [creare una cartella](https://developer.adobe.com/marketo-apis/api/asset#operation/createFolderUsingPOST), inviare una richiesta POST `application/x-www-form-urlencoded` con i seguenti parametri:
 
 - `name`: stringa obbligatoria contenente il nome della cartella.
 - `parent`: oggetto JSON incorporato obbligatorio contenente `id` e `type`. Il tipo è `Folder` o `Program`, a seconda dell&#39;elemento padre.

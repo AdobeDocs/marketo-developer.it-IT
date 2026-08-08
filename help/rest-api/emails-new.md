@@ -3,16 +3,16 @@ title: E-mail
 feature: REST API
 description: Utilizza l’API REST di Marketo Asset per eseguire query, creare, aggiornare, clonare, eliminare, approvare e verificare le dipendenze per le risorse e-mail.
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: '492'
+source-wordcount: '490'
 ht-degree: 5%
 
 ---
 
 # E-mail
 
-[Riferimento endpoint e-mail](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails_New)
+[Riferimento endpoint e-mail](https://developer.adobe.com/marketo-apis/api/asset)
 
 Le e-mail sono record di risorse che definiscono i metadati dei messaggi, la configurazione del contenuto, le impostazioni e lo stato di approvazione.
 

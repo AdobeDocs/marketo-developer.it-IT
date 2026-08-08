@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 290
+source-wordcount: 284
 ht-degree: 3%
 
 ---
@@ -40,7 +40,7 @@ L’API supporta solo questi tipi di dati durante la creazione di un token.
 
 ## Query
 
-[Ottieni token per ID cartella](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET) considera l&#39;ID di un programma o di una cartella come parametro di percorso. Utilizzare il parametro `folderType` per specificare il tipo.
+[Ottieni token per ID cartella](https://developer.adobe.com/marketo-apis/api/asset#operation/getTokensByFolderIdUsingGET) considera l&#39;ID di un programma o di una cartella come parametro di percorso. Utilizzare il parametro `folderType` per specificare il tipo.
 
 ```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
@@ -73,7 +73,7 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## Crea e aggiorna
 
-L&#39;endpoint [Crea token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST) crea un token o aggiorna un token esistente con i valori inviati. I token appartengono a una cartella o a un programma.
+L&#39;endpoint [Crea token](https://developer.adobe.com/marketo-apis/api/asset#operation/addTokenTOFolderUsingPOST) crea un token o aggiorna un token esistente con i valori inviati. I token appartengono a una cartella o a un programma.
 
 Il parametro di percorso `id` identifica la cartella padre. I parametri `name`, `type`, `value` e `folderType` sono obbligatori. Passare i dati come POST `x-www-form-urlencoded`, non come JSON. Il token `name` non può superare i 50 caratteri.
 
@@ -116,7 +116,7 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## Elimina
 
-[Elimina token per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST) considera l&#39;ID di un programma o di una cartella come parametro di percorso. Utilizzare `folderType` per specificare il tipo.
+[Elimina token per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteTokenByNameUsingPOST) considera l&#39;ID di un programma o di una cartella come parametro di percorso. Utilizzare `folderType` per specificare il tipo.
 
 La cartella padre, il token `name` e il token `type` sono obbligatori. Passare i dati come POST `x-www-form-urlencoded`, non come JSON.
 

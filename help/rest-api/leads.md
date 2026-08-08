@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2728
+source-wordcount: 2733
 ht-degree: 3%
 
 ---
@@ -72,7 +72,7 @@ GET /rest/v1/leads/describe.json
 
 Le risposte effettive includono più campi nella matrice dei risultati. Ogni elemento rappresenta un campo disponibile nel record del lead e contiene almeno un ID, un displayName e un tipo di dati.
 
-Gli altri oggetti secondari soap vengono visualizzati solo quando il campo è valido per l’API corrispondente. La proprietà `readOnly` indica se l&#39;API corrispondente può aggiornare il campo. Se presente, la proprietà length fornisce la lunghezza massima del campo e la proprietà dataType fornisce il tipo di dati del campo.
+Gli oggetti figlio REST vengono visualizzati solo quando il campo è valido per l’API corrispondente. La proprietà `readOnly` indica se l&#39;API corrispondente può aggiornare il campo. Se presente, la proprietà length fornisce la lunghezza massima del campo e la proprietà dataType fornisce il tipo di dati del campo.
 
 ## Query
 
@@ -177,7 +177,7 @@ L’API Lead può creare, aggiornare ed eliminare record di lead. Le operazioni 
 
 >[!NOTE]
 >
-> L&#39;aggiornamento dei campi società tramite l&#39;endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) non è supportato. Utilizza invece l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+> L&#39;aggiornamento dei campi società tramite l&#39;endpoint [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) non è supportato. Utilizza invece l&#39;endpoint [Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >

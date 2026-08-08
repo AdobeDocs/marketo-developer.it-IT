@@ -10,9 +10,9 @@ feature_v2:
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 274
+source-wordcount: 263
 ht-degree: 1%
 
 ---
@@ -27,7 +27,7 @@ Lo storage dei file Marketo non è ottimizzato per le applicazioni che richiedon
 
 ## Query
 
-Esegui query sui file [per ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
+Esegui query sui file [per ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getFileByIdUsingGET), [per nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFileByNameUsingGET) o per [navigazione](https://developer.adobe.com/marketo-apis/api/asset#operation/getFilesUsingGET).
 
 ### Per ID
 
@@ -164,7 +164,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Crea e aggiorna
 
-Utilizza una richiesta `multipart/form-data` per [creare un file](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST). I parametri `name`, `folder` e `file` sono obbligatori. I parametri `description` e `insertOnly` sono facoltativi. Se è true, `insertOnly` impedisce alla richiesta di aggiornare un file esistente con lo stesso nome.
+Utilizza una richiesta `multipart/form-data` per [creare un file](https://developer.adobe.com/marketo-apis/api/asset#operation/createFileUsingPOST). I parametri `name`, `folder` e `file` sono obbligatori. I parametri `description` e `insertOnly` sono facoltativi. Se è true, `insertOnly` impedisce alla richiesta di aggiornare un file esistente con lo stesso nome.
 
 Per il parametro `file`, includere `filename` nell&#39;intestazione `Content-Disposition`. Includi anche l&#39;intestazione `Content-Type` del file. Marketo utilizza questo tipo MIME per la gestione del file.
 
@@ -219,7 +219,7 @@ This is a test file
 }
 ```
 
-Per [aggiornare un file](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST), specificarne l&#39;ID. Il parametro `file` ha gli stessi requisiti della creazione file.
+Per [aggiornare un file](https://developer.adobe.com/marketo-apis/api/asset#operation/updateContentUsingPOST), specificarne l&#39;ID. Il parametro `file` ha gli stessi requisiti della creazione file.
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json
