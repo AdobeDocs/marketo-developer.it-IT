@@ -4,25 +4,13 @@ description: Scopri come collegare un assistente AI a Marketo utilizzando il ser
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 066dff918cae70ccf4284b626ccb44d47a31c386
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
 workflow-type: tm+mt
-source-wordcount: 2138
+source-wordcount: 2111
 ht-degree: 0%
 
 ---
@@ -32,13 +20,13 @@ ht-degree: 0%
 
 >[!NOTE]
 >
->Il team del server MCP sta lavorando all’abilitazione delle API Smart List e Smart Campaign Asset per l’utilizzo con il server MCP. La maggior parte di questi lavori, compresa la inserire nell&#39;elenco Consentiti di attività, azioni e norme, dovrebbe essere completata nel terzo trimestre del 2026.
+>Gli strumenti Smart List e Smart Campaign `create` e `update` sono destinati alla versione di settembre 2026.
 
 Model Context Protocol (MCP) è uno standard aperto che collega gli strumenti di intelligenza artificiale a servizi esterni. Il server MCP [!DNL Marketo] collega l&#39;assistente AI a [!DNL Marketo]. Fornisce più di 100 operazioni per moduli, programmi, campagne intelligenti, lead, e-mail, snippet, elenchi e cartelle.
 
 Quando lo strumento di intelligenza artificiale chiama il server MCP, il server utilizza le credenziali in tale richiesta per eseguire la chiamata API REST corrispondente. Non è necessario installare, distribuire o eseguire software lato server.
 
-Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >

@@ -6,9 +6,9 @@ role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: 066dff918cae70ccf4284b626ccb44d47a31c386
+source-git-commit: ece6e257d28839582be659daf0b8ba1a6b6a5c3c
 workflow-type: tm+mt
-source-wordcount: '257'
+source-wordcount: '256'
 ht-degree: 29%
 
 ---
@@ -35,7 +35,7 @@ ht-degree: 29%
   - [Trigger](javascript-api/triggers.md)
   - [Personalizzazione web](javascript-api/web-personalization.md)
 - Dispositivi mobili {#mobile}
-  - [Installa l&#39;estensione  [!DNL Adobe Launch] &#x200B;](mobile/adobe-launch-extension-installation.md)
+  - [Installa l&#39;estensione  [!DNL Adobe Launch] ](mobile/adobe-launch-extension-installation.md)
   - [Estensione [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
   - [Modalità di protezione avanzata](mobile/advanced-security-access-mode.md)
   - [Azioni personalizzate](mobile/custom-actions.md)
@@ -125,8 +125,8 @@ ht-degree: 29%
 - [Script e-mail](email-scripting.md)
 - [Esempi di script e-mail](examples.md)
 - [Oggetti Marketo](marketo-objects.md)
+- [Operazioni MCP](mcp-server-operations.md)
 - [Server MCP](mcp-server.md)
-- [Operazioni MCP supportate](mcp-server-operations.md)
 - {hide-from-toc}[Licenza](api-license.md)
 - [Sandbox partner](partner-sandbox.md)
 - [Passaggi del flusso self-service](self-service-flow-steps.md)
