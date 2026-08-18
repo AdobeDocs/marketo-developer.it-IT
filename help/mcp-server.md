@@ -1,7 +1,6 @@
 ---
 title: Server Marketo Engage MCP
 description: Scopri come collegare un assistente AI a Marketo utilizzando il server MCP di Marketo Engage. Configura Claude Desktop, Cursore, Claude Code o VS Code con le tue credenziali Marketo.
-badgeBeta: label="Disponibilità limitata" type="informative" tooltip="Questa funzione è attualmente in versione beta limitata"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
@@ -21,22 +20,19 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 4d690179b0ff8da03b6eb7d11566f511d491f369
+source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
 workflow-type: tm+mt
-source-wordcount: 2181
-ht-degree: 1%
+source-wordcount: 2111
+ht-degree: 0%
 
 ---
 
-# Server MCP [!DNL Marketo Engage]
 
->[!AVAILABILITY]
->
-> Questa funzione è a disponibilità limitata. Per richiedere l&#39;accesso, compila [questo modulo](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}. Assicurati di avere il Munchkin ID della tua iscrizione pronto.
+# Server MCP [!DNL Marketo Engage]
 
 >[!NOTE]
 >
->Il team del server MCP sta lavorando all’abilitazione delle API Smart List e Smart Campaign Asset per l’utilizzo con il server MCP. La maggior parte di questi lavori, compresa la inserire nell&#39;elenco Consentiti di attività, azioni e norme, dovrebbe essere completata nel terzo trimestre del 2026.
+>Gli strumenti Smart List e Smart Campaign `create` e `update` sono destinati alla versione di settembre 2026.
 
 Model Context Protocol (MCP) è uno standard aperto che collega gli strumenti di intelligenza artificiale a servizi esterni. Il server MCP [!DNL Marketo] collega l&#39;assistente AI a [!DNL Marketo]. Fornisce più di 100 operazioni per moduli, programmi, campagne intelligenti, lead, e-mail, snippet, elenchi e cartelle.
 
