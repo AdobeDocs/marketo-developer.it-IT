@@ -4,15 +4,12 @@ feature: REST API
 description: Scopri come utilizzare l’API REST di Marketo Bulk Extract per esportare lead, attività, membri del programma e oggetti personalizzati, con OAuth, code di processi e limiti giornalieri di 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
 TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 1549
+source-wordcount: 1525
 ht-degree: 0%
 
 ---
@@ -43,14 +40,14 @@ Le API di estrazione in blocco utilizzano lo stesso metodo di autenticazione OAu
 
 >[!IMPORTANT]
 >
->Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** verrà rimosso il 31 agosto 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, deve essere aggiornato per utilizzare l&#39;intestazione **Authorization** il prima possibile. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
+>Il supporto per l&#39;autenticazione tramite il parametro di query **access_token** è stato rimosso il 31 agosto 2026. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione **Authorization**.
 
 ## Limiti
 
 - Numero massimo processi di esportazione simultanei: 2
 - Numero massimo di processi di esportazione in coda, inclusi processi attualmente in fase di esportazione: 10
 - Periodo di conservazione dei file: sette giorni
-- Allocazione predefinita delle esportazioni giornaliere: 500 MB. L’allocazione viene ripristinata ogni giorno alle 00:00 CST. Sono disponibili aumenti per l’acquisto.
+- L’allocazione viene ripristinata ogni giorno alle 00:00 CST/CDT, in base all’ora legale. Sono disponibili aumenti per l’acquisto.
 - Intervallo di tempo massimo per il filtro intervallo di date (`createdAt` o `updatedAt`): 31 giorni
 
 I filtri Estrazione lead bulk per UpdatedAt e Smart List non sono disponibili per alcuni tipi di abbonamento. Se questi filtri non sono disponibili, l’endpoint Create Export Lead Job restituisce l’errore &quot;1035, Unsupported filter type for target subscription&quot;. Contatta il supporto Marketo per abilitare questa funzionalità per il tuo abbonamento.
