@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 517
+source-wordcount: 478
 ht-degree: 0%
 
 ---
@@ -61,7 +61,7 @@ Ogni chiamata API REST deve includere un token di accesso in un’intestazione H
 
 >[!IMPORTANT]
 >
->Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` verrà rimosso il 31 agosto 2026. Se il progetto utilizza un parametro di query per passare il token di accesso, è necessario aggiornarlo per utilizzare al più presto l&#39;[intestazione autorizzazione](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/authentication#using-an-access-token). Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
+>Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` è stato rimosso il 31 agosto 2026. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
 
 ### Passaggio all’intestazione Autorizzazione
 
