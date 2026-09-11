@@ -4,13 +4,11 @@ feature: REST API
 description: Autentica le API REST di Marketo con 2 gambe OAuth 2.0, crea e utilizza token di accesso, passa all’intestazione Autorizzazione, gestisci la scadenza, gestisci gli errori 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: eb4e99aff94f3106b96f999fc56a6db7c5598b1f
 workflow-type: tm+mt
-source-wordcount: 478
+source-wordcount: 554
 ht-degree: 0%
 
 ---
@@ -62,6 +60,8 @@ Ogni chiamata API REST deve includere un token di accesso in un’intestazione H
 >[!IMPORTANT]
 >
 >Il supporto per l&#39;autenticazione tramite il parametro di query `access_token` è stato rimosso il 31 agosto 2026. Il nuovo sviluppo deve utilizzare esclusivamente l&#39;intestazione `Authorization`.
+>Questa modifica rappresenta una correzione di sicurezza in linea con le best practice di sicurezza di Industry e OAuth 2.0, che consigliano di non trasmettere i token di accesso negli URL.  Nei flussi di lavoro esistenti che eseguono l&#39;autenticazione in questo modo potrebbero essere già presenti errori 603 (Accesso negato).
+>Dai priorità all’aggiornamento dell’integrazione per utilizzare l’autenticazione basata su intestazione prima del 15 settembre 2026.  Se hai bisogno di più tempo, contatta il supporto Adobe per discutere le opzioni disponibili
 
 ### Passaggio all’intestazione Autorizzazione
 
