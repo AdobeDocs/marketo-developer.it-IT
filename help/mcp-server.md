@@ -6,27 +6,37 @@ autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+    internal-label: Integrations
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
   - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
   - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+    internal-label: Implementation
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
 role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+    internal-label: Developer
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
+    internal-label: Artificial intelligence
+source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
 workflow-type: tm+mt
-source-wordcount: 2111
+source-wordcount: '2066'
 ht-degree: 0%
-
 ---
-
 
 # Server MCP [!DNL Marketo Engage]
 
@@ -38,7 +48,7 @@ Model Context Protocol (MCP) è uno standard aperto che collega gli strumenti di
 
 Quando lo strumento di intelligenza artificiale chiama il server MCP, il server utilizza le credenziali in tale richiesta per eseguire la chiamata API REST corrispondente. Non è necessario installare, distribuire o eseguire software lato server.
 
-Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
@@ -163,27 +173,6 @@ Avrà inoltre bisogno di:
 Se la configurazione MCP cursore contiene già altri server, aggiungere la voce `marketo` in `mcpServers`.
 L&#39;esempio seguente mostra il blocco `mcpServers` completo in **[!UICONTROL Settings]** > **[!UICONTROL MCP]** o `.cursor/mcp.json` nella directory del progetto:
 
->[!BEGINTABS]
-
->[!TAB Token IMS]
-
-```json
-{
-  "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Credenziali client Marketo]
-
 ```json
 {
   "mcpServers": {
@@ -200,26 +189,11 @@ L&#39;esempio seguente mostra il blocco `mcpServers` completo in **[!UICONTROL S
 }
 ```
 
->[!ENDTABS]
-
 Riavvia cursore.
 
 ### Codice Claude (CLI) {#claude-code}
 
 Esegui il comando seguente nel terminale, sostituendo le credenziali:
-
->[!BEGINTABS]
-
->[!TAB Token IMS]
-
-```bash
-claude mcp add --transport http marketo \
-  https://marketo-mcp.adobe.io/mcp \
-  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
-  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
-```
-
->[!TAB Credenziali client Marketo]
 
 ```bash
 claude mcp add --transport http marketo \
@@ -229,28 +203,15 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
->[!ENDTABS]
-
 ### Codice OpenAI {#codex}
 
 1. Vai a Impostazioni > Server MCP > Aggiungi server.
 1. Aggiungere l&#39;URL del server: `https://marketo-mcp.adobe.io/mcp`.
 1. Aggiungi le intestazioni per il metodo di autenticazione:
 
->[!BEGINTABS]
-
->[!TAB Token IMS]
-
-* Autorizzazione: &quot;Bearer YOUR-IMS-TOKEN&quot;
-* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
-
->[!TAB Credenziali client Marketo]
-
 * X-Marketo-Client-Id: &quot;YOUR-CLIENT-ID&quot;
 * X-Marketo-Client-Secret: &quot;YOUR-CLIENT-SECRET&quot;
 * X-Marketo-Munchkin-Id: &quot;YOUR-MUNCHKIN-ID&quot;
-
->[!ENDTABS]
 
 1. Seleziona Salva per completare il processo.
 
@@ -258,27 +219,6 @@ claude mcp add --transport http marketo \
 ### Codice VS con GitHub Copilot {#vscode}
 
 Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS), digitare **[!UICONTROL MCP: Open User Configuration]** e premere Invio. Verrà aperto `mcp.json`. Aggiungi la voce `marketo` all&#39;interno dell&#39;oggetto `servers`:
-
->[!BEGINTABS]
-
->[!TAB Token IMS]
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Credenziali client Marketo]
 
 ```json
 {
@@ -295,8 +235,6 @@ Premere **[!UICONTROL Ctrl+Shift+P]** (o **[!UICONTROL Cmd+Shift+P]** su macOS),
   }
 }
 ```
-
->[!ENDTABS]
 
 >[!NOTE]
 >
@@ -328,24 +266,11 @@ Non è necessario un bridge specifico per lo strumento o un software installato 
 
 Invia le intestazioni per uno dei seguenti metodi di autenticazione a ogni richiesta. La posizione in cui inserisci l’URL del server e le intestazioni dipende dallo strumento, quindi consulta la relativa documentazione MCP.
 
->[!BEGINTABS]
-
->[!TAB Token IMS]
-
-| Intestazione | Valore |
-| ------ | ----- |
-| `Authorization` | `Bearer YOUR-IMS-TOKEN` |
-| `x-gw-ims-org-id` | ID organizzazione IMS |
-
->[!TAB Credenziali client Marketo]
-
 | Intestazione | Valore |
 | ------ | ----- |
 | `X-Marketo-Client-Id` | ID client |
 | `X-Marketo-Client-Secret` | Segreto client |
 | `X-Marketo-Munchkin-Id` | ID del tuo account Munchkin |
-
->[!ENDTABS]
 
 Se lo strumento accetta una configurazione JSON, inizia con gli esempi di [Cursore](#cursor) o [Codice VS](#vscode) e regola le chiavi (`mcpServers`, `servers`) in modo che corrispondano allo schema dello strumento.
 
