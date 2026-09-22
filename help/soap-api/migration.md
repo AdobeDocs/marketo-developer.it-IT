@@ -34,9 +34,9 @@ L’API SOAP di Marketo Engage verrà ritirata dopo il 31 marzo 2026. Tutte le i
 
 ## Migrazione
 
-L&#39;API SOAP supporta un intervallo limitato di casi d&#39;uso rispetto all&#39;[API REST](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/rest-api)I. Per determinare quali endpoint mappare i casi d&#39;uso, segui [Best practice di integrazione con Marketo](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
+L&#39;API SOAP supporta un intervallo limitato di casi d&#39;uso rispetto all&#39;[API REST](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/rest-api)I. Per determinare quali endpoint mappare i casi d&#39;uso, segui [Best practice di integrazione con Marketo](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
 
-[Architetture di riferimento](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/reference-architectures) disponibili per [Sincronizzazione CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en) e [Esportazione Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en) casi d&#39;uso.
+[Architetture di riferimento](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/reference-architectures) disponibili per [Sincronizzazione CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=it) e [Esportazione Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=it) casi d&#39;uso.
 
 ## Autenticazione
 
@@ -46,14 +46,14 @@ L’API REST di Marketo utilizza l’autenticazione basata su OAuth 2.0 con il t
 
 ## Lead
 
-[Documentazione API lead](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads)
+[Documentazione API lead](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/leads)
 
 L&#39;API SOAP supporta la sincronizzazione dei dati dei lead, [l&#39;associazione dei cookie Munchkin](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking) e l&#39;unione dei lead. Se l&#39;applicazione chiama il metodo syncLead di SOAP e imposta il parametro `marketoCookie`, è possibile eseguire la migrazione in uno dei modi seguenti:
 
 1. Utilizzo del metodo REST [Lead di sincronizzazione](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST), seguito da [Lead associato](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST)
-2. È possibile chiamare [Invia modulo](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads), anche se questo richiede la configurazione di alcune Assets di marketing e l&#39;interazione con l&#39;[API Forms](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/forms)
+2. È possibile chiamare [Invia modulo](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/leads), anche se questo richiede la configurazione di alcune Assets di marketing e l&#39;interazione con l&#39;[API Forms](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/assets/forms)
 
-Le applicazioni che utilizzano il tipo di chiave `foreignSysPersonId` devono migrare a utilizzando un campo lead personalizzato per rappresentare questo identificatore esterno e utilizzare i metodi REST [Lead di sincronizzazione](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads#create-and-update) o [Importazione lead in blocco](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import).
+Le applicazioni che utilizzano il tipo di chiave `foreignSysPersonId` devono migrare a utilizzando un campo lead personalizzato per rappresentare questo identificatore esterno e utilizzare i metodi REST [Lead di sincronizzazione](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/leads#create-and-update) o [Importazione lead in blocco](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import).
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
@@ -69,9 +69,9 @@ M Objects era un concetto onnicomprensivo per supportare l&#39;esportazione dei 
 
 Documentazione REST:
 
-- [Opportunità](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/opportunities)
-- [Ruoli](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/opportunity-roles)
-- [Programmi](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/programs)
+- [Opportunità](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/opportunities)
+- [Ruoli](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/opportunity-roles)
+- [Programmi](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/assets/programs)
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
@@ -85,7 +85,7 @@ Documentazione REST:
 
 ## Elenchi statici
 
-I casi di utilizzo per elenchi statici nell&#39;API di SOAP sono limitati all&#39;acquisizione dei dati di appartenenza e lead e alla rimozione dell&#39;appartenenza che può essere eseguita con i metodi REST [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST), [Importa in blocco lead](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import) o [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE).
+I casi di utilizzo per elenchi statici nell&#39;API di SOAP sono limitati all&#39;acquisizione dei dati di appartenenza e lead e alla rimozione dell&#39;appartenenza che può essere eseguita con i metodi REST [Aggiungi all&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST), [Importa in blocco lead](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import) o [Rimuovi dall&#39;elenco](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE).
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
@@ -99,8 +99,8 @@ L’API SOAP supporta solo il recupero delle attività.
 
 Documentazione REST:
 
-- [Attività sincrone](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/activities)
-- [Estrazione attività in blocco](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-activity-extract)
+- [Attività sincrone](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/activities)
+- [Estrazione attività in blocco](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-extract/bulk-activity-extract)
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
@@ -111,9 +111,9 @@ Documentazione REST:
 
 Documentazione REST:
 
-- [Campagne avanzate](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns)
+- [Campagne avanzate](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/assets/smart-campaigns)
 
-L&#39;API SOAP supporta solo tre casi d&#39;uso per le campagne intelligenti: [Attivazione dei lead per qualificarsi per una campagna avanzata richiedente](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns#trigger), recupero delle campagne richieste e [Pianificazione dell&#39;esecuzione futura di una campagna avanzata](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns#schedule).
+L&#39;API SOAP supporta solo tre casi d&#39;uso per le campagne intelligenti: [Attivazione dei lead per qualificarsi per una campagna avanzata richiedente](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/assets/smart-campaigns#trigger), recupero delle campagne richieste e [Pianificazione dell&#39;esecuzione futura di una campagna avanzata](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/assets/smart-campaigns#schedule).
 
 | Metodo SOAP | Metodo/i REST |
 | --- | --- |
@@ -125,7 +125,7 @@ L&#39;API SOAP supporta solo tre casi d&#39;uso per le campagne intelligenti: [A
 
 Documentazione REST:
 
-- [Oggetti personalizzati](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/custom-objects)
+- [Oggetti personalizzati](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/lead-database/custom-objects)
 
 L’API SOAP supportava solo operazioni CRUD per gli oggetti personalizzati.
 
@@ -133,4 +133,4 @@ L’API SOAP supportava solo operazioni CRUD per gli oggetti personalizzati.
 | --- | --- |
 | [deleteCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/deletecustomobjects) | [Elimina oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/deleteCustomObjectsUsingPOST) |
 | [getCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/getcustomobjects) | [Ottieni oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomObjectsUsingGET) |
-| [syncCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/synccustomobjects) | [Sincronizza oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCustomObjectsUsingPOST) [Importa oggetti personalizzati in blocco](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import) |
+| [syncCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/synccustomobjects) | [Sincronizza oggetti personalizzati](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCustomObjectsUsingPOST) [Importa oggetti personalizzati in blocco](https://experienceleague.adobe.com/it/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import) |
