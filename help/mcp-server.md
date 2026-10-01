@@ -32,23 +32,19 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
+source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
 workflow-type: tm+mt
-source-wordcount: '2066'
+source-wordcount: '2052'
 ht-degree: 0%
 ---
 
 # Server MCP [!DNL Marketo Engage]
 
->[!NOTE]
->
->Gli strumenti Smart List e Smart Campaign `create` e `update` sono destinati alla versione di settembre 2026.
-
 Model Context Protocol (MCP) è uno standard aperto che collega gli strumenti di intelligenza artificiale a servizi esterni. Il server MCP [!DNL Marketo] collega l&#39;assistente AI a [!DNL Marketo]. Fornisce più di 100 operazioni per moduli, programmi, campagne intelligenti, lead, e-mail, snippet, elenchi e cartelle.
 
 Quando lo strumento di intelligenza artificiale chiama il server MCP, il server utilizza le credenziali in tale richiesta per eseguire la chiamata API REST corrispondente. Non è necessario installare, distribuire o eseguire software lato server.
 
-Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per ulteriori informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 >[!IMPORTANT]
 >
