@@ -3,24 +3,32 @@ title: Campagne avanzate
 feature: REST API, Smart Campaigns
 description: Scopri come utilizzare le API REST di Marketo per campagne avanzate, incluse le query per ID o nome, sfogliare i filtri, creare l’eliminazione dei cloni e pianificare o richiedere i trigger
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-TQID: https://experienceleague.adobe.com/iysRjtqd9plkreyIMuNjAF3YVFHtDUIrc-GInB4V8mg
+TQID: 'https://experienceleague.adobe.com/iysRjtqd9plkreyIMuNjAF3YVFHtDUIrc-GInB4V8mg'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: ad89fb33-8541-4339-afe7-bb13d1633714
+    internal-label: Flow Step
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart lists
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 978
+source-wordcount: '978'
 ht-degree: 1%
-
 ---
-
 # Campagne avanzate
 
 [Riferimento endpoint per campagne avanzate (risorsa)](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns)
@@ -121,7 +129,7 @@ GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 
 L&#39;endpoint restituisce un record nella prima posizione dell&#39;array `result`.
 
-### Sfoglia
+### Sfogliare
 
 L&#39;endpoint [Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllSmartCampaignsGET) supporta parametri di query facoltativi per il filtro e l&#39;impaginazione.
 
@@ -194,7 +202,7 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 
 L&#39;endpoint restituisce uno o più record nell&#39;array `result`.
 
-## Crea
+## Creare
 
 Invia una richiesta POST `application/x-www-form-urlencoded` all&#39;endpoint [Crea campagna avanzata](https://developer.adobe.com/marketo-apis/api/asset#operation/createSmartCampaignUsingPOST). I parametri `name` e `folder` sono obbligatori. Passa `folder` come oggetto JSON contenente `id` e `type`.
 
