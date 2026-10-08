@@ -38,7 +38,7 @@ Le API REST Bulk Custom Object Extract recuperano set elevati di record di ogget
 
 L’API esporta record di oggetti personalizzati Marketo di primo livello collegati direttamente ai lead. Specifica il nome dell’oggetto personalizzato e un elenco di lead collegati. Per ogni lead, l’API scrive i record oggetto personalizzati collegati corrispondenti come righe nel file di esportazione.
 
-Puoi visualizzare i dati oggetto personalizzato nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Puoi visualizzare i dati oggetto personalizzato nella scheda [Oggetto personalizzato della pagina dei dettagli del lead nell&#39;interfaccia utente di Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Autorizzazioni
 
@@ -52,7 +52,7 @@ Specifica un solo tipo di filtro per processo di esportazione.
 
 | Tipo di filtro | Tipo di dati | Note |
 | --- | --- | --- |
-| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &nbsp;`startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
+| `updatedAt` | Date Range | Accetta un oggetto JSON con i membri `startAt` e `endAt` &amp;nbsp;`startAt` accetta un datetime che rappresenta la filigrana bassa e `endAt` accetta un datetime che rappresenta la filigrana alta. L’intervallo non può essere superiore a 31 giorni. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono stati aggiornati entro l’intervallo di date. I valori di data devono essere in formato ISO-8601, senza millisecondi. |
 | `staticListName` | Stringa | Accetta il nome di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recuperare i nomi di elenco statici utilizzando l&#39;endpoint Get Lists. |
 | `staticListId` | Intero | Accetta l’ID di un elenco statico. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri dell&#39;elenco statico al momento dell&#39;inizio dell&#39;elaborazione del processo. Recupera gli ID di elenco statici utilizzando l’endpoint Get Lists. |
 | `smartListName`* | Stringa | Accetta il nome di un elenco avanzato. I processi con questo tipo di filtro restituiscono tutti i record accessibili che sono membri degli elenchi smart nel momento in cui il processo inizia l&#39;elaborazione. Recupera i nomi degli elenchi smart utilizzando l’endpoint Get Smart Lists. |

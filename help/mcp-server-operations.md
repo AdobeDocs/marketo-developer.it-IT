@@ -31,7 +31,7 @@ ht-degree: 25%
 
 Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Engage]. Il server fornisce endpoint di sola lettura o non distruttivi. Il sistema di IA non può utilizzare `Delete` o altre operazioni distruttive.
 
-Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Esportazione in blocco
 

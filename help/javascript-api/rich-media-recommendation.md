@@ -31,7 +31,7 @@ Per visualizzare un modello per consigli su contenuti multimediali avanzati, agg
 1. Nel corpo della pagina:
    1. Posizionare il tag del modello (classe div) nel punto in cui si desidera visualizzare il modello.
 
-Per ulteriori informazioni, vedere [Abilitare Predictive Content for Web Rich Media](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Per ulteriori informazioni, vedere [Abilitare Predictive Content for Web Rich Media](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
@@ -60,7 +60,7 @@ Utilizza &quot;template3&quot; per visualizzare i consigli in verticale con solo
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Vedi gli esempi di allineamento del modello [&#128279;](#example_of_rich_media_recommendation_template_1).
+Vedi gli esempi di allineamento del modello [](#example_of_rich_media_recommendation_template_1).
 
 ## Popolare consiglio
 

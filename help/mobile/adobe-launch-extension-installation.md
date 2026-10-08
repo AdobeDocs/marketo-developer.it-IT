@@ -31,7 +31,7 @@ Installa l&#39;estensione Marketo [!DNL Adobe Launch] per inviare notifiche push
 
 ## Prerequisiti
 
-1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin.
+1. [Aggiungi un&#39;applicazione in Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e ottieni la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin.
 1. [Configura la proprietà nel [!DNL Adobe Launch] portale](https://experience.adobe.com/#/@amc/data-collection/home).
 1. Configurare la chiave segreta dell&#39;applicazione e l&#39;ID Munchkin per la proprietà nel portale [!DNL Adobe Launch].
 1. Facoltativo: [Configurare le notifiche push](push-notifications.md).
@@ -173,7 +173,7 @@ MME SDK per Android supporta l&#39;uso diretto di [Firebase Cloud Messaging](htt
 
 1. Integra la versione più recente di Marketo Android SDK nell’app Android. Consulta i passaggi in [GitHub](https://github.com/Marketo/android-sdk).
 1. Configura l’app Firebase nella console Firebase.
-   1. Crea o aggiungi un progetto in [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase Console.
+   1. Crea o aggiungi un progetto in [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase Console.
       1. Nella [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), seleziona **[!UICONTROL Add Project]**.
       1. Selezionare il progetto GCM dall&#39;elenco dei progetti Google Cloud esistenti e selezionare **[!UICONTROL Add Firebase]**.
       1. Nella schermata di benvenuto di Firebase, seleziona **[!UICONTROL Add Firebase to your Android App]**.
