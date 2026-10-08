@@ -15,10 +15,13 @@ feature_v2:
     internal-label: APIs
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
     internal-label: Programs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '1214'
 ht-degree: 25%
@@ -28,7 +31,7 @@ ht-degree: 25%
 
 Le operazioni seguenti sono disponibili tramite il server MCP [!DNL Marketo Engage]. Il server fornisce endpoint di sola lettura o non distruttivi. Il sistema di IA non può utilizzare `Delete` o altre operazioni distruttive.
 
-Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per informazioni sulla gestione dei dati con Marketo AI e il server Marketo Engage MCP, visita la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Esportazione in blocco
 

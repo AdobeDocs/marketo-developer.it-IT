@@ -3,18 +3,24 @@ title: Autenticazione
 feature: REST API
 description: Autentica le API REST di Marketo con 2 gambe OAuth 2.0, crea e utilizza token di accesso, passa all’intestazione Autorizzazione, gestisci la scadenza, gestisci gli errori 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
+TQID: 'https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: eb4e99aff94f3106b96f999fc56a6db7c5598b1f
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 554
+source-wordcount: '554'
 ht-degree: 0%
-
 ---
-
 # Autenticazione
 
 Le API REST di Marketo utilizzano OAuth 2.0 a 2 gambe per l’autenticazione. Un servizio personalizzato fornisce l’ID client e il segreto client utilizzati per ottenere un token di accesso.

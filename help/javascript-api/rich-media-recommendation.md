@@ -3,20 +3,23 @@ title: Consigli per contenuti multimediali avanzati
 description: Configurare la funzione Consigli per contenuti multimediali avanzati utilizzando il tag RTP per contenuti predittivi di Marketo, template1 template2 template3 div, GET to popola, SET to configure Categories.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
+TQID: 'https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 814
-ht-degree: 4%
-
+source-wordcount: '814'
+ht-degree: 3%
 ---
-
 # Consigli per contenuti multimediali avanzati
 
 Per visualizzare un modello per consigli su contenuti multimediali avanzati, aggiungi alla pagina i tag e le chiamate API richiesti.
@@ -28,7 +31,7 @@ Per visualizzare un modello per consigli su contenuti multimediali avanzati, agg
 1. Nel corpo della pagina:
    1. Posizionare il tag del modello (classe div) nel punto in cui si desidera visualizzare il modello.
 
-Per ulteriori informazioni, vedere [Abilitare Predictive Content for Web Rich Media](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Per ulteriori informazioni, vedere [Abilitare Predictive Content for Web Rich Media](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag modello
 
@@ -57,7 +60,7 @@ Utilizza &quot;template3&quot; per visualizzare i consigli in verticale con solo
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Vedi gli esempi di allineamento del modello [&#128279;](#example_of_rich_media_recommendation_template_1).
+Vedi gli esempi di allineamento del modello [](#example_of_rich_media_recommendation_template_1).
 
 ## Popolare consiglio
 
