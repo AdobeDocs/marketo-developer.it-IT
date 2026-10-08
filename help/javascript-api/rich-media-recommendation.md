@@ -60,7 +60,7 @@ Utilizza &quot;template3&quot; per visualizzare i consigli in verticale con solo
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Vedi gli esempi di allineamento del modello [](#example_of_rich_media_recommendation_template_1).
+Vedi gli esempi di allineamento del modello [&#128279;](#example_of_rich_media_recommendation_template_1).
 
 ## Popolare consiglio
 
