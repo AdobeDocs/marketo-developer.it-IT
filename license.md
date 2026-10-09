@@ -1,16 +1,15 @@
 ---
 source-git-commit: 4c6df71f0d7f569582597eac48c8f44ea12036f8
 workflow-type: tm+mt
-source-wordcount: '172'
+source-wordcount: '171'
 ht-degree: 100%
-
 ---
 # Licenza MIT
 
 © Copyright 2021 Adobe. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Viene concessa gratuitamente l’autorizzazione a qualsiasi persona che ottenga una copia di questo software e dei relativi file di documentazione (il “Software”), a trattare il Software senza restrizioni, compresi, a titolo esemplificativo, i diritti di utilizzare, copiare, modificare, unire, pubblicare, distribuire, concedere in sublicenza e/o vendere copie del Software, e a consentire alle persone a cui il Software è fornito di fare altrettanto, fatte salve le seguenti condizioni:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+L’avviso di copyright di cui sopra e l’avviso di autorizzazione devono essere inclusi in ogni copia o parte sostanziale del Software.
 
-THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+IL SOFTWARE VIENE FORNITO “COSÌ COM’È”, SENZA GARANZIA DI ALCUN TIPO, ESPLICITA O IMPLICITA, COMPRESE MA NON LIMITATE ALLE GARANZIE DI COMMERCIABILITÀ, IDONEITÀ A SCOPI PARTICOLARI E NON VIOLAZIONE. GLI AUTORI O I TITOLARI DEL DIRITTO D’AUTORE NON SARANNO RESPONSABILI IN NESSUN CASO PER RIVENDICAZIONI, DANNI O ALTRE RESPONSABILITÀ, IN UN’AZIONE DI CONTRATTO, TORTO O ALTRO, DERIVANTI DAL SOFTWARE, IN RELAZIONE O MENO AL SOFTWARE O ALL’USO O AD ALTRE OPERAZIONI DELLO STESSO.
