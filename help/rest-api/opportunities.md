@@ -21,14 +21,14 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '702'
 ht-degree: 0%
 ---
 # Opportunità
 
-[Riferimento endpoint opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities)
+[Riferimento endpoint opportunità](https://developer.adobe.com/marketo-apis/api/mapi#tag/Oppofrtunities)
 
 Marketo fornisce API per la lettura, la scrittura, la creazione e l’aggiornamento dei record di opportunità. In Marketo, l&#39;oggetto Ruolo opportunità intermedio collega i record opportunità ai record lead e contatto. Un’opportunità può quindi essere collegata a più lead singoli.
 

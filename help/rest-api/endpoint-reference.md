@@ -31,7 +31,7 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '4807'
 ht-degree: 8%
@@ -41,9 +41,9 @@ ht-degree: 8%
 Utilizza i seguenti riferimenti per trovare parametri di richiesta, schemi di risposta ed esempi per ogni gruppo API REST di Marketo:
 
 - [Risorsa](https://developer.adobe.com/marketo-apis/api/asset)
-- [Identità](https://developer.adobe.com/marketo-apis/api/identity/)
+- [Identità](https://developer.adobe.com/marketo-apis/api/identity)
 - [Database lead](https://developer.adobe.com/marketo-apis/api/mapi)
-- [Gestione degli utenti](https://developer.adobe.com/marketo-apis/api/user/)
+- [Gestione degli utenti](https://developer.adobe.com/marketo-apis/api/user)
 
 ## Elenco endpoint {#endpoint_list}
 

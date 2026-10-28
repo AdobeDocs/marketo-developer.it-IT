@@ -25,14 +25,14 @@ role_v2:
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
     internal-label: Administration
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '1404'
 ht-degree: 6%
 ---
 # Gestione degli utenti
 
-[Riferimento endpoint gestione utenti](https://developer.adobe.com/marketo-apis/api/user/)
+[Riferimento endpoint gestione utenti](https://developer.adobe.com/marketo-apis/api/user)
 
 Gli endpoint di gestione utenti di Marketo eseguono operazioni CRUD sui record utente. Per creare un utente, invia un invito. L’utente imposta quindi una password e accede a Marketo per la prima volta.
 
