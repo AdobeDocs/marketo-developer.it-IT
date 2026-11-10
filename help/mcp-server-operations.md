@@ -21,9 +21,9 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
+source-git-commit: 3e6e6ecbd10bb38c347bae82bc5acba7cda40f79
 workflow-type: tm+mt
-source-wordcount: '260'
+source-wordcount: '257'
 ht-degree: 0%
 ---
 
@@ -52,10 +52,10 @@ Per le connessioni che utilizzano le credenziali client [!DNL Marketo], le funzi
 * Strumenti di notifica push
 * Messaggi in-app e strumenti del programma in-app
 * Pianificazione delle campagne intelligenti con `schedule_smart_campaign`
-* Strumenti di gestione utenti e di assistenza in blocco
+* Strumenti di gestione utenti
 
 L&#39;operazione `schedule_campaign` è supportata per le connessioni delle credenziali client.
 
 Le operazioni disponibili dipendono dalle autorizzazioni utente API, dalle funzionalità attivate per l&#39;istanza [!DNL Marketo] e da eventuali restrizioni nel client MCP. Alcune operazioni che modificano o eliminano dati richiedono conferma e accesso aggiuntivo. Il supporto per una categoria non implica l’accesso a ogni endpoint REST.
 
-Per istruzioni di connessione e prompt di esempio, vedere la pagina del server [MCP](mcp-server.md#available-operations). Per informazioni sulla gestione dei dati con l&#39;intelligenza artificiale [!DNL Marketo] e il server MCP [!DNL Marketo Engage], vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/it/docs/marketo/using/product-docs/marketo-ai/data-information).
+Per istruzioni di connessione e prompt di esempio, vedere la pagina del server [MCP](mcp-server.md#available-operations). Per informazioni sulla gestione dei dati con l&#39;intelligenza artificiale [!DNL Marketo] e il server MCP [!DNL Marketo Engage], vedere la pagina [Informazioni sui dati](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
